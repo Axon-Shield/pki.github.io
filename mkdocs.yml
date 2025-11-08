@@ -1,10 +1,19 @@
 site_name: PKI Wiki
 site_url: https://pki.axonshield.com/
 theme:
+  logo: assets/logo.png
   name: material
   palette:
     primary: indigo
     accent: indigo
+    - scheme: default
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4 
+        name: Switch to light mode
   features:
     - navigation.tabs
     - navigation.sections
