@@ -33,7 +33,23 @@
          <lastmod>2025-11-09</lastmod>
     </url>
     <url>
+         <loc>https://vault.axonshield.com/implementation/acme-protocol-implementation/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
          <loc>https://vault.axonshield.com/implementation/ca-architecture/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://vault.axonshield.com/implementation/certificate-issuance-workflows/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://vault.axonshield.com/implementation/hsm-integration/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://vault.axonshield.com/implementation/multi-cloud-pki/</loc>
          <lastmod>2025-11-09</lastmod>
     </url>
     <url>
