@@ -85,23 +85,27 @@ Welcome to your comprehensive reference for Public Key Infrastructure and certif
 ### I need to...
 
 **Implement PKI from scratch**
+
 1. Read [What is PKI?](foundations/what-is-pki.md) for foundations
 2. Review [CA Architecture](implementation/ca-architecture.md) for design
 3. Study [Certificate Lifecycle Management](operations/certificate-lifecycle-management.md) for operations
 4. Plan security using future security pages
 
 **Fix an immediate problem**
+
 1. Check [Glossary](glossary.md) for unfamiliar terms
 2. Browse troubleshooting section *(coming soon)*
 3. Review [Certificate Anatomy](foundations/certificate-anatomy.md) for structure issues
 4. Use [Certificate Lifecycle Management](operations/certificate-lifecycle-management.md) for operational issues
 
 **Evaluate PKI products**
+
 1. Review vendors section *(coming soon)*
 2. Check [CA Architecture](implementation/ca-architecture.md) for requirements
 3. Study [Certificate Lifecycle Management](operations/certificate-lifecycle-management.md) for operational needs
 
 **Learn PKI fundamentals**
+
 1. Start with [What is PKI?](foundations/what-is-pki.md)
 2. Understand [Certificate Anatomy](foundations/certificate-anatomy.md)
 3. Reference [Glossary](glossary.md) as needed
@@ -110,10 +114,6 @@ Welcome to your comprehensive reference for Public Key Infrastructure and certif
 ## Content Quality
 
 Every page in this knowledge base includes:
-
-
-
-
 
 
 - ✅ **Authoritative citations** from RFCs, NIST, academic papers, and vendor documentation
@@ -149,7 +149,7 @@ This knowledge base is actively maintained and expanded based on:
 
 ## About This Knowledge Base
 
-Built for Axon Shield's internal use, this knowledge base combines:
+Built for Axon Shield's internal use and published , this knowledge base combines:
 
 
 
