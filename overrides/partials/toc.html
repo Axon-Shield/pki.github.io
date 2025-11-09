@@ -13,12 +13,15 @@
 </div>
 {% endif %}
 
-<!-- Original TOC -->
-<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
-  <div class="md-sidebar__scrollwrap">
-    <div class="md-sidebar__inner">
-      {% include "partials/toc-integrate.html" %}
-    </div>
-  </div>
-</div>
-
+<!-- Include the standard TOC -->
+{% if toc.items %}
+  <label class="md-nav__title" for="__toc">
+    <span class="md-nav__icon md-icon"></span>
+    {{ lang.t("toc.title") }}
+  </label>
+  <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    {% for toc_item in toc.items %}
+      {% include "partials/toc-item.html" %}
+    {% endfor %}
+  </ul>
+{% endif %}
