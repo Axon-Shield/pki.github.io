@@ -1,0 +1,1618 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://vault.axonshield.com/book/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Book - Shield Vault</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#core-principles" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Shield Vault" class="md-header__button md-logo" aria-label="Shield Vault" data-md-component="logo">
+      
+  <img src="../assets/axon-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Shield Vault
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Book
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Hello World
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Book
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Shield Vault" class="md-nav__button md-logo" aria-label="Shield Vault" data-md-component="logo">
+      
+  <img src="../assets/axon-logo.png" alt="logo">
+
+    </a>
+    Shield Vault
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hello World
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Book
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Book
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#core-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Principles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-update-discipline" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Update Discipline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-quality-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Quality Standards
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#site-structure-taxonomy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Site Structure &amp; Taxonomy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Site Structure &amp; Taxonomy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#level-1-core-domains" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 1: Core Domains
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-2-example-page-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 2: Example Page Hierarchy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-template-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Page Template Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Page Template Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standard-page-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard Page Format
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llm-update-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM Update Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LLM Update Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-triggers-when-to-modify-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Triggers (When to Modify Pages)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-restrictions-when-not-to-modify" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Restrictions (When NOT to Modify)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Update Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-pre-update-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Pre-Update Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-minimal-diff-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Minimal Diff Approach
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-cross-reference-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Cross-Reference Maintenance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monthly-review-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monthly Review Process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source-hierarchy-most-authoritative-to-least" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source Hierarchy (Most Authoritative to Least)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#citation-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Citation Format
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-link-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      External Link Maintenance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-reference-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cross-Reference Strategy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cross-Reference Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#link-density-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Link Density Guidelines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#link-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Link Patterns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bidirectional-linking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bidirectional Linking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#link-maintenance-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Link Maintenance Queries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#content-quality-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Content Quality Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Content Quality Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#self-assessment-checklist-for-llm-to-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-Assessment Checklist (for LLM to run)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#success-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Success Metrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-glossary-page-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Appendix: Glossary Page Template
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#core-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Principles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-update-discipline" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Update Discipline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-quality-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Quality Standards
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#site-structure-taxonomy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Site Structure &amp; Taxonomy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Site Structure &amp; Taxonomy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#level-1-core-domains" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 1: Core Domains
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-2-example-page-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 2: Example Page Hierarchy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-template-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Page Template Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Page Template Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standard-page-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard Page Format
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llm-update-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM Update Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LLM Update Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-triggers-when-to-modify-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Triggers (When to Modify Pages)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-restrictions-when-not-to-modify" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Restrictions (When NOT to Modify)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Update Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-pre-update-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Pre-Update Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-minimal-diff-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Minimal Diff Approach
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-cross-reference-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Cross-Reference Maintenance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monthly-review-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monthly Review Process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source-hierarchy-most-authoritative-to-least" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source Hierarchy (Most Authoritative to Least)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#citation-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Citation Format
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-link-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      External Link Maintenance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-reference-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cross-Reference Strategy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cross-Reference Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#link-density-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Link Density Guidelines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#link-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Link Patterns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bidirectional-linking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bidirectional Linking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#link-maintenance-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Link Maintenance Queries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#content-quality-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Content Quality Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Content Quality Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#self-assessment-checklist-for-llm-to-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-Assessment Checklist (for LLM to run)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#success-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Success Metrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-glossary-page-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Appendix: Glossary Page Template
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Book</h1>
+
+<p>This plan establishes a structured approach for maintaining a private Wikipedia-style knowledge base on Public Key Infrastructure and certificate management. The system is designed to enable LLM-driven updates while preventing unnecessary churn, maintaining high-quality references, and providing practical value.</p>
+<h2 id="core-principles">Core Principles</h2>
+<h3 id="1-update-discipline">1. Update Discipline</h3>
+<ul>
+<li><strong>Semantic changes only</strong>: Update content when meaning or accuracy improves, not for stylistic preferences</li>
+<li><strong>Evidence-based</strong>: All significant claims require citations from authoritative sources</li>
+<li><strong>Incremental improvement</strong>: Small, targeted updates rather than wholesale rewrites</li>
+<li><strong>Change justification</strong>: Every update must have a clear reason logged in metadata</li>
+</ul>
+<h3 id="2-quality-standards">2. Quality Standards</h3>
+<ul>
+<li><strong>Primary sources preferred</strong>: RFC standards, vendor documentation, academic papers, vendor security advisories</li>
+<li><strong>Recency markers</strong>: Date-stamp time-sensitive information (e.g., "As of 2024, the recommended...")</li>
+<li><strong>Cross-reference integrity</strong>: Automated checking that internal links remain valid</li>
+<li><strong>Practical utility</strong>: Every page must include actionable guidance or decision-making support</li>
+</ul>
+<hr />
+<h2 id="site-structure-taxonomy">Site Structure &amp; Taxonomy</h2>
+<h3 id="level-1-core-domains">Level 1: Core Domains</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>/foundations/          # Fundamental concepts
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>/standards/            # Protocols, RFCs, specifications  
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>/implementation/       # Technical how-to and architecture
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>/operations/           # Lifecycle management, automation
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>/security/             # Threats, defenses, incident response
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>/vendors/              # Product comparisons, capabilities
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>/patterns/             # Architecture patterns, case studies
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>/troubleshooting/      # Common problems and solutions
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>/glossary/             # Terms and definitions
+</code></pre></div>
+<h3 id="level-2-example-page-hierarchy">Level 2: Example Page Hierarchy</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>/foundations/
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  ├── what-is-pki.md
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  ├── certificate-anatomy.md
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  ├── trust-models.md
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  ├── cryptographic-primitives.md
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  └── public-private-key-pairs.md
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>/standards/
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>  ├── x509-standard.md
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>  ├── tls-protocol.md
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>  ├── ocsp-and-crl.md
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>  ├── pkcs-standards.md
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>  └── certificate-transparency.md
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>/implementation/
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>  ├── ca-architecture.md
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>  ├── hsm-integration.md
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>  ├── certificate-issuance-workflows.md
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>  ├── acme-protocol-implementation.md
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>  └── multi-cloud-pki.md
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>/operations/
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>  ├── certificate-lifecycle-management.md
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>  ├── renewal-automation.md
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>  ├── inventory-and-discovery.md
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>  ├── monitoring-and-alerting.md
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>  └── certificate-rotation-strategies.md
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>/security/
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>  ├── private-key-protection.md
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>  ├── ca-compromise-scenarios.md
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>  ├── certificate-pinning.md
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>  ├── common-vulnerabilities.md
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>  └── incident-response-playbooks.md
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>/vendors/
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>  ├── venafi-platform.md
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>  ├── digicert-certcentral.md
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>  ├── keyfactor-command.md
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>  ├── hashicorp-vault-pki.md
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>  └── vendor-comparison-matrix.md
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>/patterns/
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>  ├── zero-trust-architecture.md
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a>  ├── service-mesh-certificates.md
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a>  ├── mutual-tls-patterns.md
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a>  ├── certificate-as-code.md
+<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a>  └── case-study-financial-services.md
+<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a>
+<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a>/troubleshooting/
+<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a>  ├── expired-certificate-outages.md
+<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a>  ├── chain-validation-errors.md
+<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a>  ├── performance-bottlenecks.md
+<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a>  └── common-misconfigurations.md
+</code></pre></div>
+<hr />
+<h2 id="page-template-structure">Page Template Structure</h2>
+<h3 id="standard-page-format">Standard Page Format</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>---
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>title: [Page Title]
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>category: [foundations|standards|implementation|operations|security|vendors|patterns|troubleshooting]
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>last_updated: YYYY-MM-DD
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>last_reviewed: YYYY-MM-DD
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>version: X.Y
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>status: [stable|draft|needs-review|deprecated]
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="gu">tags: [tag1, tag2, tag3]</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="gu">---</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="gh"># [Page Title]</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="k">&gt; </span><span class="ge">**TL;DR**: [2-3 sentence executive summary for busy readers]</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="gu">## Overview</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>[3-4 paragraphs introducing the topic, its importance, and what this page covers]
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="gs">**Related Pages**</span>: [[link-to-page-1]], [[link-to-page-2]], [[link-to-page-3]]
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="gu">## Key Concepts</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>[Core information organized in logical sections]
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="gu">### [Subsection Title]</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>[Content with inline citations]
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>According to RFC 5280[^1], certificate extensions provide...
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="gu">## Practical Guidance</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="gu">### When to Use This Approach</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="k">-</span><span class="w"> </span>Scenario 1: [Specific use case]
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="k">-</span><span class="w"> </span>Scenario 2: [Another use case]
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="gu">### Implementation Steps</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="k">1.</span> <span class="gs">**Step 1**</span>: [Action with reasoning]
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="w">   </span><span class="k">-</span><span class="w"> </span>Consideration: [Important point]
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="w">   </span><span class="k">-</span><span class="w"> </span>Pitfall: [Common mistake to avoid]
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a>
+<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="k">2.</span> <span class="gs">**Step 2**</span>: [Next action]
+<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="w">   </span><span class="k">-</span><span class="w"> </span>Example: [Concrete example]
+<a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a>
+<a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="gu">### Decision Framework</span>
+<a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a>
+<a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a>| Factor | Option A | Option B | Recommendation |
+<a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a>|--------|----------|----------|----------------|
+<a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a>| Performance | [pros/cons] | [pros/cons] | [guidance] |
+<a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a>| Security | [assessment] | [assessment] | [guidance] |
+<a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a>
+<a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a><span class="gu">## Common Pitfalls</span>
+<a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a>
+<a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a><span class="k">-</span><span class="w"> </span><span class="gs">**Pitfall 1**</span>: [What goes wrong]
+<a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a><span class="w">  </span><span class="k">-</span><span class="w"> </span><span class="gs">**Why it happens**</span>: [Root cause]
+<a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a><span class="w">  </span><span class="k">-</span><span class="w"> </span><span class="gs">**How to avoid**</span>: [Prevention strategy]
+<a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a><span class="w">  </span><span class="k">-</span><span class="w"> </span><span class="gs">**How to fix**</span>: [Remediation]
+<a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a>
+<a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a><span class="gu">## Security Considerations</span>
+<a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a>
+<a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a>[Security-specific guidance for this topic]
+<a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a>
+<a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a><span class="k">-</span><span class="w"> </span>Threat: [Specific threat]
+<a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a><span class="w">  </span><span class="k">-</span><span class="w"> </span>Impact: [What could happen]
+<a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a><span class="w">  </span><span class="k">-</span><span class="w"> </span>Mitigation: [How to defend]
+<a id="__codelineno-2-68" name="__codelineno-2-68" href="#__codelineno-2-68"></a>
+<a id="__codelineno-2-69" name="__codelineno-2-69" href="#__codelineno-2-69"></a><span class="gu">## Real-World Examples</span>
+<a id="__codelineno-2-70" name="__codelineno-2-70" href="#__codelineno-2-70"></a>
+<a id="__codelineno-2-71" name="__codelineno-2-71" href="#__codelineno-2-71"></a><span class="gu">### Case Study: [Company/Scenario]</span>
+<a id="__codelineno-2-72" name="__codelineno-2-72" href="#__codelineno-2-72"></a>
+<a id="__codelineno-2-73" name="__codelineno-2-73" href="#__codelineno-2-73"></a>[Brief description of implementation with outcomes]
+<a id="__codelineno-2-74" name="__codelineno-2-74" href="#__codelineno-2-74"></a>
+<a id="__codelineno-2-75" name="__codelineno-2-75" href="#__codelineno-2-75"></a><span class="gs">**Key Takeaway**</span>: [Lesson learned]
+<a id="__codelineno-2-76" name="__codelineno-2-76" href="#__codelineno-2-76"></a>
+<a id="__codelineno-2-77" name="__codelineno-2-77" href="#__codelineno-2-77"></a><span class="gu">## Further Reading</span>
+<a id="__codelineno-2-78" name="__codelineno-2-78" href="#__codelineno-2-78"></a>
+<a id="__codelineno-2-79" name="__codelineno-2-79" href="#__codelineno-2-79"></a><span class="gu">### Essential Resources</span>
+<a id="__codelineno-2-80" name="__codelineno-2-80" href="#__codelineno-2-80"></a><span class="k">-</span><span class="w"> </span>[<span class="nt">RFC/Standard Title</span>](<span class="na">URL</span>) - [One sentence describing why it&#39;s essential]
+<a id="__codelineno-2-81" name="__codelineno-2-81" href="#__codelineno-2-81"></a><span class="k">-</span><span class="w"> </span>[<span class="nt">Vendor Documentation</span>](<span class="na">URL</span>) - [What it covers]
+<a id="__codelineno-2-82" name="__codelineno-2-82" href="#__codelineno-2-82"></a>
+<a id="__codelineno-2-83" name="__codelineno-2-83" href="#__codelineno-2-83"></a><span class="gu">### Advanced Topics</span>
+<a id="__codelineno-2-84" name="__codelineno-2-84" href="#__codelineno-2-84"></a><span class="k">-</span><span class="w"> </span>[[Internal link to related deep-dive]]
+<a id="__codelineno-2-85" name="__codelineno-2-85" href="#__codelineno-2-85"></a><span class="k">-</span><span class="w"> </span>[<span class="nt">External resource</span>](<span class="na">URL</span>)
+<a id="__codelineno-2-86" name="__codelineno-2-86" href="#__codelineno-2-86"></a>
+<a id="__codelineno-2-87" name="__codelineno-2-87" href="#__codelineno-2-87"></a><span class="gu">## References</span>
+<a id="__codelineno-2-88" name="__codelineno-2-88" href="#__codelineno-2-88"></a>
+<a id="__codelineno-2-89" name="__codelineno-2-89" href="#__codelineno-2-89"></a>[<span class="nl">^1</span>]: <span class="na">Full citation: Cooper, D., et al. &quot;Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile.&quot; RFC 5280, May 2008. https://www.rfc-editor.org/rfc/rfc5280</span>
+<a id="__codelineno-2-90" name="__codelineno-2-90" href="#__codelineno-2-90"></a>[<span class="nl">^2</span>]: <span class="na">[Additional citation]</span>
+<a id="__codelineno-2-91" name="__codelineno-2-91" href="#__codelineno-2-91"></a>
+<a id="__codelineno-2-92" name="__codelineno-2-92" href="#__codelineno-2-92"></a><span class="gu">## Change History</span>
+<a id="__codelineno-2-93" name="__codelineno-2-93" href="#__codelineno-2-93"></a>
+<a id="__codelineno-2-94" name="__codelineno-2-94" href="#__codelineno-2-94"></a>| Date | Version | Changes | Reason |
+<a id="__codelineno-2-95" name="__codelineno-2-95" href="#__codelineno-2-95"></a>|------|---------|---------|--------|
+<a id="__codelineno-2-96" name="__codelineno-2-96" href="#__codelineno-2-96"></a>| 2024-01-15 | 1.1 | Added ACME protocol section | New protocol adoption increasing |
+<a id="__codelineno-2-97" name="__codelineno-2-97" href="#__codelineno-2-97"></a>| 2023-11-03 | 1.0 | Initial creation | - |
+<a id="__codelineno-2-98" name="__codelineno-2-98" href="#__codelineno-2-98"></a>
+<a id="__codelineno-2-99" name="__codelineno-2-99" href="#__codelineno-2-99"></a>---
+<a id="__codelineno-2-100" name="__codelineno-2-100" href="#__codelineno-2-100"></a>
+<a id="__codelineno-2-101" name="__codelineno-2-101" href="#__codelineno-2-101"></a><span class="gs">**Quality Checks**</span>: 
+<a id="__codelineno-2-102" name="__codelineno-2-102" href="#__codelineno-2-102"></a><span class="k">- [ ]</span> All claims cited from authoritative sources
+<a id="__codelineno-2-103" name="__codelineno-2-103" href="#__codelineno-2-103"></a><span class="k">- [ ]</span> Cross-references validated
+<a id="__codelineno-2-104" name="__codelineno-2-104" href="#__codelineno-2-104"></a><span class="k">- [ ]</span> Practical guidance included
+<a id="__codelineno-2-105" name="__codelineno-2-105" href="#__codelineno-2-105"></a><span class="k">- [ ]</span> Examples are current and relevant
+<a id="__codelineno-2-106" name="__codelineno-2-106" href="#__codelineno-2-106"></a><span class="k">- [ ]</span> Security considerations addressed
+</code></pre></div>
+<hr />
+<h2 id="llm-update-instructions">LLM Update Instructions</h2>
+<h3 id="update-triggers-when-to-modify-pages">Update Triggers (When to Modify Pages)</h3>
+<p>The LLM should update pages when:</p>
+<ol>
+<li><strong>Factual Corrections</strong></li>
+<li>Error in technical details discovered</li>
+<li>RFC or standard misinterpreted</li>
+<li>
+<p>Broken or outdated external links</p>
+</li>
+<li>
+<p><strong>New Authoritative Information</strong></p>
+</li>
+<li>New RFC published affecting the topic</li>
+<li>Major vendor releases changing best practices</li>
+<li>Security vulnerabilities disclosed</li>
+<li>
+<p>Industry standards updated (CA/B Forum, NIST)</p>
+</li>
+<li>
+<p><strong>Significant Industry Events</strong></p>
+</li>
+<li>Major certificate-related outages with public postmortems</li>
+<li>New attack techniques published in academic papers</li>
+<li>
+<p>Regulatory changes (eIDAS, WebTrust requirements)</p>
+</li>
+<li>
+<p><strong>Gap Filling</strong></p>
+</li>
+<li>Missing cross-references identified</li>
+<li>Practical guidance section empty or weak</li>
+<li>No examples provided for complex topics</li>
+<li>
+<p>Missing security considerations</p>
+</li>
+<li>
+<p><strong>Staleness Indicators</strong></p>
+</li>
+<li>Last_reviewed date &gt; 6 months ago</li>
+<li>References to deprecated protocols without context</li>
+<li>"Current" recommendations from &gt;2 years ago</li>
+</ol>
+<h3 id="update-restrictions-when-not-to-modify">Update Restrictions (When NOT to Modify)</h3>
+<p>The LLM should NOT update pages for:</p>
+<ol>
+<li><strong>Stylistic preferences</strong> - Don't rewrite for tone unless actively confusing</li>
+<li><strong>Synonym swapping</strong> - "certificate" vs "cert" is fine, don't normalize</li>
+<li><strong>Restructuring working content</strong> - If organization is clear, leave it</li>
+<li><strong>Adding marginal examples</strong> - Only add examples that significantly clarify</li>
+<li><strong>Expanding complete sections</strong> - Don't pad content that's already comprehensive</li>
+<li><strong>Citation format changes</strong> - Unless switching to a better primary source</li>
+<li><strong>Rewording clear explanations</strong> - If it's accurate and clear, preserve it</li>
+</ol>
+<h3 id="update-process">Update Process</h3>
+<h4 id="step-1-pre-update-assessment">Step 1: Pre-Update Assessment</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Before modifying any page, the LLM must:
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>1. Read the entire current page
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>2. Check last_updated and last_reviewed dates
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>3. Review change history to understand edit patterns
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>4. Identify specific sentences/sections that need changes
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>5. Verify authoritative sources for new information
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>6. Check that proposed changes meet update triggers above
+</code></pre></div>
+<h4 id="step-2-minimal-diff-approach">Step 2: Minimal Diff Approach</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>When updating:
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>1. Change ONLY the specific sentences/paragraphs that need correction
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>2. Preserve existing formatting, headers, and structure
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>3. Keep existing citations unless replacing with better sources
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>4. Add new citations inline: [^N] (incrementing from last number)
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>5. Append new references to References section
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>6. Do not reorder sections unless critically necessary
+</code></pre></div>
+<h4 id="step-3-documentation">Step 3: Documentation</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>After each update:
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>1. Update the version number:
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>   - Major version (X.0) for substantial content additions
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>   - Minor version (X.Y) for corrections and small additions
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>2. Add entry to Change History table:
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>   | 2024-11-08 | 1.3 | Fixed OCSP validation flow, added ref to RFC 6960 | Inaccurate description of nonce handling |
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>3. Update last_updated field in frontmatter
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>4. If changes are substantial, set status to &quot;needs-review&quot;
+</code></pre></div>
+<h4 id="step-4-cross-reference-maintenance">Step 4: Cross-Reference Maintenance</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>When adding/removing content:
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>1. Search wiki for pages linking to current page
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>2. Update those pages if context changed significantly
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>3. Add new cross-references where relevant
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>4. Validate all [[internal-links]] resolve correctly
+</code></pre></div>
+<h3 id="monthly-review-process">Monthly Review Process</h3>
+<p>Once per month, the LLM should:</p>
+<ol>
+<li><strong>Scan for stale pages</strong> (last_reviewed &gt; 6 months)</li>
+<li><strong>Check for new relevant RFCs</strong> (search IETF database)</li>
+<li><strong>Review vendor changelog pages</strong> for major PKI product updates</li>
+<li><strong>Search for recent security advisories</strong> affecting PKI</li>
+<li><strong>Identify missing interconnections</strong> between related pages</li>
+<li><strong>Generate maintenance report</strong> listing:</li>
+<li>Pages updated this month with change summary</li>
+<li>Pages flagged for human review (status: needs-review)</li>
+<li>Missing content gaps identified</li>
+<li>Broken external links found</li>
+</ol>
+<hr />
+<h2 id="reference-management">Reference Management</h2>
+<h3 id="source-hierarchy-most-authoritative-to-least">Source Hierarchy (Most Authoritative to Least)</h3>
+<ol>
+<li><strong>Standards Bodies</strong></li>
+<li>IETF RFCs (https://www.rfc-editor.org/)</li>
+<li>CA/Browser Forum guidelines (https://cabforum.org/)</li>
+<li>NIST publications (https://csrc.nist.gov/)</li>
+<li>
+<p>ISO/IEC standards</p>
+</li>
+<li>
+<p><strong>Vendor Primary Documentation</strong></p>
+</li>
+<li>Official product documentation</li>
+<li>Security advisories and bulletins</li>
+<li>
+<p>Engineering blogs (when describing their own systems)</p>
+</li>
+<li>
+<p><strong>Academic Research</strong></p>
+</li>
+<li>Peer-reviewed papers on cryptography/PKI</li>
+<li>
+<p>Conference proceedings (ACM CCS, USENIX Security, etc.)</p>
+</li>
+<li>
+<p><strong>Industry Analyses</strong></p>
+</li>
+<li>Professional security researchers</li>
+<li>Established PKI vendors (Sectigo, DigiCert technical blogs)</li>
+<li>
+<p>Reputable security publications (e.g., SANS, CIS)</p>
+</li>
+<li>
+<p><strong>Avoid/Use Sparingly</strong></p>
+</li>
+<li>General blog posts without citations</li>
+<li>Stack Overflow (can link for specific technical issues)</li>
+<li>Marketing materials</li>
+<li>Wikipedia (use its citations instead)</li>
+</ol>
+<h3 id="citation-format">Citation Format</h3>
+<p>Use footnote-style citations with full references at page bottom:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>The CA/Browser Forum&#39;s Baseline Requirements[^1] specify that...
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="gu">## References</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>[<span class="nl">^1</span>]: <span class="na">CA/Browser Forum, &quot;Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates,&quot; Version 1.8.5, March 2024. https://cabforum.org/baseline-requirements-documents/</span>
+</code></pre></div>
+<h3 id="external-link-maintenance">External Link Maintenance</h3>
+<ul>
+<li><strong>Check quarterly</strong>: All external URLs for 404s</li>
+<li><strong>Archive important sources</strong>: Use web.archive.org for critical references</li>
+<li><strong>Prefer permalinks</strong>: RFC URLs, DOI links for papers, specific version docs</li>
+<li><strong>Note access dates</strong>: For web resources that may change</li>
+</ul>
+<hr />
+<h2 id="cross-reference-strategy">Cross-Reference Strategy</h2>
+<h3 id="link-density-guidelines">Link Density Guidelines</h3>
+<ul>
+<li><strong>Minimum</strong>: Every page should link to 3-5 related pages</li>
+<li><strong>Optimal</strong>: 8-12 internal links for substantial pages</li>
+<li><strong>Context</strong>: Only link when it genuinely aids understanding</li>
+</ul>
+<h3 id="link-patterns">Link Patterns</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="gh"># Good Cross-Referencing</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>When implementing [[certificate-lifecycle-management]], you&#39;ll need to 
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>consider [[renewal-automation]] strategies and [[monitoring-and-alerting]] 
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>to prevent outages.
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>For the cryptographic details, see [[cryptographic-primitives]].
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="gh"># Poor Cross-Referencing (Don&#39;t do this)</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>Certificates are important. See [[what-is-pki]], [[certificate-anatomy]], 
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>[[trust-models]], [[x509-standard]], [[tls-protocol]], [[ca-architecture]],
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>and [[certificate-lifecycle-management]] for more information.
+</code></pre></div>
+<h3 id="bidirectional-linking">Bidirectional Linking</h3>
+<p>When creating link from Page A → Page B:
+1. Consider if Page B should also link back to Page A
+2. Add to "Related Pages" section if bidirectional relationship exists</p>
+<h3 id="link-maintenance-queries">Link Maintenance Queries</h3>
+<p>LLM should regularly search for:
+- Pages with &lt;3 internal links (potential orphans)
+- Pages with &gt;20 links (may be too dense)
+- Broken [[wiki-links]]
+- Topics mentioned but not linked</p>
+<hr />
+<h2 id="content-quality-metrics">Content Quality Metrics</h2>
+<h3 id="self-assessment-checklist-for-llm-to-run">Self-Assessment Checklist (for LLM to run)</h3>
+<p>Before marking a page as "stable", verify:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">Completeness</span><span class="p">:</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Has TL;DR summary</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Has overview section</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Has practical guidance</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Has security considerations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Has at least 1 example</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Has 3+ authoritative citations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="nt">Clarity</span><span class="p">:</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Technical terms defined on first use</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Assumptions stated explicitly</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Steps in logical order</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Jargon minimized or explained</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="nt">Utility</span><span class="p">:</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Actionable recommendations provided</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Common pitfalls identified</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Decision framework included (where applicable)</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Real-world examples given</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="nt">Connections</span><span class="p">:</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">3+ internal cross-references</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Related pages section populated</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Glossary terms linked</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="nt">Maintenance</span><span class="p">:</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">All external links working</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Time-sensitive info dated</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Version history recorded</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Status field accurate</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<h2 id="success-metrics">Success Metrics</h2>
+<p>Track these to ensure the wiki provides value:</p>
+<ol>
+<li><strong>Content Coverage</strong></li>
+<li>Total pages created</li>
+<li>Pages per category</li>
+<li>
+<p>Glossary term count</p>
+</li>
+<li>
+<p><strong>Content Quality</strong></p>
+</li>
+<li>Pages marked "stable" vs "draft"</li>
+<li>Average citations per page</li>
+<li>Average internal links per page</li>
+<li>
+<p>Pages with practical guidance %</p>
+</li>
+<li>
+<p><strong>Maintenance Health</strong></p>
+</li>
+<li>Average page age (last_reviewed)</li>
+<li>% pages reviewed in last 90 days</li>
+<li>Broken link count</li>
+<li>
+<p>Pages flagged for human review</p>
+</li>
+<li>
+<p><strong>Update Efficiency</strong></p>
+</li>
+<li>Changes per month</li>
+<li>Lines changed per update (aim: small)</li>
+<li>Rollback frequency (aim: low)</li>
+<li>Time from industry event to wiki update</li>
+</ol>
+<h2 id="appendix-glossary-page-template">Appendix: Glossary Page Template</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>---
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>title: Glossary
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>category: reference
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="gu">last_updated: YYYY-MM-DD</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="gu">---</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="gh"># PKI &amp; Certificate Management Glossary</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="gu">## A</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="gu">### ACME (Automated Certificate Management Environment)</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="gs">**Definition**</span>: A protocol for automating certificate issuance and renewal between certificate authorities and web servers.
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="gs">**Context**</span>: Developed by Let&#39;s Encrypt, now IETF standard RFC 8555. Widely used for TLS certificate automation.
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="gs">**Related**</span>: [[acme-protocol-implementation]], [[renewal-automation]]
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="gs">**Reference**</span>: [<span class="nt">RFC 8555</span>](<span class="na">https://www.rfc-editor.org/rfc/rfc8555</span>)
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>---
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="gu">### Authority Information Access (AIA)</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="gs">**Definition**</span>: X.509 certificate extension indicating where to obtain information about the issuing CA.
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>
+<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="gs">**Context**</span>: Contains URLs for CA certificates (caIssuers) and OCSP responders. Critical for certificate chain building.
+<a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a>
+<a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="gs">**Related**</span>: [[certificate-anatomy]], [[chain-validation-errors]]
+<a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a>
+<a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="gs">**Reference**</span>: [<span class="nt">RFC 5280 Section 4.2.2.1</span>](<span class="na">https://www.rfc-editor.org/rfc/rfc5280#section-4.2.2.1</span>)
+<a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a>
+<a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a><span class="gu">## B</span>
+<a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a>
+<a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a>[Continue alphabetically...]
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/axonsecurity/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "announce.dismiss"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
