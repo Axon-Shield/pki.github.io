@@ -73,6 +73,22 @@
          <lastmod>2025-11-09</lastmod>
     </url>
     <url>
+         <loc>https://vault.axonshield.com/patterns/ca-hierarchies/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://vault.axonshield.com/patterns/cloud-vs-on-premises/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://vault.axonshield.com/patterns/high-availability-disaster-recovery/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://vault.axonshield.com/patterns/multi-tenancy-considerations/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
          <loc>https://vault.axonshield.com/security/compliance-and-audit/</loc>
          <lastmod>2025-11-09</lastmod>
     </url>
