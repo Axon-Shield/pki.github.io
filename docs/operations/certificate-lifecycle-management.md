@@ -20,7 +20,7 @@ The challenge scales exponentially with infrastructure size. An organization wit
 
 Effective lifecycle management reduces operational toil, prevents security incidents from expired or compromised certificates, enables rapid response to vulnerabilities, and provides visibility for audit and compliance requirements.
 
-**Related Pages**: [[renewal-automation]], [[inventory-and-discovery]], [[monitoring-and-alerting]], [[certificate-rotation-strategies]]
+**Related Pages**: [Renewal Automation](renewal-automation.md), [Inventory And Discovery](inventory-and-discovery.md), [Monitoring And Alerting](monitoring-and-alerting.md), [Certificate Rotation Strategies](certificate-rotation-strategies.md)
 
 ## Key Concepts
 
@@ -323,11 +323,11 @@ An expired security certificate prevented Equifax from detecting vulnerabilities
 - [Keyfactor Certificate Lifecycle Management Best Practices](https://www.keyfactor.com/resources/certificate-lifecycle-management/) - Industry guidance from major vendor
 
 ### Advanced Topics
-- [[renewal-automation]] - Detailed automation strategies
-- [[inventory-and-discovery]] - Building comprehensive certificate inventory
-- [[monitoring-and-alerting]] - Implementing effective monitoring
-- [[certificate-rotation-strategies]] - Key and certificate rotation approaches
-- [[acme-protocol-implementation]] - Implementing ACME for automation
+- [Renewal Automation](renewal-automation.md) - Detailed automation strategies
+- [Inventory And Discovery](inventory-and-discovery.md) - Building comprehensive certificate inventory
+- [Monitoring And Alerting](monitoring-and-alerting.md) - Implementing effective monitoring
+- [Certificate Rotation Strategies](certificate-rotation-strategies.md) - Key and certificate rotation approaches
+- [Acme Protocol Implementation](../implementation/acme-protocol-implementation.md) - Implementing ACME for automation
 
 ## References
 

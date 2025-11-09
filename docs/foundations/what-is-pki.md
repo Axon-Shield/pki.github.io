@@ -20,7 +20,7 @@ PKI accomplishes this through a system of digital certificates, cryptographic ke
 
 This system underpins nearly every secure online interaction: HTTPS websites, email encryption, VPN connections, code signing, and device authentication. Understanding PKI is essential for anyone working in cybersecurity, infrastructure, or enterprise IT.
 
-**Related Pages**: [[certificate-anatomy]], [[trust-models]], [[cryptographic-primitives]], [[public-private-key-pairs]]
+**Related Pages**: [Certificate Anatomy](certificate-anatomy.md), [Trust Models](trust-models.md), [Cryptographic Primitives](cryptographic-primitives.md), [Public Private Key Pairs](public-private-key-pairs.md)
 
 ## Key Concepts
 
@@ -153,10 +153,10 @@ An expired certificate prevented Equifax from scanning for vulnerabilities, cont
 - [NIST SP 800-57 - Key Management Recommendations](https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final) - Government guidance on cryptographic key management
 
 ### Advanced Topics
-- [[ca-architecture]] - How to design a CA hierarchy
-- [[trust-models]] - Different approaches to establishing trust
-- [[certificate-lifecycle-management]] - Operational aspects of PKI
-- [[security/ca-compromise-scenarios]] - Understanding and preventing CA failures
+- [Ca Architecture](../implementation/ca-architecture.md) - How to design a CA hierarchy
+- [Trust Models](trust-models.md) - Different approaches to establishing trust
+- [Certificate Lifecycle Management](../operations/certificate-lifecycle-management.md) - Operational aspects of PKI
+- [Ca Compromise Scenarios](../security/ca-compromise-scenarios.md) - Understanding and preventing CA failures
 
 ## References
 

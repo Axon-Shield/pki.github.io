@@ -20,7 +20,7 @@ First published in 1988 as part of the X.500 directory services framework, X.509
 
 X.509 defines not just certificates but also Certificate Revocation Lists (CRLs), attribute certificates, and certification path validation algorithms. Its adoption across operating systems, browsers, programming languages, and security protocols makes it the universal language of digital trust.
 
-**Related Pages**: [[certificate-anatomy]], [[what-is-pki]], [[ocsp-and-crl]], [[chain-validation-errors]]
+**Related Pages**: [Certificate Anatomy](../foundations/certificate-anatomy.md), [What Is Pki](../foundations/what-is-pki.md), [Ocsp And Crl](ocsp-and-crl.md), [Chain Validation Errors](../troubleshooting/chain-validation-errors.md)
 
 ## Key Concepts
 
@@ -706,10 +706,10 @@ Certificate Transparency required extending X.509 without breaking existing vali
 - [RFC 6962 - Certificate Transparency](https://www.rfc-editor.org/rfc/rfc6962) - CT extensions to X.509
 
 ### Advanced Topics
-- [[certificate-anatomy]] - Detailed field-by-field breakdown
-- [[chain-validation-errors]] - Troubleshooting validation failures
-- [[ocsp-and-crl]] - Revocation checking mechanisms
-- [[ca-architecture]] - Designing certificate hierarchies
+- [Certificate Anatomy](../foundations/certificate-anatomy.md) - Detailed field-by-field breakdown
+- [Chain Validation Errors](../troubleshooting/chain-validation-errors.md) - Troubleshooting validation failures
+- [Ocsp And Crl](ocsp-and-crl.md) - Revocation checking mechanisms
+- [Ca Architecture](../implementation/ca-architecture.md) - Designing certificate hierarchies
 
 ## References
 

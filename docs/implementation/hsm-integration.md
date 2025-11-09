@@ -20,7 +20,7 @@ HSMs range from enterprise network-attached devices costing tens of thousands of
 
 Understanding HSM integration is critical for: operating Certificate Authorities (where root and intermediate keys must reside in HSMs), implementing code signing infrastructure (where signing keys require hardware protection), deploying high-security PKI (government, finance, healthcare), and meeting compliance requirements (PCI DSS, HIPAA, eIDAS).
 
-**Related Pages**: [[ca-architecture]], [[security/private-key-protection]], [[pkcs-standards]], [[certificate-issuance-workflows]]
+**Related Pages**: [Ca Architecture](ca-architecture.md), [Private Key Protection](../security/private-key-protection.md), [Pkcs Standards](../standards/pkcs-standards.md), [Certificate Issuance Workflows](certificate-issuance-workflows.md)
 
 ## Key Concepts
 
@@ -1048,10 +1048,10 @@ pkcs11-tool --module /usr/lib/libCryptoki2.so --login --pin $PIN \
 - [CA/Browser Forum Code Signing Requirements](https://cabforum.org/working-groups/code-signing/documents/) - HSM requirements for EV code signing
 
 ### Advanced Topics
-- [[ca-architecture]] - HSM role in CA design
-- [[security/private-key-protection]] - Key protection strategies
-- [[pkcs-standards]] - PKCS#11 in detail
-- [[certificate-issuance-workflows]] - Using HSM in certificate issuance
+- [Ca Architecture](ca-architecture.md) - HSM role in CA design
+- [Private Key Protection](../security/private-key-protection.md) - Key protection strategies
+- [Pkcs Standards](../standards/pkcs-standards.md) - PKCS#11 in detail
+- [Certificate Issuance Workflows](certificate-issuance-workflows.md) - Using HSM in certificate issuance
 
 ## References
 

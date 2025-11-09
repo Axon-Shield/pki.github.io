@@ -44,19 +44,19 @@ The wiki is organized into logical domains:
 ## Getting Started
 
 **New to PKI?** Start with:
-1. [[foundations/what-is-pki]] - Understand the fundamentals
-2. [[foundations/certificate-anatomy]] - Learn certificate structure
-3. [[operations/certificate-lifecycle-management]] - Understand operational requirements
+1. [What Is Pki](foundations/what-is-pki.md) - Understand the fundamentals
+2. [Certificate Anatomy](foundations/certificate-anatomy.md) - Learn certificate structure
+3. [Certificate Lifecycle Management](operations/certificate-lifecycle-management.md) - Understand operational requirements
 
 **Implementing PKI?** See:
-1. [[implementation/ca-architecture]] - Design your CA hierarchy
-2. [[operations/certificate-lifecycle-management]] - Plan for operations
-3. [[security/private-key-protection]] - Secure your keys
+1. [Ca Architecture](implementation/ca-architecture.md) - Design your CA hierarchy
+2. [Certificate Lifecycle Management](operations/certificate-lifecycle-management.md) - Plan for operations
+3. [Private Key Protection](security/private-key-protection.md) - Secure your keys
 
 **Troubleshooting?** Check:
-1. [[troubleshooting/chain-validation-errors]] - Certificate validation issues
-2. [[troubleshooting/expired-certificate-outages]] - Emergency response
-3. [[glossary]] - Terminology reference
+1. [Chain Validation Errors](troubleshooting/chain-validation-errors.md) - Certificate validation issues
+2. [Expired Certificate Outages](troubleshooting/expired-certificate-outages.md) - Emergency response
+3. [Glossary](glossary.md) - Terminology reference
 
 ## Page Structure
 

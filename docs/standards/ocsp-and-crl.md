@@ -20,7 +20,7 @@ The PKI community has developed two primary revocation mechanisms with different
 
 Understanding revocation is essential for: operating secure PKI systems, troubleshooting certificate validation failures, implementing proper revocation checking, and assessing PKI security posture. The gap between revocation theory and practice—often called the "revocation problem"—remains one of PKI's persistent challenges.
 
-**Related Pages**: [[certificate-anatomy]], [[x509-standard]], [[tls-protocol]], [[certificate-lifecycle-management]]
+**Related Pages**: [Certificate Anatomy](../foundations/certificate-anatomy.md), [X509 Standard](x509-standard.md), [Tls Protocol](tls-protocol.md), [Certificate Lifecycle Management](../operations/certificate-lifecycle-management.md)
 
 ## Key Concepts
 
@@ -1014,10 +1014,10 @@ Exposure window: T0 to T3 (minutes typically)
 - [Mozilla CRLite](https://blog.mozilla.org/security/2020/01/09/crlite-part-1-all-web-pki-revocations-compressed/) - Modern revocation approach
 
 ### Advanced Topics
-- [[certificate-lifecycle-management]] - Managing certificate revocation operationally
-- [[tls-protocol]] - How revocation checking fits into TLS
-- [[certificate-anatomy]] - CRL Distribution Points extension
-- [[troubleshooting/chain-validation-errors]] - Debugging revocation failures
+- [Certificate Lifecycle Management](../operations/certificate-lifecycle-management.md) - Managing certificate revocation operationally
+- [Tls Protocol](tls-protocol.md) - How revocation checking fits into TLS
+- [Certificate Anatomy](../foundations/certificate-anatomy.md) - CRL Distribution Points extension
+- [Chain Validation Errors](../troubleshooting/chain-validation-errors.md) - Debugging revocation failures
 
 ## References
 

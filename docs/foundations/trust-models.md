@@ -20,7 +20,7 @@ The choice of trust model profoundly impacts PKI architecture, operations, and s
 
 Understanding trust models is essential for: designing PKI systems, evaluating security properties, implementing certificate validation, troubleshooting trust issues, and selecting appropriate PKI solutions for organizational needs.
 
-**Related Pages**: [[what-is-pki]], [[ca-architecture]], [[certificate-anatomy]], [[x509-standard]]
+**Related Pages**: [What Is Pki](what-is-pki.md), [Ca Architecture](../implementation/ca-architecture.md), [Certificate Anatomy](certificate-anatomy.md), [X509 Standard](../standards/x509-standard.md)
 
 ## Key Concepts
 
@@ -819,10 +819,10 @@ DigiNotar compromise (2011) demonstrated how CA compromise affects hierarchical 
 - [Mozilla CA Certificate Policy](https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/policy/) - Root program requirements
 
 ### Advanced Topics
-- [[ca-architecture]] - Designing CA hierarchies
-- [[x509-standard]] - Certificate format and extensions
-- [[certificate-anatomy]] - Understanding certificate structure
-- [[chain-validation-errors]] - Troubleshooting validation failures
+- [Ca Architecture](../implementation/ca-architecture.md) - Designing CA hierarchies
+- [X509 Standard](../standards/x509-standard.md) - Certificate format and extensions
+- [Certificate Anatomy](certificate-anatomy.md) - Understanding certificate structure
+- [Chain Validation Errors](../troubleshooting/chain-validation-errors.md) - Troubleshooting validation failures
 
 ## References
 

@@ -20,7 +20,7 @@ The security of modern PKI depends on problems like integer factorization (RSA) 
 
 This page covers the mathematical foundations without requiring advanced mathematics—focusing on practical understanding of what each primitive does, why it's secure, and how to use it correctly in PKI implementations.
 
-**Related Pages**: [[what-is-pki]], [[public-private-key-pairs]], [[certificate-anatomy]], [[security/private-key-protection]]
+**Related Pages**: [What Is Pki](what-is-pki.md), [Public Private Key Pairs](public-private-key-pairs.md), [Certificate Anatomy](certificate-anatomy.md), [Private Key Protection](../security/private-key-protection.md)
 
 ## Key Concepts
 
@@ -757,10 +757,10 @@ Heartbleed (2014) allowed reading server memory, potentially exposing private ke
 - [RFC 6979 - Deterministic ECDSA](https://www.rfc-editor.org/rfc/rfc6979) - Safe ECDSA implementation
 
 ### Advanced Topics
-- [[public-private-key-pairs]] - Detailed key pair concepts
-- [[security/private-key-protection]] - Protecting cryptographic keys
-- [[certificate-anatomy]] - How algorithms appear in certificates
-- [[x509-standard]] - Algorithm identifiers in X.509
+- [Public Private Key Pairs](public-private-key-pairs.md) - Detailed key pair concepts
+- [Private Key Protection](../security/private-key-protection.md) - Protecting cryptographic keys
+- [Certificate Anatomy](certificate-anatomy.md) - How algorithms appear in certificates
+- [X509 Standard](../standards/x509-standard.md) - Algorithm identifiers in X.509
 
 ## References
 

@@ -20,7 +20,7 @@ ACME revolutionized PKI automation by standardizing the entire certificate lifec
 
 ACME's impact extends beyond Let's Encrypt: it demonstrates how thoughtful protocol design enables automation at massive scale (Let's Encrypt issues over 3 million certificates daily). Understanding ACME is crucial for anyone implementing certificate automation, building cloud infrastructure, or operating modern PKI.
 
-**Related Pages**: [[certificate-lifecycle-management]], [[renewal-automation]], [[tls-protocol]], [[what-is-pki]]
+**Related Pages**: [Certificate Lifecycle Management](../operations/certificate-lifecycle-management.md), [Renewal Automation](../operations/renewal-automation.md), [Tls Protocol](tls-protocol.md), [What Is Pki](../foundations/what-is-pki.md)
 
 ## Key Concepts
 
@@ -998,10 +998,10 @@ Let's Encrypt rate limits (as of 2024)[^2]:
 - [cert-manager Documentation](https://cert-manager.io/docs/) - Kubernetes integration
 
 ### Advanced Topics
-- [[renewal-automation]] - Operational automation strategies
-- [[certificate-lifecycle-management]] - Lifecycle management context
-- [[tls-protocol]] - How ACME certificates are used
-- [[patterns/certificate-as-code]] - Infrastructure as code approaches
+- [Renewal Automation](../operations/renewal-automation.md) - Operational automation strategies
+- [Certificate Lifecycle Management](../operations/certificate-lifecycle-management.md) - Lifecycle management context
+- [Tls Protocol](tls-protocol.md) - How ACME certificates are used
+- [Certificate As Code](../architecture/certificate-as-code.md) - Infrastructure as code approaches
 
 ## References
 

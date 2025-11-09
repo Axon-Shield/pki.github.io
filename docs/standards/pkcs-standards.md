@@ -20,7 +20,7 @@ Originally created as proprietary standards by RSA Laboratories, most PKCS stand
 
 Understanding PKCS is crucial for anyone working with certificates, implementing cryptographic protocols, or troubleshooting PKI systems. These standards define the "file formats" of practical cryptography.
 
-**Related Pages**: [[x509-standard]], [[certificate-anatomy]], [[cryptographic-primitives]], [[public-private-key-pairs]]
+**Related Pages**: [X509 Standard](x509-standard.md), [Certificate Anatomy](../foundations/certificate-anatomy.md), [Cryptographic Primitives](../foundations/cryptographic-primitives.md), [Public Private Key Pairs](../foundations/public-private-key-pairs.md)
 
 ## Key Concepts
 
@@ -1034,10 +1034,10 @@ PrivateKey privateKey = new JcaPEMKeyConverter().getPrivateKey(keyInfo);
 - [RFC 5958 - Asymmetric Key Packages](https://www.rfc-editor.org/rfc/rfc5958) - PKCS#8 update
 
 ### Advanced Topics
-- [[public-private-key-pairs]] - Key pair concepts
-- [[security/private-key-protection]] - Securing private keys
-- [[certificate-anatomy]] - How certificates use PKCS concepts
-- [[hsm-integration]] - PKCS#11 in practice
+- [Public Private Key Pairs](../foundations/public-private-key-pairs.md) - Key pair concepts
+- [Private Key Protection](../security/private-key-protection.md) - Securing private keys
+- [Certificate Anatomy](../foundations/certificate-anatomy.md) - How certificates use PKCS concepts
+- [Hsm Integration](../implementation/hsm-integration.md) - PKCS#11 in practice
 
 ## References
 

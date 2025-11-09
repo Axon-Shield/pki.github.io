@@ -20,7 +20,7 @@ The elegance of public-private key pairs is their dual functionality: what one k
 
 Understanding key pairs is foundational to PKI: how certificates work, why private keys must be protected, how signatures provide authentication, and why key management is critical operational discipline.
 
-**Related Pages**: [[cryptographic-primitives]], [[what-is-pki]], [[certificate-anatomy]], [[security/private-key-protection]]
+**Related Pages**: [Cryptographic Primitives](cryptographic-primitives.md), [What Is Pki](what-is-pki.md), [Certificate Anatomy](certificate-anatomy.md), [Private Key Protection](../security/private-key-protection.md)
 
 ## Key Concepts
 
@@ -771,10 +771,10 @@ Some organizations pin specific public keys or certificates in applications:
 - [PKCS #8 Specification](https://www.rfc-editor.org/rfc/rfc5208) - Private key information syntax
 
 ### Advanced Topics
-- [[cryptographic-primitives]] - Mathematical foundations
-- [[security/private-key-protection]] - Protecting private keys
-- [[certificate-anatomy]] - How public keys appear in certificates
-- [[ca-architecture]] - CA key management
+- [Cryptographic Primitives](cryptographic-primitives.md) - Mathematical foundations
+- [Private Key Protection](../security/private-key-protection.md) - Protecting private keys
+- [Certificate Anatomy](certificate-anatomy.md) - How public keys appear in certificates
+- [Ca Architecture](../implementation/ca-architecture.md) - CA key management
 
 ## References
 

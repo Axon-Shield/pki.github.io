@@ -20,7 +20,7 @@ The protocol evolved from SSL 2.0 (1995) through SSL 3.0 (1996) to TLS 1.0 (1999
 
 TLS provides three critical security properties: authentication (proving server identity via certificates), confidentiality (encrypting data in transit), and integrity (detecting tampering). Understanding TLS is crucial for anyone implementing secure communications, troubleshooting connection issues, or assessing security posture.
 
-**Related Pages**: [[x509-standard]], [[certificate-anatomy]], [[cryptographic-primitives]], [[what-is-pki]]
+**Related Pages**: [X509 Standard](x509-standard.md), [Certificate Anatomy](../foundations/certificate-anatomy.md), [Cryptographic Primitives](../foundations/cryptographic-primitives.md), [What Is Pki](../foundations/what-is-pki.md)
 
 ## Key Concepts
 
@@ -925,10 +925,10 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 - [SSL Labs Server Test](https://www.ssllabs.com/ssltest/) - Comprehensive TLS testing
 
 ### Advanced Topics
-- [[ocsp-and-crl]] - Certificate revocation in TLS
-- [[certificate-anatomy]] - Certificates used in TLS
-- [[cryptographic-primitives]] - Algorithms used by TLS
-- [[patterns/mutual-tls-patterns]] - Client certificate authentication
+- [Ocsp And Crl](ocsp-and-crl.md) - Certificate revocation in TLS
+- [Certificate Anatomy](../foundations/certificate-anatomy.md) - Certificates used in TLS
+- [Cryptographic Primitives](../foundations/cryptographic-primitives.md) - Algorithms used by TLS
+- [Mutual Tls Patterns](../architecture/mutual-tls-patterns.md) - Client certificate authentication
 
 ## References
 

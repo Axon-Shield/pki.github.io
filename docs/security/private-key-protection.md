@@ -20,7 +20,7 @@ Private key protection is not a one-time implementation but an ongoing operation
 
 Every major PKI breach—from DigiNotar to CodeSigning certificate compromises—ultimately traces to inadequate private key protection. Understanding the threat model, implementing appropriate controls, and maintaining operational discipline are non-negotiable for PKI security.
 
-**Related Pages**: [[ca-architecture]], [[hsm-integration]], [[certificate-lifecycle-management]], [[security/ca-compromise-scenarios]]
+**Related Pages**: [Ca Architecture](../implementation/ca-architecture.md), [Hsm Integration](../implementation/hsm-integration.md), [Certificate Lifecycle Management](../operations/certificate-lifecycle-management.md), [Ca Compromise Scenarios](ca-compromise-scenarios.md)
 
 ## Key Concepts
 
@@ -863,10 +863,10 @@ DigiNotar's CA private keys were compromised, allowing attackers to issue rogue 
 - [OWASP Key Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Key_Management_Cheat_Sheet.html) - Developer-focused guidance
 
 ### Advanced Topics
-- [[hsm-integration]] - Hardware Security Module implementation
-- [[ca-architecture]] - CA key protection in architecture design
-- [[security/ca-compromise-scenarios]] - What happens when keys are compromised
-- [[certificate-lifecycle-management]] - Operational key management
+- [Hsm Integration](../implementation/hsm-integration.md) - Hardware Security Module implementation
+- [Ca Architecture](../implementation/ca-architecture.md) - CA key protection in architecture design
+- [Ca Compromise Scenarios](ca-compromise-scenarios.md) - What happens when keys are compromised
+- [Certificate Lifecycle Management](../operations/certificate-lifecycle-management.md) - Operational key management
 
 ## References
 

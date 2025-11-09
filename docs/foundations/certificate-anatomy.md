@@ -20,7 +20,7 @@ Certificates are encoded using ASN.1 (Abstract Syntax Notation One) and typicall
 
 Understanding certificate anatomy is critical for: validating trust chains, diagnosing SSL/TLS errors, implementing certificate generation, configuring proper extensions, and performing security assessments.
 
-**Related Pages**: [[what-is-pki]], [[x509-standard]], [[trust-models]], [[chain-validation-errors]]
+**Related Pages**: [What Is Pki](what-is-pki.md), [X509 Standard](../standards/x509-standard.md), [Trust Models](trust-models.md), [Chain Validation Errors](../troubleshooting/chain-validation-errors.md)
 
 ## Key Concepts
 
@@ -351,10 +351,10 @@ The deprecation of Common Name for hostname validation caused significant operat
 - [Mozilla PKI Documentation](https://wiki.mozilla.org/CA) - Browser requirements and policies
 
 ### Advanced Topics
-- [[x509-standard]] - Deep dive into X.509 standard
-- [[chain-validation-errors]] - Troubleshooting certificate validation
-- [[certificate-issuance-workflows]] - How CAs generate certificates
-- [[cryptographic-primitives]] - Understanding the cryptography behind certificates
+- [X509 Standard](../standards/x509-standard.md) - Deep dive into X.509 standard
+- [Chain Validation Errors](../troubleshooting/chain-validation-errors.md) - Troubleshooting certificate validation
+- [Certificate Issuance Workflows](../implementation/certificate-issuance-workflows.md) - How CAs generate certificates
+- [Cryptographic Primitives](cryptographic-primitives.md) - Understanding the cryptography behind certificates
 
 ## References
 

@@ -20,7 +20,7 @@ The core tension in CA design is between security and operational velocity. Root
 
 Understanding CA architecture is essential for: designing private PKI, evaluating commercial PKI solutions, assessing security posture, implementing security controls, and planning for scale and business continuity.
 
-**Related Pages**: [[what-is-pki]], [[hsm-integration]], [[certificate-issuance-workflows]], [[security/ca-compromise-scenarios]]
+**Related Pages**: [What Is Pki](../foundations/what-is-pki.md), [Hsm Integration](hsm-integration.md), [Certificate Issuance Workflows](certificate-issuance-workflows.md), [Ca Compromise Scenarios](../security/ca-compromise-scenarios.md)
 
 ## Key Concepts
 
@@ -545,10 +545,10 @@ Let's Encrypt regularly rotates intermediate CAs (typically annually) while keep
 - [CA/Browser Forum Baseline Requirements](https://cabforum.org/baseline-requirements-documents/) - Requirements for publicly-trusted CAs
 
 ### Advanced Topics
-- [[hsm-integration]] - Hardware security module implementation
-- [[security/ca-compromise-scenarios]] - Understanding and preventing CA failures
-- [[certificate-issuance-workflows]] - Operational certificate issuance
-- [[trust-models]] - Different approaches to establishing trust
+- [Hsm Integration](hsm-integration.md) - Hardware security module implementation
+- [Ca Compromise Scenarios](../security/ca-compromise-scenarios.md) - Understanding and preventing CA failures
+- [Certificate Issuance Workflows](certificate-issuance-workflows.md) - Operational certificate issuance
+- [Trust Models](../foundations/trust-models.md) - Different approaches to establishing trust
 
 ## References
 

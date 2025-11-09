@@ -2,8 +2,8 @@
 
 **Category**: Security  
 **Complexity**: Advanced  
-**Prerequisites**: [[Certificate Anatomy]], [[Chain of Trust]], [[TLS Protocol]], [[Private Key Protection]]  
-**Related**: [[Certificate Pinning]], [[Trust Models]], [[Cryptographic Primitives]]
+**Prerequisites**: [Certificate Anatomy](../foundations/certificate-anatomy.md), [Chain Of Trust](../foundations/trust-models.md), [Tls Protocol](../standards/tls-protocol.md), [Private Key Protection](private-key-protection.md)  
+**Related**: [Certificate Pinning](certificate-pinning.md), [Trust Models](../foundations/trust-models.md), [Cryptographic Primitives](../foundations/cryptographic-primitives.md)
 
 ---
 
@@ -1538,4 +1538,4 @@ class DefenseInDepth:
 
 ---
 
-**See Also**: [[Certificate Pinning]], [[Private Key Protection]], [[TLS Protocol]], [[Trust Models]]
+**See Also**: [Certificate Pinning](certificate-pinning.md), [Private Key Protection](private-key-protection.md), [Tls Protocol](../standards/tls-protocol.md), [Trust Models](../foundations/trust-models.md)

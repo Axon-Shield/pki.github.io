@@ -20,7 +20,7 @@ Certificate renewal automation emerged as a critical operational discipline with
 
 Understanding renewal automation is essential for: preventing certificate expiration outages, scaling PKI operations, implementing DevOps practices for security, achieving compliance objectives, and enabling modern cloud-native architectures where services are ephemeral and certificates must be managed dynamically.
 
-**Related Pages**: [[certificate-lifecycle-management]], [[acme-protocol]], [[monitoring-and-alerting]], [[inventory-and-discovery]]
+**Related Pages**: [Certificate Lifecycle Management](certificate-lifecycle-management.md), [Acme Protocol](../standards/acme-protocol.md), [Monitoring And Alerting](monitoring-and-alerting.md), [Inventory And Discovery](inventory-and-discovery.md)
 
 ## Key Concepts
 
@@ -1037,10 +1037,10 @@ def log_audit_event(event_type, cert_id, details):
 - [ACME Protocol RFC 8555](https://www.rfc-editor.org/rfc/rfc8555) - Understanding automation protocol
 
 ### Advanced Topics
-- [[acme-protocol]] - ACME protocol details
-- [[certificate-lifecycle-management]] - Broader lifecycle context
-- [[monitoring-and-alerting]] - Monitoring renewal automation
-- [[inventory-and-discovery]] - Certificate inventory for renewal
+- [Acme Protocol](../standards/acme-protocol.md) - ACME protocol details
+- [Certificate Lifecycle Management](certificate-lifecycle-management.md) - Broader lifecycle context
+- [Monitoring And Alerting](monitoring-and-alerting.md) - Monitoring renewal automation
+- [Inventory And Discovery](inventory-and-discovery.md) - Certificate inventory for renewal
 
 ## References
 

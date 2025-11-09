@@ -2,8 +2,8 @@
 
 **Category**: Security  
 **Complexity**: Advanced  
-**Prerequisites**: [[Certificate Anatomy]], [[Chain of Trust]], [[TLS Protocol]]  
-**Related**: [[Common Vulnerabilities]], [[Private Key Protection]], [[Trust Models]]
+**Prerequisites**: [Certificate Anatomy](../foundations/certificate-anatomy.md), [Chain Of Trust](../foundations/trust-models.md), [Tls Protocol](../standards/tls-protocol.md)  
+**Related**: [Common Vulnerabilities](common-vulnerabilities.md), [Private Key Protection](private-key-protection.md), [Trust Models](../foundations/trust-models.md)
 
 ---
 
@@ -1384,4 +1384,4 @@ Rotation Process:
 
 ---
 
-**See Also**: [[Common Vulnerabilities]], [[Trust Models]], [[TLS Protocol]], [[Private Key Protection]]
+**See Also**: [Common Vulnerabilities](common-vulnerabilities.md), [Trust Models](../foundations/trust-models.md), [Tls Protocol](../standards/tls-protocol.md), [Private Key Protection](private-key-protection.md)
