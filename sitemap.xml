@@ -176,4 +176,24 @@
          <loc>https://vault.axonshield.com/troubleshooting/performance-bottlenecks/</loc>
          <lastmod>2025-11-09</lastmod>
     </url>
+    <url>
+         <loc>https://vault.axonshield.com/vendors/digicert-certcentral/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://vault.axonshield.com/vendors/hashicorp-vault-pki/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://vault.axonshield.com/vendors/keyfactor-command/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://vault.axonshield.com/vendors/venafi-platform/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://vault.axonshield.com/vendors/vendor-comparison-matrix/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
 </urlset>
