@@ -65,6 +65,12 @@ Welcome to your comprehensive reference for Public Key Infrastructure and certif
 - Certificate-as-Code *(coming soon)* - Infrastructure as code approaches
 - Case Studies *(coming soon)* - Real-world implementations
 
+### 🏗️ Implementation Patterns
+- [CA Hierarchies](patterns/ca-hierarchies.md) - Designing certificate authority structures
+- [Cloud vs On-Premises](patterns/cloud-vs-on-premises.md) - Deployment strategy decisions
+- [High Availability & Disaster Recovery](patterns/high-availability-disaster-recovery.md) - Resilient PKI architectures
+- [Multi-Tenancy Considerations](patterns/multi-tenancy-considerations.md) - PKI for shared infrastructure
+
 ### 🔧 Troubleshooting
 - Expired Certificate Outages *(coming soon)* - Emergency response
 - Chain Validation Errors *(coming soon)* - Why validation fails
@@ -120,7 +126,7 @@ Every page in this knowledge base includes:
 
 **Version**: 1.0 (Initial Release)  
 **Last Updated**: November 9, 2024  
-**Completed Pages**: 26  
+**Completed Pages**: 30  
 **In Progress**: Expanding all categories
 
 This knowledge base is actively maintained and expanded based on:
