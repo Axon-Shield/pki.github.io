@@ -1,7 +1,7 @@
 site_name: PKI Wiki
 site_url: https://pki.axonshield.com/
 theme:
-  logo: assets/logo.png
+  logo: assets/axon-logo.png
   name: material
   palette:
     primary: indigo
@@ -31,3 +31,10 @@ markdown_extensions:
   - admonition
   - pymdownx.details
 
+extra:
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/axonshield/
+  analytics:
+    google: G-D7Y27V4B1X
+    hotjar: 5152464
