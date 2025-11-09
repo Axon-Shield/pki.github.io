@@ -44,3 +44,35 @@
   padding-top: 0.6rem;
 }
 
+/* Ensure bullet lists render correctly */
+.md-typeset ul {
+  list-style-type: disc;
+  margin-left: 1.5em;
+  padding-left: 0;
+}
+
+.md-typeset ul li {
+  margin: 0.25em 0;
+  padding-left: 0.5em;
+}
+
+.md-typeset ul ul {
+  list-style-type: circle;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+.md-typeset ul ul ul {
+  list-style-type: square;
+}
+
+.md-typeset ol {
+  margin-left: 1.5em;
+  padding-left: 0;
+}
+
+.md-typeset ol li {
+  margin: 0.25em 0;
+  padding-left: 0.5em;
+}
+
