@@ -36,10 +36,10 @@ Welcome to your comprehensive reference for Public Key Infrastructure and certif
 
 ### ⚙️ Operations
 - [Certificate Lifecycle Management](operations/certificate-lifecycle-management.md) - Complete operational guide
-- Renewal Automation *(coming soon)* - Preventing expiration outages
-- Inventory and Discovery *(coming soon)* - Finding all your certificates
-- Monitoring and Alerting *(coming soon)* - Staying ahead of problems
-- Certificate Rotation Strategies *(coming soon)* - When and how to rotate
+- [Renewal Automation](operations/renewal-automation.md) - Preventing expiration outages
+- [Inventory and Discovery](operations/inventory-and-discovery.md) - Finding all your certificates
+- [Monitoring and Alerting](operations/monitoring-and-alerting.md) - Staying ahead of problems
+- [Certificate Rotation Strategies](operations/certificate-rotation-strategies.md) - When and how to rotate
 
 ### 🔒 Security
 - [Private Key Protection](security/private-key-protection.md) - Securing your keys
@@ -111,7 +111,7 @@ Every page in this knowledge base includes:
 
 **Version**: 1.0 (Initial Release)  
 **Last Updated**: November 9, 2024  
-**Completed Pages**: 18  
+**Completed Pages**: 22  
 **In Progress**: Expanding all categories
 
 This knowledge base is actively maintained and expanded based on:
