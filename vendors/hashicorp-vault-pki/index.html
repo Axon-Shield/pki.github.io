@@ -3257,28 +3257,28 @@
 <h3 id="pki-secrets-engine-architecture">PKI Secrets Engine Architecture</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>┌─────────────────────────────────────────────────────┐
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│              HashiCorp Vault Cluster                │
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│                                                      │
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│                                                     │
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│  ┌────────────────────────────────────────────────┐ │
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│  │         PKI Secrets Engine                     │ │
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│  │                                                 │ │
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│  │  ┌──────────────┐      ┌──────────────────┐  │ │
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│  │  │   Root CA    │      │ Intermediate CA  │  │ │
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│  │  │  (Offline)   │──────│   (Active)       │  │ │
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│  │  └──────────────┘      └────────┬─────────┘  │ │
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│  │                                  │            │ │
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│  │         ┌────────────────────────┘            │ │
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│  │         │                                     │ │
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>│  │  ┌──────▼─────┐  ┌──────────┐  ┌──────────┐ │ │
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>│  │  │ Role: Web  │  │Role: API │  │Role: DB  │ │ │
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>│  │  │ TTL: 24h   │  │TTL: 1h   │  │TTL: 72h  │ │ │
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>│  │  └────────────┘  └──────────┘  └──────────┘ │ │
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>│  └─────────────────────────────────────────────┘ │
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>│                                                    │
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>│  ┌────────────────────────────────────────────┐   │
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>│  │         Storage Backend                    │   │
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>│  │  (Consul, Raft, etcd, etc.)               │   │
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>│  └────────────────────────────────────────────┘   │
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>└────────────────────────────────────────────────────┘
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│  │                                                │ │
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│  │  ┌──────────────┐      ┌──────────────────┐    │ │
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│  │  │   Root CA    │      │ Intermediate CA  │    │ │
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│  │  │  (Offline)   │──────│   (Active)       │    │ │
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│  │  └──────────────┘      └────────┬─────────┘    │ │
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│  │                                  │             │ │
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│  │         ┌────────────────────────┘             │ │
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│  │         │                                      │ │
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>│  │  ┌──────▼─────┐  ┌──────────┐  ┌──────────┐    │ │
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>│  │  │ Role: Web  │  │Role: API │  │Role: DB  │    │ │
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>│  │  │ TTL: 24h   │  │TTL: 1h   │  │TTL: 72h  │    │ │
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>│  │  └────────────┘  └──────────┘  └──────────┘    │ │
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>│  └────────────────────────────────────────────────┘ │
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>│                                                     │
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>│  ┌──────────────────────────────────────────────┐   │
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>│  │         Storage Backend                      │   │
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>│  │  (Consul, Raft, etcd, etc.)                  │   │
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>│  └──────────────────────────────────────────────┘   │
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>└─────────────────────────────────────────────────────┘
 <a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>                     │
 <a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>         ┌───────────┴──────────┬──────────────┐
 <a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>         ▼                      ▼              ▼
