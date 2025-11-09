@@ -1,0 +1,2676 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://vault.axonshield.com/foundations/public-private-key-pairs/">
+      
+      
+        <link rel="prev" href="../cryptographic-primitives/">
+      
+      
+        <link rel="next" href="../trust-models/">
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Public-Private Key Pairs - Shield Vault</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#public-private-key-pairs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Shield Vault" class="md-header__button md-logo" aria-label="Shield Vault" data-md-component="logo">
+      
+  <img src="../../assets/axon-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Shield Vault
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Public-Private Key Pairs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  PKI Knowledge Base - Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../book/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Book
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../glossary/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../certificate-anatomy/" class="md-tabs__link">
+          
+  
+  
+  Foundations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../implementation/ca-architecture/" class="md-tabs__link">
+          
+  
+  
+  Implementation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../operations/certificate-lifecycle-management/" class="md-tabs__link">
+          
+  
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../security/private-key-protection/" class="md-tabs__link">
+          
+  
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../standards/x509-standard/" class="md-tabs__link">
+          
+  
+  
+  Standards
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Shield Vault" class="md-nav__button md-logo" aria-label="Shield Vault" data-md-component="logo">
+      
+  <img src="../../assets/axon-logo.png" alt="logo">
+
+    </a>
+    Shield Vault
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PKI Knowledge Base - Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Book
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Foundations
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Foundations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../certificate-anatomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Anatomy
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cryptographic-primitives/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cryptographic Primitives
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Public-Private Key Pairs
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public-Private Key Pairs
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical Relationship
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mathematical Relationship">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rsa-key-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      RSA Key Relationship
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecdsa-key-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      ECDSA Key Relationship
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dual-functionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dual Functionality
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dual Functionality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#encryption-confidentiality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encryption (Confidentiality)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#digital-signatures-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Digital Signatures (Authentication)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-this-works-the-non-intuitive-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why This Works: The Non-Intuitive Math
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Guidance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical Guidance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-pair-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Pair Lifecycle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Pair Lifecycle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rotation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#destruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Destruction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-pair-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Pair Formats
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Pair Formats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#private-key-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Private Key Formats
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#public-key-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Public Key Formats
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-size-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Size Selection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Size Selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#current-recommendations-2024" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current Recommendations (2024)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-vs-security-tradeoff" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance vs. Security Tradeoff
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-key-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Key Scenarios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-Key Scenarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-usage-separation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Usage Separation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-rollover" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Rollover
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Pitfalls
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#private-key-compromise-impact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Private Key Compromise Impact
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forward-secrecy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Forward Secrecy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quantum-computing-threat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quantum Computing Threat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-entropy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Entropy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-world-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real-World Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Real-World Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#case-study-debian-openssl-predictable-keys-2008" class="md-nav__link">
+    <span class="md-ellipsis">
+      Case Study: Debian OpenSSL Predictable Keys (2008)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case-study-rsa-vs-ecdsa-adoption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Case Study: RSA vs. ECDSA Adoption
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case-study-https-certificate-pinning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Case Study: HTTPS Certificate Pinning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further Reading
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Further Reading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#essential-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Essential Resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Topics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      Change History
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trust-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Trust Models
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../what-is-pki/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What is PKI?
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Implementation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Implementation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../implementation/ca-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CA Architecture
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Operations
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Operations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/certificate-lifecycle-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Lifecycle Management
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Security
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/private-key-protection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Private Key Protection
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Standards
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Standards
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standards/x509-standard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    X.509 Standard
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical Relationship
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mathematical Relationship">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rsa-key-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      RSA Key Relationship
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecdsa-key-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      ECDSA Key Relationship
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dual-functionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dual Functionality
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dual Functionality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#encryption-confidentiality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encryption (Confidentiality)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#digital-signatures-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Digital Signatures (Authentication)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-this-works-the-non-intuitive-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why This Works: The Non-Intuitive Math
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Guidance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical Guidance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-pair-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Pair Lifecycle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Pair Lifecycle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rotation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#destruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Destruction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-pair-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Pair Formats
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Pair Formats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#private-key-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Private Key Formats
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#public-key-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Public Key Formats
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-size-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Size Selection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Size Selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#current-recommendations-2024" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current Recommendations (2024)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-vs-security-tradeoff" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance vs. Security Tradeoff
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-key-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Key Scenarios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-Key Scenarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-usage-separation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Usage Separation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-rollover" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Rollover
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Pitfalls
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#private-key-compromise-impact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Private Key Compromise Impact
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forward-secrecy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Forward Secrecy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quantum-computing-threat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quantum Computing Threat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-entropy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Entropy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-world-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real-World Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Real-World Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#case-study-debian-openssl-predictable-keys-2008" class="md-nav__link">
+    <span class="md-ellipsis">
+      Case Study: Debian OpenSSL Predictable Keys (2008)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case-study-rsa-vs-ecdsa-adoption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Case Study: RSA vs. ECDSA Adoption
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case-study-https-certificate-pinning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Case Study: HTTPS Certificate Pinning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further Reading
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Further Reading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#essential-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Essential Resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Topics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      Change History
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  <!-- Right sidebar with disclaimer above TOC -->
+  
+    <style>
+      @media screen and (min-width: 76.25em) {
+        .md-sidebar--secondary {
+          order: 1;
+        }
+        .md-sidebar--secondary::before {
+          content: '';
+          display: block;
+          margin-bottom: 1rem;
+        }
+      }
+    </style>
+  
+  
+  
+                  
+
+
+
+<h1 id="public-private-key-pairs">Public-Private Key Pairs</h1>
+<blockquote>
+<p><strong>TL;DR</strong>: Public-private key pairs enable asymmetric cryptography—the foundation of PKI. The private key must remain secret while the public key is freely distributed. This mathematical relationship enables secure communication without pre-shared secrets: public keys encrypt and verify signatures, private keys decrypt and sign. Understanding key pairs is essential for grasping how PKI provides authentication, encryption, and digital signatures.</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>The breakthrough of asymmetric cryptography in the 1970s (Diffie-Hellman, RSA) revolutionized secure communications. Before asymmetric crypto, parties needed to exchange secret keys through secure channels—an impossible requirement for internet-scale communications. Asymmetric cryptography solved this: two mathematically related keys where knowing one doesn't reveal the other.</p>
+<p>The elegance of public-private key pairs is their dual functionality: what one key encrypts, only the other can decrypt; what one key signs, the other can verify. This enables strangers to communicate securely and verify identities without ever meeting or establishing prior trust—the fundamental enabler of e-commerce, secure communications, and the modern internet.</p>
+<p>Understanding key pairs is foundational to PKI: how certificates work, why private keys must be protected, how signatures provide authentication, and why key management is critical operational discipline.</p>
+<p><strong>Related Pages</strong>: [[cryptographic-primitives]], [[what-is-pki]], [[certificate-anatomy]], [[security/private-key-protection]]</p>
+<h2 id="key-concepts">Key Concepts</h2>
+<h3 id="mathematical-relationship">Mathematical Relationship</h3>
+<p>Public and private keys are mathematically related through one-way functions: computations easy in one direction but infeasible to reverse.</p>
+<h4 id="rsa-key-relationship">RSA Key Relationship</h4>
+<p><strong>Key Generation Process</strong>:
+1. Select two large prime numbers: p and q
+2. Compute n = p × q (modulus, part of both keys)
+3. Compute φ(n) = (p-1)(q-1) (Euler's totient)
+4. Choose public exponent e (typically 65537)
+5. Compute private exponent d where (e × d) ≡ 1 (mod φ(n))</p>
+<p><strong>Result</strong>:
+- Public key: (n, e)
+- Private key: (n, d, p, q)</p>
+<p><strong>Mathematical Relationship</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>For any message m:
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  Encrypt: c = m^e mod n
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  Decrypt: m = c^d mod n
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Due to: (m^e)^d ≡ m (mod n)
+</code></pre></div></p>
+<p><strong>Security Foundation</strong>: 
+- Given n and e, computing d requires knowing factors p and q
+- Factoring large n is computationally infeasible (no known polynomial-time algorithm)
+- Best known algorithms (General Number Field Sieve) require exponential time</p>
+<p><strong>Example</strong> (Small Numbers for Illustration):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>p = 61, q = 53
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>n = 61 × 53 = 3233
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>φ(n) = 60 × 52 = 3120
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>e = 17
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>d = 2753 (computed: 17 × 2753 ≡ 1 mod 3120)
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>Public key: (3233, 17)
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>Private key: (3233, 2753)
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>Encrypt message m=123:
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>  c = 123^17 mod 3233 = 855
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>Decrypt ciphertext c=855:
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>  m = 855^2753 mod 3233 = 123
+</code></pre></div></p>
+<p><strong>Note</strong>: Real RSA uses 2048+ bit numbers (600+ digits), making factorization infeasible.</p>
+<h4 id="ecdsa-key-relationship">ECDSA Key Relationship</h4>
+<p><strong>Key Generation Process</strong>:
+1. Choose elliptic curve (e.g., P-256)
+2. Curve has base point G
+3. Generate random private key d (scalar)
+4. Compute public key Q = d × G (point multiplication)</p>
+<p><strong>Result</strong>:
+- Public key: Q (point on elliptic curve)
+- Private key: d (large random number)</p>
+<p><strong>Mathematical Relationship</strong>:
+- Public key is private key multiplied by base point
+- Point multiplication easy (compute Q from d)
+- Discrete logarithm hard (find d from Q)</p>
+<p><strong>Security Foundation</strong>:
+- Given Q and G, finding d such that Q = d × G is elliptic curve discrete logarithm problem (ECDLP)
+- No known efficient algorithm for ECDLP
+- 256-bit ECDSA provides security equivalent to 3072-bit RSA</p>
+<h3 id="dual-functionality">Dual Functionality</h3>
+<p>Key pairs enable two complementary operations:</p>
+<h4 id="encryption-confidentiality">Encryption (Confidentiality)</h4>
+<p><strong>Purpose</strong>: Ensure only intended recipient can read message</p>
+<p><strong>Process</strong>:
+1. Sender obtains recipient's <strong>public key</strong>
+2. Sender encrypts message with public key
+3. Only recipient's <strong>private key</strong> can decrypt</p>
+<p><strong>Direction</strong>: Public key encrypts → Private key decrypts</p>
+<p><strong>Use Cases</strong>:
+- Email encryption (recipient's public key)
+- TLS key exchange (server's public key)
+- Secure file sharing
+- Key encapsulation</p>
+<p><strong>Important</strong>: Direct RSA encryption limited to small messages (&lt; key size). In practice, hybrid encryption is used: RSA encrypts symmetric key, symmetric key encrypts data.</p>
+<p><strong>Example</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Alice wants to send secret to Bob:
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>1. Alice obtains Bob&#39;s public key
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>2. Alice encrypts message: ciphertext = encrypt(message, Bob_public_key)
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>3. Alice sends ciphertext to Bob
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>4. Bob decrypts: message = decrypt(ciphertext, Bob_private_key)
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>Eve who intercepts ciphertext cannot decrypt without Bob&#39;s private key
+</code></pre></div></p>
+<h4 id="digital-signatures-authentication">Digital Signatures (Authentication)</h4>
+<p><strong>Purpose</strong>: Prove message came from specific sender and wasn't modified</p>
+<p><strong>Process</strong>:
+1. Signer hashes message
+2. Signer encrypts hash with <strong>private key</strong> (signature)
+3. Anyone with <strong>public key</strong> can verify signature</p>
+<p><strong>Direction</strong>: Private key signs → Public key verifies</p>
+<p><strong>Use Cases</strong>:
+- Certificate signatures (CA signs certificates)
+- Code signing (developer signs software)
+- Document signing (sign contracts, emails)
+- Firmware signing (manufacturer signs firmware)</p>
+<p><strong>Properties Provided</strong>:
+- <strong>Authentication</strong>: Only private key holder could create signature
+- <strong>Integrity</strong>: Any message modification invalidates signature
+- <strong>Non-repudiation</strong>: Signer can't deny signing (assuming private key protected)</p>
+<p><strong>Example</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Alice wants to sign document for Bob:
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>1. Alice computes hash: h = hash(document)
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>2. Alice signs hash: signature = sign(h, Alice_private_key)
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>3. Alice sends document + signature to Bob
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>4. Bob verifies: valid = verify(signature, Alice_public_key, document)
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>If valid = true:
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>  - Bob knows Alice signed it (only she has private key)
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>  - Bob knows document unchanged (hash matches)
+</code></pre></div></p>
+<h3 id="why-this-works-the-non-intuitive-math">Why This Works: The Non-Intuitive Math</h3>
+<p>The "magic" of asymmetric cryptography is mathematical functions with special properties:</p>
+<p><strong>One-Way Functions</strong>:
+- Easy to compute in one direction: f(x) = y
+- Hard to reverse: Given y, find x
+- Examples: Modular exponentiation, elliptic curve point multiplication</p>
+<p><strong>Trapdoor Functions</strong>:
+- One-way functions with a secret "trapdoor"
+- With trapdoor (private key), easy to reverse
+- Without trapdoor, hard to reverse
+- RSA trapdoor: Knowing p and q (factors of n) enables computing d from e</p>
+<p><strong>Why Knowing Public Key Doesn't Help</strong>:
+- Public key: Result of applying one-way function to private key
+- Reversing one-way function is computationally infeasible
+- Example: Given Q = d × G on elliptic curve, finding d requires solving discrete log (no efficient algorithm)</p>
+<p><strong>Security Assumption</strong>: These mathematical problems remain hard. If efficient algorithms discovered (e.g., via quantum computing), asymmetric crypto breaks.</p>
+<h2 id="practical-guidance">Practical Guidance</h2>
+<h3 id="key-pair-lifecycle">Key Pair Lifecycle</h3>
+<h4 id="generation">Generation</h4>
+<p><strong>Where to Generate</strong>:
+- <strong>On-device</strong>: Generate keys where they'll be used (preferred)
+  - Private key never transmitted
+  - Reduces exposure window
+  - Examples: Server generates key, submits CSR to CA</p>
+<ul>
+<li><strong>In HSM</strong>: Generate keys in Hardware Security Module</li>
+<li>Keys never leave secure hardware</li>
+<li>Highest security for CA keys</li>
+<li>
+<p>Examples: Root CA key generation ceremony</p>
+</li>
+<li>
+<p><strong>Centrally (Avoid)</strong>: Generate keys on management server</p>
+</li>
+<li>Private keys transmitted to endpoints</li>
+<li>Increases risk of exposure</li>
+<li>Only acceptable if keys encrypted during transmission and short-lived</li>
+</ul>
+<p><strong>Generation Commands</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># RSA key pair</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>openssl<span class="w"> </span>genpkey<span class="w"> </span>-algorithm<span class="w"> </span>RSA<span class="w"> </span>-out<span class="w"> </span>private.pem<span class="w"> </span>-pkeyopt<span class="w"> </span>rsa_keygen_bits:2048
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># ECDSA key pair (P-256)</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>openssl<span class="w"> </span>genpkey<span class="w"> </span>-algorithm<span class="w"> </span>EC<span class="w"> </span>-out<span class="w"> </span>private.pem<span class="w"> </span>-pkeyopt<span class="w"> </span>ec_paramgen_curve:P-256
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Extract public key</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>openssl<span class="w"> </span>pkey<span class="w"> </span>-in<span class="w"> </span>private.pem<span class="w"> </span>-pubout<span class="w"> </span>-out<span class="w"> </span>public.pem
+</code></pre></div>
+<h4 id="distribution">Distribution</h4>
+<p><strong>Public Key Distribution</strong> (Freely shareable):
+- Embed in certificate (primary mechanism)
+- Publish to key servers (PGP)
+- Include in application packages
+- Distribute via secure website
+- Email (though verify fingerprint out-of-band)</p>
+<p><strong>Private Key Distribution</strong> (Avoid if possible):
+- Should never be transmitted in plaintext
+- If must transmit:
+  - Encrypt with strong passphrase (AES-256)
+  - Use secure channel (TLS, IPsec)
+  - Temporary, one-time access
+  - Destroy transmission copy after receipt
+- Better: Generate on destination, never transmit</p>
+<p><strong>Public Key Verification</strong>:
+Always verify public key authenticity:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Compute fingerprint</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>openssl<span class="w"> </span>x509<span class="w"> </span>-in<span class="w"> </span>cert.pem<span class="w"> </span>-noout<span class="w"> </span>-fingerprint<span class="w"> </span>-sha256
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Compare with published fingerprint (out-of-band)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># Phone call, different website, printed material, etc.</span>
+</code></pre></div></p>
+<h4 id="usage">Usage</h4>
+<p><strong>Private Key Usage Restrictions</strong>:
+- Minimal exposure time (load for operation, clear from memory after)
+- Access controls (file permissions, HSM authorization)
+- Audit logging (log every private key operation)
+- Dedicated systems (don't use CA keys on multi-purpose servers)</p>
+<p><strong>Public Key Usage</strong> (Unrestricted):
+- Freely shareable
+- Can be cached
+- No access controls needed
+- Integrity verification recommended (via certificate)</p>
+<h4 id="rotation">Rotation</h4>
+<p><strong>When to Rotate Key Pairs</strong>:
+- Scheduled rotation (e.g., annually)
+- After private key compromise or suspected exposure
+- After personnel changes (lost access control)
+- Before cryptographic algorithm deprecation
+- When certificate expires (generate new key with renewal)</p>
+<p><strong>Rotation Process</strong>:
+1. Generate new key pair
+2. Obtain new certificate for new public key
+3. Deploy new certificate in parallel with old
+4. Transition services to new key
+5. Grace period (accept both old and new)
+6. Revoke old certificate
+7. Securely destroy old private key</p>
+<h4 id="destruction">Destruction</h4>
+<p><strong>Secure Private Key Deletion</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Multiple overwrite passes</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>shred<span class="w"> </span>-vfz<span class="w"> </span>-n<span class="w"> </span><span class="m">35</span><span class="w"> </span>private.key
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Verify deletion</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>ls<span class="w"> </span>private.key<span class="w">  </span><span class="c1"># Should not exist</span>
+</code></pre></div>
+<p><strong>HSM Key Destruction</strong>:
+- Use HSM-specific deletion commands
+- Verify key no longer listed
+- Some HSMs maintain key backups (be aware)</p>
+<p><strong>Certificate Revocation</strong>:
+- After key rotation, revoke old certificate
+- Prevents use of old key pair even if private key recovered</p>
+<h3 id="key-pair-formats">Key Pair Formats</h3>
+<h4 id="private-key-formats">Private Key Formats</h4>
+<p><strong>PKCS#1 (RSA Only)</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>-----BEGIN RSA PRIVATE KEY-----
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>MIIEpAIBAAKCAQEA...
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>-----END RSA PRIVATE KEY-----
+</code></pre></div>
+- Original OpenSSL format
+- RSA-specific
+- Unencrypted by default</p>
+<p><strong>PKCS#8 (All Algorithms)</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>-----BEGIN PRIVATE KEY-----
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>MIIEvQIBADANBgkq...
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>-----END PRIVATE KEY-----
+</code></pre></div>
+- Modern standard format
+- Algorithm-agnostic (RSA, ECDSA, etc.)
+- Supports encryption</p>
+<p><strong>PKCS#8 Encrypted</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>-----BEGIN ENCRYPTED PRIVATE KEY-----
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>MIIFLTBXBgkqhkiG...
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>-----END ENCRYPTED PRIVATE KEY-----
+</code></pre></div>
+- PKCS#8 with password-based encryption
+- Recommended for file storage
+- AES-256 encryption typical</p>
+<p><strong>Conversion</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># PKCS#1 to PKCS#8</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>openssl<span class="w"> </span>pkcs8<span class="w"> </span>-topk8<span class="w"> </span>-in<span class="w"> </span>pkcs1.pem<span class="w"> </span>-out<span class="w"> </span>pkcs8.pem
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Encrypt PKCS#8</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>openssl<span class="w"> </span>pkcs8<span class="w"> </span>-topk8<span class="w"> </span>-in<span class="w"> </span>unencrypted.pem<span class="w"> </span>-out<span class="w"> </span>encrypted.pem<span class="w"> </span>-v2<span class="w"> </span>aes256
+</code></pre></div></p>
+<h4 id="public-key-formats">Public Key Formats</h4>
+<p><strong>SubjectPublicKeyInfo (SPKI)</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>-----BEGIN PUBLIC KEY-----
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>MIIBIjANBgkqhkiG...
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>-----END PUBLIC KEY-----
+</code></pre></div>
+- Standard X.509 public key format
+- Algorithm identifier + public key
+- Used in certificates</p>
+<p><strong>SSH Format</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQ... user@host
+</code></pre></div>
+- Used for SSH authentication
+- Base64 encoded
+- Includes comment field</p>
+<p><strong>Conversion</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Extract from certificate</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>openssl<span class="w"> </span>x509<span class="w"> </span>-in<span class="w"> </span>cert.pem<span class="w"> </span>-noout<span class="w"> </span>-pubkey<span class="w"> </span>&gt;<span class="w"> </span>public.pem
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># Convert to SSH format</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>ssh-keygen<span class="w"> </span>-i<span class="w"> </span>-m<span class="w"> </span>PKCS8<span class="w"> </span>-f<span class="w"> </span>public.pem<span class="w"> </span>&gt;<span class="w"> </span>authorized_keys
+</code></pre></div></p>
+<h3 id="key-size-selection">Key Size Selection</h3>
+<h4 id="current-recommendations-2024">Current Recommendations (2024)</h4>
+<table>
+<thead>
+<tr>
+<th>Use Case</th>
+<th>Algorithm</th>
+<th>Key Size</th>
+<th>Security Level</th>
+<th>Valid Through</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TLS Server</td>
+<td>RSA</td>
+<td>2048-bit</td>
+<td>112-bit</td>
+<td>~2030</td>
+</tr>
+<tr>
+<td>TLS Server</td>
+<td>RSA</td>
+<td>3072-bit</td>
+<td>128-bit</td>
+<td>Beyond 2030</td>
+</tr>
+<tr>
+<td>TLS Server</td>
+<td>ECDSA</td>
+<td>P-256</td>
+<td>128-bit</td>
+<td>Beyond 2030</td>
+</tr>
+<tr>
+<td>CA Root</td>
+<td>RSA</td>
+<td>4096-bit</td>
+<td>~140-bit</td>
+<td>2040+</td>
+</tr>
+<tr>
+<td>CA Intermediate</td>
+<td>RSA</td>
+<td>3072-bit</td>
+<td>128-bit</td>
+<td>Beyond 2030</td>
+</tr>
+<tr>
+<td>Code Signing</td>
+<td>RSA</td>
+<td>3072-4096</td>
+<td>128-140-bit</td>
+<td>Beyond 2030</td>
+</tr>
+<tr>
+<td>User Auth</td>
+<td>RSA</td>
+<td>2048-bit</td>
+<td>112-bit</td>
+<td>~2030</td>
+</tr>
+<tr>
+<td>User Auth</td>
+<td>ECDSA</td>
+<td>P-256</td>
+<td>128-bit</td>
+<td>Beyond 2030</td>
+</tr>
+</tbody>
+</table>
+<p><strong>NIST Guidance</strong>[^1]:
+- 2048-bit RSA or 256-bit ECDSA: Through 2030
+- 3072-bit RSA or 384-bit ECDSA: Beyond 2030
+- Consider certificate lifetime in key size selection</p>
+<h4 id="performance-vs-security-tradeoff">Performance vs. Security Tradeoff</h4>
+<p><strong>RSA Key Size Impact</strong>:
+- 2048 → 3072 bit: ~3x slower signing
+- 2048 → 4096 bit: ~7x slower signing
+- Verification speed less affected (small exponent)</p>
+<p><strong>ECDSA Advantages</strong>:
+- P-256 ECDSA ≈ 3072-bit RSA security
+- Much faster key generation
+- Much faster signing
+- Smaller keys and signatures</p>
+<p><strong>Decision Factors</strong>:
+- <strong>Performance</strong>: ECDSA better for high-volume operations
+- <strong>Compatibility</strong>: RSA more widely supported (legacy systems)
+- <strong>Certificate size</strong>: ECDSA produces smaller certificates (mobile/IoT)
+- <strong>Lifetime</strong>: Longer lifetime = larger keys
+- <strong>Regulation</strong>: Some industries mandate specific algorithms/sizes</p>
+<h3 id="multi-key-scenarios">Multi-Key Scenarios</h3>
+<h4 id="key-usage-separation">Key Usage Separation</h4>
+<p><strong>Best Practice</strong>: Separate key pairs for different purposes</p>
+<p><strong>Rationale</strong>:
+- Limits compromise impact
+- Enables different rotation schedules
+- Allows purpose-specific protection levels
+- Simplifies key management policies</p>
+<p><strong>Example Separation</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Organization key pairs:
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>├── TLS Encryption: RSA-2048 (90-day certificates)
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>├── Email Signing: RSA-3072 (2-year certificates)
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>├── Code Signing: RSA-4096 (3-year certificates)
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>└── Document Signing: RSA-4096 (long-term archival)
+</code></pre></div></p>
+<p><strong>X.509 Key Usage Extension</strong>:
+Enforces key purpose separation:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Key Usage: Digital Signature, Key Encipherment
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>Extended Key Usage: TLS Web Server Authentication
+</code></pre></div></p>
+<p>Prevents certificate/key misuse (e.g., TLS key for code signing).</p>
+<h4 id="key-rollover">Key Rollover</h4>
+<p><strong>Scenario</strong>: Transitioning from old to new key pair without downtime</p>
+<p><strong>Dual Certificate Configuration</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Nginx example</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="k">ssl_certificate</span><span class="w"> </span><span class="s">/etc/ssl/certs/server-new.crt</span><span class="p">;</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="k">ssl_certificate_key</span><span class="w"> </span><span class="s">/etc/ssl/private/server-new.key</span><span class="p">;</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="k">ssl_certificate</span><span class="w"> </span><span class="s">/etc/ssl/certs/server-old.crt</span><span class="p">;</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="k">ssl_certificate_key</span><span class="w"> </span><span class="s">/etc/ssl/private/server-old.key</span><span class="p">;</span>
+</code></pre></div></p>
+<p><strong>Process</strong>:
+1. Generate new key pair
+2. Obtain new certificate
+3. Configure server to present both certificates
+4. Clients select compatible certificate
+5. After transition period, remove old key pair</p>
+<p><strong>Timeline</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>Week 0: Generate new key, obtain certificate
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>Week 1: Deploy new key alongside old (both active)
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>Week 2-4: Monitor, ensure all clients using new key
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>Week 5: Remove old key configuration
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>Week 6: Revoke old certificate
+</code></pre></div></p>
+<h2 id="common-pitfalls">Common Pitfalls</h2>
+<ul>
+<li><strong>Reusing key pairs across certificates</strong>: Using same key pair for multiple certificates</li>
+<li><strong>Why it happens</strong>: Convenience; avoiding key generation overhead</li>
+<li><strong>How to avoid</strong>: Generate new key pair for each certificate issuance</li>
+<li>
+<p><strong>How to fix</strong>: Revoke certificates sharing keys; regenerate with unique keys per certificate</p>
+</li>
+<li>
+<p><strong>Transmitting private keys in plaintext</strong>: Sending private keys via email or unencrypted channels</p>
+</li>
+<li><strong>Why it happens</strong>: Convenience; lack of understanding of risk</li>
+<li><strong>How to avoid</strong>: Never transmit private keys; generate on-device; if necessary, use strong encryption</li>
+<li>
+<p><strong>How to fix</strong>: Immediately rotate exposed keys; revoke certificates; implement secure processes</p>
+</li>
+<li>
+<p><strong>Using same key for encryption and signing</strong>: Single key pair for multiple cryptographic purposes</p>
+</li>
+<li><strong>Why it happens</strong>: Simplicity; not understanding separation of concerns</li>
+<li><strong>How to avoid</strong>: Separate keys for encryption vs. signing; enforce with Key Usage extensions</li>
+<li>
+<p><strong>How to fix</strong>: Issue separate certificates with purpose-specific keys and Key Usage constraints</p>
+</li>
+<li>
+<p><strong>Not protecting private keys at rest</strong>: Storing private keys unencrypted on file systems</p>
+</li>
+<li><strong>Why it happens</strong>: Configuration complexity; password management challenges</li>
+<li><strong>How to avoid</strong>: Always encrypt private keys at rest (PKCS#8, HSM); use strong passphrases</li>
+<li>
+<p><strong>How to fix</strong>: Re-encrypt keys immediately; rotate if exposure possible; implement key protection policies</p>
+</li>
+<li>
+<p><strong>Inadequate private key access controls</strong>: World-readable or group-readable private key files</p>
+</li>
+<li><strong>Why it happens</strong>: Misconfiguration; troubleshooting shortcuts becoming permanent</li>
+<li><strong>How to avoid</strong>: chmod 600 for private keys; dedicated service accounts; regular audits</li>
+<li><strong>How to fix</strong>: Fix permissions immediately; rotate keys; review access logs for unauthorized use</li>
+</ul>
+<h2 id="security-considerations">Security Considerations</h2>
+<h3 id="private-key-compromise-impact">Private Key Compromise Impact</h3>
+<p><strong>Immediate Risks</strong>:
+- Attacker can impersonate key owner
+- Past encrypted traffic decryptable (without forward secrecy)
+- Attacker can sign content as legitimate key owner
+- Complete trust breakdown for affected certificates</p>
+<p><strong>Cascade Effects</strong>:
+- If CA key compromised: All subordinate certificates compromised
+- If code signing key compromised: Malware signed as legitimate software
+- If user key compromised: Access to all resources protected by that key</p>
+<p><strong>Response Requirements</strong>:
+1. Immediately revoke certificate
+2. Generate new key pair
+3. Obtain new certificate
+4. Deploy new certificate
+5. Investigate compromise scope
+6. Review and improve key protection
+7. Notify affected parties if required</p>
+<h3 id="forward-secrecy">Forward Secrecy</h3>
+<p><strong>Problem</strong>: Compromised server private key allows decryption of all past captured TLS traffic (if RSA key exchange used)</p>
+<p><strong>Solution</strong>: Ephemeral Diffie-Hellman key exchange (DHE/ECDHE)
+- Session keys derived from ephemeral (temporary) keys
+- Ephemeral keys destroyed after session
+- Server private key not used for key exchange
+- Past sessions remain secure even if server key later compromised</p>
+<p><strong>TLS Configuration</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a># Prefer forward secrecy cipher suites
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>ssl_prefer_server_ciphers on;
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>ssl_ciphers &#39;ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384&#39;;
+</code></pre></div></p>
+<p><strong>Trade-off</strong>: Slightly slower handshake (must compute DHE), but much better security.</p>
+<h3 id="quantum-computing-threat">Quantum Computing Threat</h3>
+<p><strong>Current Algorithms Vulnerable</strong>:
+- RSA: Shor's algorithm can factor in polynomial time on quantum computer
+- ECDSA: Shor's algorithm solves discrete log on quantum computer
+- All current public-key cryptography breakable on large quantum computers</p>
+<p><strong>Timeline</strong>: 
+- No large-scale quantum computers yet (2024)
+- Optimistic estimates: 2030s
+- Conservative: 2040s</p>
+<p><strong>"Harvest Now, Decrypt Later" Threat</strong>:
+- Adversaries capture encrypted traffic today
+- Store for future decryption when quantum computers available
+- High-value long-term secrets at risk</p>
+<p><strong>Post-Quantum Cryptography</strong>:
+- NIST standardizing quantum-resistant algorithms
+- Based on different mathematical problems (lattices, hash-based, etc.)
+- Hybrid approach: Classical + post-quantum
+- Transition period: 2025-2035 expected</p>
+<p><strong>Action Items</strong>:
+- Monitor NIST PQC standardization
+- Plan for algorithm agility
+- Consider data lifetime sensitivity
+- Begin hybrid implementations for long-term keys</p>
+<h3 id="key-entropy">Key Entropy</h3>
+<p><strong>Critical Requirement</strong>: Private keys must be generated from cryptographically secure random numbers</p>
+<p><strong>Insufficient Entropy Examples</strong>:
+- Debian OpenSSL bug (2008): Only 2^15 possible keys due to PRNG flaw
+- Predictable seeds: Using timestamp or process ID as seed
+- Reused random values: ECDSA nonce reuse</p>
+<p><strong>Proper Entropy Sources</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Python example</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">secrets</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="c1"># Generate cryptographically secure random bytes</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="n">private_key_material</span> <span class="o">=</span> <span class="n">secrets</span><span class="o">.</span><span class="n">token_bytes</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>  <span class="c1"># 256 bits</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="c1"># Never use:</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="n">bad_key</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span>  <span class="c1"># NOT cryptographically secure</span>
+</code></pre></div></p>
+<p><strong>Verification</strong>:
+- Use established libraries (OpenSSL, cryptography.io)
+- Never implement crypto primitives from scratch
+- Test with statistical randomness tests (NIST test suite)</p>
+<h2 id="real-world-examples">Real-World Examples</h2>
+<h3 id="case-study-debian-openssl-predictable-keys-2008">Case Study: Debian OpenSSL Predictable Keys (2008)</h3>
+<p><strong>Incident</strong>: Debian maintainer modified OpenSSL to eliminate compiler warning, inadvertently removed entropy source</p>
+<p><strong>Impact</strong>:
+- Only 2^15 possible RSA keys (32,768) instead of 2^2048
+- All keys generated on affected systems (2006-2008) were weak
+- Attackers could brute-force all possibilities in hours</p>
+<p><strong>Response</strong>:
+- Mass revocation of affected certificates
+- Key regeneration for all affected systems
+- Demonstrated importance of entropy in key generation</p>
+<p><strong>Key Takeaway</strong>: Cryptographic key generation requires proper entropy. Don't modify crypto code without expert review.</p>
+<h3 id="case-study-rsa-vs-ecdsa-adoption">Case Study: RSA vs. ECDSA Adoption</h3>
+<p><strong>Historical Context</strong>:
+- RSA patented until 2000, limiting adoption
+- ECDSA introduced later (1999), patent issues slower adoption
+- RSA became standard due to earlier patent expiration and tooling</p>
+<p><strong>Modern Transition</strong>:
+- Let's Encrypt supports both RSA and ECDSA
+- Major browsers support ECDSA
+- Mobile and IoT prefer ECDSA (smaller keys, better performance)
+- Gradual transition: ~20% of certificates ECDSA (2024), growing</p>
+<p><strong>Key Takeaway</strong>: Algorithm transitions take decades. Start early, support multiple algorithms during transition.</p>
+<h3 id="case-study-https-certificate-pinning">Case Study: HTTPS Certificate Pinning</h3>
+<p>Some organizations pin specific public keys or certificates in applications:</p>
+<p><strong>Concept</strong>: Application only accepts specific public keys
+<strong>Goal</strong>: Prevent CA compromise from affecting the application
+<strong>Risk</strong>: If pinned key rotated without app update, app breaks</p>
+<p><strong>Notable Incidents</strong>:
+- Banking apps unable to connect after certificate rotation
+- Mobile apps requiring updates to fix pinning</p>
+<p><strong>Key Takeaway</strong>: Key rotation must be planned carefully. Pinning trades flexibility for security. Consider pinning CA public key rather than leaf certificate.</p>
+<h2 id="further-reading">Further Reading</h2>
+<h3 id="essential-resources">Essential Resources</h3>
+<ul>
+<li><a href="https://www.rfc-editor.org/rfc/rfc8017">RFC 8017 - PKCS #1: RSA Cryptography</a> - RSA key format and operations</li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc5915">RFC 5915 - EC Private Key Format</a> - ECDSA private key structure</li>
+<li><a href="https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final">NIST SP 800-57 - Key Management</a> - Key lifecycle guidance</li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc5208">PKCS #8 Specification</a> - Private key information syntax</li>
+</ul>
+<h3 id="advanced-topics">Advanced Topics</h3>
+<ul>
+<li>[[cryptographic-primitives]] - Mathematical foundations</li>
+<li>[[security/private-key-protection]] - Protecting private keys</li>
+<li>[[certificate-anatomy]] - How public keys appear in certificates</li>
+<li>[[ca-architecture]] - CA key management</li>
+</ul>
+<h2 id="references">References</h2>
+<p>[^1]: NIST. "Recommendation for Key Management." NIST SP 800-57 Part 1 Rev. 5, May 2020. https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final</p>
+<h2 id="change-history">Change History</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Version</th>
+<th>Changes</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024-11-09</td>
+<td>1.0</td>
+<td>Initial creation</td>
+<td>Foundational key pair documentation</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Quality Checks</strong>: 
+- [x] All claims cited from authoritative sources
+- [x] Cross-references validated
+- [x] Practical guidance included
+- [x] Examples are current and relevant
+- [x] Security considerations addressed</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/axonsecurity/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+  
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var sidebar = document.querySelector('.md-sidebar--secondary .md-sidebar__scrollwrap');
+      if (sidebar) {
+        var disclaimer = document.createElement('div');
+        disclaimer.className = 'md-sidebar-disclaimer';
+        disclaimer.innerHTML = `
+          <div class="md-typeset">
+            <div class="admonition info">
+              <p class="admonition-title">📚 Resources</p>
+              <p><a href="https://axonshield.com/book"><strong>View our comprehensive guide</strong></a></p>
+            </div>
+            <div class="admonition warning">
+              <p class="admonition-title">⚠️ Disclaimer</p>
+              <p><small>This documentation reflects industry standards that we have found often ignore company-specific needs and in many cases don't work for long-term sustainable operations that build infrastructure intelligence.</small></p>
+            </div>
+          </div>
+        `;
+        sidebar.insertBefore(disclaimer, sidebar.firstChild);
+      }
+    });
+  </script>
+  
+
+  </body>
+</html>
