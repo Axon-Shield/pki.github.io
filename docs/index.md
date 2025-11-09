@@ -52,11 +52,11 @@ Welcome to your comprehensive reference for Public Key Infrastructure and certif
 - [Common Vulnerabilities](security/common-vulnerabilities.md) - Known attacks and defenses
 
 ### 🏢 Vendors & Products
-- Venafi Platform *(coming soon)* - Enterprise certificate management
-- DigiCert CertCentral *(coming soon)* - Public CA with management
-- Keyfactor Command *(coming soon)* - Certificate lifecycle automation
-- HashiCorp Vault PKI *(coming soon)* - Dynamic PKI backend
-- Vendor Comparison Matrix *(coming soon)* - Side-by-side evaluation
+- [Venafi Platform](vendors/venafi-platform.md) - Enterprise certificate management
+- [DigiCert CertCentral](vendors/digicert-certcentral.md) - Public CA with management
+- [Keyfactor Command](vendors/keyfactor-command.md) - Certificate lifecycle automation
+- [HashiCorp Vault PKI](vendors/hashicorp-vault-pki.md) - Dynamic PKI backend
+- [Vendor Comparison Matrix](vendors/vendor-comparison-matrix.md) - Side-by-side evaluation
 
 ### 🎨 Architecture Patterns
 - [Zero-Trust Architecture](architecture/zero-trust-architecture.md) - Certificates in zero-trust
@@ -126,7 +126,7 @@ Every page in this knowledge base includes:
 
 **Version**: 1.0 (Initial Release)  
 **Last Updated**: November 9, 2024  
-**Completed Pages**: 42  
+**Completed Pages**: 47  
 **In Progress**: Expanding all categories
 
 This knowledge base is actively maintained and expanded based on:
