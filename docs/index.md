@@ -29,10 +29,10 @@ Welcome to your comprehensive reference for Public Key Infrastructure and certif
 
 ### 🏗️ Implementation
 - [CA Architecture](implementation/ca-architecture.md) - Designing CA hierarchies
-- HSM Integration *(coming soon)* - Hardware security modules
-- Certificate Issuance Workflows *(coming soon)* - How certificates are generated
-- ACME Protocol Implementation *(coming soon)* - Building automation
-- Multi-Cloud PKI *(coming soon)* - PKI across cloud providers
+- [HSM Integration](implementation/hsm-integration.md) - Hardware security modules
+- [Certificate Issuance Workflows](implementation/certificate-issuance-workflows.md) - How certificates are generated
+- [ACME Protocol Implementation](implementation/acme-protocol-implementation.md) - Building automation
+- [Multi-Cloud PKI](implementation/multi-cloud-pki.md) - PKI across cloud providers
 
 ### ⚙️ Operations
 - [Certificate Lifecycle Management](operations/certificate-lifecycle-management.md) - Complete operational guide
@@ -111,7 +111,7 @@ Every page in this knowledge base includes:
 
 **Version**: 1.0 (Initial Release)  
 **Last Updated**: November 9, 2024  
-**Completed Pages**: 14  
+**Completed Pages**: 18  
 **In Progress**: Expanding all categories
 
 This knowledge base is actively maintained and expanded based on:
