@@ -72,10 +72,10 @@ Welcome to your comprehensive reference for Public Key Infrastructure and certif
 - [Multi-Tenancy Considerations](patterns/multi-tenancy-considerations.md) - PKI for shared infrastructure
 
 ### 🔧 Troubleshooting
-- Expired Certificate Outages *(coming soon)* - Emergency response
-- Chain Validation Errors *(coming soon)* - Why validation fails
-- Performance Bottlenecks *(coming soon)* - Scaling PKI operations
-- Common Misconfigurations *(coming soon)* - Frequent mistakes
+- [Expired Certificate Outages](troubleshooting/expired-certificate-outages.md) - Emergency response
+- [Chain Validation Errors](troubleshooting/chain-validation-errors.md) - Why validation fails
+- [Performance Bottlenecks](troubleshooting/performance-bottlenecks.md) - Scaling PKI operations
+- [Common Misconfigurations](troubleshooting/common-misconfigurations.md) - Frequent mistakes
 
 ### 📖 Reference
 - [Glossary](glossary.md) - Comprehensive terminology guide
@@ -126,7 +126,7 @@ Every page in this knowledge base includes:
 
 **Version**: 1.0 (Initial Release)  
 **Last Updated**: November 9, 2024  
-**Completed Pages**: 38  
+**Completed Pages**: 42  
 **In Progress**: Expanding all categories
 
 This knowledge base is actively maintained and expanded based on:
