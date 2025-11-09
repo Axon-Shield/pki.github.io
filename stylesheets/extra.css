@@ -1,0 +1,46 @@
+/* Disclaimer box styling in right sidebar */
+.md-sidebar-disclaimer {
+  margin-bottom: 1.5rem;
+  padding: 0 0.6rem;
+}
+
+.md-sidebar-disclaimer .admonition {
+  margin: 0 0 0.8rem 0;
+  font-size: 0.7rem;
+}
+
+.md-sidebar-disclaimer .admonition-title {
+  font-size: 0.75rem;
+  padding: 0.4rem 0.6rem;
+  margin: 0;
+}
+
+.md-sidebar-disclaimer .admonition p {
+  margin: 0.4rem 0.6rem;
+  font-size: 0.68rem;
+  line-height: 1.4;
+}
+
+.md-sidebar-disclaimer .admonition.info {
+  border-left: 0.2rem solid #448aff;
+}
+
+.md-sidebar-disclaimer .admonition.warning {
+  border-left: 0.2rem solid #ff9800;
+}
+
+.md-sidebar-disclaimer a {
+  color: #448aff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.md-sidebar-disclaimer a:hover {
+  text-decoration: underline;
+}
+
+/* Make it sticky with the TOC */
+[data-md-component="sidebar"][data-md-type="toc"] .md-sidebar__inner {
+  padding-top: 0.6rem;
+}
+

@@ -46,6 +46,8 @@
       
     
     
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -1028,6 +1030,23 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
+  <!-- Right sidebar with disclaimer above TOC -->
+  
+    <style>
+      @media screen and (min-width: 76.25em) {
+        .md-sidebar--secondary {
+          order: 1;
+        }
+        .md-sidebar--secondary::before {
+          content: '';
+          display: block;
+          margin-bottom: 1rem;
+        }
+      }
+    </style>
+  
+  
+  
                   
 
 
@@ -1551,6 +1570,7 @@
 
 
                 
+
               </article>
             </div>
           
@@ -1608,11 +1628,37 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "announce.dismiss"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
+  
       <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
     
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var sidebar = document.querySelector('.md-sidebar--secondary .md-sidebar__scrollwrap');
+      if (sidebar) {
+        var disclaimer = document.createElement('div');
+        disclaimer.className = 'md-sidebar-disclaimer';
+        disclaimer.innerHTML = `
+          <div class="md-typeset">
+            <div class="admonition info">
+              <p class="admonition-title">📚 Resources</p>
+              <p><a href="/book"><strong>View our comprehensive guide</strong></a></p>
+            </div>
+            <div class="admonition warning">
+              <p class="admonition-title">⚠️ Disclaimer</p>
+              <p><small>This documentation reflects industry standards that we have found often ignore company-specific needs and in many cases don't work for long-term sustainable operations that build infrastructure intelligence.</small></p>
+            </div>
+          </div>
+        `;
+        sidebar.insertBefore(disclaimer, sidebar.firstChild);
+      }
+    });
+  </script>
+  
+
   </body>
 </html>
