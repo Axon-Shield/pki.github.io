@@ -8,4 +8,24 @@
          <loc>https://vault.axonshield.com/book/</loc>
          <lastmod>2025-11-09</lastmod>
     </url>
+    <url>
+         <loc>https://vault.axonshield.com/glossary/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://vault.axonshield.com/foundations/certificate-anatomy/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://vault.axonshield.com/foundations/what-is-pki/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://vault.axonshield.com/implementation/ca-architecture/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://vault.axonshield.com/operations/certificate-lifecycle-management/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
 </urlset>
