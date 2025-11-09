@@ -396,7 +396,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../security/compliance-and-audit/" class="md-tabs__link">
+        <a href="../../security/ca-compromise-scenarios/" class="md-tabs__link">
           
   
   
@@ -1774,6 +1774,75 @@
   
   
     <li class="md-nav__item">
+      <a href="../../security/ca-compromise-scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CA Compromise Scenarios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/certificate-pinning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Pinning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/common-vulnerabilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Common Vulnerabilities
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../security/compliance-and-audit/" class="md-nav__link">
         
   
@@ -2451,13 +2520,13 @@
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│  │   App    │   │        │   │   App    │  │
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│  │Container │   │        │   │Container │  │
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│  └────┬─────┘   │        │   └─────▲────┘  │
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│       │localhost│        │localhost│        │
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│       │localhost│        │localhost│       │
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│  ┌────▼─────┐   │        │   ┌─────┴────┐  │
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│  │  Envoy   │───┼────────┼──►│  Envoy   │  │
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│  │  Proxy   │   │  mTLS  │   │  Proxy   │  │
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│  └──────────┘   │        │   └──────────┘  │
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│   (cert from    │        │   (cert from     │
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│    mesh CA)     │        │    mesh CA)      │
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│   (cert from    │        │   (cert from    │
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│    mesh CA)     │        │    mesh CA)     │
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>└─────────────────┘        └─────────────────┘
 </code></pre></div>
 <p>Proxies handle:
@@ -2473,24 +2542,24 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>┌────────────────────────────────────────────┐
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│            Kubernetes Cluster              │
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│                                            │
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│  ┌──────────────────────────────────────┐ │
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│  │          istiod (Control Plane)      │ │
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│  │                                      │ │
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│  │  ┌────────────────────────────────┐ │ │
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│  │  │    Certificate Authority       │ │ │
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│  │  │  - Issues workload certs       │ │ │
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│  │  │  - Automatic rotation          │ │ │
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│  │  │  - SPIFFE-compatible           │ │ │
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│  │  └────────────────────────────────┘ │ │
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│  └──────────────┬───────────────────────┘ │
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│  ┌──────────────────────────────────────┐  │
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│  │          istiod (Control Plane)      │  │
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│  │                                      │  │
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│  │  ┌────────────────────────────────┐  │  │
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│  │  │    Certificate Authority       │  │  │
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│  │  │  - Issues workload certs       │  │  │
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│  │  │  - Automatic rotation          │  │  │
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│  │  │  - SPIFFE-compatible           │  │  │
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│  │  └────────────────────────────────┘  │  │
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│  └──────────────┬───────────────────────┘  │
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>│                 │ CSR                      │
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>│                 │ Certificate              │
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>│        ┌────────┴────────┬─────────┐      │
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>│        │                 │         │      │
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>│   ┌────▼────┐      ┌────▼────┐  ┌─▼───┐  │
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>│   │ Envoy   │      │ Envoy   │  │Envoy│  │
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>│   │ Sidecar │      │ Sidecar │  │Side │  │
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>│   └─────────┘      └─────────┘  └─────┘  │
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>│        ┌────────┴────────┬─────────┐       │
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>│        │                 │         │       │
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>│   ┌────▼────┐      ┌────▼────┐  ┌─▼───┐    │
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>│   │ Envoy   │      │ Envoy   │  │Envoy│    │
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>│   │ Sidecar │      │ Sidecar │  │Side │    │
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>│   └─────────┘      └─────────┘  └─────┘    │
 <a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>└────────────────────────────────────────────┘
 </code></pre></div>
 <h3 id="certificate-issuance-flow">Certificate Issuance Flow</h3>
@@ -2622,9 +2691,9 @@
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    │   Issuer    │  (runs in cluster)
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    └──────┬──────┘
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>           │
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    ┌──────┴──────┬──────────┐
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    │             │          │
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>┌───▼───┐    ┌───▼───┐  ┌───▼───┐
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    ┌──────┴──────┬───────────┐
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    │             │           │
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>┌───▼────┐    ┌───▼────┐  ┌───▼────┐
 <a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>│Workload│    │Workload│  │Workload│
 <a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>│  Cert  │    │  Cert  │  │  Cert  │
 <a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>└────────┘    └────────┘  └────────┘
@@ -2714,16 +2783,16 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>┌─────────────────────────────────────┐
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>│        Consul Server Cluster        │
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>│                                     │
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>│  ┌───────────────────────────────┐ │
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>│  │    Consul Connect CA          │ │
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>│  │  - Built-in CA or Vault       │ │
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>│  │  - Issues leaf certificates   │ │
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>│  │  - Automatic rotation         │ │
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>│  └───────────────────────────────┘ │
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>│  ┌───────────────────────────────┐  │
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>│  │    Consul Connect CA          │  │
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>│  │  - Built-in CA or Vault       │  │
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>│  │  - Issues leaf certificates   │  │
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>│  │  - Automatic rotation         │  │
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>│  └───────────────────────────────┘  │
 <a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>└──────────────┬──────────────────────┘
 <a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>               │
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>      ┌────────┴────────┬──────────┐
-<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>      │                 │          │
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>      ┌────────┴────────┬───────────┐
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>      │                 │           │
 <a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>┌─────▼─────┐     ┌─────▼─────┐  ┌──▼──┐
 <a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>│  Consul   │     │  Consul   │  │Cons │
 <a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>│  Sidecar  │     │  Sidecar  │  │ ul  │
