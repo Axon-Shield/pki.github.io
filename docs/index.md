@@ -18,9 +18,10 @@ Welcome to your comprehensive reference for Public Key Infrastructure and certif
 
 ### 📋 Standards & Protocols
 - [X.509 Standard](standards/x509-standard.md) - Certificate and CRL format
-- TLS Protocol *(coming soon)* - Secure transport layer
-- OCSP and CRL *(coming soon)* - Revocation checking
-- ACME Protocol *(coming soon)* - Automated certificate management
+- [TLS Protocol](standards/tls-protocol.md) - Secure transport layer
+- [OCSP and CRL](standards/ocsp-and-crl.md) - Revocation checking
+- [ACME Protocol](standards/acme-protocol.md) - Automated certificate management
+- [PKCS Standards](standards/pkcs-standards.md) - Public-Key Cryptography Standards
 
 ### 🏗️ Implementation
 - [CA Architecture](implementation/ca-architecture.md) - Designing CA hierarchies
@@ -106,7 +107,7 @@ Every page in this knowledge base includes:
 
 **Version**: 1.0 (Initial Release)  
 **Last Updated**: November 9, 2024  
-**Completed Pages**: 10  
+**Completed Pages**: 14  
 **In Progress**: Expanding all categories
 
 This knowledge base is actively maintained and expanded based on:
