@@ -328,3 +328,128 @@ jobs:
 Certificate-as-Code transforms PKI from manual operations to declarative infrastructure management. By treating certificates as code, organizations achieve consistency, auditability, and scalability while reducing errors and operational overhead.
 
 The combination of IaC tools (Terraform, Kubernetes), GitOps workflows, policy-as-code (OPA), and CI/CD integration creates a robust, automated certificate management system that scales from dozens to thousands of certificates.
+
+## References
+
+### Infrastructure as Code
+
+**"Infrastructure as Code" (O'Reilly)**
+- Morris, K. "Infrastructure as Code: Managing Servers in the Cloud." 2nd Edition, O'Reilly, 2020.
+
+**Terraform Documentation**
+- HashiCorp. "Terraform Documentation."
+  - https://www.terraform.io/docs
+
+**Terraform AWS Provider - ACM**
+- HashiCorp. "AWS Provider: aws_acm_certificate."
+  - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate
+
+### Kubernetes Certificate Management
+
+**cert-manager Documentation**
+- cert-manager. "cert-manager Documentation."
+  - https://cert-manager.io/docs/
+
+**Kubernetes Documentation - Managing TLS in a Cluster**
+- Kubernetes. "Managing TLS in a Cluster."
+  - https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/
+
+### GitOps
+
+**"GitOps - Operations by Pull Request" (Weaveworks)**
+- Weaveworks. "Guide to GitOps."
+  - https://www.weave.works/technologies/gitops/
+
+**Argo CD Documentation**
+- Argo Project. "Argo CD - Declarative GitOps CD for Kubernetes."
+  - https://argo-cd.readthedocs.io/
+
+**Flux Documentation**
+- Flux Project. "Flux - GitOps for Kubernetes."
+  - https://fluxcd.io/docs/
+
+### Policy as Code
+
+**Open Policy Agent Documentation**
+- Open Policy Agent. "OPA Documentation."
+  - https://www.openpolicyagent.org/docs/
+
+**Conftest**
+- Open Policy Agent. "Conftest - Write tests against structured configuration data."
+  - https://www.conftest.dev/
+
+**Rego Policy Language**
+- OPA. "Policy Language."
+  - https://www.openpolicyagent.org/docs/latest/policy-language/
+
+### CI/CD Integration
+
+**"Continuous Delivery" (Addison-Wesley)**
+- Humble, J., Farley, D. "Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation." 2010.
+
+**GitHub Actions Documentation**
+- GitHub. "GitHub Actions Documentation."
+  - https://docs.github.com/en/actions
+
+**GitLab CI/CD**
+- GitLab. "GitLab CI/CD."
+  - https://docs.gitlab.com/ee/ci/
+
+### Configuration Management
+
+**Ansible Documentation**
+- Red Hat. "Ansible Documentation."
+  - https://docs.ansible.com/
+
+**Ansible openssl Modules**
+- Ansible. "Community.crypto Collection."
+  - https://docs.ansible.com/ansible/latest/collections/community/crypto/
+
+### ACME Protocol
+
+**RFC 8555 - ACME**
+- Barnes, R., et al. "Automatic Certificate Management Environment (ACME)." RFC 8555, March 2019.
+  - https://tools.ietf.org/html/rfc8555
+
+**Let's Encrypt Documentation**
+- Let's Encrypt. "Let's Encrypt Documentation."
+  - https://letsencrypt.org/docs/
+
+**Boulder - ACME Server**
+- Let's Encrypt. "Boulder - An ACME-based CA."
+  - https://github.com/letsencrypt/boulder
+
+### Secrets Management
+
+**HashiCorp Vault Documentation**
+- HashiCorp. "Vault Documentation."
+  - https://www.vaultproject.io/docs
+
+**AWS Secrets Manager**
+- AWS. "AWS Secrets Manager Documentation."
+  - https://docs.aws.amazon.com/secretsmanager/
+
+**Azure Key Vault**
+- Microsoft. "Azure Key Vault Documentation."
+  - https://docs.microsoft.com/en-us/azure/key-vault/
+
+### Security Scanning
+
+**gitleaks**
+- Gitleaks. "Protect and discover secrets using Gitleaks."
+  - https://github.com/gitleaks/gitleaks
+
+**TruffleHog**
+- Truffle Security. "Find credentials all over the place."
+  - https://github.com/trufflesecurity/trufflehog
+
+### Best Practices
+
+**"Site Reliability Engineering" (O'Reilly)**
+- Beyer, B., et al. "Site Reliability Engineering: How Google Runs Production Systems." O'Reilly, 2016.
+- Automation and toil reduction
+
+**"The DevOps Handbook" (IT Revolution Press)**
+- Kim, G., et al. "The DevOps Handbook." IT Revolution Press, 2016.
+- Infrastructure automation
+- Deployment pipelines

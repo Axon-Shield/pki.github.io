@@ -234,3 +234,80 @@ Common mTLS issues:
 Mutual TLS provides strong, bidirectional authentication using certificates. By requiring both parties to prove identity cryptographically, mTLS enables fine-grained access control based on certificate attributes and eliminates many password-related vulnerabilities.
 
 For modern microservices and zero-trust architectures, mTLS is becoming the default rather than the exception—especially with service meshes automating certificate management.
+
+## References
+
+### TLS and mTLS Standards
+
+**RFC 8446 - TLS 1.3**
+- Rescorla, E. "The Transport Layer Security (TLS) Protocol Version 1.3." RFC 8446, August 2018.
+  - https://tools.ietf.org/html/rfc8446
+
+**RFC 5246 - TLS 1.2**
+- Dierks, T., Rescorla, E. "The Transport Layer Security (TLS) Protocol Version 1.2." RFC 5246, August 2008.
+  - https://tools.ietf.org/html/rfc5246
+
+**RFC 5280 - X.509 Certificates**
+- Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and CRL Profile." RFC 5280, May 2008.
+  - https://tools.ietf.org/html/rfc5280
+
+### Implementation Guides
+
+**NIST SP 800-52 - Guidelines for TLS Implementations**
+- NIST. "Guidelines for the Selection, Configuration, and Use of TLS Implementations." Revision 2, August 2019.
+  - https://csrc.nist.gov/publications/detail/sp/800-52/rev-2/final
+
+**Mozilla SSL Configuration Generator**
+- Mozilla. "SSL Configuration Generator."
+  - https://ssl-config.mozilla.org/
+
+**OWASP TLS Cheat Sheet**
+- OWASP. "Transport Layer Protection Cheat Sheet."
+  - https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html
+
+### Database mTLS
+
+**PostgreSQL SSL Documentation**
+- PostgreSQL. "SSL Support."
+  - https://www.postgresql.org/docs/current/ssl-tcp.html
+
+**MySQL SSL/TLS Documentation**
+- Oracle. "Using Encrypted Connections."
+  - https://dev.mysql.com/doc/refman/8.0/en/encrypted-connections.html
+
+**MongoDB TLS/SSL Configuration**
+- MongoDB. "TLS/SSL Configuration."
+  - https://docs.mongodb.com/manual/core/security-transport-encryption/
+
+### API Security
+
+**NIST SP 800-204B - Attribute-based Access Control for Microservices**
+- NIST. "Attribute-based Access Control for Microservices-based Applications Using a Service Mesh." August 2021.
+  - https://csrc.nist.gov/publications/detail/sp/800-204b/final
+
+**OAuth 2.0 Mutual-TLS Client Authentication**
+- Campbell, B., et al. "OAuth 2.0 Mutual-TLS Client Authentication and Certificate-Bound Access Tokens." RFC 8705, February 2020.
+  - https://tools.ietf.org/html/rfc8705
+
+### Service Mesh mTLS
+
+**Istio Security Documentation**
+- https://istio.io/latest/docs/concepts/security/
+
+**Linkerd mTLS Documentation**
+- https://linkerd.io/2/features/automatic-mtls/
+
+**Consul Connect mTLS**
+- https://www.consul.io/docs/connect
+
+### Performance
+
+**"The Security Impact of HTTPS Interception" (NDSS 2017)**
+- Durumeric, Z., et al. NDSS 2017.
+- TLS interception analysis
+- Performance impacts
+
+### Books
+
+**"Bulletproof SSL and TLS" (Feisty Duck)**
+- Ristic, I. "Bulletproof SSL and TLS: Understanding and Deploying SSL/TLS and PKI to Secure Servers and Web Applications." 2014.

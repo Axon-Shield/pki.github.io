@@ -888,3 +888,132 @@ Multi-tenant PKI architecture requires careful attention to isolation, security 
 Choose the isolation model appropriate for your tenants' needs: shared infrastructure with logical isolation for most use cases, dedicated infrastructure for high-security or high-value tenants, and hierarchical models when tenants need operational control.
 
 Test isolation boundaries regularly, enforce strict access controls, and maintain comprehensive audit logging with tenant context. Multi-tenancy is fundamentally an isolation problem—solve isolation first, optimize for efficiency second.
+
+## References
+
+### Multi-Tenancy Architecture
+
+**"Multi-Tenancy Architecture" (Microsoft)**
+- Microsoft. "Multi-tenant SaaS patterns."
+  - https://docs.microsoft.com/en-us/azure/architecture/guide/multitenant/
+- Isolation models and strategies
+- Resource governance
+- Tenant provisioning
+
+**"Multi-Tenant Data Architecture" (MSDN)**
+- Chong, F., Carraro, G. "Architecture Strategies for Catching the Long Tail." Microsoft MSDN, 2006.
+- Shared vs dedicated infrastructure
+- Database isolation patterns
+- Scalability considerations
+
+**NIST SP 800-145 - Cloud Computing Definition**
+- NIST. "The NIST Definition of Cloud Computing." September 2011.
+  - https://csrc.nist.gov/publications/detail/sp/800-145/final
+- Multi-tenancy characteristics
+- Service models
+- Deployment models
+
+### Database Isolation
+
+**PostgreSQL Row Level Security**
+- PostgreSQL. "Row Security Policies."
+  - https://www.postgresql.org/docs/current/ddl-rowsecurity.html
+- Tenant data isolation
+- Policy implementation
+- Performance considerations
+
+**"Database Multi-Tenancy Design Patterns"**
+- Aulbach, S., et al. "Multi-Tenant Databases for Software as a Service: Schema-Mapping Techniques." ACM SIGMOD 2008.
+- Database isolation patterns
+- Performance analysis
+- Schema mapping techniques
+
+### HSM Multi-Tenancy
+
+**PKCS #11 - Token Partitioning**
+- OASIS. "PKCS #11: Cryptographic Token Interface."
+  - http://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/
+- Logical partitioning
+- Access control
+- Key isolation
+
+**FIPS 140-2 Level 3 Requirements**
+- NIST. "Security Requirements for Cryptographic Modules - Multi-Tenant Considerations."
+- Physical vs logical separation
+- Isolation requirements
+- Zeroization procedures
+
+### Network Isolation
+
+**Kubernetes Multi-Tenancy**
+- Kubernetes SIG Multi-Tenancy. "Multi-Tenancy in Kubernetes."
+  - https://github.com/kubernetes-sigs/multi-tenancy
+- Namespace isolation
+- Network policies
+- Resource quotas
+
+**Network Segmentation - NIST SP 800-125**
+- NIST. "Guide to Security for Full Virtualization Technologies." January 2011.
+  - https://csrc.nist.gov/publications/detail/sp/800-125/final
+- Virtual network isolation
+- Hypervisor security
+- Cross-tenant protection
+
+### Access Control
+
+**NIST SP 800-162 - Attribute Based Access Control**
+- NIST. "Guide to Attribute Based Access Control (ABAC) Definition and Considerations." January 2014.
+  - https://csrc.nist.gov/publications/detail/sp/800-162/final
+- ABAC for multi-tenant systems
+- Policy models
+- Implementation guidance
+
+**OAuth 2.0 Multi-Tenant Patterns**
+- RFC 6749. "The OAuth 2.0 Authorization Framework."
+  - https://tools.ietf.org/html/rfc6749
+- Tenant-specific authorization
+- Resource isolation
+- Token scoping
+
+### Cost Allocation
+
+**"Cloud FinOps" (O'Reilly)**
+- Fuller, J., et al. "Cloud FinOps." O'Reilly, 2021.
+- Cost allocation methodologies
+- Chargeback models
+- Resource tagging strategies
+
+**AWS Cost Allocation Tags**
+- AWS. "Using Cost Allocation Tags."
+  - https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
+- Tenant cost tracking
+- Billing automation
+
+### Compliance and Legal
+
+**GDPR Multi-Tenant Considerations**
+- European Parliament. "GDPR Article 32 - Security of Processing."
+  - https://gdpr-info.eu/art-32-gdpr/
+- Data protection by design
+- Separation of tenant data
+- Processor obligations
+
+**SOC 2 Multi-Tenancy**
+- AICPA. "SOC 2 - Logical Separation."
+- Trust services criteria
+- Tenant isolation requirements
+- Security testing
+
+### Books and Research
+
+**"Multi-Tenancy for Cloud-Based SaaS Applications"**
+- Bezemer, C.P., Zaidman, A. "Multi-Tenant SaaS Applications: Maintenance Dream or Nightmare?" IWPSE-EVOL 2010.
+- Maintenance challenges
+- Code sharing vs isolation
+- Evolution patterns
+
+**"Database Isolation in Multi-Tenant Environments"**
+- Aulbach, S., et al. "A Comparison of Flexible Schemas for Software as a Service." ACM SIGMOD 2009.
+- Schema flexibility
+- Performance implications
+- Tenant customization

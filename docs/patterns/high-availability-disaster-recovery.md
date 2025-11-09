@@ -905,3 +905,309 @@ High availability and disaster recovery aren't luxuries for PKI—they're requir
 Build resilience in layers: component redundancy, geographic distribution, comprehensive backups, documented procedures, and regular testing. Don't wait for a disaster to discover your recovery procedures don't work. Test them now, while the stakes are low.
 
 Remember: You don't have HA/DR until you've tested it. Untested disaster recovery procedures are fiction, not insurance.
+
+## References
+
+### Business Continuity Standards
+
+**ISO 22301 - Business Continuity Management**
+- ISO. "Security and resilience — Business continuity management systems." ISO 22301:2019.
+  - https://www.iso.org/standard/75106.html
+- Business continuity framework
+- Recovery strategies
+- Testing requirements
+
+**NIST SP 800-34 - Contingency Planning Guide**
+- NIST. "Contingency Planning Guide for Federal Information Systems." Revision 1, May 2010.
+  - https://csrc.nist.gov/publications/detail/sp/800-34/rev-1/final
+- Contingency planning framework
+- Recovery strategies
+- Testing and exercises
+
+**BS 25999 / ISO 22313 - Business Continuity Management**
+- ISO. "Security and resilience — Business continuity management systems — Guidance on the use of ISO 22301." ISO 22313:2020.
+- Implementation guidance
+- Recovery time objectives
+- Business impact analysis
+
+### Disaster Recovery Planning
+
+**NIST SP 800-184 - Guide for Cybersecurity Event Recovery**
+- NIST. "Guide for Cybersecurity Event Recovery." December 2016.
+  - https://csrc.nist.gov/publications/detail/sp/800-184/final
+- Recovery planning framework
+- Communication strategies
+- Lessons learned process
+
+**"Disaster Recovery Planning" (Wiley)**
+- Wallace, M., Webber, L. "The Disaster Recovery Handbook: A Step-by-Step Plan to Ensure Business Continuity." 3rd Edition, AMACOM, 2017.
+- Comprehensive DR planning
+- Testing methodologies
+- Recovery strategies
+
+### High Availability Architecture
+
+**"Site Reliability Engineering" (O'Reilly)**
+- Beyer, B., et al. "Site Reliability Engineering: How Google Runs Production Systems." O'Reilly, 2016.
+  - https://sre.google/books/
+- Reliability principles
+- Eliminating single points of failure
+- Testing and validation
+
+**"Designing Data-Intensive Applications" (O'Reilly)**
+- Kleppmann, M. "Designing Data-Intensive Applications." O'Reilly, 2017.
+- Replication patterns
+- Consistency models
+- Distributed systems reliability
+
+### Database High Availability
+
+**PostgreSQL High Availability Documentation**
+- PostgreSQL. "High Availability, Load Balancing, and Replication."
+  - https://www.postgresql.org/docs/current/high-availability.html
+- Streaming replication
+- Synchronous vs asynchronous
+- Failover configuration
+
+**MySQL Group Replication**
+- Oracle. "MySQL Group Replication."
+  - https://dev.mysql.com/doc/refman/8.0/en/group-replication.html
+- Multi-primary replication
+- Automatic failover
+- Conflict detection
+
+**MongoDB Replica Sets**
+- MongoDB. "Replication."
+  - https://docs.mongodb.com/manual/replication/
+- Replica set configuration
+- Automatic failover
+- Read preference strategies
+
+### HSM Backup and Recovery
+
+**NIST SP 800-57 Part 2 - Key Management**
+- NIST. "Recommendation for Key Management: Part 2 - Best Practices for Key Management Organizations." Revision 1, May 2019.
+  - https://csrc.nist.gov/publications/detail/sp/800-57-part-2/rev-1/final
+- Key backup strategies
+- Disaster recovery for keys
+- Geographic distribution
+
+**Thales Luna HSM - Backup and Recovery**
+- Thales. "Luna HSM Backup and Recovery Guide."
+- HSM backup procedures
+- Key replication
+- Disaster recovery testing
+
+**PKCS #11 - Backup and Restore**
+- OASIS. "PKCS #11 Cryptographic Token Interface."
+  - http://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/
+- Token backup mechanisms
+- Key wrapping
+- Secure transport
+
+### Load Balancing and Clustering
+
+**HAProxy Documentation**
+- HAProxy. "The Reliable, High Performance TCP/HTTP Load Balancer."
+  - http://www.haproxy.org/
+- Health check configuration
+- Session persistence
+- Failover strategies
+
+**Keepalived - VRRP Implementation**
+- Keepalived. "Keepalived for Linux."
+  - https://www.keepalived.org/
+- Virtual IP failover
+- Health checking
+- VRRP protocol
+
+**Pacemaker + Corosync**
+- ClusterLabs. "Pacemaker Cluster Resource Manager."
+  - https://clusterlabs.org/pacemaker/
+- Cluster resource management
+- Fencing and STONITH
+- Resource constraints
+
+### Cloud HA/DR
+
+**AWS Well-Architected Framework - Reliability Pillar**
+- AWS. "Reliability Pillar - AWS Well-Architected Framework."
+  - https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/
+- Multi-AZ deployment
+- Backup strategies
+- Disaster recovery patterns
+
+**Azure Site Recovery**
+- Microsoft. "Azure Site Recovery."
+  - https://docs.microsoft.com/en-us/azure/site-recovery/
+- Replication and failover
+- Recovery plans
+- Testing procedures
+
+**Google Cloud Architecture Framework - Reliability**
+- Google Cloud. "Architecture Framework: Reliability."
+  - https://cloud.google.com/architecture/framework/reliability
+- Regional and multi-regional deployment
+- Backup and disaster recovery
+- RPO and RTO planning
+
+### Monitoring and Observability
+
+**Prometheus - High Availability**
+- Prometheus. "High Availability."
+  - https://prometheus.io/docs/introduction/faq/#can-prometheus-be-made-highly-available
+- Federation and remote storage
+- Monitoring best practices
+
+**Nagios / Icinga Monitoring**
+- Nagios. "Nagios Core Documentation."
+  - https://www.nagios.org/documentation/
+- Infrastructure monitoring
+- Service checks
+- Alert escalation
+
+**NIST SP 800-92 - Log Management**
+- NIST. "Guide to Computer Security Log Management." September 2006.
+  - https://csrc.nist.gov/publications/detail/sp/800-92/final
+- Log management strategies
+- Monitoring and analysis
+- Retention requirements
+
+### Backup Technologies
+
+**Veeam Backup & Replication**
+- Veeam. "Veeam Backup & Replication."
+  - https://www.veeam.com/
+- Backup best practices
+- Replication strategies
+- Recovery testing
+
+**Commvault**
+- Commvault. "Backup and Recovery."
+- Enterprise backup solutions
+- Disaster recovery planning
+
+**AWS Backup**
+- AWS. "AWS Backup."
+  - https://aws.amazon.com/backup/
+- Centralized backup service
+- Backup policies
+- Cross-region backup
+
+### RTO/RPO Calculation
+
+**"The Business Impact Analysis and Risk Assessment" (Rothstein Associates)**
+- Rothstein, P. "Business Impact Analysis and Risk Assessment." 2007.
+- BIA methodology
+- RTO/RPO determination
+- Cost analysis
+
+**DRII Professional Practices**
+- Disaster Recovery Institute International. "Professional Practices."
+  - https://drii.org/
+- Business continuity standards
+- Recovery planning
+- Professional certifications
+
+### Geographic Redundancy
+
+**"Multi-Site High Availability Design" (Cisco)**
+- Cisco. "Multi-Site High Availability Design Guide."
+- Geographic distribution patterns
+- Active-active vs active-passive
+- WAN considerations
+
+**DNS-Based Global Load Balancing**
+- AWS Route 53 Traffic Management
+  - https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html
+- Health checks and failover
+- Latency-based routing
+- Geolocation routing
+
+### Testing and Validation
+
+**"Disaster Recovery Testing" (SANS Institute)**
+- SANS Institute. "Disaster Recovery Testing Best Practices."
+- Testing methodologies
+- Tabletop exercises
+- Full-scale drills
+
+**NIST SP 800-84 - Test, Training, and Exercise Programs**
+- NIST. "Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities." September 2006.
+  - https://csrc.nist.gov/publications/detail/sp/800-84/final
+- Exercise design and execution
+- Evaluation criteria
+- Improvement process
+
+### Recovery Procedures
+
+**"IT Disaster Recovery Planning For Dummies"**
+- Snedaker, S. "IT Disaster Recovery Planning For Dummies." Wiley, 2008.
+- Practical recovery planning
+- Step-by-step procedures
+- Common pitfalls
+
+**ITIL Service Design - Availability Management**
+- AXELOS. "ITIL 4: Service Design."
+- Availability management practices
+- Service continuity
+- Capacity planning
+
+### Compliance Requirements
+
+**PCI DSS - Requirement 12.10**
+- PCI Security Standards Council. "PCI DSS v4.0 - Requirement 12.10: Incident Response."
+- Incident response plan requirements
+- Business continuity planning
+- Testing requirements
+
+**FFIEC Business Continuity Planning**
+- Federal Financial Institutions Examination Council. "Business Continuity Planning IT Examination Handbook."
+  - https://ithandbook.ffiec.gov/
+- Financial sector BCP requirements
+- Testing and maintenance
+- Third-party dependencies
+
+**SOC 2 - Availability Criteria**
+- AICPA. "SOC 2 - Trust Services Criteria."
+- System availability commitments
+- Recovery procedures
+- Change management
+
+### Network Resilience
+
+**BGP Best Practices for Redundancy**
+- IETF. "BGP Operations and Security." RFC 7454.
+  - https://tools.ietf.org/html/rfc7454
+- Multi-homing strategies
+- Prefix filtering
+- Route diversity
+
+**MPLS VPN for HA**
+- RFC 4364. "BGP/MPLS IP Virtual Private Networks (VPNs)."
+  - https://tools.ietf.org/html/rfc4364
+- VPN redundancy
+- Fast reroute
+- Backup paths
+
+### Academic Research
+
+**"Availability in Globally Distributed Storage Systems"**
+- Ford, D., et al. "Availability in Globally Distributed Storage Systems." OSDI 2010.
+- Google's production experience
+- Replication strategies
+- Failure analysis
+
+**"The Tail at Scale"**
+- Dean, J., Barroso, L.A. "The Tail at Scale." Communications of the ACM, 2013.
+- Latency variability in distributed systems
+- Request hedging
+- Tiered service levels
+
+### Industry Standards
+
+**NFPA 1600 - Disaster/Emergency Management**
+- National Fire Protection Association. "Standard on Disaster/Emergency Management and Business Continuity Programs." NFPA 1600, 2019.
+- Emergency management standards
+- Business continuity requirements
+- Program management
