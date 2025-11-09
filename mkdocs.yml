@@ -2,6 +2,7 @@ site_name: Shield Vault
 site_url: https://vault.axonshield.com/
 theme:
   logo: assets/axon-logo.png
+  favicon: assets/favicon.ico
   name: material
   custom_dir: overrides
   palette:
