@@ -199,6 +199,12 @@ According to RFC 5280[^1], certificate extensions provide...
 ---
 
 **Quality Checks**: 
+
+
+
+
+
+
 - [ ] All claims cited from authoritative sources
 - [ ] Cross-references validated
 - [ ] Practical guidance included
@@ -412,6 +418,10 @@ When creating link from Page A → Page B:
 ### Link Maintenance Queries
 
 LLM should regularly search for:
+
+
+
+
 - Pages with <3 internal links (potential orphans)
 - Pages with >20 links (may be too dense)
 - Broken [[wiki-links]]

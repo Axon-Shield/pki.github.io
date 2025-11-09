@@ -175,6 +175,9 @@ An expired certificate prevented Equifax from scanning for vulnerabilities, cont
 ---
 
 **Quality Checks**: 
+
+
+
 - [x] All claims cited from authoritative sources
 - [x] Cross-references validated
 - [x] Practical guidance included

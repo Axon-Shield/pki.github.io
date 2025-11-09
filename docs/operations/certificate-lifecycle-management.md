@@ -85,6 +85,8 @@ Effective lifecycle management reduces operational toil, prevents security incid
    - IoT device certificates
 
 **Deliverable**: Certificate inventory database containing:
+
+
 - Certificate details (issuer, subject, SAN, expiration)
 - Location (hostname, IP, cloud resource ID)
 - Owner/responsible team
@@ -165,6 +167,9 @@ Effective lifecycle management reduces operational toil, prevents security incid
    - Mean time to remediate expiring certificates
 
 **Alert Fatigue Prevention**: 
+
+
+
 - Noise reduction: Alert only on actionable issues
 - Owner assignment: Route alerts to responsible teams
 - Automated remediation: Trigger auto-renewal when possible
@@ -175,6 +180,9 @@ Effective lifecycle management reduces operational toil, prevents security incid
 **Objective**: Mature the lifecycle management program over time.
 
 **Metrics to Track**:
+
+
+
 - **Mean Time to Renewal (MTTR)**: Target <24 hours from expiration alert
 - **Automation Rate**: Percentage of certificates with automated renewal (target: >90%)
 - **Discovery Coverage**: Percentage of infrastructure regularly scanned (target: 100%)
@@ -182,6 +190,9 @@ Effective lifecycle management reduces operational toil, prevents security incid
 - **Incident Rate**: Certificate-related outages per quarter (target: 0)
 
 **Improvement Activities**:
+
+
+
 - Quarterly inventory audits to identify new certificates
 - Annual review of CA relationships and certificate policies
 - Regular automation testing (fail renewal process intentionally to validate alerting)
@@ -266,6 +277,8 @@ Certificate pinning provides additional security but dramatically complicates li
 
 Implement controls to prevent single-person compromise of certificate management:
 
+
+
 - Separate certificate request approval from issuance
 - Require multi-party approval for CA operations
 - Audit all certificate management activities
@@ -274,6 +287,8 @@ Implement controls to prevent single-person compromise of certificate management
 ### Emergency Break-Glass Procedures
 
 Despite best efforts, certificates will occasionally expire unexpectedly. Prepare for emergency scenarios:
+
+
 
 - Documented procedure for emergency certificate issuance
 - Pre-approved change tickets for emergency renewals
@@ -329,6 +344,9 @@ An expired security certificate prevented Equifax from detecting vulnerabilities
 ---
 
 **Quality Checks**: 
+
+
+
 - [x] All claims cited from authoritative sources
 - [x] Cross-references validated
 - [x] Practical guidance included

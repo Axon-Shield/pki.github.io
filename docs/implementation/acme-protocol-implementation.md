@@ -1413,6 +1413,8 @@ class JsonFormatter(logging.Formatter):
 
 ### Let's Encrypt (Boulder)
 The largest ACME CA, issuing 3+ million certificates daily:
+
+
 - Go-based implementation for performance
 - Multi-region deployment with anycast
 - Comprehensive rate limiting (50 orders/account/hour, 300 pending/account)
@@ -1424,6 +1426,8 @@ The largest ACME CA, issuing 3+ million certificates daily:
 
 ### Sectigo (SCM)
 Enterprise ACME CA with private deployments:
+
+
 - Customizable validation workflows for internal networks
 - Integration with enterprise directory services (LDAP, AD)
 - Custom challenge types for air-gapped environments
@@ -1434,6 +1438,8 @@ Enterprise ACME CA with private deployments:
 
 ### HashiCorp Vault PKI
 ACME implementation for internal certificates:
+
+
 - Integrated with Vault's authentication methods
 - Dynamic certificate lifetimes based on requester
 - Automated renewal via Vault agents

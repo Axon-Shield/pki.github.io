@@ -31,16 +31,25 @@ Hash functions take arbitrary-length input and produce fixed-length output (the 
 #### Required Properties
 
 **Pre-image Resistance** (One-way):
+
+
+
 - Given hash H, computationally infeasible to find message M where hash(M) = H
 - Ensures hashes can't be reversed to recover original data
 - Example: Given SHA-256 hash, cannot determine what was hashed
 
 **Second Pre-image Resistance** (Weak collision resistance):
+
+
+
 - Given message M₁, computationally infeasible to find different M₂ where hash(M₁) = hash(M₂)
 - Prevents attacker from substituting different message with same hash
 - Critical for digital signatures
 
 **Collision Resistance** (Strong collision resistance):
+
+
+
 - Computationally infeasible to find any two messages M₁ ≠ M₂ where hash(M₁) = hash(M₂)
 - Harder than second pre-image resistance
 - Essential for certificate signatures
@@ -54,17 +63,26 @@ Output: a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad9f146e
 ```
 
 **Characteristics**:
+
+
+
 - 256-bit (32-byte) output
 - 2^256 possible outputs
 - Collision attack complexity: 2^128 operations (infeasible)
 - NIST recommended for security through 2030+[^1]
 
 **SHA-384** (384-bit output):
+
+
+
 - Truncated SHA-512 computation
 - Higher security margin than SHA-256
 - Used when 128-bit security insufficient
 
 **SHA-512** (512-bit output):
+
+
+
 - 512-bit output
 - Higher performance on 64-bit systems
 - Overkill for most PKI applications
@@ -72,12 +90,18 @@ Output: a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad9f146e
 #### Deprecated Hash Functions
 
 **MD5** (128-bit output):
+
+
+
 - **Status**: Cryptographically broken since 2004
 - **Vulnerability**: Practical collision attacks demonstrated[^2]
 - **Usage**: Forbidden for digital signatures
 - **Acceptable**: Non-cryptographic uses (checksums where no attacker)
 
 **SHA-1** (160-bit output):
+
+
+
 - **Status**: Deprecated since 2017, fully broken in 2020[^3]
 - **Vulnerability**: Collision attacks practical (Google demonstrated)
 - **Usage**: Prohibited for TLS certificates since 2017
@@ -94,6 +118,9 @@ Google and CWI Amsterdam created two different PDFs with identical SHA-1 hash, d
 3. Include hash algorithm identifier in signature
 
 **Why hash before signing?**:
+
+
+
 - Efficiency: Signing small hash vs. large document
 - Algorithm independence: Any size data produces fixed-size hash
 - Security: Computational hardness properties
@@ -131,12 +158,18 @@ Based on difficulty of factoring large composite numbers.
 **Security**: If you can factor n into p and q, you can compute private key. Factoring large numbers is computationally hard (no known polynomial-time algorithm).
 
 **Key Sizes**:
+
+
+
 - **1024-bit**: Deprecated (potentially breakable with significant resources)
 - **2048-bit**: Current minimum for publicly-trusted certificates[^4]
 - **3072-bit**: Higher security, recommended for long-term keys
 - **4096-bit**: Very high security but performance penalty
 
 **Operations**:
+
+
+
 - Encryption: c = m^e mod n (using public key)
 - Decryption: m = c^d mod n (using private key)
 - Signing: s = hash(m)^d mod n
@@ -156,17 +189,26 @@ Based on discrete logarithm problem on elliptic curves.
 **Security**: If you can solve elliptic curve discrete logarithm problem (find d given Q = d × G), you can derive private key. This is believed computationally hard.
 
 **Key Sizes** (equivalent security to RSA):
+
+
+
 - **P-256 (secp256r1)**: Equivalent to RSA-3072, 128-bit security
 - **P-384 (secp384r1)**: Equivalent to RSA-7680, 192-bit security
 - **P-521 (secp521r1)**: Equivalent to RSA-15360, 256-bit security
 
 **Advantages over RSA**:
+
+
+
 - Smaller keys for equivalent security (256-bit ECDSA ≈ 3072-bit RSA)
 - Faster signature generation
 - Smaller certificates
 - Lower bandwidth and storage requirements
 
 **Disadvantages**:
+
+
+
 - More complex mathematics
 - Some curves have potential backdoors (NIST P-curves controversy)
 - Less widely understood than RSA
@@ -183,6 +225,9 @@ Based on discrete logarithm problem on elliptic curves.
 | ECDSA P-384 | 384 bits | 96 bytes | Fast both | 192-bit |
 
 **NIST Recommendations**[^1]:
+
+
+
 - Through 2030: 2048-bit RSA or 256-bit ECDSA minimum
 - Beyond 2030: 3072-bit RSA or 384-bit ECDSA
 
@@ -231,6 +276,9 @@ Valid if hash' = SHA-256(message)
   - T: Hash algorithm identifier and hash value
 
 **RSA-PSS** (Preferred Modern Variant):
+
+
+
 - Probabilistic padding (different each time)
 - Provably secure under RSA assumption
 - Recommended over PKCS#1 v1.5[^4]
@@ -275,6 +323,8 @@ Valid if hash' = SHA-256(message)
 ### Random Number Generation
 
 Cryptographic security depends on unpredictable random numbers for:
+
+
 - Private key generation
 - Signature nonces (k in ECDSA)
 - Session keys
@@ -283,11 +333,17 @@ Cryptographic security depends on unpredictable random numbers for:
 #### Entropy Sources
 
 **Hardware Sources**:
+
+
+
 - CPU instructions (RDRAND, RDSEED on x86)
 - Hardware RNG (TPM, HSM internal RNG)
 - Environmental noise (timing jitter, interrupt timing)
 
 **Software Sources**:
+
+
+
 - `/dev/random` (Linux, blocking if insufficient entropy)
 - `/dev/urandom` (Linux, non-blocking, cryptographically secure)
 - `CryptGenRandom` (Windows)
@@ -296,17 +352,26 @@ Cryptographic security depends on unpredictable random numbers for:
 #### Bad Randomness Examples
 
 **Debian OpenSSL Bug (2008)**:
+
+
+
 - Debian patched OpenSSL, accidentally removing entropy source
 - All keys generated had only 2^15 possibilities (should be 2^2048)
 - All Debian-generated keys from 2006-2008 were weak
 - Required mass revocation and regeneration
 
 **Dual_EC_DRBG Backdoor**:
+
+
+
 - NSA-designed random number generator with potential backdoor
 - If NSA knows certain value, can predict future outputs
 - Demonstrates importance of trustworthy RNG algorithms
 
 **Android Bitcoin Wallet (2013)**:
+
+
+
 - Android SecureRandom bug caused reuse of ECDSA nonce k
 - Multiple signatures with same k allows private key recovery
 - Multiple Bitcoin wallets compromised
@@ -325,6 +390,9 @@ key = PBKDF2(password, salt, iterations, key_length)
 ```
 
 **Parameters**:
+
+
+
 - **Salt**: Random value preventing rainbow table attacks
 - **Iterations**: Number of hash iterations (e.g., 100,000+)
 - **Key Length**: Desired output key size
@@ -346,6 +414,9 @@ openssl genpkey -algorithm RSA -out key.pem -aes256 -pass pass:MyPassword
 **Mechanism**: HMAC-based extraction and expansion
 
 **PKI Usage**: 
+
+
+
 - TLS 1.3 key derivation
 - Deriving multiple keys from ECDH shared secret
 
@@ -358,21 +429,33 @@ openssl genpkey -algorithm RSA -out key.pem -aes256 -pass pass:MyPassword
 **For New Implementations**:
 
 **TLS Certificates**:
+
+
+
 - **Algorithm**: ECDSA with P-256 curve (preferred) or RSA-2048 (wider compatibility)
 - **Hash**: SHA-256
 - **Rationale**: Smaller certificates, better performance, adequate security
 
 **Code Signing**:
+
+
+
 - **Algorithm**: RSA-3072 or RSA-4096
 - **Hash**: SHA-256 or SHA-384
 - **Rationale**: Higher security for long-lived signatures, wider compatibility
 
 **CA Certificates**:
+
+
+
 - **Root CA**: RSA-4096 with SHA-384 (20+ year lifetime)
 - **Intermediate CA**: RSA-3072 or ECDSA P-384 with SHA-256
 - **Rationale**: Long lifetime requires higher security margin
 
 **User Certificates**:
+
+
+
 - **Algorithm**: ECDSA P-256 (smart cards) or RSA-2048
 - **Hash**: SHA-256
 - **Rationale**: Performance and compatibility balance
@@ -380,16 +463,25 @@ openssl genpkey -algorithm RSA -out key.pem -aes256 -pass pass:MyPassword
 #### Migration Planning
 
 **SHA-1 to SHA-256 Migration** (Already complete for public PKI):
+
+
+
 - All publicly-trusted certificates must use SHA-256+
 - Private PKI should complete migration
 - Legacy system support may require maintaining SHA-1 temporarily
 
 **RSA-2048 to RSA-3072/ECDSA Migration**:
+
+
+
 - Planning horizon: 2025-2030
 - NIST recommends 3072-bit RSA or 256-bit ECDSA beyond 2030
 - Start transitioning long-lived keys (CA certificates) first
 
 **Post-Quantum Cryptography** (Future):
+
+
+
 - NIST standardizing post-quantum algorithms (2024)
 - Expected transition period: 2025-2035
 - Hybrid approaches: Classical + post-quantum signatures
@@ -480,12 +572,18 @@ openssl x509 -in cert.pem -noout -fingerprint -sha256
 | Verification | 20.0x | 6.0x | 15.0x | 10.0x |
 
 **Observations**:
+
+
+
 - RSA verification is very fast (small public exponent)
 - ECDSA signing much faster than RSA signing
 - ECDSA keys generate much faster than RSA keys
 - RSA-4096 signing is significantly slower than RSA-2048
 
 **Practical Impact**:
+
+
+
 - **Web servers** (many signature verifications): RSA and ECDSA similar performance
 - **CA operations** (many signatures): ECDSA dramatically faster
 - **Smart cards** (limited CPU): ECDSA preferred
@@ -502,6 +600,9 @@ openssl x509 -in cert.pem -noout -fingerprint -sha256
 | ECDSA P-384 | ~120 bytes | ~96 bytes | ~216 bytes |
 
 **Impact**:
+
+
+
 - ECDSA certificates ~70% smaller than RSA
 - Important for: Mobile devices, constrained environments, network efficiency
 - Less important for: Desktop systems, servers
@@ -538,21 +639,33 @@ openssl x509 -in cert.pem -noout -fingerprint -sha256
 ### Quantum Computing Threat
 
 **Current Status** (2024):
+
+
+
 - Large-scale quantum computers don't exist yet
 - Shor's algorithm can break RSA and ECDSA on quantum computers
 - Timeline for quantum threat uncertain (possibly 2030s)
 
 **Impact on PKI**:
+
+
+
 - All current public key algorithms vulnerable
 - Symmetric algorithms (AES) less affected (double key size sufficient)
 - Hash functions generally secure
 
 **Post-Quantum Cryptography**:
+
+
+
 - NIST standardizing post-quantum algorithms (CRYSTALS-Kyber, CRYSTALS-Dilithium, SPHINCS+)
 - Hybrid approaches: Classical + post-quantum
 - Transition period: 2025-2035 expected
 
 **Planning Recommendations**:
+
+
+
 - Monitor NIST PQC standardization
 - Plan for algorithm agility in systems
 - Consider data sensitivity and lifetime
@@ -563,16 +676,25 @@ openssl x509 -in cert.pem -noout -fingerprint -sha256
 Cryptographic implementations can leak information through:
 
 **Timing Attacks**:
+
+
+
 - Operation timing varies based on key bits
 - Attacker measures execution time to infer keys
 - **Mitigation**: Constant-time implementations
 
 **Power Analysis**:
+
+
+
 - Power consumption reveals computation patterns
 - Can extract keys from smart cards
 - **Mitigation**: Power analysis resistant hardware
 
 **Cache Timing**:
+
+
+
 - CPU cache behavior leaks information
 - Spectre/Meltdown-style attacks
 - **Mitigation**: Algorithm redesign, hardware countermeasures
@@ -584,6 +706,9 @@ Cryptographic implementations can leak information through:
 Design systems for cryptographic algorithm changes:
 
 **Best Practices**:
+
+
+
 - Version algorithm identifiers in protocols
 - Support multiple algorithms simultaneously
 - Plan migration paths before algorithms break
@@ -656,6 +781,9 @@ Heartbleed (2014) allowed reading server memory, potentially exposing private ke
 ---
 
 **Quality Checks**: 
+
+
+
 - [x] All claims cited from authoritative sources
 - [x] Cross-references validated
 - [x] Practical guidance included

@@ -29,6 +29,8 @@ X.509 defines not just certificates but also Certificate Revocation Lists (CRLs)
 #### X.509 v1 (1988)
 
 The original specification with basic fields:
+
+
 - Serial number
 - Signature algorithm
 - Issuer DN
@@ -44,6 +46,8 @@ The original specification with basic fields:
 #### X.509 v2 (1993)
 
 Added two optional identifier fields:
+
+
 - Issuer Unique Identifier
 - Subject Unique Identifier
 
@@ -54,6 +58,8 @@ Added two optional identifier fields:
 #### X.509 v3 (1996-Present)
 
 Introduced the extension mechanism, enabling:
+
+
 - Subject Alternative Names (SAN)
 - Key Usage constraints
 - Certificate Policies
@@ -70,6 +76,8 @@ Introduced the extension mechanism, enabling:
 #### ITU-T X.509 (ISO/IEC 9594-8)
 
 The original standard published by the International Telecommunication Union:
+
+
 - Broader scope including X.500 directory integration
 - More general purpose
 - Updates less frequently
@@ -78,6 +86,8 @@ The original standard published by the International Telecommunication Union:
 #### RFC 5280 - Internet X.509 Profile
 
 The IETF adaptation for internet use:
+
+
 - Specifies internet-specific constraints
 - Defines required and optional extensions
 - Provides validation algorithms
@@ -85,6 +95,9 @@ The IETF adaptation for internet use:
 - Updates more frequently through internet standards process
 
 **Key Differences**:
+
+
+
 - RFC 5280 prohibits some X.509 features (e.g., v1 and v2 certificates)
 - RFC 5280 mandates extensions that X.509 makes optional
 - RFC 5280 specifies DNS name encoding in SAN (X.509 is protocol-agnostic)
@@ -120,6 +133,9 @@ TBSCertificate  ::=  SEQUENCE  {
 ```
 
 **Key Points**:
+
+
+
 - `SEQUENCE` indicates ordered collection of fields
 - `[0]`, `[1]`, `[2]`, `[3]` are context-specific tags for optional fields
 - `OPTIONAL` fields may be omitted
@@ -128,6 +144,8 @@ TBSCertificate  ::=  SEQUENCE  {
 #### DER Encoding
 
 Distinguished Encoding Rules provide canonical binary encoding:
+
+
 - Each ASN.1 type has specific encoding rules
 - Ensures unique encoding (critical for signatures)
 - Tag-Length-Value (TLV) structure
@@ -156,6 +174,9 @@ BAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBX
 ```
 
 **Characteristics**:
+
+
+
 - Base64 encoding of DER certificate
 - Header: `-----BEGIN CERTIFICATE-----`
 - Footer: `-----END CERTIFICATE-----`
@@ -163,6 +184,9 @@ BAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBX
 - Human-transportable (email, copy-paste)
 
 **Common Variants**:
+
+
+
 - `BEGIN/END CERTIFICATE REQUEST` - CSR (PKCS#10)
 - `BEGIN/END RSA PRIVATE KEY` - Unencrypted private key
 - `BEGIN/END ENCRYPTED PRIVATE KEY` - Encrypted private key (PKCS#8)
@@ -175,6 +199,8 @@ Extensions are the key innovation in X.509 v3, enabling extensibility without br
 #### Extension Structure
 
 Each extension has:
+
+
 - **OID (Object Identifier)**: Unique identifier (e.g., 2.5.29.17 for SAN)
 - **Critical flag**: Boolean indicating if unknown extensions must cause rejection
 - **Value**: DER-encoded extension-specific data
@@ -207,11 +233,15 @@ Extension  ::=  SEQUENCE  {
 **Example Scenarios**:
 
 Certificate with critical Key Usage restricting to digital signature only:
+
+
 - Old software that doesn't understand Key Usage: **Rejects certificate** (correct behavior)
 - Software that understands Key Usage: Allows only signing operations
 - This prevents accidental key misuse by legacy software
 
 Certificate with non-critical Certificate Transparency SCTs:
+
+
 - Old software that doesn't understand CT: Ignores extension, accepts certificate
 - Software that understands CT: Validates SCTs
 - Allows CT adoption without breaking legacy clients
@@ -240,6 +270,8 @@ KeyPurposeId ::= OBJECT IDENTIFIER
 ```
 
 Common OIDs:
+
+
 - `1.3.6.1.5.5.7.3.1` - serverAuth (TLS server)
 - `1.3.6.1.5.5.7.3.2` - clientAuth (TLS client)
 - `1.3.6.1.5.5.7.3.3` - codeSigning
@@ -281,6 +313,8 @@ AccessDescription  ::=  SEQUENCE {
 ```
 
 Common access methods:
+
+
 - `1.3.6.1.5.5.7.48.1` - OCSP
 - `1.3.6.1.5.5.7.48.2` - caIssuers
 
@@ -456,6 +490,9 @@ openssl x509 -in ca-cert.pem -noout -ext keyUsage
 For publicly-trusted TLS certificates[^2]:
 
 **Required Extensions**:
+
+
+
 - Subject Alternative Name (critical if Subject DN empty)
 - Certificate Policies (with DV/OV/EV OID)
 - Authority Information Access (with OCSP and caIssuers)
@@ -464,6 +501,9 @@ For publicly-trusted TLS certificates[^2]:
 - Extended Key Usage (with serverAuth)
 
 **Prohibited**:
+
+
+
 - Version 1 or 2 certificates
 - OU field in Subject DN (deprecated as of April 2024)
 - Validity period exceeding 398 days (825 days prior to March 2018)
@@ -472,6 +512,9 @@ For publicly-trusted TLS certificates[^2]:
 - Certificate serial numbers with less than 64 bits entropy
 
 **Validation Requirements**:
+
+
+
 - Domain control validation for DV
 - Organization validation for OV
 - Extended validation for EV
@@ -582,6 +625,8 @@ certificatePolicies = 1.3.6.1.4.1.1234.1.1.1
 
 Attackers may attempt to exploit improper extension processing:
 
+
+
 - **Unknown critical extension bypass**: If validator ignores unknown critical extensions, attacker can add restrictions that are not enforced
   - **Mitigation**: Strictly enforce critical extension processing; reject certificates with unknown critical extensions
 
@@ -640,6 +685,8 @@ In 2011, researchers found that some browsers didn't properly process critical e
 Certificate Transparency required extending X.509 without breaking existing validators. CT used non-critical extensions for Signed Certificate Timestamps (SCTs).
 
 **Implementation**: New extension (1.3.6.1.4.1.11129.2.4.2) marked non-critical allows:
+
+
 - Old validators: Ignore extension, accept certificate
 - CT-aware validators: Validate SCTs, enforce CT requirements
 
@@ -685,6 +732,9 @@ Certificate Transparency required extending X.509 without breaking existing vali
 ---
 
 **Quality Checks**: 
+
+
+
 - [x] All claims cited from authoritative sources
 - [x] Cross-references validated
 - [x] Practical guidance included

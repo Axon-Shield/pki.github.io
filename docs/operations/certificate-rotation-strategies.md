@@ -13,18 +13,27 @@ Certificate rotation is the planned replacement of certificates before expiry, e
 Organizations that treat certificate renewal as an ad-hoc, manual process pay steep costs:
 
 **Operational costs**:
+
+
+
 - Emergency weekend work to renew expiring certificates
 - War rooms mobilized for certificate-related outages
 - Cross-team coordination overhead for every renewal
 - Testing cycles compressed under time pressure
 
 **Business costs**:
+
+
+
 - Revenue loss from certificate-related outages
 - Customer trust erosion from repeated availability issues
 - SLA violations and financial penalties
 - Opportunity cost of engineering time on manual tasks
 
 **Security costs**:
+
+
+
 - Certificates used beyond recommended lifetime
 - Weak cryptography persisting due to renewal difficulty
 - Delayed response to CA compromise
@@ -35,24 +44,36 @@ Organizations that treat certificate renewal as an ad-hoc, manual process pay st
 Proactive rotation strategies deliver:
 
 **Predictability**:
+
+
+
 - Scheduled maintenance windows for certificate updates
 - Coordinated deployments across infrastructure
 - Testing integrated into normal development cycles
 - Capacity planning for CA infrastructure load
 
 **Automation**:
+
+
+
 - Reduced manual effort through tooling
 - Consistent, repeatable processes
 - Self-service capabilities for teams
 - Integration with existing deployment pipelines
 
 **Risk reduction**:
+
+
+
 - Time buffer for handling renewal failures
 - Opportunity to update cryptographic parameters
 - Gradual migration to new CAs or policies
 - Practice for emergency response scenarios
 
 **Compliance**:
+
+
+
 - Demonstrable compliance with certificate lifetime policies
 - Audit trail of rotation activities
 - Consistent application of security standards
@@ -83,17 +104,24 @@ rotation_policy:
 ```
 
 Advantages:
+
+
 - Predictable change calendar
 - Coordinated with other maintenance activities
 - Enables bulk rotation efficiencies
 - Easier capacity planning for CA infrastructure
 
 Disadvantages:
+
+
 - May renew certificates with significant remaining validity
 - Fixed schedule may conflict with business constraints
 - All certificates on same schedule creates load spikes
 
 **Use cases**:
+
+
+
 - High-security environments requiring frequent rotation
 - Environments with coordinated change windows
 - Certificates for internal services with flexible timing
@@ -129,23 +157,32 @@ trigger = calculate_renewal_trigger(cert, policy)
 ```
 
 Common thresholds:
+
+
 - **67% (2/3 lifetime)**: Balanced approach, 1/3 validity remaining
 - **75%**: More frequent rotation, 1/4 validity remaining
 - **80%**: Aggressive rotation, 1/5 validity remaining
 - **50%**: Conservative, half validity remaining
 
 Advantages:
+
+
 - Distributes rotation workload over time
 - Natural staggering of renewal tasks
 - Scales with certificate validity period
 - Industry standard practice
 
 Disadvantages:
+
+
 - Less predictable timing
 - Requires per-certificate tracking
 - Complex coordination for related certificates
 
 **Use cases**:
+
+
+
 - Public-facing TLS certificates
 - Automated certificate management (ACME)
 - Large-scale certificate estates
@@ -176,23 +213,32 @@ class AbsoluteTimeRotation:
 ```
 
 Common windows:
+
+
 - **30 days**: Standard for many organizations
 - **45 days**: Conservative buffer for complex deployments
 - **14 days**: Minimum for production certificates
 - **7 days**: Emergency threshold (should trigger high-priority alerts)
 
 Advantages:
+
+
 - Simple to understand and communicate
 - Consistent buffer time for all certificates
 - Easy to align with change management processes
 - Clear escalation thresholds
 
 Disadvantages:
+
+
 - Doesn't account for certificate age
 - May result in very frequent rotations for long-lived certs
 - Fixed buffer may be too short for complex deployments
 
 **Use cases**:
+
+
+
 - Simple environments with consistent certificate validity
 - Compliance requirements with specific lead time
 - Emergency rotation thresholds
@@ -269,18 +315,25 @@ class EventDrivenRotation:
 ```
 
 Advantages:
+
+
 - Responsive to security requirements
 - Enables coordinated infrastructure changes
 - Forces rotation when conditions require it
 - Clear justification for rotation activity
 
 Disadvantages:
+
+
 - Unpredictable timing and load
 - May require emergency procedures
 - Coordination challenges across teams
 - Testing may be compressed
 
 **Use cases**:
+
+
+
 - CA compromise response
 - Algorithm deprecation (SHA-1, short keys)
 - Infrastructure migrations
@@ -1680,6 +1733,9 @@ If rollback doesn't resolve issues:
 ### Do's
 
 **Planning and preparation**:
+
+
+
 - Plan rotations well in advance (60-90 days for complex services)
 - Understand dependencies before rotating
 - Test rotation procedures in non-production first
@@ -1687,6 +1743,9 @@ If rollback doesn't resolve issues:
 - Coordinate with other planned maintenance
 
 **Automation**:
+
+
+
 - Automate repetitive rotation tasks
 - Use ACME for public certificates where possible
 - Integrate rotation with CI/CD pipelines
@@ -1694,6 +1753,9 @@ If rollback doesn't resolve issues:
 - Enable self-service for development certificates
 
 **Communication**:
+
+
+
 - Notify stakeholders of upcoming rotations
 - Provide clear timelines and expectations
 - Keep status updated during rotation
@@ -1701,6 +1763,9 @@ If rollback doesn't resolve issues:
 - Maintain runbooks and procedures
 
 **Verification**:
+
+
+
 - Always verify deployments
 - Monitor metrics post-deployment
 - Test rollback procedures regularly
@@ -1710,6 +1775,9 @@ If rollback doesn't resolve issues:
 ### Don'ts
 
 **Timing**:
+
+
+
 - Don't rotate during high-traffic periods
 - Don't combine with other major changes
 - Don't rotate on Friday afternoons (unless automated with monitoring)
@@ -1717,6 +1785,9 @@ If rollback doesn't resolve issues:
 - Don't skip testing phases
 
 **Process**:
+
+
+
 - Don't skip impact assessment
 - Don't deploy to all targets simultaneously
 - Don't ignore validation failures
@@ -1724,6 +1795,9 @@ If rollback doesn't resolve issues:
 - Don't assume success without verification
 
 **Risk management**:
+
+
+
 - Don't rotate certificates with < 7 days until expiry (too risky)
 - Don't reuse private keys across rotations
 - Don't skip rollback planning
@@ -1737,6 +1811,9 @@ If rollback doesn't resolve issues:
 **Problem**: Certificate used across multiple systems that must stay synchronized.
 
 **Solution**:
+
+
+
 - Use configuration management for atomic updates
 - Implement leader-follower deployment pattern
 - Deploy to canary subset first
@@ -1748,6 +1825,9 @@ If rollback doesn't resolve issues:
 **Problem**: Existing connections don't pick up new certificate.
 
 **Solution**:
+
+
+
 - Plan for connection drain periods
 - Implement graceful connection termination
 - Use dual certificate mode during transition
@@ -1759,6 +1839,9 @@ If rollback doesn't resolve issues:
 **Problem**: External systems or partners need notice of certificate changes.
 
 **Solution**:
+
+
+
 - Provide advance notice (30+ days)
 - Publish certificate information to known endpoint
 - Maintain overlap period with both certificates
@@ -1770,6 +1853,9 @@ If rollback doesn't resolve issues:
 **Problem**: Mobile apps or clients with certificate pinning can't adapt quickly.
 
 **Solution**:
+
+
+
 - Plan 90+ day rotation cycles
 - Include both old and new pins in app updates
 - Deploy new certificate while old is still valid

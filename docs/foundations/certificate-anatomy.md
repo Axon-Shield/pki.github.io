@@ -58,6 +58,8 @@ Serial Number: 04:00:00:00:00:01:15:4b:5a:c3:94
 
 Specifies the algorithm used to sign the certificate. Must match the signature algorithm field at the certificate end. Common values include:
 
+
+
 - `sha256WithRSAEncryption` - RSA with SHA-256 (most common)
 - `ecdsa-with-SHA256` - ECDSA with SHA-256 (increasingly common)
 - `sha384WithRSAEncryption` - RSA with SHA-384
@@ -74,6 +76,8 @@ Issuer: C=US, O=DigiCert Inc, CN=DigiCert TLS RSA SHA256 2020 CA1
 ```
 
 Common components:
+
+
 - **C** (Country): Two-letter country code
 - **O** (Organization): Legal entity name
 - **OU** (Organizational Unit): Department (deprecated in modern certs)
@@ -122,6 +126,8 @@ Extensions provide additional capabilities beyond the basic certificate fields. 
 #### Critical vs Non-Critical
 
 Extensions can be marked as:
+
+
 - **Critical**: Must be processed and understood by the relying party. If unknown, the certificate must be rejected.
 - **Non-Critical**: Can be safely ignored if not understood.
 
@@ -143,6 +149,8 @@ X509v3 Subject Alternative Name:
 ```
 
 Can include:
+
+
 - DNS names
 - IP addresses
 - Email addresses
@@ -157,6 +165,8 @@ X509v3 Key Usage: critical
 ```
 
 Common values:
+
+
 - **Digital Signature**: For signing data
 - **Key Encipherment**: For encrypting keys (RSA key exchange)
 - **Key Agreement**: For key agreement protocols (ECDH)
@@ -171,6 +181,8 @@ X509v3 Extended Key Usage:
 ```
 
 Common OIDs:
+
+
 - `serverAuth` (1.3.6.1.5.5.7.3.1): TLS server certificates
 - `clientAuth` (1.3.6.1.5.5.7.3.2): TLS client certificates
 - `codeSigning` (1.3.6.1.5.5.7.3.3): Code signing
@@ -227,6 +239,8 @@ X509v3 Certificate Policies:
 ```
 
 Common OIDs:
+
+
 - `2.23.140.1.2.2`: Domain Validated (DV)
 - `2.23.140.1.2.1`: Organization Validated (OV)
 - `2.23.140.1.1`: Extended Validation (EV)
@@ -263,14 +277,23 @@ openssl x509 -in cert.pem -noout -ext subjectAltName
 ### Validating Certificate Structure
 
 **Check for required extensions**:
+
+
+
 - TLS server certs must have: SAN, Key Usage, Extended Key Usage
 - CA certs must have: Basic Constraints (CA:TRUE), Key Usage (Certificate Sign)
 
 **Verify critical extensions**:
+
+
+
 - Unknown critical extensions must cause validation failure
 - Key Usage must match intended purpose
 
 **Validate against CA/B Forum requirements** (for publicly-trusted certs):
+
+
+
 - Maximum 398 day validity
 - No OU field in subject (deprecated)
 - SAN must contain all domain names
@@ -291,6 +314,8 @@ openssl x509 -in cert.pem -noout -ext subjectAltName
 ### Extension Misuse
 
 Improperly configured extensions can create security vulnerabilities:
+
+
 
 - **Missing Key Usage constraints**: Allows key misuse (e.g., signing certificate used for encryption)
 - **Overly permissive EKU**: Certificate usable for unintended purposes
@@ -356,6 +381,9 @@ The deprecation of Common Name for hostname validation caused significant operat
 ---
 
 **Quality Checks**: 
+
+
+
 - [x] All claims cited from authoritative sources
 - [x] Cross-references validated
 - [x] Practical guidance included

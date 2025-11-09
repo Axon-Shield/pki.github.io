@@ -93,6 +93,9 @@ MIIEpAIBAAKCAQEA0Z...
 ```
 
 **Key Components**:
+
+
+
 - **n** (modulus): Product of two primes (p × q)
 - **e** (public exponent): Typically 65537 (0x10001)
 - **d** (private exponent): Computed from e, p, q
@@ -137,11 +140,17 @@ DigestInfo ::= SEQUENCE {
 Modern, provably secure padding for RSA encryption.
 
 **Properties**:
+
+
+
 - Probabilistic (different ciphertext each time)
 - Secure against adaptive chosen-ciphertext attacks
 - Defined in PKCS#1 v2.0+ and RFC 8017[^1]
 
 **When to Use**:
+
+
+
 - New implementations should use OAEP
 - Prefer over PKCS#1 v1.5 for encryption
 - Required for some compliance standards
@@ -151,11 +160,17 @@ Modern, provably secure padding for RSA encryption.
 Modern signature scheme with security proof.
 
 **Properties**:
+
+
+
 - Probabilistic (different signature each time for same message)
 - Provably secure under RSA assumption
 - Stronger security guarantees than PKCS#1 v1.5
 
 **When to Use**:
+
+
+
 - New implementations should consider PSS
 - Required by some government standards (FIPS)
 - Growing adoption in TLS certificates
@@ -187,6 +202,9 @@ Where:
 4. Output derived key
 
 **Security Parameters**:
+
+
+
 - **Salt**: Must be random, unique per password
 - **Iterations**: Higher is slower but more secure
   - 2024 recommendation: 100,000+ for user passwords
@@ -204,6 +222,9 @@ Encryption: PBKDF2(password) → AES-256-CBC
 ```
 
 **Older Schemes** (Avoid):
+
+
+
 - PBEWithMD5AndDES: Weak, MD5 broken
 - PBEWithSHA1AndDES: Weak, DES too small
 - PBEWithSHA1And3-KeyTripleDES-CBC: Better but dated
@@ -248,20 +269,32 @@ SignedData ::= SEQUENCE {
 #### Use Cases
 
 **S/MIME Email**:
+
+
+
 - Signed emails use SignedData
 - Encrypted emails use EnvelopedData
 - Signed and encrypted use SignedAndEnvelopedData
 
 **Code Signing**:
+
+
+
 - Software signatures use SignedData
 - Includes certificate chain
 - Timestamp for long-term validity
 
 **Document Signing**:
+
+
+
 - PDF signatures use PKCS#7/CMS
 - Office document signatures (OOXML)
 
 **Certificate Responses**:
+
+
+
 - SCEP (Simple Certificate Enrollment Protocol)
 - CMC (Certificate Management over CMS)
 
@@ -274,6 +307,9 @@ SignedData ::= SEQUENCE {
 - Used in modern applications
 
 **CMS vs PKCS#7**:
+
+
+
 - Same basic structure
 - CMS adds features (content types, attributes)
 - PKCS#7 term still widely used
@@ -343,6 +379,9 @@ openssl rsa -in pkcs8.pem -out pkcs1.pem
 3. Store encryption parameters in EncryptedPrivateKeyInfo
 
 **Parameters Stored**:
+
+
+
 - Encryption algorithm (e.g., AES-256-CBC)
 - Key derivation function (PBKDF2)
 - Salt (random)
@@ -381,12 +420,18 @@ MIICvTCCAaUCAQAweDELMAkGA1UEBhMCVVMxEzAR...
 #### CSR Contents
 
 **Required Fields**:
+
+
+
 - **Version**: Typically 0 (v1)
 - **Subject**: Distinguished Name of certificate subject
 - **Public Key**: Public key to be certified
 - **Signature**: Self-signature proving private key possession
 
 **Optional Attributes** (PKCS#9):
+
+
+
 - **Challenge Password**: Legacy, rarely used
 - **Unstructured Name**: Additional identifier
 - **Extension Request**: X.509 extensions to include in certificate
@@ -472,12 +517,18 @@ Standard API for hardware security modules (HSMs) and smart cards.
 #### Concept
 
 **Cryptoki** (Cryptographic Token Interface):
+
+
+
 - Platform-independent API
 - Hardware abstraction layer
 - Vendor-neutral standard
 - C language binding
 
 **Components**:
+
+
+
 - **Tokens**: Cryptographic devices (HSM, smart card)
 - **Slots**: Physical or logical connectors
 - **Sessions**: Connections to tokens
@@ -514,16 +565,25 @@ C_DestroyObject()     // Delete object
 #### Use Cases
 
 **Certificate Authority Operations**:
+
+
+
 - CA private key in HSM
 - All signing operations through PKCS#11
 - Keys never leave hardware
 
 **Code Signing**:
+
+
+
 - Signing keys in HSM
 - Secure build pipelines
 - Hardware-backed signatures
 
 **SSL/TLS Offload**:
+
+
+
 - Web server private keys in HSM
 - TLS handshake operations offloaded
 - Hardware acceleration
@@ -560,6 +620,9 @@ Container format for certificates and private keys.
 ```
 
 **Multiple Encryption Layers**:
+
+
+
 - Container integrity password (MAC)
 - Private key encryption password (can be different)
 - Certificates optionally encrypted
@@ -616,21 +679,33 @@ openssl pkcs12 -in certificate.p12 -out combined.pem -nodes
 #### Use Cases
 
 **Certificate Import/Export**:
+
+
+
 - Transfer certificates between systems
 - Backup certificates with private keys
 - Import into browsers, email clients
 
 **Windows Certificate Store**:
+
+
+
 - .pfx is native format
 - Double-click to import
 - Widely supported by Windows applications
 
 **Mobile Devices**:
+
+
+
 - iOS, Android certificate installation
 - Email configuration (S/MIME)
 - VPN client certificates
 
 **Web Server Migration**:
+
+
+
 - Export from old server
 - Import to new server
 - Includes full certificate chain
@@ -840,16 +915,25 @@ PrivateKey privateKey = new JcaPEMKeyConverter().getPrivateKey(keyInfo);
 ### Password-Based Encryption Strength
 
 **Weak Encryption Schemes**:
+
+
+
 - PBEWithMD5AndDES: MD5 is broken, DES has 56-bit keys
 - PBEWithSHA1AndDES: DES too weak
 - Low PBKDF2 iteration counts (<10,000)
 
 **Strong Encryption**:
+
+
+
 - PBES2 with PBKDF2 and AES-256
 - 100,000+ iterations (adjust for performance)
 - Random salt (minimum 128 bits)
 
 **Threat Model**:
+
+
+
 - Password-based encryption protects against casual access
 - Determined attacker can brute-force weak passwords
 - HSM storage superior for high-value keys
@@ -857,11 +941,17 @@ PrivateKey privateKey = new JcaPEMKeyConverter().getPrivateKey(keyInfo);
 ### PKCS#1 v1.5 Vulnerabilities
 
 **Bleichenbacher Attack** (1998):
+
+
+
 - Padding oracle attack on PKCS#1 v1.5 encryption
 - Allows decryption of ciphertexts through timing side-channel
 - Still relevant today if improperly implemented
 
 **Mitigations**:
+
+
+
 - Use RSA-OAEP for encryption
 - Use RSA-PSS for signatures
 - Constant-time implementations for PKCS#1 v1.5 (if must use)
@@ -869,16 +959,25 @@ PrivateKey privateKey = new JcaPEMKeyConverter().getPrivateKey(keyInfo);
 ### PKCS#11 Security
 
 **PIN Protection**:
+
+
+
 - HSM operations require PIN/password
 - Protect PIN like private key
 - Consider multi-factor authentication
 
 **Session Security**:
+
+
+
 - Close sessions when not in use
 - Implement session timeouts
 - Monitor for unauthorized sessions
 
 **Object Permissions**:
+
+
+
 - Sensitive objects should be non-extractable
 - Private keys should be non-exportable
 - Use token-specific access controls
@@ -890,6 +989,9 @@ PrivateKey privateKey = new JcaPEMKeyConverter().getPrivateKey(keyInfo);
 **Scale**: Processes millions of PKCS#10 CSRs daily
 
 **Validation**:
+
+
+
 - Signature verification (proves private key possession)
 - SAN extension validation
 - Compliance checks (key size, algorithms)
@@ -952,6 +1054,9 @@ PrivateKey privateKey = new JcaPEMKeyConverter().getPrivateKey(keyInfo);
 ---
 
 **Quality Checks**: 
+
+
+
 - [x] All claims cited from authoritative sources
 - [x] Cross-references validated
 - [x] Practical guidance included

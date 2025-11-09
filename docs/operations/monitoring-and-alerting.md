@@ -12,6 +12,8 @@ PKI monitoring transforms certificate management from reactive firefighting to p
 
 Unlike most infrastructure components that fail suddenly, certificates fail predictably. Every certificate has a known expiry date set at issuance. Yet certificate expiry remains one of the most common causes of production outages:
 
+
+
 - **LinkedIn (2023)**: Certificate expiry caused global outage
 - **Microsoft Teams (2023)**: Expired certificate disrupted service for hours
 - **Spotify (2022)**: Certificate expiry caused widespread service disruption
@@ -22,6 +24,8 @@ Why does this keep happening? Because monitoring expiry alone is insufficient.
 ### The Complexity Problem
 
 Modern PKI monitoring must account for:
+
+
 - **Distributed deployment**: Certificates across cloud, on-prem, edge
 - **Dynamic infrastructure**: Containers, auto-scaling, ephemeral workloads
 - **Trust chain dependencies**: CA certificates, intermediate certificates, root certificates
@@ -61,6 +65,8 @@ class IssuanceMetrics:
 ```
 
 Key issuance signals:
+
+
 - Issuance request rate (requests per hour/day)
 - Success vs. failure rate
 - Time to issue (p50, p95, p99)
@@ -96,6 +102,8 @@ class DeploymentMetrics:
 ```
 
 Deployment signals:
+
+
 - Time from issuance to active use
 - Deployment success rate
 - Staging vs. production deployment patterns
@@ -130,6 +138,8 @@ class OperationalMetrics:
 ```
 
 Operational signals:
+
+
 - Certificate validation status (valid, expired, revoked)
 - Trust chain completeness
 - OCSP/CRL check success rate
@@ -165,6 +175,8 @@ class ExpiryMetrics:
 ```
 
 Expiry signals:
+
+
 - Certificates expiring in 7/14/30/60/90 days
 - Already expired certificates
 - Renewal workflow status (pending, in-progress, failed)
@@ -213,6 +225,8 @@ def monitor_ca_health(ca_endpoint: str) -> HealthStatus:
 ```
 
 CA health signals:
+
+
 - Endpoint availability (uptime percentage)
 - Response time (p50, p95, p99)
 - Error rate
@@ -222,6 +236,9 @@ CA health signals:
 - Certificate queue depth
 
 **Validation infrastructure**:
+
+
+
 - OCSP responder availability per CA
 - OCSP response time
 - CRL download success rate
@@ -266,6 +283,8 @@ def assess_cryptographic_strength(cert: Certificate) -> SecurityAssessment:
 ```
 
 Security monitoring signals:
+
+
 - Weak key algorithms in use
 - Deprecated signature algorithms
 - Certificate policy violations
@@ -315,6 +334,8 @@ def monitor_trust_chain(cert: Certificate,
 ```
 
 Trust signals:
+
+
 - Incomplete certificate chains
 - Untrusted root certificates
 - Revoked certificates in chains
@@ -376,6 +397,8 @@ class ComplianceMonitor:
 ```
 
 Compliance signals:
+
+
 - Policy violation count by type
 - Non-compliant certificates by team
 - Time to remediation for violations
@@ -416,6 +439,8 @@ class ServiceImpactAssessment:
 ```
 
 Business signals:
+
+
 - Services at risk from certificate expiry
 - User-facing vs. internal service certificates
 - Revenue-critical certificate health
@@ -1472,18 +1497,27 @@ class IncidentCorrelationEngine:
 ### Do's
 
 **Comprehensive monitoring**:
+
+
+
 - Monitor the entire certificate lifecycle, not just expiry
 - Track both certificate and CA infrastructure health
 - Implement synthetic checks for critical services
 - Correlate certificate events with business metrics
 
 **Actionable alerts**:
+
+
+
 - Every alert must have a clear response action
 - Include context and remediation steps in alerts
 - Route alerts to appropriate teams with escalation
 - Use severity levels consistently
 
 **Continuous improvement**:
+
+
+
 - Analyze alert fatigue and false positive rates
 - Tune thresholds based on historical patterns
 - Review incident post-mortems for monitoring gaps
@@ -1492,18 +1526,27 @@ class IncidentCorrelationEngine:
 ### Don'ts
 
 **Avoid alert fatigue**:
+
+
+
 - Don't alert on everything
 - Don't use the same severity for all alerts
 - Don't send alerts without clear ownership
 - Don't ignore deduplication and throttling
 
 **Don't neglect maintenance**:
+
+
+
 - Don't let dashboards become stale
 - Don't ignore monitoring system health
 - Don't skip regular review of alert effectiveness
 - Don't forget to update runbooks
 
 **Avoid single points of failure**:
+
+
+
 - Don't rely on single monitoring system
 - Don't monitor only from one location
 - Don't ignore backup CA monitoring

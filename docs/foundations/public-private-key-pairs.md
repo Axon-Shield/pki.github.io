@@ -38,6 +38,9 @@ Public and private keys are mathematically related through one-way functions: co
 5. Compute private exponent d where (e × d) ≡ 1 (mod φ(n))
 
 **Result**:
+
+
+
 - Public key: (n, e)
 - Private key: (n, d, p, q)
 
@@ -51,6 +54,9 @@ Due to: (m^e)^d ≡ m (mod n)
 ```
 
 **Security Foundation**: 
+
+
+
 - Given n and e, computing d requires knowing factors p and q
 - Factoring large n is computationally infeasible (no known polynomial-time algorithm)
 - Best known algorithms (General Number Field Sieve) require exponential time
@@ -84,15 +90,24 @@ Decrypt ciphertext c=855:
 4. Compute public key Q = d × G (point multiplication)
 
 **Result**:
+
+
+
 - Public key: Q (point on elliptic curve)
 - Private key: d (large random number)
 
 **Mathematical Relationship**:
+
+
+
 - Public key is private key multiplied by base point
 - Point multiplication easy (compute Q from d)
 - Discrete logarithm hard (find d from Q)
 
 **Security Foundation**:
+
+
+
 - Given Q and G, finding d such that Q = d × G is elliptic curve discrete logarithm problem (ECDLP)
 - No known efficient algorithm for ECDLP
 - 256-bit ECDSA provides security equivalent to 3072-bit RSA
@@ -113,6 +128,9 @@ Key pairs enable two complementary operations:
 **Direction**: Public key encrypts → Private key decrypts
 
 **Use Cases**:
+
+
+
 - Email encryption (recipient's public key)
 - TLS key exchange (server's public key)
 - Secure file sharing
@@ -143,12 +161,18 @@ Eve who intercepts ciphertext cannot decrypt without Bob's private key
 **Direction**: Private key signs → Public key verifies
 
 **Use Cases**:
+
+
+
 - Certificate signatures (CA signs certificates)
 - Code signing (developer signs software)
 - Document signing (sign contracts, emails)
 - Firmware signing (manufacturer signs firmware)
 
 **Properties Provided**:
+
+
+
 - **Authentication**: Only private key holder could create signature
 - **Integrity**: Any message modification invalidates signature
 - **Non-repudiation**: Signer can't deny signing (assuming private key protected)
@@ -171,17 +195,26 @@ If valid = true:
 The "magic" of asymmetric cryptography is mathematical functions with special properties:
 
 **One-Way Functions**:
+
+
+
 - Easy to compute in one direction: f(x) = y
 - Hard to reverse: Given y, find x
 - Examples: Modular exponentiation, elliptic curve point multiplication
 
 **Trapdoor Functions**:
+
+
+
 - One-way functions with a secret "trapdoor"
 - With trapdoor (private key), easy to reverse
 - Without trapdoor, hard to reverse
 - RSA trapdoor: Knowing p and q (factors of n) enables computing d from e
 
 **Why Knowing Public Key Doesn't Help**:
+
+
+
 - Public key: Result of applying one-way function to private key
 - Reversing one-way function is computationally infeasible
 - Example: Given Q = d × G on elliptic curve, finding d requires solving discrete log (no efficient algorithm)
@@ -195,6 +228,9 @@ The "magic" of asymmetric cryptography is mathematical functions with special pr
 #### Generation
 
 **Where to Generate**:
+
+
+
 - **On-device**: Generate keys where they'll be used (preferred)
   - Private key never transmitted
   - Reduces exposure window
@@ -226,6 +262,9 @@ openssl pkey -in private.pem -pubout -out public.pem
 #### Distribution
 
 **Public Key Distribution** (Freely shareable):
+
+
+
 - Embed in certificate (primary mechanism)
 - Publish to key servers (PGP)
 - Include in application packages
@@ -233,6 +272,9 @@ openssl pkey -in private.pem -pubout -out public.pem
 - Email (though verify fingerprint out-of-band)
 
 **Private Key Distribution** (Avoid if possible):
+
+
+
 - Should never be transmitted in plaintext
 - If must transmit:
   - Encrypt with strong passphrase (AES-256)
@@ -254,12 +296,18 @@ openssl x509 -in cert.pem -noout -fingerprint -sha256
 #### Usage
 
 **Private Key Usage Restrictions**:
+
+
+
 - Minimal exposure time (load for operation, clear from memory after)
 - Access controls (file permissions, HSM authorization)
 - Audit logging (log every private key operation)
 - Dedicated systems (don't use CA keys on multi-purpose servers)
 
 **Public Key Usage** (Unrestricted):
+
+
+
 - Freely shareable
 - Can be cached
 - No access controls needed
@@ -268,6 +316,9 @@ openssl x509 -in cert.pem -noout -fingerprint -sha256
 #### Rotation
 
 **When to Rotate Key Pairs**:
+
+
+
 - Scheduled rotation (e.g., annually)
 - After private key compromise or suspected exposure
 - After personnel changes (lost access control)
@@ -296,11 +347,17 @@ ls private.key  # Should not exist
 ```
 
 **HSM Key Destruction**:
+
+
+
 - Use HSM-specific deletion commands
 - Verify key no longer listed
 - Some HSMs maintain key backups (be aware)
 
 **Certificate Revocation**:
+
+
+
 - After key rotation, revoke old certificate
 - Prevents use of old key pair even if private key recovered
 
@@ -392,6 +449,9 @@ ssh-keygen -i -m PKCS8 -f public.pem > authorized_keys
 | User Auth | ECDSA | P-256 | 128-bit | Beyond 2030 |
 
 **NIST Guidance**[^1]:
+
+
+
 - 2048-bit RSA or 256-bit ECDSA: Through 2030
 - 3072-bit RSA or 384-bit ECDSA: Beyond 2030
 - Consider certificate lifetime in key size selection
@@ -399,17 +459,26 @@ ssh-keygen -i -m PKCS8 -f public.pem > authorized_keys
 #### Performance vs. Security Tradeoff
 
 **RSA Key Size Impact**:
+
+
+
 - 2048 → 3072 bit: ~3x slower signing
 - 2048 → 4096 bit: ~7x slower signing
 - Verification speed less affected (small exponent)
 
 **ECDSA Advantages**:
+
+
+
 - P-256 ECDSA ≈ 3072-bit RSA security
 - Much faster key generation
 - Much faster signing
 - Smaller keys and signatures
 
 **Decision Factors**:
+
+
+
 - **Performance**: ECDSA better for high-volume operations
 - **Compatibility**: RSA more widely supported (legacy systems)
 - **Certificate size**: ECDSA produces smaller certificates (mobile/IoT)
@@ -423,6 +492,9 @@ ssh-keygen -i -m PKCS8 -f public.pem > authorized_keys
 **Best Practice**: Separate key pairs for different purposes
 
 **Rationale**:
+
+
+
 - Limits compromise impact
 - Enables different rotation schedules
 - Allows purpose-specific protection levels
@@ -507,12 +579,18 @@ Week 6: Revoke old certificate
 ### Private Key Compromise Impact
 
 **Immediate Risks**:
+
+
+
 - Attacker can impersonate key owner
 - Past encrypted traffic decryptable (without forward secrecy)
 - Attacker can sign content as legitimate key owner
 - Complete trust breakdown for affected certificates
 
 **Cascade Effects**:
+
+
+
 - If CA key compromised: All subordinate certificates compromised
 - If code signing key compromised: Malware signed as legitimate software
 - If user key compromised: Access to all resources protected by that key
@@ -548,27 +626,42 @@ ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384';
 ### Quantum Computing Threat
 
 **Current Algorithms Vulnerable**:
+
+
+
 - RSA: Shor's algorithm can factor in polynomial time on quantum computer
 - ECDSA: Shor's algorithm solves discrete log on quantum computer
 - All current public-key cryptography breakable on large quantum computers
 
 **Timeline**: 
+
+
+
 - No large-scale quantum computers yet (2024)
 - Optimistic estimates: 2030s
 - Conservative: 2040s
 
 **"Harvest Now, Decrypt Later" Threat**:
+
+
+
 - Adversaries capture encrypted traffic today
 - Store for future decryption when quantum computers available
 - High-value long-term secrets at risk
 
 **Post-Quantum Cryptography**:
+
+
+
 - NIST standardizing quantum-resistant algorithms
 - Based on different mathematical problems (lattices, hash-based, etc.)
 - Hybrid approach: Classical + post-quantum
 - Transition period: 2025-2035 expected
 
 **Action Items**:
+
+
+
 - Monitor NIST PQC standardization
 - Plan for algorithm agility
 - Consider data lifetime sensitivity
@@ -579,6 +672,9 @@ ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384';
 **Critical Requirement**: Private keys must be generated from cryptographically secure random numbers
 
 **Insufficient Entropy Examples**:
+
+
+
 - Debian OpenSSL bug (2008): Only 2^15 possible keys due to PRNG flaw
 - Predictable seeds: Using timestamp or process ID as seed
 - Reused random values: ECDSA nonce reuse
@@ -597,6 +693,9 @@ bad_key = random.getrandbits(256)  # NOT cryptographically secure
 ```
 
 **Verification**:
+
+
+
 - Use established libraries (OpenSSL, cryptography.io)
 - Never implement crypto primitives from scratch
 - Test with statistical randomness tests (NIST test suite)
@@ -608,11 +707,17 @@ bad_key = random.getrandbits(256)  # NOT cryptographically secure
 **Incident**: Debian maintainer modified OpenSSL to eliminate compiler warning, inadvertently removed entropy source
 
 **Impact**:
+
+
+
 - Only 2^15 possible RSA keys (32,768) instead of 2^2048
 - All keys generated on affected systems (2006-2008) were weak
 - Attackers could brute-force all possibilities in hours
 
 **Response**:
+
+
+
 - Mass revocation of affected certificates
 - Key regeneration for all affected systems
 - Demonstrated importance of entropy in key generation
@@ -622,11 +727,17 @@ bad_key = random.getrandbits(256)  # NOT cryptographically secure
 ### Case Study: RSA vs. ECDSA Adoption
 
 **Historical Context**:
+
+
+
 - RSA patented until 2000, limiting adoption
 - ECDSA introduced later (1999), patent issues slower adoption
 - RSA became standard due to earlier patent expiration and tooling
 
 **Modern Transition**:
+
+
+
 - Let's Encrypt supports both RSA and ECDSA
 - Major browsers support ECDSA
 - Mobile and IoT prefer ECDSA (smaller keys, better performance)
@@ -643,6 +754,9 @@ Some organizations pin specific public keys or certificates in applications:
 **Risk**: If pinned key rotated without app update, app breaks
 
 **Notable Incidents**:
+
+
+
 - Banking apps unable to connect after certificate rotation
 - Mobile apps requiring updates to fix pinning
 
@@ -675,6 +789,9 @@ Some organizations pin specific public keys or certificates in applications:
 ---
 
 **Quality Checks**: 
+
+
+
 - [x] All claims cited from authoritative sources
 - [x] Cross-references validated
 - [x] Practical guidance included

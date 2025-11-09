@@ -38,6 +38,9 @@ Email Delivery → Manual Installation → Manual Verification
 ```
 
 **Characteristics**:
+
+
+
 - High touch, multiple handoffs between teams
 - Days to weeks for certificate issuance
 - Prone to errors and omissions
@@ -46,6 +49,9 @@ Email Delivery → Manual Installation → Manual Verification
 - Often bypassed through "shadow IT" channels
 
 **When Appropriate**:
+
+
+
 - High-value certificates (root CAs, signing certificates)
 - External-facing certificates requiring extensive validation
 - Initial PKI standup with limited automation
@@ -61,6 +67,9 @@ Auto-Generation → Auto-Distribution → Manual Installation → Auto-Verificat
 ```
 
 **Characteristics**:
+
+
+
 - Automated technical operations
 - Human approval for policy decisions
 - Hours to days for issuance
@@ -69,6 +78,9 @@ Auto-Generation → Auto-Distribution → Manual Installation → Auto-Verificat
 - Balances security and efficiency
 
 **When Appropriate**:
+
+
+
 - Organizations transitioning to automation
 - Certificates requiring business approval
 - Mixed environment with varying risk levels
@@ -84,6 +96,9 @@ Auto-Distribution → Auto-Installation → Auto-Verification → Audit Log
 ```
 
 **Characteristics**:
+
+
+
 - Minutes to seconds for issuance
 - Policy-driven decisions
 - Complete audit automation
@@ -92,6 +107,9 @@ Auto-Distribution → Auto-Installation → Auto-Verification → Audit Log
 - Requires robust policy framework
 
 **When Appropriate**:
+
+
+
 - Cloud-native environments
 - Container and microservices architectures
 - Short-lived certificate strategies
@@ -876,6 +894,8 @@ class ServiceNowIntegration:
             'short_description': f"Deploy TLS certificate for {certificate_info['common_name']}",
             'description': f"""
 Certificate Details:
+
+
 - Common Name: {certificate_info['common_name']}
 - SANs: {', '.join(certificate_info['sans'])}
 - Validity: {certificate_info['not_before']} to {certificate_info['not_after']}
@@ -1426,6 +1446,8 @@ class CertificateCache:
 
 ### Google Certificate Automation
 Google issues millions of certificates daily with fully automated workflows:
+
+
 - Custom ACME implementation for internal services
 - Policy-driven issuance with no manual approvals
 - 6-day certificate lifetimes for maximum security
@@ -1436,6 +1458,8 @@ Google issues millions of certificates daily with fully automated workflows:
 
 ### Financial Services Manual to Automated
 Large bank transformed certificate management:
+
+
 - **Before**: 200+ hours/month, manual processes, 90-day issuance time
 - **Transformation**: Implemented approval workflows, ACME integration, policy engine
 - **After**: 12 hours/month, 5-minute issuance, 99.9% automated
@@ -1446,6 +1470,8 @@ Large bank transformed certificate management:
 
 ### Cloud Provider Instant Issuance
 AWS Certificate Manager model:
+
+
 - Instant validation for AWS-hosted domains
 - Automated renewal with no customer action
 - Integration with load balancers, CloudFront, API Gateway

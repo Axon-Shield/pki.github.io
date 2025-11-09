@@ -50,18 +50,27 @@ Root CA (Self-Signed)
 The critical decision in hierarchical trust: who do you trust as root authorities?
 
 **Browser/OS Trust Stores**:
+
+
+
 - Operating systems and browsers ship with ~150-200 root CA certificates
 - These represent publicly-trusted CAs (DigiCert, Let's Encrypt, Sectigo, etc.)
 - Inclusion requires rigorous auditing (WebTrust, ETSI) and policy compliance[^1]
 - Root programs (Mozilla, Microsoft, Apple, Google) maintain trust stores
 
 **Enterprise Trust Stores**:
+
+
+
 - Organizations add private root CAs to employee device trust stores
 - Distributed via Group Policy, MDM, or configuration management
 - Enables internal PKI for intranet sites, VPN, authentication
 - Users must trust employer to manage trust store appropriately
 
 **Manual Trust Decisions**:
+
+
+
 - Users can manually trust certificate or CA
 - Browser warnings for self-signed certificates
 - "Proceed anyway" decisions that bypass validation
@@ -81,6 +90,9 @@ When encountering an end-entity certificate, validators build a chain to a trust
 8. **Validate entire chain** (expiration dates, revocation status, constraints)
 
 **Success Conditions**:
+
+
+
 - Unbroken chain to trusted root
 - All signatures valid
 - No expired certificates
@@ -88,6 +100,9 @@ When encountering an end-entity certificate, validators build a chain to a trust
 - All constraints satisfied (name, policy, path length)
 
 **Failure Scenarios**:
+
+
+
 - Cannot build chain to trusted root (untrusted issuer)
 - Signature verification failure (wrong issuer or tampered certificate)
 - Expired certificate anywhere in chain
@@ -97,6 +112,9 @@ When encountering an end-entity certificate, validators build a chain to a trust
 #### Security Properties
 
 **Advantages**:
+
+
+
 - **Clear accountability**: Each CA responsible for subordinates
 - **Scalable validation**: Simple chain building algorithm
 - **Centralized revocation**: CA can revoke subordinate certificates
@@ -104,6 +122,9 @@ When encountering an end-entity certificate, validators build a chain to a trust
 - **Unambiguous trust**: Either trusted or not, no ambiguity
 
 **Disadvantages**:
+
+
+
 - **Single point of failure**: Root CA compromise is catastrophic
 - **Centralized control**: Root programs (browsers) control who is trusted
 - **CA compromise impact**: Malicious CA can issue certificates for any name
@@ -149,6 +170,8 @@ Unlike hierarchical model's tree, web of trust forms a graph:
 ```
 
 Each person:
+
+
 - Generates their own key pair
 - Publishes public key to key servers
 - Signs other people's keys after verifying their identity
@@ -190,6 +213,9 @@ Typical calculation: One fully-trusted signature OR three marginally-trusted sig
 #### Security Properties
 
 **Advantages**:
+
+
+
 - **No central authority**: No single point of failure or control
 - **Personal trust decisions**: You decide who to trust, not imposed by CA
 - **Resilient**: Network continues functioning even if nodes compromised
@@ -197,6 +223,9 @@ Typical calculation: One fully-trusted signature OR three marginally-trusted sig
 - **No commercial gatekeepers**: Anyone can participate equally
 
 **Disadvantages**:
+
+
+
 - **Complex trust decisions**: Users must understand trust calculations
 - **Scalability problems**: Doesn't scale to internet-wide deployment
 - **Inconsistent trust**: Different people reach different conclusions about same key
@@ -208,12 +237,18 @@ Typical calculation: One fully-trusted signature OR three marginally-trusted sig
 #### Use Cases
 
 **Email Encryption (PGP/GPG)**:
+
+
+
 - Personal email security
 - Cypherpunk and privacy communities  
 - Environments where institutional trust is undesirable
 - Situations requiring personal verification
 
 **Not Suitable For**:
+
+
+
 - Public website HTTPS (too complex for average users)
 - Enterprise PKI (no centralized management)
 - Legally binding signatures (no clear accountability)
@@ -234,6 +269,8 @@ Org A Root CA ←→ Bridge CA ←→ Org B Root CA
 ```
 
 The Bridge CA:
+
+
 - Has its own root certificate
 - Cross-certifies with participating organization root CAs
 - Each org trusts the bridge, which trusts other orgs
@@ -250,6 +287,8 @@ Org B signs Org A's CA certificate
 ```
 
 This enables:
+
+
 - Org A users to validate Org B certificates (following chain through Org A → Org B)
 - Org B users to validate Org A certificates (following chain through Org B → Org A)
 
@@ -262,6 +301,8 @@ Bridge CA signs Org B CA certificate
 ```
 
 This enables:
+
+
 - Org A users to validate Org B certificates through bridge
 - Path: Org B cert → Org B CA → Bridge CA → Org A CA → Org A root (in Org A trust store)
 
@@ -283,12 +324,18 @@ This ensures Org A CA can only issue certificates for its own domains, even thou
 #### Security Properties
 
 **Advantages**:
+
+
+
 - **Federated trust**: Organizations maintain independent PKI
 - **Scalable cross-org trust**: N organizations need N connections to bridge, not N² bilateral connections
 - **Policy isolation**: Each organization controls own issuance policies
 - **Reduced trust requirements**: Don't need to fully trust all organizations, just the bridge
 
 **Disadvantages**:
+
+
+
 - **Complex validation**: Longer certificate chains, more complex path building
 - **Bridge compromise impact**: Compromised bridge affects all participants
 - **Name constraint implementation**: Validators must properly enforce constraints
@@ -298,18 +345,27 @@ This ensures Org A CA can only issue certificates for its own domains, even thou
 #### Use Cases
 
 **Federal PKI Bridge**:
+
+
+
 - Connects U.S. federal agencies
 - Agencies maintain separate PKI hierarchies
 - Bridge enables cross-agency certificate validation
 - Supports government-wide authentication and encryption
 
 **Industry Consortia**:
+
+
+
 - Healthcare organizations sharing patient records
 - Financial institutions in payment networks  
 - Supply chain partners with B2B integrations
 - Academic research collaborations
 
 **Enterprise Mergers**:
+
+
+
 - Acquired companies maintain separate PKI
 - Bridge enables integration while preserving independence
 - Allows gradual migration to unified PKI if desired
@@ -324,11 +380,17 @@ Uses DNSSEC to publish certificate associations, creating alternative trust mode
 **DANE**: Domain owner publishes certificate hash in DNSSEC-signed DNS record
 
 **Advantages**:
+
+
+
 - Domain owner controls trust assertion
 - No CA required (or CA is secondary validation)
 - Reduces CA compromise impact
 
 **Disadvantages**:
+
+
+
 - Requires DNSSEC deployment (limited adoption)
 - Complexity of managing DNSSEC
 - Limited client support
@@ -342,6 +404,9 @@ Not a complete trust model but augments hierarchical trust with transparency:
 **Concept**: All certificates logged to public, append-only, cryptographically-verifiable logs before issuance
 
 **Trust Enhancement**:
+
+
+
 - Certificate misissuance detectable by domain owners
 - Monitors can detect rogue certificates
 - Creates accountability for CAs
@@ -356,12 +421,18 @@ Not a complete trust model but augments hierarchical trust with transparency:
 Experimental approaches using blockchain for certificate management:
 
 **Concepts**:
+
+
+
 - Certificates or certificate hashes stored on blockchain
 - Decentralized, tamper-evident certificate storage
 - No central CA authority required
 - Certificate status verifiable via blockchain queries
 
 **Challenges**:
+
+
+
 - Scalability (blockchain throughput limitations)
 - Privacy (all certificates potentially public)
 - Key recovery (lost private keys irrecoverable)
@@ -462,6 +533,9 @@ security find-certificate -a -p /System/Library/Keychains/SystemRootCertificates
 ```
 
 **Identify Risky Roots**:
+
+
+
 - Government-operated CAs (potential interception)
 - CAs with history of misissuance
 - Unknown or untrusted organizations
@@ -652,6 +726,8 @@ openssl x509 -in end-entity.pem -noout -subject
 ### Trust Transitivity
 
 Trust is transitive in hierarchical models:
+
+
 - If you trust Root CA
 - And Root CA trusts Intermediate CA
 - Then you implicitly trust Intermediate CA
@@ -659,6 +735,9 @@ Trust is transitive in hierarchical models:
 **Security Implication**: Your security depends on weakest CA in chain, not just the root you explicitly trust.
 
 **Mitigation Strategies**:
+
+
+
 - Certificate Transparency (detect misissuance)
 - CAA records (restrict which CAs can issue for your domain)
 - HPKP/Certificate Pinning (restrict which certificates accepted)
@@ -671,6 +750,9 @@ Trust is transitive in hierarchical models:
 Mozilla operates one of the major root programs determining which CAs browsers trust.
 
 **Requirements**[^4]:
+
+
+
 - Annual WebTrust or ETSI audit
 - Publicly disclosed Certificate Practice Statement
 - Compliance with CA/Browser Forum Baseline Requirements
@@ -703,6 +785,9 @@ The U.S. Federal Bridge CA connects over 100 federal and state PKI systems:
 **Challenge**: Complex certification paths (sometimes 5+ certificates)
 
 **Success Factors**:
+
+
+
 - Strong name constraints on all cross-certificates
 - Centralized policy management
 - Regular auditing of cross-certification relationships
@@ -718,6 +803,9 @@ DigiNotar compromise (2011) demonstrated how CA compromise affects hierarchical 
 **Impact**: All legitimate DigiNotar certificates stopped working immediately
 
 **Lessons**:
+
+
+
 - Hierarchical trust enables rapid response to CA compromise
 - CA compromise has existential consequences for CA business
 - Certificate Transparency would have enabled faster detection
@@ -755,6 +843,9 @@ DigiNotar compromise (2011) demonstrated how CA compromise affects hierarchical 
 ---
 
 **Quality Checks**: 
+
+
+
 - [x] All claims cited from authoritative sources
 - [x] Cross-references validated
 - [x] Practical guidance included

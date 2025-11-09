@@ -13,6 +13,9 @@ Multi-cloud PKI architectures enable organizations to manage certificates consis
 Multi-cloud PKI addresses the operational reality that most enterprises use multiple cloud providers, maintain on-premises infrastructure, and require consistent certificate management across all environments. This creates challenges around:
 
 **Architectural Challenges**:
+
+
+
 - Divergent APIs and data models across cloud providers
 - Different certificate validation and renewal workflows
 - Incompatible secrets management systems
@@ -20,6 +23,9 @@ Multi-cloud PKI addresses the operational reality that most enterprises use mult
 - Cloud-specific networking and security boundaries
 
 **Operational Challenges**:
+
+
+
 - Maintaining visibility across dispersed certificate inventory
 - Consistent policy enforcement independent of cloud provider
 - Unified renewal and lifecycle management
@@ -27,6 +33,9 @@ Multi-cloud PKI addresses the operational reality that most enterprises use mult
 - Audit and compliance across heterogeneous environments
 
 **Strategic Considerations**:
+
+
+
 - Vendor lock-in risks when using cloud-native PKI services
 - Cost optimization across cloud billing models
 - Disaster recovery and multi-region failover
@@ -42,6 +51,9 @@ Multi-cloud PKI addresses the operational reality that most enterprises use mult
 AWS's managed certificate service for AWS resources:
 
 **Capabilities**:
+
+
+
 - Free certificates for AWS-integrated services
 - Automatic renewal with no customer action
 - Integration with ELB, CloudFront, API Gateway, Elastic Beanstalk
@@ -50,6 +62,9 @@ AWS's managed certificate service for AWS resources:
 - No export of private keys for public certificates
 
 **Limitations**:
+
+
+
 - Only works with AWS services (cannot export most certificates)
 - No support for client certificates
 - Limited to 398-day validity
@@ -57,6 +72,9 @@ AWS's managed certificate service for AWS resources:
 - Cannot use with EC2 instances directly (must use load balancer)
 
 **Use Cases**:
+
+
+
 - Public-facing websites on CloudFront or ALB
 - API Gateway REST APIs
 - Internal services using Private CA
@@ -161,6 +179,9 @@ resource "aws_acmpca_certificate" "server" {
 Azure's integrated certificate management within Key Vault:
 
 **Capabilities**:
+
+
+
 - Unified storage for certificates, keys, and secrets
 - Automatic renewal with supported CAs (DigiCert, GlobalSign)
 - Manual import of certificates from any CA
@@ -170,6 +191,9 @@ Azure's integrated certificate management within Key Vault:
 - Soft-delete and purge protection
 
 **Limitations**:
+
+
+
 - Per-vault limits (5000 certificate versions)
 - Regional service requiring cross-region replication
 - API throttling can impact automation at scale
@@ -177,6 +201,9 @@ Azure's integrated certificate management within Key Vault:
 - Limited to Azure-integrated services
 
 **Use Cases**:
+
+
+
 - Azure App Service custom domains
 - Application Gateway SSL termination
 - Azure Functions HTTPS
@@ -286,6 +313,9 @@ resource "azurerm_app_service_custom_hostname_binding" "example" {
 GCP's newer certificate management service:
 
 **Capabilities**:
+
+
+
 - Global service (not regional like AWS ACM)
 - Automatic certificate provisioning for external HTTPS load balancers
 - DNS authorization via Cloud DNS
@@ -294,6 +324,9 @@ GCP's newer certificate management service:
 - Self-managed certificates for custom CAs
 
 **Limitations**:
+
+
+
 - Relatively new service (GA in 2021)
 - Limited to GCP load balancers and CDN
 - Cannot use certificates on Compute Engine instances
@@ -301,6 +334,9 @@ GCP's newer certificate management service:
 - Regional Certificate Manager for internal load balancers
 
 **Use Cases**:
+
+
+
 - Global HTTPS load balancers
 - Multi-region CDN deployments
 - GKE ingress with managed certificates
@@ -545,12 +581,18 @@ Multiple CAs per cloud, cross-signed for trust:
 ```
 
 **Benefits**:
+
+
+
 - Reduced latency (local issuance)
 - Cloud isolation for security
 - Compliance with data residency
 - Failure isolation
 
 **Challenges**:
+
+
+
 - Complex trust chain management
 - Certificate distribution complexity
 - Increased operational overhead
@@ -1339,6 +1381,8 @@ class MultiCloudMetrics:
 
 ### Large Financial Institution
 Multi-cloud deployment across AWS, Azure, on-premises:
+
+
 - Centralized Vault cluster for certificate issuance
 - 50,000+ certificates across 3 clouds and on-prem
 - 90-day certificate lifetimes with automated renewal
@@ -1351,6 +1395,8 @@ Multi-cloud deployment across AWS, Azure, on-premises:
 
 ### SaaS Provider
 Global deployment across AWS and GCP:
+
+
 - HashiCorp Vault in both clouds
 - Let's Encrypt for external certificates
 - Vault PKI for internal microservices
@@ -1363,6 +1409,8 @@ Global deployment across AWS and GCP:
 
 ### Enterprise with Hybrid Cloud
 Azure primary, AWS secondary, large on-premises:
+
+
 - On-premises root CA (air-gapped)
 - Issuing CAs in Azure and AWS
 - SCEP for legacy systems

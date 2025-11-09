@@ -63,6 +63,9 @@ Revoked Certificates:
 - **Reason Code**: Why certificate was revoked (optional)
 
 **Extensions**:
+
+
+
 - **CRL Number**: Monotonically increasing number for tracking
 - **Authority Key Identifier**: Identifies CA that signed CRL
 - **Issuing Distribution Point**: Scope of CRL (which certificates it covers)
@@ -89,22 +92,34 @@ Defined in RFC 5280[^2], reasons explain why certificate revoked:
 #### CRL Types
 
 **Base CRL**:
+
+
+
 - Complete list of all revoked certificates
 - Issued periodically (daily, weekly)
 - Can grow very large for CAs with many revocations
 
 **Delta CRL**:
+
+
+
 - Contains only changes since last base CRL
 - Smaller size, more frequent updates
 - References base CRL via Base CRL Number extension
 - Client must obtain both base and delta
 
 **Indirect CRL**:
+
+
+
 - Published by entity other than certificate issuer
 - Certificate Issuer extension identifies actual issuer
 - Enables centralized CRL distribution
 
 **Partitioned CRL**:
+
+
+
 - CRL divided into multiple segments
 - Issuing Distribution Point extension specifies partition
 - Reduces download size for clients
@@ -121,6 +136,9 @@ X509v3 CRL Distribution Points:
 ```
 
 **Protocol Support**:
+
+
+
 - **HTTP**: Most common, simple download
 - **LDAP**: Directory service access
 - **FTP**: Rarely used
@@ -129,12 +147,18 @@ X509v3 CRL Distribution Points:
 #### CRL Advantages and Disadvantages
 
 **Advantages**:
+
+
+
 - **Simple**: Easy to implement and understand
 - **Offline**: Can download and cache for offline validation
 - **Privacy**: No per-certificate queries reveal which sites visited
 - **Deterministic**: Same CRL for all validators at same time
 
 **Disadvantages**:
+
+
+
 - **Latency**: Revocations not visible until next CRL published
 - **Size**: Can grow to megabytes for large CAs
 - **Bandwidth**: Every client downloads entire list
@@ -190,6 +214,9 @@ OCSP Request:
 ```
 
 **Key Components**:
+
+
+
 - **Issuer Name Hash**: SHA-256 hash of certificate issuer DN
 - **Issuer Key Hash**: SHA-256 hash of CA public key
 - **Serial Number**: Certificate to check
@@ -237,6 +264,9 @@ Cert Status: unknown
 ```
 
 **Response Status Codes**:
+
+
+
 - **successful (0)**: Valid response included
 - **malformedRequest (1)**: Request syntax error
 - **internalError (2)**: Responder internal error
@@ -247,12 +277,18 @@ Cert Status: unknown
 #### OCSP Advantages and Disadvantages
 
 **Advantages**:
+
+
+
 - **Real-time**: Near-instant revocation visibility
 - **Efficient**: Only query status of certificates actually needed
 - **Smaller**: Responses much smaller than CRLs
 - **Dynamic**: Can implement custom policies per request
 
 **Disadvantages**:
+
+
+
 - **Privacy**: CA sees which certificates clients are validating
 - **Availability**: Requires network connection and OCSP responder availability
 - **Performance**: Network round-trip adds latency to TLS handshake
@@ -386,11 +422,17 @@ Critical decision: what happens when revocation check fails?
 **Behavior**: If revocation check fails, proceed anyway
 
 **Rationale**:
+
+
+
 - OCSP responders frequently have availability issues
 - Hard-fail would break many legitimate sites
 - Balance security against usability
 
 **Example Scenarios**:
+
+
+
 - OCSP responder timeout: **Accept certificate**
 - CRL download fails: **Accept certificate**
 - OCSP response indicates "tryLater": **Accept certificate**
@@ -402,16 +444,25 @@ Critical decision: what happens when revocation check fails?
 **Behavior**: If revocation check fails, reject certificate
 
 **Rationale**:
+
+
+
 - Security over availability
 - Don't trust certificates if can't verify revocation status
 
 **Use Cases**:
+
+
+
 - High-security environments
 - Internal PKI with reliable infrastructure
 - Certificate pinning scenarios
 - OCSP Must-Staple certificates
 
 **Example Scenarios**:
+
+
+
 - OCSP responder timeout: **Reject certificate**
 - CRL download fails: **Reject certificate**
 - OCSP response indicates "tryLater": **Reject certificate**
@@ -430,26 +481,41 @@ The persistent challenge of effective certificate revocation.
 #### Key Issues
 
 **Browser Soft-Fail**:
+
+
+
 - Most browsers default to soft-fail
 - Attackers can exploit by blocking revocation checks
 - Security vs. availability trade-off
 
 **CRL Scalability**:
+
+
+
 - CRLs can grow to many megabytes
 - Clients must download entire list
 - Inefficient for CAs with many certificates
 
 **OCSP Privacy**:
+
+
+
 - Every certificate validation reveals sites visited
 - Without stapling, CA tracks user browsing
 - Privacy-conscious users may disable OCSP
 
 **OCSP Performance**:
+
+
+
 - Network latency for each TLS connection
 - OCSP responder must handle high query volume
 - Failures impact certificate validation
 
 **Incomplete Checking**:
+
+
+
 - Many applications don't check revocation at all
 - Legacy systems lack OCSP support
 - Configuration errors disable checking
@@ -457,24 +523,36 @@ The persistent challenge of effective certificate revocation.
 #### Proposed Solutions
 
 **Certificate Transparency**:
+
+
+
 - Public logs of all issued certificates
 - Domain owners monitor for unexpected certificates
 - Detects misissuance, doesn't prevent it
 - Complementary to revocation
 
 **Short-Lived Certificates**:
+
+
+
 - Issue certificates with short validity (hours/days)
 - No need for revocation (expires quickly)
 - Requires reliable automation
 - Let's Encrypt model: 90-day certificates
 
 **CRLite** (Mozilla):
+
+
+
 - Compressed, space-efficient revocation data
 - Aggregates CRL data from all CAs
 - Ships with Firefox updates
 - Enables hard-fail without performance penalty
 
 **OCSP Stapling + Must-Staple**:
+
+
+
 - Mandatory stapling prevents soft-fail exploitation
 - Server responsible for OCSP queries
 - Requires careful operational planning
@@ -577,16 +655,25 @@ def check_ocsp_status(cert, issuer_cert):
 #### Architecture Considerations
 
 **High Availability**:
+
+
+
 - Multiple responder instances behind load balancer
 - Geographic distribution for low latency
 - Database replication for revocation status
 
 **Performance Requirements**:
+
+
+
 - Handle thousands of queries per second
 - Millisecond response times
 - Minimal memory and CPU overhead
 
 **Security**:
+
+
+
 - Dedicated OCSP signing key (not CA key)
 - Responder key access controls
 - Rate limiting and DoS protection
@@ -621,6 +708,9 @@ openssl ocsp \
 ```
 
 **Production OCSP Responders**:
+
+
+
 - **Boulder** (Let's Encrypt): High-performance, Go-based
 - **EJBCA**: Enterprise PKI with built-in OCSP
 - **OpenXPKI**: Open-source PKI suite with OCSP
@@ -640,11 +730,17 @@ for cert in valid_certificates:
 ```
 
 **Benefits**:
+
+
+
 - Faster response times (no database query)
 - Reduced load on backend database
 - Better scalability
 
 **Refresh Strategy**:
+
+
+
 - Regenerate responses periodically (e.g., every hour)
 - Update immediately on revocation
 - Include reasonable Next Update time
@@ -671,6 +767,9 @@ openssl crl -in downloaded.crl -noout -text
 3. **CRL not published**: CA operational issue
 
 **Fixes**:
+
+
+
 - Ensure network access to CRL URL
 - Configure CA to publish CRLs regularly
 - Check Next Update time in CRL
@@ -695,6 +794,9 @@ curl -v http://ocsp.example.com
 3. **Responder down**: Service failure
 
 **Fixes**:
+
+
+
 - Enable OCSP stapling (server-side caching)
 - Increase OCSP responder capacity
 - Implement responder redundancy
@@ -720,6 +822,9 @@ openssl ocsp -CAfile ca.pem -issuer issuer.pem -cert server.crt \
 3. **Expired response**: Next Update in past
 
 **Fixes**:
+
+
+
 - Verify OCSP responder certificate properly signed
 - Sync system clocks (NTP)
 - Configure responder to issue fresh responses
@@ -758,16 +863,25 @@ openssl ocsp -CAfile ca.pem -issuer issuer.pem -cert server.crt \
 **Attack Scenarios**:
 
 **OCSP Responder DoS**:
+
+
+
 - Attacker blocks access to OCSP responder
 - Soft-fail allows revoked certificate acceptance
 - **Mitigation**: OCSP stapling (server caches responses)
 
 **CRL Download Prevention**:
+
+
+
 - Attacker blocks CRL download
 - Client cannot verify revocation status
 - **Mitigation**: Local CRL caching; alternative verification methods
 
 **Clock Manipulation**:
+
+
+
 - Attacker manipulates system clock
 - OCSP response appears expired or not yet valid
 - **Mitigation**: Secure time synchronization (NTP); detect clock skew
@@ -798,6 +912,9 @@ Exposure window: T0 to T3 (minutes typically)
 ```
 
 **Mitigation Strategies**:
+
+
+
 - Minimize exposure windows with frequent updates
 - Use OCSP for time-critical revocations
 - Consider short-lived certificates eliminating revocation need
@@ -806,11 +923,17 @@ Exposure window: T0 to T3 (minutes typically)
 ### Privacy vs. Security
 
 **Privacy Concerns**:
+
+
+
 - OCSP queries reveal which certificates (and therefore sites) users validate
 - CA can track user browsing behavior
 - ISPs or network observers see OCSP queries
 
 **Privacy-Preserving Approaches**:
+
+
+
 - **OCSP Stapling**: Server queries, client doesn't contact CA
 - **CRLite**: Pre-fetched revocation data, no per-certificate queries
 - **Short-Lived Certificates**: No revocation checking needed
@@ -822,6 +945,9 @@ Exposure window: T0 to T3 (minutes typically)
 **Event**: Google Chrome announced distrust of Symantec CA certificates
 
 **Revocation Challenge**:
+
+
+
 - Thousands of certificates needed revocation/replacement
 - Immediate revocation would break many websites
 - Phased approach over 18 months
@@ -839,11 +965,17 @@ Exposure window: T0 to T3 (minutes typically)
 **Challenge**: Let's Encrypt issues over 200 million certificates
 
 **OCSP Requirements**:
+
+
+
 - Billions of OCSP queries per day
 - Sub-100ms response times
 - 99.99% availability
 
 **Solution**:
+
+
+
 - Pre-generated OCSP responses
 - CDN distribution of responses
 - Minimal response sizes (no certificates in response)
@@ -856,11 +988,17 @@ Exposure window: T0 to T3 (minutes typically)
 **Common Issue**: CRL servers going down breaking certificate validation
 
 **Example Incidents**:
+
+
+
 - Corporate firewall blocking CRL access
 - CRL server capacity exceeded
 - DNS issues preventing CRL resolution
 
 **Impact**:
+
+
+
 - Applications fail to validate certificates
 - Soft-fail browsers continue working
 - Hard-fail applications break
@@ -896,6 +1034,9 @@ Exposure window: T0 to T3 (minutes typically)
 ---
 
 **Quality Checks**: 
+
+
+
 - [x] All claims cited from authoritative sources
 - [x] Cross-references validated
 - [x] Practical guidance included

@@ -42,11 +42,17 @@ Renewal Window: 30 days (Days 60-89)
 ```
 
 **Recommendations**:
+
+
+
 - **90-day certificates**: Renew at 60 days (1/3 remaining)
 - **1-year certificates**: Renew at 30-60 days remaining
 - **Multi-year certificates**: Renew at 90 days remaining
 
 **Rationale**:
+
+
+
 - Provides retry window if renewal fails
 - Balances freshness with operational stability
 - Aligns with industry best practices
@@ -62,6 +68,9 @@ def should_renew(cert):
 ```
 
 **Benefits**:
+
+
+
 - Scales to any certificate lifetime
 - Consistent renewal behavior
 - Easy to understand and configure
@@ -69,6 +78,9 @@ def should_renew(cert):
 #### Event-Based Renewal
 
 **Triggers**:
+
+
+
 - **Key compromise**: Immediate renewal with new key
 - **Certificate revocation**: Replace revoked certificate
 - **Configuration change**: New SANs, updated metadata
@@ -106,16 +118,25 @@ Replace existing certificate with renewed version using same key.
 5. Reload/restart service
 
 **Advantages**:
+
+
+
 - Simpler process (no new key)
 - Certificate pinning compatible (same key)
 - Fewer files to manage
 
 **Disadvantages**:
+
+
+
 - Extended key exposure window
 - Doesn't follow key rotation best practices
 - Compromised key remains in use
 
 **Use Cases**:
+
+
+
 - Rapid renewals needed
 - Certificate pinning requirements
 - Legacy systems with complex key distribution
@@ -134,16 +155,25 @@ Generate new key pair with each renewal.
 7. Secure deletion of old key
 
 **Advantages**:
+
+
+
 - Limits key exposure window
 - Follows security best practices
 - Key compromise affects only one certificate lifetime
 
 **Disadvantages**:
+
+
+
 - More complex deployment
 - Requires key management
 - May break certificate pinning
 
 **Use Cases**:
+
+
+
 - High-security environments
 - Recommended default approach
 - Compliance requirements (PCI DSS)
@@ -163,16 +193,25 @@ Deploy new certificate alongside old, switch when validated.
 ```
 
 **Advantages**:
+
+
+
 - Zero-downtime renewal
 - Easy rollback if issues detected
 - Validation before cutover
 
 **Disadvantages**:
+
+
+
 - Requires dual certificate support
 - More complex configuration
 - Temporary increased resource usage
 
 **Use Cases**:
+
+
+
 - High-availability services
 - Large-scale deployments
 - Risk-averse environments
@@ -305,6 +344,9 @@ spec:
 ```
 
 **cert-manager Controller** (handles renewal automatically):
+
+
+
 - Monitors all Certificate resources
 - Checks expiration dates continuously
 - Triggers renewal when `renewBefore` threshold reached
@@ -436,6 +478,9 @@ resource "aws_lb_listener_certificate" "example" {
 ```
 
 **Benefits**:
+
+
+
 - Certificate configuration in version control
 - Declarative renewal (Terraform detects expiration)
 - Automatic deployment
@@ -460,6 +505,9 @@ done | tee certificates-audit.txt
 ```
 
 **Categorize by Renewal Type**:
+
+
+
 - **ACME-compatible**: Public TLS certificates, domain-validated
 - **Manual CA submission**: Internal CA, requires approval workflow
 - **Vendor-managed**: Load balancer certificates, CDN certificates
@@ -468,16 +516,22 @@ done | tee certificates-audit.txt
 **Prioritize by Risk**:
 ```
 High Priority:
+
+
 - Expiring within 60 days
 - Customer-facing services
 - No existing renewal process
 
 Medium Priority:
+
+
 - Expiring within 90 days
 - Internal services
 - Manual renewal in place
 
 Low Priority:
+
+
 - Expiring > 90 days
 - Non-production
 - Already automated
@@ -677,6 +731,9 @@ spec:
 ```
 
 **Certificate Updates Trigger Rolling Update**:
+
+
+
 - cert-manager renews certificate
 - Updates Kubernetes Secret
 - Deployment controller detects change
@@ -839,11 +896,17 @@ renewal_policy = {
 ```
 
 **Benefits**:
+
+
+
 - Limits key compromise exposure window
 - Best security practice
 - Compliance requirement (some industries)
 
 **Considerations**:
+
+
+
 - More complex than key reuse
 - Certificate pinning breaks
 - Requires secure key distribution
@@ -915,6 +978,9 @@ def log_audit_event(event_type, cert_id, details):
 - Manual intervention not triggered in time
 
 **Impact**: 
+
+
+
 - 12+ hour outage
 - Millions of customers affected
 - Emergency manual renewal required
@@ -932,6 +998,9 @@ def log_audit_event(event_type, cert_id, details):
 - Certificate expired causing cascading failures
 
 **Impact**:
+
+
+
 - Several hours of degraded service
 - Global user impact
 
@@ -942,12 +1011,18 @@ def log_audit_event(event_type, cert_id, details):
 **Challenge**: 3+ million certificates renewed daily
 
 **Solution**:
+
+
+
 - ACME protocol enabling full automation
 - Client-side renewal automation (certbot, acme.sh)
 - 90-day lifetime forcing automation
 - Retry logic handling transient failures
 
 **Results**:
+
+
+
 - 99%+ renewal success rate
 - Eliminated manual renewal bottleneck
 - Enabled massive scaling
@@ -980,6 +1055,9 @@ No formal citations needed for this operational guide based on industry best pra
 ---
 
 **Quality Checks**: 
+
+
+
 - [x] All claims cited from authoritative sources
 - [x] Cross-references validated
 - [x] Practical guidance included

@@ -39,11 +39,17 @@ Root CA (Online)
 ```
 
 **Use Cases**:
+
+
+
 - Small organizations (<100 certificates)
 - Development/testing environments
 - Proof-of-concept implementations
 
 **Limitations**:
+
+
+
 - Root CA private key online and exposed to operational risk
 - CA compromise requires complete PKI rebuild
 - No operational flexibility or delegation
@@ -65,17 +71,26 @@ Root CA (Offline)
 ```
 
 **Characteristics**:
+
+
+
 - Root CA: Air-gapped, powered on only for intermediate CA issuance and CRL signing
 - Issuing CA: Online, handles day-to-day certificate issuance
 - Root CA compromise is less likely due to offline status
 - Intermediate CA compromise is recoverable: revoke and issue new intermediate
 
 **Use Cases**:
+
+
+
 - Medium organizations (100-10,000 certificates)
 - Single-purpose PKI (e.g., TLS only)
 - Organizations with basic security requirements
 
 **Operational Model**:
+
+
+
 - Root CA ceremony for initial setup and intermediate issuance
 - Issuing CA online 24/7 for certificate operations
 - Periodic root CA activation for CRL signing and intermediate renewal
@@ -94,6 +109,9 @@ Root CA (Offline)
 ```
 
 **Characteristics**:
+
+
+
 - Root CA: Maximum security, powered on only for major events
 - Policy CAs: Intermediate layer representing different certificate policies/purposes
 - Issuing CAs: Day-to-day operational certificate issuance
@@ -101,12 +119,18 @@ Root CA (Offline)
 - Provides operational and policy segregation
 
 **Use Cases**:
+
+
+
 - Large enterprises (>10,000 certificates)
 - Organizations with diverse certificate requirements (TLS, code signing, email, authentication)
 - Regulated industries requiring strong security controls
 - Organizations requiring segregation of duties
 
 **Example Policy Segregation**:
+
+
+
 - **Public-facing TLS Policy CA**: For internet-exposed services
 - **Internal TLS Policy CA**: For internal infrastructure
 - **Code Signing Policy CA**: For software release signing (highest security)
@@ -120,12 +144,18 @@ The root CA is the ultimate trust anchor. Its compromise invalidates the entire 
 #### Root CA Security Controls
 
 **Physical Security**:
+
+
+
 - Dedicated secure facility with access controls
 - Separate secure storage for CA private key (HSM or encrypted storage)
 - Video surveillance and access logging
 - Minimal number of personnel with physical access
 
 **Logical Security**:
+
+
+
 - Dedicated, hardened hardware (never virtualized for high-security environments)
 - Minimal OS installation with no unnecessary services
 - No network connectivity (air-gapped)
@@ -133,6 +163,9 @@ The root CA is the ultimate trust anchor. Its compromise invalidates the entire 
 - Strong authentication for administrative access (smartcards, multi-factor)
 
 **Operational Security**:
+
+
+
 - Multi-person integrity (requires 2+ people for operations)
 - Comprehensive audit logging stored externally
 - Formal ceremony procedures for all operations
@@ -140,6 +173,9 @@ The root CA is the ultimate trust anchor. Its compromise invalidates the entire 
 - Backup and recovery procedures tested annually
 
 **Key Protection**:
+
+
+
 - FIPS 140-2 Level 3 or higher HSM for high-security environments[^2]
 - Encrypted backup keys in separate secure location
 - Key ceremony with witnesses and documentation
@@ -156,6 +192,9 @@ Root CAs should be powered on only for:
 5. **Decommissioning**: Controlled shutdown and key destruction at end-of-life
 
 **Activation Frequency**: 
+
+
+
 - High security environments: 1-2 times per year
 - Medium security: Quarterly
 - Lower security: Monthly
@@ -171,6 +210,9 @@ Intermediate CAs balance security and operational requirements. They're online e
 **Purpose**: Handle day-to-day certificate issuance, revocation, and CRL/OCSP operations.
 
 **Security Posture**:
+
+
+
 - HSM-based private key storage
 - Hardened systems with minimal attack surface
 - Network segmentation (dedicated PKI VLAN)
@@ -178,12 +220,18 @@ Intermediate CAs balance security and operational requirements. They're online e
 - Comprehensive audit logging
 
 **High Availability**:
+
+
+
 - Redundant issuing CAs for business continuity
 - Geographic distribution for disaster recovery
 - Automated failover mechanisms
 - Load balancing for performance
 
 **Operational Accessibility**:
+
+
+
 - API endpoints for certificate issuance automation
 - Integration with identity systems for validation
 - ACME protocol support for automated renewals
@@ -196,12 +244,18 @@ Policy CAs sit between root and issuing CAs, representing different certificate 
 **Purpose**: Segregate certificate purposes while maintaining single root of trust.
 
 **Security Posture**:
+
+
+
 - More secure than issuing CAs, less accessible than root
 - May be offline or have restricted network access
 - HSM key storage required
 - Formal procedures for certificate issuance (to issuing CAs)
 
 **Operational Model**:
+
+
+
 - Activated for issuing CA creation, renewal, and revocation
 - May be activated quarterly or annually depending on issuing CA validity periods
 - Less formal ceremony than root CA but documented procedures
@@ -230,6 +284,9 @@ When a relying party (e.g., web browser) encounters a certificate, it must build
 5. Validate entire chain (signatures, validity dates, revocation status)
 
 **Common Issues**:
+
+
+
 - Missing intermediate certificates (server must send full chain)
 - Incorrect chain order
 - Expired intermediate certificates
@@ -246,6 +303,9 @@ Organization A Root CA ←→ Organization B Root CA
 ```
 
 **Use Cases**:
+
+
+
 - Federal Bridge CA connecting government agencies
 - B2B partnerships requiring mutual certificate trust
 - PKI migration (old and new root CAs trusted simultaneously)
@@ -259,6 +319,9 @@ Organization A Root CA ←→ Organization B Root CA
 #### Step 1: Requirements Gathering
 
 **Questions to Answer**:
+
+
+
 - How many certificates will be issued? (Current and 5-year projection)
 - What certificate types are needed? (TLS, code signing, email, authentication, IoT)
 - What are the security requirements? (Regulatory compliance, risk tolerance)
@@ -280,6 +343,9 @@ Organization A Root CA ←→ Organization B Root CA
 #### Step 3: Security Control Design
 
 **For All CA Tiers**:
+
+
+
 - Define access control policies (who can perform what operations)
 - Implement audit logging sent to centralized SIEM
 - Establish backup and recovery procedures
@@ -287,6 +353,9 @@ Organization A Root CA ←→ Organization B Root CA
 - Plan for compliance auditing (SOC 2, ISO 27001, WebTrust)
 
 **Root CA Specific**:
+
+
+
 - Physical security requirements and location
 - Ceremony procedures and documentation
 - Multi-person integrity requirements
@@ -294,6 +363,9 @@ Organization A Root CA ←→ Organization B Root CA
 - Offline storage requirements
 
 **Issuing CA Specific**:
+
+
+
 - High availability and disaster recovery
 - Performance and scalability requirements
 - Integration points (APIs, ACME, SCEP)
@@ -303,11 +375,17 @@ Organization A Root CA ←→ Organization B Root CA
 #### Step 4: Naming and Trust Anchor Distribution
 
 **Root CA Naming**: 
+
+
+
 - Choose descriptive, long-lived name (root CAs operate for 20+ years)
 - Include organization name and purpose
 - Example: "Acme Corporation Root CA 2024"
 
 **Certificate Distribution**:
+
+
+
 - How will devices/applications receive root certificate?
 - Enterprise: Group Policy, MDM, configuration management
 - External: Browser trust programs (requires WebTrust audit), certificate pinning
@@ -322,6 +400,8 @@ Document CA policies in Certificate Policy (CP) and Certificate Practice Stateme
 **Certificate Practice Statement (CPS)**: Detailed procedures for CA operations, security controls, and technical implementation.
 
 These documents are essential for:
+
+
 - Compliance audits
 - External trust establishment
 - Operational consistency
@@ -406,6 +486,8 @@ These documents are essential for:
 
 Layered CA architecture provides security through multiple defensive layers:
 
+
+
 - **Root CA compromise**: Attacker must compromise air-gapped system with multi-person controls
 - **Policy CA compromise**: Attacker must compromise restricted-access system
 - **Issuing CA compromise**: Detected through monitoring; revoke and replace intermediate
@@ -416,6 +498,8 @@ Each layer increases attacker cost and provides detection opportunities.
 
 CA operations should require multiple people to prevent insider threats:
 
+
+
 - Root CA ceremonies: Require 2-3 authorized personnel
 - CA administrator accounts: Separate persons, separate credentials
 - Audit review: Independent from CA operators
@@ -424,6 +508,8 @@ CA operations should require multiple people to prevent insider threats:
 ### Supply Chain Security
 
 CA systems are high-value targets. Secure the supply chain:
+
+
 
 - Purchase HSMs directly from manufacturers
 - Verify hardware hasn't been tampered with (tamper-evident seals)
@@ -479,6 +565,9 @@ Let's Encrypt regularly rotates intermediate CAs (typically annually) while keep
 ---
 
 **Quality Checks**: 
+
+
+
 - [x] All claims cited from authoritative sources
 - [x] Cross-references validated
 - [x] Practical guidance included

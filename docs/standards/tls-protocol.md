@@ -29,12 +29,18 @@ TLS provides three critical security properties: authentication (proving server 
 #### SSL 2.0 and 3.0 (Deprecated)
 
 **SSL 2.0** (1995):
+
+
+
 - Netscape's original protocol
 - Numerous security flaws
 - No longer supported anywhere
 - **Status**: Completely broken, never use
 
 **SSL 3.0** (1996):
+
+
+
 - Complete redesign addressing SSL 2.0 flaws
 - POODLE attack (2014) demonstrated practical vulnerability[^2]
 - **Status**: Deprecated, RFC 7568 prohibits use
@@ -68,6 +74,9 @@ TLS provides three critical security properties: authentication (proving server 
 - **Use**: Default for most implementations
 
 **Key Features**:
+
+
+
 - Authenticated encryption with GCM mode
 - SHA-256 and SHA-384 hash functions
 - Elliptic curve cryptography support
@@ -86,11 +95,17 @@ TLS provides three critical security properties: authentication (proving server 
 - **Use**: Preferred when both client and server support
 
 **Major Changes from TLS 1.2**:
+
+
+
 - **Removed**: RSA key exchange, static DH, CBC mode ciphers, compression, renegotiation
 - **Added**: Only AEAD ciphers, mandatory perfect forward secrecy, encrypted handshake
 - **Improved**: Faster handshake (0-RTT resumption), simpler cipher suite selection
 
 **Security Improvements**:
+
+
+
 - All handshake messages except ClientHello encrypted
 - Removed known-vulnerable algorithms
 - No algorithm downgrade attacks possible
@@ -167,6 +182,9 @@ ClientHello
 ```
 
 **Major Differences**:
+
+
+
 - **1-RTT**: Client sends key share in first message, reducing latency
 - **0-RTT**: Resumption can send data in first packet (with replay risk)
 - **Encrypted**: All handshake messages after ServerHello encrypted
@@ -315,6 +333,9 @@ TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
 #### Deprecated Cipher Suites
 
 **Never Use**:
+
+
+
 - Any cipher with `RC4` (broken stream cipher)
 - Any cipher with `MD5` (broken hash function)
 - Any cipher with `DES` or `3DES` (weak encryption)
@@ -374,6 +395,9 @@ Resumption allows skipping expensive handshake for repeat connections.
 5. Abbreviated handshake (skip certificate exchange)
 
 **Limitations**:
+
+
+
 - Server must maintain session cache
 - Not practical for load-balanced servers
 - Session cache requires memory
@@ -388,6 +412,9 @@ Resumption allows skipping expensive handshake for repeat connections.
 5. Server decrypts ticket, resumes session
 
 **Advantages**:
+
+
+
 - Server doesn't maintain state (stateless)
 - Works across load-balanced servers
 - Client stores encrypted session state
@@ -397,11 +424,17 @@ Resumption allows skipping expensive handshake for repeat connections.
 #### TLS 1.3 PSK Resumption
 
 **Pre-Shared Key** mode:
+
+
+
 - Server sends PSK after handshake
 - Client uses PSK for future connections
 - Enables 1-RTT or 0-RTT resumption
 
 **Security Considerations**:
+
+
+
 - 0-RTT vulnerable to replay attacks
 - PSK should expire after reasonable time
 - Not forward secret (PSK compromise affects resumed sessions)
@@ -539,6 +572,9 @@ nmap --script ssl-enum-ciphers -p 443 example.com
 #### Using SSL Labs
 
 **Online Testing**:
+
+
+
 - Visit: https://www.ssllabs.com/ssltest/
 - Enter domain name
 - Comprehensive report includes:
@@ -625,6 +661,9 @@ ssl_stapling_verify on;
 ```
 
 **Use TLS 1.3** (faster handshake):
+
+
+
 - Ensure client and server both support TLS 1.3
 - 1-RTT handshake vs 2-RTT in TLS 1.2
 
@@ -760,6 +799,9 @@ curl https://example.com/api \
 **Example**: Man-in-the-middle removes TLS 1.3 from ClientHello, forcing TLS 1.2
 
 **Mitigations**:
+
+
+
 - **TLS_FALLBACK_SCSV**: Signaling cipher suite value prevents version rollback
 - **TLS 1.3 Design**: Downgrade protection built into protocol
 - **Certificate Transparency**: Monitor for unexpected certificate issuance
@@ -775,6 +817,9 @@ ssl_protocols TLSv1.2 TLSv1.3;
 **Concept**: Application only accepts specific certificates or public keys
 
 **Types**:
+
+
+
 - **Certificate Pinning**: Pin entire certificate
 - **Public Key Pinning**: Pin public key (survives certificate renewal)
 - **CA Pinning**: Pin intermediate or root CA
@@ -793,6 +838,9 @@ Public-Key-Pins: pin-sha256="base64=="; max-age=5184000; includeSubDomains
 ### Man-in-the-Middle (MitM) Detection
 
 **Indicators**:
+
+
+
 - Certificate hostname mismatch
 - Untrusted root certificate
 - Self-signed certificate warnings
@@ -800,6 +848,9 @@ Public-Key-Pins: pin-sha256="base64=="; max-age=5184000; includeSubDomains
 - Different certificate than expected (compare fingerprints)
 
 **Protection**:
+
+
+
 - Never ignore certificate warnings
 - Verify certificate fingerprints out-of-band
 - Use Certificate Transparency monitoring
@@ -812,6 +863,9 @@ Public-Key-Pins: pin-sha256="base64=="; max-age=5184000; includeSubDomains
 **Implementation**: Cloudflare enabled TLS 1.3 for all customers in 2018
 
 **Results**:
+
+
+
 - 40% reduction in handshake latency
 - Improved mobile performance (fewer round trips)
 - Enhanced security (mandatory forward secrecy)
@@ -824,12 +878,18 @@ Public-Key-Pins: pin-sha256="base64=="; max-age=5184000; includeSubDomains
 **Vulnerability**: OpenSSL buffer over-read allowed memory disclosure
 
 **Impact**:
+
+
+
 - 17% of secure web servers vulnerable
 - Private keys, session keys, user credentials exposed
 - Required certificate regeneration and revocation
 - Demonstrated critical infrastructure dependency on OpenSSL
 
 **Response**:
+
+
+
 - Immediate patching of OpenSSL
 - Mass certificate revocation and reissuance
 - Increased funding for OpenSSL development
@@ -889,6 +949,9 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 ---
 
 **Quality Checks**: 
+
+
+
 - [x] All claims cited from authoritative sources
 - [x] Cross-references validated
 - [x] Practical guidance included

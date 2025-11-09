@@ -33,6 +33,9 @@ ACME defines interactions between three parties:
 Software requesting certificates on behalf of domain owner.
 
 **Responsibilities**:
+
+
+
 - Account registration with ACME server
 - Prove control over domain (challenge completion)
 - Generate key pairs
@@ -41,6 +44,9 @@ Software requesting certificates on behalf of domain owner.
 - Handle revocation if needed
 
 **Examples**:
+
+
+
 - **Certbot**: EFF's official client, Python-based
 - **acme.sh**: Shell script implementation
 - **cert-manager**: Kubernetes-native controller
@@ -52,6 +58,9 @@ Software requesting certificates on behalf of domain owner.
 Certificate Authority implementing ACME protocol.
 
 **Responsibilities**:
+
+
+
 - Account management
 - Challenge generation and validation
 - Certificate issuance
@@ -59,6 +68,9 @@ Certificate Authority implementing ACME protocol.
 - Rate limiting and abuse prevention
 
 **Examples**:
+
+
+
 - **Let's Encrypt**: Free, public CA
 - **ZeroSSL**: Free and paid options
 - **Buypass Go SSL**: Free Norwegian CA
@@ -71,6 +83,9 @@ Certificate Authority implementing ACME protocol.
 Entity controlling domain and running ACME client.
 
 **Responsibilities**:
+
+
+
 - Maintain domain infrastructure to complete challenges
 - Secure ACME account credentials
 - Monitor certificate expiration and renewal
@@ -116,6 +131,9 @@ ACME requires account registration before certificate operations.
 ```
 
 **Account Key Security**:
+
+
+
 - Account key controls all certificates for the account
 - Store securely (HSM, encrypted keystore)
 - Separate from certificate private keys
@@ -162,18 +180,27 @@ abc123xyz.Xyz9876def
 ```
 
 **Advantages**:
+
+
+
 - Simple to implement
 - Works with standard web servers
 - Port 80 required (standard)
 - No DNS changes needed
 
 **Limitations**:
+
+
+
 - Requires port 80 accessible from internet
 - Only validates single hostname
 - Cannot validate wildcard certificates
 - Doesn't work for internal domains
 
 **Use Cases**:
+
+
+
 - Public websites
 - Single hostnames
 - Standard web server environments
@@ -199,18 +226,27 @@ base64url(SHA-256(<token>.<base64url(SHA-256(account_key_jwk))>))
 ```
 
 **Advantages**:
+
+
+
 - Works without public-facing web server
 - Can validate wildcard certificates (*.example.com)
 - Can validate multiple domains simultaneously
 - Works for internal/private domains
 
 **Limitations**:
+
+
+
 - Requires DNS provider API or manual DNS management
 - DNS propagation delays (can take minutes)
 - More complex to automate
 - Potential for DNS pollution if not cleaned up
 
 **Use Cases**:
+
+
+
 - Wildcard certificates
 - Internal infrastructure
 - Load balancers/proxies
@@ -233,18 +269,27 @@ Prove control via TLS handshake with specific ALPN extension.
 ```
 
 **Advantages**:
+
+
+
 - Works on port 443 only (no port 80)
 - Useful when port 80 blocked/unavailable
 - Simple validation
 - Fast (no DNS delays)
 
 **Limitations**:
+
+
+
 - Requires TLS server control
 - Less widely supported
 - Cannot validate wildcards
 - Relatively new (not all clients support)
 
 **Use Cases**:
+
+
+
 - Environments where only port 443 allowed
 - TLS-based infrastructure
 - Alternative to HTTP-01 when port 80 unavailable
@@ -361,6 +406,9 @@ Ideal: Day 60 (30 days remaining)
 ```
 
 **Why 90-Day Certificates?**:
+
+
+
 - Forces automation (manual renewal unsustainable)
 - Reduces exposure window if key compromised
 - Enables key rotation best practices
@@ -384,6 +432,9 @@ while True:
 #### Renewal Considerations
 
 **Key Rotation**:
+
+
+
 - **Reuse private key**: Same key, new certificate
   - Simpler, fewer keys to manage
   - Longer key exposure window
@@ -393,11 +444,17 @@ while True:
   - Recommended by security best practices
 
 **Certificate Chain**:
+
+
+
 - ACME server may return different intermediates over time
 - Always use full chain returned by server
 - Don't assume chain structure stays constant
 
 **Rate Limits**:
+
+
+
 - Let's Encrypt: 50 certificates per registered domain per week
 - Consider rate limits in renewal automation
 - Spread renewals across time (don't renew all at once)
@@ -432,6 +489,9 @@ Authorization: <cert_key_signature>
 ```
 
 **Revocation Reasons**:
+
+
+
 - 0: unspecified
 - 1: keyCompromise
 - 3: affiliationChanged
@@ -441,17 +501,26 @@ Authorization: <cert_key_signature>
 #### When to Revoke
 
 **Immediately Revoke If**:
+
+
+
 - Private key compromised or exposed
 - Domain no longer controlled
 - Certificate issued in error
 - Service decommissioned permanently
 
 **Consider Revocation If**:
+
+
+
 - Replacing certificate before expiration
 - Service temporarily offline
 - Security best practice in incident response
 
 **Don't Need to Revoke If**:
+
+
+
 - Normal certificate renewal (cert expires soon anyway)
 - Certificate already expired
 
@@ -785,11 +854,17 @@ certbot certonly --standalone \
 ### Account Key Security
 
 **Critical Importance**:
+
+
+
 - Account key authorizes all certificate operations
 - Compromise allows attacker to issue certificates for your domains
 - More critical than individual certificate private keys
 
 **Protection Measures**:
+
+
+
 - Store encrypted at rest
 - Restrict access (root/admin only)
 - Consider HSM for high-security environments
@@ -799,18 +874,27 @@ certbot certonly --standalone \
 ### Challenge Security
 
 **HTTP-01 Risks**:
+
+
+
 - Port 80 must be publicly accessible
 - Challenge responses served over unencrypted HTTP
 - Not sensitive: challenge response is public information
 - Risk is not in challenge content but in validation process
 
 **DNS-01 Risks**:
+
+
+
 - DNS API credentials are highly sensitive
 - API compromise allows certificate issuance for any domain
 - DNS provider access should be restricted
 - Use DNS API tokens with minimal permissions
 
 **BGP Hijacking**:
+
+
+
 - Attacker redirects traffic to their infrastructure
 - Completes ACME challenge for victim's domain
 - Obtains valid certificate
@@ -834,6 +918,9 @@ Let's Encrypt rate limits (as of 2024)[^2]:
 **New Orders**: 300 per 3 hours
 
 **Mitigation Strategies**:
+
+
+
 - Spread certificate issuance over time
 - Use wildcard certificates where appropriate
 - Combine multiple subdomains in single certificate (SAN)
@@ -844,11 +931,17 @@ Let's Encrypt rate limits (as of 2024)[^2]:
 ### Case Study: Let's Encrypt Growth
 
 **Scale** (as of 2024):
+
+
+
 - 3+ million certificates issued daily
 - 300+ million active certificates
 - 90% of web pages loaded over HTTPS (up from 40% in 2015)
 
 **Impact**:
+
+
+
 - Eliminated cost barrier to HTTPS
 - Enabled small sites and personal projects to use HTTPS
 - Demonstrated viability of automated certificate management
@@ -877,11 +970,17 @@ Let's Encrypt rate limits (as of 2024)[^2]:
 **Incident**: DNS provider API outage during ACME renewals
 
 **Impact**:
+
+
+
 - DNS-01 challenge failures
 - Renewal failures for wildcard certificates
 - Cascading expirations
 
 **Lessons**:
+
+
+
 - DNS API is critical dependency for DNS-01 challenges
 - Need fallback strategies (manual, alternative provider)
 - Monitor DNS API availability
@@ -919,6 +1018,9 @@ Let's Encrypt rate limits (as of 2024)[^2]:
 ---
 
 **Quality Checks**: 
+
+
+
 - [x] All claims cited from authoritative sources
 - [x] Cross-references validated
 - [x] Practical guidance included

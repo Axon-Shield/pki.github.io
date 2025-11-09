@@ -5,6 +5,10 @@ A comprehensive, private Wikipedia-style knowledge base focused on Public Key In
 ## Purpose
 
 This knowledge base serves as a reference for:
+
+
+
+
 - Enterprise PKI implementation and operations
 - Certificate lifecycle management
 - Security best practices
@@ -14,6 +18,10 @@ This knowledge base serves as a reference for:
 ## Structure
 
 The wiki is organized into logical domains:
+
+
+
+
 
 - **`/foundations/`** - Fundamental PKI concepts and principles
 - **`/standards/`** - Protocols, RFCs, and specifications
@@ -54,6 +62,10 @@ The wiki is organized into logical domains:
 
 Each page follows a consistent template:
 
+
+
+
+
 - **TL;DR**: Executive summary
 - **Overview**: Introduction and context
 - **Key Concepts**: Core technical information
@@ -68,6 +80,10 @@ Each page follows a consistent template:
 ## Quality Standards
 
 All pages maintain:
+
+
+
+
 - ✅ Authoritative citations for claims
 - ✅ Cross-reference integrity
 - ✅ Practical, actionable guidance
@@ -77,6 +93,10 @@ All pages maintain:
 ## Maintenance
 
 This knowledge base is designed for LLM-assisted maintenance following principles in `maintenance-plan.md`:
+
+
+
+
 
 - **Update triggers**: Factual corrections, new standards, security advisories, gap filling
 - **Update restrictions**: No stylistic rewrites, no marginal additions, no unnecessary restructuring
@@ -100,6 +120,10 @@ This is a private knowledge base. Updates should:
 ## Roadmap
 
 High-priority additions:
+
+
+
+
 - Standards pages (X.509, TLS, OCSP/CRL, ACME)
 - Security pages (CA compromise, private key protection, vulnerabilities)
 - Implementation pages (HSM integration, ACME implementation)
