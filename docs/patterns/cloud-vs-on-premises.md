@@ -699,28 +699,28 @@ Evaluate your specific requirements, run the cost calculations, assess your oper
 
 **AWS Certificate Manager (ACM)**
 - AWS. "AWS Certificate Manager."
-  - https://aws.amazon.com/certificate-manager/
+  - [Amazon - Certificate Manager](https://aws.amazon.com/certificate-manager/)
 - Managed certificate service
 - Free certificates for AWS resources
 - Automatic renewal
 
 **AWS Private CA**
 - AWS. "AWS Certificate Manager Private Certificate Authority."
-  - https://docs.aws.amazon.com/acm-pca/
+  - [Amazon - Acm Pca](https://docs.aws.amazon.com/acm-pca/)
 - Managed private CA service
 - Pay-per-certificate pricing
 - API integration
 
 **Azure Key Vault**
 - Microsoft. "Azure Key Vault."
-  - https://docs.microsoft.com/en-us/azure/key-vault/
+  - [Microsoft - Azure](https://docs.microsoft.com/en-us/azure/key-vault/)
 - Certificate management
 - HSM-backed keys (Dedicated HSM tier)
 - Integration with Azure services
 
 **Google Certificate Authority Service**
 - Google Cloud. "Certificate Authority Service."
-  - https://cloud.google.com/certificate-authority-service
+  - [Google - Certificate Authority Service](https://cloud.google.com/certificate-authority-service)
 - Managed CA hierarchies
 - DevOps integration
 - Regional and global pools
@@ -729,21 +729,21 @@ Evaluate your specific requirements, run the cost calculations, assess your oper
 
 **AWS CloudHSM**
 - AWS. "AWS CloudHSM."
-  - https://aws.amazon.com/cloudhsm/
+  - [Amazon - Cloudhsm](https://aws.amazon.com/cloudhsm/)
 - FIPS 140-2 Level 3 validated
 - Customer-managed keys
 - Single-tenant hardware
 
 **Azure Dedicated HSM**
 - Microsoft. "Azure Dedicated HSM."
-  - https://docs.microsoft.com/en-us/azure/dedicated-hsm/
+  - [Microsoft - Azure](https://docs.microsoft.com/en-us/azure/dedicated-hsm/)
 - Thales Luna Network HSM
 - Customer exclusive access
 - FIPS 140-2 Level 3
 
 **Google Cloud HSM**
 - Google Cloud. "Cloud HSM."
-  - https://cloud.google.com/kms/docs/hsm
+  - [Google - Hsm](https://cloud.google.com/kms/docs/hsm)
 - FIPS 140-2 Level 3
 - Integration with Cloud KMS
 - Regional availability
@@ -758,7 +758,7 @@ Evaluate your specific requirements, run the cost calculations, assess your oper
 
 **AWS TCO Calculator**
 - AWS. "AWS Pricing Calculator."
-  - https://calculator.aws/
+  - [Calculator](https://calculator.aws/)
 - Cost estimation tools
 - On-premises comparison
 
@@ -771,21 +771,21 @@ Evaluate your specific requirements, run the cost calculations, assess your oper
 
 **FedRAMP Cloud Security Requirements**
 - FedRAMP. "FedRAMP Security Controls."
-  - https://www.fedramp.gov/
+  - [Fedramp](https://www.fedramp.gov/)
 - Cloud service authorization
 - Security requirements
 - Continuous monitoring
 
 **GDPR Data Residency**
 - European Parliament. "GDPR Article 44-50 - Transfers of Personal Data."
-  - https://gdpr-info.eu/
+  - [Gdpr-info](https://gdpr-info.eu/)
 - Data transfer restrictions
 - Adequacy decisions
 - Standard contractual clauses
 
 **Cloud Security Alliance - Cloud Controls Matrix**
 - CSA. "Cloud Controls Matrix (CCM)."
-  - https://cloudsecurityalliance.org/research/cloud-controls-matrix/
+  - [Cloudsecurityalliance - Cloud Controls Matrix](https://cloudsecurityalliance.org/research/cloud-controls-matrix/)
 - Cloud-specific controls
 - Compliance mapping
 - Security domains
@@ -800,7 +800,7 @@ Evaluate your specific requirements, run the cost calculations, assess your oper
 
 **NIST SP 800-146 - Cloud Computing Synopsis**
 - NIST. "Cloud Computing Synopsis and Recommendations." May 2012.
-  - https://csrc.nist.gov/publications/detail/sp/800-146/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-146/final)
 - Cloud deployment models
 - Security considerations
 - Federal guidance
@@ -809,7 +809,7 @@ Evaluate your specific requirements, run the cost calculations, assess your oper
 
 **AWS Migration Hub**
 - AWS. "AWS Migration Hub."
-  - https://aws.amazon.com/migration-hub/
+  - [Amazon - Migration Hub](https://aws.amazon.com/migration-hub/)
 - Migration planning
 - Application discovery
 - Migration tracking
@@ -824,7 +824,7 @@ Evaluate your specific requirements, run the cost calculations, assess your oper
 
 **Shared Responsibility Model**
 - AWS. "Shared Responsibility Model."
-  - https://aws.amazon.com/compliance/shared-responsibility-model/
+  - [Amazon - Shared Responsibility Model](https://aws.amazon.com/compliance/shared-responsibility-model/)
 - Provider vs customer responsibilities
 - Security boundaries
 - Compliance implications
@@ -845,7 +845,7 @@ Evaluate your specific requirements, run the cost calculations, assess your oper
 
 **Netflix Cloud Architecture**
 - Netflix Tech Blog. "Netflix Cloud Architecture."
-  - https://netflixtechblog.com/
+  - [Netflixtechblog](https://netflixtechblog.com/)
 - Large-scale cloud deployment
 - Resilience patterns
 - Lessons learned
@@ -874,7 +874,7 @@ Evaluate your specific requirements, run the cost calculations, assess your oper
 
 **Cloud Native Computing Foundation**
 - CNCF. "Cloud Native Landscape."
-  - https://landscape.cncf.io/
+  - [Cncf](https://landscape.cncf.io/)
 - Open source cloud tools
 - Vendor-neutral options
 - Portability considerations

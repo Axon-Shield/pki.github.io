@@ -1055,7 +1055,7 @@ pkcs11-tool --module /usr/lib/libCryptoki2.so --login --pin $PIN \
 
 ## References
 
-[^1]: NIST. "Security Requirements for Cryptographic Modules." FIPS 140-2, May 2001. https://csrc.nist.gov/publications/detail/fips/140/2/final
+[^1]: NIST. "Security Requirements for Cryptographic Modules." FIPS 140-2, May 2001. [Nist - Detail](https://csrc.nist.gov/publications/detail/fips/140/2/final)
 
 ## Change History
 

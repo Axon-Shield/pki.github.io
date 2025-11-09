@@ -1428,9 +1428,9 @@ Azure primary, AWS secondary, large on-premises:
 ### Standards and Documentation
 - NIST SP 800-57: Key Management Recommendations
 - Cloud Security Alliance: PKI in Cloud Environments
-- AWS ACM Documentation: https://docs.aws.amazon.com/acm/
-- Azure Key Vault Certificates: https://docs.microsoft.com/azure/key-vault/certificates/
-- GCP Certificate Manager: https://cloud.google.com/certificate-manager/docs
+- AWS ACM Documentation: [Amazon - Acm](https://docs.aws.amazon.com/acm/)
+- Azure Key Vault Certificates: [Microsoft - Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/)
+- GCP Certificate Manager: [Google - Certificate Manager](https://cloud.google.com/certificate-manager/docs)
 
 ### Related Pages
 - [Certificate Issuance Workflows](./certificate-issuance-workflows.md) - Workflow automation
@@ -1440,11 +1440,11 @@ Azure primary, AWS secondary, large on-premises:
 - [CA Architecture](./ca-architecture.md) - CA design patterns
 
 ### Tools and Projects
-- cert-manager: https://cert-manager.io/
-- HashiCorp Vault: https://www.vaultproject.io/
-- Istio: https://istio.io/
-- SPIFFE/SPIRE: https://spiffe.io/
-- Terraform: https://www.terraform.io/
+- cert-manager: [Cert-manager](https://cert-manager.io/)
+- HashiCorp Vault: [Vaultproject](https://www.vaultproject.io/)
+- Istio: [Istio](https://istio.io/)
+- SPIFFE/SPIRE: [Spiffe](https://spiffe.io/)
+- Terraform: [Terraform](https://www.terraform.io/)
 
 ---
 

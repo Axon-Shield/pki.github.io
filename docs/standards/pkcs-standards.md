@@ -1041,9 +1041,9 @@ PrivateKey privateKey = new JcaPEMKeyConverter().getPrivateKey(keyInfo);
 
 ## References
 
-[^1]: Moriarty, K., et al. "PKCS #1: RSA Cryptography Specifications Version 2.2." RFC 8017, November 2016. https://www.rfc-editor.org/rfc/rfc8017
+[^1]: Moriarty, K., et al. "PKCS #1: RSA Cryptography Specifications Version 2.2." RFC 8017, November 2016. [Rfc-editor - Rfc8017](https://www.rfc-editor.org/rfc/rfc8017)
 
-[^2]: Housley, R. "Cryptographic Message Syntax (CMS)." RFC 5652, September 2009. https://www.rfc-editor.org/rfc/rfc5652
+[^2]: Housley, R. "Cryptographic Message Syntax (CMS)." RFC 5652, September 2009. [Rfc-editor - Rfc5652](https://www.rfc-editor.org/rfc/rfc5652)
 
 ## Change History
 

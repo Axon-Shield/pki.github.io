@@ -1005,9 +1005,9 @@ Let's Encrypt rate limits (as of 2024)[^2]:
 
 ## References
 
-[^1]: Barnes, R., et al. "Automatic Certificate Management Environment (ACME)." RFC 8555, March 2019. https://www.rfc-editor.org/rfc/rfc8555
+[^1]: Barnes, R., et al. "Automatic Certificate Management Environment (ACME)." RFC 8555, March 2019. [Rfc-editor - Rfc8555](https://www.rfc-editor.org/rfc/rfc8555)
 
-[^2]: Let's Encrypt. "Rate Limits." https://letsencrypt.org/docs/rate-limits/ (Accessed November 2024)
+[^2]: Let's Encrypt. "Rate Limits." [Letsencrypt - Rate Limits](https://letsencrypt.org/docs/rate-limits/) (Accessed November 2024)
 
 ## Change History
 

@@ -160,11 +160,11 @@ An expired certificate prevented Equifax from scanning for vulnerabilities, cont
 
 ## References
 
-[^1]: Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." RFC 5280, May 2008. https://www.rfc-editor.org/rfc/rfc5280
+[^1]: Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." RFC 5280, May 2008. [Rfc-editor - Rfc5280](https://www.rfc-editor.org/rfc/rfc5280)
 
 [^2]: ITU-T Recommendation X.509. "Information technology – Open Systems Interconnection – The Directory: Public-key and attribute certificate frameworks." October 2019.
 
-[^3]: CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. https://cabforum.org/baseline-requirements-documents/
+[^3]: CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. [Cabforum - Baseline Requirements Documents](https://cabforum.org/baseline-requirements-documents/)
 
 ## Change History
 

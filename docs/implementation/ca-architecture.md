@@ -552,9 +552,9 @@ Let's Encrypt regularly rotates intermediate CAs (typically annually) while keep
 
 ## References
 
-[^1]: NIST. "Recommendation for Key Management." NIST SP 800-57 Part 1 Rev. 5, May 2020. Section 6.2 on CA Key Management. https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final
+[^1]: NIST. "Recommendation for Key Management." NIST SP 800-57 Part 1 Rev. 5, May 2020. Section 6.2 on CA Key Management. [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final)
 
-[^2]: NIST. "Security Requirements for Cryptographic Modules." FIPS 140-2, May 2001. Defines HSM security levels. https://csrc.nist.gov/publications/detail/fips/140/2/final
+[^2]: NIST. "Security Requirements for Cryptographic Modules." FIPS 140-2, May 2001. Defines HSM security levels. [Nist - Detail](https://csrc.nist.gov/publications/detail/fips/140/2/final)
 
 ## Change History
 

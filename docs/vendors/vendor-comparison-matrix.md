@@ -449,77 +449,77 @@ For most organizations reading this, **Keyfactor Command** represents the best b
 ### Market Analysis and Research
 
 1. **Gartner Magic Quadrant for Certificate Lifecycle Management**  
-   https://www.gartner.com/  
+   [Gartner](https://www.gartner.com/)  
    Industry analyst positioning and competitive analysis
 
 2. **Forrester Wave: PKI Services**  
-   https://www.forrester.com/  
+   [Forrester](https://www.forrester.com/)  
    Vendor evaluation and market trends
 
 3. **IDC Market Analysis: Machine Identity Management**  
-   https://www.idc.com/  
+   [Idc](https://www.idc.com/)  
    Market size and growth projections
 
 4. **KuppingerCole Leadership Compass: PKI/CLM**  
-   https://www.kuppingercole.com/  
+   [Kuppingercole](https://www.kuppingercole.com/)  
    European market analysis and vendor comparison
 
 5. **451 Research: Certificate Lifecycle Management Market**  
-   https://451research.com/  
+   [451research](https://451research.com/)  
    Technology trends and vendor analysis
 
 ### Vendor-Specific Resources
 
 6. **Venafi Platform Documentation**  
-   https://docs.venafi.com/  
+   [Venafi Documentation](https://docs.venafi.com/)  
    Complete platform reference
 
 7. **DigiCert CertCentral Guide**  
-   https://docs.digicert.com/certcentral/  
+   [Digicert - Certcentral](https://docs.digicert.com/certcentral/)  
    Platform documentation
 
 8. **Keyfactor Command Developer Portal**  
-   https://software.keyfactor.com/  
+   [Keyfactor](https://software.keyfactor.com/)  
    API docs and integration guides
 
 9. **HashiCorp Vault PKI Secrets Engine**  
-   https://developer.hashicorp.com/vault/docs/secrets/pki  
+   [Hashicorp - Secrets](https://developer.hashicorp.com/vault/docs/secrets/pki)  
    PKI engine documentation
 
 10. **VCert Unified API**  
-    https://github.com/Venafi/vcert  
+    [Github - Vcert](https://github.com/Venafi/vcert)  
     Cross-platform certificate API
 
 ### Competitive Comparisons
 
 11. **Venafi vs Keyfactor Feature Comparison**  
-    https://www.venafi.com/resources/  
+    [Venafi - Resources](https://www.venafi.com/resources/)  
     Official vendor comparison materials
 
 12. **Keyfactor vs AppViewX Comparison**  
-    https://www.keyfactor.com/resources/  
+    [Keyfactor - Resources](https://www.keyfactor.com/resources/)  
     Alternative platform comparison
 
 13. **Traditional PKI vs Dynamic Secrets**  
-    https://www.hashicorp.com/resources/  
+    [Hashicorp - Resources](https://www.hashicorp.com/resources/)  
     Philosophical approach comparison
 
 14. **CA/Browser Forum - Certificate Lifetimes**  
-    https://cabforum.org/  
+    [Cabforum](https://cabforum.org/)  
     Industry standards affecting platform choice
 
 15. **ACME Protocol Impact on PKI Management**  
-    https://datatracker.ietf.org/doc/html/rfc8555  
+    [Ietf - Rfc8555](https://datatracker.ietf.org/doc/html/rfc8555)  
     Standardization reducing vendor lock-in
 
 ### Total Cost of Ownership Analysis
 
 16. **Ponemon Institute: Cost of Certificate Outages**  
-    https://www.ponemon.org/  
+    [Ponemon](https://www.ponemon.org/)  
     Business impact of PKI failures
 
 17. **Forrester Total Economic Impact Studies**  
-    https://www.forrester.com/  
+    [Forrester](https://www.forrester.com/)  
     ROI analysis for PKI platforms
 
 18. **TCO Calculator: PKI Platforms**  
@@ -537,23 +537,23 @@ For most organizations reading this, **Keyfactor Command** represents the best b
 ### Implementation and Best Practices
 
 21. **NIST SP 800-57 - Key Management Recommendations**  
-    https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final  
+    [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final)  
     Federal PKI guidance
 
 22. **CA/Browser Forum Baseline Requirements**  
-    https://cabforum.org/baseline-requirements-documents/  
+    [Cabforum - Baseline Requirements Documents](https://cabforum.org/baseline-requirements-documents/)  
     Certificate issuance standards
 
 23. **CIS Controls v8 - Secure Configuration**  
-    https://www.cisecurity.org/controls/v8  
+    [Cisecurity - Controls](https://www.cisecurity.org/controls/v8)  
     PKI security controls
 
 24. **ISO/IEC 27001:2022 - PKI Controls**  
-    https://www.iso.org/standard/27001  
+    [Iso - Standard](https://www.iso.org/standard/27001)  
     Information security standards
 
 25. **PCI DSS v4.0 - Cryptographic Key Management**  
-    https://www.pcisecuritystandards.org/  
+    [Pcisecuritystandards](https://www.pcisecuritystandards.org/)  
     Payment industry requirements
 
 ### Migration and Change Management
@@ -581,89 +581,89 @@ For most organizations reading this, **Keyfactor Command** represents the best b
 ### Case Studies by Industry
 
 31. **Financial Services PKI Implementations**  
-    https://www.venafi.com/resources/case-studies/  
+    [Venafi - Case Studies](https://www.venafi.com/resources/case-studies/)  
     Banking and fintech deployments
 
 32. **Healthcare Certificate Management**  
-    https://www.keyfactor.com/resources/case-studies/  
+    [Keyfactor - Case Studies](https://www.keyfactor.com/resources/case-studies/)  
     HIPAA compliance implementations
 
 33. **E-Commerce Platform PKI**  
-    https://www.digicert.com/case-studies/  
+    [Digicert - Case Studies](https://www.digicert.com/case-studies/)  
     Retail and online marketplace
 
 34. **Manufacturing IoT Security**  
-    https://www.keyfactor.com/resources/case-studies/  
+    [Keyfactor - Case Studies](https://www.keyfactor.com/resources/case-studies/)  
     Industrial certificate management
 
 35. **Government and Defense PKI**  
-    https://www.venafi.com/resources/case-studies/  
+    [Venafi - Case Studies](https://www.venafi.com/resources/case-studies/)  
     Public sector implementations
 
 ### Technology Trends
 
 36. **Certificate Lifetime Reduction Trend**  
-    https://cabforum.org/  
+    [Cabforum](https://cabforum.org/)  
     Industry movement to shorter validity
 
 37. **ACME Protocol Adoption**  
-    https://letsencrypt.org/stats/  
+    [Letsencrypt - Stats](https://letsencrypt.org/stats/)  
     Standardization impact
 
 38. **Service Mesh Certificate Requirements**  
-    https://istio.io/latest/docs/tasks/security/  
+    [Istio - Tasks](https://istio.io/latest/docs/tasks/security/)  
     Modern architecture needs
 
 39. **Post-Quantum Cryptography Impact**  
-    https://csrc.nist.gov/projects/post-quantum-cryptography  
+    [Nist - Post Quantum Cryptography](https://csrc.nist.gov/projects/post-quantum-cryptography)  
     Future PKI requirements
 
 40. **Zero Trust Architecture and PKI**  
-    https://www.nist.gov/publications/zero-trust-architecture  
+    [Nist - Zero Trust Architecture](https://www.nist.gov/publications/zero-trust-architecture)  
     Security model evolution
 
 ### Compliance and Audit
 
 41. **SOC 2 Type 2 Requirements for PKI**  
-    https://www.aicpa.org/soc4so  
+    [Aicpa - Soc4So](https://www.aicpa.org/soc4so)  
     Audit criteria
 
 42. **FedRAMP PKI Requirements**  
-    https://www.fedramp.gov/  
+    [Fedramp](https://www.fedramp.gov/)  
     Federal compliance
 
 43. **HIPAA Technical Safeguards**  
-    https://www.hhs.gov/hipaa/  
+    [Hhs - Hipaa](https://www.hhs.gov/hipaa/)  
     Healthcare encryption requirements
 
 44. **PCI DSS Certificate Management**  
-    https://www.pcisecuritystandards.org/  
+    [Pcisecuritystandards](https://www.pcisecuritystandards.org/)  
     Payment card industry standards
 
 45. **GDPR Encryption Requirements**  
-    https://gdpr.eu/  
+    [Gdpr](https://gdpr.eu/)  
     European privacy regulation
 
 ### Open Source Alternatives
 
 46. **cert-manager for Kubernetes**  
-    https://cert-manager.io/  
+    [Cert-manager](https://cert-manager.io/)  
     Open-source K8s certificate management
 
 47. **Boulder (Let's Encrypt ACME Server)**  
-    https://github.com/letsencrypt/boulder  
+    [Github - Boulder](https://github.com/letsencrypt/boulder)  
     Open-source ACME CA
 
 48. **Step CA**  
-    https://smallstep.com/docs/step-ca  
+    [Smallstep - Step Ca](https://smallstep.com/docs/step-ca)  
     Open-source certificate authority
 
 49. **EJBCA Enterprise**  
-    https://www.ejbca.org/  
+    [Ejbca](https://www.ejbca.org/)  
     Open-source PKI (now owned by Keyfactor)
 
 50. **Netflix Lemur**  
-    https://github.com/Netflix/lemur  
+    [Github - Lemur](https://github.com/Netflix/lemur)  
     Open-source certificate manager
 
 ### Books and Comprehensive Resources
@@ -686,21 +686,21 @@ For most organizations reading this, **Keyfactor Command** represents the best b
 ### Community and Forums
 
 56. **r/PKI Subreddit**  
-    https://www.reddit.com/r/PKI/  
+    [Reddit - Pki](https://www.reddit.com/r/PKI/)  
     Community discussions
 
 57. **Stack Overflow - PKI Tag**  
-    https://stackoverflow.com/questions/tagged/pki  
+    [Stackoverflow - Tagged](https://stackoverflow.com/questions/tagged/pki)  
     Technical Q&A
 
 58. **LinkedIn PKI Professionals Group**  
-    https://www.linkedin.com/groups/  
+    [Linkedin - Groups](https://www.linkedin.com/groups/)  
     Professional networking
 
 59. **ISSA PKI SIG**  
-    https://www.issa.org/  
+    [Issa](https://www.issa.org/)  
     Information security community
 
 60. **PKI Consortium**  
-    https://pkic.org/  
+    [Pkic](https://pkic.org/)  
     Industry collaboration and standards

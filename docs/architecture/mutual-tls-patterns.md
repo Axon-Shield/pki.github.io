@@ -132,7 +132,7 @@ import requests
 
 # Client making request
 response = requests.get(
-    'https://payment-service.internal/process',
+    '[Payment-service - Process',](https://payment-service.internal/process',)
     cert=('client.crt', 'client.key'),  # Client certificate
     verify='server-ca.crt'   # Verify server
 )

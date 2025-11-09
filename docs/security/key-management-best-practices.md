@@ -171,14 +171,14 @@ The investment in proper key management is not optional—it's the foundation of
 
 **NIST SP 800-57 - Recommendation for Key Management**
 - NIST. "Recommendation for Key Management: Part 1 - General." Revision 5, May 2020.
-  - https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final)
 - Comprehensive key lifecycle management framework
 - Key lengths, algorithms, and cryptoperiods
 - Foundation for federal key management practices
 
 **NIST SP 800-152 - A Profile for U.S. Federal Cryptographic Key Management Systems**
 - NIST. "A Profile for U.S. Federal Cryptographic Key Management Systems." October 2015.
-  - https://csrc.nist.gov/publications/detail/sp/800-152/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-152/final)
 - Enterprise key management system requirements
 - Operational procedures and technical controls
 
@@ -191,21 +191,21 @@ The investment in proper key management is not optional—it's the foundation of
 
 **FIPS 140-2 - Security Requirements for Cryptographic Modules**
 - NIST. "Security Requirements for Cryptographic Modules." May 2001 (current).
-  - https://csrc.nist.gov/publications/detail/fips/140/2/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/fips/140/2/final)
 - Four security levels for cryptographic modules
 - Physical security, logical security, and key management requirements
 - Industry standard for HSM certification
 
 **FIPS 140-3 - Security Requirements for Cryptographic Modules**
 - NIST. "Security Requirements for Cryptographic Modules." March 2019.
-  - https://csrc.nist.gov/publications/detail/fips/140/3/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/fips/140/3/final)
 - Updated cryptographic module standard (replacing 140-2)
 - Alignment with ISO/IEC 19790:2012
 - Enhanced testing and validation requirements
 
 **Common Criteria for Information Technology Security Evaluation**
 - Common Criteria. ISO/IEC 15408 Parts 1-3.
-  - https://www.commoncriteriaportal.org/
+  - [Commoncriteriaportal](https://www.commoncriteriaportal.org/)
 - International standard for computer security certification
 - Protection Profiles for cryptographic modules
 - Alternative/complement to FIPS 140-2/3
@@ -214,21 +214,21 @@ The investment in proper key management is not optional—it's the foundation of
 
 **NIST FIPS 186-4 - Digital Signature Standard (DSS)**
 - NIST. "Digital Signature Standard (DSS)." July 2013.
-  - https://csrc.nist.gov/publications/detail/fips/186/4/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/fips/186/4/final)
 - RSA, ECDSA, and DSA specifications
 - Key generation requirements
 - Approved curves and parameters
 
 **RFC 8017 - PKCS #1: RSA Cryptography Specifications**
 - Moriarty, K., et al. "PKCS #1: RSA Cryptography Specifications Version 2.2." November 2016.
-  - https://tools.ietf.org/html/rfc8017
+  - [Ietf - Rfc8017](https://tools.ietf.org/html/rfc8017)
 - RSA algorithm specification
 - Padding schemes (OAEP, PSS)
 - Implementation guidance
 
 **NIST SP 800-186 - Recommendations for Discrete Logarithm-based Cryptography**
 - NIST. "Recommendations for Discrete Logarithm-based Cryptography: Elliptic Curve Domain Parameters." February 2023.
-  - https://csrc.nist.gov/publications/detail/sp/800-186/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-186/final)
 - Approved elliptic curves
 - Parameter generation and validation
 - Security strength analysis
@@ -237,21 +237,21 @@ The investment in proper key management is not optional—it's the foundation of
 
 **NIST SP 800-90A - Recommendation for Random Number Generation Using Deterministic Random Bit Generators**
 - NIST. "Recommendation for Random Number Generation Using Deterministic Random Bit Generators." June 2015.
-  - https://csrc.nist.gov/publications/detail/sp/800-90a/rev-1/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-90a/rev-1/final)
 - Approved DRBG mechanisms
 - Entropy requirements
 - Testing and validation
 
 **NIST SP 800-90B - Recommendation for the Entropy Sources Used for Random Bit Generation**
 - NIST. "Recommendation for the Entropy Sources Used for Random Bit Generation." January 2018.
-  - https://csrc.nist.gov/publications/detail/sp/800-90b/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-90b/final)
 - Entropy source requirements
 - Testing methodologies
 - Min-entropy estimation
 
 **RFC 4086 - Randomness Requirements for Security**
 - Eastlake, D., et al. "Randomness Requirements for Security." June 2005.
-  - https://tools.ietf.org/html/rfc4086
+  - [Ietf - Rfc4086](https://tools.ietf.org/html/rfc4086)
 - Practical guidance on random number generation
 - Entropy sources and quality
 - Implementation considerations
@@ -260,7 +260,7 @@ The investment in proper key management is not optional—it's the foundation of
 
 **Shamir's Secret Sharing - Original Paper**
 - Shamir, A. "How to Share a Secret." Communications of the ACM, Vol. 22, No. 11, pp. 612-613, November 1979.
-  - https://dl.acm.org/doi/10.1145/359168.359176
+  - [Acm - 10.1145](https://dl.acm.org/doi/10.1145/359168.359176)
 - Foundational threshold cryptography paper
 - Basis for key backup and recovery schemes
 
@@ -274,19 +274,19 @@ The investment in proper key management is not optional—it's the foundation of
 
 **RFC 7914 - The scrypt Password-Based Key Derivation Function**
 - Percival, C., Josefsson, S. "The scrypt Password-Based Key Derivation Function." August 2016.
-  - https://tools.ietf.org/html/rfc7914
+  - [Ietf - Rfc7914](https://tools.ietf.org/html/rfc7914)
 - Memory-hard KDF resistant to hardware attacks
 - Recommended for password-based encryption
 
 **RFC 9106 - Argon2 Memory-Hard Function**
 - Biryukov, A., Dinu, D., Khovratovich, D. "Argon2 Memory-Hard Function for Password Hashing and Proof-of-Work Applications." September 2021.
-  - https://tools.ietf.org/html/rfc9106
+  - [Ietf - Rfc9106](https://tools.ietf.org/html/rfc9106)
 - Password Hashing Competition winner
 - Resistant to GPU and ASIC attacks
 
 **PBKDF2 - Password-Based Key Derivation Function 2**
 - RFC 8018 - PKCS #5: Password-Based Cryptography Specification Version 2.1
-  - https://tools.ietf.org/html/rfc8018
+  - [Ietf - Rfc8018](https://tools.ietf.org/html/rfc8018)
 - Widely deployed KDF
 - NIST approved for federal use
 
@@ -294,21 +294,21 @@ The investment in proper key management is not optional—it's the foundation of
 
 **PKCS #11 - Cryptographic Token Interface Standard**
 - OASIS. "PKCS #11 Cryptographic Token Interface Base Specification Version 2.40." 2015.
-  - http://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/
+  - [Oasis-open - Pkcs11 Base](http://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/)
 - Standard interface for HSMs and cryptographic tokens
 - Key attributes and access control
 - Industry-wide HSM API
 
 **Key Management Interoperability Protocol (KMIP)**
 - OASIS. "Key Management Interoperability Protocol Specification Version 2.1." January 2020.
-  - http://docs.oasis-open.org/kmip/kmip-spec/v2.1/
+  - [Oasis-open - Kmip Spec](http://docs.oasis-open.org/kmip/kmip-spec/v2.1/)
 - Standardized key management communication
 - HSM and key management system integration
 - Key lifecycle operations
 
 **Trusted Platform Module (TPM) 2.0**
 - Trusted Computing Group. "TPM 2.0 Library Specification." 2019.
-  - https://trustedcomputinggroup.org/resource/tpm-library-specification/
+  - [Trustedcomputinggroup - Tpm Library Specification](https://trustedcomputinggroup.org/resource/tpm-library-specification/)
 - Hardware-based key storage for endpoints
 - Measured boot and attestation
 - Integration with operating systems
@@ -322,7 +322,7 @@ The investment in proper key management is not optional—it's the foundation of
 
 **NIST SP 800-88 - Guidelines for Media Sanitization**
 - NIST. "Guidelines for Media Sanitization." Revision 1, December 2014.
-  - https://csrc.nist.gov/publications/detail/sp/800-88/rev-1/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-88/rev-1/final)
 - Clear, purge, and destroy methods
 - Media-specific sanitization guidance
 - Verification procedures
@@ -349,7 +349,7 @@ The investment in proper key management is not optional—it's the foundation of
 
 **CA/Browser Forum - Network and Certificate System Security Requirements**
 - CA/Browser Forum. "Network and Certificate System Security Requirements." Current version.
-  - https://cabforum.org/network-security-requirements/
+  - [Cabforum - Network Security Requirements](https://cabforum.org/network-security-requirements/)
 - Operational security for certificate authorities
 - Key protection requirements
 - Audit logging and monitoring
@@ -364,14 +364,14 @@ The investment in proper key management is not optional—it's the foundation of
 
 **WebTrust Principles and Criteria for Certification Authorities**
 - CPA Canada/AICPA. "WebTrust Principles and Criteria for Certification Authorities." Current version.
-  - https://www.cpacanada.ca/en/business-and-accounting-resources/audit-and-assurance/overview-of-webtrust-services
+  - [Cpacanada - Audit And Assurance](https://www.cpacanada.ca/en/business-and-accounting-resources/audit-and-assurance/overview-of-webtrust-services)
 - CA operational audits
 - Key ceremony documentation requirements
 - Trustworthy system principles
 
 **CA Key Ceremony Best Practices**
 - Gutmann, P. "Key Ceremony Procedures." 2004.
-  - https://www.cs.auckland.ac.nz/~pgut001/pubs/key_ceremony.txt
+  - [Ac - Pubs](https://www.cs.auckland.ac.nz/~pgut001/pubs/key_ceremony.txt)
 - Practical key ceremony guidance
 - Common pitfalls and solutions
 
@@ -385,14 +385,14 @@ The investment in proper key management is not optional—it's the foundation of
 
 **HashiCorp Vault Documentation**
 - HashiCorp. "Vault Documentation - Secrets Management."
-  - https://www.vaultproject.io/docs
+  - [Vaultproject](https://www.vaultproject.io/docs)
 - Modern secrets management patterns
 - API-driven key lifecycle
 - Open-source reference implementation
 
 **AWS Key Management Service Best Practices**
 - Amazon Web Services. "AWS KMS Best Practices." Current.
-  - https://docs.aws.amazon.com/kms/latest/developerguide/best-practices.html
+  - [Amazon - Latest](https://docs.aws.amazon.com/kms/latest/developerguide/best-practices.html)
 - Cloud HSM usage patterns
 - Key policies and access control
 - Audit and monitoring
@@ -401,7 +401,7 @@ The investment in proper key management is not optional—it's the foundation of
 
 **eIDAS Regulation - Electronic Identification and Trust Services**
 - European Parliament. "Regulation (EU) No 910/2014." July 2014.
-  - https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910
+  - [Europa - Txt](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910)
 - European key management requirements
 - Qualified electronic signatures
 - Trust service provider obligations
@@ -426,6 +426,6 @@ The investment in proper key management is not optional—it's the foundation of
 
 **Post-Quantum Key Management**
 - Chen, L., et al. "Report on Post-Quantum Cryptography." NIST Internal Report 8105, April 2016.
-  - https://csrc.nist.gov/publications/detail/nistir/8105/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/nistir/8105/final)
 - Quantum-resistant algorithms
 - Migration planning for key management systems

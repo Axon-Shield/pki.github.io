@@ -803,129 +803,129 @@ Vault PKI's revolutionary approach eliminates traditional PKI pain points but re
 ### Official HashiCorp Resources
 
 1. **Vault PKI Secrets Engine Documentation**  
-   https://developer.hashicorp.com/vault/docs/secrets/pki  
+   [Hashicorp - Secrets](https://developer.hashicorp.com/vault/docs/secrets/pki)  
    Complete PKI engine reference
 
 2. **Vault API Documentation**  
-   https://developer.hashicorp.com/vault/api-docs  
+   [Hashicorp - Api Docs](https://developer.hashicorp.com/vault/api-docs)  
    REST API reference
 
 3. **Vault Tutorials**  
-   https://developer.hashicorp.com/vault/tutorials  
+   [Hashicorp - Tutorials](https://developer.hashicorp.com/vault/tutorials)  
    Step-by-step implementation guides
 
 4. **HCP Vault (Cloud)**  
-   https://cloud.hashicorp.com/products/vault  
+   [Hashicorp - Vault](https://cloud.hashicorp.com/products/vault)  
    Managed Vault service
 
 5. **Vault GitHub Repository**  
-   https://github.com/hashicorp/vault  
+   [Github - Vault](https://github.com/hashicorp/vault)  
    Open-source code and issues
 
 ### Integration Guides
 
 6. **Kubernetes Integration**  
-   https://developer.hashicorp.com/vault/docs/platform/k8s  
+   [Hashicorp - Platform](https://developer.hashicorp.com/vault/docs/platform/k8s)  
    Vault Agent Injector and CSI driver
 
 7. **cert-manager Vault Issuer**  
-   https://cert-manager.io/docs/configuration/vault/  
+   [Cert-manager - Vault](https://cert-manager.io/docs/configuration/vault/)  
    Kubernetes certificate automation
 
 8. **Consul Connect with Vault CA**  
-   https://developer.hashicorp.com/consul/docs/connect/ca/vault  
+   [Hashicorp - Connect](https://developer.hashicorp.com/consul/docs/connect/ca/vault)  
    Service mesh integration
 
 9. **Istio with Vault CA**  
-   https://istio.io/latest/docs/tasks/security/cert-management/custom-ca/  
+   [Istio - Tasks](https://istio.io/latest/docs/tasks/security/cert-management/custom-ca/)  
    Alternative service mesh integration
 
 10. **Terraform Vault Provider**  
-    https://registry.terraform.io/providers/hashicorp/vault  
+    [Terraform - Hashicorp](https://registry.terraform.io/providers/hashicorp/vault)  
     Infrastructure-as-code integration
 
 ### Client Libraries
 
 11. **Vault Go API Client**  
-    https://github.com/hashicorp/vault/tree/main/api  
+    [Github - Vault](https://github.com/hashicorp/vault/tree/main/api)  
     Official Go SDK
 
 12. **Python hvac Library**  
-    https://github.com/hvac/hvac  
+    [Github - Hvac](https://github.com/hvac/hvac)  
     Python client for Vault
 
 13. **Vault Ruby Client**  
-    https://github.com/hashicorp/vault-ruby  
+    [Github - Vault Ruby](https://github.com/hashicorp/vault-ruby)  
     Ruby SDK
 
 14. **Node.js Vault Client**  
-    https://github.com/kr1sp1n/node-vault  
+    [Github - Node Vault](https://github.com/kr1sp1n/node-vault)  
     JavaScript/TypeScript integration
 
 15. **Java Vault Driver**  
-    https://github.com/BetterCloud/vault-java-driver  
+    [Github - Vault Java Driver](https://github.com/BetterCloud/vault-java-driver)  
     Java application integration
 
 ### Authentication Methods
 
 16. **Kubernetes Auth Method**  
-    https://developer.hashicorp.com/vault/docs/auth/kubernetes  
+    [Hashicorp - Auth](https://developer.hashicorp.com/vault/docs/auth/kubernetes)  
     Pod-based authentication
 
 17. **AWS IAM Auth**  
-    https://developer.hashicorp.com/vault/docs/auth/aws  
+    [Hashicorp - Auth](https://developer.hashicorp.com/vault/docs/auth/aws)  
     AWS instance authentication
 
 18. **Azure Auth Method**  
-    https://developer.hashicorp.com/vault/docs/auth/azure  
+    [Hashicorp - Auth](https://developer.hashicorp.com/vault/docs/auth/azure)  
     Azure managed identity auth
 
 19. **GCP Auth Method**  
-    https://developer.hashicorp.com/vault/docs/auth/gcp  
+    [Hashicorp - Auth](https://developer.hashicorp.com/vault/docs/auth/gcp)  
     Google Cloud authentication
 
 20. **AppRole Auth**  
-    https://developer.hashicorp.com/vault/docs/auth/approle  
+    [Hashicorp - Auth](https://developer.hashicorp.com/vault/docs/auth/approle)  
     Machine identity authentication
 
 ### Deployment and Operations
 
 21. **Vault Production Hardening**  
-    https://developer.hashicorp.com/vault/tutorials/operations/production-hardening  
+    [Hashicorp - Tutorials](https://developer.hashicorp.com/vault/tutorials/operations/production-hardening)  
     Security best practices
 
 22. **Vault High Availability**  
-    https://developer.hashicorp.com/vault/docs/concepts/ha  
+    [Hashicorp - Concepts](https://developer.hashicorp.com/vault/docs/concepts/ha)  
     HA architecture and setup
 
 23. **Vault Backup and Restore**  
-    https://developer.hashicorp.com/vault/tutorials/operations/backup  
+    [Hashicorp - Tutorials](https://developer.hashicorp.com/vault/tutorials/operations/backup)  
     Disaster recovery procedures
 
 24. **Vault Monitoring**  
-    https://developer.hashicorp.com/vault/docs/internals/telemetry  
+    [Hashicorp - Internals](https://developer.hashicorp.com/vault/docs/internals/telemetry)  
     Metrics and observability
 
 25. **Vault Helm Chart**  
-    https://github.com/hashicorp/vault-helm  
+    [Github - Vault Helm](https://github.com/hashicorp/vault-helm)  
     Kubernetes deployment
 
 ### PKI-Specific Resources
 
 26. **PKI Secrets Engine Tutorial**  
-    https://developer.hashicorp.com/vault/tutorials/secrets-management/pki-engine  
+    [Hashicorp - Tutorials](https://developer.hashicorp.com/vault/tutorials/secrets-management/pki-engine)  
     Complete PKI setup guide
 
 27. **Build Your Own CA**  
-    https://developer.hashicorp.com/vault/tutorials/secrets-management/pki-engine  
+    [Hashicorp - Tutorials](https://developer.hashicorp.com/vault/tutorials/secrets-management/pki-engine)  
     Root and intermediate CA configuration
 
 28. **Certificate Rotation Best Practices**  
-    https://developer.hashicorp.com/vault/tutorials/secrets-management/pki-engine  
+    [Hashicorp - Tutorials](https://developer.hashicorp.com/vault/tutorials/secrets-management/pki-engine)  
     Short-lived certificate strategies
 
 29. **ACME Protocol Support**  
-    https://github.com/hashicorp/vault/pull/11189  
+    [Github - Vault](https://github.com/hashicorp/vault/pull/11189)  
     ACME endpoint configuration
 
 30. **EST Protocol Support**  
@@ -934,111 +934,111 @@ Vault PKI's revolutionary approach eliminates traditional PKI pain points but re
 ### Security and Compliance
 
 31. **Vault Security Model**  
-    https://developer.hashicorp.com/vault/docs/internals/security  
+    [Hashicorp - Internals](https://developer.hashicorp.com/vault/docs/internals/security)  
     Security architecture and threat model
 
 32. **Vault Seal/Unseal Process**  
-    https://developer.hashicorp.com/vault/docs/concepts/seal  
+    [Hashicorp - Concepts](https://developer.hashicorp.com/vault/docs/concepts/seal)  
     Key management and unsealing
 
 33. **Auto Unseal with Cloud KMS**  
-    https://developer.hashicorp.com/vault/docs/concepts/seal#auto-unseal  
+    [Hashicorp - Concepts](https://developer.hashicorp.com/vault/docs/concepts/seal#auto-unseal)  
     Automated unsealing configuration
 
 34. **Vault Audit Logging**  
-    https://developer.hashicorp.com/vault/docs/audit  
+    [Hashicorp - Audit](https://developer.hashicorp.com/vault/docs/audit)  
     Comprehensive audit trails
 
 35. **FIPS 140-2 Compliance**  
-    https://developer.hashicorp.com/vault/docs/enterprise/fips  
+    [Hashicorp - Enterprise](https://developer.hashicorp.com/vault/docs/enterprise/fips)  
     Federal compliance mode
 
 ### Architecture Patterns
 
 36. **Zero Trust with Vault**  
-    https://www.hashicorp.com/resources/zero-trust-security-with-vault  
+    [Hashicorp - Zero Trust Security With Vault](https://www.hashicorp.com/resources/zero-trust-security-with-vault)  
     Architecture patterns and use cases
 
 37. **Service Mesh Certificate Management**  
-    https://www.hashicorp.com/resources/service-mesh-certificate-management  
+    [Hashicorp - Service Mesh Certificate Management](https://www.hashicorp.com/resources/service-mesh-certificate-management)  
     mTLS patterns
 
 38. **Multi-Region Vault Architecture**  
-    https://developer.hashicorp.com/vault/tutorials/enterprise/performance-replication  
+    [Hashicorp - Tutorials](https://developer.hashicorp.com/vault/tutorials/enterprise/performance-replication)  
     Global deployment patterns
 
 39. **Disaster Recovery Setup**  
-    https://developer.hashicorp.com/vault/tutorials/enterprise/disaster-recovery  
+    [Hashicorp - Tutorials](https://developer.hashicorp.com/vault/tutorials/enterprise/disaster-recovery)  
     DR replication configuration
 
 40. **Namespaces for Multi-Tenancy**  
-    https://developer.hashicorp.com/vault/docs/enterprise/namespaces  
+    [Hashicorp - Enterprise](https://developer.hashicorp.com/vault/docs/enterprise/namespaces)  
     Enterprise isolation patterns
 
 ### Case Studies and Use Cases
 
 41. **Cruise Automation - Autonomous Vehicles**  
-    https://www.hashicorp.com/case-studies/cruise  
+    [Hashicorp - Cruise](https://www.hashicorp.com/case-studies/cruise)  
     Certificate management for vehicle fleet
 
 42. **Robinhood - Financial Services**  
-    https://www.hashicorp.com/case-studies/robinhood  
+    [Hashicorp - Robinhood](https://www.hashicorp.com/case-studies/robinhood)  
     Secrets and certificate management
 
 43. **SAP Concur - Travel Platform**  
-    https://www.hashicorp.com/case-studies/sap-concur  
+    [Hashicorp - Sap Concur](https://www.hashicorp.com/case-studies/sap-concur)  
     Multi-cloud PKI implementation
 
 44. **Adobe - Creative Cloud**  
-    https://www.hashicorp.com/case-studies/adobe  
+    [Hashicorp - Adobe](https://www.hashicorp.com/case-studies/adobe)  
     Microservices certificate automation
 
 45. **Citadel - Cryptocurrency Exchange**  
-    https://www.hashicorp.com/resources/citadel-security-policies  
+    [Hashicorp - Citadel Security Policies](https://www.hashicorp.com/resources/citadel-security-policies)  
     High-security PKI requirements
 
 ### Community and Support
 
 46. **HashiCorp Discuss Forum**  
-    https://discuss.hashicorp.com/c/vault/  
+    [Hashicorp - Vault](https://discuss.hashicorp.com/c/vault/)  
     Community Q&A and discussions
 
 47. **Vault GitHub Issues**  
-    https://github.com/hashicorp/vault/issues  
+    [Github - Vault](https://github.com/hashicorp/vault/issues)  
     Bug reports and feature requests
 
 48. **HashiCorp Learn Platform**  
-    https://learn.hashicorp.com/vault  
+    [Hashicorp - Vault](https://learn.hashicorp.com/vault)  
     Interactive tutorials
 
 49. **Vault Community Slack**  
-    https://hashicorp-community.slack.com  
+    [Slack](https://hashicorp-community.slack.com)  
     Real-time community support
 
 50. **HashiCorp Events and Training**  
-    https://www.hashicorp.com/events  
+    [Hashicorp - Events](https://www.hashicorp.com/events)  
     Conferences, webinars, certification
 
 ### Standards and Protocols
 
 51. **RFC 5280 - X.509 Certificates**  
-    https://datatracker.ietf.org/doc/html/rfc5280  
+    [Ietf - Rfc5280](https://datatracker.ietf.org/doc/html/rfc5280)  
     Certificate format standards
 
 52. **RFC 8555 - ACME Protocol**  
-    https://datatracker.ietf.org/doc/html/rfc8555  
+    [Ietf - Rfc8555](https://datatracker.ietf.org/doc/html/rfc8555)  
     Automated certificate management
 
 53. **RFC 7030 - EST Protocol**  
-    https://datatracker.ietf.org/doc/html/rfc7030  
+    [Ietf - Rfc7030](https://datatracker.ietf.org/doc/html/rfc7030)  
     Enrollment over secure transport
 
 54. **SPIFFE/SPIRE Specifications**  
-    https://spiffe.io/docs/  
+    [Spiffe](https://spiffe.io/docs/)  
     Workload identity standards
 
 55. **mTLS Best Practices**  
-    https://www.ietf.org/archive/id/draft-ietf-uta-rfc6125bis-10.html  
+    [Ietf - Draft Ietf Uta Rfc6125Bis 10.Html](https://www.ietf.org/archive/id/draft-ietf-uta-rfc6125bis-10.html)  
     Mutual TLS implementation guidance
 
 ### Books and Comprehensive Resources

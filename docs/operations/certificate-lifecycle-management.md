@@ -331,7 +331,7 @@ An expired security certificate prevented Equifax from detecting vulnerabilities
 
 ## References
 
-[^1]: Keyfactor. "State of Machine Identity Management Report 2023." https://www.keyfactor.com/resources/state-of-machine-identity-management-2023/
+[^1]: Keyfactor. "State of Machine Identity Management Report 2023." [Keyfactor](https://www.keyfactor.com/resources/state-of-machine-identity-management-2023/)
 
 [^2]: Gutmann, P. "PKI: It's Not Dead, Just Resting." IEEE Computer, Aug 2002. Discussion of certificate pinning operational challenges.
 

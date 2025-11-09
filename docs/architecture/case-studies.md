@@ -311,7 +311,7 @@ Organizations achieve best results when treating PKI transformation as a multi-y
 
 **NIST SP 800-57 - Key Management Recommendations**
 - NIST. "Recommendation for Key Management: Part 1 - General." Revision 5, May 2020.
-  - https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final)
 
 **"Planning for PKI" (Wiley)**
 - Housley, R., Polk, T. "Planning for PKI: Best Practices Guide for Deploying Public Key Infrastructure." Wiley, 2001.
@@ -323,19 +323,19 @@ Organizations achieve best results when treating PKI transformation as a multi-y
 
 **Venafi Trust Protection Platform**
 - Venafi. "Trust Protection Platform."
-  - https://www.venafi.com/platform/trust-protection-platform
+  - [Venafi - Trust Protection Platform](https://www.venafi.com/platform/trust-protection-platform)
 - Enterprise certificate lifecycle management
 - Integration with CAs and cloud providers
 
 **AWS Certificate Manager (ACM)**
 - AWS. "AWS Certificate Manager."
-  - https://aws.amazon.com/certificate-manager/
+  - [Amazon - Certificate Manager](https://aws.amazon.com/certificate-manager/)
 - Managed certificate service
 - Integration with AWS services
 
 **cert-manager**
 - cert-manager. "cert-manager for Kubernetes."
-  - https://cert-manager.io/
+  - [Cert-manager](https://cert-manager.io/)
 - Kubernetes-native certificate management
 - ACME integration
 
@@ -343,11 +343,11 @@ Organizations achieve best results when treating PKI transformation as a multi-y
 
 **ACME Protocol - RFC 8555**
 - Barnes, R., et al. "Automatic Certificate Management Environment (ACME)." March 2019.
-  - https://tools.ietf.org/html/rfc8555
+  - [Ietf - Rfc8555](https://tools.ietf.org/html/rfc8555)
 
 **Let's Encrypt**
 - Let's Encrypt. "How It Works."
-  - https://letsencrypt.org/how-it-works/
+  - [Letsencrypt - How It Works](https://letsencrypt.org/how-it-works/)
 - Free, automated certificate authority
 - Rate limits and best practices
 
@@ -355,34 +355,34 @@ Organizations achieve best results when treating PKI transformation as a multi-y
 
 **PCI DSS v4.0**
 - PCI Security Standards Council. "Payment Card Industry Data Security Standard." March 2022.
-  - https://www.pcisecuritystandards.org/
+  - [Pcisecuritystandards](https://www.pcisecuritystandards.org/)
 
 **SOC 2**
 - AICPA. "SOC 2 - Service Organization Control."
-  - https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/sorhome.html
+  - [Aicpa - Frc](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/sorhome.html)
 
 **HIPAA Security Rule**
 - U.S. HHS. "HIPAA Security Rule."
-  - https://www.hhs.gov/hipaa/for-professionals/security/index.html
+  - [Hhs - For Professionals](https://www.hhs.gov/hipaa/for-professionals/security/index.html)
 
 **WebTrust for CAs**
 - CPA Canada/AICPA. "WebTrust Principles and Criteria for Certification Authorities."
-  - https://www.cpacanada.ca/
+  - [Cpacanada](https://www.cpacanada.ca/)
 
 ### Technology Platforms
 
 **HashiCorp Vault**
 - HashiCorp. "Vault - Manage Secrets and Protect Sensitive Data."
-  - https://www.vaultproject.io/
+  - [Vaultproject](https://www.vaultproject.io/)
 
 **F5 BIG-IP**
 - F5. "BIG-IP System."
-  - https://www.f5.com/products/big-ip-services
+  - [F5 - Big Ip Services](https://www.f5.com/products/big-ip-services)
 - Load balancer certificate management
 
 **Splunk**
 - Splunk. "Splunk Enterprise Security."
-  - https://www.splunk.com/
+  - [Splunk](https://www.splunk.com/)
 - SIEM and audit logging
 
 ### Multi-Tenant SaaS
@@ -394,22 +394,22 @@ Organizations achieve best results when treating PKI transformation as a multi-y
 
 **Boulder ACME Server**
 - Let's Encrypt. "Boulder - ACME CA Server."
-  - https://github.com/letsencrypt/boulder
+  - [Github - Boulder](https://github.com/letsencrypt/boulder)
 
 **SPIRE**
 - SPIFFE. "SPIRE - SPIFFE Runtime Environment."
-  - https://spiffe.io/docs/latest/spire-about/
+  - [Spiffe - Spire About](https://spiffe.io/docs/latest/spire-about/)
 - Workload identity for microservices
 
 ### Monitoring and Observability
 
 **Prometheus**
 - Prometheus. "Monitoring system & time series database."
-  - https://prometheus.io/
+  - [Prometheus](https://prometheus.io/)
 
 **Grafana**
 - Grafana Labs. "Grafana: The open observability platform."
-  - https://grafana.com/
+  - [Grafana](https://grafana.com/)
 
 ### Project Management and Change Management
 
@@ -439,7 +439,7 @@ Organizations achieve best results when treating PKI transformation as a multi-y
 
 **Basel III**
 - Bank for International Settlements. "Basel III Framework."
-  - https://www.bis.org/bcbs/basel3.htm
+  - [Bis - Basel3.Htm](https://www.bis.org/bcbs/basel3.htm)
 - Banking operational risk requirements
 
 **SOX (Sarbanes-Oxley)**

@@ -794,7 +794,7 @@ History shows that CA compromises happen—DigiNotar, Comodo, and others prove t
 
 **DigiNotar (2011)**
 - Fox-IT. "DigiNotar Certificate Authority breach - Operation Black Tulip." September 2011.
-  - https://www.rijksoverheid.nl/documenten/rapporten/2011/09/05/diginotar-public-report-version-1
+  - [Rijksoverheid - Rapporten](https://www.rijksoverheid.nl/documenten/rapporten/2011/09/05/diginotar-public-report-version-1)
 - Comprehensive forensic analysis of the Dutch CA compromise that led to company bankruptcy
 - 531 fraudulent certificates issued, including for Google domains
 - Detection through Certificate Transparency and Google's certificate pinning
@@ -807,21 +807,21 @@ History shows that CA compromises happen—DigiNotar, Comodo, and others prove t
 
 **TURKTRUST (2013)**
 - Microsoft Security Advisory 2798897. "Fraudulent Digital Certificates Could Allow Spoofing." January 2013.
-  - https://docs.microsoft.com/en-us/security-updates/securityadvisories/2013/2798897
+  - [Microsoft - Security Updates](https://docs.microsoft.com/en-us/security-updates/securityadvisories/2013/2798897)
 - Accidental issuance of intermediate CA certificates to organizations
 - Intermediate CAs used to issue fraudulent certificates for Google domains
 - Highlighted risks of improper subordinate CA issuance
 
 **Symantec/Thawte (2015-2017)**
 - Google Security Blog. "Sustaining Digital Certificate Security." October 2017.
-  - https://security.googleblog.com/2017/09/chromes-plan-to-distrust-symantec.html
+  - [Googleblog - Chromes Plan To Distrust Symantec.Html](https://security.googleblog.com/2017/09/chromes-plan-to-distrust-symantec.html)
 - Multiple validation failures and unauthorized certificate issuance
 - Led to distrust by browser vendors (Chrome, Firefox)
 - Demonstrated impact of repeated policy violations
 
 **Let's Encrypt Boulder Bug (2020)**
 - Let's Encrypt. "2020.02.29 CAA Rechecking Bug." March 2020.
-  - https://community.letsencrypt.org/t/2020-02-29-caa-rechecking-bug/114591
+  - [Letsencrypt - 2020 02 29 Caa Rechecking Bug](https://community.letsencrypt.org/t/2020-02-29-caa-rechecking-bug/114591)
 - Software bug in CAA record checking
 - Proactive revocation of 3 million certificates
 - Example of responsible disclosure and rapid response
@@ -830,29 +830,29 @@ History shows that CA compromises happen—DigiNotar, Comodo, and others prove t
 
 **CA/Browser Forum Baseline Requirements**
 - CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates." Current version.
-  - https://cabforum.org/baseline-requirements-documents/
+  - [Cabforum - Baseline Requirements Documents](https://cabforum.org/baseline-requirements-documents/)
 - Industry standard for public CAs
 - Defines validation requirements, key protection, and operational controls
 
 **NIST Special Publications**
 - NIST SP 800-57. "Recommendation for Key Management." 2020.
-  - https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final)
 - Comprehensive key management lifecycle guidance
 - Key lengths, algorithms, and protection requirements
 
 - NIST SP 800-32. "Introduction to Public Key Technology and the Federal PKI Infrastructure." 2001.
-  - https://csrc.nist.gov/publications/detail/sp/800-32/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-32/final)
 - PKI fundamentals and architecture
 
 **WebTrust Principles and Criteria**
 - CPA Canada/AICPA. "WebTrust Principles and Criteria for Certification Authorities." Current version.
-  - https://www.cpacanada.ca/en/business-and-accounting-resources/audit-and-assurance/overview-of-webtrust-services
+  - [Cpacanada - Audit And Assurance](https://www.cpacanada.ca/en/business-and-accounting-resources/audit-and-assurance/overview-of-webtrust-services)
 - Audit framework for public CAs
 - Required for inclusion in browser root programs
 
 **FIPS 140-2/140-3**
 - NIST. "Security Requirements for Cryptographic Modules." 2001/2019.
-  - https://csrc.nist.gov/publications/detail/fips/140/2/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/fips/140/2/final)
 - Hardware security module certification standard
 - Defines physical and logical security requirements
 
@@ -860,13 +860,13 @@ History shows that CA compromises happen—DigiNotar, Comodo, and others prove t
 
 **RFC 6962 - Certificate Transparency**
 - Laurie, B., Langley, A., Kasper, E. "Certificate Transparency." June 2013.
-  - https://tools.ietf.org/html/rfc6962
+  - [Ietf - Rfc6962](https://tools.ietf.org/html/rfc6962)
 - Foundational specification for CT logs
 - Enables public auditability of certificate issuance
 
 **Certificate Transparency Monitoring**
 - Google. "Certificate Transparency Log Policy." Current.
-  - https://github.com/google/certificate-transparency-community-site
+  - [Github - Certificate Transparency Community Site](https://github.com/google/certificate-transparency-community-site)
 - Log operator requirements and monitoring tools
 - Real-time issuance monitoring capabilities
 
@@ -878,18 +878,18 @@ History shows that CA compromises happen—DigiNotar, Comodo, and others prove t
 
 **NIST Cybersecurity Framework**
 - NIST. "Framework for Improving Critical Infrastructure Cybersecurity." Version 1.1, 2018.
-  - https://www.nist.gov/cyberframework
+  - [Nist - Cyberframework](https://www.nist.gov/cyberframework)
 - Incident response lifecycle: Identify, Protect, Detect, Respond, Recover
 
 **SANS Incident Response Guide**
 - SANS Institute. "Incident Handler's Handbook." Current version.
-  - https://www.sans.org/reading-room/whitepapers/incident/incident-handlers-handbook-33901
+  - [Sans - Whitepapers](https://www.sans.org/reading-room/whitepapers/incident/incident-handlers-handbook-33901)
 - Practical incident response procedures
 - Communication and coordination guidelines
 
 **CA Incident Response Best Practices**
 - CA/Browser Forum. "Network and Certificate System Security Requirements." Current version.
-  - https://cabforum.org/network-security-requirements/
+  - [Cabforum - Network Security Requirements](https://cabforum.org/network-security-requirements/)
 - Specific requirements for CA incident response
 - Logging, monitoring, and breach notification
 
@@ -897,7 +897,7 @@ History shows that CA compromises happen—DigiNotar, Comodo, and others prove t
 
 **Shamir's Secret Sharing**
 - Shamir, A. "How to Share a Secret." Communications of the ACM, Vol. 22, No. 11, 1979.
-  - https://dl.acm.org/doi/10.1145/359168.359176
+  - [Acm - 10.1145](https://dl.acm.org/doi/10.1145/359168.359176)
 - Original paper on threshold cryptography
 - Foundation for secure key backup schemes
 
@@ -908,7 +908,7 @@ History shows that CA compromises happen—DigiNotar, Comodo, and others prove t
 
 **Post-Quantum Cryptography**
 - NIST. "Post-Quantum Cryptography Standardization." Ongoing.
-  - https://csrc.nist.gov/projects/post-quantum-cryptography
+  - [Nist - Post Quantum Cryptography](https://csrc.nist.gov/projects/post-quantum-cryptography)
 - Future-proofing PKI against quantum computing threats
 - Algorithm selection and migration planning
 
@@ -921,32 +921,32 @@ History shows that CA compromises happen—DigiNotar, Comodo, and others prove t
 
 **FIPS 140 Implementation Guidance**
 - NIST Cryptographic Module Validation Program (CMVP). "Implementation Guidance." Current.
-  - https://csrc.nist.gov/projects/cryptographic-module-validation-program
+  - [Nist - Cryptographic Module Validation Program](https://csrc.nist.gov/projects/cryptographic-module-validation-program)
 - Detailed guidance on HSM implementation and testing
 
 ### Browser Root Programs
 
 **Mozilla Root Store Policy**
 - Mozilla. "Mozilla CA Certificate Policy." Version 2.8, 2023.
-  - https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/policy/
+  - [Mozilla - About](https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/policy/)
 - Requirements for inclusion in Firefox
 - Incident reporting and response requirements
 
 **Apple Root Certificate Program**
 - Apple. "Apple Root Certificate Program." Current.
-  - https://www.apple.com/certificateauthority/ca_program.html
+  - [Apple - Ca Program.Html](https://www.apple.com/certificateauthority/ca_program.html)
 - Requirements for iOS/macOS trust store inclusion
 
 **Microsoft Trusted Root Program**
 - Microsoft. "Trusted Root Certificate Program Requirements." Current.
-  - https://docs.microsoft.com/en-us/security/trusted-root/program-requirements
+  - [Microsoft - Security](https://docs.microsoft.com/en-us/security/trusted-root/program-requirements)
 - Windows trust store inclusion requirements
 
 ### Forensics and Attribution
 
 **MITRE ATT&CK Framework - PKI**
 - MITRE. "ATT&CK for Enterprise - Steal or Forge Authentication Certificates." Current.
-  - https://attack.mitre.org/techniques/T1649/
+  - [Mitre - T1649](https://attack.mitre.org/techniques/T1649/)
 - Adversary tactics and techniques for certificate compromise
 - Detection and mitigation strategies
 
@@ -975,7 +975,7 @@ History shows that CA compromises happen—DigiNotar, Comodo, and others prove t
 
 **eIDAS Regulation (EU)**
 - European Parliament. "Regulation (EU) No 910/2014 on electronic identification and trust services." 2014.
-  - https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910
+  - [Europa - Txt](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910)
 - European PKI and trust service requirements
 - Qualified electronic signatures and seals
 
@@ -1005,35 +1005,35 @@ History shows that CA compromises happen—DigiNotar, Comodo, and others prove t
 
 **Certificate Transparency Monitoring**
 - Facebook CertStream. Real-time CT log monitoring.
-  - https://github.com/CaliDog/certstream-python
+  - [Github - Certstream Python](https://github.com/CaliDog/certstream-python)
 - Google CT Monitor
-  - https://github.com/google/certificate-transparency-go
+  - [Github - Certificate Transparency Go](https://github.com/google/certificate-transparency-go)
 
 **CFSSL - CloudFlare's PKI Toolkit**
 - CloudFlare. "CFSSL: CloudFlare's PKI and TLS toolkit."
-  - https://github.com/cloudflare/cfssl
+  - [Github - Cfssl](https://github.com/cloudflare/cfssl)
 - Open-source CA implementation
 - Certificate issuance and management tools
 
 **OpenSSL**
 - OpenSSL Project. "OpenSSL: Cryptography and SSL/TLS Toolkit."
-  - https://www.openssl.org/
+  - [Openssl](https://www.openssl.org/)
 - Industry-standard cryptographic library
 - Certificate creation and management utilities
 
 ### Continuous Learning Resources
 
 **PKI Consortium**
-- https://pkic.org/
+- [Pkic](https://pkic.org/)
 - Industry collaboration and best practices
 - Working groups on PKI improvement
 
 **Let's Encrypt Community**
-- https://community.letsencrypt.org/
+- [Letsencrypt](https://community.letsencrypt.org/)
 - Operational experiences from largest public CA
 - Automation and scaling discussions
 
 **IETF ACME Working Group**
-- https://datatracker.ietf.org/wg/acme/about/
+- [Ietf - About](https://datatracker.ietf.org/wg/acme/about/)
 - Automated certificate management protocol development
 - Standards evolution and implementation guidance

@@ -337,9 +337,9 @@ Once per month, the LLM should:
 ### Source Hierarchy (Most Authoritative to Least)
 
 1. **Standards Bodies**
-   - IETF RFCs (https://www.rfc-editor.org/)
-   - CA/Browser Forum guidelines (https://cabforum.org/)
-   - NIST publications (https://csrc.nist.gov/)
+   - IETF RFCs ([Rfc-editor](https://www.rfc-editor.org/))
+   - CA/Browser Forum guidelines ([Cabforum](https://cabforum.org/))
+   - NIST publications ([Nist](https://csrc.nist.gov/))
    - ISO/IEC standards
 
 2. **Vendor Primary Documentation**

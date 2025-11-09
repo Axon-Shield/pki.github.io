@@ -695,20 +695,20 @@ Design your hierarchy for the organization you'll become, not just the one you a
 
 **RFC 5280 - X.509 Certificate and CRL Profile**
 - Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." RFC 5280, May 2008.
-  - https://tools.ietf.org/html/rfc5280
+  - [Ietf - Rfc5280](https://tools.ietf.org/html/rfc5280)
 - Certificate hierarchy structures
 - Name constraints and path length constraints
 - Certificate policies and extensions
 
 **RFC 3647 - Certificate Policy and Certification Practices Framework**
 - Chokhani, S., et al. "Internet X.509 Public Key Infrastructure Certificate Policy and Certification Practices Framework." RFC 3647, November 2003.
-  - https://tools.ietf.org/html/rfc3647
+  - [Ietf - Rfc3647](https://tools.ietf.org/html/rfc3647)
 - Standard framework for documenting CA hierarchies
 - Policy and practice statement guidance
 
 **NIST SP 800-32 - Introduction to Public Key Technology and Federal PKI**
 - NIST. "Introduction to Public Key Technology and the Federal PKI Infrastructure." February 2001.
-  - https://csrc.nist.gov/publications/detail/sp/800-32/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-32/final)
 - Federal PKI hierarchy design
 - Trust anchor management
 - Cross-certification models
@@ -717,14 +717,14 @@ Design your hierarchy for the organization you'll become, not just the one you a
 
 **CA/Browser Forum Baseline Requirements**
 - CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates." Current version.
-  - https://cabforum.org/baseline-requirements-documents/
+  - [Cabforum - Baseline Requirements Documents](https://cabforum.org/baseline-requirements-documents/)
 - Requirements for public CA hierarchies
 - Subordinate CA requirements
 - Cross-certification restrictions
 
 **CA/Browser Forum Network Security Requirements**
 - CA/Browser Forum. "Network and Certificate System Security Requirements." Current version.
-  - https://cabforum.org/network-security-requirements/
+  - [Cabforum - Network Security Requirements](https://cabforum.org/network-security-requirements/)
 - Security requirements for CA systems
 - Physical and logical security controls
 - Key ceremony requirements
@@ -733,14 +733,14 @@ Design your hierarchy for the organization you'll become, not just the one you a
 
 **Federal PKI (FPKI) Architecture**
 - U.S. General Services Administration. "Federal Public Key Infrastructure."
-  - https://www.idmanagement.gov/fpki/
+  - [Idmanagement - Fpki](https://www.idmanagement.gov/fpki/)
 - Federal Bridge CA architecture
 - Cross-certification model
 - Policy mapping
 
 **Federal Bridge Certification Authority Certificate Policy**
 - Federal PKI Policy Authority. "X.509 Certificate Policy for the Federal Bridge Certification Authority (FBCA)." Current version.
-  - https://www.idmanagement.gov/fpki/
+  - [Idmanagement - Fpki](https://www.idmanagement.gov/fpki/)
 - Bridge CA operational requirements
 - Cross-certification procedures
 - Policy constraints
@@ -763,7 +763,7 @@ Design your hierarchy for the organization you'll become, not just the one you a
 
 **RFC 3739 - Qualified Certificates Profile**
 - Santesson, S., et al. "Internet X.509 Public Key Infrastructure: Qualified Certificates Profile." RFC 3739, March 2004.
-  - https://tools.ietf.org/html/rfc3739
+  - [Ietf - Rfc3739](https://tools.ietf.org/html/rfc3739)
 - European qualified certificates
 - Policy requirements
 
@@ -771,14 +771,14 @@ Design your hierarchy for the organization you'll become, not just the one you a
 
 **NIST SP 800-57 - Key Management Recommendations**
 - NIST. "Recommendation for Key Management: Part 1 - General." Revision 5, May 2020.
-  - https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final)
 - Key hierarchy recommendations
 - Cryptoperiods for different key types
 - Key backup and recovery
 
 **FIPS 140-2 - Cryptographic Module Security**
 - NIST. "Security Requirements for Cryptographic Modules." May 2001.
-  - https://csrc.nist.gov/publications/detail/fips/140/2/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/fips/140/2/final)
 - HSM requirements for CA keys
 - Physical security requirements
 - Key zeroization
@@ -787,14 +787,14 @@ Design your hierarchy for the organization you'll become, not just the one you a
 
 **CA Key Generation Ceremony**
 - Gutmann, P. "Key Ceremony Procedures." 2004.
-  - https://www.cs.auckland.ac.nz/~pgut001/pubs/key_ceremony.txt
+  - [Ac - Pubs](https://www.cs.auckland.ac.nz/~pgut001/pubs/key_ceremony.txt)
 - Practical ceremony guidance
 - Multi-party control procedures
 - Documentation requirements
 
 **WebTrust Principles and Criteria for CAs**
 - CPA Canada/AICPA. "WebTrust Principles and Criteria for Certification Authorities." Current version.
-  - https://www.cpacanada.ca/en/business-and-accounting-resources/audit-and-assurance/overview-of-webtrust-services
+  - [Cpacanada - Audit And Assurance](https://www.cpacanada.ca/en/business-and-accounting-resources/audit-and-assurance/overview-of-webtrust-services)
 - CA operational requirements
 - Root CA offline requirements
 - Key ceremony audit requirements
@@ -809,7 +809,7 @@ Design your hierarchy for the organization you'll become, not just the one you a
 
 **ETSI EN 319 411 - Policy Requirements for Trust Service Providers**
 - ETSI. "Policy and security requirements for Trust Service Providers issuing certificates." Parts 1 and 2.
-  - https://www.etsi.org/standards
+  - [Etsi - Standards](https://www.etsi.org/standards)
 - European CA requirements
 - Qualified and non-qualified certificates
 - Subordinate CA constraints
@@ -824,7 +824,7 @@ Design your hierarchy for the organization you'll become, not just the one you a
 
 **RFC 4158 - Certification Path Building**
 - Cooper, M., et al. "Internet X.509 Public Key Infrastructure: Certification Path Building." RFC 4158, September 2005.
-  - https://tools.ietf.org/html/rfc4158
+  - [Ietf - Rfc4158](https://tools.ietf.org/html/rfc4158)
 - Path construction algorithms
 - Cross-certified environment navigation
 - Forward and reverse path building
@@ -839,7 +839,7 @@ Design your hierarchy for the organization you'll become, not just the one you a
 
 **NIST SP 800-130 - Framework for Designing Key Management Systems**
 - NIST. "A Framework for Designing Cryptographic Key Management Systems." August 2013.
-  - https://csrc.nist.gov/publications/detail/sp/800-130/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-130/final)
 - Key hierarchy design
 - Key lifecycle management
 - Migration and transition strategies
@@ -848,14 +848,14 @@ Design your hierarchy for the organization you'll become, not just the one you a
 
 **RFC 6962 - Certificate Transparency**
 - Laurie, B., Langley, A., Kasper, E. "Certificate Transparency." RFC 6962, June 2013.
-  - https://tools.ietf.org/html/rfc6962
+  - [Ietf - Rfc6962](https://tools.ietf.org/html/rfc6962)
 - Public logging of certificates
 - Log structure and operation
 - Monitoring for misissuance
 
 **Google Certificate Transparency Log Policy**
 - Google. "Certificate Transparency Log Policy."
-  - https://github.com/google/certificate-transparency-community-site
+  - [Github - Certificate Transparency Community Site](https://github.com/google/certificate-transparency-community-site)
 - Log operator requirements
 - Temporal sharding
 - Log monitoring
@@ -878,20 +878,20 @@ Design your hierarchy for the organization you'll become, not just the one you a
 
 **AWS Private CA Documentation**
 - AWS. "AWS Certificate Manager Private Certificate Authority."
-  - https://docs.aws.amazon.com/acm-pca/
+  - [Amazon - Acm Pca](https://docs.aws.amazon.com/acm-pca/)
 - Managed CA hierarchy
 - Subordinate CA configuration
 - Cross-account access
 
 **Azure Key Vault Certificates**
 - Microsoft. "About Azure Key Vault Certificates."
-  - https://docs.microsoft.com/en-us/azure/key-vault/certificates/
+  - [Microsoft - Azure](https://docs.microsoft.com/en-us/azure/key-vault/certificates/)
 - Certificate authority integration
 - Hierarchy management in cloud
 
 **Google Certificate Authority Service**
 - Google Cloud. "Certificate Authority Service."
-  - https://cloud.google.com/certificate-authority-service/docs
+  - [Google - Certificate Authority Service](https://cloud.google.com/certificate-authority-service/docs)
 - Managed CA hierarchies
 - Subordinate CA pools
 - DevOps integration
@@ -900,14 +900,14 @@ Design your hierarchy for the organization you'll become, not just the one you a
 
 **NIST SP 800-131A - Transitioning to Cryptographic Algorithms**
 - NIST. "Transitioning the Use of Cryptographic Algorithms and Key Lengths." Revision 2, March 2019.
-  - https://csrc.nist.gov/publications/detail/sp/800-131a/rev-2/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-131a/rev-2/final)
 - Algorithm transition planning
 - Deprecation timelines
 - Hierarchy migration for crypto upgrades
 
 **Post-Quantum Cryptography Transition**
 - NIST. "Post-Quantum Cryptography Standardization."
-  - https://csrc.nist.gov/projects/post-quantum-cryptography
+  - [Nist - Post Quantum Cryptography](https://csrc.nist.gov/projects/post-quantum-cryptography)
 - Quantum-resistant algorithms
 - Migration strategies
 - Hybrid certificate approaches
@@ -916,20 +916,20 @@ Design your hierarchy for the organization you'll become, not just the one you a
 
 **Mozilla Root Store Policy**
 - Mozilla. "Mozilla CA Certificate Policy." Version 2.8, 2023.
-  - https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/policy/
+  - [Mozilla - About](https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/policy/)
 - Requirements for root inclusion
 - Subordinate CA requirements
 - Technical constraints
 
 **Apple Root Certificate Program**
 - Apple. "Apple Root Certificate Program."
-  - https://www.apple.com/certificateauthority/ca_program.html
+  - [Apple - Ca Program.Html](https://www.apple.com/certificateauthority/ca_program.html)
 - Root program requirements
 - Subordinate CA restrictions
 
 **Microsoft Trusted Root Program**
 - Microsoft. "Trusted Root Certificate Program Requirements."
-  - https://docs.microsoft.com/en-us/security/trusted-root/program-requirements
+  - [Microsoft - Security](https://docs.microsoft.com/en-us/security/trusted-root/program-requirements)
 - Root certificate requirements
 - Subordinate CA issuance restrictions
 

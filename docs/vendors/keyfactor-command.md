@@ -597,262 +597,262 @@ Keyfactor's sweet spot is organizations that have outgrown simple tools but find
 ### Official Keyfactor Resources
 
 1. **Keyfactor Command Platform**  
-   https://www.keyfactor.com/platform/  
+   [Keyfactor - Platform](https://www.keyfactor.com/platform/)  
    Official product documentation and features
 
 2. **Keyfactor Developer Portal**  
-   https://software.keyfactor.com/  
+   [Keyfactor](https://software.keyfactor.com/)  
    API documentation and integration guides
 
 3. **Keyfactor Control (SaaS)**  
-   https://www.keyfactor.com/products/keyfactor-control/  
+   [Keyfactor - Keyfactor Control](https://www.keyfactor.com/products/keyfactor-control/)  
    Cloud-hosted certificate management platform
 
 4. **EJBCA Enterprise**  
-   https://www.keyfactor.com/products/ejbca-enterprise/  
+   [Keyfactor - Ejbca Enterprise](https://www.keyfactor.com/products/ejbca-enterprise/)  
    Integrated CA capabilities
 
 5. **Keyfactor GitHub**  
-   https://github.com/Keyfactor  
+   [Github - Keyfactor](https://github.com/Keyfactor)  
    Open-source tools and integrations
 
 ### Integration and Automation
 
 6. **Keyfactor Universal Orchestrator**  
-   https://github.com/Keyfactor/orchestrator-core  
+   [Github - Orchestrator Core](https://github.com/Keyfactor/orchestrator-core)  
    Agent-based automation framework
 
 7. **cert-manager Keyfactor Issuer**  
-   https://github.com/Keyfactor/cert-manager-external-issuer  
+   [Github - Cert Manager External Issuer](https://github.com/Keyfactor/cert-manager-external-issuer)  
    Kubernetes integration
 
 8. **Terraform Provider**  
-   https://registry.terraform.io/providers/Keyfactor  
+   [Terraform - Keyfactor](https://registry.terraform.io/providers/Keyfactor)  
    Infrastructure-as-code integration
 
 9. **Ansible Collections**  
-   https://galaxy.ansible.com/keyfactor  
+   [Ansible - Keyfactor](https://galaxy.ansible.com/keyfactor)  
    Configuration management integration
 
 10. **PowerShell Module**  
-    https://github.com/Keyfactor/keyfactor-powershell  
+    [Github - Keyfactor Powershell](https://github.com/Keyfactor/keyfactor-powershell)  
     Windows automation tools
 
 ### Technical Documentation
 
 11. **REST API Reference**  
-    https://software.keyfactor.com/api-docs/  
+    [Keyfactor - Api Docs](https://software.keyfactor.com/api-docs/)  
     Complete API documentation
 
 12. **WebSocket API**  
-    https://software.keyfactor.com/  
+    [Keyfactor](https://software.keyfactor.com/)  
     Real-time event streaming
 
 13. **Webhook Configuration**  
-    https://software.keyfactor.com/  
+    [Keyfactor](https://software.keyfactor.com/)  
     Event notification integration
 
 14. **ACME Server Configuration**  
-    https://software.keyfactor.com/  
+    [Keyfactor](https://software.keyfactor.com/)  
     ACME protocol support
 
 15. **EST Server Setup**  
-    https://software.keyfactor.com/  
+    [Keyfactor](https://software.keyfactor.com/)  
     Enrollment over Secure Transport
 
 ### Certificate Authority Support
 
 16. **Microsoft ADCS Integration**  
-    https://software.keyfactor.com/  
+    [Keyfactor](https://software.keyfactor.com/)  
     Active Directory Certificate Services
 
 17. **EJBCA Integration Guide**  
-    https://software.keyfactor.com/  
+    [Keyfactor](https://software.keyfactor.com/)  
     Open-source CA integration
 
 18. **DigiCert Connector**  
-    https://software.keyfactor.com/  
+    [Keyfactor](https://software.keyfactor.com/)  
     Public CA integration
 
 19. **Let's Encrypt ACME**  
-    https://software.keyfactor.com/  
+    [Keyfactor](https://software.keyfactor.com/)  
     Free certificate integration
 
 20. **Custom CA Integration SDK**  
-    https://software.keyfactor.com/  
+    [Keyfactor](https://software.keyfactor.com/)  
     Build custom CA connectors
 
 ### Cloud Platform Integrations
 
 21. **AWS Certificate Manager**  
-    https://software.keyfactor.com/  
+    [Keyfactor](https://software.keyfactor.com/)  
     AWS cloud integration
 
 22. **Azure Key Vault**  
-    https://software.keyfactor.com/  
+    [Keyfactor](https://software.keyfactor.com/)  
     Azure certificate management
 
 23. **Google Certificate Authority Service**  
-    https://software.keyfactor.com/  
+    [Keyfactor](https://software.keyfactor.com/)  
     GCP integration
 
 24. **F5 BIG-IP Integration**  
-    https://software.keyfactor.com/  
+    [Keyfactor](https://software.keyfactor.com/)  
     Load balancer automation
 
 25. **Kubernetes Secrets Management**  
-    https://software.keyfactor.com/  
+    [Keyfactor](https://software.keyfactor.com/)  
     Container platform integration
 
 ### Standards and Protocols
 
 26. **RFC 8555 - ACME Protocol**  
-    https://datatracker.ietf.org/doc/html/rfc8555  
+    [Ietf - Rfc8555](https://datatracker.ietf.org/doc/html/rfc8555)  
     Automated certificate management
 
 27. **RFC 7030 - EST Protocol**  
-    https://datatracker.ietf.org/doc/html/rfc7030  
+    [Ietf - Rfc7030](https://datatracker.ietf.org/doc/html/rfc7030)  
     Enrollment over secure transport
 
 28. **RFC 8894 - SCEP**  
-    https://datatracker.ietf.org/doc/html/rfc8894  
+    [Ietf - Rfc8894](https://datatracker.ietf.org/doc/html/rfc8894)  
     Simple certificate enrollment
 
 29. **RFC 4210 - CMP**  
-    https://datatracker.ietf.org/doc/html/rfc4210  
+    [Ietf - Rfc4210](https://datatracker.ietf.org/doc/html/rfc4210)  
     Certificate management protocol
 
 30. **RFC 5280 - X.509 Certificates**  
-    https://datatracker.ietf.org/doc/html/rfc5280  
+    [Ietf - Rfc5280](https://datatracker.ietf.org/doc/html/rfc5280)  
     Certificate format standards
 
 ### Case Studies and Use Cases
 
 31. **Financial Services Deployments**  
-    https://www.keyfactor.com/resources/case-studies/  
+    [Keyfactor - Case Studies](https://www.keyfactor.com/resources/case-studies/)  
     Banking and fintech implementations
 
 32. **Healthcare PKI Solutions**  
-    https://www.keyfactor.com/resources/case-studies/  
+    [Keyfactor - Case Studies](https://www.keyfactor.com/resources/case-studies/)  
     HIPAA-compliant certificate management
 
 33. **Manufacturing IoT Security**  
-    https://www.keyfactor.com/resources/case-studies/  
+    [Keyfactor - Case Studies](https://www.keyfactor.com/resources/case-studies/)  
     Industrial device certificate management
 
 34. **SaaS Provider Implementations**  
-    https://www.keyfactor.com/resources/case-studies/  
+    [Keyfactor - Case Studies](https://www.keyfactor.com/resources/case-studies/)  
     Cloud service provider PKI
 
 35. **Government and Defense**  
-    https://www.keyfactor.com/resources/case-studies/  
+    [Keyfactor - Case Studies](https://www.keyfactor.com/resources/case-studies/)  
     Public sector certificate management
 
 ### Industry Analysis
 
 36. **Gartner Market Guide for CLM**  
-    https://www.gartner.com/  
+    [Gartner](https://www.gartner.com/)  
     Certificate lifecycle management market analysis
 
 37. **Forrester Wave: PKI Management**  
-    https://www.forrester.com/  
+    [Forrester](https://www.forrester.com/)  
     Competitive vendor evaluation
 
 38. **KuppingerCole Leadership Compass**  
-    https://www.kuppingercole.com/  
+    [Kuppingercole](https://www.kuppingercole.com/)  
     European market analysis
 
 39. **IDC Market Forecast**  
-    https://www.idc.com/  
+    [Idc](https://www.idc.com/)  
     Market sizing and growth projections
 
 40. **ESG Technical Validation**  
-    https://www.esg-global.com/  
+    [Esg-global](https://www.esg-global.com/)  
     Independent technical assessment
 
 ### Security and Compliance
 
 41. **SOC 2 Type 2 Report**  
-    https://www.aicpa.org/soc4so  
+    [Aicpa - Soc4So](https://www.aicpa.org/soc4so)  
     Service organization audit
 
 42. **ISO 27001 Certification**  
-    https://www.iso.org/standard/27001  
+    [Iso - Standard](https://www.iso.org/standard/27001)  
     Information security management
 
 43. **FedRAMP Readiness**  
-    https://www.fedramp.gov/  
+    [Fedramp](https://www.fedramp.gov/)  
     Federal compliance status
 
 44. **PCI DSS Compliance Guide**  
-    https://www.pcisecuritystandards.org/  
+    [Pcisecuritystandards](https://www.pcisecuritystandards.org/)  
     Payment card industry requirements
 
 45. **HIPAA Security Controls**  
-    https://www.hhs.gov/hipaa/  
+    [Hhs - Hipaa](https://www.hhs.gov/hipaa/)  
     Healthcare compliance
 
 ### Pricing and Licensing
 
 46. **Keyfactor Pricing Calculator**  
-    https://www.keyfactor.com/  
+    [Keyfactor](https://www.keyfactor.com/)  
     Cost estimation tool
 
 47. **Volume Licensing Programs**  
-    https://www.keyfactor.com/  
+    [Keyfactor](https://www.keyfactor.com/)  
     Enterprise agreement options
 
 48. **Partner Program**  
-    https://www.keyfactor.com/partners/  
+    [Keyfactor - Partners](https://www.keyfactor.com/partners/)  
     Reseller and MSP pricing
 
 49. **Educational Discounts**  
-    https://www.keyfactor.com/  
+    [Keyfactor](https://www.keyfactor.com/)  
     Academic institution programs
 
 50. **Government Pricing**  
-    https://www.keyfactor.com/  
+    [Keyfactor](https://www.keyfactor.com/)  
     Public sector contracts
 
 ### Training and Support
 
 51. **Keyfactor University**  
-    https://www.keyfactor.com/education/  
+    [Keyfactor - Education](https://www.keyfactor.com/education/)  
     Online training courses
 
 52. **Administrator Certification**  
-    https://www.keyfactor.com/education/  
+    [Keyfactor - Education](https://www.keyfactor.com/education/)  
     Professional certification program
 
 53. **Support Portal**  
-    https://support.keyfactor.com/  
+    [Keyfactor](https://support.keyfactor.com/)  
     Knowledge base and tickets
 
 54. **Community Forums**  
-    https://community.keyfactor.com/  
+    [Keyfactor](https://community.keyfactor.com/)  
     User discussions and Q&A
 
 55. **Professional Services**  
-    https://www.keyfactor.com/services/  
+    [Keyfactor - Services](https://www.keyfactor.com/services/)  
     Implementation and consulting
 
 ### Competitive Comparisons
 
 56. **Keyfactor vs. Venafi**  
-    https://www.keyfactor.com/resources/  
+    [Keyfactor - Resources](https://www.keyfactor.com/resources/)  
     Feature and cost comparison
 
 57. **Keyfactor vs. AppViewX**  
-    https://www.keyfactor.com/resources/  
+    [Keyfactor - Resources](https://www.keyfactor.com/resources/)  
     Platform differentiation
 
 58. **Keyfactor vs. CA-Bundled Solutions**  
-    https://www.keyfactor.com/resources/  
+    [Keyfactor - Resources](https://www.keyfactor.com/resources/)  
     Multi-CA advantages
 
 59. **Open Source Alternatives**  
     Comparison with cert-manager, Lemur, Boulder
 
 60. **Total Cost of Ownership Analysis**  
-    https://www.keyfactor.com/resources/  
+    [Keyfactor - Resources](https://www.keyfactor.com/resources/)  
     TCO comparison across platforms

@@ -1162,7 +1162,7 @@ openssl req -x509 -newkey rsa:2048 -nodes -keyout temp.key -out temp.crt -days 7
 echo | openssl s_client -connect $HOSTNAME:443 -servername $HOSTNAME 2>/dev/null | openssl x509 -noout -subject -dates
 
 # Verify service health
-curl -I https://$HOSTNAME/health
+curl -I [$hostname - Health](https://$HOSTNAME/health)
 
 # Check error rates returned to normal
 ./scripts/check-metrics.sh --service $SERVICE_NAME --metric error_rate_5xx

@@ -1271,243 +1271,243 @@ Start with quick wins using API-based discovery, expand systematically to cover 
 ### Standards and Specifications
 
 1. **RFC 5280 - Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile**  
-   https://datatracker.ietf.org/doc/html/rfc5280  
+   [Ietf - Rfc5280](https://datatracker.ietf.org/doc/html/rfc5280)  
    X.509 certificate structure and attributes for inventory systems
 
 2. **RFC 6962 - Certificate Transparency**  
-   https://datatracker.ietf.org/doc/html/rfc6962  
+   [Ietf - Rfc6962](https://datatracker.ietf.org/doc/html/rfc6962)  
    Public logging for certificate discovery and monitoring
 
 3. **RFC 8555 - Automatic Certificate Management Environment (ACME)**  
-   https://datatracker.ietf.org/doc/html/rfc8555  
+   [Ietf - Rfc8555](https://datatracker.ietf.org/doc/html/rfc8555)  
    Discovery patterns for automated certificate environments
 
 4. **RFC 7469 - Public Key Pinning Extension for HTTP**  
-   https://datatracker.ietf.org/doc/html/rfc7469  
+   [Ietf - Rfc7469](https://datatracker.ietf.org/doc/html/rfc7469)  
    Certificate fingerprinting for inventory tracking
 
 5. **ISO/IEC 27001:2022 Annex A.8 - Asset Management**  
-   https://www.iso.org/standard/27001  
+   [Iso - Standard](https://www.iso.org/standard/27001)  
    Standards for IT asset inventory including certificates
 
 ### Discovery Tools and Platforms
 
 6. **SSLyze - SSL/TLS Scanner**  
-   https://github.com/nabla-c0d3/sslyze  
+   [Github - Sslyze](https://github.com/nabla-c0d3/sslyze)  
    Python tool for certificate discovery via network scanning
 
 7. **testssl.sh - SSL/TLS Testing**  
-   https://testssl.sh/  
+   [Testssl](https://testssl.sh/)  
    Shell script for comprehensive TLS certificate discovery
 
 8. **Censys - Internet-wide Certificate Search**  
-   https://censys.io/  
+   [Censys](https://censys.io/)  
    Internet scanning platform for certificate discovery
 
 9. **Shodan - Search Engine for Internet-Connected Devices**  
-   https://www.shodan.io/  
+   [Shodan](https://www.shodan.io/)  
    Network discovery including certificate inventory
 
 10. **Nmap - Network Discovery Tool**  
-    https://nmap.org/  
+    [Nmap](https://nmap.org/)  
     Port scanning with SSL certificate enumeration scripts
 
 ### Cloud Provider Certificate Discovery
 
 11. **AWS Certificate Manager (ACM) API Reference**  
-    https://docs.aws.amazon.com/acm/latest/APIReference/  
+    [Amazon - Latest](https://docs.aws.amazon.com/acm/latest/APIReference/)  
     API-based certificate discovery in AWS
 
 12. **Azure Key Vault Certificates REST API**  
-    https://learn.microsoft.com/rest/api/keyvault/certificates  
+    [Microsoft - Keyvault](https://learn.microsoft.com/rest/api/keyvault/certificates)  
     Certificate discovery via Azure APIs
 
 13. **Google Cloud Certificate Authority Service**  
-    https://cloud.google.com/certificate-authority-service/docs  
+    [Google - Certificate Authority Service](https://cloud.google.com/certificate-authority-service/docs)  
     GCP certificate inventory and management APIs
 
 14. **AWS IAM Server Certificates**  
-    https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html  
+    [Amazon - Latest](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html)  
     Legacy certificate storage discovery in AWS
 
 15. **Azure App Service Certificates**  
-    https://learn.microsoft.com/azure/app-service/configure-ssl-certificate  
+    [Microsoft - App Service](https://learn.microsoft.com/azure/app-service/configure-ssl-certificate)  
     Discovery of certificates in Azure App Service
 
 ### Container and Orchestration Platform Discovery
 
 16. **Kubernetes Secrets - TLS Type**  
-    https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets  
+    [Kubernetes - Configuration](https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets)  
     Certificate discovery in Kubernetes clusters
 
 17. **cert-manager Certificate Resources**  
-    https://cert-manager.io/docs/usage/certificate/  
+    [Cert-manager - Certificate](https://cert-manager.io/docs/usage/certificate/)  
     Kubernetes-native certificate inventory
 
 18. **Docker Secrets**  
-    https://docs.docker.com/engine/swarm/secrets/  
+    [Docker - Swarm](https://docs.docker.com/engine/swarm/secrets/)  
     Certificate storage discovery in Docker environments
 
 19. **OpenShift Certificate Management**  
-    https://docs.openshift.com/container-platform/latest/security/certificates/  
+    [Openshift - Latest](https://docs.openshift.com/container-platform/latest/security/certificates/)  
     Certificate discovery in OpenShift clusters
 
 20. **Istio Certificate Management**  
-    https://istio.io/latest/docs/tasks/security/cert-management/  
+    [Istio - Tasks](https://istio.io/latest/docs/tasks/security/cert-management/)  
     Service mesh certificate discovery
 
 ### Network and Passive Discovery
 
 21. **Zeek (formerly Bro) - SSL/TLS Analysis**  
-    https://docs.zeek.org/en/master/scripts/base/protocols/ssl/  
+    [Zeek - Scripts](https://docs.zeek.org/en/master/scripts/base/protocols/ssl/)  
     Network traffic analysis for certificate discovery
 
 22. **Wireshark SSL/TLS Dissector**  
-    https://wiki.wireshark.org/TLS  
+    [Wireshark - Tls](https://wiki.wireshark.org/TLS)  
     Packet capture analysis for certificate extraction
 
 23. **Suricata TLS Detection**  
-    https://suricata.readthedocs.io/en/latest/rules/tls-keywords.html  
+    [Readthedocs - Rules](https://suricata.readthedocs.io/en/latest/rules/tls-keywords.html)  
     IDS/IPS with certificate traffic analysis
 
 24. **Moloch/Arkime Session Analysis**  
-    https://arkime.com/  
+    [Arkime](https://arkime.com/)  
     Full packet capture with certificate extraction
 
 25. **tcpdump SSL/TLS Capture**  
-    https://www.tcpdump.org/  
+    [Tcpdump](https://www.tcpdump.org/)  
     Command-line packet capture for certificate analysis
 
 ### Configuration Management and Filesystem Discovery
 
 26. **Ansible Facts - Crypto Module**  
-    https://docs.ansible.com/ansible/latest/collections/community/crypto/  
+    [Ansible - Latest](https://docs.ansible.com/ansible/latest/collections/community/crypto/)  
     Automated certificate discovery via configuration management
 
 27. **Chef InSpec - SSL Resource**  
-    https://docs.chef.io/inspec/resources/ssl/  
+    [Chef - Resources](https://docs.chef.io/inspec/resources/ssl/)  
     Compliance scanning with certificate discovery
 
 28. **Puppet SSL Module**  
-    https://forge.puppet.com/modules/puppetlabs/ssl  
+    [Puppet - Puppetlabs](https://forge.puppet.com/modules/puppetlabs/ssl)  
     Certificate management and discovery via Puppet
 
 29. **SaltStack x509 Module**  
-    https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.x509.html  
+    [Saltproject - Ref](https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.x509.html)  
     Certificate discovery and management with Salt
 
 30. **OpenSCAP - Certificate Compliance Scanning**  
-    https://www.open-scap.org/  
+    [Open-scap](https://www.open-scap.org/)  
     Security compliance scanning including certificate inventory
 
 ### Agent-Based Discovery
 
 31. **Osquery - Certificate Tables**  
-    https://osquery.io/schema/  
+    [Osquery - Schema](https://osquery.io/schema/)  
     Endpoint visibility including certificate stores
 
 32. **Wazuh File Integrity Monitoring**  
-    https://documentation.wazuh.com/current/user-manual/capabilities/file-integrity/  
+    [Wazuh - User Manual](https://documentation.wazuh.com/current/user-manual/capabilities/file-integrity/)  
     Agent-based certificate file monitoring
 
 33. **Datadog Agent - TLS Certificate Check**  
-    https://docs.datadoghq.com/integrations/tls/  
+    [Datadoghq - Tls](https://docs.datadoghq.com/integrations/tls/)  
     Agent-based certificate discovery and monitoring
 
 34. **New Relic Infrastructure Agent**  
-    https://docs.newrelic.com/docs/infrastructure/  
+    [Newrelic - Infrastructure](https://docs.newrelic.com/docs/infrastructure/)  
     Infrastructure monitoring with certificate discovery
 
 35. **Elastic Agent**  
-    https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html  
+    [Elastic - Fleet](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html)  
     Unified agent with certificate inventory capabilities
 
 ### Certificate Transparency and Public Monitoring
 
 36. **Certificate Transparency Log Monitors**  
-    https://certificate.transparency.dev/monitors/  
+    [Transparency - Monitors](https://certificate.transparency.dev/monitors/)  
     Public certificate logging for discovery
 
 37. **crt.sh - Certificate Search**  
-    https://crt.sh/  
+    [Crt](https://crt.sh/)  
     Certificate transparency log search engine
 
 38. **Facebook Certificate Transparency Monitoring**  
-    https://developers.facebook.com/docs/certificate-transparency/  
+    [Facebook - Certificate Transparency](https://developers.facebook.com/docs/certificate-transparency/)  
     CT monitoring best practices
 
 39. **Google Certificate Transparency**  
-    https://transparencyreport.google.com/https/certificates  
+    [Google - Certificates](https://transparencyreport.google.com/https/certificates)  
     CT log statistics and search
 
 40. **Sectigo CT Search**  
-    https://ctsearch.sectigo.com/  
+    [Sectigo](https://ctsearch.sectigo.com/)  
     Commercial CT log search tool
 
 ### Database and Data Management
 
 41. **PostgreSQL - Certificate Inventory Schema Design**  
-    https://www.postgresql.org/docs/current/datatype-datetime.html  
+    [Postgresql - Datatype Datetime.Html](https://www.postgresql.org/docs/current/datatype-datetime.html)  
     Database design for certificate lifecycle tracking
 
 42. **MongoDB - Document Structure for Certificates**  
-    https://www.mongodb.com/docs/  
+    [Mongodb](https://www.mongodb.com/docs/)  
     NoSQL approaches to certificate inventory
 
 43. **Elasticsearch - Certificate Document Mapping**  
-    https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html  
+    [Elastic - Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html)  
     Search and analytics for certificate inventory
 
 44. **TimescaleDB - Time-Series Certificate Data**  
-    https://docs.timescale.com/  
+    [Timescale Documentation](https://docs.timescale.com/)  
     Time-series database for certificate history
 
 45. **Redis - Certificate Caching**  
-    https://redis.io/docs/  
+    [Redis](https://redis.io/docs/)  
     High-performance caching for certificate metadata
 
 ### API Integrations and Automation
 
 46. **Python cryptography Library**  
-    https://cryptography.io/en/latest/  
+    [Cryptography - Latest](https://cryptography.io/en/latest/)  
     Certificate parsing and analysis in Python
 
 47. **OpenSSL Command-Line Tools**  
-    https://www.openssl.org/docs/man1.1.1/man1/  
+    [Openssl - Man1](https://www.openssl.org/docs/man1.1.1/man1/)  
     Certificate inspection and extraction utilities
 
 48. **pyOpenSSL**  
-    https://www.pyopenssl.org/  
+    [Pyopenssl](https://www.pyopenssl.org/)  
     Python wrapper for OpenSSL certificate operations
 
 49. **Go crypto/x509 Package**  
-    https://pkg.go.dev/crypto/x509  
+    [Go - X509](https://pkg.go.dev/crypto/x509)  
     Certificate parsing in Go
 
 50. **Java KeyStore (JKS) Tools**  
-    https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html  
+    [Oracle - Technotes](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html)  
     Java certificate store management
 
 ### Security and Compliance Frameworks
 
 51. **NIST SP 800-53 Rev. 5 - CM-8: System Component Inventory**  
-    https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final  
+    [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final)  
     Federal standards for configuration management inventory
 
 52. **CIS Controls v8 - Control 1: Inventory and Control of Enterprise Assets**  
-    https://www.cisecurity.org/controls/v8  
+    [Cisecurity - Controls](https://www.cisecurity.org/controls/v8)  
     Security framework including certificate inventory
 
 53. **PCI DSS v4.0 - Requirement 2.4**  
-    https://www.pcisecuritystandards.org/  
+    [Pcisecuritystandards](https://www.pcisecuritystandards.org/)  
     Inventory requirements for payment card environments
 
 54. **SOC 2 Type 2 - Common Criteria CC6.1**  
-    https://www.aicpa.org/soc4so  
+    [Aicpa - Soc4So](https://www.aicpa.org/soc4so)  
     Logical and physical access controls including certificate inventory
 
 55. **HIPAA Security Rule - 164.308(a)(1)(ii)(A)**  
-    https://www.hhs.gov/hipaa/for-professionals/security/  
+    [Hhs - For Professionals](https://www.hhs.gov/hipaa/for-professionals/security/)  
     Risk analysis requiring asset inventory including certificates
 
 ### Research and Academic Papers
@@ -1530,45 +1530,45 @@ Start with quick wins using API-based discovery, expand systematically to cover 
 ### Industry Reports and Statistics
 
 61. **Venafi Machine Identity Management Report**  
-    https://www.venafi.com/resources  
+    [Venafi - Resources](https://www.venafi.com/resources)  
     Annual statistics on certificate management challenges
 
 62. **Ponemon Institute: Cost of Failed Trust Report**  
-    https://www.ponemon.org/  
+    [Ponemon](https://www.ponemon.org/)  
     Business impact of certificate management failures
 
 63. **Gartner: Certificate Lifecycle Management Market Guide**  
-    https://www.gartner.com/  
+    [Gartner](https://www.gartner.com/)  
     Market analysis and best practices
 
 64. **Forrester: The State of Public Key Infrastructure**  
-    https://www.forrester.com/  
+    [Forrester](https://www.forrester.com/)  
     Enterprise PKI adoption and challenges
 
 65. **IDC: Digital Certificate Management Market Forecast**  
-    https://www.idc.com/  
+    [Idc](https://www.idc.com/)  
     Market size and growth projections
 
 ### Open Source Projects
 
 66. **Boulder - Let's Encrypt CA Implementation**  
-    https://github.com/letsencrypt/boulder  
+    [Github - Boulder](https://github.com/letsencrypt/boulder)  
     ACME server with built-in certificate tracking
 
 67. **Step CA - Open Source Certificate Authority**  
-    https://github.com/smallstep/certificates  
+    [Github - Certificates](https://github.com/smallstep/certificates)  
     Private CA with certificate inventory features
 
 68. **CFSSL - Cloudflare PKI Toolkit**  
-    https://github.com/cloudflare/cfssl  
+    [Github - Cfssl](https://github.com/cloudflare/cfssl)  
     Certificate authority and management tools
 
 69. **cert-manager**  
-    https://github.com/cert-manager/cert-manager  
+    [Github - Cert Manager](https://github.com/cert-manager/cert-manager)  
     Kubernetes certificate automation with inventory
 
 70. **Lemur - Certificate Management Framework**  
-    https://github.com/Netflix/lemur  
+    [Github - Lemur](https://github.com/Netflix/lemur)  
     Netflix's certificate lifecycle management platform
 
 ### Books and Comprehensive Guides

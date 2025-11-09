@@ -1021,9 +1021,9 @@ Exposure window: T0 to T3 (minutes typically)
 
 ## References
 
-[^1]: Santesson, S., et al. "X.509 Internet Public Key Infrastructure Online Certificate Status Protocol - OCSP." RFC 6960, June 2013. https://www.rfc-editor.org/rfc/rfc6960
+[^1]: Santesson, S., et al. "X.509 Internet Public Key Infrastructure Online Certificate Status Protocol - OCSP." RFC 6960, June 2013. [Rfc-editor - Rfc6960](https://www.rfc-editor.org/rfc/rfc6960)
 
-[^2]: Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." RFC 5280, May 2008. https://www.rfc-editor.org/rfc/rfc5280
+[^2]: Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." RFC 5280, May 2008. [Rfc-editor - Rfc5280](https://www.rfc-editor.org/rfc/rfc5280)
 
 ## Change History
 

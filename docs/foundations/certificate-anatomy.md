@@ -358,19 +358,19 @@ The deprecation of Common Name for hostname validation caused significant operat
 
 ## References
 
-[^1]: Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." RFC 5280, May 2008. https://www.rfc-editor.org/rfc/rfc5280
+[^1]: Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." RFC 5280, May 2008. [Rfc-editor - Rfc5280](https://www.rfc-editor.org/rfc/rfc5280)
 
-[^2]: CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. https://cabforum.org/baseline-requirements-documents/
+[^2]: CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. [Cabforum - Baseline Requirements Documents](https://cabforum.org/baseline-requirements-documents/)
 
 [^3]: CA/Browser Forum Baseline Requirements, Section 7.1 - Certificate Profile.
 
-[^4]: NIST. "Transitioning the Use of Cryptographic Algorithms and Key Lengths." NIST SP 800-131A Rev.2, March 2019. https://csrc.nist.gov/publications/detail/sp/800-131a/rev-2/final
+[^4]: NIST. "Transitioning the Use of Cryptographic Algorithms and Key Lengths." NIST SP 800-131A Rev.2, March 2019. [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-131a/rev-2/final)
 
-[^5]: NIST. "Recommendation for Key Management." NIST SP 800-57 Part 1 Rev. 5, May 2020. https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final
+[^5]: NIST. "Recommendation for Key Management." NIST SP 800-57 Part 1 Rev. 5, May 2020. [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final)
 
-[^6]: Laurie, B., et al. "Certificate Transparency." RFC 6962, June 2013. https://www.rfc-editor.org/rfc/rfc6962
+[^6]: Laurie, B., et al. "Certificate Transparency." RFC 6962, June 2013. [Rfc-editor - Rfc6962](https://www.rfc-editor.org/rfc/rfc6962)
 
-[^7]: Stevens, M., et al. "Short chosen-prefix collisions for MD5 and the creation of a rogue CA certificate." CRYPTO 2009. https://www.win.tue.nl/hashclash/rogue-ca/
+[^7]: Stevens, M., et al. "Short chosen-prefix collisions for MD5 and the creation of a rogue CA certificate." CRYPTO 2009. [Tue - Rogue Ca](https://www.win.tue.nl/hashclash/rogue-ca/)
 
 ## Change History
 

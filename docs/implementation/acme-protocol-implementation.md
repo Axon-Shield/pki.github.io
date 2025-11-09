@@ -1420,7 +1420,7 @@ The largest ACME CA, issuing 3+ million certificates daily:
 - Comprehensive rate limiting (50 orders/account/hour, 300 pending/account)
 - Multiple validation perspectives (4+ geographically distributed validators)
 - Integration with Certificate Transparency
-- Publicly audited code: https://github.com/letsencrypt/boulder
+- Publicly audited code: [Github - Boulder](https://github.com/letsencrypt/boulder)
 
 **Lessons**: Horizontal scaling critical, validation must be geographically diverse, rate limiting essential, observability non-negotiable.
 
@@ -1457,7 +1457,7 @@ ACME implementation for internal certificates:
 - RFC 8657: CAA Record Extensions for ACME
 - RFC 8737: ACME TLS ALPN Challenge Extension
 - RFC 8738: ACME IP Identifier Validation Extension
-- Let's Encrypt Integration Guide: https://letsencrypt.org/docs/integration-guide/
+- Let's Encrypt Integration Guide: [Letsencrypt - Integration Guide](https://letsencrypt.org/docs/integration-guide/)
 
 ### Related Pages
 - [Certificate Issuance Workflows](./certificate-issuance-workflows.md) - Complete workflow patterns
@@ -1467,11 +1467,11 @@ ACME implementation for internal certificates:
 - [HSM Integration](./hsm-integration.md) - Hardware security for CA keys
 
 ### Implementation Resources
-- Boulder (Let's Encrypt): https://github.com/letsencrypt/boulder
-- Certbot (ACME client): https://github.com/certbot/certbot
-- acme.sh (Bash ACME client): https://github.com/acmesh-official/acme.sh
-- Pebble (Test ACME server): https://github.com/letsencrypt/pebble
-- ACME Protocol Specification: https://tools.ietf.org/html/rfc8555
+- Boulder (Let's Encrypt): [Github - Boulder](https://github.com/letsencrypt/boulder)
+- Certbot (ACME client): [Github - Certbot](https://github.com/certbot/certbot)
+- acme.sh (Bash ACME client): [Github - Acme.Sh](https://github.com/acmesh-official/acme.sh)
+- Pebble (Test ACME server): [Github - Pebble](https://github.com/letsencrypt/pebble)
+- ACME Protocol Specification: [Ietf - Rfc8555](https://tools.ietf.org/html/rfc8555)
 
 ---
 

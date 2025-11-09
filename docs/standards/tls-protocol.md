@@ -575,7 +575,7 @@ nmap --script ssl-enum-ciphers -p 443 example.com
 
 
 
-- Visit: https://www.ssllabs.com/ssltest/
+- Visit: [Ssllabs - Ssltest](https://www.ssllabs.com/ssltest/)
 - Enter domain name
 - Comprehensive report includes:
   - Protocol support
@@ -932,13 +932,13 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 
 ## References
 
-[^1]: IETF. "Deprecating TLS 1.0 and TLS 1.1." RFC 8996, March 2021. https://www.rfc-editor.org/rfc/rfc8996
+[^1]: IETF. "Deprecating TLS 1.0 and TLS 1.1." RFC 8996, March 2021. [Rfc-editor - Rfc8996](https://www.rfc-editor.org/rfc/rfc8996)
 
 [^2]: Möller, B., et al. "This POODLE Bites: Exploiting the SSL 3.0 Fallback." Security Advisory, October 2014.
 
-[^3]: Dierks, T. and Rescorla, E. "The Transport Layer Security (TLS) Protocol Version 1.2." RFC 5246, August 2008. https://www.rfc-editor.org/rfc/rfc5246
+[^3]: Dierks, T. and Rescorla, E. "The Transport Layer Security (TLS) Protocol Version 1.2." RFC 5246, August 2008. [Rfc-editor - Rfc5246](https://www.rfc-editor.org/rfc/rfc5246)
 
-[^4]: Rescorla, E. "The Transport Layer Security (TLS) Protocol Version 1.3." RFC 8446, August 2018. https://www.rfc-editor.org/rfc/rfc8446
+[^4]: Rescorla, E. "The Transport Layer Security (TLS) Protocol Version 1.3." RFC 8446, August 2018. [Rfc-editor - Rfc8446](https://www.rfc-editor.org/rfc/rfc8446)
 
 ## Change History
 

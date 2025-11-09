@@ -778,7 +778,7 @@ Some organizations pin specific public keys or certificates in applications:
 
 ## References
 
-[^1]: NIST. "Recommendation for Key Management." NIST SP 800-57 Part 1 Rev. 5, May 2020. https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final
+[^1]: NIST. "Recommendation for Key Management." NIST SP 800-57 Part 1 Rev. 5, May 2020. [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final)
 
 ## Change History
 

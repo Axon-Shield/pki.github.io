@@ -1138,7 +1138,7 @@ groups:
 ### 1. Verify Scope
 ```bash
 # Check error rate by domain
-curl 'http://prometheus:9090/api/v1/query?query=rate(cert_pin_validation_total{result="failure"}[5m])'
+curl '[Prometheus:9090 - Query](http://prometheus:9090/api/v1/query?query=rate(cert_pin_validation_total{result="failure"}[5m]))'
 ```
 
 ### 2. Check Certificate Status

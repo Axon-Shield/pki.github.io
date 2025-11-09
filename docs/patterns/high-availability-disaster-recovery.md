@@ -912,14 +912,14 @@ Remember: You don't have HA/DR until you've tested it. Untested disaster recover
 
 **ISO 22301 - Business Continuity Management**
 - ISO. "Security and resilience — Business continuity management systems." ISO 22301:2019.
-  - https://www.iso.org/standard/75106.html
+  - [Iso - 75106.Html](https://www.iso.org/standard/75106.html)
 - Business continuity framework
 - Recovery strategies
 - Testing requirements
 
 **NIST SP 800-34 - Contingency Planning Guide**
 - NIST. "Contingency Planning Guide for Federal Information Systems." Revision 1, May 2010.
-  - https://csrc.nist.gov/publications/detail/sp/800-34/rev-1/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-34/rev-1/final)
 - Contingency planning framework
 - Recovery strategies
 - Testing and exercises
@@ -934,7 +934,7 @@ Remember: You don't have HA/DR until you've tested it. Untested disaster recover
 
 **NIST SP 800-184 - Guide for Cybersecurity Event Recovery**
 - NIST. "Guide for Cybersecurity Event Recovery." December 2016.
-  - https://csrc.nist.gov/publications/detail/sp/800-184/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-184/final)
 - Recovery planning framework
 - Communication strategies
 - Lessons learned process
@@ -949,7 +949,7 @@ Remember: You don't have HA/DR until you've tested it. Untested disaster recover
 
 **"Site Reliability Engineering" (O'Reilly)**
 - Beyer, B., et al. "Site Reliability Engineering: How Google Runs Production Systems." O'Reilly, 2016.
-  - https://sre.google/books/
+  - [Sre - Books](https://sre.google/books/)
 - Reliability principles
 - Eliminating single points of failure
 - Testing and validation
@@ -964,21 +964,21 @@ Remember: You don't have HA/DR until you've tested it. Untested disaster recover
 
 **PostgreSQL High Availability Documentation**
 - PostgreSQL. "High Availability, Load Balancing, and Replication."
-  - https://www.postgresql.org/docs/current/high-availability.html
+  - [Postgresql - High Availability.Html](https://www.postgresql.org/docs/current/high-availability.html)
 - Streaming replication
 - Synchronous vs asynchronous
 - Failover configuration
 
 **MySQL Group Replication**
 - Oracle. "MySQL Group Replication."
-  - https://dev.mysql.com/doc/refman/8.0/en/group-replication.html
+  - [Mysql - 8.0](https://dev.mysql.com/doc/refman/8.0/en/group-replication.html)
 - Multi-primary replication
 - Automatic failover
 - Conflict detection
 
 **MongoDB Replica Sets**
 - MongoDB. "Replication."
-  - https://docs.mongodb.com/manual/replication/
+  - [Mongodb - Replication](https://docs.mongodb.com/manual/replication/)
 - Replica set configuration
 - Automatic failover
 - Read preference strategies
@@ -987,7 +987,7 @@ Remember: You don't have HA/DR until you've tested it. Untested disaster recover
 
 **NIST SP 800-57 Part 2 - Key Management**
 - NIST. "Recommendation for Key Management: Part 2 - Best Practices for Key Management Organizations." Revision 1, May 2019.
-  - https://csrc.nist.gov/publications/detail/sp/800-57-part-2/rev-1/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-57-part-2/rev-1/final)
 - Key backup strategies
 - Disaster recovery for keys
 - Geographic distribution
@@ -1000,7 +1000,7 @@ Remember: You don't have HA/DR until you've tested it. Untested disaster recover
 
 **PKCS #11 - Backup and Restore**
 - OASIS. "PKCS #11 Cryptographic Token Interface."
-  - http://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/
+  - [Oasis-open - Pkcs11 Base](http://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/)
 - Token backup mechanisms
 - Key wrapping
 - Secure transport
@@ -1009,21 +1009,21 @@ Remember: You don't have HA/DR until you've tested it. Untested disaster recover
 
 **HAProxy Documentation**
 - HAProxy. "The Reliable, High Performance TCP/HTTP Load Balancer."
-  - http://www.haproxy.org/
+  - [Haproxy](http://www.haproxy.org/)
 - Health check configuration
 - Session persistence
 - Failover strategies
 
 **Keepalived - VRRP Implementation**
 - Keepalived. "Keepalived for Linux."
-  - https://www.keepalived.org/
+  - [Keepalived](https://www.keepalived.org/)
 - Virtual IP failover
 - Health checking
 - VRRP protocol
 
 **Pacemaker + Corosync**
 - ClusterLabs. "Pacemaker Cluster Resource Manager."
-  - https://clusterlabs.org/pacemaker/
+  - [Clusterlabs - Pacemaker](https://clusterlabs.org/pacemaker/)
 - Cluster resource management
 - Fencing and STONITH
 - Resource constraints
@@ -1032,21 +1032,21 @@ Remember: You don't have HA/DR until you've tested it. Untested disaster recover
 
 **AWS Well-Architected Framework - Reliability Pillar**
 - AWS. "Reliability Pillar - AWS Well-Architected Framework."
-  - https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/
+  - [Amazon - Latest](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/)
 - Multi-AZ deployment
 - Backup strategies
 - Disaster recovery patterns
 
 **Azure Site Recovery**
 - Microsoft. "Azure Site Recovery."
-  - https://docs.microsoft.com/en-us/azure/site-recovery/
+  - [Microsoft - Azure](https://docs.microsoft.com/en-us/azure/site-recovery/)
 - Replication and failover
 - Recovery plans
 - Testing procedures
 
 **Google Cloud Architecture Framework - Reliability**
 - Google Cloud. "Architecture Framework: Reliability."
-  - https://cloud.google.com/architecture/framework/reliability
+  - [Google - Framework](https://cloud.google.com/architecture/framework/reliability)
 - Regional and multi-regional deployment
 - Backup and disaster recovery
 - RPO and RTO planning
@@ -1055,20 +1055,20 @@ Remember: You don't have HA/DR until you've tested it. Untested disaster recover
 
 **Prometheus - High Availability**
 - Prometheus. "High Availability."
-  - https://prometheus.io/docs/introduction/faq/#can-prometheus-be-made-highly-available
+  - [Prometheus - Faq](https://prometheus.io/docs/introduction/faq/#can-prometheus-be-made-highly-available)
 - Federation and remote storage
 - Monitoring best practices
 
 **Nagios / Icinga Monitoring**
 - Nagios. "Nagios Core Documentation."
-  - https://www.nagios.org/documentation/
+  - [Nagios - Documentation](https://www.nagios.org/documentation/)
 - Infrastructure monitoring
 - Service checks
 - Alert escalation
 
 **NIST SP 800-92 - Log Management**
 - NIST. "Guide to Computer Security Log Management." September 2006.
-  - https://csrc.nist.gov/publications/detail/sp/800-92/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-92/final)
 - Log management strategies
 - Monitoring and analysis
 - Retention requirements
@@ -1077,7 +1077,7 @@ Remember: You don't have HA/DR until you've tested it. Untested disaster recover
 
 **Veeam Backup & Replication**
 - Veeam. "Veeam Backup & Replication."
-  - https://www.veeam.com/
+  - [Veeam](https://www.veeam.com/)
 - Backup best practices
 - Replication strategies
 - Recovery testing
@@ -1089,7 +1089,7 @@ Remember: You don't have HA/DR until you've tested it. Untested disaster recover
 
 **AWS Backup**
 - AWS. "AWS Backup."
-  - https://aws.amazon.com/backup/
+  - [Amazon - Backup](https://aws.amazon.com/backup/)
 - Centralized backup service
 - Backup policies
 - Cross-region backup
@@ -1104,7 +1104,7 @@ Remember: You don't have HA/DR until you've tested it. Untested disaster recover
 
 **DRII Professional Practices**
 - Disaster Recovery Institute International. "Professional Practices."
-  - https://drii.org/
+  - [Drii](https://drii.org/)
 - Business continuity standards
 - Recovery planning
 - Professional certifications
@@ -1119,7 +1119,7 @@ Remember: You don't have HA/DR until you've tested it. Untested disaster recover
 
 **DNS-Based Global Load Balancing**
 - AWS Route 53 Traffic Management
-  - https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html
+  - [Amazon - Latest](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html)
 - Health checks and failover
 - Latency-based routing
 - Geolocation routing
@@ -1134,7 +1134,7 @@ Remember: You don't have HA/DR until you've tested it. Untested disaster recover
 
 **NIST SP 800-84 - Test, Training, and Exercise Programs**
 - NIST. "Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities." September 2006.
-  - https://csrc.nist.gov/publications/detail/sp/800-84/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 - Exercise design and execution
 - Evaluation criteria
 - Improvement process
@@ -1163,7 +1163,7 @@ Remember: You don't have HA/DR until you've tested it. Untested disaster recover
 
 **FFIEC Business Continuity Planning**
 - Federal Financial Institutions Examination Council. "Business Continuity Planning IT Examination Handbook."
-  - https://ithandbook.ffiec.gov/
+  - [Ffiec](https://ithandbook.ffiec.gov/)
 - Financial sector BCP requirements
 - Testing and maintenance
 - Third-party dependencies
@@ -1178,14 +1178,14 @@ Remember: You don't have HA/DR until you've tested it. Untested disaster recover
 
 **BGP Best Practices for Redundancy**
 - IETF. "BGP Operations and Security." RFC 7454.
-  - https://tools.ietf.org/html/rfc7454
+  - [Ietf - Rfc7454](https://tools.ietf.org/html/rfc7454)
 - Multi-homing strategies
 - Prefix filtering
 - Route diversity
 
 **MPLS VPN for HA**
 - RFC 4364. "BGP/MPLS IP Virtual Private Networks (VPNs)."
-  - https://tools.ietf.org/html/rfc4364
+  - [Ietf - Rfc4364](https://tools.ietf.org/html/rfc4364)
 - VPN redundancy
 - Fast reroute
 - Backup paths

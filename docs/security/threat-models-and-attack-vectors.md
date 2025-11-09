@@ -1596,7 +1596,7 @@ Understanding these threat models enables building PKI infrastructure that is re
 
 **DigiNotar Certificate Authority Breach (2011)**
 - Fox-IT. "DigiNotar Certificate Authority breach - Operation Black Tulip." September 2011.
-  - https://www.rijksoverheid.nl/documenten/rapporten/2011/09/05/diginotar-public-report-version-1
+  - [Rijksoverheid - Rapporten](https://www.rijksoverheid.nl/documenten/rapporten/2011/09/05/diginotar-public-report-version-1)
 - Nation-state compromise of Dutch CA
 - 531 fraudulent certificates issued
 - Company bankruptcy and trust store removal
@@ -1609,14 +1609,14 @@ Understanding these threat models enables building PKI infrastructure that is re
 
 **Heartbleed (CVE-2014-0160)**
 - Durumeric, Z., et al. "The Matter of Heartbleed." ACM IMC 2014.
-  - https://dl.acm.org/doi/10.1145/2663716.2663755
+  - [Acm - 10.1145](https://dl.acm.org/doi/10.1145/2663716.2663755)
 - OpenSSL buffer over-read vulnerability
 - Private key exposure possible
 - Internet-scale impact analysis
 
 **ROCA Vulnerability (CVE-2017-15361)**
 - Nemec, M., et al. "The Return of Coppersmith's Attack: Practical Factorization of Widely Used RSA Moduli." ACM CCS 2017.
-  - https://dl.acm.org/doi/10.1145/3133956.3133969
+  - [Acm - 10.1145](https://dl.acm.org/doi/10.1145/3133956.3133969)
 - Weakness in Infineon TPM key generation
 - Millions of devices affected
 - Practical RSA key factorization
@@ -1626,7 +1626,7 @@ Understanding these threat models enables building PKI infrastructure that is re
 **Collision Attacks on Hash Functions**
 - Wang, X., et al. "Finding Collisions in the Full SHA-1." CRYPTO 2005.
 - Stevens, M., et al. "The First Collision for Full SHA-1." CRYPTO 2017.
-  - https://shattered.io/
+  - [Shattered](https://shattered.io/)
 - Practical SHA-1 collision demonstration
 - Impact on certificate signatures
 
@@ -1646,22 +1646,22 @@ Understanding these threat models enables building PKI infrastructure that is re
 
 **Quantum Computing Threats**
 - Shor, P.W. "Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer." SIAM Journal on Computing, 1997.
-  - https://dl.acm.org/doi/10.1137/S0097539795293172
+  - [Acm - 10.1137](https://dl.acm.org/doi/10.1137/S0097539795293172)
 - Theoretical foundation for quantum threat to RSA/ECC
 - NIST Post-Quantum Cryptography Standardization Project
-  - https://csrc.nist.gov/projects/post-quantum-cryptography
+  - [Nist - Post Quantum Cryptography](https://csrc.nist.gov/projects/post-quantum-cryptography)
 
 ### Protocol Vulnerabilities
 
 **SSL/TLS Attack Research**
 - Sheffer, Y., Holz, R., Saint-Andre, P. "Summarizing Known Attacks on Transport Layer Security (TLS) and Datagram TLS (DTLS)." RFC 7457, February 2015.
-  - https://tools.ietf.org/html/rfc7457
+  - [Ietf - Rfc7457](https://tools.ietf.org/html/rfc7457)
 - Comprehensive survey of TLS attacks
 - BEAST, CRIME, BREACH, Heartbleed, POODLE, etc.
 
 **Certificate Validation Failures**
 - Brubaker, C., et al. "Using Frankencerts for Automated Adversarial Testing of Certificate Validation in SSL/TLS Implementations." IEEE S&P 2014.
-  - https://www.ieee-security.org/TC/SP2014/papers/UsingFrancencertsforAutomatedAdversarialTestingofCertificateValidationinSSL_TLSImplementations.pdf
+  - [Ieee-security - Papers](https://www.ieee-security.org/TC/SP2014/papers/UsingFrancencertsforAutomatedAdversarialTestingofCertificateValidationinSSL_TLSImplementations.pdf)
 - Systematic testing of implementations
 - Widespread validation failures discovered
 
@@ -1680,7 +1680,7 @@ Understanding these threat models enables building PKI infrastructure that is re
 
 **Certificate Transparency Specification**
 - Laurie, B., Langley, A., Kasper, E. "Certificate Transparency." RFC 6962, June 2013.
-  - https://tools.ietf.org/html/rfc6962
+  - [Ietf - Rfc6962](https://tools.ietf.org/html/rfc6962)
 - Public auditability of certificate issuance
 - Detection of fraudulent certificates
 
@@ -1694,7 +1694,7 @@ Understanding these threat models enables building PKI infrastructure that is re
 **BGP Hijacking and PKI**
 - Gavrichenkov, A. "Breaking HTTPS with BGP Hijacking." Black Hat USA 2015.
 - Birge-Lee, H., et al. "Bamboozling Certificate Authorities with BGP." USENIX Security 2018.
-  - https://www.usenix.org/conference/usenixsecurity18/presentation/birge-lee
+  - [Usenix - Usenixsecurity18](https://www.usenix.org/conference/usenixsecurity18/presentation/birge-lee)
 - BGP attacks enable domain validation bypass
 - Man-in-the-middle certificate issuance
 
@@ -1706,7 +1706,7 @@ Understanding these threat models enables building PKI infrastructure that is re
 ### Implementation Vulnerabilities
 
 **Memory Safety Issues**
-- The Underhanded C Contest. http://www.underhanded-c.org/
+- The Underhanded C Contest. [Underhanded-c](http://www.underhanded-c.org/)
 - Subtle vulnerabilities in C cryptographic code
 - Buffer overflows, use-after-free, etc.
 
@@ -1716,7 +1716,7 @@ Understanding these threat models enables building PKI infrastructure that is re
 
 **OpenSSL Vulnerabilities Beyond Heartbleed**
 - CVE Database. "OpenSSL Vulnerabilities."
-  - https://www.cvedetails.com/product/383/Openssl-Openssl.html
+  - [Cvedetails - Openssl Openssl.Html](https://www.cvedetails.com/product/383/Openssl-Openssl.html)
 - Comprehensive list of OpenSSL CVEs
 - Importance of staying current with patches
 
@@ -1729,14 +1729,14 @@ Understanding these threat models enables building PKI infrastructure that is re
 
 **MITRE ATT&CK Framework**
 - MITRE Corporation. "ATT&CK for Enterprise."
-  - https://attack.mitre.org/
+  - [Mitre](https://attack.mitre.org/)
 - Adversary tactics and techniques
 - T1649: Steal or Forge Authentication Certificates
 - T1552: Unsecured Credentials
 
 **Common Weakness Enumeration (CWE)**
 - MITRE. "CWE VIEW: Weaknesses in Software Written in C."
-  - https://cwe.mitre.org/
+  - [Mitre](https://cwe.mitre.org/)
 - CWE-310: Cryptographic Issues
 - CWE-320: Key Management Errors
 - CWE-327: Use of Broken or Risky Cryptographic Algorithm
@@ -1745,7 +1745,7 @@ Understanding these threat models enables building PKI infrastructure that is re
 
 **Insider Threat Research**
 - Verizon. "2023 Data Breach Investigations Report." Annual.
-  - https://www.verizon.com/business/resources/reports/dbir/
+  - [Verizon - Resources](https://www.verizon.com/business/resources/reports/dbir/)
 - 20-30% of breaches involve internal actors
 - Privilege misuse patterns
 
@@ -1756,7 +1756,7 @@ Understanding these threat models enables building PKI infrastructure that is re
 
 **Supply Chain Security**
 - NIST SP 800-161. "Cybersecurity Supply Chain Risk Management Practices for Systems and Organizations." May 2022.
-  - https://csrc.nist.gov/publications/detail/sp/800-161/rev-1/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-161/rev-1/final)
 - Supply chain threat models
 - Third-party risk management
 
@@ -1764,19 +1764,19 @@ Understanding these threat models enables building PKI infrastructure that is re
 
 **Certificate Pinning**
 - Evans, C., Palmer, C., Sleevi, R. "Public Key Pinning Extension for HTTP." RFC 7469, April 2015.
-  - https://tools.ietf.org/html/rfc7469
+  - [Ietf - Rfc7469](https://tools.ietf.org/html/rfc7469)
 - Trust-on-first-use pinning
 - Protection against rogue CAs
 
 **DNSSEC**
 - Arends, R., et al. "DNS Security Introduction and Requirements." RFC 4033, March 2005.
-  - https://tools.ietf.org/html/rfc4033
+  - [Ietf - Rfc4033](https://tools.ietf.org/html/rfc4033)
 - DNS authentication and integrity
 - Protection against DNS-based attacks
 
 **CAA Records**
 - Hallam-Baker, P., Stradling, R. "DNS Certification Authority Authorization (CAA) Resource Record." RFC 8659, November 2019.
-  - https://tools.ietf.org/html/rfc8659
+  - [Ietf - Rfc8659](https://tools.ietf.org/html/rfc8659)
 - DNS-based CA authorization
 - Reduces fraudulent issuance risk
 
@@ -1784,19 +1784,19 @@ Understanding these threat models enables building PKI infrastructure that is re
 
 **CA/Browser Forum Baseline Requirements**
 - CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates."
-  - https://cabforum.org/baseline-requirements-documents/
+  - [Cabforum - Baseline Requirements Documents](https://cabforum.org/baseline-requirements-documents/)
 - Industry standards for public CAs
 - Validation requirements and security controls
 
 **OWASP Top 10**
 - OWASP. "OWASP Top 10:2021."
-  - https://owasp.org/www-project-top-ten/
+  - [Owasp - Www Project Top Ten](https://owasp.org/www-project-top-ten/)
 - A02:2021 – Cryptographic Failures
 - A07:2021 – Identification and Authentication Failures
 
 **NIST Cybersecurity Framework**
 - NIST. "Framework for Improving Critical Infrastructure Cybersecurity." Version 1.1, 2018.
-  - https://www.nist.gov/cyberframework
+  - [Nist - Cyberframework](https://www.nist.gov/cyberframework)
 - Identify, Protect, Detect, Respond, Recover
 - Risk management framework
 

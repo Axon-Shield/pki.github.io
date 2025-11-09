@@ -446,21 +446,21 @@ tags: [glossary, terminology, definitions, reference]
 
 ## References
 
-[^1]: Barnes, R., et al. "Automatic Certificate Management Environment (ACME)." RFC 8555, March 2019. https://www.rfc-editor.org/rfc/rfc8555
+[^1]: Barnes, R., et al. "Automatic Certificate Management Environment (ACME)." RFC 8555, March 2019. [Rfc-editor - Rfc8555](https://www.rfc-editor.org/rfc/rfc8555)
 
-[^2]: CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. https://cabforum.org/baseline-requirements-documents/
+[^2]: CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. [Cabforum - Baseline Requirements Documents](https://cabforum.org/baseline-requirements-documents/)
 
-[^3]: Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." RFC 5280, May 2008. https://www.rfc-editor.org/rfc/rfc5280
+[^3]: Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." RFC 5280, May 2008. [Rfc-editor - Rfc5280](https://www.rfc-editor.org/rfc/rfc5280)
 
-[^4]: Laurie, B., et al. "Certificate Transparency." RFC 6962, June 2013. https://www.rfc-editor.org/rfc/rfc6962
+[^4]: Laurie, B., et al. "Certificate Transparency." RFC 6962, June 2013. [Rfc-editor - Rfc6962](https://www.rfc-editor.org/rfc/rfc6962)
 
-[^5]: NIST. "Security Requirements for Cryptographic Modules." FIPS 140-2, May 2001. https://csrc.nist.gov/publications/detail/fips/140/2/final
+[^5]: NIST. "Security Requirements for Cryptographic Modules." FIPS 140-2, May 2001. [Nist - Detail](https://csrc.nist.gov/publications/detail/fips/140/2/final)
 
-[^6]: NIST. "Recommendation for Key Management." NIST SP 800-57 Part 1 Rev. 5, May 2020. https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final
+[^6]: NIST. "Recommendation for Key Management." NIST SP 800-57 Part 1 Rev. 5, May 2020. [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final)
 
-[^7]: Rescorla, E. "The Transport Layer Security (TLS) Protocol Version 1.3." RFC 8446, August 2018. https://www.rfc-editor.org/rfc/rfc8446
+[^7]: Rescorla, E. "The Transport Layer Security (TLS) Protocol Version 1.3." RFC 8446, August 2018. [Rfc-editor - Rfc8446](https://www.rfc-editor.org/rfc/rfc8446)
 
-[^8]: Myers, M., et al. "X.509 Internet Public Key Infrastructure Online Certificate Status Protocol - OCSP." RFC 6960, June 2013. https://www.rfc-editor.org/rfc/rfc6960
+[^8]: Myers, M., et al. "X.509 Internet Public Key Infrastructure Online Certificate Status Protocol - OCSP." RFC 6960, June 2013. [Rfc-editor - Rfc6960](https://www.rfc-editor.org/rfc/rfc6960)
 
 ## Change History
 

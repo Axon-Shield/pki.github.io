@@ -826,13 +826,13 @@ DigiNotar compromise (2011) demonstrated how CA compromise affects hierarchical 
 
 ## References
 
-[^1]: CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. https://cabforum.org/baseline-requirements-documents/
+[^1]: CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. [Cabforum - Baseline Requirements Documents](https://cabforum.org/baseline-requirements-documents/)
 
-[^2]: Hoffman, P. and Schlyter, J. "The DNS-Based Authentication of Named Entities (DANE) Transport Layer Security (TLS) Protocol: TLSA." RFC 6698, August 2012. https://www.rfc-editor.org/rfc/rfc6698
+[^2]: Hoffman, P. and Schlyter, J. "The DNS-Based Authentication of Named Entities (DANE) Transport Layer Security (TLS) Protocol: TLSA." RFC 6698, August 2012. [Rfc-editor - Rfc6698](https://www.rfc-editor.org/rfc/rfc6698)
 
-[^3]: Laurie, B., et al. "Certificate Transparency." RFC 6962, June 2013. https://www.rfc-editor.org/rfc/rfc6962
+[^3]: Laurie, B., et al. "Certificate Transparency." RFC 6962, June 2013. [Rfc-editor - Rfc6962](https://www.rfc-editor.org/rfc/rfc6962)
 
-[^4]: Mozilla. "Mozilla CA Certificate Policy." Version 2.8, October 2023. https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/policy/
+[^4]: Mozilla. "Mozilla CA Certificate Policy." Version 2.8, October 2023. [Mozilla - About](https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/policy/)
 
 ## Change History
 

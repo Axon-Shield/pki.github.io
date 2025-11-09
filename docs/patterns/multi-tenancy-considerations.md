@@ -895,7 +895,7 @@ Test isolation boundaries regularly, enforce strict access controls, and maintai
 
 **"Multi-Tenancy Architecture" (Microsoft)**
 - Microsoft. "Multi-tenant SaaS patterns."
-  - https://docs.microsoft.com/en-us/azure/architecture/guide/multitenant/
+  - [Microsoft - Azure](https://docs.microsoft.com/en-us/azure/architecture/guide/multitenant/)
 - Isolation models and strategies
 - Resource governance
 - Tenant provisioning
@@ -908,7 +908,7 @@ Test isolation boundaries regularly, enforce strict access controls, and maintai
 
 **NIST SP 800-145 - Cloud Computing Definition**
 - NIST. "The NIST Definition of Cloud Computing." September 2011.
-  - https://csrc.nist.gov/publications/detail/sp/800-145/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-145/final)
 - Multi-tenancy characteristics
 - Service models
 - Deployment models
@@ -917,7 +917,7 @@ Test isolation boundaries regularly, enforce strict access controls, and maintai
 
 **PostgreSQL Row Level Security**
 - PostgreSQL. "Row Security Policies."
-  - https://www.postgresql.org/docs/current/ddl-rowsecurity.html
+  - [Postgresql - Ddl Rowsecurity.Html](https://www.postgresql.org/docs/current/ddl-rowsecurity.html)
 - Tenant data isolation
 - Policy implementation
 - Performance considerations
@@ -932,7 +932,7 @@ Test isolation boundaries regularly, enforce strict access controls, and maintai
 
 **PKCS #11 - Token Partitioning**
 - OASIS. "PKCS #11: Cryptographic Token Interface."
-  - http://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/
+  - [Oasis-open - Pkcs11 Base](http://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/)
 - Logical partitioning
 - Access control
 - Key isolation
@@ -947,14 +947,14 @@ Test isolation boundaries regularly, enforce strict access controls, and maintai
 
 **Kubernetes Multi-Tenancy**
 - Kubernetes SIG Multi-Tenancy. "Multi-Tenancy in Kubernetes."
-  - https://github.com/kubernetes-sigs/multi-tenancy
+  - [Github - Multi Tenancy](https://github.com/kubernetes-sigs/multi-tenancy)
 - Namespace isolation
 - Network policies
 - Resource quotas
 
 **Network Segmentation - NIST SP 800-125**
 - NIST. "Guide to Security for Full Virtualization Technologies." January 2011.
-  - https://csrc.nist.gov/publications/detail/sp/800-125/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-125/final)
 - Virtual network isolation
 - Hypervisor security
 - Cross-tenant protection
@@ -963,14 +963,14 @@ Test isolation boundaries regularly, enforce strict access controls, and maintai
 
 **NIST SP 800-162 - Attribute Based Access Control**
 - NIST. "Guide to Attribute Based Access Control (ABAC) Definition and Considerations." January 2014.
-  - https://csrc.nist.gov/publications/detail/sp/800-162/final
+  - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-162/final)
 - ABAC for multi-tenant systems
 - Policy models
 - Implementation guidance
 
 **OAuth 2.0 Multi-Tenant Patterns**
 - RFC 6749. "The OAuth 2.0 Authorization Framework."
-  - https://tools.ietf.org/html/rfc6749
+  - [Ietf - Rfc6749](https://tools.ietf.org/html/rfc6749)
 - Tenant-specific authorization
 - Resource isolation
 - Token scoping
@@ -985,7 +985,7 @@ Test isolation boundaries regularly, enforce strict access controls, and maintai
 
 **AWS Cost Allocation Tags**
 - AWS. "Using Cost Allocation Tags."
-  - https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
+  - [Amazon - Latest](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
 - Tenant cost tracking
 - Billing automation
 
@@ -993,7 +993,7 @@ Test isolation boundaries regularly, enforce strict access controls, and maintai
 
 **GDPR Multi-Tenant Considerations**
 - European Parliament. "GDPR Article 32 - Security of Processing."
-  - https://gdpr-info.eu/art-32-gdpr/
+  - [Gdpr-info - Art 32 Gdpr](https://gdpr-info.eu/art-32-gdpr/)
 - Data protection by design
 - Separation of tenant data
 - Processor obligations

@@ -113,7 +113,7 @@ metadata:
   name: letsencrypt-prod
 spec:
   acme:
-    server: https://acme-v02.api.letsencrypt.org/directory
+    server: [Letsencrypt - Directory](https://acme-v02.api.letsencrypt.org/directory)
     email: admin@example.com
     privateKeySecretRef:
       name: letsencrypt-prod

@@ -764,13 +764,13 @@ Heartbleed (2014) allowed reading server memory, potentially exposing private ke
 
 ## References
 
-[^1]: NIST. "Recommendation for Key Management." NIST SP 800-57 Part 1 Rev. 5, May 2020. https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final
+[^1]: NIST. "Recommendation for Key Management." NIST SP 800-57 Part 1 Rev. 5, May 2020. [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final)
 
 [^2]: Wang, X., et al. "Finding Collisions in the Full SHA-1." CRYPTO 2005. Demonstrated MD5 collision attacks.
 
-[^3]: Stevens, M., et al. "The First Collision for Full SHA-1." CRYPTO 2017. https://shattered.io/
+[^3]: Stevens, M., et al. "The First Collision for Full SHA-1." CRYPTO 2017. [Shattered](https://shattered.io/)
 
-[^4]: CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. https://cabforum.org/baseline-requirements-documents/
+[^4]: CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. [Cabforum - Baseline Requirements Documents](https://cabforum.org/baseline-requirements-documents/)
 
 ## Change History
 
