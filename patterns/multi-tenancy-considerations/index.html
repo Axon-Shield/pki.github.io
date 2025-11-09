@@ -1672,6 +1672,93 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-tenancy-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Tenancy Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Isolation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hsm-multi-tenancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      HSM Multi-Tenancy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-isolation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Isolation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-allocation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost Allocation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compliance-and-legal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compliance and Legal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#books-and-research" class="md-nav__link">
+    <span class="md-ellipsis">
+      Books and Research
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2395,6 +2482,93 @@
       Conclusion
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-tenancy-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Tenancy Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Isolation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hsm-multi-tenancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      HSM Multi-Tenancy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-isolation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Isolation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-allocation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost Allocation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compliance-and-legal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compliance and Legal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#books-and-research" class="md-nav__link">
+    <span class="md-ellipsis">
+      Books and Research
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3244,6 +3418,109 @@
 <p>Multi-tenant PKI architecture requires careful attention to isolation, security boundaries, and operational efficiency. The key is achieving strong isolation—failure in one tenant never affects others—while maintaining operational efficiency through shared infrastructure.</p>
 <p>Choose the isolation model appropriate for your tenants' needs: shared infrastructure with logical isolation for most use cases, dedicated infrastructure for high-security or high-value tenants, and hierarchical models when tenants need operational control.</p>
 <p>Test isolation boundaries regularly, enforce strict access controls, and maintain comprehensive audit logging with tenant context. Multi-tenancy is fundamentally an isolation problem—solve isolation first, optimize for efficiency second.</p>
+<h2 id="references">References</h2>
+<h3 id="multi-tenancy-architecture">Multi-Tenancy Architecture</h3>
+<p><strong>"Multi-Tenancy Architecture" (Microsoft)</strong>
+- Microsoft. "Multi-tenant SaaS patterns."
+  - https://docs.microsoft.com/en-us/azure/architecture/guide/multitenant/
+- Isolation models and strategies
+- Resource governance
+- Tenant provisioning</p>
+<p><strong>"Multi-Tenant Data Architecture" (MSDN)</strong>
+- Chong, F., Carraro, G. "Architecture Strategies for Catching the Long Tail." Microsoft MSDN, 2006.
+- Shared vs dedicated infrastructure
+- Database isolation patterns
+- Scalability considerations</p>
+<p><strong>NIST SP 800-145 - Cloud Computing Definition</strong>
+- NIST. "The NIST Definition of Cloud Computing." September 2011.
+  - https://csrc.nist.gov/publications/detail/sp/800-145/final
+- Multi-tenancy characteristics
+- Service models
+- Deployment models</p>
+<h3 id="database-isolation">Database Isolation</h3>
+<p><strong>PostgreSQL Row Level Security</strong>
+- PostgreSQL. "Row Security Policies."
+  - https://www.postgresql.org/docs/current/ddl-rowsecurity.html
+- Tenant data isolation
+- Policy implementation
+- Performance considerations</p>
+<p><strong>"Database Multi-Tenancy Design Patterns"</strong>
+- Aulbach, S., et al. "Multi-Tenant Databases for Software as a Service: Schema-Mapping Techniques." ACM SIGMOD 2008.
+- Database isolation patterns
+- Performance analysis
+- Schema mapping techniques</p>
+<h3 id="hsm-multi-tenancy">HSM Multi-Tenancy</h3>
+<p><strong>PKCS #11 - Token Partitioning</strong>
+- OASIS. "PKCS #11: Cryptographic Token Interface."
+  - http://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/
+- Logical partitioning
+- Access control
+- Key isolation</p>
+<p><strong>FIPS 140-2 Level 3 Requirements</strong>
+- NIST. "Security Requirements for Cryptographic Modules - Multi-Tenant Considerations."
+- Physical vs logical separation
+- Isolation requirements
+- Zeroization procedures</p>
+<h3 id="network-isolation_1">Network Isolation</h3>
+<p><strong>Kubernetes Multi-Tenancy</strong>
+- Kubernetes SIG Multi-Tenancy. "Multi-Tenancy in Kubernetes."
+  - https://github.com/kubernetes-sigs/multi-tenancy
+- Namespace isolation
+- Network policies
+- Resource quotas</p>
+<p><strong>Network Segmentation - NIST SP 800-125</strong>
+- NIST. "Guide to Security for Full Virtualization Technologies." January 2011.
+  - https://csrc.nist.gov/publications/detail/sp/800-125/final
+- Virtual network isolation
+- Hypervisor security
+- Cross-tenant protection</p>
+<h3 id="access-control">Access Control</h3>
+<p><strong>NIST SP 800-162 - Attribute Based Access Control</strong>
+- NIST. "Guide to Attribute Based Access Control (ABAC) Definition and Considerations." January 2014.
+  - https://csrc.nist.gov/publications/detail/sp/800-162/final
+- ABAC for multi-tenant systems
+- Policy models
+- Implementation guidance</p>
+<p><strong>OAuth 2.0 Multi-Tenant Patterns</strong>
+- RFC 6749. "The OAuth 2.0 Authorization Framework."
+  - https://tools.ietf.org/html/rfc6749
+- Tenant-specific authorization
+- Resource isolation
+- Token scoping</p>
+<h3 id="cost-allocation_1">Cost Allocation</h3>
+<p><strong>"Cloud FinOps" (O'Reilly)</strong>
+- Fuller, J., et al. "Cloud FinOps." O'Reilly, 2021.
+- Cost allocation methodologies
+- Chargeback models
+- Resource tagging strategies</p>
+<p><strong>AWS Cost Allocation Tags</strong>
+- AWS. "Using Cost Allocation Tags."
+  - https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
+- Tenant cost tracking
+- Billing automation</p>
+<h3 id="compliance-and-legal">Compliance and Legal</h3>
+<p><strong>GDPR Multi-Tenant Considerations</strong>
+- European Parliament. "GDPR Article 32 - Security of Processing."
+  - https://gdpr-info.eu/art-32-gdpr/
+- Data protection by design
+- Separation of tenant data
+- Processor obligations</p>
+<p><strong>SOC 2 Multi-Tenancy</strong>
+- AICPA. "SOC 2 - Logical Separation."
+- Trust services criteria
+- Tenant isolation requirements
+- Security testing</p>
+<h3 id="books-and-research">Books and Research</h3>
+<p><strong>"Multi-Tenancy for Cloud-Based SaaS Applications"</strong>
+- Bezemer, C.P., Zaidman, A. "Multi-Tenant SaaS Applications: Maintenance Dream or Nightmare?" IWPSE-EVOL 2010.
+- Maintenance challenges
+- Code sharing vs isolation
+- Evolution patterns</p>
+<p><strong>"Database Isolation in Multi-Tenant Environments"</strong>
+- Aulbach, S., et al. "A Comparison of Flexible Schemas for Software as a Service." ACM SIGMOD 2009.
+- Schema flexibility
+- Performance implications
+- Tenant customization</p>
 
 
 
