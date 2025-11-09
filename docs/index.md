@@ -11,6 +11,107 @@ can create a robust foundation for integrated information security and cyber sec
 
 Welcome to your comprehensive reference for Public Key Infrastructure and certificate management. This knowledge base provides authoritative, practical guidance for implementing, operating, and securing PKI systems.
 
+## Common Scenarios
+
+### I need to...
+
+**Implement PKI from scratch**
+
+1. Read [What is PKI?](foundations/what-is-pki.md) for foundations
+2. Review [CA Architecture](implementation/ca-architecture.md) for design
+3. Study [Certificate Lifecycle Management](operations/certificate-lifecycle-management.md) for operations
+4. Plan security using [Private Key Protection](security/private-key-protection.md) and [Key Management Best Practices](security/key-management-best-practices.md)
+
+**Fix an immediate problem**
+
+1. Check [Glossary](glossary.md) for unfamiliar terms
+2. Browse [Troubleshooting](troubleshooting/expired-certificate-outages.md) section
+3. Review [Certificate Anatomy](foundations/certificate-anatomy.md) for structure issues
+4. Use [Certificate Lifecycle Management](operations/certificate-lifecycle-management.md) for operational issues
+
+**Evaluate PKI products**
+
+1. Review [Vendor Comparison Matrix](vendors/vendor-comparison-matrix.md) for options
+2. Check [CA Architecture](implementation/ca-architecture.md) for requirements
+3. Study [Certificate Lifecycle Management](operations/certificate-lifecycle-management.md) for operational needs
+
+**Learn PKI fundamentals**
+
+1. Start with [What is PKI?](foundations/what-is-pki.md)
+2. Understand [Certificate Anatomy](foundations/certificate-anatomy.md)
+3. Reference [Glossary](glossary.md) as needed
+4. Explore [Standards & Protocols](standards/x509-standard.md) section
+
+**Migrate to a new PKI solution**
+
+1. Review [Vendor Comparison Matrix](vendors/vendor-comparison-matrix.md) for options
+2. Assess current architecture using [CA Architecture](implementation/ca-architecture.md)
+3. Plan migration with [Certificate Lifecycle Management](operations/certificate-lifecycle-management.md)
+4. Consider [Cloud vs On-Premises](patterns/cloud-vs-on-premises.md) deployment options
+
+**Set up automated certificate renewal**
+
+1. Understand [Renewal Automation](operations/renewal-automation.md) strategies
+2. Review [ACME Protocol](standards/acme-protocol.md) for automation standards
+3. Implement [ACME Protocol Implementation](implementation/acme-protocol-implementation.md)
+4. Configure [Monitoring and Alerting](operations/monitoring-and-alerting.md) for renewal status
+
+**Implement zero-trust architecture**
+
+1. Study [Zero-Trust Architecture](architecture/zero-trust-architecture.md) patterns
+2. Review [Mutual TLS Patterns](architecture/mutual-tls-patterns.md) for service authentication
+3. Plan [Certificate-as-Code](architecture/certificate-as-code.md) for infrastructure
+4. Secure with [Private Key Protection](security/private-key-protection.md)
+
+**Secure microservices and service mesh**
+
+1. Learn [Service Mesh Certificates](architecture/service-mesh-certificates.md) for Istio, Linkerd, Consul
+2. Implement [Mutual TLS Patterns](architecture/mutual-tls-patterns.md) for inter-service communication
+3. Automate with [Certificate Issuance Workflows](implementation/certificate-issuance-workflows.md)
+4. Monitor with [Certificate Lifecycle Management](operations/certificate-lifecycle-management.md)
+
+**Respond to a certificate expiration emergency**
+
+1. Follow [Expired Certificate Outages](troubleshooting/expired-certificate-outages.md) emergency procedures
+2. Check [Chain Validation Errors](troubleshooting/chain-validation-errors.md) for related issues
+3. Review [Certificate Rotation Strategies](operations/certificate-rotation-strategies.md) for recovery
+4. Prevent future issues with [Renewal Automation](operations/renewal-automation.md)
+
+**Meet compliance and audit requirements**
+
+1. Review [Compliance and Audit](security/compliance-and-audit.md) requirements
+2. Understand [Threat Models and Attack Vectors](security/threat-models-and-attack-vectors.md)
+3. Implement [Key Management Best Practices](security/key-management-best-practices.md)
+4. Document with [Certificate Lifecycle Management](operations/certificate-lifecycle-management.md)
+
+**Design a resilient PKI architecture**
+
+1. Plan [CA Hierarchies](patterns/ca-hierarchies.md) for your organization
+2. Design [High Availability & Disaster Recovery](patterns/high-availability-disaster-recovery.md)
+3. Consider [Multi-Tenancy Considerations](patterns/multi-tenancy-considerations.md) if needed
+4. Integrate [HSM Integration](implementation/hsm-integration.md) for key security
+
+**Manage certificates across multiple clouds**
+
+1. Study [Multi-Cloud PKI](implementation/multi-cloud-pki.md) strategies
+2. Review [Cloud vs On-Premises](patterns/cloud-vs-on-premises.md) considerations
+3. Implement [Certificate-as-Code](architecture/certificate-as-code.md) for consistency
+4. Centralize with [Certificate Lifecycle Management](operations/certificate-lifecycle-management.md)
+
+**Troubleshoot certificate validation failures**
+
+1. Diagnose with [Chain Validation Errors](troubleshooting/chain-validation-errors.md)
+2. Check [Common Misconfigurations](troubleshooting/common-misconfigurations.md)
+3. Review [Certificate Anatomy](foundations/certificate-anatomy.md) for structure issues
+4. Verify [Trust Models](foundations/trust-models.md) and certificate chains
+
+**Secure against common attacks**
+
+1. Understand [Common Vulnerabilities](security/common-vulnerabilities.md) and defenses
+2. Implement [Certificate Pinning](security/certificate-pinning.md) where appropriate
+3. Review [Threat Models and Attack Vectors](security/threat-models-and-attack-vectors.md)
+4. Plan [Incident Response](security/incident-response.md) procedures
+
 ## Quick Navigation
 
 ### 🎯 Start Here (Foundations)
@@ -79,37 +180,6 @@ Welcome to your comprehensive reference for Public Key Infrastructure and certif
 
 ### 📖 Reference
 - [Glossary](glossary.md) - Comprehensive terminology guide
-
-## Common Scenarios
-
-### I need to...
-
-**Implement PKI from scratch**
-
-1. Read [What is PKI?](foundations/what-is-pki.md) for foundations
-2. Review [CA Architecture](implementation/ca-architecture.md) for design
-3. Study [Certificate Lifecycle Management](operations/certificate-lifecycle-management.md) for operations
-4. Plan security using future security pages
-
-**Fix an immediate problem**
-
-1. Check [Glossary](glossary.md) for unfamiliar terms
-2. Browse troubleshooting section *(coming soon)*
-3. Review [Certificate Anatomy](foundations/certificate-anatomy.md) for structure issues
-4. Use [Certificate Lifecycle Management](operations/certificate-lifecycle-management.md) for operational issues
-
-**Evaluate PKI products**
-
-1. Review vendors section *(coming soon)*
-2. Check [CA Architecture](implementation/ca-architecture.md) for requirements
-3. Study [Certificate Lifecycle Management](operations/certificate-lifecycle-management.md) for operational needs
-
-**Learn PKI fundamentals**
-
-1. Start with [What is PKI?](foundations/what-is-pki.md)
-2. Understand [Certificate Anatomy](foundations/certificate-anatomy.md)
-3. Reference [Glossary](glossary.md) as needed
-4. Explore standards section *(coming soon)*
 
 ## Content Quality
 
