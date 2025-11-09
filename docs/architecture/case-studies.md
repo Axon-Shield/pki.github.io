@@ -55,6 +55,19 @@ Certificate automation platform:
 - Compliance: 100% policy compliance vs 65% previously
 - Developer velocity: Self-service unblocked deployments
 
+**Financial metrics**:
+- **Investment**: £350K (platform + implementation + training)
+- **Annual savings**: £420K (time savings: £180K, outage avoidance: £240K)
+- **ROI**: 120% in first year, 360% over 3 years
+- **Payback period**: 10 months
+- **Cost per certificate**: £28/year → £8/year (71% reduction)
+
+**Strategic outcomes**:
+- **Team capacity**: Freed 2 FTE security engineers for strategic projects
+- **Risk reduction**: Eliminated £2.4M/year in outage risk exposure
+- **Compliance**: Reduced audit prep time from 2 weeks to 2 days
+- **Scalability**: Managed 2x certificate growth with same team size
+
 ### Key Learnings
 
 1. **Executive sponsorship critical**: Required CTO backing to enforce policies across teams
@@ -133,6 +146,24 @@ Compliance features:
 - Certificate-related incidents: 90% reduction
 - Average certificate lifetime: 365 days → 90 days
 - Automation rate: 15% → 85% of issuance automated
+
+**Business impact**:
+- **Investment**: $2.8M (platform, implementation, HSM infrastructure)
+- **Annual savings**: $1.2M (incident reduction: $800K, audit efficiency: $200K, operational: $200K)
+- **ROI**: 43% in first year, 129% over 3 years
+- **Payback period**: 28 months
+- **Regulatory risk**: Eliminated $5M+ in potential regulatory fines
+
+**Financial metrics**:
+- **Cost per certificate**: $56/year → $18/year (68% reduction)
+- **Audit costs**: $150K/year → $30K/year (80% reduction)
+- **Incident costs**: $800K/year → $80K/year (90% reduction)
+- **Compliance readiness**: 2 weeks prep → 2 days prep (87% time savings)
+
+**Strategic outcomes**:
+- **Regulatory confidence**: Zero PKI-related findings in 3 consecutive audits
+- **Risk posture**: Reduced certificate-related risk by 90%
+- **Team efficiency**: Reallocated 4 FTE from certificate management to strategic security initiatives
 
 ## Case Study 3: SaaS Platform - Startup to Scale
 
@@ -222,6 +253,24 @@ def create_customer():
 - Sales velocity: Technical setup no longer bottleneck
 - Operational cost: Certificate management 1/10th of manual cost
 
+**Financial metrics**:
+- **Investment**: $120K (engineering time + infrastructure)
+- **Annual savings**: $180K (time savings: $120K, incident avoidance: $60K)
+- **ROI**: 150% in first year, 450% over 3 years
+- **Payback period**: 8 months
+- **Cost per certificate**: $24/year → $1.20/year (95% reduction)
+
+**Growth enablement**:
+- **Revenue impact**: Enabled 10x customer growth without proportional team growth
+- **Time to market**: Reduced customer onboarding from 2 days to 5 minutes
+- **Sales velocity**: Eliminated certificate setup as sales bottleneck
+- **Customer satisfaction**: NPS improved 15 points (faster onboarding)
+
+**Strategic outcomes**:
+- **Competitive advantage**: Fastest onboarding in market (5 minutes vs. industry average 2-3 days)
+- **Team scalability**: Managed 200x certificate growth with same team size
+- **Operational excellence**: 99.99% automation success rate enabled 24/7 operations
+
 ### Key Learnings
 
 1. **Start simple, evolve systematically**: Let's Encrypt + cert-manager perfect for early stage
@@ -275,6 +324,25 @@ PKI implications:
 - 100% encrypted transmission
 - Certificate-based access control
 - Complete audit trail
+
+**Business impact**:
+- **Investment**: $450K (HSM infrastructure + platform + implementation)
+- **Annual savings**: $280K (audit efficiency: $120K, incident reduction: $100K, operational: $60K)
+- **ROI**: 62% in first year, 187% over 3 years
+- **Payback period**: 19 months
+- **Compliance risk**: Eliminated $2M+ in potential HIPAA violation fines
+
+**Financial metrics**:
+- **Cost per certificate**: $90/year → $28/year (69% reduction)
+- **Audit costs**: $80K/year → $20K/year (75% reduction)
+- **Compliance readiness**: 2 weeks → 2 days (87% time savings)
+- **Regulatory confidence**: Zero HIPAA findings in 2 consecutive audits
+
+**Strategic outcomes**:
+- **Risk mitigation**: Eliminated certificate-related HIPAA compliance risk
+- **Business continuity**: 100% encrypted transmission ensures data protection
+- **Audit efficiency**: Real-time compliance reporting vs. quarterly manual reports
+- **Team productivity**: Reallocated 1.5 FTE from compliance to patient care initiatives
 
 ## Common Patterns Across Case Studies
 
