@@ -248,25 +248,25 @@ organization_structure:
 ```
 ┌─────────────────────────────────────────────┐
 │         DigiCert CertCentral (SaaS)         │
-│                                              │
+│                                             │
 │  User Interface (Web Portal)                │
-│          │                                   │
+│          │                                  │
 │          ├─── Certificate Management        │
 │          ├─── Discovery Dashboard           │
 │          ├─── Reports & Analytics           │
 │          └─── User Management               │
-│                                              │
+│                                             │
 │  API Layer                                  │
-│          │                                   │
+│          │                                  │
 │          ├─── REST API                      │
-│          ├─── ACME API (DV only)           │
+│          ├─── ACME API (DV only)            │
 │          └─── Webhooks                      │
-│                                              │
+│                                             │
 │  DigiCert CA Infrastructure                 │
-│          │                                   │
+│          │                                  │
 │          ├─── Certificate Issuance          │
 │          ├─── Validation Systems            │
-│          └─── OCSP/CRL Services            │
+│          └─── OCSP/CRL Services             │
 └─────────────────────────────────────────────┘
                     │
         ┌───────────┴──────────┐
