@@ -2427,77 +2427,103 @@
 <h2 id="key-concepts">Key Concepts</h2>
 <h3 id="the-private-key-threat-model">The Private Key Threat Model</h3>
 <h4 id="what-attackers-can-do-with-private-keys">What Attackers Can Do With Private Keys</h4>
-<p><strong>Server/Device Certificate Private Key</strong>:
-- Impersonate the server or device
-- Perform man-in-the-middle attacks
-- Decrypt past TLS traffic (if no forward secrecy)
-- Sign malicious content appearing to come from legitimate source</p>
-<p><strong>Code Signing Private Key</strong>:
-- Sign malware appearing to come from legitimate software vendor
-- Bypass application whitelisting controls
-- Compromise software supply chain
-- Damage reputation of legitimate vendor</p>
-<p><strong>CA Private Key</strong> (catastrophic):
-- Issue trusted certificates for any identity
-- Create rogue intermediate CAs
-- Complete breakdown of trust hierarchy
-- Potential for national-scale attacks (see DigiNotar case)</p>
-<p><strong>User Certificate Private Key</strong>:
-- Impersonate user in authentication systems
-- Access user's encrypted data
-- Sign documents as the user
-- Access corporate resources</p>
+<p><strong>Server/Device Certificate Private Key</strong>:</p>
+<ul>
+<li>Impersonate the server or device</li>
+<li>Perform man-in-the-middle attacks</li>
+<li>Decrypt past TLS traffic (if no forward secrecy)</li>
+<li>Sign malicious content appearing to come from legitimate source</li>
+</ul>
+<p><strong>Code Signing Private Key</strong>:</p>
+<ul>
+<li>Sign malware appearing to come from legitimate software vendor</li>
+<li>Bypass application whitelisting controls</li>
+<li>Compromise software supply chain</li>
+<li>Damage reputation of legitimate vendor</li>
+</ul>
+<p><strong>CA Private Key</strong> (catastrophic):</p>
+<ul>
+<li>Issue trusted certificates for any identity</li>
+<li>Create rogue intermediate CAs</li>
+<li>Complete breakdown of trust hierarchy</li>
+<li>Potential for national-scale attacks (see DigiNotar case)</li>
+</ul>
+<p><strong>User Certificate Private Key</strong>:</p>
+<ul>
+<li>Impersonate user in authentication systems</li>
+<li>Access user's encrypted data</li>
+<li>Sign documents as the user</li>
+<li>Access corporate resources</li>
+</ul>
 <h4 id="attack-vectors">Attack Vectors</h4>
-<p><strong>Network-Based Exfiltration</strong>:
-- Compromised server with remote access
-- Malware with data exfiltration capability
-- Network sniffing (if key transmitted unencrypted)
-- API exploitation exposing key material</p>
-<p><strong>Physical Access</strong>:
-- Stolen backup tapes or disks
-- Decommissioned hardware not properly sanitized
-- Insider threat with physical access
-- Forensic recovery from disposed equipment</p>
-<p><strong>Software Vulnerabilities</strong>:
-- Memory dumps exposing keys in RAM
-- Log files containing key material
-- Debug output exposing keys
-- Heartbleed-style vulnerabilities leaking memory</p>
-<p><strong>Supply Chain</strong>:
-- Compromised key generation libraries
-- Backdoored random number generators
-- Tampered HSMs or hardware
-- Malicious certificate management software</p>
-<p><strong>Operational Failures</strong>:
-- Keys stored in version control (GitHub, GitLab)
-- Keys in configuration files or scripts
-- Keys in email or chat systems
-- Unencrypted backups
-- Keys on shared file systems</p>
+<p><strong>Network-Based Exfiltration</strong>:</p>
+<ul>
+<li>Compromised server with remote access</li>
+<li>Malware with data exfiltration capability</li>
+<li>Network sniffing (if key transmitted unencrypted)</li>
+<li>API exploitation exposing key material</li>
+</ul>
+<p><strong>Physical Access</strong>:</p>
+<ul>
+<li>Stolen backup tapes or disks</li>
+<li>Decommissioned hardware not properly sanitized</li>
+<li>Insider threat with physical access</li>
+<li>Forensic recovery from disposed equipment</li>
+</ul>
+<p><strong>Software Vulnerabilities</strong>:</p>
+<ul>
+<li>Memory dumps exposing keys in RAM</li>
+<li>Log files containing key material</li>
+<li>Debug output exposing keys</li>
+<li>Heartbleed-style vulnerabilities leaking memory</li>
+</ul>
+<p><strong>Supply Chain</strong>:</p>
+<ul>
+<li>Compromised key generation libraries</li>
+<li>Backdoored random number generators</li>
+<li>Tampered HSMs or hardware</li>
+<li>Malicious certificate management software</li>
+</ul>
+<p><strong>Operational Failures</strong>:</p>
+<ul>
+<li>Keys stored in version control (GitHub, GitLab)</li>
+<li>Keys in configuration files or scripts</li>
+<li>Keys in email or chat systems</li>
+<li>Unencrypted backups</li>
+<li>Keys on shared file systems</li>
+</ul>
 <h3 id="key-storage-security-levels">Key Storage Security Levels</h3>
 <p>Different security requirements demand different protection levels:</p>
 <h4 id="level-1-file-system-storage-lowest-security">Level 1: File System Storage (Lowest Security)</h4>
-<p><strong>Characteristics</strong>:
-- Private key stored as file on disk
-- May or may not be encrypted
-- Accessible to OS and running processes
-- Protected by file system permissions</p>
-<p><strong>Appropriate Use Cases</strong>:
-- Development and testing environments
-- Non-critical internal services
-- Short-lived certificates with frequent rotation
-- Situations where business risk is minimal</p>
-<p><strong>Protection Measures</strong>:
-- Encrypt private keys with strong passphrase (PKCS#8)
-- Restrict file permissions (chmod 600)
-- Store on encrypted volumes
-- Keep keys separate from certificates
-- Never commit to version control</p>
-<p><strong>Limitations</strong>:
-- Key accessible to anyone with root/admin access
-- Vulnerable to memory dumps and process inspection
-- Vulnerable to backup theft if encryption key is weak
-- No tamper resistance</p>
+<p><strong>Characteristics</strong>:</p>
+<ul>
+<li>Private key stored as file on disk</li>
+<li>May or may not be encrypted</li>
+<li>Accessible to OS and running processes</li>
+<li>Protected by file system permissions</li>
+</ul>
+<p><strong>Appropriate Use Cases</strong>:</p>
+<ul>
+<li>Development and testing environments</li>
+<li>Non-critical internal services</li>
+<li>Short-lived certificates with frequent rotation</li>
+<li>Situations where business risk is minimal</li>
+</ul>
+<p><strong>Protection Measures</strong>:</p>
+<ul>
+<li>Encrypt private keys with strong passphrase (PKCS#8)</li>
+<li>Restrict file permissions (chmod 600)</li>
+<li>Store on encrypted volumes</li>
+<li>Keep keys separate from certificates</li>
+<li>Never commit to version control</li>
+</ul>
+<p><strong>Limitations</strong>:</p>
+<ul>
+<li>Key accessible to anyone with root/admin access</li>
+<li>Vulnerable to memory dumps and process inspection</li>
+<li>Vulnerable to backup theft if encryption key is weak</li>
+<li>No tamper resistance</li>
+</ul>
 <p><strong>Example</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Generate encrypted private key</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>openssl<span class="w"> </span>genpkey<span class="w"> </span>-algorithm<span class="w"> </span>RSA<span class="w"> </span>-out<span class="w"> </span>private.key<span class="w"> </span>-aes256<span class="w"> </span>-pass<span class="w"> </span>pass:SecurePassword
@@ -2511,60 +2537,80 @@
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># Should show: -rw------- 1 app-user app-group</span>
 </code></pre></div></p>
 <h4 id="level-2-operating-system-keystores-medium-security">Level 2: Operating System Keystores (Medium Security)</h4>
-<p><strong>Characteristics</strong>:
-- Keys stored in OS-managed secure storage
-- Hardware-backed encryption (TPM, Secure Enclave)
-- Access control integrated with OS authentication
-- Better protection against file system access</p>
-<p><strong>Technologies</strong>:
-- <strong>Windows</strong>: Certificate Store with CNG/CryptoAPI
-- <strong>macOS</strong>: Keychain with Secure Enclave
-- <strong>Linux</strong>: Kernel keyring, TPM integration</p>
-<p><strong>Appropriate Use Cases</strong>:
-- Enterprise workstations
-- Mobile devices
-- Servers with TPM support
-- Applications needing OS integration</p>
-<p><strong>Protection Measures</strong>:
-- Require user or system authentication for key access
-- Enable TPM/Secure Enclave backing where available
-- Configure minimum access privileges
-- Enable audit logging for key operations</p>
-<p><strong>Limitations</strong>:
-- Still vulnerable to OS-level compromise
-- Limited tamper resistance
-- Key extractability varies by implementation
-- Performance may be limited for high-volume operations</p>
+<p><strong>Characteristics</strong>:</p>
+<ul>
+<li>Keys stored in OS-managed secure storage</li>
+<li>Hardware-backed encryption (TPM, Secure Enclave)</li>
+<li>Access control integrated with OS authentication</li>
+<li>Better protection against file system access</li>
+</ul>
+<p><strong>Technologies</strong>:</p>
+<ul>
+<li><strong>Windows</strong>: Certificate Store with CNG/CryptoAPI</li>
+<li><strong>macOS</strong>: Keychain with Secure Enclave</li>
+<li><strong>Linux</strong>: Kernel keyring, TPM integration</li>
+</ul>
+<p><strong>Appropriate Use Cases</strong>:</p>
+<ul>
+<li>Enterprise workstations</li>
+<li>Mobile devices</li>
+<li>Servers with TPM support</li>
+<li>Applications needing OS integration</li>
+</ul>
+<p><strong>Protection Measures</strong>:</p>
+<ul>
+<li>Require user or system authentication for key access</li>
+<li>Enable TPM/Secure Enclave backing where available</li>
+<li>Configure minimum access privileges</li>
+<li>Enable audit logging for key operations</li>
+</ul>
+<p><strong>Limitations</strong>:</p>
+<ul>
+<li>Still vulnerable to OS-level compromise</li>
+<li>Limited tamper resistance</li>
+<li>Key extractability varies by implementation</li>
+<li>Performance may be limited for high-volume operations</li>
+</ul>
 <h4 id="level-3-cloud-kms-medium-high-security">Level 3: Cloud KMS (Medium-High Security)</h4>
-<p><strong>Characteristics</strong>:
-- Keys managed by cloud provider
-- Hardware-backed security (cloud HSMs)
-- API-driven access with IAM controls
-- Automatic key rotation capabilities
-- Audit logging included</p>
-<p><strong>Providers</strong>:
-- <strong>AWS</strong>: KMS, CloudHSM
-- <strong>Azure</strong>: Key Vault, Managed HSM
-- <strong>GCP</strong>: Cloud KMS, Cloud HSM
-- <strong>HashiCorp</strong>: Vault Transit</p>
-<p><strong>Appropriate Use Cases</strong>:
-- Cloud-native applications
-- Kubernetes workloads
-- High-scale certificate operations
-- Organizations without HSM expertise
-- Automated certificate rotation</p>
-<p><strong>Protection Measures</strong>:
-- Use IAM policies to restrict key access
-- Enable key usage logging and monitoring
-- Implement key rotation policies
-- Use separate keys for different environments
-- Leverage automatic key versioning</p>
-<p><strong>Limitations</strong>:
-- Dependency on cloud provider
-- Potential regulatory concerns (data sovereignty)
-- Network latency for key operations
-- Cost can be significant at scale
-- Key material typically exportable (varies by service)</p>
+<p><strong>Characteristics</strong>:</p>
+<ul>
+<li>Keys managed by cloud provider</li>
+<li>Hardware-backed security (cloud HSMs)</li>
+<li>API-driven access with IAM controls</li>
+<li>Automatic key rotation capabilities</li>
+<li>Audit logging included</li>
+</ul>
+<p><strong>Providers</strong>:</p>
+<ul>
+<li><strong>AWS</strong>: KMS, CloudHSM</li>
+<li><strong>Azure</strong>: Key Vault, Managed HSM</li>
+<li><strong>GCP</strong>: Cloud KMS, Cloud HSM</li>
+<li><strong>HashiCorp</strong>: Vault Transit</li>
+</ul>
+<p><strong>Appropriate Use Cases</strong>:</p>
+<ul>
+<li>Cloud-native applications</li>
+<li>Kubernetes workloads</li>
+<li>High-scale certificate operations</li>
+<li>Organizations without HSM expertise</li>
+<li>Automated certificate rotation</li>
+</ul>
+<p><strong>Protection Measures</strong>:</p>
+<ul>
+<li>Use IAM policies to restrict key access</li>
+<li>Enable key usage logging and monitoring</li>
+<li>Implement key rotation policies</li>
+<li>Use separate keys for different environments</li>
+<li>Leverage automatic key versioning</li>
+</ul>
+<p><strong>Limitations</strong>:</p>
+<ul>
+<li>Dependency on cloud provider</li>
+<li>Potential regulatory concerns (data sovereignty)</li>
+<li>Network latency for key operations</li>
+<li>Cost can be significant at scale</li>
+<li>Key material typically exportable (varies by service)</li>
+</ul>
 <p><strong>Example (AWS KMS)</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Create KMS key</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>aws<span class="w"> </span>kms<span class="w"> </span>create-key<span class="w"> </span>--description<span class="w"> </span><span class="s2">&quot;Application signing key&quot;</span>
@@ -2576,43 +2622,55 @@
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>aws<span class="w"> </span>kms<span class="w"> </span>decrypt<span class="w"> </span>--ciphertext-blob<span class="w"> </span>fileb://encrypted-data<span class="w"> </span>--output<span class="w"> </span>text
 </code></pre></div></p>
 <h4 id="level-4-hardware-security-modules-highest-security">Level 4: Hardware Security Modules (Highest Security)</h4>
-<p><strong>Characteristics</strong>:
-- Dedicated cryptographic hardware
-- FIPS 140-2 Level 3+ certification
-- Tamper-resistant and tamper-evident
-- Keys never extractable in plaintext
-- Multi-person access controls</p>
-<p><strong>Use Cases</strong>:
-- Certificate Authority operations
-- Root and intermediate CA keys
-- Code signing for critical software
-- High-value transaction signing
-- Regulated industries (finance, government)
-- High-assurance PKI</p>
-<p><strong>Protection Measures</strong>:
-- Physical security controls for HSM
-- M-of-N key access (require multiple key holders)
-- Comprehensive audit logging
-- Secure backup with split knowledge
-- Regular security audits</p>
-<p><strong>Limitations</strong>:
-- High cost (hardware and operational)
-- Complexity in setup and operation
-- Requires specialized expertise
-- Performance may limit throughput
-- Vendor lock-in considerations</p>
-<p><strong>Key Advantages</strong>:
-- Keys generated and used entirely within HSM
-- Physical tamper detection
-- FIPS validated security
-- Regulatory compliance
-- High assurance for critical operations</p>
-<p><strong>Example HSM Vendors</strong>:
-- Thales (formerly Gemalto) Luna
-- Entrust nShield
-- Utimaco SecurityServer
-- AWS CloudHSM (managed service)
-- Azure Managed HSM</p>
+<p><strong>Characteristics</strong>:</p>
+<ul>
+<li>Dedicated cryptographic hardware</li>
+<li>FIPS 140-2 Level 3+ certification</li>
+<li>Tamper-resistant and tamper-evident</li>
+<li>Keys never extractable in plaintext</li>
+<li>Multi-person access controls</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Certificate Authority operations</li>
+<li>Root and intermediate CA keys</li>
+<li>Code signing for critical software</li>
+<li>High-value transaction signing</li>
+<li>Regulated industries (finance, government)</li>
+<li>High-assurance PKI</li>
+</ul>
+<p><strong>Protection Measures</strong>:</p>
+<ul>
+<li>Physical security controls for HSM</li>
+<li>M-of-N key access (require multiple key holders)</li>
+<li>Comprehensive audit logging</li>
+<li>Secure backup with split knowledge</li>
+<li>Regular security audits</li>
+</ul>
+<p><strong>Limitations</strong>:</p>
+<ul>
+<li>High cost (hardware and operational)</li>
+<li>Complexity in setup and operation</li>
+<li>Requires specialized expertise</li>
+<li>Performance may limit throughput</li>
+<li>Vendor lock-in considerations</li>
+</ul>
+<p><strong>Key Advantages</strong>:</p>
+<ul>
+<li>Keys generated and used entirely within HSM</li>
+<li>Physical tamper detection</li>
+<li>FIPS validated security</li>
+<li>Regulatory compliance</li>
+<li>High assurance for critical operations</li>
+</ul>
+<p><strong>Example HSM Vendors</strong>:</p>
+<ul>
+<li>Thales (formerly Gemalto) Luna</li>
+<li>Entrust nShield</li>
+<li>Utimaco SecurityServer</li>
+<li>AWS CloudHSM (managed service)</li>
+<li>Azure Managed HSM</li>
+</ul>
 <h2 id="practical-guidance">Practical Guidance</h2>
 <h3 id="key-generation-best-practices">Key Generation Best Practices</h3>
 <h4 id="on-device-generation">On-Device Generation</h4>
@@ -2627,10 +2685,12 @@
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># CA signs CSR and returns certificate</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># Private key never leaves server</span>
 </code></pre></div></p>
-<p><strong>Advantages</strong>:
-- Key never transmitted over network
-- No exposure during generation/transmission
-- Complies with security best practices</p>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li>Key never transmitted over network</li>
+<li>No exposure during generation/transmission</li>
+<li>Complies with security best practices</li>
+</ul>
 <p><strong>HSM Generation</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Generate key in HSM (never exported)</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>pkcs11-tool<span class="w"> </span>--module<span class="w"> </span>/usr/lib/libCryptoki2.so<span class="w"> </span>--login<span class="w"> </span>--keypairgen<span class="w"> </span>--key-type<span class="w"> </span>RSA:2048<span class="w"> </span>--label<span class="w"> </span><span class="s2">&quot;CA-Key&quot;</span>
