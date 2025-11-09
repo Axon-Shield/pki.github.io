@@ -168,7 +168,7 @@ Developer                  Git Repo                  Cluster
     │                         │        cert-manager     │
     │                         │        issues cert      │
     │                         │                         │
-    │<──── Notification ──────┴──────<< deployed >>>───│
+    │<──── Notification ──────┴──────<< deployed >>>────│
 ```
 
 ## Policy as Code

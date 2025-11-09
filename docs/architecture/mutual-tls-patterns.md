@@ -35,11 +35,11 @@ Client                                Server
   │<── CertificateRequest ──────────────│ (Request client cert)
   │<────── ServerHelloDone ─────────────│
   │                                     │
-  │──────── Certificate ────────────────>│ (Client cert)
-  │──────── ClientKeyExchange ──────────>│
-  │──────── CertificateVerify ──────────>│ (Prove possession)
-  │──────── ChangeCipherSpec ───────────>│
-  │──────── Finished ───────────────────>│
+  │──────── Certificate ───────────────>│ (Client cert)
+  │──────── ClientKeyExchange ─────────>│
+  │──────── CertificateVerify ─────────>│ (Prove possession)
+  │──────── ChangeCipherSpec ──────────>│
+  │──────── Finished ──────────────────>│
   │                                     │
   │<────── ChangeCipherSpec ────────────│
   │<────── Finished ────────────────────│

@@ -47,9 +47,9 @@ Welcome to your comprehensive reference for Public Key Infrastructure and certif
 - [Key Management Best Practices](security/key-management-best-practices.md) - Secure key handling
 - [Compliance and Audit](security/compliance-and-audit.md) - Regulatory requirements and auditing
 - [Incident Response](security/incident-response.md) - Emergency procedures
-- CA Compromise Scenarios *(coming soon)* - Prevention and recovery
-- Certificate Pinning *(coming soon)* - Additional security layer
-- Common Vulnerabilities *(coming soon)* - Known attacks and defenses
+- [CA Compromise Scenarios](security/ca-compromise-scenarios.md) - Prevention and recovery
+- [Certificate Pinning](security/certificate-pinning.md) - Additional security layer
+- [Common Vulnerabilities](security/common-vulnerabilities.md) - Known attacks and defenses
 
 ### 🏢 Vendors & Products
 - Venafi Platform *(coming soon)* - Enterprise certificate management
@@ -126,7 +126,7 @@ Every page in this knowledge base includes:
 
 **Version**: 1.0 (Initial Release)  
 **Last Updated**: November 9, 2024  
-**Completed Pages**: 35  
+**Completed Pages**: 38  
 **In Progress**: Expanding all categories
 
 This knowledge base is actively maintained and expanded based on:

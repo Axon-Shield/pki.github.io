@@ -473,3 +473,271 @@ PKI incident response requires specialized knowledge, advance preparation, and d
 The key to effective incident response is not avoiding all incidents (impossible), but responding so well that incidents have minimal impact, recovery is swift, and the organization emerges stronger with improved security posture.
 
 Remember: It's not if an incident will occur, but when. Your preparation today determines your success tomorrow.
+
+## References
+
+### Incident Response Frameworks
+
+**NIST SP 800-61 - Computer Security Incident Handling Guide**
+- NIST. "Computer Security Incident Handling Guide." Revision 2, August 2012.
+  - https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final
+- Preparation, Detection & Analysis, Containment/Eradication/Recovery, Post-Incident Activity
+- Foundational incident response framework
+- Coordination and communication guidelines
+
+**SANS Incident Handler's Handbook**
+- SANS Institute. "Incident Handler's Handbook." Current version.
+  - https://www.sans.org/reading-room/whitepapers/incident/incident-handlers-handbook-33901
+- Practical incident response procedures
+- Step-by-step response guidance
+- Checklists and templates
+
+**NIST Cybersecurity Framework**
+- NIST. "Framework for Improving Critical Infrastructure Cybersecurity." Version 1.1, 2018.
+  - https://www.nist.gov/cyberframework
+- Respond function: Response Planning, Communications, Analysis, Mitigation, Improvements
+- Integration with organizational risk management
+
+### CA-Specific Incident Response
+
+**CA/Browser Forum - Network and Certificate System Security Requirements**
+- CA/Browser Forum. "Network and Certificate System Security Requirements." Current version.
+  - https://cabforum.org/network-security-requirements/
+- Section 4: Response to Incidents
+- Incident investigation and reporting requirements
+- Timelines for public disclosure
+
+**WebTrust Principles and Criteria**
+- CPA Canada/AICPA. "WebTrust Principles and Criteria for Certification Authorities." Current version.
+  - https://www.cpacanada.ca/en/business-and-accounting-resources/audit-and-assurance/overview-of-webtrust-services
+- Incident response and disclosure requirements
+- Audit requirements for incident handling
+
+**Mozilla CA Incident Reporting**
+- Mozilla. "Mozilla CA Certificate Policy - Section 10: Incident Response." Current version.
+  - https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/policy/
+- Incident reporting to browser vendors
+- Timeline requirements and procedures
+
+### Historical CA Incidents (Case Studies)
+
+**DigiNotar Incident Report**
+- Fox-IT. "DigiNotar Certificate Authority breach - Operation Black Tulip." September 2011.
+  - https://www.rijksoverheid.nl/documenten/rapporten/2011/09/05/diginotar-public-report-version-1
+- Comprehensive forensic analysis
+- Response timeline and lessons learned
+- Impact: Company bankruptcy
+
+**Comodo Incident Response**
+- Comodo. "Comodo Fraud Incident Report." March 23, 2011.
+- RA compromise and response
+- Certificate revocation procedures
+- Communication with stakeholders
+
+**Let's Encrypt CAA Rechecking Bug**
+- Let's Encrypt. "2020.02.29 CAA Rechecking Bug." March 2020.
+  - https://community.letsencrypt.org/t/2020-02-29-caa-rechecking-bug/114591
+- Proactive mass revocation (3 million certificates)
+- Example of responsible incident handling
+- Communication and customer support
+
+**Symantec/DigiCert Distrust Event**
+- Google Security Blog. "Sustaining Digital Certificate Security." September 2017.
+  - https://security.googleblog.com/2017/09/chromes-plan-to-distrust-symantec.html
+- Long-running compliance issues
+- Coordinated industry response
+- Acquisition and migration strategy
+
+### Forensics and Investigation
+
+**NIST SP 800-86 - Guide to Integrating Forensic Techniques into Incident Response**
+- NIST. "Guide to Integrating Forensic Techniques into Incident Response." August 2006.
+  - https://csrc.nist.gov/publications/detail/sp/800-86/final
+- Digital forensics fundamentals
+- Evidence collection and preservation
+- Analysis techniques
+
+**RFC 3227 - Guidelines for Evidence Collection and Archiving**
+- Brezinski, D., Killalea, T. "Guidelines for Evidence Collection and Archiving." February 2002.
+  - https://tools.ietf.org/html/rfc3227
+- Order of volatility
+- Chain of custody
+- Legal considerations
+
+**SANS Digital Forensics Resources**
+- SANS Institute. "Digital Forensics and Incident Response."
+  - https://www.sans.org/digital-forensics-incident-response/
+- Training and certification programs
+- Forensic tools and techniques
+- Industry best practices
+
+### Certificate Transparency for Incident Detection
+
+**RFC 6962 - Certificate Transparency**
+- Laurie, B., Langley, A., Kasper, E. "Certificate Transparency." June 2013.
+  - https://tools.ietf.org/html/rfc6962
+- Real-time certificate issuance monitoring
+- Detection of fraudulent certificates
+- Public auditability
+
+**CT Monitor - Facebook**
+- Facebook. "CertStream - Real-time Certificate Transparency Log Update Stream."
+  - https://github.com/CaliDog/certstream-python
+- Open-source CT monitoring tool
+- Real-time alerting capabilities
+
+**Google Certificate Transparency Monitoring**
+- Google. "Certificate Transparency Community Site."
+  - https://github.com/google/certificate-transparency-community-site
+- CT log policy and governance
+- Monitoring tools and resources
+
+### Communication and Disclosure
+
+**ISO/IEC 29147 - Vulnerability Disclosure**
+- ISO/IEC. "Information technology — Security techniques — Vulnerability disclosure." 2018.
+- Responsible disclosure guidelines
+- Coordination with stakeholders
+- Timing and content of disclosures
+
+**CERT Coordination Center**
+- Software Engineering Institute. "Vulnerability Disclosure Policy." Current.
+  - https://vuls.cert.org/confluence/display/CVD
+- Coordinated vulnerability disclosure
+- Multi-party coordination
+- Public disclosure timing
+
+**HackerOne Disclosure Guidelines**
+- HackerOne. "Disclosure Guidelines." Current.
+  - https://www.hackerone.com/disclosure-guidelines
+- Responsible disclosure best practices
+- Bug bounty program management
+
+### Legal and Regulatory Requirements
+
+**GDPR - Data Breach Notification**
+- European Parliament. "General Data Protection Regulation (GDPR) - Article 33 & 34." 2018.
+  - https://gdpr-info.eu/art-33-gdpr/
+- 72-hour breach notification requirement
+- Data controller obligations
+- Notification content requirements
+
+**PCI DSS - Incident Response Requirements**
+- PCI Security Standards Council. "Payment Card Industry Data Security Standard (PCI DSS) - Requirement 12.10." Version 4.0, 2022.
+  - https://www.pcisecuritystandards.org/
+- Incident response plan requirements
+- Testing and updates
+- Payment data breach procedures
+
+**SEC Cybersecurity Disclosure**
+- U.S. Securities and Exchange Commission. "Cybersecurity Risk Management, Strategy, Governance, and Incident Disclosure." July 2023.
+  - https://www.sec.gov/rules/final/2023/33-11216.pdf
+- Public company disclosure requirements
+- Material cybersecurity incidents
+- Four business day reporting window
+
+### Playbook Development
+
+**NIST IR 8374 - Ransomware Risk Management**
+- NIST. "Ransomware Risk Management: A Cybersecurity Framework Profile." May 2022.
+  - https://csrc.nist.gov/publications/detail/nistir/8374/final
+- Incident-specific playbook example
+- Pre-incident preparation
+- Response and recovery procedures
+
+**CISA Cyber Incident Response Playbooks**
+- CISA. "Federal Government Cybersecurity Incident and Vulnerability Response Playbooks." November 2021.
+  - https://www.cisa.gov/federal-government-cybersecurity-incident-and-vulnerability-response-playbooks
+- Incident-type specific playbooks
+- Federal government approach
+- Adaptable for private sector
+
+**SANS Incident Response Forms and Checklists**
+- SANS Institute. "Incident Forms and Checklists." Current.
+  - https://www.sans.org/score/incident-forms/
+- Ready-to-use templates
+- Incident classification
+- Response checklists
+
+### Crisis Communication
+
+**NIST SP 800-184 - Guide for Cybersecurity Event Recovery**
+- NIST. "Guide for Cybersecurity Event Recovery." December 2016.
+  - https://csrc.nist.gov/publications/detail/sp/800-184/final
+- Recovery planning and execution
+- Communication strategies
+- Business continuity integration
+
+**Crisis Communication Best Practices**
+- Institute for Crisis Management. "Crisis Communication Best Practices." Current.
+  - https://crisisconsultant.com/
+- Stakeholder communication
+- Media relations
+- Message consistency
+
+### Tabletop Exercises
+
+**CISA Cybersecurity Tabletop Exercise Package**
+- CISA. "Cybersecurity Tabletop Exercise Packages (CTEP)." Current.
+  - https://www.cisa.gov/resources-tools/services/cisa-tabletop-exercise-packages
+- Ready-to-use exercise scenarios
+- Facilitation guides
+- Evaluation frameworks
+
+**SANS Tabletop Exercises**
+- SANS Institute. "Incident Response Tabletop Exercises." Current.
+- Scenario-based training
+- Team coordination practice
+- Decision-making under pressure
+
+### Metrics and Continuous Improvement
+
+**VERIS Framework - Vocabulary for Event Recording and Incident Sharing**
+- Verizon. "VERIS Community Database." Current.
+  - https://github.com/vz-risk/VERIS
+- Incident taxonomy
+- Metrics standardization
+- Industry benchmarking
+
+**Mean Time to Detect (MTTD) and Mean Time to Respond (MTTR)**
+- Ponemon Institute. "Cost of a Data Breach Report." Annual.
+  - https://www.ibm.com/security/data-breach
+- Industry benchmarks for incident response times
+- Cost impact analysis
+- Effectiveness metrics
+
+### Tools and Resources
+
+**TheHive Project - Security Incident Response Platform**
+- TheHive Project. "TheHive - Open Source Security Incident Response Platform."
+  - https://thehive-project.org/
+- Collaborative incident response
+- Case management
+- Observable tracking
+
+**GRR Rapid Response**
+- Google. "GRR Rapid Response: Remote Live Forensics for Incident Response."
+  - https://github.com/google/grr
+- Incident response framework
+- Remote forensic analysis
+- At-scale investigation
+
+**Volatility Framework**
+- Volatility Foundation. "The Volatility Framework."
+  - https://www.volatilityfoundation.org/
+- Memory forensics
+- Malware analysis
+- Artifact extraction
+
+### Academic Research
+
+**Incident Response Effectiveness**
+- Grispos, G., Storer, T., Glisson, W.B. "Calm Before the Storm: The Challenges of Cloud Computing in Digital Forensics." International Journal of Digital Crime and Forensics, 2012.
+- Cloud forensics challenges
+- Evidence collection in distributed systems
+
+**Post-Incident Analysis**
+- Woods, D.D., Hollnagel, E. "Joint Cognitive Systems: Patterns in Cognitive Systems Engineering." CRC Press, 2006.
+- Human factors in incident response
+- Decision-making under stress
+- Coordination and communication

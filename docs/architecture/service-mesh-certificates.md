@@ -17,13 +17,13 @@ Service meshes deploy sidecar proxies alongside application containers, intercep
 │  │   App    │   │        │   │   App    │  │
 │  │Container │   │        │   │Container │  │
 │  └────┬─────┘   │        │   └─────▲────┘  │
-│       │localhost│        │localhost│        │
+│       │localhost│        │localhost│       │
 │  ┌────▼─────┐   │        │   ┌─────┴────┐  │
 │  │  Envoy   │───┼────────┼──►│  Envoy   │  │
 │  │  Proxy   │   │  mTLS  │   │  Proxy   │  │
 │  └──────────┘   │        │   └──────────┘  │
-│   (cert from    │        │   (cert from     │
-│    mesh CA)     │        │    mesh CA)      │
+│   (cert from    │        │   (cert from    │
+│    mesh CA)     │        │    mesh CA)     │
 └─────────────────┘        └─────────────────┘
 ```
 
@@ -46,24 +46,24 @@ Istio uses **Citadel** (now part of **istiod**) as its built-in certificate auth
 ┌────────────────────────────────────────────┐
 │            Kubernetes Cluster              │
 │                                            │
-│  ┌──────────────────────────────────────┐ │
-│  │          istiod (Control Plane)      │ │
-│  │                                      │ │
-│  │  ┌────────────────────────────────┐ │ │
-│  │  │    Certificate Authority       │ │ │
-│  │  │  - Issues workload certs       │ │ │
-│  │  │  - Automatic rotation          │ │ │
-│  │  │  - SPIFFE-compatible           │ │ │
-│  │  └────────────────────────────────┘ │ │
-│  └──────────────┬───────────────────────┘ │
+│  ┌──────────────────────────────────────┐  │
+│  │          istiod (Control Plane)      │  │
+│  │                                      │  │
+│  │  ┌────────────────────────────────┐  │  │
+│  │  │    Certificate Authority       │  │  │
+│  │  │  - Issues workload certs       │  │  │
+│  │  │  - Automatic rotation          │  │  │
+│  │  │  - SPIFFE-compatible           │  │  │
+│  │  └────────────────────────────────┘  │  │
+│  └──────────────┬───────────────────────┘  │
 │                 │ CSR                      │
 │                 │ Certificate              │
-│        ┌────────┴────────┬─────────┐      │
-│        │                 │         │      │
-│   ┌────▼────┐      ┌────▼────┐  ┌─▼───┐  │
-│   │ Envoy   │      │ Envoy   │  │Envoy│  │
-│   │ Sidecar │      │ Sidecar │  │Side │  │
-│   └─────────┘      └─────────┘  └─────┘  │
+│        ┌────────┴────────┬─────────┐       │
+│        │                 │         │       │
+│   ┌────▼────┐      ┌────▼────┐  ┌─▼───┐    │
+│   │ Envoy   │      │ Envoy   │  │Envoy│    │
+│   │ Sidecar │      │ Sidecar │  │Side │    │
+│   └─────────┘      └─────────┘  └─────┘    │
 └────────────────────────────────────────────┘
 ```
 
@@ -210,9 +210,9 @@ Linkerd takes a different approach—explicitly designed for simplicity.
     │   Issuer    │  (runs in cluster)
     └──────┬──────┘
            │
-    ┌──────┴──────┬──────────┐
-    │             │          │
-┌───▼───┐    ┌───▼───┐  ┌───▼───┐
+    ┌──────┴──────┬───────────┐
+    │             │           │
+┌───▼────┐    ┌───▼────┐  ┌───▼────┐
 │Workload│    │Workload│  │Workload│
 │  Cert  │    │  Cert  │  │  Cert  │
 └────────┘    └────────┘  └────────┘
@@ -316,16 +316,16 @@ Consul Connect uses its own built-in CA or integrates with Vault.
 ┌─────────────────────────────────────┐
 │        Consul Server Cluster        │
 │                                     │
-│  ┌───────────────────────────────┐ │
-│  │    Consul Connect CA          │ │
-│  │  - Built-in CA or Vault       │ │
-│  │  - Issues leaf certificates   │ │
-│  │  - Automatic rotation         │ │
-│  └───────────────────────────────┘ │
+│  ┌───────────────────────────────┐  │
+│  │    Consul Connect CA          │  │
+│  │  - Built-in CA or Vault       │  │
+│  │  - Issues leaf certificates   │  │
+│  │  - Automatic rotation         │  │
+│  └───────────────────────────────┘  │
 └──────────────┬──────────────────────┘
                │
-      ┌────────┴────────┬──────────┐
-      │                 │          │
+      ┌────────┴────────┬───────────┐
+      │                 │           │
 ┌─────▼─────┐     ┌─────▼─────┐  ┌──▼──┐
 │  Consul   │     │  Consul   │  │Cons │
 │  Sidecar  │     │  Sidecar  │  │ ul  │

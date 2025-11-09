@@ -706,3 +706,272 @@ Compliance and audit are not obstacles to overcome but frameworks that encode in
 The goal is not perfect compliance scores but a culture where compliance reflects actual secure practices. When your documented procedures match what you actually do, and both align with security best practices, you've achieved compliance maturity.
 
 Invest in compliance infrastructure—documentation, logging, monitoring, training—and you invest in operational excellence. The audit will take care of itself when your actual practices embody security best practices.
+
+## References
+
+### Regulatory Frameworks and Standards
+
+**CA/Browser Forum Baseline Requirements**
+- CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates." Current version.
+  - https://cabforum.org/baseline-requirements-documents/
+- Industry standard for public CAs
+- Validation methods, key protection, audit requirements
+- Mandatory for browser root program inclusion
+
+**WebTrust Principles and Criteria for Certification Authorities**
+- CPA Canada/AICPA. "WebTrust Principles and Criteria for Certification Authorities." Current version.
+  - https://www.cpacanada.ca/en/business-and-accounting-resources/audit-and-assurance/overview-of-webtrust-services
+- Audit framework for public CAs
+- WebTrust for CAs, EV SSL, Code Signing
+- Required for major browser root programs
+
+**ETSI Standards for Trust Service Providers**
+- ETSI EN 319 401. "General Policy Requirements for Trust Service Providers." V2.3.1, 2021.
+  - https://www.etsi.org/deliver/etsi_en/319400_319499/319401/
+- European trust service provider requirements
+- Alignment with eIDAS Regulation
+- Qualified trust services
+
+**eIDAS Regulation**
+- European Parliament. "Regulation (EU) No 910/2014 on electronic identification and trust services." July 2014.
+  - https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910
+- European electronic identification framework
+- Qualified electronic signatures and seals
+- Trust service provider supervision
+
+### Certificate Policy and CPS Guidelines
+
+**RFC 3647 - Internet X.509 Public Key Infrastructure Certificate Policy and Certification Practices Framework**
+- Chokhani, S., et al. "Internet X.509 Public Key Infrastructure Certificate Policy and Certification Practices Framework." November 2003.
+  - https://tools.ietf.org/html/rfc3647
+- Standard framework for CP/CPS documentation
+- Section-by-section guidance
+- Industry-standard structure
+
+**NIST SP 800-32 - Introduction to Public Key Technology and the Federal PKI Infrastructure**
+- NIST. "Introduction to Public Key Technology and the Federal PKI Infrastructure." February 2001.
+  - https://csrc.nist.gov/publications/detail/sp/800-32/final
+- Federal PKI policy requirements
+- CP/CPS examples
+- Certificate profiles
+
+**Federal PKI CP and CPS Examples**
+- Federal PKI Policy Authority. "Federal Bridge Certification Authority Certificate Policy." Current.
+  - https://www.idmanagement.gov/fpki/
+- Government CP/CPS templates
+- Assurance level definitions
+
+### Industry-Specific Compliance
+
+**PCI DSS - Payment Card Industry Data Security Standard**
+- PCI Security Standards Council. "Payment Card Industry (PCI) Data Security Standard." Version 4.0, March 2022.
+  - https://www.pcisecuritystandards.org/document_library
+- Requirement 3: Protect stored cardholder data
+- Requirement 4: Encrypt transmission of cardholder data
+- Certificate and key management requirements
+
+**HIPAA Security Rule**
+- U.S. Department of Health & Human Services. "HIPAA Security Rule." 45 CFR Parts 160, 162, and 164, 2003.
+  - https://www.hhs.gov/hipaa/for-professionals/security/index.html
+- Technical safeguards: Access control, encryption
+- Administrative safeguards: Security management process
+- PHI protection requirements
+
+**SOC 2 - Service Organization Control**
+- AICPA. "SOC 2 - SOC for Service Organizations: Trust Services Criteria." Current.
+  - https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/sorhome.html
+- Security, Availability, Processing Integrity, Confidentiality, Privacy
+- Type I (point in time) vs Type II (period of time)
+- Common for cloud service providers
+
+**ISO/IEC 27001 - Information Security Management**
+- ISO/IEC. "Information technology — Security techniques — Information security management systems — Requirements." 2022.
+  - https://www.iso.org/standard/82875.html
+- Annex A.10: Cryptography
+- Information security management system (ISMS)
+- Risk-based approach to security
+
+**FISMA - Federal Information Security Management Act**
+- NIST SP 800-53. "Security and Privacy Controls for Information Systems and Organizations." Revision 5, 2020.
+  - https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final
+- SC-12: Cryptographic Key Establishment and Management
+- SC-13: Cryptographic Protection
+- Federal system authorization requirements
+
+### Audit Standards and Guidance
+
+**ISAE 3402 / SSAE 18 - Auditing Standards**
+- IAASB. "International Standard on Assurance Engagements (ISAE) 3402, Assurance Reports on Controls at a Service Organization." 2011.
+- AICPA. "Statement on Standards for Attestation Engagements No. 18 (SSAE 18)." 2017.
+- Service organization control reporting
+- Type I and Type II reports
+
+**WebTrust Audit Guidelines**
+- CPA Canada. "WebTrust Principles and Criteria for Certification Authorities - Practitioner Guidance." Current.
+- Audit procedures for CA assessments
+- Testing methodologies
+- Evidence collection requirements
+
+**NIST SP 800-53A - Assessing Security and Privacy Controls**
+- NIST. "Assessing Security and Privacy Controls in Information Systems and Organizations." Revision 5, 2022.
+  - https://csrc.nist.gov/publications/detail/sp/800-53a/rev-5/final
+- Security control assessment procedures
+- Testing methods and techniques
+- Evidence requirements
+
+### Browser Root Program Requirements
+
+**Mozilla Root Store Policy**
+- Mozilla. "Mozilla CA Certificate Policy." Version 2.8, 2023.
+  - https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/policy/
+- Inclusion requirements
+- Audit requirements (WebTrust or ETSI)
+- Incident reporting obligations
+
+**Apple Root Certificate Program**
+- Apple. "Apple Root Certificate Program." Current.
+  - https://www.apple.com/certificateauthority/ca_program.html
+- Annual audits required
+- Incident disclosure requirements
+- Certificate Transparency logging
+
+**Microsoft Trusted Root Program**
+- Microsoft. "Trusted Root Certificate Program Requirements." Current version.
+  - https://docs.microsoft.com/en-us/security/trusted-root/program-requirements
+- Audit requirements
+- Operational requirements
+- Program participation agreement
+
+**Google Chrome Root Program**
+- Chrome Root Program. "Chrome Root Program Policy." Current.
+  - https://www.chromium.org/Home/chromium-security/root-ca-policy
+- TLS server authentication certificates
+- Alignment with CA/Browser Forum requirements
+- Chrome Certificate Transparency policy
+
+### Logging and Monitoring Standards
+
+**NIST SP 800-92 - Guide to Computer Security Log Management**
+- NIST. "Guide to Computer Security Log Management." September 2006.
+  - https://csrc.nist.gov/publications/detail/sp/800-92/final
+- Log generation, transmission, storage, analysis
+- Security event management
+- Log retention requirements
+
+**RFC 5424 - The Syslog Protocol**
+- Gerhards, R. "The Syslog Protocol." March 2009.
+  - https://tools.ietf.org/html/rfc5424
+- Standard format for log messages
+- Facility and severity levels
+- Transport protocols
+
+**Common Event Format (CEF)**
+- ArcSight/Micro Focus. "Common Event Format (CEF) Implementation Standard."
+- Standardized event logging format
+- SIEM integration
+- Event correlation
+
+### Penetration Testing Standards
+
+**PTES - Penetration Testing Execution Standard**
+- Penetration Testing Execution Standard. "PTES Technical Guidelines." Current.
+  - http://www.pentest-standard.org/
+- Pre-engagement, intelligence gathering, threat modeling
+- Exploitation, post-exploitation, reporting
+- Industry-standard methodology
+
+**OWASP Testing Guide**
+- OWASP. "OWASP Web Security Testing Guide." Version 4.2, 2020.
+  - https://owasp.org/www-project-web-security-testing-guide/
+- Cryptography testing
+- Authentication testing
+- Session management testing
+
+**NIST SP 800-115 - Technical Guide to Information Security Testing and Assessment**
+- NIST. "Technical Guide to Information Security Testing and Assessment." September 2008.
+  - https://csrc.nist.gov/publications/detail/sp/800-115/final
+- Testing and examination techniques
+- Security assessment planning
+- Reporting requirements
+
+### Privacy and Data Protection
+
+**GDPR - General Data Protection Regulation**
+- European Parliament. "General Data Protection Regulation (GDPR)." 2018.
+  - https://gdpr-info.eu/
+- Data protection by design and by default
+- Data breach notification (72 hours)
+- Data subject rights
+
+**CCPA - California Consumer Privacy Act**
+- State of California. "California Consumer Privacy Act." 2018 (amended 2020).
+  - https://oag.ca.gov/privacy/ccpa
+- Consumer data rights
+- Security safeguards
+- Breach notification requirements
+
+### Key Escrow and Recovery
+
+**NIST SP 800-130 - A Framework for Designing Cryptographic Key Management Systems**
+- NIST. "A Framework for Designing Cryptographic Key Management Systems." August 2013.
+  - https://csrc.nist.gov/publications/detail/sp/800-130/final
+- CKMS architecture and components
+- Key recovery considerations
+- Escrowed encryption standard critique
+
+**The Crypto Wars and Key Escrow Debate**
+- Abelson, H., et al. "Keys Under Doormats: Mandating insecurity by requiring government access to all data and communications." MIT Computer Science and AI Laboratory Technical Report, July 2015.
+- Cryptographic policy debates
+- Security implications of key escrow
+- Government access to encrypted data
+
+### Continuous Compliance
+
+**DevSecOps and Compliance Automation**
+- NIST SP 800-190. "Application Container Security Guide." September 2017.
+  - https://csrc.nist.gov/publications/detail/sp/800-190/final
+- Security in CI/CD pipelines
+- Automated compliance checking
+- Infrastructure as code security
+
+**Policy as Code**
+- Open Policy Agent (OPA). "OPA Documentation." Current.
+  - https://www.openpolicyagent.org/
+- Declarative policy enforcement
+- Automated compliance validation
+- Integration with deployment pipelines
+
+### Industry Resources and Guidance
+
+**CA Security Council**
+- CA Security Council. "Guidelines and Best Practices." Current.
+  - https://casecurity.org/
+- Industry collaboration
+- Emerging threat information
+- Best practice sharing
+
+**PKI Consortium**
+- PKI Consortium. "PKI Resources and Standards." Current.
+  - https://pkic.org/
+- Industry working groups
+- PKI best practices
+- Standards development participation
+
+**Cloud Security Alliance - CSA STAR**
+- Cloud Security Alliance. "Security, Trust, Assurance, and Risk (STAR) Registry." Current.
+  - https://cloudsecurityalliance.org/star/
+- Cloud provider security assessments
+- Consensus Assessments Initiative Questionnaire (CAIQ)
+- Certification and attestation
+
+### Academic and Research Papers
+
+**PKI Compliance and Audit Research**
+- Akhawe, D., et al. "Here's My Cert, So Trust Me, Maybe? Understanding TLS Errors on the Web." WWW 2013.
+- Analysis of certificate validation failures
+- User behavior with certificate warnings
+
+**Economic Analysis of PKI Compliance**
+- Camp, L.J., Wolfram, C. "Pricing Security." CERT Coordination Center, 2000.
+- Economic incentives in PKI
+- Compliance cost-benefit analysis
