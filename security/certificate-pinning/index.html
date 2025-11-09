@@ -4099,7 +4099,7 @@
 <a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="gu">### 1. Verify Scope</span>
 <a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>```bash
 <a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="gh"># Check error rate by domain</span>
-<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>curl &#39;http://prometheus:9090/api/v1/query?query=rate(cert_pin_validation_total{result=&quot;failure&quot;}[5m])&#39;
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>curl &#39;[Prometheus:9090 - Query](http://prometheus:9090/api/v1/query?query=rate(cert_pin_validation_total{result=&quot;failure&quot;}[5m]))&#39;
 </code></pre></div>
 <h3 id="2-check-certificate-status">2. Check Certificate Status</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># Verify current certificate matches expected pin</span>
