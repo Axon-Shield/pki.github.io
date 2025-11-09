@@ -3,6 +3,7 @@ site_url: https://vault.axonshield.com/
 theme:
   logo: assets/axon-logo.png
   name: material
+  custom_dir: overrides
   palette:
     - scheme: default
       primary: white 
@@ -23,6 +24,7 @@ theme:
     - search.suggest
     - search.highlight
     - content.code.copy
+    - announce.dismiss
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -34,9 +36,10 @@ markdown_extensions:
   - pymdownx.details
 
 extra:
+  announce: true
   social:
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/company/axonshield/
+      link: https://www.linkedin.com/company/axonsecurity/
   analytics:
     google: G-D7Y27V4B1X
     hotjar: 5152464
