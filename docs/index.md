@@ -1,7 +1,11 @@
 ---
-title: PKI Knowledge Base - Home
+title: Foundations for Infrastructure Intelligence - Home
 last_updated: 2024-11-09
 ---
+
+We have built this generic knowledge base to show how DNS, Certificate and Network Perimeter Management
+can create a robust foundation for integrated information security and cyber security. 
+
 
 # PKI & Certificate Management Knowledge Base
 
