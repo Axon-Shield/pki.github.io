@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <!-- Right sidebar with disclaimer above TOC -->
+  {% if page.toc and config.extra.announce %}
+    <style>
+      @media screen and (min-width: 76.25em) {
+        .md-sidebar--secondary {
+          order: 1;
+        }
+        .md-sidebar--secondary::before {
+          content: '';
+          display: block;
+          margin-bottom: 1rem;
+        }
+      }
+    </style>
+  {% endif %}
+  
+  {{ super() }}
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  {% if config.extra.announce %}
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var sidebar = document.querySelector('.md-sidebar--secondary .md-sidebar__scrollwrap');
+      if (sidebar) {
+        var disclaimer = document.createElement('div');
+        disclaimer.className = 'md-sidebar-disclaimer';
+        disclaimer.innerHTML = `
+          <div class="md-typeset">
+            <div class="admonition info">
+              <p class="admonition-title">📚 Resources</p>
+              <p><a href="/book"><strong>View our comprehensive guide</strong></a></p>
+            </div>
+            <div class="admonition warning">
+              <p class="admonition-title">⚠️ Disclaimer</p>
+              <p><small>This documentation reflects industry standards that we have found often ignore company-specific needs and in many cases don't work for long-term sustainable operations that build infrastructure intelligence.</small></p>
+            </div>
+          </div>
+        `;
+        sidebar.insertBefore(disclaimer, sidebar.firstChild);
+      }
+    });
+  </script>
+  {% endif %}
+{% endblock %}
+
