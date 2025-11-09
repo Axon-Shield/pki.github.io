@@ -43,10 +43,13 @@ Welcome to your comprehensive reference for Public Key Infrastructure and certif
 
 ### 🔒 Security
 - [Private Key Protection](security/private-key-protection.md) - Securing your keys
+- [Threat Models and Attack Vectors](security/threat-models-and-attack-vectors.md) - Understanding security threats
+- [Key Management Best Practices](security/key-management-best-practices.md) - Secure key handling
+- [Compliance and Audit](security/compliance-and-audit.md) - Regulatory requirements and auditing
+- [Incident Response](security/incident-response.md) - Emergency procedures
 - CA Compromise Scenarios *(coming soon)* - Prevention and recovery
 - Certificate Pinning *(coming soon)* - Additional security layer
 - Common Vulnerabilities *(coming soon)* - Known attacks and defenses
-- Incident Response Playbooks *(coming soon)* - Emergency procedures
 
 ### 🏢 Vendors & Products
 - Venafi Platform *(coming soon)* - Enterprise certificate management
@@ -117,7 +120,7 @@ Every page in this knowledge base includes:
 
 **Version**: 1.0 (Initial Release)  
 **Last Updated**: November 9, 2024  
-**Completed Pages**: 22  
+**Completed Pages**: 26  
 **In Progress**: Expanding all categories
 
 This knowledge base is actively maintained and expanded based on:
