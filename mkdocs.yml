@@ -24,7 +24,6 @@ theme:
     - search.suggest
     - search.highlight
     - content.code.copy
-    - announce.dismiss
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -34,6 +33,9 @@ markdown_extensions:
   - pymdownx.superfences
   - admonition
   - pymdownx.details
+
+extra_css:
+  - stylesheets/extra.css
 
 extra:
   announce: true

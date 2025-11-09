@@ -1,0 +1,24 @@
+{% if config.extra.announce %}
+<div class="md-sidebar-disclaimer">
+  <div class="md-typeset">
+    <div class="admonition info">
+      <p class="admonition-title">📚 Resources</p>
+      <p><a href="/book"><strong>View our comprehensive guide</strong></a></p>
+    </div>
+    <div class="admonition warning">
+      <p class="admonition-title">⚠️ Disclaimer</p>
+      <p><small>This documentation reflects industry standards that we have found often ignore company-specific needs and in many cases don't work for long-term sustainable operations that build infrastructure intelligence.</small></p>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- Original TOC -->
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+  <div class="md-sidebar__scrollwrap">
+    <div class="md-sidebar__inner">
+      {% include "partials/toc-integrate.html" %}
+    </div>
+  </div>
+</div>
+
