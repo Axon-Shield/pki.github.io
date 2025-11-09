@@ -3729,152 +3729,152 @@
 <h3 id="acme-automated-certificate-management-environment">ACME (Automated Certificate Management Environment)</h3>
 <p><strong>Definition</strong>: A protocol for automating certificate issuance and renewal between certificate authorities and web servers.</p>
 <p><strong>Context</strong>: Developed by Let's Encrypt and standardized as RFC 8555[^1]. Enables zero-touch certificate lifecycle management through API-driven certificate requests, domain validation challenges, and automated renewal. Widely adopted for TLS certificate automation across cloud and on-premises infrastructure.</p>
-<p><strong>Related</strong>: [[acme-protocol-implementation]], [[renewal-automation]]</p>
+<p><strong>Related</strong>: <a href="../implementation/acme-protocol-implementation/">Acme Protocol Implementation</a>, <a href="../operations/renewal-automation/">Renewal Automation</a></p>
 <hr />
 <h3 id="authority-information-access-aia">Authority Information Access (AIA)</h3>
 <p><strong>Definition</strong>: X.509 certificate extension indicating where to obtain information about the issuing Certificate Authority.</p>
 <p><strong>Context</strong>: Contains URLs for CA certificates (caIssuers) and OCSP responders. Critical for certificate chain building—without AIA, clients may not find intermediate CA certificates. Required by CA/Browser Forum Baseline Requirements for publicly-trusted certificates[^2].</p>
-<p><strong>Related</strong>: [[certificate-anatomy]], [[chain-validation-errors]]</p>
+<p><strong>Related</strong>: <a href="../foundations/certificate-anatomy/">Certificate Anatomy</a>, <a href="../troubleshooting/chain-validation-errors/">Chain Validation Errors</a></p>
 <hr />
 <h3 id="asn1-abstract-syntax-notation-one">ASN.1 (Abstract Syntax Notation One)</h3>
 <p><strong>Definition</strong>: A standard interface description language for defining data structures that can be serialized and deserialized in a cross-platform way.</p>
 <p><strong>Context</strong>: X.509 certificates are defined using ASN.1 and encoded using DER (Distinguished Encoding Rules). Understanding ASN.1 is essential for low-level certificate parsing and troubleshooting encoding issues.</p>
-<p><strong>Related</strong>: [[certificate-anatomy]], [[x509-standard]]</p>
+<p><strong>Related</strong>: <a href="../foundations/certificate-anatomy/">Certificate Anatomy</a>, <a href="../standards/x509-standard/">X509 Standard</a></p>
 <h2 id="b">B</h2>
 <h3 id="baseline-requirements">Baseline Requirements</h3>
 <p><strong>Definition</strong>: Industry-standard requirements for the issuance and management of publicly-trusted SSL/TLS certificates.</p>
 <p><strong>Context</strong>: Published by the CA/Browser Forum, these requirements define domain validation methods, certificate lifetimes, key sizes, and operational practices that Certificate Authorities must follow to remain trusted by browsers. Violations can result in CA distrust[^2].</p>
-<p><strong>Related</strong>: [[x509-standard]], [[ca-architecture]]</p>
+<p><strong>Related</strong>: <a href="../standards/x509-standard/">X509 Standard</a>, <a href="../implementation/ca-architecture/">Ca Architecture</a></p>
 <hr />
 <h3 id="basic-constraints">Basic Constraints</h3>
 <p><strong>Definition</strong>: X.509 certificate extension indicating whether the certificate subject is a CA and the maximum certification path length.</p>
 <p><strong>Context</strong>: Contains boolean flag <code>CA:TRUE</code> or <code>CA:FALSE</code> and optional path length constraint. Must be marked critical. Prevents end-entity certificates from being used to issue other certificates—a critical security control[^3].</p>
-<p><strong>Related</strong>: [[certificate-anatomy]], [[ca-architecture]]</p>
+<p><strong>Related</strong>: <a href="../foundations/certificate-anatomy/">Certificate Anatomy</a>, <a href="../implementation/ca-architecture/">Ca Architecture</a></p>
 <h2 id="c">C</h2>
 <h3 id="cabrowser-forum">CA/Browser Forum</h3>
 <p><strong>Definition</strong>: A voluntary organization of Certificate Authorities and browser vendors that develops industry guidelines for certificate issuance.</p>
 <p><strong>Context</strong>: Created the Baseline Requirements, Extended Validation Guidelines, and other standards that govern publicly-trusted PKI. Members include major CAs (DigiCert, Sectigo, Let's Encrypt) and browser vendors (Google, Mozilla, Apple, Microsoft).</p>
-<p><strong>Related</strong>: [[x509-standard]], [[what-is-pki]]</p>
+<p><strong>Related</strong>: <a href="../standards/x509-standard/">X509 Standard</a>, <a href="../foundations/what-is-pki/">What Is Pki</a></p>
 <hr />
 <h3 id="certificate-authority-ca">Certificate Authority (CA)</h3>
 <p><strong>Definition</strong>: A trusted entity that issues digital certificates by verifying the identity of certificate requesters and signing their public keys.</p>
 <p><strong>Context</strong>: CAs form the root of trust in PKI. Can be public CAs trusted by browsers (DigiCert, Let's Encrypt) or private CAs operated by organizations for internal use. Compromising a CA allows attackers to issue trusted certificates for any identity.</p>
-<p><strong>Related</strong>: [[what-is-pki]], [[ca-architecture]], [[security/ca-compromise-scenarios]]</p>
+<p><strong>Related</strong>: <a href="../foundations/what-is-pki/">What Is Pki</a>, <a href="../implementation/ca-architecture/">Ca Architecture</a>, <a href="../security/ca-compromise-scenarios/">Ca Compromise Scenarios</a></p>
 <hr />
 <h3 id="certificate-management-protocol-cmp">Certificate Management Protocol (CMP)</h3>
 <p><strong>Definition</strong>: IETF protocol (RFC 4210) for interactions between CAs and end entities for certificate lifecycle operations.</p>
 <p><strong>Context</strong>: Provides standardized messages for certificate request, renewal, revocation, and key update. Less commonly used than ACME for automation but supported by some enterprise PKI platforms.</p>
-<p><strong>Related</strong>: [[certificate-issuance-workflows]]</p>
+<p><strong>Related</strong>: <a href="../implementation/certificate-issuance-workflows/">Certificate Issuance Workflows</a></p>
 <hr />
 <h3 id="certificate-policy-cp">Certificate Policy (CP)</h3>
 <p><strong>Definition</strong>: Named set of rules indicating the applicability of a certificate to a particular community and/or class of applications with common security requirements.</p>
 <p><strong>Context</strong>: High-level document defining what a certificate can be used for, validation requirements, and organizational commitments. Often references specific Object Identifiers (OIDs) that appear in certificate policy extensions.</p>
-<p><strong>Related</strong>: [[ca-architecture]], [[x509-standard]]</p>
+<p><strong>Related</strong>: <a href="../implementation/ca-architecture/">Ca Architecture</a>, <a href="../standards/x509-standard/">X509 Standard</a></p>
 <hr />
 <h3 id="certificate-practice-statement-cps">Certificate Practice Statement (CPS)</h3>
 <p><strong>Definition</strong>: Statement of practices used by a Certificate Authority in issuing, managing, and revoking certificates.</p>
 <p><strong>Context</strong>: Detailed operational document describing how the CA implements its certificate policies. Required for WebTrust audits and public CA trust. Covers facility security, key generation procedures, validation processes, and incident response.</p>
-<p><strong>Related</strong>: [[ca-architecture]]</p>
+<p><strong>Related</strong>: <a href="../implementation/ca-architecture/">Ca Architecture</a></p>
 <hr />
 <h3 id="certificate-revocation-list-crl">Certificate Revocation List (CRL)</h3>
 <p><strong>Definition</strong>: A signed list of revoked certificates published by a Certificate Authority.</p>
 <p><strong>Context</strong>: One of two primary mechanisms for checking certificate revocation status (along with OCSP). CRLs can grow large and require clients to download entire list. Published at regular intervals with next update time specified. Distribution Points extension in certificates indicates CRL download URLs[^3].</p>
-<p><strong>Related</strong>: [[ocsp-and-crl]], [[certificate-lifecycle-management]]</p>
+<p><strong>Related</strong>: <a href="../standards/ocsp-and-crl/">Ocsp And Crl</a>, <a href="../operations/certificate-lifecycle-management/">Certificate Lifecycle Management</a></p>
 <hr />
 <h3 id="certificate-signing-request-csr">Certificate Signing Request (CSR)</h3>
 <p><strong>Definition</strong>: A message sent from an applicant to a Certificate Authority to apply for a digital certificate.</p>
 <p><strong>Context</strong>: Contains the public key and identity information (subject DN, SAN) to be included in the certificate. Signed with the corresponding private key to prove key possession. Generated using OpenSSL, keytool, or other crypto libraries.</p>
-<p><strong>Related</strong>: [[certificate-issuance-workflows]], [[certificate-anatomy]]</p>
+<p><strong>Related</strong>: <a href="../implementation/certificate-issuance-workflows/">Certificate Issuance Workflows</a>, <a href="../foundations/certificate-anatomy/">Certificate Anatomy</a></p>
 <hr />
 <h3 id="certificate-transparency-ct">Certificate Transparency (CT)</h3>
 <p><strong>Definition</strong>: An open framework for monitoring and auditing SSL/TLS certificates.</p>
 <p><strong>Context</strong>: Requires CAs to log all certificates to public, append-only logs before issuance. Enables detection of misissued certificates. Signed Certificate Timestamps (SCTs) prove certificate was logged. Required by Chrome and Safari for publicly-trusted certificates[^4].</p>
-<p><strong>Related</strong>: [[security/common-vulnerabilities]], [[monitoring-and-alerting]]</p>
+<p><strong>Related</strong>: <a href="../security/common-vulnerabilities/">Common Vulnerabilities</a>, <a href="../operations/monitoring-and-alerting/">Monitoring And Alerting</a></p>
 <h2 id="d">D</h2>
 <h3 id="der-distinguished-encoding-rules">DER (Distinguished Encoding Rules)</h3>
 <p><strong>Definition</strong>: Binary encoding format for ASN.1 data structures.</p>
 <p><strong>Context</strong>: X.509 certificates are typically encoded in DER format (binary). DER ensures a unique encoding for each ASN.1 structure, which is essential for digital signatures. PEM format is base64-encoded DER with header/footer markers.</p>
-<p><strong>Related</strong>: [[certificate-anatomy]]</p>
+<p><strong>Related</strong>: <a href="../foundations/certificate-anatomy/">Certificate Anatomy</a></p>
 <hr />
 <h3 id="distinguished-name-dn">Distinguished Name (DN)</h3>
 <p><strong>Definition</strong>: Hierarchical identifier format used in X.509 certificates to represent entities.</p>
 <p><strong>Context</strong>: Based on X.500 directory structure. Contains attributes like Country (C), Organization (O), Common Name (CN), etc. Used for certificate subject and issuer fields. Example: <code>CN=www.example.com, O=Example Corp, C=US</code>.</p>
-<p><strong>Related</strong>: [[certificate-anatomy]], [[x509-standard]]</p>
+<p><strong>Related</strong>: <a href="../foundations/certificate-anatomy/">Certificate Anatomy</a>, <a href="../standards/x509-standard/">X509 Standard</a></p>
 <hr />
 <h3 id="domain-validation-dv">Domain Validation (DV)</h3>
 <p><strong>Definition</strong>: Certificate validation level where the CA only verifies domain control, not organizational identity.</p>
 <p><strong>Context</strong>: Lowest assurance level for publicly-trusted certificates. Validation performed via email, DNS records, or HTTP challenges. Certificates issue quickly but provide no identity assurance beyond domain control. Appropriate for public web encryption but not for high-assurance needs[^2].</p>
-<p><strong>Related</strong>: [[certificate-issuance-workflows]]</p>
+<p><strong>Related</strong>: <a href="../implementation/certificate-issuance-workflows/">Certificate Issuance Workflows</a></p>
 <h2 id="e">E</h2>
 <h3 id="extended-key-usage-eku">Extended Key Usage (EKU)</h3>
 <p><strong>Definition</strong>: X.509 certificate extension specifying one or more purposes for which the certified public key may be used.</p>
 <p><strong>Context</strong>: Defines application-specific usages like TLS server authentication, code signing, or email protection. More specific than Key Usage extension. Applications should enforce EKU checking to prevent key misuse[^3].</p>
-<p><strong>Related</strong>: [[certificate-anatomy]]</p>
+<p><strong>Related</strong>: <a href="../foundations/certificate-anatomy/">Certificate Anatomy</a></p>
 <hr />
 <h3 id="extended-validation-ev">Extended Validation (EV)</h3>
 <p><strong>Definition</strong>: Highest validation level for publicly-trusted certificates, requiring rigorous identity verification of the organization.</p>
 <p><strong>Context</strong>: Requires legal existence verification, physical address confirmation, operational status checks, and applicant vetting. Historically displayed with green address bar in browsers, though most browsers have deprecated special UI treatment. Still provides highest identity assurance[^2].</p>
-<p><strong>Related</strong>: [[certificate-issuance-workflows]]</p>
+<p><strong>Related</strong>: <a href="../implementation/certificate-issuance-workflows/">Certificate Issuance Workflows</a></p>
 <h2 id="h">H</h2>
 <h3 id="hardware-security-module-hsm">Hardware Security Module (HSM)</h3>
 <p><strong>Definition</strong>: Physical device designed for secure generation, storage, and management of cryptographic keys.</p>
 <p><strong>Context</strong>: Provides tamper-resistant hardware for protecting CA private keys. Meets FIPS 140-2 security levels. Essential for CA operations—root and intermediate CA keys should always reside in HSMs. Cloud providers offer HSM services (AWS CloudHSM, Azure Dedicated HSM, GCP Cloud HSM)[^5].</p>
-<p><strong>Related</strong>: [[hsm-integration]], [[ca-architecture]], [[security/private-key-protection]]</p>
+<p><strong>Related</strong>: <a href="../implementation/hsm-integration/">Hsm Integration</a>, <a href="../implementation/ca-architecture/">Ca Architecture</a>, <a href="../security/private-key-protection/">Private Key Protection</a></p>
 <h2 id="i">I</h2>
 <h3 id="intermediate-certificate">Intermediate Certificate</h3>
 <p><strong>Definition</strong>: A CA certificate signed by a root CA (or another intermediate) that can issue end-entity certificates or additional intermediate certificates.</p>
 <p><strong>Context</strong>: Provides operational and security benefits—root CA can remain offline while intermediate CAs handle daily operations. If intermediate is compromised, it can be revoked and replaced without affecting root trust. Most production PKI deployments use two or three-tier hierarchies with intermediates[^6].</p>
-<p><strong>Related</strong>: [[ca-architecture]], [[what-is-pki]]</p>
+<p><strong>Related</strong>: <a href="../implementation/ca-architecture/">Ca Architecture</a>, <a href="../foundations/what-is-pki/">What Is Pki</a></p>
 <hr />
 <h3 id="issuing-ca">Issuing CA</h3>
 <p><strong>Definition</strong>: A Certificate Authority that directly issues end-entity (leaf) certificates to servers, users, or devices.</p>
 <p><strong>Context</strong>: Also called subordinate CA or signing CA. Typically an intermediate CA in a hierarchical PKI. Must be online and accessible for certificate issuance operations. Requires high availability and may be load-balanced.</p>
-<p><strong>Related</strong>: [[ca-architecture]], [[certificate-issuance-workflows]]</p>
+<p><strong>Related</strong>: <a href="../implementation/ca-architecture/">Ca Architecture</a>, <a href="../implementation/certificate-issuance-workflows/">Certificate Issuance Workflows</a></p>
 <h2 id="k">K</h2>
 <h3 id="key-ceremony">Key Ceremony</h3>
 <p><strong>Definition</strong>: Formal, witnessed procedure for generating, backing up, or using a Certificate Authority's cryptographic keys.</p>
 <p><strong>Context</strong>: Involves multiple authorized personnel, documented procedures, video recording, and signed attestations. Required for root CA operations and often for high-security intermediate CAs. Provides audit trail and enforces multi-person integrity controls[^6].</p>
-<p><strong>Related</strong>: [[ca-architecture]]</p>
+<p><strong>Related</strong>: <a href="../implementation/ca-architecture/">Ca Architecture</a></p>
 <hr />
 <h3 id="key-encipherment">Key Encipherment</h3>
 <p><strong>Definition</strong>: Cryptographic operation where a public key is used to encrypt a symmetric key for secure transmission.</p>
 <p><strong>Context</strong>: One of the Key Usage extension values. Required for RSA key exchange in TLS (pre-TLS 1.3). Not needed for ECDHE key agreement. Restricts certificate use to this specific cryptographic operation[^3].</p>
-<p><strong>Related</strong>: [[certificate-anatomy]]</p>
+<p><strong>Related</strong>: <a href="../foundations/certificate-anatomy/">Certificate Anatomy</a></p>
 <hr />
 <h3 id="key-usage">Key Usage</h3>
 <p><strong>Definition</strong>: X.509 certificate extension defining the cryptographic operations the certificate key can perform.</p>
 <p><strong>Context</strong>: Bit string specifying operations like Digital Signature, Key Encipherment, Certificate Sign, or CRL Sign. Should be marked critical. Prevents key misuse—signing keys shouldn't encrypt, CA keys shouldn't be used as server keys. Applications must enforce Key Usage checking[^3].</p>
-<p><strong>Related</strong>: [[certificate-anatomy]]</p>
+<p><strong>Related</strong>: <a href="../foundations/certificate-anatomy/">Certificate Anatomy</a></p>
 <h2 id="l">L</h2>
 <h3 id="leaf-certificate">Leaf Certificate</h3>
 <p><strong>Definition</strong>: An end-entity certificate that cannot issue other certificates.</p>
 <p><strong>Context</strong>: The certificate presented by servers, users, or devices in TLS connections or other PKI operations. Must have Basic Constraints set to <code>CA:FALSE</code>. Bottom of the certificate chain.</p>
-<p><strong>Related</strong>: [[certificate-anatomy]], [[chain-validation-errors]]</p>
+<p><strong>Related</strong>: <a href="../foundations/certificate-anatomy/">Certificate Anatomy</a>, <a href="../troubleshooting/chain-validation-errors/">Chain Validation Errors</a></p>
 <h2 id="m">M</h2>
 <h3 id="mutual-tls-mtls">Mutual TLS (mTLS)</h3>
 <p><strong>Definition</strong>: TLS protocol variant where both client and server present certificates for authentication.</p>
 <p><strong>Context</strong>: Provides strong mutual authentication beyond password-based client auth. Used in service mesh architectures, B2B APIs, IoT device authentication, and zero-trust networks. Requires robust certificate lifecycle management for all clients[^7].</p>
-<p><strong>Related</strong>: [[patterns/mutual-tls-patterns]], [[certificate-lifecycle-management]]</p>
+<p><strong>Related</strong>: <a href="../architecture/mutual-tls-patterns/">Mutual Tls Patterns</a>, <a href="../operations/certificate-lifecycle-management/">Certificate Lifecycle Management</a></p>
 <h2 id="o">O</h2>
 <h3 id="ocsp-online-certificate-status-protocol">OCSP (Online Certificate Status Protocol)</h3>
 <p><strong>Definition</strong>: Protocol for obtaining the revocation status of a certificate in real-time.</p>
 <p><strong>Context</strong>: Alternative to CRLs providing near-real-time revocation checking. Client sends certificate serial number to OCSP responder, receives signed response (good, revoked, or unknown). More efficient than downloading full CRLs but creates privacy concerns as CA sees all validation requests[^8].</p>
-<p><strong>Related</strong>: [[ocsp-and-crl]], [[certificate-lifecycle-management]]</p>
+<p><strong>Related</strong>: <a href="../standards/ocsp-and-crl/">Ocsp And Crl</a>, <a href="../operations/certificate-lifecycle-management/">Certificate Lifecycle Management</a></p>
 <hr />
 <h3 id="ocsp-stapling">OCSP Stapling</h3>
 <p><strong>Definition</strong>: TLS extension where the server obtains OCSP response and delivers it during TLS handshake.</p>
 <p><strong>Context</strong>: Improves performance (client doesn't contact OCSP responder) and privacy (CA doesn't see client validations). Server must refresh stapled responses periodically. Should be enabled on all TLS servers[^8].</p>
-<p><strong>Related</strong>: [[ocsp-and-crl]]</p>
+<p><strong>Related</strong>: <a href="../standards/ocsp-and-crl/">Ocsp And Crl</a></p>
 <hr />
 <h3 id="organization-validation-ov">Organization Validation (OV)</h3>
 <p><strong>Definition</strong>: Certificate validation level where CA verifies the legal existence and identity of the organization.</p>
 <p><strong>Context</strong>: Higher assurance than Domain Validation but less rigorous than Extended Validation. CA validates organization exists in business registries, confirms physical address, and verifies applicant authority. Organization name appears in certificate subject field[^2].</p>
-<p><strong>Related</strong>: [[certificate-issuance-workflows]]</p>
+<p><strong>Related</strong>: <a href="../implementation/certificate-issuance-workflows/">Certificate Issuance Workflows</a></p>
 <h2 id="p">P</h2>
 <h3 id="pem-privacy-enhanced-mail">PEM (Privacy Enhanced Mail)</h3>
 <p><strong>Definition</strong>: Text-based encoding format for certificates and keys using base64 encoding with header/footer markers.</p>
 <p><strong>Context</strong>: Most common format for certificates on Unix/Linux systems. Begins with <code>-----BEGIN CERTIFICATE-----</code> and ends with <code>-----END CERTIFICATE-----</code>. Contains base64-encoded DER certificate. Can contain multiple certificates in single file.</p>
-<p><strong>Related</strong>: [[certificate-anatomy]]</p>
+<p><strong>Related</strong>: <a href="../foundations/certificate-anatomy/">Certificate Anatomy</a></p>
 <hr />
 <h3 id="pkcs-public-key-cryptography-standards">PKCS (Public Key Cryptography Standards)</h3>
 <p><strong>Definition</strong>: Group of cryptography standards published by RSA Laboratories.</p>
@@ -3886,87 +3886,87 @@
 <li>PKCS#10: Certificate Request Syntax (CSR format)</li>
 <li>PKCS#12: Personal Information Exchange (.pfx/.p12 files containing certificates and private keys)</li>
 </ul>
-<p><strong>Related</strong>: [[certificate-issuance-workflows]], [[certificate-anatomy]]</p>
+<p><strong>Related</strong>: <a href="../implementation/certificate-issuance-workflows/">Certificate Issuance Workflows</a>, <a href="../foundations/certificate-anatomy/">Certificate Anatomy</a></p>
 <hr />
 <h3 id="private-key">Private Key</h3>
 <p><strong>Definition</strong>: Secret key in asymmetric cryptography that must be kept confidential and is used for signing and decryption.</p>
 <p><strong>Context</strong>: Compromise of a private key allows attackers to impersonate the key owner. Must be protected with strong access controls, encryption at rest, and ideally stored in HSMs. Should never be transmitted over networks or stored in version control. Certificate security entirely depends on private key security[^5].</p>
-<p><strong>Related</strong>: [[security/private-key-protection]], [[cryptographic-primitives]]</p>
+<p><strong>Related</strong>: <a href="../security/private-key-protection/">Private Key Protection</a>, <a href="../foundations/cryptographic-primitives/">Cryptographic Primitives</a></p>
 <hr />
 <h3 id="public-key">Public Key</h3>
 <p><strong>Definition</strong>: Publicly distributed key in asymmetric cryptography used for signature verification and encryption.</p>
 <p><strong>Context</strong>: Mathematically related to private key but cannot be used to derive it (computationally infeasible). Distributed freely, embedded in certificates. Used by others to encrypt data (only private key holder can decrypt) or verify signatures (proves private key holder created them).</p>
-<p><strong>Related</strong>: [[cryptographic-primitives]], [[certificate-anatomy]]</p>
+<p><strong>Related</strong>: <a href="../foundations/cryptographic-primitives/">Cryptographic Primitives</a>, <a href="../foundations/certificate-anatomy/">Certificate Anatomy</a></p>
 <hr />
 <h3 id="public-key-infrastructure-pki">Public Key Infrastructure (PKI)</h3>
 <p><strong>Definition</strong>: Framework of policies, processes, hardware, software, and people that create, manage, distribute, use, store, and revoke digital certificates.</p>
 <p><strong>Context</strong>: Enables secure communications through certificate-based authentication and encryption. Includes Certificate Authorities, certificates, certificate repositories, revocation systems, and the policies governing their operation. Foundation of internet security (HTTPS, code signing, email encryption)[^3].</p>
-<p><strong>Related</strong>: [[what-is-pki]], [[ca-architecture]], [[trust-models]]</p>
+<p><strong>Related</strong>: <a href="../foundations/what-is-pki/">What Is Pki</a>, <a href="../implementation/ca-architecture/">Ca Architecture</a>, <a href="../foundations/trust-models/">Trust Models</a></p>
 <h2 id="r">R</h2>
 <h3 id="registration-authority-ra">Registration Authority (RA)</h3>
 <p><strong>Definition</strong>: Entity responsible for verifying certificate requests before forwarding approved requests to a Certificate Authority.</p>
 <p><strong>Context</strong>: Acts as intermediary between CA and end entities. Handles identity validation, request approval workflows, and certificate lifecycle management operations. Separates validation functions from signing functions for operational efficiency and security. May be co-located with CA or operated by separate entity[^3].</p>
-<p><strong>Related</strong>: [[what-is-pki]], [[certificate-issuance-workflows]]</p>
+<p><strong>Related</strong>: <a href="../foundations/what-is-pki/">What Is Pki</a>, <a href="../implementation/certificate-issuance-workflows/">Certificate Issuance Workflows</a></p>
 <hr />
 <h3 id="root-certificate">Root Certificate</h3>
 <p><strong>Definition</strong>: Self-signed certificate at the top of a PKI hierarchy that serves as the ultimate trust anchor.</p>
 <p><strong>Context</strong>: Root CA certificates are embedded in operating systems and browsers as trusted certificates. All certificates issued by that CA (directly or through intermediates) inherit trust from the root. Root compromise is catastrophic—entire PKI must be rebuilt and trust redistributed. Should be kept offline for maximum security[^6].</p>
-<p><strong>Related</strong>: [[ca-architecture]], [[trust-models]], [[what-is-pki]]</p>
+<p><strong>Related</strong>: <a href="../implementation/ca-architecture/">Ca Architecture</a>, <a href="../foundations/trust-models/">Trust Models</a>, <a href="../foundations/what-is-pki/">What Is Pki</a></p>
 <hr />
 <h3 id="rsa-rivest-shamir-adleman">RSA (Rivest-Shamir-Adleman)</h3>
 <p><strong>Definition</strong>: Widely-used asymmetric cryptographic algorithm based on the mathematical difficulty of factoring large numbers.</p>
 <p><strong>Context</strong>: Most common algorithm for PKI keys, though ECDSA adoption increasing. Minimum 2048-bit keys for publicly-trusted certificates; 3072-bit or 4096-bit for higher security. Slower than ECDSA but more widely supported by legacy systems. Key size vs. performance tradeoff is significant at scale[^5].</p>
-<p><strong>Related</strong>: [[cryptographic-primitives]], [[certificate-anatomy]]</p>
+<p><strong>Related</strong>: <a href="../foundations/cryptographic-primitives/">Cryptographic Primitives</a>, <a href="../foundations/certificate-anatomy/">Certificate Anatomy</a></p>
 <h2 id="s">S</h2>
 <h3 id="self-signed-certificate">Self-Signed Certificate</h3>
 <p><strong>Definition</strong>: Certificate signed by the same entity whose identity it certifies, rather than by a trusted Certificate Authority.</p>
 <p><strong>Context</strong>: Root CA certificates are necessarily self-signed (no higher authority to sign them). End-entity self-signed certificates aren't trusted by default—users must manually trust them. Common in development/testing but inappropriate for production. Often trigger browser warnings[^3].</p>
-<p><strong>Related</strong>: [[ca-architecture]], [[trust-models]]</p>
+<p><strong>Related</strong>: <a href="../implementation/ca-architecture/">Ca Architecture</a>, <a href="../foundations/trust-models/">Trust Models</a></p>
 <hr />
 <h3 id="serial-number">Serial Number</h3>
 <p><strong>Definition</strong>: Unique identifier assigned by a Certificate Authority to each certificate it issues.</p>
 <p><strong>Context</strong>: Must be unique within a CA's scope. Used for certificate revocation (CRLs list serial numbers). Should be unpredictable—predictable serials enabled historical attacks. Minimum 64 bits of entropy required by CA/Browser Forum[^2].</p>
-<p><strong>Related</strong>: [[certificate-anatomy]]</p>
+<p><strong>Related</strong>: <a href="../foundations/certificate-anatomy/">Certificate Anatomy</a></p>
 <hr />
 <h3 id="subject-alternative-name-san">Subject Alternative Name (SAN)</h3>
 <p><strong>Definition</strong>: X.509 extension containing additional identities bound to the certificate public key.</p>
 <p><strong>Context</strong>: For TLS certificates, this is where hostnames must appear. Can include DNS names, IP addresses, email addresses, and URIs. Modern browsers ignore Common Name (CN) and only check SAN for hostname validation. Wildcard certificates use SAN (e.g., <code>*.example.com</code>)[^3].</p>
-<p><strong>Related</strong>: [[certificate-anatomy]], [[chain-validation-errors]]</p>
+<p><strong>Related</strong>: <a href="../foundations/certificate-anatomy/">Certificate Anatomy</a>, <a href="../troubleshooting/chain-validation-errors/">Chain Validation Errors</a></p>
 <hr />
 <h3 id="subject-distinguished-name">Subject Distinguished Name</h3>
 <p><strong>Definition</strong>: The identity of the entity the certificate represents, structured as an X.500 Distinguished Name.</p>
 <p><strong>Context</strong>: Appears in certificate subject field. For TLS certificates, CN traditionally contained hostname but this is deprecated—SAN extension now required. For organization-validated certificates, includes organization name and location. For Extended Validation, includes extensive organizational details[^3].</p>
-<p><strong>Related</strong>: [[certificate-anatomy]]</p>
+<p><strong>Related</strong>: <a href="../foundations/certificate-anatomy/">Certificate Anatomy</a></p>
 <hr />
 <h3 id="subject-key-identifier-ski">Subject Key Identifier (SKI)</h3>
 <p><strong>Definition</strong>: Unique identifier for the public key in a certificate.</p>
 <p><strong>Context</strong>: Hash of the subject public key. Used for chain building and certificate path validation. Should be present in all CA certificates and recommended for end-entity certificates. Paired with Authority Key Identifier in issued certificates[^3].</p>
-<p><strong>Related</strong>: [[certificate-anatomy]], [[chain-validation-errors]]</p>
+<p><strong>Related</strong>: <a href="../foundations/certificate-anatomy/">Certificate Anatomy</a>, <a href="../troubleshooting/chain-validation-errors/">Chain Validation Errors</a></p>
 <h2 id="t">T</h2>
 <h3 id="trust-anchor">Trust Anchor</h3>
 <p><strong>Definition</strong>: Authoritative entity for which trust is assumed and not derived—typically a root certificate.</p>
 <p><strong>Context</strong>: Starting point for certificate validation. Operating systems and browsers ship with trust stores containing hundreds of root certificates. Organizations can add custom trust anchors for private PKI. Trust anchor compromise undermines entire trust model[^6].</p>
-<p><strong>Related</strong>: [[trust-models]], [[ca-architecture]]</p>
+<p><strong>Related</strong>: <a href="../foundations/trust-models/">Trust Models</a>, <a href="../implementation/ca-architecture/">Ca Architecture</a></p>
 <hr />
 <h3 id="trust-store">Trust Store</h3>
 <p><strong>Definition</strong>: Repository of trusted root certificates used by applications to validate certificate chains.</p>
 <p><strong>Context</strong>: Operating systems maintain system-wide trust stores (Windows Certificate Store, macOS Keychain, Linux ca-certificates bundle). Browsers may use system store or maintain their own (Firefox). Managed through Group Policy, MDM, or manual import. Regular updates add new roots and remove distrusted CAs.</p>
-<p><strong>Related</strong>: [[trust-models]], [[ca-architecture]]</p>
+<p><strong>Related</strong>: <a href="../foundations/trust-models/">Trust Models</a>, <a href="../implementation/ca-architecture/">Ca Architecture</a></p>
 <h2 id="v">V</h2>
 <h3 id="validity-period">Validity Period</h3>
 <p><strong>Definition</strong>: Time window during which a certificate is considered valid, specified by Not Before and Not After dates.</p>
 <p><strong>Context</strong>: Certificates must not be trusted outside validity period. Publicly-trusted TLS certificates limited to 398 days maximum since 2020. Shorter lifetimes improve security through forced rotation but increase operational burden. Private PKI can use longer periods (1-10 years common for internal certificates)[^2].</p>
-<p><strong>Related</strong>: [[certificate-anatomy]], [[certificate-lifecycle-management]]</p>
+<p><strong>Related</strong>: <a href="../foundations/certificate-anatomy/">Certificate Anatomy</a>, <a href="../operations/certificate-lifecycle-management/">Certificate Lifecycle Management</a></p>
 <h2 id="w">W</h2>
 <h3 id="webtrust">WebTrust</h3>
 <p><strong>Definition</strong>: Audit framework for Certificate Authorities operated by the American Institute of CPAs.</p>
 <p><strong>Context</strong>: Required audit for CAs to be trusted by browsers. Covers operational controls, key management, validation processes, and security practices. Annual audits required to maintain trust. Failures can result in browser distrust. Alternative framework is ETSI (used in Europe)[^2].</p>
-<p><strong>Related</strong>: [[ca-architecture]]</p>
+<p><strong>Related</strong>: <a href="../implementation/ca-architecture/">Ca Architecture</a></p>
 <h2 id="x">X</h2>
 <h3 id="x509">X.509</h3>
 <p><strong>Definition</strong>: ITU-T standard defining the format for public key certificates.</p>
 <p><strong>Context</strong>: Specifies certificate structure, encoding (ASN.1), and extensions. Current version is v3 (supports extensions). Universal standard for internet PKI—all publicly-trusted certificates follow X.509 v3 format. Defined in RFC 5280 for internet use[^3].</p>
-<p><strong>Related</strong>: [[x509-standard]], [[certificate-anatomy]]</p>
+<p><strong>Related</strong>: <a href="../standards/x509-standard/">X509 Standard</a>, <a href="../foundations/certificate-anatomy/">Certificate Anatomy</a></p>
 <h2 id="references">References</h2>
 <p>[^1]: Barnes, R., et al. "Automatic Certificate Management Environment (ACME)." RFC 8555, March 2019. <a href="https://www.rfc-editor.org/rfc/rfc8555">Rfc-editor - Rfc8555</a></p>
 <p>[^2]: CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. <a href="https://cabforum.org/baseline-requirements-documents/">Cabforum - Baseline Requirements Documents</a></p>

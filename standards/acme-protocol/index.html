@@ -3320,7 +3320,7 @@
 <p>Before ACME, obtaining certificates required manual processes: generate CSR, prove domain control through email or file verification, wait for CA to issue certificate, manually install certificate, manually renew before expiration. This manual workflow didn't scale for organizations with thousands of certificates or modern cloud-native applications spinning up new services continuously.</p>
 <p>ACME revolutionized PKI automation by standardizing the entire certificate lifecycle as an API-driven protocol. First deployed by Let's Encrypt in 2015, ACME enabled free, automated certificates for millions of websites. The protocol was standardized as RFC 8555[^1] in 2019 and is now supported by multiple Certificate Authorities and implemented in numerous client tools.</p>
 <p>ACME's impact extends beyond Let's Encrypt: it demonstrates how thoughtful protocol design enables automation at massive scale (Let's Encrypt issues over 3 million certificates daily). Understanding ACME is crucial for anyone implementing certificate automation, building cloud infrastructure, or operating modern PKI.</p>
-<p><strong>Related Pages</strong>: [[certificate-lifecycle-management]], [[renewal-automation]], [[tls-protocol]], [[what-is-pki]]</p>
+<p><strong>Related Pages</strong>: <a href="../../operations/certificate-lifecycle-management/">Certificate Lifecycle Management</a>, <a href="../../operations/renewal-automation/">Renewal Automation</a>, <a href="../tls-protocol/">Tls Protocol</a>, <a href="../../foundations/what-is-pki/">What Is Pki</a></p>
 <h2 id="key-concepts">Key Concepts</h2>
 <h3 id="protocol-overview">Protocol Overview</h3>
 <p>ACME defines interactions between three parties:</p>
@@ -4092,10 +4092,10 @@
 </ul>
 <h3 id="advanced-topics">Advanced Topics</h3>
 <ul>
-<li>[[renewal-automation]] - Operational automation strategies</li>
-<li>[[certificate-lifecycle-management]] - Lifecycle management context</li>
-<li>[[tls-protocol]] - How ACME certificates are used</li>
-<li>[[patterns/certificate-as-code]] - Infrastructure as code approaches</li>
+<li><a href="../../operations/renewal-automation/">Renewal Automation</a> - Operational automation strategies</li>
+<li><a href="../../operations/certificate-lifecycle-management/">Certificate Lifecycle Management</a> - Lifecycle management context</li>
+<li><a href="../tls-protocol/">Tls Protocol</a> - How ACME certificates are used</li>
+<li><a href="../../architecture/certificate-as-code/">Certificate As Code</a> - Infrastructure as code approaches</li>
 </ul>
 <h2 id="references">References</h2>
 <p>[^1]: Barnes, R., et al. "Automatic Certificate Management Environment (ACME)." RFC 8555, March 2019. <a href="https://www.rfc-editor.org/rfc/rfc8555">Rfc-editor - Rfc8555</a></p>

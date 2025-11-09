@@ -3506,7 +3506,7 @@
 <p>In asymmetric cryptography, the private key is the secret that must never be exposed. While certificates and public keys are distributed freely, the private key must be protected with extreme rigor. A compromised private key means an attacker can impersonate the legitimate key owner, decrypt previously encrypted traffic (without forward secrecy), and sign malicious content as if it came from a trusted source.</p>
 <p>Private key protection is not a one-time implementation but an ongoing operational discipline. Keys must be protected during generation, storage, usage, backup, and destruction. The protection level must match the key's criticality: a CA root key requires maximum protection (offline HSM, multi-person access), while a short-lived service key may use cloud KMS with automated rotation.</p>
 <p>Every major PKI breach—from DigiNotar to CodeSigning certificate compromises—ultimately traces to inadequate private key protection. Understanding the threat model, implementing appropriate controls, and maintaining operational discipline are non-negotiable for PKI security.</p>
-<p><strong>Related Pages</strong>: [[ca-architecture]], [[hsm-integration]], [[certificate-lifecycle-management]], [[security/ca-compromise-scenarios]]</p>
+<p><strong>Related Pages</strong>: <a href="../../implementation/ca-architecture/">Ca Architecture</a>, <a href="../../implementation/hsm-integration/">Hsm Integration</a>, <a href="../../operations/certificate-lifecycle-management/">Certificate Lifecycle Management</a>, <a href="../ca-compromise-scenarios/">Ca Compromise Scenarios</a></p>
 <h2 id="key-concepts">Key Concepts</h2>
 <h3 id="the-private-key-threat-model">The Private Key Threat Model</h3>
 <h4 id="what-attackers-can-do-with-private-keys">What Attackers Can Do With Private Keys</h4>
@@ -4284,10 +4284,10 @@
 </ul>
 <h3 id="advanced-topics">Advanced Topics</h3>
 <ul>
-<li>[[hsm-integration]] - Hardware Security Module implementation</li>
-<li>[[ca-architecture]] - CA key protection in architecture design</li>
-<li>[[security/ca-compromise-scenarios]] - What happens when keys are compromised</li>
-<li>[[certificate-lifecycle-management]] - Operational key management</li>
+<li><a href="../../implementation/hsm-integration/">Hsm Integration</a> - Hardware Security Module implementation</li>
+<li><a href="../../implementation/ca-architecture/">Ca Architecture</a> - CA key protection in architecture design</li>
+<li><a href="../ca-compromise-scenarios/">Ca Compromise Scenarios</a> - What happens when keys are compromised</li>
+<li><a href="../../operations/certificate-lifecycle-management/">Certificate Lifecycle Management</a> - Operational key management</li>
 </ul>
 <h2 id="references">References</h2>
 <h3 id="standards-and-guidelines">Standards and Guidelines</h3>

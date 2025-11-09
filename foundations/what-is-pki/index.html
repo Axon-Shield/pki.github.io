@@ -2786,7 +2786,7 @@
 <p>Public Key Infrastructure (PKI) is the foundation of modern digital security, enabling secure communications across the internet and within enterprises. At its core, PKI solves a fundamental problem: how can you trust that a digital entity (website, email sender, software publisher) is who they claim to be?</p>
 <p>PKI accomplishes this through a system of digital certificates, cryptographic keys, and trusted authorities. Rather than relying on shared secrets (like passwords), PKI uses asymmetric cryptography where each entity has a pair of mathematically related keys—one private, one public. The private key remains secret, while the public key is distributed openly through digitally signed certificates.</p>
 <p>This system underpins nearly every secure online interaction: HTTPS websites, email encryption, VPN connections, code signing, and device authentication. Understanding PKI is essential for anyone working in cybersecurity, infrastructure, or enterprise IT.</p>
-<p><strong>Related Pages</strong>: [[certificate-anatomy]], [[trust-models]], [[cryptographic-primitives]], [[public-private-key-pairs]]</p>
+<p><strong>Related Pages</strong>: <a href="../certificate-anatomy/">Certificate Anatomy</a>, <a href="../trust-models/">Trust Models</a>, <a href="../cryptographic-primitives/">Cryptographic Primitives</a>, <a href="../public-private-key-pairs/">Public Private Key Pairs</a></p>
 <h2 id="key-concepts">Key Concepts</h2>
 <h3 id="the-trust-problem">The Trust Problem</h3>
 <p>Before PKI, establishing trust in digital communications required pre-shared secrets or out-of-band verification. This didn't scale for internet-wide communications. PKI solves this by introducing trusted third parties—Certificate Authorities (CAs)—that vouch for identities by signing certificates.</p>
@@ -2937,10 +2937,10 @@
 </ul>
 <h3 id="advanced-topics">Advanced Topics</h3>
 <ul>
-<li>[[ca-architecture]] - How to design a CA hierarchy</li>
-<li>[[trust-models]] - Different approaches to establishing trust</li>
-<li>[[certificate-lifecycle-management]] - Operational aspects of PKI</li>
-<li>[[security/ca-compromise-scenarios]] - Understanding and preventing CA failures</li>
+<li><a href="../../implementation/ca-architecture/">Ca Architecture</a> - How to design a CA hierarchy</li>
+<li><a href="../trust-models/">Trust Models</a> - Different approaches to establishing trust</li>
+<li><a href="../../operations/certificate-lifecycle-management/">Certificate Lifecycle Management</a> - Operational aspects of PKI</li>
+<li><a href="../../security/ca-compromise-scenarios/">Ca Compromise Scenarios</a> - Understanding and preventing CA failures</li>
 </ul>
 <h2 id="references">References</h2>
 <p>[^1]: Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." RFC 5280, May 2008. <a href="https://www.rfc-editor.org/rfc/rfc5280">Rfc-editor - Rfc5280</a></p>

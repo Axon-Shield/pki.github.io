@@ -3416,7 +3416,7 @@
 <p>Trust is the fundamental problem that PKI solves: how do you know a certificate claiming to represent "example.com" or "Alice Smith" is legitimate? Trust models provide the framework for answering this question by defining who can vouch for identities and how that vouching is verified.</p>
 <p>The choice of trust model profoundly impacts PKI architecture, operations, and security. Hierarchical trust (used by the internet's TLS PKI) centralizes authority in root Certificate Authorities but provides clear accountability. Web of trust (used by PGP/GPG) distributes trust decisions to individuals but creates complex trust graphs. Bridge CAs enable federation between organizations while maintaining separate PKI hierarchies.</p>
 <p>Understanding trust models is essential for: designing PKI systems, evaluating security properties, implementing certificate validation, troubleshooting trust issues, and selecting appropriate PKI solutions for organizational needs.</p>
-<p><strong>Related Pages</strong>: [[what-is-pki]], [[ca-architecture]], [[certificate-anatomy]], [[x509-standard]]</p>
+<p><strong>Related Pages</strong>: <a href="../what-is-pki/">What Is Pki</a>, <a href="../../implementation/ca-architecture/">Ca Architecture</a>, <a href="../certificate-anatomy/">Certificate Anatomy</a>, <a href="../../standards/x509-standard/">X509 Standard</a></p>
 <h2 id="key-concepts">Key Concepts</h2>
 <h3 id="hierarchical-trust-model">Hierarchical Trust Model</h3>
 <p>The hierarchical trust model organizes Certificate Authorities in a tree structure with root CAs at the top. This is the dominant model for internet PKI and most enterprise implementations.</p>
@@ -4080,10 +4080,10 @@
 </ul>
 <h3 id="advanced-topics">Advanced Topics</h3>
 <ul>
-<li>[[ca-architecture]] - Designing CA hierarchies</li>
-<li>[[x509-standard]] - Certificate format and extensions</li>
-<li>[[certificate-anatomy]] - Understanding certificate structure</li>
-<li>[[chain-validation-errors]] - Troubleshooting validation failures</li>
+<li><a href="../../implementation/ca-architecture/">Ca Architecture</a> - Designing CA hierarchies</li>
+<li><a href="../../standards/x509-standard/">X509 Standard</a> - Certificate format and extensions</li>
+<li><a href="../certificate-anatomy/">Certificate Anatomy</a> - Understanding certificate structure</li>
+<li><a href="../../troubleshooting/chain-validation-errors/">Chain Validation Errors</a> - Troubleshooting validation failures</li>
 </ul>
 <h2 id="references">References</h2>
 <p>[^1]: CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. <a href="https://cabforum.org/baseline-requirements-documents/">Cabforum - Baseline Requirements Documents</a></p>

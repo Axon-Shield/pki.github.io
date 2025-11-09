@@ -3380,7 +3380,7 @@
 <p>Hardware Security Modules represent the gold standard for cryptographic key protection. Unlike software-based key storage where keys reside in files or databases (vulnerable to memory dumps, disk access, and software exploits), HSMs store keys in tamper-resistant hardware where they can never be extracted in plaintext. All cryptographic operations occur within the HSM boundary, with only ciphertext or signatures leaving the device.</p>
 <p>HSMs range from enterprise network-attached devices costing tens of thousands of dollars (Thales Luna, Entrust nShield) to cloud HSM services (AWS CloudHSM, Azure Dedicated HSM) to USB tokens (YubiKey HSM). The common thread is FIPS 140-2 certification, hardware key protection, and the PKCS#11 API standard for application integration.</p>
 <p>Understanding HSM integration is critical for: operating Certificate Authorities (where root and intermediate keys must reside in HSMs), implementing code signing infrastructure (where signing keys require hardware protection), deploying high-security PKI (government, finance, healthcare), and meeting compliance requirements (PCI DSS, HIPAA, eIDAS).</p>
-<p><strong>Related Pages</strong>: [[ca-architecture]], [[security/private-key-protection]], [[pkcs-standards]], [[certificate-issuance-workflows]]</p>
+<p><strong>Related Pages</strong>: <a href="../ca-architecture/">Ca Architecture</a>, <a href="../../security/private-key-protection/">Private Key Protection</a>, <a href="../../standards/pkcs-standards/">Pkcs Standards</a>, <a href="../certificate-issuance-workflows/">Certificate Issuance Workflows</a></p>
 <h2 id="key-concepts">Key Concepts</h2>
 <h3 id="hsm-architecture">HSM Architecture</h3>
 <h4 id="hardware-components">Hardware Components</h4>
@@ -4242,10 +4242,10 @@
 </ul>
 <h3 id="advanced-topics">Advanced Topics</h3>
 <ul>
-<li>[[ca-architecture]] - HSM role in CA design</li>
-<li>[[security/private-key-protection]] - Key protection strategies</li>
-<li>[[pkcs-standards]] - PKCS#11 in detail</li>
-<li>[[certificate-issuance-workflows]] - Using HSM in certificate issuance</li>
+<li><a href="../ca-architecture/">Ca Architecture</a> - HSM role in CA design</li>
+<li><a href="../../security/private-key-protection/">Private Key Protection</a> - Key protection strategies</li>
+<li><a href="../../standards/pkcs-standards/">Pkcs Standards</a> - PKCS#11 in detail</li>
+<li><a href="../certificate-issuance-workflows/">Certificate Issuance Workflows</a> - Using HSM in certificate issuance</li>
 </ul>
 <h2 id="references">References</h2>
 <p>[^1]: NIST. "Security Requirements for Cryptographic Modules." FIPS 140-2, May 2001. <a href="https://csrc.nist.gov/publications/detail/fips/140/2/final">Nist - Detail</a></p>

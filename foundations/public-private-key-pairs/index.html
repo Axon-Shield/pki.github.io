@@ -3164,7 +3164,7 @@
 <p>The breakthrough of asymmetric cryptography in the 1970s (Diffie-Hellman, RSA) revolutionized secure communications. Before asymmetric crypto, parties needed to exchange secret keys through secure channels—an impossible requirement for internet-scale communications. Asymmetric cryptography solved this: two mathematically related keys where knowing one doesn't reveal the other.</p>
 <p>The elegance of public-private key pairs is their dual functionality: what one key encrypts, only the other can decrypt; what one key signs, the other can verify. This enables strangers to communicate securely and verify identities without ever meeting or establishing prior trust—the fundamental enabler of e-commerce, secure communications, and the modern internet.</p>
 <p>Understanding key pairs is foundational to PKI: how certificates work, why private keys must be protected, how signatures provide authentication, and why key management is critical operational discipline.</p>
-<p><strong>Related Pages</strong>: [[cryptographic-primitives]], [[what-is-pki]], [[certificate-anatomy]], [[security/private-key-protection]]</p>
+<p><strong>Related Pages</strong>: <a href="../cryptographic-primitives/">Cryptographic Primitives</a>, <a href="../what-is-pki/">What Is Pki</a>, <a href="../certificate-anatomy/">Certificate Anatomy</a>, <a href="../../security/private-key-protection/">Private Key Protection</a></p>
 <h2 id="key-concepts">Key Concepts</h2>
 <h3 id="mathematical-relationship">Mathematical Relationship</h3>
 <p>Public and private keys are mathematically related through one-way functions: computations easy in one direction but infeasible to reverse.</p>
@@ -3810,10 +3810,10 @@ Enforces key purpose separation:
 </ul>
 <h3 id="advanced-topics">Advanced Topics</h3>
 <ul>
-<li>[[cryptographic-primitives]] - Mathematical foundations</li>
-<li>[[security/private-key-protection]] - Protecting private keys</li>
-<li>[[certificate-anatomy]] - How public keys appear in certificates</li>
-<li>[[ca-architecture]] - CA key management</li>
+<li><a href="../cryptographic-primitives/">Cryptographic Primitives</a> - Mathematical foundations</li>
+<li><a href="../../security/private-key-protection/">Private Key Protection</a> - Protecting private keys</li>
+<li><a href="../certificate-anatomy/">Certificate Anatomy</a> - How public keys appear in certificates</li>
+<li><a href="../../implementation/ca-architecture/">Ca Architecture</a> - CA key management</li>
 </ul>
 <h2 id="references">References</h2>
 <p>[^1]: NIST. "Recommendation for Key Management." NIST SP 800-57 Part 1 Rev. 5, May 2020. <a href="https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final">Nist - Detail</a></p>

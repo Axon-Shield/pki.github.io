@@ -3350,7 +3350,7 @@
 <p>Certificate revocation solves a fundamental PKI problem: what happens when a certificate must be invalidated before its expiration date? Private key compromise, organizational changes, certificate misissuance, and other events require immediate certificate invalidation. Without revocation mechanisms, compromised certificates remain trusted until expiration—potentially years.</p>
 <p>The PKI community has developed two primary revocation mechanisms with different trade-offs. Certificate Revocation Lists (CRLs), standardized in X.509 since the beginning, provide a periodically updated list of revoked certificates. Online Certificate Status Protocol (OCSP), defined in RFC 6960[^1], enables real-time revocation queries. Modern implementations often use OCSP Stapling, where servers provide OCSP responses directly, improving performance and privacy.</p>
 <p>Understanding revocation is essential for: operating secure PKI systems, troubleshooting certificate validation failures, implementing proper revocation checking, and assessing PKI security posture. The gap between revocation theory and practice—often called the "revocation problem"—remains one of PKI's persistent challenges.</p>
-<p><strong>Related Pages</strong>: [[certificate-anatomy]], [[x509-standard]], [[tls-protocol]], [[certificate-lifecycle-management]]</p>
+<p><strong>Related Pages</strong>: <a href="../../foundations/certificate-anatomy/">Certificate Anatomy</a>, <a href="../x509-standard/">X509 Standard</a>, <a href="../tls-protocol/">Tls Protocol</a>, <a href="../../operations/certificate-lifecycle-management/">Certificate Lifecycle Management</a></p>
 <h2 id="key-concepts">Key Concepts</h2>
 <h3 id="certificate-revocation-lists-crls">Certificate Revocation Lists (CRLs)</h3>
 <p>CRLs are signed data structures listing revoked certificates, published periodically by Certificate Authorities.</p>
@@ -4194,10 +4194,10 @@
 </ul>
 <h3 id="advanced-topics">Advanced Topics</h3>
 <ul>
-<li>[[certificate-lifecycle-management]] - Managing certificate revocation operationally</li>
-<li>[[tls-protocol]] - How revocation checking fits into TLS</li>
-<li>[[certificate-anatomy]] - CRL Distribution Points extension</li>
-<li>[[troubleshooting/chain-validation-errors]] - Debugging revocation failures</li>
+<li><a href="../../operations/certificate-lifecycle-management/">Certificate Lifecycle Management</a> - Managing certificate revocation operationally</li>
+<li><a href="../tls-protocol/">Tls Protocol</a> - How revocation checking fits into TLS</li>
+<li><a href="../../foundations/certificate-anatomy/">Certificate Anatomy</a> - CRL Distribution Points extension</li>
+<li><a href="../../troubleshooting/chain-validation-errors/">Chain Validation Errors</a> - Debugging revocation failures</li>
 </ul>
 <h2 id="references">References</h2>
 <p>[^1]: Santesson, S., et al. "X.509 Internet Public Key Infrastructure Online Certificate Status Protocol - OCSP." RFC 6960, June 2013. <a href="https://www.rfc-editor.org/rfc/rfc6960">Rfc-editor - Rfc6960</a></p>

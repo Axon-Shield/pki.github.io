@@ -2936,7 +2936,7 @@
 <p>An X.509 certificate is a structured data format defined by RFC 5280[^1] that binds a public key to an identity through a digital signature. Think of it as a tamper-evident digital passport that contains identification information, a cryptographic key, usage constraints, and an authoritative signature.</p>
 <p>Certificates are encoded using ASN.1 (Abstract Syntax Notation One) and typically represented in DER (binary) or PEM (base64-encoded) format. While the encoding is complex, the logical structure follows a clear hierarchy designed for machine parsing and cryptographic verification.</p>
 <p>Understanding certificate anatomy is critical for: validating trust chains, diagnosing SSL/TLS errors, implementing certificate generation, configuring proper extensions, and performing security assessments.</p>
-<p><strong>Related Pages</strong>: [[what-is-pki]], [[x509-standard]], [[trust-models]], [[chain-validation-errors]]</p>
+<p><strong>Related Pages</strong>: <a href="../what-is-pki/">What Is Pki</a>, <a href="../../standards/x509-standard/">X509 Standard</a>, <a href="../trust-models/">Trust Models</a>, <a href="../../troubleshooting/chain-validation-errors/">Chain Validation Errors</a></p>
 <h2 id="key-concepts">Key Concepts</h2>
 <h3 id="certificate-structure-overview">Certificate Structure Overview</h3>
 <p>An X.509 v3 certificate consists of three main components:</p>
@@ -3158,10 +3158,10 @@
 </ul>
 <h3 id="advanced-topics">Advanced Topics</h3>
 <ul>
-<li>[[x509-standard]] - Deep dive into X.509 standard</li>
-<li>[[chain-validation-errors]] - Troubleshooting certificate validation</li>
-<li>[[certificate-issuance-workflows]] - How CAs generate certificates</li>
-<li>[[cryptographic-primitives]] - Understanding the cryptography behind certificates</li>
+<li><a href="../../standards/x509-standard/">X509 Standard</a> - Deep dive into X.509 standard</li>
+<li><a href="../../troubleshooting/chain-validation-errors/">Chain Validation Errors</a> - Troubleshooting certificate validation</li>
+<li><a href="../../implementation/certificate-issuance-workflows/">Certificate Issuance Workflows</a> - How CAs generate certificates</li>
+<li><a href="../cryptographic-primitives/">Cryptographic Primitives</a> - Understanding the cryptography behind certificates</li>
 </ul>
 <h2 id="references">References</h2>
 <p>[^1]: Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." RFC 5280, May 2008. <a href="https://www.rfc-editor.org/rfc/rfc5280">Rfc-editor - Rfc5280</a></p>
