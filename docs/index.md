@@ -59,7 +59,7 @@ Welcome to your comprehensive reference for Public Key Infrastructure and certif
 - Vendor Comparison Matrix *(coming soon)* - Side-by-side evaluation
 
 ### 🎨 Architecture Patterns
-- Zero-Trust Architecture *(coming soon)* - Certificates in zero-trust
+- [Zero-Trust Architecture](architecture/zero-trust-architecture.md) - Certificates in zero-trust
 - Service Mesh Certificates *(coming soon)* - Istio, Linkerd, Consul
 - Mutual TLS Patterns *(coming soon)* - Client authentication
 - Certificate-as-Code *(coming soon)* - Infrastructure as code approaches
@@ -126,7 +126,7 @@ Every page in this knowledge base includes:
 
 **Version**: 1.0 (Initial Release)  
 **Last Updated**: November 9, 2024  
-**Completed Pages**: 30  
+**Completed Pages**: 31  
 **In Progress**: Expanding all categories
 
 This knowledge base is actively maintained and expanded based on:

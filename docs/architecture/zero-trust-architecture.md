@@ -1,0 +1,976 @@
+# Zero-Trust Architecture
+
+## Overview
+
+Zero-trust architecture represents a fundamental shift from perimeter-based security to identity-based security. The core principle: "never trust, always verify" means that every request, from any source, must be authenticated and authorized regardless of network location. Certificates become the primary mechanism for establishing identity in zero-trust networks, transforming PKI from supporting infrastructure to critical security foundation.
+
+**Core principle**: In zero-trust, certificates are not just for TLS encryption—they are the identity layer. Every workload, service, device, and user proves identity through cryptographic certificates, enabling fine-grained access control and continuous verification.
+
+## Zero-Trust Principles and PKI
+
+### Traditional Perimeter Model vs Zero-Trust
+
+**Traditional perimeter security**:
+```
+                    Firewall
+         Untrusted  │  Trusted
+    ─────────────────┼─────────────────
+         Internet   │  Internal Network
+                    │  
+    [Attackers]     │  [Users & Services]
+                    │  - Implicitly trusted
+                    │  - Lateral movement easy
+                    │  - Single authentication
+```
+
+**Zero-trust model**:
+```
+        Every Request Authenticated & Authorized
+    ───────────────────────────────────────────────
+    
+    [User/Device] ──(cert auth)──> [Policy Engine]
+                                         │
+                                         ├──> Allow/Deny
+                                         │
+    [Service A] ──(cert auth)──> [Service B]
+         │                            │
+         └──────(mutual TLS)──────────┘
+    
+    - No implicit trust
+    - Verify every transaction
+    - Least privilege access
+    - Continuous authentication
+```
+
+### Certificates as Identity
+
+In zero-trust, certificates carry identity attributes:
+
+```python
+class ZeroTrustIdentityCertificate:
+    """
+    Certificate structure for zero-trust identity
+    """
+    
+    def __init__(self):
+        self.certificate_structure = {
+            'subject': {
+                'common_name': 'service-payment-api',
+                'organization': 'Example Corp',
+                'organizational_unit': 'payments-team'
+            },
+            
+            # Critical: Identity attributes in SANs
+            'subject_alternative_names': {
+                'dns': [
+                    'payment-api.prod.example.com',
+                    'payment-api.internal.example.com'
+                ],
+                'uri': [
+                    'spiffe://example.com/payments/api',  # SPIFFE ID
+                ],
+                'email': []  # Not used for service identity
+            },
+            
+            # Extended Key Usage defines what certificate can do
+            'extended_key_usage': [
+                'serverAuth',  # Can serve as server
+                'clientAuth'   # Can authenticate as client
+            ],
+            
+            # Custom extensions for zero-trust attributes
+            'custom_extensions': {
+                # Team/ownership
+                'team': 'payments',
+                'owner': 'payments-team@example.com',
+                
+                # Environment
+                'environment': 'production',
+                'region': 'us-east-1',
+                'availability_zone': 'us-east-1a',
+                
+                # Workload metadata
+                'workload_type': 'api-service',
+                'security_tier': 'high',
+                'data_classification': 'pii',
+                
+                # Policy selectors
+                'policies': ['pci-compliance', 'encryption-required']
+            },
+            
+            # Short validity for zero-trust (1-24 hours typical)
+            'validity': {
+                'not_before': datetime.now(),
+                'not_after': datetime.now() + timedelta(hours=24)
+            }
+        }
+```
+
+### Policy-Based Access Control
+
+Certificate attributes drive authorization decisions:
+
+```python
+class ZeroTrustPolicyEngine:
+    """
+    Evaluate access requests based on certificate identity
+    """
+    
+    def evaluate_access(self, 
+                       client_cert: Certificate,
+                       server_cert: Certificate,
+                       requested_resource: str,
+                       requested_action: str) -> PolicyDecision:
+        """
+        Determine if client can access server resource
+        """
+        decision = PolicyDecision()
+        
+        # Extract identity from certificates
+        client_identity = self.extract_identity(client_cert)
+        server_identity = self.extract_identity(server_cert)
+        
+        # Policy rule evaluation
+        rules = self.get_applicable_policies(
+            client_identity,
+            server_identity,
+            requested_resource
+        )
+        
+        for rule in rules:
+            # Example rule: payments team can access payment APIs
+            if (client_identity.team == 'payments' and
+                server_identity.workload_type == 'payment-api' and
+                requested_action in ['read', 'write']):
+                
+                decision.allow = True
+                decision.reason = "Team access policy"
+                decision.applied_rule = rule.id
+                break
+            
+            # Example rule: no cross-environment access
+            if client_identity.environment != server_identity.environment:
+                decision.allow = False
+                decision.reason = "Cross-environment access denied"
+                decision.applied_rule = rule.id
+                break
+            
+            # Example rule: require encryption for PII
+            if server_identity.data_classification == 'pii':
+                if not self.verify_encryption(client_cert):
+                    decision.allow = False
+                    decision.reason = "Encryption required for PII access"
+                    break
+        
+        # Log decision for audit
+        self.audit_log(client_identity, server_identity, decision)
+        
+        return decision
+```
+
+## SPIFFE/SPIRE Integration
+
+### SPIFFE (Secure Production Identity Framework for Everyone)
+
+SPIFFE defines standard for service identity in dynamic environments:
+
+```python
+class SPIFFEIdentity:
+    """
+    SPIFFE identity structure
+    """
+    
+    def __init__(self, spiffe_id: str):
+        # SPIFFE ID format: spiffe://trust-domain/path
+        # Example: spiffe://example.com/payments/api/v1
+        self.spiffe_id = spiffe_id
+        
+        # Parse components
+        self.trust_domain = self.parse_trust_domain(spiffe_id)
+        self.path = self.parse_path(spiffe_id)
+    
+    def parse_trust_domain(self, spiffe_id: str) -> str:
+        """Extract trust domain from SPIFFE ID"""
+        # spiffe://example.com/... -> example.com
+        return spiffe_id.split('//')[1].split('/')[0]
+    
+    def parse_path(self, spiffe_id: str) -> str:
+        """Extract path from SPIFFE ID"""
+        # spiffe://example.com/payments/api -> /payments/api
+        parts = spiffe_id.split('/')
+        return '/' + '/'.join(parts[3:])
+    
+    def matches_workload(self, workload: dict) -> bool:
+        """
+        Check if SPIFFE ID matches workload selector
+        """
+        # Workload selectors: kubernetes namespace, pod, etc.
+        if workload['type'] == 'kubernetes':
+            expected_path = (
+                f"/ns/{workload['namespace']}"
+                f"/sa/{workload['service_account']}"
+            )
+            return self.path == expected_path
+        
+        return False
+```
+
+### SPIRE (SPIFFE Runtime Environment)
+
+SPIRE automatically issues and rotates certificates based on workload identity:
+
+```yaml
+# SPIRE Server Configuration
+server:
+  bind_address: "0.0.0.0"
+  bind_port: "8081"
+  trust_domain: "example.com"
+  data_dir: "/opt/spire/data/server"
+  
+  # CA configuration
+  ca_subject:
+    country: ["US"]
+    organization: ["Example Corp"]
+    common_name: "Example SPIRE Server"
+  
+  # Certificate TTL for workloads
+  default_svid_ttl: "1h"
+  
+  # Plugins
+  plugins:
+    DataStore:
+      sql:
+        plugin_data:
+          database_type: "postgres"
+          connection_string: "postgresql://spire@localhost/spire"
+    
+    KeyManager:
+      disk:
+        plugin_data:
+          keys_path: "/opt/spire/data/keys.json"
+    
+    NodeAttestor:
+      k8s_sat:  # Kubernetes Service Account Token
+        plugin_data:
+          cluster: "production-cluster"
+    
+    UpstreamAuthority:
+      disk:  # Or integrate with your enterprise CA
+        plugin_data:
+          cert_file_path: "/opt/spire/conf/upstream-ca.crt"
+          key_file_path: "/opt/spire/conf/upstream-ca.key"
+
+# Registration entry example
+registration_entries:
+  - spiffe_id: "spiffe://example.com/payments/api"
+    parent_id: "spiffe://example.com/k8s-node"
+    selectors:
+      - "k8s:ns:payments"
+      - "k8s:sa:payment-api"
+    ttl: 3600
+    dns_names:
+      - "payment-api.payments.svc.cluster.local"
+```
+
+**SPIRE workflow**:
+
+```python
+class SPIREWorkloadAttestor:
+    """
+    SPIRE workload attestation and certificate issuance
+    """
+    
+    def attest_workload(self, workload_request: dict) -> Certificate:
+        """
+        Attest workload identity and issue SVID (SPIFFE Verifiable Identity Document)
+        """
+        # 1. Node attestation - verify the node is trusted
+        node_identity = self.attest_node(
+            workload_request['node_id'],
+            workload_request['attestation_data']
+        )
+        
+        if not node_identity.verified:
+            raise AttestationError("Node attestation failed")
+        
+        # 2. Workload attestation - verify workload running on node
+        workload_selectors = self.get_workload_selectors(workload_request)
+        
+        # Example: Kubernetes pod attestation
+        if workload_selectors['type'] == 'kubernetes':
+            k8s_verified = self.verify_kubernetes_workload(
+                namespace=workload_selectors['namespace'],
+                service_account=workload_selectors['service_account'],
+                pod_uid=workload_selectors['pod_uid']
+            )
+            
+            if not k8s_verified:
+                raise AttestationError("Workload attestation failed")
+        
+        # 3. Find matching registration entry
+        registration = self.find_registration_entry(workload_selectors)
+        
+        if not registration:
+            raise AttestationError("No registration entry found")
+        
+        # 4. Issue X.509-SVID (certificate with SPIFFE ID)
+        svid = self.issue_svid(
+            spiffe_id=registration.spiffe_id,
+            dns_names=registration.dns_names,
+            ttl=registration.ttl
+        )
+        
+        return svid
+    
+    def issue_svid(self, spiffe_id: str, 
+                   dns_names: List[str],
+                   ttl: int) -> Certificate:
+        """
+        Issue short-lived certificate with SPIFFE ID
+        """
+        # Generate key pair (or use provided CSR)
+        private_key = generate_ecdsa_key(curve='P-256')
+        
+        # Create certificate
+        certificate = Certificate(
+            subject={'CN': spiffe_id},
+            subject_alternative_names={
+                'URI': [spiffe_id],  # SPIFFE ID in URI SAN
+                'DNS': dns_names
+            },
+            validity=timedelta(seconds=ttl),
+            key_usage=['digitalSignature', 'keyEncipherment'],
+            extended_key_usage=['serverAuth', 'clientAuth']
+        )
+        
+        # Sign with SPIRE CA
+        signed_cert = self.ca.sign(certificate, private_key)
+        
+        return signed_cert
+```
+
+## Workload Identity
+
+### Automatic Certificate Issuance
+
+Zero-trust requires certificates for every workload:
+
+```python
+class WorkloadCertificateManager:
+    """
+    Automatically issue and rotate certificates for workloads
+    """
+    
+    def __init__(self):
+        self.spire_agent = SPIREAgent()
+        self.cert_cache = {}
+    
+    async def get_workload_certificate(self, 
+                                       workload_id: str) -> Certificate:
+        """
+        Get certificate for workload, issuing if needed
+        """
+        # Check cache
+        if workload_id in self.cert_cache:
+            cert = self.cert_cache[workload_id]
+            if not cert.is_expired() and not cert.expiring_soon():
+                return cert
+        
+        # Attest workload identity
+        attestation = await self.spire_agent.attest()
+        
+        # Request SVID from SPIRE server
+        svid_response = await self.spire_agent.fetch_svid(
+            attestation=attestation
+        )
+        
+        certificate = svid_response.certificate
+        private_key = svid_response.private_key
+        
+        # Cache for reuse
+        self.cert_cache[workload_id] = certificate
+        
+        # Schedule automatic rotation
+        self.schedule_rotation(
+            workload_id,
+            rotate_at=certificate.not_after - timedelta(minutes=5)
+        )
+        
+        return certificate
+    
+    async def rotate_certificate(self, workload_id: str):
+        """
+        Automatically rotate certificate before expiry
+        """
+        # Request new certificate
+        new_cert = await self.get_workload_certificate(workload_id)
+        
+        # Update application
+        await self.update_application_cert(workload_id, new_cert)
+        
+        # Continue serving with new certificate
+        logger.info(f"Rotated certificate for {workload_id}")
+```
+
+### Device Identity
+
+Extend zero-trust to end-user devices:
+
+```python
+class DeviceIdentityCertificate:
+    """
+    Issue certificates to user devices for zero-trust access
+    """
+    
+    def issue_device_certificate(self, device: dict, user: dict) -> Certificate:
+        """
+        Issue certificate combining device and user identity
+        """
+        # Device attestation
+        device_trusted = self.verify_device_compliance(device)
+        if not device_trusted:
+            raise DeviceNotCompliant("Device failed security checks")
+        
+        # User authentication
+        user_authenticated = self.authenticate_user(user)
+        if not user_authenticated:
+            raise AuthenticationError("User authentication failed")
+        
+        # Create certificate with both identities
+        certificate = Certificate(
+            subject={
+                'CN': f"{user['email']}@{device['id']}",
+                'O': 'Example Corp',
+                'OU': user['department']
+            },
+            subject_alternative_names={
+                'email': [user['email']],
+                'URI': [f"device:{device['id']}"]
+            },
+            extensions={
+                # Custom extensions for policy decisions
+                'device_id': device['id'],
+                'device_os': device['operating_system'],
+                'device_compliance': device['compliance_status'],
+                'user_id': user['id'],
+                'user_role': user['role'],
+                'security_clearance': user['clearance_level']
+            },
+            # Short validity for device certificates
+            validity=timedelta(hours=8),  # Work day
+            key_usage=['digitalSignature', 'keyEncipherment'],
+            extended_key_usage=['clientAuth']
+        )
+        
+        return self.ca.issue(certificate)
+    
+    def verify_device_compliance(self, device: dict) -> bool:
+        """
+        Check device meets security requirements
+        """
+        checks = {
+            'os_updated': device['os_version'] >= self.min_os_version,
+            'disk_encrypted': device['disk_encryption_enabled'],
+            'firewall_enabled': device['firewall_status'] == 'on',
+            'antivirus_updated': device['antivirus_updated'],
+            'screen_lock': device['screen_lock_enabled'],
+            'mdm_enrolled': device['mdm_enrolled']
+        }
+        
+        return all(checks.values())
+```
+
+## Mutual TLS in Zero-Trust
+
+### Continuous Authentication
+
+Every connection requires mutual TLS:
+
+```python
+class ZeroTrustMutualTLS:
+    """
+    Enforce mutual TLS for all service-to-service communication
+    """
+    
+    def establish_connection(self, 
+                            client_cert: Certificate,
+                            server_address: str) -> Connection:
+        """
+        Establish mTLS connection with policy enforcement
+        """
+        # 1. Verify client certificate
+        if not self.verify_certificate(client_cert):
+            raise CertificateInvalid("Client certificate verification failed")
+        
+        # 2. Connect to server with mTLS
+        context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
+        context.load_cert_chain(
+            certfile=client_cert.cert_path,
+            keyfile=client_cert.key_path
+        )
+        
+        # Require server certificate verification
+        context.check_hostname = True
+        context.verify_mode = ssl.CERT_REQUIRED
+        
+        # 3. Establish connection
+        sock = socket.create_connection((server_address, 443))
+        tls_sock = context.wrap_socket(sock, server_hostname=server_address)
+        
+        # 4. Verify server certificate and extract identity
+        server_cert = tls_sock.getpeercert()
+        server_identity = self.extract_identity(server_cert)
+        
+        # 5. Policy evaluation
+        policy_decision = self.policy_engine.evaluate(
+            client_identity=self.extract_identity(client_cert),
+            server_identity=server_identity,
+            requested_action='connect'
+        )
+        
+        if not policy_decision.allow:
+            tls_sock.close()
+            raise PolicyDenied(policy_decision.reason)
+        
+        # 6. Continuous monitoring
+        self.monitor_connection(tls_sock, policy_decision)
+        
+        return tls_sock
+    
+    def monitor_connection(self, connection: ssl.SSLSocket, 
+                          policy: PolicyDecision):
+        """
+        Continuous verification during connection lifetime
+        """
+        # Verify certificate hasn't been revoked
+        if self.check_revocation(connection.getpeercert()):
+            connection.close()
+            raise CertificateRevoked()
+        
+        # Verify policy hasn't changed
+        current_policy = self.policy_engine.evaluate_current(policy)
+        if not current_policy.allow:
+            connection.close()
+            raise PolicyChanged()
+```
+
+### Policy Enforcement Points
+
+Enforce zero-trust at every network hop:
+
+```
+    Client          Proxy           Service
+      │               │               │
+      │──mTLS + cert──>│               │
+      │               │──cert check──>│
+      │               │<─policy resp──│
+      │               │               │
+      │               │──mTLS + cert──>│
+      │               │               │
+      │<───response────────────────────│
+```
+
+## Integration Patterns
+
+### API Gateway Integration
+
+Zero-trust API gateway:
+
+```python
+class ZeroTrustAPIGateway:
+    """
+    API gateway with certificate-based authentication
+    """
+    
+    def handle_request(self, request: HTTPRequest) -> HTTPResponse:
+        """
+        Process API request with zero-trust principles
+        """
+        # 1. Extract client certificate from TLS
+        client_cert = request.peer_certificate
+        if not client_cert:
+            return HTTPResponse(401, "Certificate required")
+        
+        # 2. Verify certificate
+        verification = self.verify_certificate(client_cert)
+        if not verification.valid:
+            return HTTPResponse(403, f"Certificate invalid: {verification.reason}")
+        
+        # 3. Extract identity
+        identity = self.extract_identity(client_cert)
+        
+        # 4. Determine target service
+        target_service = self.route_to_service(request.path)
+        
+        # 5. Policy evaluation
+        policy = self.evaluate_policy(
+            client_identity=identity,
+            target_service=target_service,
+            requested_method=request.method,
+            requested_path=request.path
+        )
+        
+        if not policy.allow:
+            self.audit_log(identity, request, "DENIED", policy.reason)
+            return HTTPResponse(403, f"Access denied: {policy.reason}")
+        
+        # 6. Forward to backend with client identity
+        backend_request = self.prepare_backend_request(request, identity)
+        response = self.forward_to_backend(target_service, backend_request)
+        
+        # 7. Audit
+        self.audit_log(identity, request, "ALLOWED", response.status)
+        
+        return response
+    
+    def prepare_backend_request(self, 
+                                original_request: HTTPRequest,
+                                client_identity: Identity) -> HTTPRequest:
+        """
+        Add identity information to backend request
+        """
+        # Add identity headers for backend
+        headers = original_request.headers.copy()
+        headers['X-Client-Spiffe-Id'] = client_identity.spiffe_id
+        headers['X-Client-Team'] = client_identity.team
+        headers['X-Client-Environment'] = client_identity.environment
+        
+        # Create new request to backend with mTLS
+        backend_request = HTTPRequest(
+            method=original_request.method,
+            path=original_request.path,
+            headers=headers,
+            body=original_request.body,
+            client_cert=self.gateway_cert  # Gateway's certificate
+        )
+        
+        return backend_request
+```
+
+### Kubernetes Integration
+
+Zero-trust in Kubernetes using SPIRE:
+
+```yaml
+# SPIRE Agent DaemonSet
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: spire-agent
+  namespace: spire
+spec:
+  selector:
+    matchLabels:
+      app: spire-agent
+  template:
+    metadata:
+      labels:
+        app: spire-agent
+    spec:
+      hostPID: true
+      hostNetwork: true
+      containers:
+      - name: spire-agent
+        image: gcr.io/spiffe-io/spire-agent:latest
+        args:
+          - "-config"
+          - "/run/spire/config/agent.conf"
+        volumeMounts:
+          - name: spire-config
+            mountPath: /run/spire/config
+          - name: spire-socket
+            mountPath: /run/spire/sockets
+        securityContext:
+          privileged: true
+      volumes:
+        - name: spire-config
+          configMap:
+            name: spire-agent
+        - name: spire-socket
+          hostPath:
+            path: /run/spire/sockets
+            type: DirectoryOrCreate
+
+---
+# Application using SPIRE for identity
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-api
+  namespace: payments
+spec:
+  replicas: 3
+  template:
+    spec:
+      serviceAccountName: payment-api
+      containers:
+      - name: payment-api
+        image: example/payment-api:v1.0
+        volumeMounts:
+          # Mount SPIRE socket for certificate access
+          - name: spire-socket
+            mountPath: /run/spire/sockets
+            readOnly: true
+        env:
+          - name: SPIFFE_ENDPOINT_SOCKET
+            value: unix:///run/spire/sockets/agent.sock
+      volumes:
+        - name: spire-socket
+          hostPath:
+            path: /run/spire/sockets
+            type: Directory
+```
+
+Application code accessing SPIRE:
+
+```python
+import grpc
+from spiffe import WorkloadApiClient
+
+class ZeroTrustApplication:
+    """
+    Application using SPIRE for zero-trust identity
+    """
+    
+    def __init__(self):
+        # Connect to SPIRE agent via Unix socket
+        self.spiffe_client = WorkloadApiClient(
+            '/run/spire/sockets/agent.sock'
+        )
+    
+    def get_identity(self):
+        """
+        Get application identity from SPIRE
+        """
+        # Fetch X.509-SVID
+        svid = self.spiffe_client.fetch_x509_svid()
+        
+        return {
+            'spiffe_id': svid.spiffe_id.id,
+            'certificate': svid.cert,
+            'private_key': svid.private_key,
+            'trust_bundle': svid.trust_bundle
+        }
+    
+    def call_remote_service(self, service_url: str, data: dict):
+        """
+        Make zero-trust service-to-service call
+        """
+        # Get our identity
+        identity = self.get_identity()
+        
+        # Create mTLS channel
+        credentials = grpc.ssl_channel_credentials(
+            root_certificates=identity['trust_bundle'],
+            private_key=identity['private_key'],
+            certificate_chain=identity['certificate']
+        )
+        
+        channel = grpc.secure_channel(service_url, credentials)
+        
+        # Make call - mTLS automatic
+        # Server will verify our certificate and make policy decision
+        response = self.stub.ProcessPayment(request)
+        
+        return response
+```
+
+## Short-Lived Certificates
+
+Zero-trust certificates are typically short-lived (hours, not days):
+
+```python
+class ShortLivedCertificateManager:
+    """
+    Manage certificates with very short validity periods
+    """
+    
+    def __init__(self):
+        self.default_ttl = timedelta(hours=1)
+        self.rotation_threshold = timedelta(minutes=5)
+    
+    def issue_certificate(self, identity: Identity) -> Certificate:
+        """
+        Issue short-lived certificate
+        """
+        cert = Certificate(
+            subject=identity.subject,
+            validity=self.default_ttl,
+            # ... other attributes
+        )
+        
+        return self.ca.issue(cert)
+    
+    async def automatic_rotation_loop(self, workload_id: str):
+        """
+        Continuously rotate certificates before expiry
+        """
+        while True:
+            # Get current certificate
+            current_cert = self.get_current_cert(workload_id)
+            
+            # Calculate time until rotation needed
+            time_until_rotation = (
+                current_cert.not_after -
+                datetime.now() -
+                self.rotation_threshold
+            )
+            
+            # Sleep until rotation time
+            await asyncio.sleep(time_until_rotation.total_seconds())
+            
+            # Rotate certificate
+            try:
+                new_cert = self.issue_certificate(workload_id)
+                await self.install_certificate(workload_id, new_cert)
+                logger.info(f"Rotated certificate for {workload_id}")
+            except Exception as e:
+                logger.error(f"Certificate rotation failed: {e}")
+                # Retry with backoff
+                await asyncio.sleep(60)
+```
+
+**Benefits of short-lived certificates**:
+- Reduced blast radius of compromise
+- No need for revocation (expires quickly)
+- Forces automation (manual rotation impossible)
+- Continuous verification of workload health
+- Aligns with zero-trust principles
+
+**Challenges**:
+- Requires robust automation
+- Increased CA load
+- Clock synchronization critical
+- Application must handle rotation
+
+## Monitoring and Observability
+
+### Certificate Usage Tracking
+
+```python
+class ZeroTrustCertificateObservability:
+    """
+    Monitor certificate usage in zero-trust environment
+    """
+    
+    def track_certificate_usage(self, cert: Certificate, 
+                               connection: Connection):
+        """
+        Track every certificate use for anomaly detection
+        """
+        usage_event = {
+            'timestamp': datetime.now(),
+            'certificate_id': cert.fingerprint,
+            'spiffe_id': cert.spiffe_id,
+            'source_ip': connection.source_ip,
+            'destination_ip': connection.destination_ip,
+            'destination_service': connection.service_name,
+            'protocol': connection.protocol,
+            'bytes_transferred': connection.bytes_transferred
+        }
+        
+        # Send to observability platform
+        self.metrics.record(usage_event)
+        
+        # Check for anomalies
+        if self.is_anomalous(usage_event):
+            self.alert_anomaly(usage_event)
+    
+    def is_anomalous(self, usage_event: dict) -> bool:
+        """
+        Detect anomalous certificate usage patterns
+        """
+        # Historical baseline
+        baseline = self.get_baseline(usage_event['spiffe_id'])
+        
+        # Check for anomalies
+        anomalies = []
+        
+        # Unusual source IP
+        if usage_event['source_ip'] not in baseline['typical_source_ips']:
+            anomalies.append('unknown_source_ip')
+        
+        # Unusual destination
+        if usage_event['destination_service'] not in baseline['typical_destinations']:
+            anomalies.append('unknown_destination')
+        
+        # Unusual time
+        if not self.is_typical_time(usage_event['timestamp'], baseline):
+            anomalies.append('unusual_time')
+        
+        # Unusual data volume
+        if usage_event['bytes_transferred'] > baseline['avg_bytes'] * 10:
+            anomalies.append('unusual_volume')
+        
+        return len(anomalies) > 0
+```
+
+## Migration to Zero-Trust
+
+### Phased Approach
+
+```
+Phase 1: Assessment (Months 1-2)
+- Inventory all services and connections
+- Identify trust boundaries
+- Define identity model
+- Select zero-trust platform (SPIRE, etc.)
+
+Phase 2: Identity Infrastructure (Months 3-4)
+- Deploy SPIRE server/agents
+- Configure workload attestation
+- Create registration entries
+- Test certificate issuance
+
+Phase 3: Service-by-Service Migration (Months 5-12)
+- Start with non-critical services
+- Enable mTLS with certificates
+- Implement policy enforcement
+- Monitor and adjust
+
+Phase 4: Full Zero-Trust (Month 12+)
+- All services using certificate identity
+- Remove network-based trust
+- Continuous policy enforcement
+- Full observability
+```
+
+## Best Practices
+
+**Certificate design**:
+- Use SPIFFE IDs for interoperability
+- Short validity periods (1-24 hours)
+- Automatic rotation required
+- Include policy-relevant attributes
+- Both serverAuth and clientAuth key usage
+
+**Policy enforcement**:
+- Default deny (explicit allow required)
+- Attribute-based access control
+- Continuous evaluation
+- Comprehensive audit logging
+- Graceful degradation when possible
+
+**Operational**:
+- Robust automation essential
+- Monitoring and observability critical
+- Test certificate rotation under load
+- Plan for certificate authority failures
+- Document troubleshooting procedures
+
+**Security**:
+- Protect CA private keys (HSM)
+- Secure workload attestation
+- Monitor for anomalous usage
+- Regular policy reviews
+- Incident response procedures
+
+## Conclusion
+
+Zero-trust architecture fundamentally changes how certificates are used—from supporting infrastructure to core identity mechanism. Every workload, service, device, and user must prove identity through cryptographic certificates, enabling fine-grained access control and continuous verification.
+
+SPIFFE/SPIRE provide industry-standard approaches to zero-trust identity, enabling automatic certificate issuance and rotation based on workload attestation. Short-lived certificates (hours not days) reduce risk and force automation, aligning perfectly with zero-trust principles.
+
+The transition to zero-trust is a journey, not a destination. Start with identity infrastructure (SPIRE deployment), migrate services incrementally, enforce policies progressively, and build observability throughout. Zero-trust is achievable for organizations willing to invest in automation and embrace identity-based security.
+
+Remember: Zero-trust is not about eliminating all attacks, but about containing their impact through continuous verification and least-privilege access. Certificates are the foundation that makes this possible.
