@@ -1,17 +1,17 @@
-site_name: PKI Wiki
-site_url: https://pki.axonshield.com/
+site_name: Shield Vault
+site_url: https://vault.axonshield.com/
 theme:
   logo: assets/axon-logo.png
   name: material
   palette:
     - scheme: default
-      primary: indigo
+      primary: white 
       accent: indigo
       toggle:
         icon: material/brightness-7 
         name: Switch to dark mode
     - scheme: slate
-      primary: indigo
+      primary: white
       accent: indigo
       toggle:
         icon: material/brightness-4 
