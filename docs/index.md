@@ -60,10 +60,10 @@ Welcome to your comprehensive reference for Public Key Infrastructure and certif
 
 ### 🎨 Architecture Patterns
 - [Zero-Trust Architecture](architecture/zero-trust-architecture.md) - Certificates in zero-trust
-- Service Mesh Certificates *(coming soon)* - Istio, Linkerd, Consul
-- Mutual TLS Patterns *(coming soon)* - Client authentication
-- Certificate-as-Code *(coming soon)* - Infrastructure as code approaches
-- Case Studies *(coming soon)* - Real-world implementations
+- [Service Mesh Certificates](architecture/service-mesh-certificates.md) - Istio, Linkerd, Consul
+- [Mutual TLS Patterns](architecture/mutual-tls-patterns.md) - Client authentication
+- [Certificate-as-Code](architecture/certificate-as-code.md) - Infrastructure as code approaches
+- [Case Studies](architecture/case-studies.md) - Real-world implementations
 
 ### 🏗️ Implementation Patterns
 - [CA Hierarchies](patterns/ca-hierarchies.md) - Designing certificate authority structures
@@ -126,7 +126,7 @@ Every page in this knowledge base includes:
 
 **Version**: 1.0 (Initial Release)  
 **Last Updated**: November 9, 2024  
-**Completed Pages**: 31  
+**Completed Pages**: 35  
 **In Progress**: Expanding all categories
 
 This knowledge base is actively maintained and expanded based on:
