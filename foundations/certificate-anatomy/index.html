@@ -2933,7 +2933,7 @@
 <p><strong>TL;DR</strong>: X.509 certificates contain a public key, identity information, validity period, and extensions, all signed by a Certificate Authority. Understanding certificate structure is essential for troubleshooting, security analysis, and proper implementation.</p>
 </blockquote>
 <h2 id="overview">Overview</h2>
-<p>An X.509 certificate is a structured data format defined by RFC 5280[^1] that binds a public key to an identity through a digital signature. Think of it as a tamper-evident digital passport that contains identification information, a cryptographic key, usage constraints, and an authoritative signature.</p>
+<p>An X.509 certificate is a structured data format defined by RFC 5280<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> that binds a public key to an identity through a digital signature. Think of it as a tamper-evident digital passport that contains identification information, a cryptographic key, usage constraints, and an authoritative signature.</p>
 <p>Certificates are encoded using ASN.1 (Abstract Syntax Notation One) and typically represented in DER (binary) or PEM (base64-encoded) format. While the encoding is complex, the logical structure follows a clear hierarchy designed for machine parsing and cryptographic verification.</p>
 <p>Understanding certificate anatomy is critical for: validating trust chains, diagnosing SSL/TLS errors, implementing certificate generation, configuring proper extensions, and performing security assessments.</p>
 <p><strong>Related Pages</strong>: <a href="../what-is-pki/">What Is Pki</a>, <a href="../../standards/x509-standard/">X509 Standard</a>, <a href="../trust-models/">Trust Models</a>, <a href="../../troubleshooting/chain-validation-errors/">Chain Validation Errors</a></p>
@@ -2948,11 +2948,11 @@
 <p>The TBS Certificate contains all the certificate information. The CA signs this section, allowing relying parties to verify the entire certificate hasn't been tampered with.</p>
 <h3 id="tbs-certificate-fields">TBS Certificate Fields</h3>
 <h4 id="version">Version</h4>
-<p>Indicates the X.509 version (1, 2, or 3). Modern certificates must be version 3 to support extensions, which are required for internet PKI according to CA/Browser Forum requirements[^2].</p>
+<p>Indicates the X.509 version (1, 2, or 3). Modern certificates must be version 3 to support extensions, which are required for internet PKI according to CA/Browser Forum requirements<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Version: 3 (0x2)
 </code></pre></div>
 <h4 id="serial-number">Serial Number</h4>
-<p>A unique identifier assigned by the issuing CA. According to RFC 5280, serial numbers must be unique within a CA and should be unpredictable to prevent certain attacks. Modern CAs use at least 64 bits of entropy[^3].</p>
+<p>A unique identifier assigned by the issuing CA. According to RFC 5280, serial numbers must be unique within a CA and should be unpredictable to prevent certain attacks. Modern CAs use at least 64 bits of entropy<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Serial Number: 04:00:00:00:00:01:15:4b:5a:c3:94
 </code></pre></div>
 <p><strong>Security Note</strong>: Predictable serial numbers historically enabled attacks where attackers could pre-compute hash collisions for certificates the CA would issue next.</p>
@@ -2964,7 +2964,7 @@
 <li><code>sha384WithRSAEncryption</code> - RSA with SHA-384</li>
 <li><code>ecdsa-with-SHA384</code> - ECDSA with SHA-384</li>
 </ul>
-<p>Older algorithms like MD5 and SHA-1 are deprecated due to collision vulnerabilities[^4].</p>
+<p>Older algorithms like MD5 and SHA-1 are deprecated due to collision vulnerabilities<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>.</p>
 <h4 id="issuer-distinguished-name">Issuer Distinguished Name</h4>
 <p>The identity of the Certificate Authority that issued this certificate. Uses X.500 Distinguished Name format with hierarchical components:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Issuer: C=US, O=DigiCert Inc, CN=DigiCert TLS RSA SHA256 2020 CA1
@@ -2982,7 +2982,7 @@
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    Not Before: Nov  1 00:00:00 2024 GMT
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    Not After : Nov  1 23:59:59 2025 GMT
 </code></pre></div>
-<p><strong>Important</strong>: As of 2020, publicly-trusted TLS certificates are limited to 398 days maximum validity[^2]. Internal PKI can use longer periods, but shorter lifespans improve security through forced rotation.</p>
+<p><strong>Important</strong>: As of 2020, publicly-trusted TLS certificates are limited to 398 days maximum validity<sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup>. Internal PKI can use longer periods, but shorter lifespans improve security through forced rotation.</p>
 <h4 id="subject-distinguished-name">Subject Distinguished Name</h4>
 <p>The identity of the entity this certificate represents (server, person, device, organization).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Subject: C=US, ST=California, L=San Francisco, O=Example Corp, CN=www.example.com
@@ -2996,7 +2996,7 @@
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>        Modulus: 00:c3:e5:...
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>        Exponent: 65537 (0x10001)
 </code></pre></div>
-<p>For RSA keys, 2048 bits is the current minimum for publicly-trusted certificates[^2]. NIST recommends 2048-bit RSA or 256-bit ECDSA as secure through 2030[^5].</p>
+<p>For RSA keys, 2048 bits is the current minimum for publicly-trusted certificates<sup id="fnref3:2"><a class="footnote-ref" href="#fn:2">2</a></sup>. NIST recommends 2048-bit RSA or 256-bit ECDSA as secure through 2030<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup>.</p>
 <h3 id="x509-extensions">X.509 Extensions</h3>
 <p>Extensions provide additional capabilities beyond the basic certificate fields. Version 3 certificates introduced extensions, which are now essential for modern PKI.</p>
 <h4 id="critical-vs-non-critical">Critical vs Non-Critical</h4>
@@ -3086,7 +3086,7 @@
 <li><code>2.23.140.1.2.1</code>: Organization Validated (OV)</li>
 <li><code>2.23.140.1.1</code>: Extended Validation (EV)</li>
 </ul>
-<p><strong>Certificate Transparency SCTs</strong>: Signed Certificate Timestamps proving the certificate was logged to CT logs[^6].</p>
+<p><strong>Certificate Transparency SCTs</strong>: Signed Certificate Timestamps proving the certificate was logged to CT logs<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>CT Precertificate SCTs:
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    Signed Certificate Timestamp:
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>        Version   : v1 (0x0)
@@ -3139,7 +3139,7 @@
 <li><strong>Incorrect Basic Constraints</strong>: End-entity certificate marked as CA, allowing certificate issuance</li>
 </ul>
 <h3 id="serial-number-entropy">Serial Number Entropy</h3>
-<p>Serial numbers must be unpredictable. Predictable serials enabled MD5 collision attacks where attackers pre-computed rogue CA certificates[^7].</p>
+<p>Serial numbers must be unpredictable. Predictable serials enabled MD5 collision attacks where attackers pre-computed rogue CA certificates<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup>.</p>
 <h3 id="subject-name-validation">Subject Name Validation</h3>
 <p>For TLS, only SAN matters for hostname validation. CN is ignored by modern browsers. Attackers exploited this by getting certificates with legitimate-looking CN but malicious SAN.</p>
 <h2 id="real-world-examples">Real-World Examples</h2>
@@ -3164,13 +3164,6 @@
 <li><a href="../cryptographic-primitives/">Cryptographic Primitives</a> - Understanding the cryptography behind certificates</li>
 </ul>
 <h2 id="references">References</h2>
-<p>[^1]: Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." RFC 5280, May 2008. <a href="https://www.rfc-editor.org/rfc/rfc5280">Rfc-editor - Rfc5280</a></p>
-<p>[^2]: CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. <a href="https://cabforum.org/baseline-requirements-documents/">Cabforum - Baseline Requirements Documents</a></p>
-<p>[^3]: CA/Browser Forum Baseline Requirements, Section 7.1 - Certificate Profile.</p>
-<p>[^4]: NIST. "Transitioning the Use of Cryptographic Algorithms and Key Lengths." NIST SP 800-131A Rev.2, March 2019. <a href="https://csrc.nist.gov/publications/detail/sp/800-131a/rev-2/final">Nist - Detail</a></p>
-<p>[^5]: NIST. "Recommendation for Key Management." NIST SP 800-57 Part 1 Rev. 5, May 2020. <a href="https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final">Nist - Detail</a></p>
-<p>[^6]: Laurie, B., et al. "Certificate Transparency." RFC 6962, June 2013. <a href="https://www.rfc-editor.org/rfc/rfc6962">Rfc-editor - Rfc6962</a></p>
-<p>[^7]: Stevens, M., et al. "Short chosen-prefix collisions for MD5 and the creation of a rogue CA certificate." CRYPTO 2009. <a href="https://www.win.tue.nl/hashclash/rogue-ca/">Tue - Rogue Ca</a></p>
 <h2 id="change-history">Change History</h2>
 <table>
 <thead>
@@ -3199,6 +3192,32 @@
 <li>[x] Examples are current and relevant</li>
 <li>[x] Security considerations addressed</li>
 </ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." RFC 5280, May 2008. <a href="https://www.rfc-editor.org/rfc/rfc5280">Rfc-editor - Rfc5280</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. <a href="https://cabforum.org/baseline-requirements-documents/">Cabforum - Baseline Requirements Documents</a>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>CA/Browser Forum Baseline Requirements, Section 7.1 - Certificate Profile.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>NIST. "Transitioning the Use of Cryptographic Algorithms and Key Lengths." NIST SP 800-131A Rev.2, March 2019. <a href="https://csrc.nist.gov/publications/detail/sp/800-131a/rev-2/final">Nist - Detail</a>&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>NIST. "Recommendation for Key Management." NIST SP 800-57 Part 1 Rev. 5, May 2020. <a href="https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final">Nist - Detail</a>&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>Laurie, B., et al. "Certificate Transparency." RFC 6962, June 2013. <a href="https://www.rfc-editor.org/rfc/rfc6962">Rfc-editor - Rfc6962</a>&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>Stevens, M., et al. "Short chosen-prefix collisions for MD5 and the creation of a rogue CA certificate." CRYPTO 2009. <a href="https://www.win.tue.nl/hashclash/rogue-ca/">Tue - Rogue Ca</a>&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 

@@ -3141,7 +3141,7 @@
 <li>Single point of failure</li>
 <li>Difficult to implement different issuance policies</li>
 </ul>
-<p><strong>NIST Guidance</strong>: Single-tier architectures are explicitly discouraged for production use[^1] due to unacceptable risk if the CA is compromised.</p>
+<p><strong>NIST Guidance</strong>: Single-tier architectures are explicitly discouraged for production use<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> due to unacceptable risk if the CA is compromised.</p>
 <h4 id="two-tier-architecture">Two-Tier Architecture</h4>
 <p>Offline root CA with one or more online intermediate (issuing) CAs. This is the minimum viable architecture for production PKI.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Root CA (Offline)
@@ -3229,7 +3229,7 @@
 </ul>
 <p><strong>Key Protection</strong>:</p>
 <ul>
-<li>FIPS 140-2 Level 3 or higher HSM for high-security environments[^2]</li>
+<li>FIPS 140-2 Level 3 or higher HSM for high-security environments<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
 <li>Encrypted backup keys in separate secure location</li>
 <li>Key ceremony with witnesses and documentation</li>
 <li>Dual control and split knowledge for key access</li>
@@ -3614,8 +3614,6 @@
 <li><a href="../../foundations/trust-models/">Trust Models</a> - Different approaches to establishing trust</li>
 </ul>
 <h2 id="references">References</h2>
-<p>[^1]: NIST. "Recommendation for Key Management." NIST SP 800-57 Part 1 Rev. 5, May 2020. Section 6.2 on CA Key Management. <a href="https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final">Nist - Detail</a></p>
-<p>[^2]: NIST. "Security Requirements for Cryptographic Modules." FIPS 140-2, May 2001. Defines HSM security levels. <a href="https://csrc.nist.gov/publications/detail/fips/140/2/final">Nist - Detail</a></p>
 <h2 id="change-history">Change History</h2>
 <table>
 <thead>
@@ -3644,6 +3642,17 @@
 <li>[x] Examples are current and relevant</li>
 <li>[x] Security considerations addressed</li>
 </ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>NIST. "Recommendation for Key Management." NIST SP 800-57 Part 1 Rev. 5, May 2020. Section 6.2 on CA Key Management. <a href="https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final">Nist - Detail</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>NIST. "Security Requirements for Cryptographic Modules." FIPS 140-2, May 2001. Defines HSM security levels. <a href="https://csrc.nist.gov/publications/detail/fips/140/2/final">Nist - Detail</a>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 

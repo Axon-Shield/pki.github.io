@@ -2896,7 +2896,7 @@
 <p><strong>Issuance</strong>: The CA generating and signing the certificate. For publicly-trusted certificates this includes domain validation. For private PKI this includes identity verification according to internal policies.</p>
 <p><strong>Installation and Deployment</strong>: Delivering the certificate to the target system and configuring it for use. This includes deploying the certificate, private key, and any intermediate certificates required for chain building.</p>
 <p><strong>Monitoring</strong>: Continuously tracking certificate validity, expiration dates, revocation status, and compliance with organizational policies. Monitoring must include alerting well before expiration (typically 30-60 days for critical systems).</p>
-<p><strong>Renewal</strong>: Replacing certificates before expiration. According to industry data[^1], the average organization manages certificate renewal cycles of 30-90 days, with publicly-trusted certificates now limited to 398 days maximum validity.</p>
+<p><strong>Renewal</strong>: Replacing certificates before expiration. According to industry data<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, the average organization manages certificate renewal cycles of 30-90 days, with publicly-trusted certificates now limited to 398 days maximum validity.</p>
 <p><strong>Revocation</strong>: Invalidating certificates before their natural expiration when private keys are compromised, organizational changes occur, or certificates are no longer needed.</p>
 <p><strong>Decommission</strong>: Removing certificates from systems and securely destroying private keys when they're no longer valid or needed.</p>
 <h3 id="lifecycle-challenges">Lifecycle Challenges</h3>
@@ -3208,7 +3208,7 @@
 <li><strong>Tradeoff</strong>: Requires CA infrastructure capable of high issuance volume</li>
 </ul>
 <h3 id="certificate-pinning-management">Certificate Pinning Management</h3>
-<p>Certificate pinning provides additional security but dramatically complicates lifecycle management. Pinned certificates that expire or need rotation can cause widespread outages[^2].</p>
+<p>Certificate pinning provides additional security but dramatically complicates lifecycle management. Pinned certificates that expire or need rotation can cause widespread outages<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
 <ul>
 <li><strong>If pinning is required</strong>: Include multiple pins (current + backup), monitor pin expiration separately, test pin rotation in non-production</li>
 <li><strong>Alternative</strong>: Use Certificate Transparency monitoring for compromise detection without pinning rigidity</li>
@@ -3255,8 +3255,6 @@
 <li><a href="../../implementation/acme-protocol-implementation/">Acme Protocol Implementation</a> - Implementing ACME for automation</li>
 </ul>
 <h2 id="references">References</h2>
-<p>[^1]: Keyfactor. "State of Machine Identity Management Report 2023." <a href="https://www.keyfactor.com/resources/state-of-machine-identity-management-2023/">Keyfactor</a></p>
-<p>[^2]: Gutmann, P. "PKI: It's Not Dead, Just Resting." IEEE Computer, Aug 2002. Discussion of certificate pinning operational challenges.</p>
 <h2 id="change-history">Change History</h2>
 <table>
 <thead>
@@ -3285,6 +3283,17 @@
 <li>[x] Examples are current and relevant</li>
 <li>[x] Security considerations addressed</li>
 </ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Keyfactor. "State of Machine Identity Management Report 2023." <a href="https://www.keyfactor.com/resources/state-of-machine-identity-management-2023/">Keyfactor</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Gutmann, P. "PKI: It's Not Dead, Just Resting." IEEE Computer, Aug 2002. Discussion of certificate pinning operational challenges.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 

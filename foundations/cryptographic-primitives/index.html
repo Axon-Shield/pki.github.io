@@ -3329,7 +3329,7 @@
 <li>256-bit (32-byte) output</li>
 <li>2^256 possible outputs</li>
 <li>Collision attack complexity: 2^128 operations (infeasible)</li>
-<li>NIST recommended for security through 2030+[^1]</li>
+<li>NIST recommended for security through 2030+<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
 </ul>
 <p><strong>SHA-384</strong> (384-bit output):</p>
 <ul>
@@ -3347,13 +3347,13 @@
 <p><strong>MD5</strong> (128-bit output):</p>
 <ul>
 <li><strong>Status</strong>: Cryptographically broken since 2004</li>
-<li><strong>Vulnerability</strong>: Practical collision attacks demonstrated[^2]</li>
+<li><strong>Vulnerability</strong>: Practical collision attacks demonstrated<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
 <li><strong>Usage</strong>: Forbidden for digital signatures</li>
 <li><strong>Acceptable</strong>: Non-cryptographic uses (checksums where no attacker)</li>
 </ul>
 <p><strong>SHA-1</strong> (160-bit output):</p>
 <ul>
-<li><strong>Status</strong>: Deprecated since 2017, fully broken in 2020[^3]</li>
+<li><strong>Status</strong>: Deprecated since 2017, fully broken in 2020<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></li>
 <li><strong>Vulnerability</strong>: Collision attacks practical (Google demonstrated)</li>
 <li><strong>Usage</strong>: Prohibited for TLS certificates since 2017</li>
 <li><strong>Sunset</strong>: Being phased out everywhere</li>
@@ -3398,7 +3398,7 @@ Based on difficulty of factoring large composite numbers.</p>
 <p><strong>Key Sizes</strong>:</p>
 <ul>
 <li><strong>1024-bit</strong>: Deprecated (potentially breakable with significant resources)</li>
-<li><strong>2048-bit</strong>: Current minimum for publicly-trusted certificates[^4]</li>
+<li><strong>2048-bit</strong>: Current minimum for publicly-trusted certificates<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></li>
 <li><strong>3072-bit</strong>: Higher security, recommended for long-term keys</li>
 <li><strong>4096-bit</strong>: Very high security but performance penalty</li>
 </ul>
@@ -3488,7 +3488,7 @@ Based on discrete logarithm problem on elliptic curves.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>NIST Recommendations</strong>[^1]:</p>
+<p><strong>NIST Recommendations</strong><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>:</p>
 <ul>
 <li>Through 2030: 2048-bit RSA or 256-bit ECDSA minimum</li>
 <li>Beyond 2030: 3072-bit RSA or 384-bit ECDSA</li>
@@ -3530,7 +3530,7 @@ Based on discrete logarithm problem on elliptic curves.</p>
 <ul>
 <li>Probabilistic padding (different each time)</li>
 <li>Provably secure under RSA assumption</li>
-<li>Recommended over PKCS#1 v1.5[^4]</li>
+<li>Recommended over PKCS#1 v1.5<sup id="fnref2:4"><a class="footnote-ref" href="#fn:4">4</a></sup></li>
 </ul>
 <h4 id="ecdsa-signatures">ECDSA Signatures</h4>
 <p><strong>Signing Operation</strong>:
@@ -3970,10 +3970,6 @@ Based on discrete logarithm problem on elliptic curves.</p>
 <li><a href="../../standards/x509-standard/">X509 Standard</a> - Algorithm identifiers in X.509</li>
 </ul>
 <h2 id="references">References</h2>
-<p>[^1]: NIST. "Recommendation for Key Management." NIST SP 800-57 Part 1 Rev. 5, May 2020. <a href="https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final">Nist - Detail</a></p>
-<p>[^2]: Wang, X., et al. "Finding Collisions in the Full SHA-1." CRYPTO 2005. Demonstrated MD5 collision attacks.</p>
-<p>[^3]: Stevens, M., et al. "The First Collision for Full SHA-1." CRYPTO 2017. <a href="https://shattered.io/">Shattered</a></p>
-<p>[^4]: CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. <a href="https://cabforum.org/baseline-requirements-documents/">Cabforum - Baseline Requirements Documents</a></p>
 <h2 id="change-history">Change History</h2>
 <table>
 <thead>
@@ -4002,6 +3998,23 @@ Based on discrete logarithm problem on elliptic curves.</p>
 <li>[x] Examples are current and relevant</li>
 <li>[x] Security considerations addressed</li>
 </ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>NIST. "Recommendation for Key Management." NIST SP 800-57 Part 1 Rev. 5, May 2020. <a href="https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final">Nist - Detail</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Wang, X., et al. "Finding Collisions in the Full SHA-1." CRYPTO 2005. Demonstrated MD5 collision attacks.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>Stevens, M., et al. "The First Collision for Full SHA-1." CRYPTO 2017. <a href="https://shattered.io/">Shattered</a>&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. <a href="https://cabforum.org/baseline-requirements-documents/">Cabforum - Baseline Requirements Documents</a>&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 

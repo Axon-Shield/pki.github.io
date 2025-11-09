@@ -3672,7 +3672,7 @@
 </blockquote>
 <h2 id="overview">Overview</h2>
 <p>TLS (Transport Layer Security) and its predecessor SSL (Secure Sockets Layer) are the cryptographic protocols that enable HTTPS, secure email, VPNs, and virtually all secure internet communications. When you see the padlock icon in your browser, TLS is working behind the scenes to protect your connection.</p>
-<p>The protocol evolved from SSL 2.0 (1995) through SSL 3.0 (1996) to TLS 1.0 (1999), with major improvements in TLS 1.2 (2008) and a complete redesign in TLS 1.3 (2018). Each version addressed security vulnerabilities and improved performance. As of 2024, TLS 1.2 and 1.3 are the only versions considered secure—SSL and TLS 1.0/1.1 are deprecated due to known vulnerabilities[^1].</p>
+<p>The protocol evolved from SSL 2.0 (1995) through SSL 3.0 (1996) to TLS 1.0 (1999), with major improvements in TLS 1.2 (2008) and a complete redesign in TLS 1.3 (2018). Each version addressed security vulnerabilities and improved performance. As of 2024, TLS 1.2 and 1.3 are the only versions considered secure—SSL and TLS 1.0/1.1 are deprecated due to known vulnerabilities<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
 <p>TLS provides three critical security properties: authentication (proving server identity via certificates), confidentiality (encrypting data in transit), and integrity (detecting tampering). Understanding TLS is crucial for anyone implementing secure communications, troubleshooting connection issues, or assessing security posture.</p>
 <p><strong>Related Pages</strong>: <a href="../x509-standard/">X509 Standard</a>, <a href="../../foundations/certificate-anatomy/">Certificate Anatomy</a>, <a href="../../foundations/cryptographic-primitives/">Cryptographic Primitives</a>, <a href="../../foundations/what-is-pki/">What Is Pki</a></p>
 <h2 id="key-concepts">Key Concepts</h2>
@@ -3688,7 +3688,7 @@
 <p><strong>SSL 3.0</strong> (1996):</p>
 <ul>
 <li>Complete redesign addressing SSL 2.0 flaws</li>
-<li>POODLE attack (2014) demonstrated practical vulnerability[^2]</li>
+<li>POODLE attack (2014) demonstrated practical vulnerability<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
 <li><strong>Status</strong>: Deprecated, RFC 7568 prohibits use</li>
 </ul>
 <h4 id="tls-10-deprecated">TLS 1.0 (Deprecated)</h4>
@@ -3706,7 +3706,7 @@
 - <strong>Status</strong>: Deprecated alongside TLS 1.0 in 2020
 - <strong>Use</strong>: No longer supported by modern browsers</p>
 <h4 id="tls-12-current-standard">TLS 1.2 (Current Standard)</h4>
-<p><strong>Released</strong>: 2008 (RFC 5246[^3])
+<p><strong>Released</strong>: 2008 (RFC 5246<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>)
 - Added SHA-256 support (replacing SHA-1)
 - Flexible cipher suite negotiation
 - AEAD cipher modes (GCM, CCM)
@@ -3722,7 +3722,7 @@
 <li>Application layer protocol negotiation (ALPN)</li>
 </ul>
 <h4 id="tls-13-modern-standard">TLS 1.3 (Modern Standard)</h4>
-<p><strong>Released</strong>: 2018 (RFC 8446[^4])
+<p><strong>Released</strong>: 2018 (RFC 8446<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>)
 - Complete redesign focused on security and performance
 - Reduced handshake latency (1-RTT, 0-RTT)
 - Mandatory forward secrecy
@@ -4414,10 +4414,6 @@
 <li><a href="../../architecture/mutual-tls-patterns/">Mutual Tls Patterns</a> - Client certificate authentication</li>
 </ul>
 <h2 id="references">References</h2>
-<p>[^1]: IETF. "Deprecating TLS 1.0 and TLS 1.1." RFC 8996, March 2021. <a href="https://www.rfc-editor.org/rfc/rfc8996">Rfc-editor - Rfc8996</a></p>
-<p>[^2]: Möller, B., et al. "This POODLE Bites: Exploiting the SSL 3.0 Fallback." Security Advisory, October 2014.</p>
-<p>[^3]: Dierks, T. and Rescorla, E. "The Transport Layer Security (TLS) Protocol Version 1.2." RFC 5246, August 2008. <a href="https://www.rfc-editor.org/rfc/rfc5246">Rfc-editor - Rfc5246</a></p>
-<p>[^4]: Rescorla, E. "The Transport Layer Security (TLS) Protocol Version 1.3." RFC 8446, August 2018. <a href="https://www.rfc-editor.org/rfc/rfc8446">Rfc-editor - Rfc8446</a></p>
 <h2 id="change-history">Change History</h2>
 <table>
 <thead>
@@ -4446,6 +4442,23 @@
 <li>[x] Examples are current and relevant</li>
 <li>[x] Security considerations addressed</li>
 </ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>IETF. "Deprecating TLS 1.0 and TLS 1.1." RFC 8996, March 2021. <a href="https://www.rfc-editor.org/rfc/rfc8996">Rfc-editor - Rfc8996</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Möller, B., et al. "This POODLE Bites: Exploiting the SSL 3.0 Fallback." Security Advisory, October 2014.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>Dierks, T. and Rescorla, E. "The Transport Layer Security (TLS) Protocol Version 1.2." RFC 5246, August 2008. <a href="https://www.rfc-editor.org/rfc/rfc5246">Rfc-editor - Rfc5246</a>&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>Rescorla, E. "The Transport Layer Security (TLS) Protocol Version 1.3." RFC 8446, August 2018. <a href="https://www.rfc-editor.org/rfc/rfc8446">Rfc-editor - Rfc8446</a>&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 

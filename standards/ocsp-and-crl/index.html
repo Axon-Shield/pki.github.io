@@ -3348,7 +3348,7 @@
 </blockquote>
 <h2 id="overview">Overview</h2>
 <p>Certificate revocation solves a fundamental PKI problem: what happens when a certificate must be invalidated before its expiration date? Private key compromise, organizational changes, certificate misissuance, and other events require immediate certificate invalidation. Without revocation mechanisms, compromised certificates remain trusted until expiration—potentially years.</p>
-<p>The PKI community has developed two primary revocation mechanisms with different trade-offs. Certificate Revocation Lists (CRLs), standardized in X.509 since the beginning, provide a periodically updated list of revoked certificates. Online Certificate Status Protocol (OCSP), defined in RFC 6960[^1], enables real-time revocation queries. Modern implementations often use OCSP Stapling, where servers provide OCSP responses directly, improving performance and privacy.</p>
+<p>The PKI community has developed two primary revocation mechanisms with different trade-offs. Certificate Revocation Lists (CRLs), standardized in X.509 since the beginning, provide a periodically updated list of revoked certificates. Online Certificate Status Protocol (OCSP), defined in RFC 6960<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, enables real-time revocation queries. Modern implementations often use OCSP Stapling, where servers provide OCSP responses directly, improving performance and privacy.</p>
 <p>Understanding revocation is essential for: operating secure PKI systems, troubleshooting certificate validation failures, implementing proper revocation checking, and assessing PKI security posture. The gap between revocation theory and practice—often called the "revocation problem"—remains one of PKI's persistent challenges.</p>
 <p><strong>Related Pages</strong>: <a href="../../foundations/certificate-anatomy/">Certificate Anatomy</a>, <a href="../x509-standard/">X509 Standard</a>, <a href="../tls-protocol/">Tls Protocol</a>, <a href="../../operations/certificate-lifecycle-management/">Certificate Lifecycle Management</a></p>
 <h2 id="key-concepts">Key Concepts</h2>
@@ -3388,7 +3388,7 @@
 <li><strong>Issuing Distribution Point</strong>: Scope of CRL (which certificates it covers)</li>
 </ul>
 <h4 id="revocation-reason-codes">Revocation Reason Codes</h4>
-<p>Defined in RFC 5280[^2], reasons explain why certificate revoked:</p>
+<p>Defined in RFC 5280<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, reasons explain why certificate revoked:</p>
 <table>
 <thead>
 <tr>
@@ -4200,8 +4200,6 @@
 <li><a href="../../troubleshooting/chain-validation-errors/">Chain Validation Errors</a> - Debugging revocation failures</li>
 </ul>
 <h2 id="references">References</h2>
-<p>[^1]: Santesson, S., et al. "X.509 Internet Public Key Infrastructure Online Certificate Status Protocol - OCSP." RFC 6960, June 2013. <a href="https://www.rfc-editor.org/rfc/rfc6960">Rfc-editor - Rfc6960</a></p>
-<p>[^2]: Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." RFC 5280, May 2008. <a href="https://www.rfc-editor.org/rfc/rfc5280">Rfc-editor - Rfc5280</a></p>
 <h2 id="change-history">Change History</h2>
 <table>
 <thead>
@@ -4230,6 +4228,17 @@
 <li>[x] Examples are current and relevant</li>
 <li>[x] Security considerations addressed</li>
 </ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Santesson, S., et al. "X.509 Internet Public Key Infrastructure Online Certificate Status Protocol - OCSP." RFC 6960, June 2013. <a href="https://www.rfc-editor.org/rfc/rfc6960">Rfc-editor - Rfc6960</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." RFC 5280, May 2008. <a href="https://www.rfc-editor.org/rfc/rfc5280">Rfc-editor - Rfc5280</a>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 

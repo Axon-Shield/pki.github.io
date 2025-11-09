@@ -3330,7 +3330,7 @@
 </blockquote>
 <h2 id="overview">Overview</h2>
 <p>The X.509 standard is the foundation of modern Public Key Infrastructure. Every certificate you encounter—whether securing HTTPS connections, signing code, or authenticating email—follows the X.509 format. Understanding this standard is essential for anyone implementing, operating, or troubleshooting PKI systems.</p>
-<p>First published in 1988 as part of the X.500 directory services framework, X.509 has evolved through multiple versions. Version 3, introduced in 1996, added the extension mechanism that enables modern PKI features like Subject Alternative Names, Certificate Transparency, and policy constraints. The internet-specific profile is defined in RFC 5280[^1], which adapts the ITU-T standard for internet use and is the primary reference for PKI implementations.</p>
+<p>First published in 1988 as part of the X.500 directory services framework, X.509 has evolved through multiple versions. Version 3, introduced in 1996, added the extension mechanism that enables modern PKI features like Subject Alternative Names, Certificate Transparency, and policy constraints. The internet-specific profile is defined in RFC 5280<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, which adapts the ITU-T standard for internet use and is the primary reference for PKI implementations.</p>
 <p>X.509 defines not just certificates but also Certificate Revocation Lists (CRLs), attribute certificates, and certification path validation algorithms. Its adoption across operating systems, browsers, programming languages, and security protocols makes it the universal language of digital trust.</p>
 <p><strong>Related Pages</strong>: <a href="../../foundations/certificate-anatomy/">Certificate Anatomy</a>, <a href="../../foundations/what-is-pki/">What Is Pki</a>, <a href="../ocsp-and-crl/">Ocsp And Crl</a>, <a href="../../troubleshooting/chain-validation-errors/">Chain Validation Errors</a></p>
 <h2 id="key-concepts">Key Concepts</h2>
@@ -3366,8 +3366,8 @@
 <li>Authority Information Access</li>
 <li>Hundreds of other extensions</li>
 </ul>
-<p><strong>Significance</strong>: This is the version used for all modern certificates. The extension mechanism provides the flexibility needed for evolving security requirements without changing the core standard[^1].</p>
-<p><strong>Current Use</strong>: Universal. All publicly-trusted certificates must be v3. CA/Browser Forum Baseline Requirements mandate v3[^2].</p>
+<p><strong>Significance</strong>: This is the version used for all modern certificates. The extension mechanism provides the flexibility needed for evolving security requirements without changing the core standard<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<p><strong>Current Use</strong>: Universal. All publicly-trusted certificates must be v3. CA/Browser Forum Baseline Requirements mandate v3<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
 <h3 id="itu-t-vs-ietf-standards">ITU-T vs. IETF Standards</h3>
 <h4 id="itu-t-x509-isoiec-9594-8">ITU-T X.509 (ISO/IEC 9594-8)</h4>
 <p>The original standard published by the International Telecommunication Union:</p>
@@ -3375,7 +3375,7 @@
 <li>Broader scope including X.500 directory integration</li>
 <li>More general purpose</li>
 <li>Updates less frequently</li>
-<li>Current version: X.509 (10/2019)[^3]</li>
+<li>Current version: X.509 (10/2019)<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></li>
 </ul>
 <h4 id="rfc-5280-internet-x509-profile">RFC 5280 - Internet X.509 Profile</h4>
 <p>The IETF adaptation for internet use:</p>
@@ -3397,7 +3397,7 @@
 <h3 id="asn1-encoding">ASN.1 Encoding</h3>
 <p>X.509 certificates use Abstract Syntax Notation One (ASN.1) for structure definition and Distinguished Encoding Rules (DER) for binary encoding.</p>
 <h4 id="asn1-structure">ASN.1 Structure</h4>
-<p>ASN.1 is a language for defining data structures independent of implementation. X.509 certificate structure in ASN.1[^1]:</p>
+<p>ASN.1 is a language for defining data structures independent of implementation. X.509 certificate structure in ASN.1<sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n n-Type">Certificate</span><span class="w">  </span><span class="o">::=</span><span class="w">  </span><span class="kd">SEQUENCE</span><span class="w">  </span><span class="p">{</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">     </span><span class="nv">tbsCertificate</span><span class="w">       </span><span class="n n-Type">TBSCertificate</span><span class="p">,</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">     </span><span class="nv">signatureAlgorithm</span><span class="w">   </span><span class="n n-Type">AlgorithmIdentifier</span><span class="p">,</span>
@@ -3479,7 +3479,7 @@
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">     </span><span class="p">}</span>
 </code></pre></div>
 <h4 id="critical-vs-non-critical">Critical vs. Non-Critical</h4>
-<p><strong>Critical Extensions</strong>: Must be processed and understood by the relying party. If the extension is not recognized, the certificate must be rejected[^1].</p>
+<p><strong>Critical Extensions</strong>: Must be processed and understood by the relying party. If the extension is not recognized, the certificate must be rejected<sup id="fnref4:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
 <p><strong>Use Case</strong>: Security-critical extensions like Key Usage, Basic Constraints
 - Ensures relying party respects security constraints
 - Prevents misuse if software doesn't understand restrictions</p>
@@ -3727,7 +3727,7 @@
 </code></pre></div></p>
 <h3 id="compliance-checking">Compliance Checking</h3>
 <h4 id="cabrowser-forum-requirements">CA/Browser Forum Requirements</h4>
-<p>For publicly-trusted TLS certificates[^2]:</p>
+<p>For publicly-trusted TLS certificates<sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup>:</p>
 <p><strong>Required Extensions</strong>:</p>
 <ul>
 <li>Subject Alternative Name (critical if Subject DN empty)</li>
@@ -3873,10 +3873,10 @@
 </ul>
 <h3 id="signature-algorithm-downgrade">Signature Algorithm Downgrade</h3>
 <p>X.509 certificates contain signature algorithm twice (in TBSCertificate and outer Certificate structure). These must match.</p>
-<p><strong>Attack Scenario</strong>: Attacker modifies outer algorithm identifier to weaker algorithm, hoping validator uses it for verification[^4].</p>
+<p><strong>Attack Scenario</strong>: Attacker modifies outer algorithm identifier to weaker algorithm, hoping validator uses it for verification<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>.</p>
 <p><strong>Mitigation</strong>: RFC 5280 requires both algorithm identifiers match exactly. Reject if they differ.</p>
 <h3 id="serial-number-predictability">Serial Number Predictability</h3>
-<p>Historically, CAs generated sequential serial numbers. This enabled collision attacks where attacker pre-computed certificate with same serial number[^5].</p>
+<p>Historically, CAs generated sequential serial numbers. This enabled collision attacks where attacker pre-computed certificate with same serial number<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup>.</p>
 <p><strong>Mitigation</strong>: RFC 5280 now requires at least 64 bits of entropy in serial numbers. Modern CAs use cryptographically random serial numbers.</p>
 <h3 id="name-constraint-bypass">Name Constraint Bypass</h3>
 <p>Name constraints allow CA to restrict which names subordinate CAs can issue for. Improper validation could allow constraint bypass.</p>
@@ -3923,11 +3923,6 @@
 <li><a href="../../implementation/ca-architecture/">Ca Architecture</a> - Designing certificate hierarchies</li>
 </ul>
 <h2 id="references">References</h2>
-<p>[^1]: Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." RFC 5280, May 2008. <a href="https://www.rfc-editor.org/rfc/rfc5280">Rfc-editor - Rfc5280</a></p>
-<p>[^2]: CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. <a href="https://cabforum.org/baseline-requirements-documents/">Cabforum - Baseline Requirements Documents</a></p>
-<p>[^3]: ITU-T Recommendation X.509. "Information technology – Open Systems Interconnection – The Directory: Public-key and attribute certificate frameworks." October 2019. <a href="https://www.itu.int/rec/T-REC-X.509">Itu - T Rec X.509</a></p>
-<p>[^4]: Stevens, M., et al. "Short chosen-prefix collisions for MD5 and the creation of a rogue CA certificate." CRYPTO 2009. Demonstrated algorithm substitution attacks. <a href="https://www.win.tue.nl/hashclash/rogue-ca/">Tue - Rogue Ca</a></p>
-<p>[^5]: Sotirov, A., et al. "MD5 considered harmful today: Creating a rogue CA certificate." 25th Chaos Communication Congress, 2008. Exploited predictable serial numbers in collision attack.</p>
 <h2 id="change-history">Change History</h2>
 <table>
 <thead>
@@ -3956,6 +3951,26 @@
 <li>[x] Examples are current and relevant</li>
 <li>[x] Security considerations addressed</li>
 </ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." RFC 5280, May 2008. <a href="https://www.rfc-editor.org/rfc/rfc5280">Rfc-editor - Rfc5280</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. <a href="https://cabforum.org/baseline-requirements-documents/">Cabforum - Baseline Requirements Documents</a>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>ITU-T Recommendation X.509. "Information technology – Open Systems Interconnection – The Directory: Public-key and attribute certificate frameworks." October 2019. <a href="https://www.itu.int/rec/T-REC-X.509">Itu - T Rec X.509</a>&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>Stevens, M., et al. "Short chosen-prefix collisions for MD5 and the creation of a rogue CA certificate." CRYPTO 2009. Demonstrated algorithm substitution attacks. <a href="https://www.win.tue.nl/hashclash/rogue-ca/">Tue - Rogue Ca</a>&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>Sotirov, A., et al. "MD5 considered harmful today: Creating a rogue CA certificate." 25th Chaos Communication Congress, 2008. Exploited predictable serial numbers in collision attack.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 

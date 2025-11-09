@@ -3440,7 +3440,7 @@
 <ul>
 <li>Operating systems and browsers ship with ~150-200 root CA certificates</li>
 <li>These represent publicly-trusted CAs (DigiCert, Let's Encrypt, Sectigo, etc.)</li>
-<li>Inclusion requires rigorous auditing (WebTrust, ETSI) and policy compliance[^1]</li>
+<li>Inclusion requires rigorous auditing (WebTrust, ETSI) and policy compliance<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
 <li>Root programs (Mozilla, Microsoft, Apple, Google) maintain trust stores</li>
 </ul>
 <p><strong>Enterprise Trust Stores</strong>:</p>
@@ -3697,7 +3697,7 @@
 <li>Complexity of managing DNSSEC</li>
 <li>Limited client support</li>
 </ul>
-<p><strong>Specified In</strong>: RFC 6698[^2] (TLSA records)</p>
+<p><strong>Specified In</strong>: RFC 6698<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> (TLSA records)</p>
 <h4 id="certificate-transparency">Certificate Transparency</h4>
 <p>Not a complete trust model but augments hierarchical trust with transparency:</p>
 <p><strong>Concept</strong>: All certificates logged to public, append-only, cryptographically-verifiable logs before issuance</p>
@@ -3708,7 +3708,7 @@
 <li>Creates accountability for CAs</li>
 <li>Doesn't prevent misissuance but makes it discoverable</li>
 </ul>
-<p><strong>Specified In</strong>: RFC 6962[^3]</p>
+<p><strong>Specified In</strong>: RFC 6962<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></p>
 <p><strong>Browser Requirements</strong>: Chrome and Safari require CT for publicly-trusted certificates</p>
 <h4 id="blockchain-based-pki">Blockchain-Based PKI</h4>
 <p>Experimental approaches using blockchain for certificate management:</p>
@@ -4029,7 +4029,7 @@
 <h2 id="real-world-examples">Real-World Examples</h2>
 <h3 id="case-study-mozilla-root-program">Case Study: Mozilla Root Program</h3>
 <p>Mozilla operates one of the major root programs determining which CAs browsers trust.</p>
-<p><strong>Requirements</strong>[^4]:</p>
+<p><strong>Requirements</strong><sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>:</p>
 <ul>
 <li>Annual WebTrust or ETSI audit</li>
 <li>Publicly disclosed Certificate Practice Statement</li>
@@ -4086,10 +4086,6 @@
 <li><a href="../../troubleshooting/chain-validation-errors/">Chain Validation Errors</a> - Troubleshooting validation failures</li>
 </ul>
 <h2 id="references">References</h2>
-<p>[^1]: CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. <a href="https://cabforum.org/baseline-requirements-documents/">Cabforum - Baseline Requirements Documents</a></p>
-<p>[^2]: Hoffman, P. and Schlyter, J. "The DNS-Based Authentication of Named Entities (DANE) Transport Layer Security (TLS) Protocol: TLSA." RFC 6698, August 2012. <a href="https://www.rfc-editor.org/rfc/rfc6698">Rfc-editor - Rfc6698</a></p>
-<p>[^3]: Laurie, B., et al. "Certificate Transparency." RFC 6962, June 2013. <a href="https://www.rfc-editor.org/rfc/rfc6962">Rfc-editor - Rfc6962</a></p>
-<p>[^4]: Mozilla. "Mozilla CA Certificate Policy." Version 2.8, October 2023. <a href="https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/policy/">Mozilla - About</a></p>
 <h2 id="change-history">Change History</h2>
 <table>
 <thead>
@@ -4118,6 +4114,23 @@
 <li>[x] Examples are current and relevant</li>
 <li>[x] Security considerations addressed</li>
 </ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. <a href="https://cabforum.org/baseline-requirements-documents/">Cabforum - Baseline Requirements Documents</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Hoffman, P. and Schlyter, J. "The DNS-Based Authentication of Named Entities (DANE) Transport Layer Security (TLS) Protocol: TLSA." RFC 6698, August 2012. <a href="https://www.rfc-editor.org/rfc/rfc6698">Rfc-editor - Rfc6698</a>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>Laurie, B., et al. "Certificate Transparency." RFC 6962, June 2013. <a href="https://www.rfc-editor.org/rfc/rfc6962">Rfc-editor - Rfc6962</a>&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>Mozilla. "Mozilla CA Certificate Policy." Version 2.8, October 2023. <a href="https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/policy/">Mozilla - About</a>&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 

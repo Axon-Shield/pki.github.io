@@ -2791,9 +2791,9 @@
 <h3 id="the-trust-problem">The Trust Problem</h3>
 <p>Before PKI, establishing trust in digital communications required pre-shared secrets or out-of-band verification. This didn't scale for internet-wide communications. PKI solves this by introducing trusted third parties—Certificate Authorities (CAs)—that vouch for identities by signing certificates.</p>
 <h3 id="core-components">Core Components</h3>
-<p><strong>Certificate Authority (CA)</strong>: The trusted entity that issues digital certificates after validating the identity of the requester. CAs form the root of trust in PKI systems. According to RFC 5280[^1], CAs are responsible for issuing, revoking, and managing the lifecycle of certificates.</p>
+<p><strong>Certificate Authority (CA)</strong>: The trusted entity that issues digital certificates after validating the identity of the requester. CAs form the root of trust in PKI systems. According to RFC 5280<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, CAs are responsible for issuing, revoking, and managing the lifecycle of certificates.</p>
 <p><strong>Registration Authority (RA)</strong>: An optional intermediary that handles certificate requests and identity verification before forwarding approved requests to the CA. RAs offload operational burden from CAs while maintaining security boundaries.</p>
-<p><strong>Certificate</strong>: A digital document that binds a public key to an identity (person, server, organization, device). Certificates are signed by a CA to attest to their validity. The X.509 standard[^2] defines the certificate format used across the internet.</p>
+<p><strong>Certificate</strong>: A digital document that binds a public key to an identity (person, server, organization, device). Certificates are signed by a CA to attest to their validity. The X.509 standard<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> defines the certificate format used across the internet.</p>
 <p><strong>Certificate Revocation List (CRL) / OCSP</strong>: Mechanisms for publishing information about certificates that have been revoked before their expiration date. These are critical for maintaining security when private keys are compromised or circumstances change.</p>
 <p><strong>Key Pair</strong>: The asymmetric cryptographic key pair (private and public) that enables PKI operations. The private key signs and decrypts; the public key verifies and encrypts.</p>
 <h3 id="how-pki-works">How PKI Works</h3>
@@ -2898,7 +2898,7 @@
 </ul>
 <h2 id="security-considerations">Security Considerations</h2>
 <h3 id="ca-compromise">CA Compromise</h3>
-<p>The compromise of a Certificate Authority's private key is catastrophic—attackers can issue trusted certificates for any identity. This is why CA operations are heavily regulated by programs like WebTrust and CA/Browser Forum requirements[^3].</p>
+<p>The compromise of a Certificate Authority's private key is catastrophic—attackers can issue trusted certificates for any identity. This is why CA operations are heavily regulated by programs like WebTrust and CA/Browser Forum requirements<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>.</p>
 <ul>
 <li><strong>Threat</strong>: Attacker gains access to CA private key</li>
 <li><strong>Impact</strong>: Ability to issue trusted certificates for any domain or identity; complete breakdown of trust</li>
@@ -2943,9 +2943,6 @@
 <li><a href="../../security/ca-compromise-scenarios/">Ca Compromise Scenarios</a> - Understanding and preventing CA failures</li>
 </ul>
 <h2 id="references">References</h2>
-<p>[^1]: Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." RFC 5280, May 2008. <a href="https://www.rfc-editor.org/rfc/rfc5280">Rfc-editor - Rfc5280</a></p>
-<p>[^2]: ITU-T Recommendation X.509. "Information technology – Open Systems Interconnection – The Directory: Public-key and attribute certificate frameworks." October 2019.</p>
-<p>[^3]: CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. <a href="https://cabforum.org/baseline-requirements-documents/">Cabforum - Baseline Requirements Documents</a></p>
 <h2 id="change-history">Change History</h2>
 <table>
 <thead>
@@ -2974,6 +2971,20 @@
 <li>[x] Examples are current and relevant</li>
 <li>[x] Security considerations addressed</li>
 </ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." RFC 5280, May 2008. <a href="https://www.rfc-editor.org/rfc/rfc5280">Rfc-editor - Rfc5280</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>ITU-T Recommendation X.509. "Information technology – Open Systems Interconnection – The Directory: Public-key and attribute certificate frameworks." October 2019.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates," Version 2.0.0, November 2023. <a href="https://cabforum.org/baseline-requirements-documents/">Cabforum - Baseline Requirements Documents</a>&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
