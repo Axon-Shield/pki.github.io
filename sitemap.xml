@@ -160,4 +160,20 @@
          <loc>https://vault.axonshield.com/standards/x509-standard/</loc>
          <lastmod>2025-11-09</lastmod>
     </url>
+    <url>
+         <loc>https://vault.axonshield.com/troubleshooting/chain-validation-errors/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://vault.axonshield.com/troubleshooting/common-misconfigurations/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://vault.axonshield.com/troubleshooting/expired-certificate-outages/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://vault.axonshield.com/troubleshooting/performance-bottlenecks/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
 </urlset>
