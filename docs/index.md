@@ -12,11 +12,12 @@ Welcome to your comprehensive reference for Public Key Infrastructure and certif
 ### 🎯 Start Here (Foundations)
 - [What is PKI?](foundations/what-is-pki.md) - Understanding the fundamentals
 - [Certificate Anatomy](foundations/certificate-anatomy.md) - How certificates are structured
-- Trust Models *(coming soon)* - Different approaches to establishing trust
-- Cryptographic Primitives *(coming soon)* - The math behind PKI
+- [Trust Models](foundations/trust-models.md) - Different approaches to establishing trust
+- [Cryptographic Primitives](foundations/cryptographic-primitives.md) - The math behind PKI
+- [Public-Private Key Pairs](foundations/public-private-key-pairs.md) - Understanding key pair concepts
 
 ### 📋 Standards & Protocols
-- X.509 Standard *(coming soon)* - Certificate and CRL format
+- [X.509 Standard](standards/x509-standard.md) - Certificate and CRL format
 - TLS Protocol *(coming soon)* - Secure transport layer
 - OCSP and CRL *(coming soon)* - Revocation checking
 - ACME Protocol *(coming soon)* - Automated certificate management
@@ -36,7 +37,7 @@ Welcome to your comprehensive reference for Public Key Infrastructure and certif
 - Certificate Rotation Strategies *(coming soon)* - When and how to rotate
 
 ### 🔒 Security
-- Private Key Protection *(coming soon)* - Securing your keys
+- [Private Key Protection](security/private-key-protection.md) - Securing your keys
 - CA Compromise Scenarios *(coming soon)* - Prevention and recovery
 - Certificate Pinning *(coming soon)* - Additional security layer
 - Common Vulnerabilities *(coming soon)* - Known attacks and defenses
@@ -105,7 +106,7 @@ Every page in this knowledge base includes:
 
 **Version**: 1.0 (Initial Release)  
 **Last Updated**: November 9, 2024  
-**Completed Pages**: 6  
+**Completed Pages**: 10  
 **In Progress**: Expanding all categories
 
 This knowledge base is actively maintained and expanded based on:
