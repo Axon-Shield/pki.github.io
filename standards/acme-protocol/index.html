@@ -2471,41 +2471,51 @@
 <p>ACME defines interactions between three parties:</p>
 <h4 id="acme-client">ACME Client</h4>
 <p>Software requesting certificates on behalf of domain owner.</p>
-<p><strong>Responsibilities</strong>:
-- Account registration with ACME server
-- Prove control over domain (challenge completion)
-- Generate key pairs
-- Request certificate issuance
-- Automate renewal before expiration
-- Handle revocation if needed</p>
-<p><strong>Examples</strong>:
-- <strong>Certbot</strong>: EFF's official client, Python-based
-- <strong>acme.sh</strong>: Shell script implementation
-- <strong>cert-manager</strong>: Kubernetes-native controller
-- <strong>Caddy</strong>: Web server with built-in ACME
-- <strong>Traefik</strong>: Reverse proxy with ACME support</p>
+<p><strong>Responsibilities</strong>:</p>
+<ul>
+<li>Account registration with ACME server</li>
+<li>Prove control over domain (challenge completion)</li>
+<li>Generate key pairs</li>
+<li>Request certificate issuance</li>
+<li>Automate renewal before expiration</li>
+<li>Handle revocation if needed</li>
+</ul>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li><strong>Certbot</strong>: EFF's official client, Python-based</li>
+<li><strong>acme.sh</strong>: Shell script implementation</li>
+<li><strong>cert-manager</strong>: Kubernetes-native controller</li>
+<li><strong>Caddy</strong>: Web server with built-in ACME</li>
+<li><strong>Traefik</strong>: Reverse proxy with ACME support</li>
+</ul>
 <h4 id="acme-server-ca">ACME Server (CA)</h4>
 <p>Certificate Authority implementing ACME protocol.</p>
-<p><strong>Responsibilities</strong>:
-- Account management
-- Challenge generation and validation
-- Certificate issuance
-- Certificate revocation
-- Rate limiting and abuse prevention</p>
-<p><strong>Examples</strong>:
-- <strong>Let's Encrypt</strong>: Free, public CA
-- <strong>ZeroSSL</strong>: Free and paid options
-- <strong>Buypass Go SSL</strong>: Free Norwegian CA
-- <strong>Google Trust Services</strong>: Google's CA
-- <strong>Boulder</strong>: Open-source ACME server (Let's Encrypt's implementation)
-- <strong>Step CA</strong>: Private ACME server</p>
+<p><strong>Responsibilities</strong>:</p>
+<ul>
+<li>Account management</li>
+<li>Challenge generation and validation</li>
+<li>Certificate issuance</li>
+<li>Certificate revocation</li>
+<li>Rate limiting and abuse prevention</li>
+</ul>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li><strong>Let's Encrypt</strong>: Free, public CA</li>
+<li><strong>ZeroSSL</strong>: Free and paid options</li>
+<li><strong>Buypass Go SSL</strong>: Free Norwegian CA</li>
+<li><strong>Google Trust Services</strong>: Google's CA</li>
+<li><strong>Boulder</strong>: Open-source ACME server (Let's Encrypt's implementation)</li>
+<li><strong>Step CA</strong>: Private ACME server</li>
+</ul>
 <h4 id="domain-owner">Domain Owner</h4>
 <p>Entity controlling domain and running ACME client.</p>
-<p><strong>Responsibilities</strong>:
-- Maintain domain infrastructure to complete challenges
-- Secure ACME account credentials
-- Monitor certificate expiration and renewal
-- Respond to validation challenges</p>
+<p><strong>Responsibilities</strong>:</p>
+<ul>
+<li>Maintain domain infrastructure to complete challenges</li>
+<li>Secure ACME account credentials</li>
+<li>Monitor certificate expiration and renewal</li>
+<li>Respond to validation challenges</li>
+</ul>
 <h3 id="account-management">Account Management</h3>
 <p>ACME requires account registration before certificate operations.</p>
 <h4 id="account-registration">Account Registration</h4>
@@ -2537,12 +2547,14 @@
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">}</span>
 </code></pre></div></p>
-<p><strong>Account Key Security</strong>:
-- Account key controls all certificates for the account
-- Store securely (HSM, encrypted keystore)
-- Separate from certificate private keys
-- Compromise allows unauthorized certificate issuance
-- Can be rotated using key rollover procedure</p>
+<p><strong>Account Key Security</strong>:</p>
+<ul>
+<li>Account key controls all certificates for the account</li>
+<li>Store securely (HSM, encrypted keystore)</li>
+<li>Separate from certificate private keys</li>
+<li>Compromise allows unauthorized certificate issuance</li>
+<li>Can be rotated using key rollover procedure</li>
+</ul>
 <h4 id="account-key-rollover">Account Key Rollover</h4>
 <p>Change account key without losing account:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>1. Client generates new account key pair
@@ -2570,20 +2582,26 @@
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>Example:
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>abc123xyz.Xyz9876def
 </code></pre></div></p>
-<p><strong>Advantages</strong>:
-- Simple to implement
-- Works with standard web servers
-- Port 80 required (standard)
-- No DNS changes needed</p>
-<p><strong>Limitations</strong>:
-- Requires port 80 accessible from internet
-- Only validates single hostname
-- Cannot validate wildcard certificates
-- Doesn't work for internal domains</p>
-<p><strong>Use Cases</strong>:
-- Public websites
-- Single hostnames
-- Standard web server environments</p>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li>Simple to implement</li>
+<li>Works with standard web servers</li>
+<li>Port 80 required (standard)</li>
+<li>No DNS changes needed</li>
+</ul>
+<p><strong>Limitations</strong>:</p>
+<ul>
+<li>Requires port 80 accessible from internet</li>
+<li>Only validates single hostname</li>
+<li>Cannot validate wildcard certificates</li>
+<li>Doesn't work for internal domains</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Public websites</li>
+<li>Single hostnames</li>
+<li>Standard web server environments</li>
+</ul>
 <h4 id="dns-01-challenge">DNS-01 Challenge</h4>
 <p>Prove control by creating specific DNS TXT record.</p>
 <p><strong>Challenge Flow</strong>:
@@ -2598,21 +2616,27 @@
 <p><strong>Validation String</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>base64url(SHA-256(&lt;token&gt;.&lt;base64url(SHA-256(account_key_jwk))&gt;))
 </code></pre></div></p>
-<p><strong>Advantages</strong>:
-- Works without public-facing web server
-- Can validate wildcard certificates (*.example.com)
-- Can validate multiple domains simultaneously
-- Works for internal/private domains</p>
-<p><strong>Limitations</strong>:
-- Requires DNS provider API or manual DNS management
-- DNS propagation delays (can take minutes)
-- More complex to automate
-- Potential for DNS pollution if not cleaned up</p>
-<p><strong>Use Cases</strong>:
-- Wildcard certificates
-- Internal infrastructure
-- Load balancers/proxies
-- Environments without web server</p>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li>Works without public-facing web server</li>
+<li>Can validate wildcard certificates (*.example.com)</li>
+<li>Can validate multiple domains simultaneously</li>
+<li>Works for internal/private domains</li>
+</ul>
+<p><strong>Limitations</strong>:</p>
+<ul>
+<li>Requires DNS provider API or manual DNS management</li>
+<li>DNS propagation delays (can take minutes)</li>
+<li>More complex to automate</li>
+<li>Potential for DNS pollution if not cleaned up</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Wildcard certificates</li>
+<li>Internal infrastructure</li>
+<li>Load balancers/proxies</li>
+<li>Environments without web server</li>
+</ul>
 <h4 id="tls-alpn-01-challenge">TLS-ALPN-01 Challenge</h4>
 <p>Prove control via TLS handshake with specific ALPN extension.</p>
 <p><strong>Challenge Flow</strong>:
@@ -2625,20 +2649,26 @@
 <a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>5. Server validates certificate extension
 <a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>6. If valid, domain ownership proven
 </code></pre></div></p>
-<p><strong>Advantages</strong>:
-- Works on port 443 only (no port 80)
-- Useful when port 80 blocked/unavailable
-- Simple validation
-- Fast (no DNS delays)</p>
-<p><strong>Limitations</strong>:
-- Requires TLS server control
-- Less widely supported
-- Cannot validate wildcards
-- Relatively new (not all clients support)</p>
-<p><strong>Use Cases</strong>:
-- Environments where only port 443 allowed
-- TLS-based infrastructure
-- Alternative to HTTP-01 when port 80 unavailable</p>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li>Works on port 443 only (no port 80)</li>
+<li>Useful when port 80 blocked/unavailable</li>
+<li>Simple validation</li>
+<li>Fast (no DNS delays)</li>
+</ul>
+<p><strong>Limitations</strong>:</p>
+<ul>
+<li>Requires TLS server control</li>
+<li>Less widely supported</li>
+<li>Cannot validate wildcards</li>
+<li>Relatively new (not all clients support)</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Environments where only port 443 allowed</li>
+<li>TLS-based infrastructure</li>
+<li>Alternative to HTTP-01 when port 80 unavailable</li>
+</ul>
 <h3 id="certificate-issuance-flow">Certificate Issuance Flow</h3>
 <p>Complete process from request to certificate installation.</p>
 <h4 id="step-by-step-process">Step-by-Step Process</h4>
@@ -2722,11 +2752,13 @@
 <a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>Renewal Window: Day 60-89 (30 days)
 <a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>Ideal: Day 60 (30 days remaining)
 </code></pre></div></p>
-<p><strong>Why 90-Day Certificates?</strong>:
-- Forces automation (manual renewal unsustainable)
-- Reduces exposure window if key compromised
-- Enables key rotation best practices
-- Tests renewal process frequently</p>
+<p><strong>Why 90-Day Certificates?</strong>:</p>
+<ul>
+<li>Forces automation (manual renewal unsustainable)</li>
+<li>Reduces exposure window if key compromised</li>
+<li>Enables key rotation best practices</li>
+<li>Tests renewal process frequently</li>
+</ul>
 <p><strong>Automated Renewal Loop</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="n">certs</span> <span class="o">=</span> <span class="n">get_installed_certificates</span><span class="p">()</span>
@@ -2741,22 +2773,28 @@
 <a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>    <span class="n">sleep</span><span class="p">(</span><span class="mi">24</span> <span class="o">*</span> <span class="mi">3600</span><span class="p">)</span>  <span class="c1"># Check daily</span>
 </code></pre></div></p>
 <h4 id="renewal-considerations">Renewal Considerations</h4>
-<p><strong>Key Rotation</strong>:
-- <strong>Reuse private key</strong>: Same key, new certificate
-  - Simpler, fewer keys to manage
-  - Longer key exposure window
-- <strong>Generate new key</strong>: New key pair with renewal
-  - Better security (limits key exposure)
-  - More complex (manage multiple keys during transition)
-  - Recommended by security best practices</p>
-<p><strong>Certificate Chain</strong>:
-- ACME server may return different intermediates over time
-- Always use full chain returned by server
-- Don't assume chain structure stays constant</p>
-<p><strong>Rate Limits</strong>:
-- Let's Encrypt: 50 certificates per registered domain per week
-- Consider rate limits in renewal automation
-- Spread renewals across time (don't renew all at once)</p>
+<p><strong>Key Rotation</strong>:</p>
+<ul>
+<li><strong>Reuse private key</strong>: Same key, new certificate</li>
+<li>Simpler, fewer keys to manage</li>
+<li>Longer key exposure window</li>
+<li><strong>Generate new key</strong>: New key pair with renewal</li>
+<li>Better security (limits key exposure)</li>
+<li>More complex (manage multiple keys during transition)</li>
+<li>Recommended by security best practices</li>
+</ul>
+<p><strong>Certificate Chain</strong>:</p>
+<ul>
+<li>ACME server may return different intermediates over time</li>
+<li>Always use full chain returned by server</li>
+<li>Don't assume chain structure stays constant</li>
+</ul>
+<p><strong>Rate Limits</strong>:</p>
+<ul>
+<li>Let's Encrypt: 50 certificates per registered domain per week</li>
+<li>Consider rate limits in renewal automation</li>
+<li>Spread renewals across time (don't renew all at once)</li>
+</ul>
 <h3 id="revocation">Revocation</h3>
 <p>ACME supports certificate revocation.</p>
 <h4 id="revocation-methods">Revocation Methods</h4>
@@ -2779,25 +2817,33 @@
 <a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>  &quot;reason&quot;: 1
 <a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>}
 </code></pre></div></p>
-<p><strong>Revocation Reasons</strong>:
-- 0: unspecified
-- 1: keyCompromise
-- 3: affiliationChanged
-- 4: superseded
-- 5: cessationOfOperation</p>
+<p><strong>Revocation Reasons</strong>:</p>
+<ul>
+<li>0: unspecified</li>
+<li>1: keyCompromise</li>
+<li>3: affiliationChanged</li>
+<li>4: superseded</li>
+<li>5: cessationOfOperation</li>
+</ul>
 <h4 id="when-to-revoke">When to Revoke</h4>
-<p><strong>Immediately Revoke If</strong>:
-- Private key compromised or exposed
-- Domain no longer controlled
-- Certificate issued in error
-- Service decommissioned permanently</p>
-<p><strong>Consider Revocation If</strong>:
-- Replacing certificate before expiration
-- Service temporarily offline
-- Security best practice in incident response</p>
-<p><strong>Don't Need to Revoke If</strong>:
-- Normal certificate renewal (cert expires soon anyway)
-- Certificate already expired</p>
+<p><strong>Immediately Revoke If</strong>:</p>
+<ul>
+<li>Private key compromised or exposed</li>
+<li>Domain no longer controlled</li>
+<li>Certificate issued in error</li>
+<li>Service decommissioned permanently</li>
+</ul>
+<p><strong>Consider Revocation If</strong>:</p>
+<ul>
+<li>Replacing certificate before expiration</li>
+<li>Service temporarily offline</li>
+<li>Security best practice in incident response</li>
+</ul>
+<p><strong>Don't Need to Revoke If</strong>:</p>
+<ul>
+<li>Normal certificate renewal (cert expires soon anyway)</li>
+<li>Certificate already expired</li>
+</ul>
 <h2 id="practical-guidance">Practical Guidance</h2>
 <h3 id="implementing-acme-clients">Implementing ACME Clients</h3>
 <h4 id="using-certbot">Using Certbot</h4>
@@ -3083,32 +3129,42 @@
 </ul>
 <h2 id="security-considerations">Security Considerations</h2>
 <h3 id="account-key-security">Account Key Security</h3>
-<p><strong>Critical Importance</strong>:
-- Account key authorizes all certificate operations
-- Compromise allows attacker to issue certificates for your domains
-- More critical than individual certificate private keys</p>
-<p><strong>Protection Measures</strong>:
-- Store encrypted at rest
-- Restrict access (root/admin only)
-- Consider HSM for high-security environments
-- Monitor account activity
-- Implement key rotation procedures</p>
+<p><strong>Critical Importance</strong>:</p>
+<ul>
+<li>Account key authorizes all certificate operations</li>
+<li>Compromise allows attacker to issue certificates for your domains</li>
+<li>More critical than individual certificate private keys</li>
+</ul>
+<p><strong>Protection Measures</strong>:</p>
+<ul>
+<li>Store encrypted at rest</li>
+<li>Restrict access (root/admin only)</li>
+<li>Consider HSM for high-security environments</li>
+<li>Monitor account activity</li>
+<li>Implement key rotation procedures</li>
+</ul>
 <h3 id="challenge-security">Challenge Security</h3>
-<p><strong>HTTP-01 Risks</strong>:
-- Port 80 must be publicly accessible
-- Challenge responses served over unencrypted HTTP
-- Not sensitive: challenge response is public information
-- Risk is not in challenge content but in validation process</p>
-<p><strong>DNS-01 Risks</strong>:
-- DNS API credentials are highly sensitive
-- API compromise allows certificate issuance for any domain
-- DNS provider access should be restricted
-- Use DNS API tokens with minimal permissions</p>
-<p><strong>BGP Hijacking</strong>:
-- Attacker redirects traffic to their infrastructure
-- Completes ACME challenge for victim's domain
-- Obtains valid certificate
-- <strong>Mitigation</strong>: Multiple vantage point validation (Let's Encrypt uses this)</p>
+<p><strong>HTTP-01 Risks</strong>:</p>
+<ul>
+<li>Port 80 must be publicly accessible</li>
+<li>Challenge responses served over unencrypted HTTP</li>
+<li>Not sensitive: challenge response is public information</li>
+<li>Risk is not in challenge content but in validation process</li>
+</ul>
+<p><strong>DNS-01 Risks</strong>:</p>
+<ul>
+<li>DNS API credentials are highly sensitive</li>
+<li>API compromise allows certificate issuance for any domain</li>
+<li>DNS provider access should be restricted</li>
+<li>Use DNS API tokens with minimal permissions</li>
+</ul>
+<p><strong>BGP Hijacking</strong>:</p>
+<ul>
+<li>Attacker redirects traffic to their infrastructure</li>
+<li>Completes ACME challenge for victim's domain</li>
+<li>Obtains valid certificate</li>
+<li><strong>Mitigation</strong>: Multiple vantage point validation (Let's Encrypt uses this)</li>
+</ul>
 <h3 id="rate-limiting">Rate Limiting</h3>
 <p>Let's Encrypt rate limits (as of 2024)[^2]:</p>
 <p><strong>Certificates per Registered Domain</strong>: 50 per week
@@ -3120,22 +3176,28 @@
 - Allows renewal even if hitting cert limit</p>
 <p><strong>Failed Validations</strong>: 5 failures per account, per hostname, per hour</p>
 <p><strong>New Orders</strong>: 300 per 3 hours</p>
-<p><strong>Mitigation Strategies</strong>:
-- Spread certificate issuance over time
-- Use wildcard certificates where appropriate
-- Combine multiple subdomains in single certificate (SAN)
-- Monitor rate limit consumption</p>
+<p><strong>Mitigation Strategies</strong>:</p>
+<ul>
+<li>Spread certificate issuance over time</li>
+<li>Use wildcard certificates where appropriate</li>
+<li>Combine multiple subdomains in single certificate (SAN)</li>
+<li>Monitor rate limit consumption</li>
+</ul>
 <h2 id="real-world-examples">Real-World Examples</h2>
 <h3 id="case-study-lets-encrypt-growth">Case Study: Let's Encrypt Growth</h3>
-<p><strong>Scale</strong> (as of 2024):
-- 3+ million certificates issued daily
-- 300+ million active certificates
-- 90% of web pages loaded over HTTPS (up from 40% in 2015)</p>
-<p><strong>Impact</strong>:
-- Eliminated cost barrier to HTTPS
-- Enabled small sites and personal projects to use HTTPS
-- Demonstrated viability of automated certificate management
-- Influenced industry toward automation</p>
+<p><strong>Scale</strong> (as of 2024):</p>
+<ul>
+<li>3+ million certificates issued daily</li>
+<li>300+ million active certificates</li>
+<li>90% of web pages loaded over HTTPS (up from 40% in 2015)</li>
+</ul>
+<p><strong>Impact</strong>:</p>
+<ul>
+<li>Eliminated cost barrier to HTTPS</li>
+<li>Enabled small sites and personal projects to use HTTPS</li>
+<li>Demonstrated viability of automated certificate management</li>
+<li>Influenced industry toward automation</li>
+</ul>
 <p><strong>Key Takeaway</strong>: Well-designed automation protocol enables massive scale. ACME made HTTPS accessible to everyone.</p>
 <h3 id="case-study-kubernetes-cert-manager-adoption">Case Study: Kubernetes cert-manager Adoption</h3>
 <p><strong>Problem</strong>: Manual certificate management doesn't work in dynamic Kubernetes environments
@@ -3150,16 +3212,20 @@
 <p><strong>Key Takeaway</strong>: ACME's API-driven approach fits cloud-native infrastructure patterns. Automation is essential for dynamic environments.</p>
 <h3 id="case-study-dns-provider-api-outages">Case Study: DNS Provider API Outages</h3>
 <p><strong>Incident</strong>: DNS provider API outage during ACME renewals</p>
-<p><strong>Impact</strong>:
-- DNS-01 challenge failures
-- Renewal failures for wildcard certificates
-- Cascading expirations</p>
-<p><strong>Lessons</strong>:
-- DNS API is critical dependency for DNS-01 challenges
-- Need fallback strategies (manual, alternative provider)
-- Monitor DNS API availability
-- Alert on challenge failures before expiration
-- Consider HTTP-01 as fallback when possible</p>
+<p><strong>Impact</strong>:</p>
+<ul>
+<li>DNS-01 challenge failures</li>
+<li>Renewal failures for wildcard certificates</li>
+<li>Cascading expirations</li>
+</ul>
+<p><strong>Lessons</strong>:</p>
+<ul>
+<li>DNS API is critical dependency for DNS-01 challenges</li>
+<li>Need fallback strategies (manual, alternative provider)</li>
+<li>Monitor DNS API availability</li>
+<li>Alert on challenge failures before expiration</li>
+<li>Consider HTTP-01 as fallback when possible</li>
+</ul>
 <p><strong>Key Takeaway</strong>: ACME introduces dependencies on external services (CA, DNS provider). Build resilience into automation.</p>
 <h2 id="further-reading">Further Reading</h2>
 <h3 id="essential-resources">Essential Resources</h3>
@@ -3199,12 +3265,14 @@
 </tbody>
 </table>
 <hr />
-<p><strong>Quality Checks</strong>: 
-- [x] All claims cited from authoritative sources
-- [x] Cross-references validated
-- [x] Practical guidance included
-- [x] Examples are current and relevant
-- [x] Security considerations addressed</p>
+<p><strong>Quality Checks</strong>: </p>
+<ul>
+<li>[x] All claims cited from authoritative sources</li>
+<li>[x] Cross-references validated</li>
+<li>[x] Practical guidance included</li>
+<li>[x] Examples are current and relevant</li>
+<li>[x] Security considerations addressed</li>
+</ul>
 
 
 

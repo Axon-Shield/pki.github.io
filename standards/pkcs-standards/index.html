@@ -2737,12 +2737,14 @@
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>MIIEpAIBAAKCAQEA0Z...
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>-----END RSA PRIVATE KEY-----
 </code></pre></div></p>
-<p><strong>Key Components</strong>:
-- <strong>n</strong> (modulus): Product of two primes (p × q)
-- <strong>e</strong> (public exponent): Typically 65537 (0x10001)
-- <strong>d</strong> (private exponent): Computed from e, p, q
-- <strong>p, q</strong> (primes): The two secret prime numbers
-- <strong>Additional values</strong>: Optimization parameters for Chinese Remainder Theorem</p>
+<p><strong>Key Components</strong>:</p>
+<ul>
+<li><strong>n</strong> (modulus): Product of two primes (p × q)</li>
+<li><strong>e</strong> (public exponent): Typically 65537 (0x10001)</li>
+<li><strong>d</strong> (private exponent): Computed from e, p, q</li>
+<li><strong>p, q</strong> (primes): The two secret prime numbers</li>
+<li><strong>Additional values</strong>: Optimization parameters for Chinese Remainder Theorem</li>
+</ul>
 <h4 id="pkcs1-v15-padding">PKCS#1 v1.5 Padding</h4>
 <p>Original padding scheme for RSA encryption and signatures.</p>
 <p><strong>Encryption Padding</strong>:
@@ -2769,24 +2771,32 @@
 <p><strong>Security</strong>: PKCS#1 v1.5 has known vulnerabilities (Bleichenbacher attack). Use RSA-OAEP for encryption and RSA-PSS for signatures when possible.</p>
 <h4 id="rsa-oaep-optimal-asymmetric-encryption-padding">RSA-OAEP (Optimal Asymmetric Encryption Padding)</h4>
 <p>Modern, provably secure padding for RSA encryption.</p>
-<p><strong>Properties</strong>:
-- Probabilistic (different ciphertext each time)
-- Secure against adaptive chosen-ciphertext attacks
-- Defined in PKCS#1 v2.0+ and RFC 8017[^1]</p>
-<p><strong>When to Use</strong>:
-- New implementations should use OAEP
-- Prefer over PKCS#1 v1.5 for encryption
-- Required for some compliance standards</p>
+<p><strong>Properties</strong>:</p>
+<ul>
+<li>Probabilistic (different ciphertext each time)</li>
+<li>Secure against adaptive chosen-ciphertext attacks</li>
+<li>Defined in PKCS#1 v2.0+ and RFC 8017[^1]</li>
+</ul>
+<p><strong>When to Use</strong>:</p>
+<ul>
+<li>New implementations should use OAEP</li>
+<li>Prefer over PKCS#1 v1.5 for encryption</li>
+<li>Required for some compliance standards</li>
+</ul>
 <h4 id="rsa-pss-probabilistic-signature-scheme">RSA-PSS (Probabilistic Signature Scheme)</h4>
 <p>Modern signature scheme with security proof.</p>
-<p><strong>Properties</strong>:
-- Probabilistic (different signature each time for same message)
-- Provably secure under RSA assumption
-- Stronger security guarantees than PKCS#1 v1.5</p>
-<p><strong>When to Use</strong>:
-- New implementations should consider PSS
-- Required by some government standards (FIPS)
-- Growing adoption in TLS certificates</p>
+<p><strong>Properties</strong>:</p>
+<ul>
+<li>Probabilistic (different signature each time for same message)</li>
+<li>Provably secure under RSA assumption</li>
+<li>Stronger security guarantees than PKCS#1 v1.5</li>
+</ul>
+<p><strong>When to Use</strong>:</p>
+<ul>
+<li>New implementations should consider PSS</li>
+<li>Required by some government standards (FIPS)</li>
+<li>Growing adoption in TLS certificates</li>
+</ul>
 <h3 id="pkcs5-password-based-encryption">PKCS#5: Password-Based Encryption</h3>
 <p>Defines password-based encryption (PBE) and key derivation.</p>
 <h4 id="pbkdf2-password-based-key-derivation-function-2">PBKDF2 (Password-Based Key Derivation Function 2)</h4>
@@ -2806,21 +2816,25 @@
 2. Apply pseudorandom function (typically HMAC-SHA256)
 3. Repeat c iterations (e.g., 100,000+)
 4. Output derived key</p>
-<p><strong>Security Parameters</strong>:
-- <strong>Salt</strong>: Must be random, unique per password
-- <strong>Iterations</strong>: Higher is slower but more secure
-  - 2024 recommendation: 100,000+ for user passwords
-  - Adjust based on threat model and performance</p>
+<p><strong>Security Parameters</strong>:</p>
+<ul>
+<li><strong>Salt</strong>: Must be random, unique per password</li>
+<li><strong>Iterations</strong>: Higher is slower but more secure</li>
+<li>2024 recommendation: 100,000+ for user passwords</li>
+<li>Adjust based on threat model and performance</li>
+</ul>
 <p><strong>Purpose</strong>: Make password brute-forcing computationally expensive</p>
 <h4 id="pbe-schemes">PBE Schemes</h4>
 <p>Common password-based encryption algorithms:</p>
 <p><strong>PBES2</strong> (Recommended):
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Encryption: PBKDF2(password) → AES-256-CBC
 </code></pre></div></p>
-<p><strong>Older Schemes</strong> (Avoid):
-- PBEWithMD5AndDES: Weak, MD5 broken
-- PBEWithSHA1AndDES: Weak, DES too small
-- PBEWithSHA1And3-KeyTripleDES-CBC: Better but dated</p>
+<p><strong>Older Schemes</strong> (Avoid):</p>
+<ul>
+<li>PBEWithMD5AndDES: Weak, MD5 broken</li>
+<li>PBEWithSHA1AndDES: Weak, DES too small</li>
+<li>PBEWithSHA1And3-KeyTripleDES-CBC: Better but dated</li>
+</ul>
 <p><strong>Example Usage</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Encrypt private key with password</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>openssl<span class="w"> </span>genpkey<span class="w"> </span>-algorithm<span class="w"> </span>RSA<span class="w"> </span>-out<span class="w"> </span>key.pem<span class="w"> </span>-aes256<span class="w"> </span>-pass<span class="w"> </span>pass:SecurePassword
@@ -2883,31 +2897,41 @@
 <a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="p">}</span>
 </code></pre></div></p>
 <h4 id="use-cases">Use Cases</h4>
-<p><strong>S/MIME Email</strong>:
-- Signed emails use SignedData
-- Encrypted emails use EnvelopedData
-- Signed and encrypted use SignedAndEnvelopedData</p>
-<p><strong>Code Signing</strong>:
-- Software signatures use SignedData
-- Includes certificate chain
-- Timestamp for long-term validity</p>
-<p><strong>Document Signing</strong>:
-- PDF signatures use PKCS#7/CMS
-- Office document signatures (OOXML)</p>
-<p><strong>Certificate Responses</strong>:
-- SCEP (Simple Certificate Enrollment Protocol)
-- CMC (Certificate Management over CMS)</p>
+<p><strong>S/MIME Email</strong>:</p>
+<ul>
+<li>Signed emails use SignedData</li>
+<li>Encrypted emails use EnvelopedData</li>
+<li>Signed and encrypted use SignedAndEnvelopedData</li>
+</ul>
+<p><strong>Code Signing</strong>:</p>
+<ul>
+<li>Software signatures use SignedData</li>
+<li>Includes certificate chain</li>
+<li>Timestamp for long-term validity</li>
+</ul>
+<p><strong>Document Signing</strong>:</p>
+<ul>
+<li>PDF signatures use PKCS#7/CMS</li>
+<li>Office document signatures (OOXML)</li>
+</ul>
+<p><strong>Certificate Responses</strong>:</p>
+<ul>
+<li>SCEP (Simple Certificate Enrollment Protocol)</li>
+<li>CMC (Certificate Management over CMS)</li>
+</ul>
 <h4 id="cms-cryptographic-message-syntax">CMS (Cryptographic Message Syntax)</h4>
 <p><strong>Evolution</strong>: PKCS#7 evolved into CMS (RFC 5652[^2])
 - CMS is IETF standard
 - Extends PKCS#7 with new features
 - Backward compatible
 - Used in modern applications</p>
-<p><strong>CMS vs PKCS#7</strong>:
-- Same basic structure
-- CMS adds features (content types, attributes)
-- PKCS#7 term still widely used
-- Tools often support both</p>
+<p><strong>CMS vs PKCS#7</strong>:</p>
+<ul>
+<li>Same basic structure</li>
+<li>CMS adds features (content types, attributes)</li>
+<li>PKCS#7 term still widely used</li>
+<li>Tools often support both</li>
+</ul>
 <h3 id="pkcs8-private-key-information">PKCS#8: Private Key Information</h3>
 <p>Defines algorithm-independent private key storage format.</p>
 <h4 id="structure_1">Structure</h4>
@@ -2979,11 +3003,13 @@
 1. Generate encryption key from password (PBKDF2)
 2. Encrypt private key with derived key (AES-256-CBC)
 3. Store encryption parameters in EncryptedPrivateKeyInfo</p>
-<p><strong>Parameters Stored</strong>:
-- Encryption algorithm (e.g., AES-256-CBC)
-- Key derivation function (PBKDF2)
-- Salt (random)
-- Iteration count</p>
+<p><strong>Parameters Stored</strong>:</p>
+<ul>
+<li>Encryption algorithm (e.g., AES-256-CBC)</li>
+<li>Key derivation function (PBKDF2)</li>
+<li>Salt (random)</li>
+<li>Iteration count</li>
+</ul>
 <p><strong>Security</strong>: Password protection prevents casual access but keys can be brute-forced if weak password used.</p>
 <h3 id="pkcs10-certificate-request">PKCS#10: Certificate Request</h3>
 <p>Defines format for Certificate Signing Requests (CSRs).</p>
@@ -3007,18 +3033,22 @@
 <a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>-----END CERTIFICATE REQUEST-----
 </code></pre></div></p>
 <h4 id="csr-contents">CSR Contents</h4>
-<p><strong>Required Fields</strong>:
-- <strong>Version</strong>: Typically 0 (v1)
-- <strong>Subject</strong>: Distinguished Name of certificate subject
-- <strong>Public Key</strong>: Public key to be certified
-- <strong>Signature</strong>: Self-signature proving private key possession</p>
-<p><strong>Optional Attributes</strong> (PKCS#9):
-- <strong>Challenge Password</strong>: Legacy, rarely used
-- <strong>Unstructured Name</strong>: Additional identifier
-- <strong>Extension Request</strong>: X.509 extensions to include in certificate
-  - Subject Alternative Names
-  - Key Usage
-  - Extended Key Usage</p>
+<p><strong>Required Fields</strong>:</p>
+<ul>
+<li><strong>Version</strong>: Typically 0 (v1)</li>
+<li><strong>Subject</strong>: Distinguished Name of certificate subject</li>
+<li><strong>Public Key</strong>: Public key to be certified</li>
+<li><strong>Signature</strong>: Self-signature proving private key possession</li>
+</ul>
+<p><strong>Optional Attributes</strong> (PKCS#9):</p>
+<ul>
+<li><strong>Challenge Password</strong>: Legacy, rarely used</li>
+<li><strong>Unstructured Name</strong>: Additional identifier</li>
+<li><strong>Extension Request</strong>: X.509 extensions to include in certificate</li>
+<li>Subject Alternative Names</li>
+<li>Key Usage</li>
+<li>Extended Key Usage</li>
+</ul>
 <h4 id="creating-csrs">Creating CSRs</h4>
 <p><strong>Generate Key and CSR</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Generate private key</span>
@@ -3080,16 +3110,20 @@
 <h3 id="pkcs11-cryptographic-token-interface">PKCS#11: Cryptographic Token Interface</h3>
 <p>Standard API for hardware security modules (HSMs) and smart cards.</p>
 <h4 id="concept">Concept</h4>
-<p><strong>Cryptoki</strong> (Cryptographic Token Interface):
-- Platform-independent API
-- Hardware abstraction layer
-- Vendor-neutral standard
-- C language binding</p>
-<p><strong>Components</strong>:
-- <strong>Tokens</strong>: Cryptographic devices (HSM, smart card)
-- <strong>Slots</strong>: Physical or logical connectors
-- <strong>Sessions</strong>: Connections to tokens
-- <strong>Objects</strong>: Keys, certificates, data stored in token</p>
+<p><strong>Cryptoki</strong> (Cryptographic Token Interface):</p>
+<ul>
+<li>Platform-independent API</li>
+<li>Hardware abstraction layer</li>
+<li>Vendor-neutral standard</li>
+<li>C language binding</li>
+</ul>
+<p><strong>Components</strong>:</p>
+<ul>
+<li><strong>Tokens</strong>: Cryptographic devices (HSM, smart card)</li>
+<li><strong>Slots</strong>: Physical or logical connectors</li>
+<li><strong>Sessions</strong>: Connections to tokens</li>
+<li><strong>Objects</strong>: Keys, certificates, data stored in token</li>
+</ul>
 <h4 id="functions">Functions</h4>
 <p><strong>Session Management</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">C_Initialize</span><span class="p">()</span><span class="w">        </span><span class="c1">// Initialize library</span>
@@ -3112,18 +3146,24 @@
 <a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="n">C_DestroyObject</span><span class="p">()</span><span class="w">     </span><span class="c1">// Delete object</span>
 </code></pre></div></p>
 <h4 id="use-cases_1">Use Cases</h4>
-<p><strong>Certificate Authority Operations</strong>:
-- CA private key in HSM
-- All signing operations through PKCS#11
-- Keys never leave hardware</p>
-<p><strong>Code Signing</strong>:
-- Signing keys in HSM
-- Secure build pipelines
-- Hardware-backed signatures</p>
-<p><strong>SSL/TLS Offload</strong>:
-- Web server private keys in HSM
-- TLS handshake operations offloaded
-- Hardware acceleration</p>
+<p><strong>Certificate Authority Operations</strong>:</p>
+<ul>
+<li>CA private key in HSM</li>
+<li>All signing operations through PKCS#11</li>
+<li>Keys never leave hardware</li>
+</ul>
+<p><strong>Code Signing</strong>:</p>
+<ul>
+<li>Signing keys in HSM</li>
+<li>Secure build pipelines</li>
+<li>Hardware-backed signatures</li>
+</ul>
+<p><strong>SSL/TLS Offload</strong>:</p>
+<ul>
+<li>Web server private keys in HSM</li>
+<li>TLS handshake operations offloaded</li>
+<li>Hardware acceleration</li>
+</ul>
 <p><strong>Example</strong> (OpenSSL with PKCS#11):
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># Load PKCS#11 engine</span>
 <a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>openssl<span class="w"> </span>engine<span class="w"> </span>-t<span class="w"> </span>dynamic<span class="w"> </span><span class="se">\</span>
@@ -3148,10 +3188,12 @@
 <a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>└── Private Keys
 <a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>    └── Private key (encrypted)
 </code></pre></div></p>
-<p><strong>Multiple Encryption Layers</strong>:
-- Container integrity password (MAC)
-- Private key encryption password (can be different)
-- Certificates optionally encrypted</p>
+<p><strong>Multiple Encryption Layers</strong>:</p>
+<ul>
+<li>Container integrity password (MAC)</li>
+<li>Private key encryption password (can be different)</li>
+<li>Certificates optionally encrypted</li>
+</ul>
 <h4 id="creating-pkcs12-files">Creating PKCS#12 Files</h4>
 <p><strong>From Separate Files</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># Combine private key, certificate, and chain</span>
@@ -3188,22 +3230,30 @@
 <a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="c1"># Contains: private key + certificate + chain</span>
 </code></pre></div></p>
 <h4 id="use-cases_2">Use Cases</h4>
-<p><strong>Certificate Import/Export</strong>:
-- Transfer certificates between systems
-- Backup certificates with private keys
-- Import into browsers, email clients</p>
-<p><strong>Windows Certificate Store</strong>:
-- .pfx is native format
-- Double-click to import
-- Widely supported by Windows applications</p>
-<p><strong>Mobile Devices</strong>:
-- iOS, Android certificate installation
-- Email configuration (S/MIME)
-- VPN client certificates</p>
-<p><strong>Web Server Migration</strong>:
-- Export from old server
-- Import to new server
-- Includes full certificate chain</p>
+<p><strong>Certificate Import/Export</strong>:</p>
+<ul>
+<li>Transfer certificates between systems</li>
+<li>Backup certificates with private keys</li>
+<li>Import into browsers, email clients</li>
+</ul>
+<p><strong>Windows Certificate Store</strong>:</p>
+<ul>
+<li>.pfx is native format</li>
+<li>Double-click to import</li>
+<li>Widely supported by Windows applications</li>
+</ul>
+<p><strong>Mobile Devices</strong>:</p>
+<ul>
+<li>iOS, Android certificate installation</li>
+<li>Email configuration (S/MIME)</li>
+<li>VPN client certificates</li>
+</ul>
+<p><strong>Web Server Migration</strong>:</p>
+<ul>
+<li>Export from old server</li>
+<li>Import to new server</li>
+<li>Includes full certificate chain</li>
+</ul>
 <h2 id="practical-guidance">Practical Guidance</h2>
 <h3 id="working-with-pkcs-formats">Working with PKCS Formats</h3>
 <h4 id="format-detection">Format Detection</h4>
@@ -3395,48 +3445,66 @@
 </ul>
 <h2 id="security-considerations">Security Considerations</h2>
 <h3 id="password-based-encryption-strength">Password-Based Encryption Strength</h3>
-<p><strong>Weak Encryption Schemes</strong>:
-- PBEWithMD5AndDES: MD5 is broken, DES has 56-bit keys
-- PBEWithSHA1AndDES: DES too weak
-- Low PBKDF2 iteration counts (&lt;10,000)</p>
-<p><strong>Strong Encryption</strong>:
-- PBES2 with PBKDF2 and AES-256
-- 100,000+ iterations (adjust for performance)
-- Random salt (minimum 128 bits)</p>
-<p><strong>Threat Model</strong>:
-- Password-based encryption protects against casual access
-- Determined attacker can brute-force weak passwords
-- HSM storage superior for high-value keys</p>
+<p><strong>Weak Encryption Schemes</strong>:</p>
+<ul>
+<li>PBEWithMD5AndDES: MD5 is broken, DES has 56-bit keys</li>
+<li>PBEWithSHA1AndDES: DES too weak</li>
+<li>Low PBKDF2 iteration counts (&lt;10,000)</li>
+</ul>
+<p><strong>Strong Encryption</strong>:</p>
+<ul>
+<li>PBES2 with PBKDF2 and AES-256</li>
+<li>100,000+ iterations (adjust for performance)</li>
+<li>Random salt (minimum 128 bits)</li>
+</ul>
+<p><strong>Threat Model</strong>:</p>
+<ul>
+<li>Password-based encryption protects against casual access</li>
+<li>Determined attacker can brute-force weak passwords</li>
+<li>HSM storage superior for high-value keys</li>
+</ul>
 <h3 id="pkcs1-v15-vulnerabilities">PKCS#1 v1.5 Vulnerabilities</h3>
-<p><strong>Bleichenbacher Attack</strong> (1998):
-- Padding oracle attack on PKCS#1 v1.5 encryption
-- Allows decryption of ciphertexts through timing side-channel
-- Still relevant today if improperly implemented</p>
-<p><strong>Mitigations</strong>:
-- Use RSA-OAEP for encryption
-- Use RSA-PSS for signatures
-- Constant-time implementations for PKCS#1 v1.5 (if must use)</p>
+<p><strong>Bleichenbacher Attack</strong> (1998):</p>
+<ul>
+<li>Padding oracle attack on PKCS#1 v1.5 encryption</li>
+<li>Allows decryption of ciphertexts through timing side-channel</li>
+<li>Still relevant today if improperly implemented</li>
+</ul>
+<p><strong>Mitigations</strong>:</p>
+<ul>
+<li>Use RSA-OAEP for encryption</li>
+<li>Use RSA-PSS for signatures</li>
+<li>Constant-time implementations for PKCS#1 v1.5 (if must use)</li>
+</ul>
 <h3 id="pkcs11-security">PKCS#11 Security</h3>
-<p><strong>PIN Protection</strong>:
-- HSM operations require PIN/password
-- Protect PIN like private key
-- Consider multi-factor authentication</p>
-<p><strong>Session Security</strong>:
-- Close sessions when not in use
-- Implement session timeouts
-- Monitor for unauthorized sessions</p>
-<p><strong>Object Permissions</strong>:
-- Sensitive objects should be non-extractable
-- Private keys should be non-exportable
-- Use token-specific access controls</p>
+<p><strong>PIN Protection</strong>:</p>
+<ul>
+<li>HSM operations require PIN/password</li>
+<li>Protect PIN like private key</li>
+<li>Consider multi-factor authentication</li>
+</ul>
+<p><strong>Session Security</strong>:</p>
+<ul>
+<li>Close sessions when not in use</li>
+<li>Implement session timeouts</li>
+<li>Monitor for unauthorized sessions</li>
+</ul>
+<p><strong>Object Permissions</strong>:</p>
+<ul>
+<li>Sensitive objects should be non-extractable</li>
+<li>Private keys should be non-exportable</li>
+<li>Use token-specific access controls</li>
+</ul>
 <h2 id="real-world-examples">Real-World Examples</h2>
 <h3 id="case-study-lets-encrypt-csr-processing">Case Study: Let's Encrypt CSR Processing</h3>
 <p><strong>Scale</strong>: Processes millions of PKCS#10 CSRs daily</p>
-<p><strong>Validation</strong>:
-- Signature verification (proves private key possession)
-- SAN extension validation
-- Compliance checks (key size, algorithms)
-- Rate limiting by account</p>
+<p><strong>Validation</strong>:</p>
+<ul>
+<li>Signature verification (proves private key possession)</li>
+<li>SAN extension validation</li>
+<li>Compliance checks (key size, algorithms)</li>
+<li>Rate limiting by account</li>
+</ul>
 <p><strong>Automation</strong>: Fully automated CSR→certificate pipeline demonstrates PKCS#10's effectiveness for automated PKI.</p>
 <p><strong>Key Takeaway</strong>: PKCS#10 enables automation at massive scale when properly implemented.</p>
 <h3 id="case-study-smime-email-security">Case Study: S/MIME Email Security</h3>
@@ -3492,12 +3560,14 @@
 </tbody>
 </table>
 <hr />
-<p><strong>Quality Checks</strong>: 
-- [x] All claims cited from authoritative sources
-- [x] Cross-references validated
-- [x] Practical guidance included
-- [x] Examples are current and relevant
-- [x] Security considerations addressed</p>
+<p><strong>Quality Checks</strong>: </p>
+<ul>
+<li>[x] All claims cited from authoritative sources</li>
+<li>[x] Cross-references validated</li>
+<li>[x] Practical guidance included</li>
+<li>[x] Examples are current and relevant</li>
+<li>[x] Security considerations addressed</li>
+</ul>
 
 
 

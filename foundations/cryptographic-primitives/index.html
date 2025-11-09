@@ -2446,47 +2446,63 @@
 <h3 id="hash-functions">Hash Functions</h3>
 <p>Hash functions take arbitrary-length input and produce fixed-length output (the hash or digest). They're essential for digital signatures and data integrity.</p>
 <h4 id="required-properties">Required Properties</h4>
-<p><strong>Pre-image Resistance</strong> (One-way):
-- Given hash H, computationally infeasible to find message M where hash(M) = H
-- Ensures hashes can't be reversed to recover original data
-- Example: Given SHA-256 hash, cannot determine what was hashed</p>
-<p><strong>Second Pre-image Resistance</strong> (Weak collision resistance):
-- Given message M₁, computationally infeasible to find different M₂ where hash(M₁) = hash(M₂)
-- Prevents attacker from substituting different message with same hash
-- Critical for digital signatures</p>
-<p><strong>Collision Resistance</strong> (Strong collision resistance):
-- Computationally infeasible to find any two messages M₁ ≠ M₂ where hash(M₁) = hash(M₂)
-- Harder than second pre-image resistance
-- Essential for certificate signatures</p>
+<p><strong>Pre-image Resistance</strong> (One-way):</p>
+<ul>
+<li>Given hash H, computationally infeasible to find message M where hash(M) = H</li>
+<li>Ensures hashes can't be reversed to recover original data</li>
+<li>Example: Given SHA-256 hash, cannot determine what was hashed</li>
+</ul>
+<p><strong>Second Pre-image Resistance</strong> (Weak collision resistance):</p>
+<ul>
+<li>Given message M₁, computationally infeasible to find different M₂ where hash(M₁) = hash(M₂)</li>
+<li>Prevents attacker from substituting different message with same hash</li>
+<li>Critical for digital signatures</li>
+</ul>
+<p><strong>Collision Resistance</strong> (Strong collision resistance):</p>
+<ul>
+<li>Computationally infeasible to find any two messages M₁ ≠ M₂ where hash(M₁) = hash(M₂)</li>
+<li>Harder than second pre-image resistance</li>
+<li>Essential for certificate signatures</li>
+</ul>
 <h4 id="sha-2-family-current-standard">SHA-2 Family (Current Standard)</h4>
 <p><strong>SHA-256</strong> (256-bit output):
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Input: &quot;Hello World&quot;
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Output: a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad9f146e
 </code></pre></div></p>
-<p><strong>Characteristics</strong>:
-- 256-bit (32-byte) output
-- 2^256 possible outputs
-- Collision attack complexity: 2^128 operations (infeasible)
-- NIST recommended for security through 2030+[^1]</p>
-<p><strong>SHA-384</strong> (384-bit output):
-- Truncated SHA-512 computation
-- Higher security margin than SHA-256
-- Used when 128-bit security insufficient</p>
-<p><strong>SHA-512</strong> (512-bit output):
-- 512-bit output
-- Higher performance on 64-bit systems
-- Overkill for most PKI applications</p>
+<p><strong>Characteristics</strong>:</p>
+<ul>
+<li>256-bit (32-byte) output</li>
+<li>2^256 possible outputs</li>
+<li>Collision attack complexity: 2^128 operations (infeasible)</li>
+<li>NIST recommended for security through 2030+[^1]</li>
+</ul>
+<p><strong>SHA-384</strong> (384-bit output):</p>
+<ul>
+<li>Truncated SHA-512 computation</li>
+<li>Higher security margin than SHA-256</li>
+<li>Used when 128-bit security insufficient</li>
+</ul>
+<p><strong>SHA-512</strong> (512-bit output):</p>
+<ul>
+<li>512-bit output</li>
+<li>Higher performance on 64-bit systems</li>
+<li>Overkill for most PKI applications</li>
+</ul>
 <h4 id="deprecated-hash-functions">Deprecated Hash Functions</h4>
-<p><strong>MD5</strong> (128-bit output):
-- <strong>Status</strong>: Cryptographically broken since 2004
-- <strong>Vulnerability</strong>: Practical collision attacks demonstrated[^2]
-- <strong>Usage</strong>: Forbidden for digital signatures
-- <strong>Acceptable</strong>: Non-cryptographic uses (checksums where no attacker)</p>
-<p><strong>SHA-1</strong> (160-bit output):
-- <strong>Status</strong>: Deprecated since 2017, fully broken in 2020[^3]
-- <strong>Vulnerability</strong>: Collision attacks practical (Google demonstrated)
-- <strong>Usage</strong>: Prohibited for TLS certificates since 2017
-- <strong>Sunset</strong>: Being phased out everywhere</p>
+<p><strong>MD5</strong> (128-bit output):</p>
+<ul>
+<li><strong>Status</strong>: Cryptographically broken since 2004</li>
+<li><strong>Vulnerability</strong>: Practical collision attacks demonstrated[^2]</li>
+<li><strong>Usage</strong>: Forbidden for digital signatures</li>
+<li><strong>Acceptable</strong>: Non-cryptographic uses (checksums where no attacker)</li>
+</ul>
+<p><strong>SHA-1</strong> (160-bit output):</p>
+<ul>
+<li><strong>Status</strong>: Deprecated since 2017, fully broken in 2020[^3]</li>
+<li><strong>Vulnerability</strong>: Collision attacks practical (Google demonstrated)</li>
+<li><strong>Usage</strong>: Prohibited for TLS certificates since 2017</li>
+<li><strong>Sunset</strong>: Being phased out everywhere</li>
+</ul>
 <p><strong>Example SHA-1 Collision</strong>:
 Google and CWI Amsterdam created two different PDFs with identical SHA-1 hash, demonstrating practical collision attack (SHAttered attack, 2017).</p>
 <h4 id="hash-function-usage-in-pki">Hash Function Usage in PKI</h4>
@@ -2494,10 +2510,12 @@ Google and CWI Amsterdam created two different PDFs with identical SHA-1 hash, d
 1. Hash the data to be signed (e.g., TBSCertificate)
 2. Sign the hash with private key
 3. Include hash algorithm identifier in signature</p>
-<p><strong>Why hash before signing?</strong>:
-- Efficiency: Signing small hash vs. large document
-- Algorithm independence: Any size data produces fixed-size hash
-- Security: Computational hardness properties</p>
+<p><strong>Why hash before signing?</strong>:</p>
+<ul>
+<li>Efficiency: Signing small hash vs. large document</li>
+<li>Algorithm independence: Any size data produces fixed-size hash</li>
+<li>Security: Computational hardness properties</li>
+</ul>
 <p><strong>Certificate Fingerprints</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># SHA-256 fingerprint</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>openssl<span class="w"> </span>x509<span class="w"> </span>-in<span class="w"> </span>cert.pem<span class="w"> </span>-noout<span class="w"> </span>-fingerprint<span class="w"> </span>-sha256
@@ -2522,16 +2540,20 @@ Based on difficulty of factoring large composite numbers.</p>
 6. Public key: (n, e)
 7. Private key: (n, d)</p>
 <p><strong>Security</strong>: If you can factor n into p and q, you can compute private key. Factoring large numbers is computationally hard (no known polynomial-time algorithm).</p>
-<p><strong>Key Sizes</strong>:
-- <strong>1024-bit</strong>: Deprecated (potentially breakable with significant resources)
-- <strong>2048-bit</strong>: Current minimum for publicly-trusted certificates[^4]
-- <strong>3072-bit</strong>: Higher security, recommended for long-term keys
-- <strong>4096-bit</strong>: Very high security but performance penalty</p>
-<p><strong>Operations</strong>:
-- Encryption: c = m^e mod n (using public key)
-- Decryption: m = c^d mod n (using private key)
-- Signing: s = hash(m)^d mod n
-- Verification: hash(m) = s^e mod n</p>
+<p><strong>Key Sizes</strong>:</p>
+<ul>
+<li><strong>1024-bit</strong>: Deprecated (potentially breakable with significant resources)</li>
+<li><strong>2048-bit</strong>: Current minimum for publicly-trusted certificates[^4]</li>
+<li><strong>3072-bit</strong>: Higher security, recommended for long-term keys</li>
+<li><strong>4096-bit</strong>: Very high security but performance penalty</li>
+</ul>
+<p><strong>Operations</strong>:</p>
+<ul>
+<li>Encryption: c = m^e mod n (using public key)</li>
+<li>Decryption: m = c^d mod n (using private key)</li>
+<li>Signing: s = hash(m)^d mod n</li>
+<li>Verification: hash(m) = s^e mod n</li>
+</ul>
 <p><strong>ECDSA</strong> (Elliptic Curve Digital Signature Algorithm):
 Based on discrete logarithm problem on elliptic curves.</p>
 <p><strong>Key Generation</strong>:
@@ -2542,20 +2564,26 @@ Based on discrete logarithm problem on elliptic curves.</p>
 4. Public key: Q (curve point)
 5. Private key: d (scalar)</p>
 <p><strong>Security</strong>: If you can solve elliptic curve discrete logarithm problem (find d given Q = d × G), you can derive private key. This is believed computationally hard.</p>
-<p><strong>Key Sizes</strong> (equivalent security to RSA):
-- <strong>P-256 (secp256r1)</strong>: Equivalent to RSA-3072, 128-bit security
-- <strong>P-384 (secp384r1)</strong>: Equivalent to RSA-7680, 192-bit security
-- <strong>P-521 (secp521r1)</strong>: Equivalent to RSA-15360, 256-bit security</p>
-<p><strong>Advantages over RSA</strong>:
-- Smaller keys for equivalent security (256-bit ECDSA ≈ 3072-bit RSA)
-- Faster signature generation
-- Smaller certificates
-- Lower bandwidth and storage requirements</p>
-<p><strong>Disadvantages</strong>:
-- More complex mathematics
-- Some curves have potential backdoors (NIST P-curves controversy)
-- Less widely understood than RSA
-- Quantum computing may break both RSA and ECDSA</p>
+<p><strong>Key Sizes</strong> (equivalent security to RSA):</p>
+<ul>
+<li><strong>P-256 (secp256r1)</strong>: Equivalent to RSA-3072, 128-bit security</li>
+<li><strong>P-384 (secp384r1)</strong>: Equivalent to RSA-7680, 192-bit security</li>
+<li><strong>P-521 (secp521r1)</strong>: Equivalent to RSA-15360, 256-bit security</li>
+</ul>
+<p><strong>Advantages over RSA</strong>:</p>
+<ul>
+<li>Smaller keys for equivalent security (256-bit ECDSA ≈ 3072-bit RSA)</li>
+<li>Faster signature generation</li>
+<li>Smaller certificates</li>
+<li>Lower bandwidth and storage requirements</li>
+</ul>
+<p><strong>Disadvantages</strong>:</p>
+<ul>
+<li>More complex mathematics</li>
+<li>Some curves have potential backdoors (NIST P-curves controversy)</li>
+<li>Less widely understood than RSA</li>
+<li>Quantum computing may break both RSA and ECDSA</li>
+</ul>
 <h4 id="algorithm-comparison">Algorithm Comparison</h4>
 <table>
 <thead>
@@ -2605,9 +2633,11 @@ Based on discrete logarithm problem on elliptic curves.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>NIST Recommendations</strong>[^1]:
-- Through 2030: 2048-bit RSA or 256-bit ECDSA minimum
-- Beyond 2030: 3072-bit RSA or 384-bit ECDSA</p>
+<p><strong>NIST Recommendations</strong>[^1]:</p>
+<ul>
+<li>Through 2030: 2048-bit RSA or 256-bit ECDSA minimum</li>
+<li>Beyond 2030: 3072-bit RSA or 384-bit ECDSA</li>
+</ul>
 <h3 id="digital-signatures">Digital Signatures</h3>
 <p>Digital signatures provide authentication, integrity, and non-repudiation.</p>
 <h4 id="signature-process">Signature Process</h4>
@@ -2641,10 +2671,12 @@ Based on discrete logarithm problem on elliptic curves.</p>
 - Format: 0x00 || 0x01 || PS || 0x00 || T
   - PS: Padding string of 0xFF bytes
   - T: Hash algorithm identifier and hash value</p>
-<p><strong>RSA-PSS</strong> (Preferred Modern Variant):
-- Probabilistic padding (different each time)
-- Provably secure under RSA assumption
-- Recommended over PKCS#1 v1.5[^4]</p>
+<p><strong>RSA-PSS</strong> (Preferred Modern Variant):</p>
+<ul>
+<li>Probabilistic padding (different each time)</li>
+<li>Provably secure under RSA assumption</li>
+<li>Recommended over PKCS#1 v1.5[^4]</li>
+</ul>
 <h4 id="ecdsa-signatures">ECDSA Signatures</h4>
 <p><strong>Signing Operation</strong>:
 1. Hash message: h = SHA-256(message)
@@ -2675,35 +2707,47 @@ Based on discrete logarithm problem on elliptic curves.</p>
 - Important for legal and audit purposes
 - Depends on private key protection</p>
 <h3 id="random-number-generation">Random Number Generation</h3>
-<p>Cryptographic security depends on unpredictable random numbers for:
-- Private key generation
-- Signature nonces (k in ECDSA)
-- Session keys
-- Challenge-response protocols</p>
+<p>Cryptographic security depends on unpredictable random numbers for:</p>
+<ul>
+<li>Private key generation</li>
+<li>Signature nonces (k in ECDSA)</li>
+<li>Session keys</li>
+<li>Challenge-response protocols</li>
+</ul>
 <h4 id="entropy-sources">Entropy Sources</h4>
-<p><strong>Hardware Sources</strong>:
-- CPU instructions (RDRAND, RDSEED on x86)
-- Hardware RNG (TPM, HSM internal RNG)
-- Environmental noise (timing jitter, interrupt timing)</p>
-<p><strong>Software Sources</strong>:
-- <code>/dev/random</code> (Linux, blocking if insufficient entropy)
-- <code>/dev/urandom</code> (Linux, non-blocking, cryptographically secure)
-- <code>CryptGenRandom</code> (Windows)
-- <code>SecRandomCopyBytes</code> (macOS/iOS)</p>
+<p><strong>Hardware Sources</strong>:</p>
+<ul>
+<li>CPU instructions (RDRAND, RDSEED on x86)</li>
+<li>Hardware RNG (TPM, HSM internal RNG)</li>
+<li>Environmental noise (timing jitter, interrupt timing)</li>
+</ul>
+<p><strong>Software Sources</strong>:</p>
+<ul>
+<li><code>/dev/random</code> (Linux, blocking if insufficient entropy)</li>
+<li><code>/dev/urandom</code> (Linux, non-blocking, cryptographically secure)</li>
+<li><code>CryptGenRandom</code> (Windows)</li>
+<li><code>SecRandomCopyBytes</code> (macOS/iOS)</li>
+</ul>
 <h4 id="bad-randomness-examples">Bad Randomness Examples</h4>
-<p><strong>Debian OpenSSL Bug (2008)</strong>:
-- Debian patched OpenSSL, accidentally removing entropy source
-- All keys generated had only 2^15 possibilities (should be 2^2048)
-- All Debian-generated keys from 2006-2008 were weak
-- Required mass revocation and regeneration</p>
-<p><strong>Dual_EC_DRBG Backdoor</strong>:
-- NSA-designed random number generator with potential backdoor
-- If NSA knows certain value, can predict future outputs
-- Demonstrates importance of trustworthy RNG algorithms</p>
-<p><strong>Android Bitcoin Wallet (2013)</strong>:
-- Android SecureRandom bug caused reuse of ECDSA nonce k
-- Multiple signatures with same k allows private key recovery
-- Multiple Bitcoin wallets compromised</p>
+<p><strong>Debian OpenSSL Bug (2008)</strong>:</p>
+<ul>
+<li>Debian patched OpenSSL, accidentally removing entropy source</li>
+<li>All keys generated had only 2^15 possibilities (should be 2^2048)</li>
+<li>All Debian-generated keys from 2006-2008 were weak</li>
+<li>Required mass revocation and regeneration</li>
+</ul>
+<p><strong>Dual_EC_DRBG Backdoor</strong>:</p>
+<ul>
+<li>NSA-designed random number generator with potential backdoor</li>
+<li>If NSA knows certain value, can predict future outputs</li>
+<li>Demonstrates importance of trustworthy RNG algorithms</li>
+</ul>
+<p><strong>Android Bitcoin Wallet (2013)</strong>:</p>
+<ul>
+<li>Android SecureRandom bug caused reuse of ECDSA nonce k</li>
+<li>Multiple signatures with same k allows private key recovery</li>
+<li>Multiple Bitcoin wallets compromised</li>
+</ul>
 <h3 id="key-derivation-functions-kdf">Key Derivation Functions (KDF)</h3>
 <p>KDFs derive cryptographic keys from passwords or other key material.</p>
 <h4 id="pbkdf2-password-based-kdf">PBKDF2 (Password-Based KDF)</h4>
@@ -2711,10 +2755,12 @@ Based on discrete logarithm problem on elliptic curves.</p>
 <strong>Mechanism</strong>: Iterative hash function (slow by design)</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>key = PBKDF2(password, salt, iterations, key_length)
 </code></pre></div>
-<p><strong>Parameters</strong>:
-- <strong>Salt</strong>: Random value preventing rainbow table attacks
-- <strong>Iterations</strong>: Number of hash iterations (e.g., 100,000+)
-- <strong>Key Length</strong>: Desired output key size</p>
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><strong>Salt</strong>: Random value preventing rainbow table attacks</li>
+<li><strong>Iterations</strong>: Number of hash iterations (e.g., 100,000+)</li>
+<li><strong>Key Length</strong>: Desired output key size</li>
+</ul>
 <p><strong>Security</strong>: Intentionally slow to resist brute force
 - Each password guess requires ~100,000 hash operations
 - Parallel resistance: Can't batch password guesses efficiently</p>
@@ -2725,43 +2771,59 @@ Based on discrete logarithm problem on elliptic curves.</p>
 <h4 id="hkdf-hmac-based-kdf">HKDF (HMAC-Based KDF)</h4>
 <p><strong>Purpose</strong>: Derive multiple keys from single shared secret
 <strong>Mechanism</strong>: HMAC-based extraction and expansion</p>
-<p><strong>PKI Usage</strong>: 
-- TLS 1.3 key derivation
-- Deriving multiple keys from ECDH shared secret</p>
+<p><strong>PKI Usage</strong>: </p>
+<ul>
+<li>TLS 1.3 key derivation</li>
+<li>Deriving multiple keys from ECDH shared secret</li>
+</ul>
 <h2 id="practical-guidance">Practical Guidance</h2>
 <h3 id="algorithm-selection">Algorithm Selection</h3>
 <h4 id="current-recommendations-2024">Current Recommendations (2024)</h4>
 <p><strong>For New Implementations</strong>:</p>
-<p><strong>TLS Certificates</strong>:
-- <strong>Algorithm</strong>: ECDSA with P-256 curve (preferred) or RSA-2048 (wider compatibility)
-- <strong>Hash</strong>: SHA-256
-- <strong>Rationale</strong>: Smaller certificates, better performance, adequate security</p>
-<p><strong>Code Signing</strong>:
-- <strong>Algorithm</strong>: RSA-3072 or RSA-4096
-- <strong>Hash</strong>: SHA-256 or SHA-384
-- <strong>Rationale</strong>: Higher security for long-lived signatures, wider compatibility</p>
-<p><strong>CA Certificates</strong>:
-- <strong>Root CA</strong>: RSA-4096 with SHA-384 (20+ year lifetime)
-- <strong>Intermediate CA</strong>: RSA-3072 or ECDSA P-384 with SHA-256
-- <strong>Rationale</strong>: Long lifetime requires higher security margin</p>
-<p><strong>User Certificates</strong>:
-- <strong>Algorithm</strong>: ECDSA P-256 (smart cards) or RSA-2048
-- <strong>Hash</strong>: SHA-256
-- <strong>Rationale</strong>: Performance and compatibility balance</p>
+<p><strong>TLS Certificates</strong>:</p>
+<ul>
+<li><strong>Algorithm</strong>: ECDSA with P-256 curve (preferred) or RSA-2048 (wider compatibility)</li>
+<li><strong>Hash</strong>: SHA-256</li>
+<li><strong>Rationale</strong>: Smaller certificates, better performance, adequate security</li>
+</ul>
+<p><strong>Code Signing</strong>:</p>
+<ul>
+<li><strong>Algorithm</strong>: RSA-3072 or RSA-4096</li>
+<li><strong>Hash</strong>: SHA-256 or SHA-384</li>
+<li><strong>Rationale</strong>: Higher security for long-lived signatures, wider compatibility</li>
+</ul>
+<p><strong>CA Certificates</strong>:</p>
+<ul>
+<li><strong>Root CA</strong>: RSA-4096 with SHA-384 (20+ year lifetime)</li>
+<li><strong>Intermediate CA</strong>: RSA-3072 or ECDSA P-384 with SHA-256</li>
+<li><strong>Rationale</strong>: Long lifetime requires higher security margin</li>
+</ul>
+<p><strong>User Certificates</strong>:</p>
+<ul>
+<li><strong>Algorithm</strong>: ECDSA P-256 (smart cards) or RSA-2048</li>
+<li><strong>Hash</strong>: SHA-256</li>
+<li><strong>Rationale</strong>: Performance and compatibility balance</li>
+</ul>
 <h4 id="migration-planning">Migration Planning</h4>
-<p><strong>SHA-1 to SHA-256 Migration</strong> (Already complete for public PKI):
-- All publicly-trusted certificates must use SHA-256+
-- Private PKI should complete migration
-- Legacy system support may require maintaining SHA-1 temporarily</p>
-<p><strong>RSA-2048 to RSA-3072/ECDSA Migration</strong>:
-- Planning horizon: 2025-2030
-- NIST recommends 3072-bit RSA or 256-bit ECDSA beyond 2030
-- Start transitioning long-lived keys (CA certificates) first</p>
-<p><strong>Post-Quantum Cryptography</strong> (Future):
-- NIST standardizing post-quantum algorithms (2024)
-- Expected transition period: 2025-2035
-- Hybrid approaches: Classical + post-quantum signatures
-- Begin planning for long-term certificates and CAs</p>
+<p><strong>SHA-1 to SHA-256 Migration</strong> (Already complete for public PKI):</p>
+<ul>
+<li>All publicly-trusted certificates must use SHA-256+</li>
+<li>Private PKI should complete migration</li>
+<li>Legacy system support may require maintaining SHA-1 temporarily</li>
+</ul>
+<p><strong>RSA-2048 to RSA-3072/ECDSA Migration</strong>:</p>
+<ul>
+<li>Planning horizon: 2025-2030</li>
+<li>NIST recommends 3072-bit RSA or 256-bit ECDSA beyond 2030</li>
+<li>Start transitioning long-lived keys (CA certificates) first</li>
+</ul>
+<p><strong>Post-Quantum Cryptography</strong> (Future):</p>
+<ul>
+<li>NIST standardizing post-quantum algorithms (2024)</li>
+<li>Expected transition period: 2025-2035</li>
+<li>Hybrid approaches: Classical + post-quantum signatures</li>
+<li>Begin planning for long-term certificates and CAs</li>
+</ul>
 <h3 id="implementation-examples">Implementation Examples</h3>
 <h4 id="generating-keys">Generating Keys</h4>
 <p><strong>RSA Key Generation</strong> (OpenSSL):
@@ -2857,16 +2919,20 @@ Based on discrete logarithm problem on elliptic curves.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Observations</strong>:
-- RSA verification is very fast (small public exponent)
-- ECDSA signing much faster than RSA signing
-- ECDSA keys generate much faster than RSA keys
-- RSA-4096 signing is significantly slower than RSA-2048</p>
-<p><strong>Practical Impact</strong>:
-- <strong>Web servers</strong> (many signature verifications): RSA and ECDSA similar performance
-- <strong>CA operations</strong> (many signatures): ECDSA dramatically faster
-- <strong>Smart cards</strong> (limited CPU): ECDSA preferred
-- <strong>Legacy systems</strong>: RSA for compatibility</p>
+<p><strong>Observations</strong>:</p>
+<ul>
+<li>RSA verification is very fast (small public exponent)</li>
+<li>ECDSA signing much faster than RSA signing</li>
+<li>ECDSA keys generate much faster than RSA keys</li>
+<li>RSA-4096 signing is significantly slower than RSA-2048</li>
+</ul>
+<p><strong>Practical Impact</strong>:</p>
+<ul>
+<li><strong>Web servers</strong> (many signature verifications): RSA and ECDSA similar performance</li>
+<li><strong>CA operations</strong> (many signatures): ECDSA dramatically faster</li>
+<li><strong>Smart cards</strong> (limited CPU): ECDSA preferred</li>
+<li><strong>Legacy systems</strong>: RSA for compatibility</li>
+</ul>
 <h4 id="certificate-size">Certificate Size</h4>
 <table>
 <thead>
@@ -2910,10 +2976,12 @@ Based on discrete logarithm problem on elliptic curves.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Impact</strong>:
-- ECDSA certificates ~70% smaller than RSA
-- Important for: Mobile devices, constrained environments, network efficiency
-- Less important for: Desktop systems, servers</p>
+<p><strong>Impact</strong>:</p>
+<ul>
+<li>ECDSA certificates ~70% smaller than RSA</li>
+<li>Important for: Mobile devices, constrained environments, network efficiency</li>
+<li>Less important for: Desktop systems, servers</li>
+</ul>
 <h2 id="common-pitfalls">Common Pitfalls</h2>
 <ul>
 <li><strong>Using deprecated algorithms</strong>: Implementing MD5 or SHA-1 for new systems</li>
@@ -2955,46 +3023,62 @@ Based on discrete logarithm problem on elliptic curves.</p>
 </ul>
 <h2 id="security-considerations">Security Considerations</h2>
 <h3 id="quantum-computing-threat">Quantum Computing Threat</h3>
-<p><strong>Current Status</strong> (2024):
-- Large-scale quantum computers don't exist yet
-- Shor's algorithm can break RSA and ECDSA on quantum computers
-- Timeline for quantum threat uncertain (possibly 2030s)</p>
-<p><strong>Impact on PKI</strong>:
-- All current public key algorithms vulnerable
-- Symmetric algorithms (AES) less affected (double key size sufficient)
-- Hash functions generally secure</p>
-<p><strong>Post-Quantum Cryptography</strong>:
-- NIST standardizing post-quantum algorithms (CRYSTALS-Kyber, CRYSTALS-Dilithium, SPHINCS+)
-- Hybrid approaches: Classical + post-quantum
-- Transition period: 2025-2035 expected</p>
-<p><strong>Planning Recommendations</strong>:
-- Monitor NIST PQC standardization
-- Plan for algorithm agility in systems
-- Consider data sensitivity and lifetime
-- Long-lived secrets (20+ years) need attention sooner</p>
+<p><strong>Current Status</strong> (2024):</p>
+<ul>
+<li>Large-scale quantum computers don't exist yet</li>
+<li>Shor's algorithm can break RSA and ECDSA on quantum computers</li>
+<li>Timeline for quantum threat uncertain (possibly 2030s)</li>
+</ul>
+<p><strong>Impact on PKI</strong>:</p>
+<ul>
+<li>All current public key algorithms vulnerable</li>
+<li>Symmetric algorithms (AES) less affected (double key size sufficient)</li>
+<li>Hash functions generally secure</li>
+</ul>
+<p><strong>Post-Quantum Cryptography</strong>:</p>
+<ul>
+<li>NIST standardizing post-quantum algorithms (CRYSTALS-Kyber, CRYSTALS-Dilithium, SPHINCS+)</li>
+<li>Hybrid approaches: Classical + post-quantum</li>
+<li>Transition period: 2025-2035 expected</li>
+</ul>
+<p><strong>Planning Recommendations</strong>:</p>
+<ul>
+<li>Monitor NIST PQC standardization</li>
+<li>Plan for algorithm agility in systems</li>
+<li>Consider data sensitivity and lifetime</li>
+<li>Long-lived secrets (20+ years) need attention sooner</li>
+</ul>
 <h3 id="side-channel-attacks">Side-Channel Attacks</h3>
 <p>Cryptographic implementations can leak information through:</p>
-<p><strong>Timing Attacks</strong>:
-- Operation timing varies based on key bits
-- Attacker measures execution time to infer keys
-- <strong>Mitigation</strong>: Constant-time implementations</p>
-<p><strong>Power Analysis</strong>:
-- Power consumption reveals computation patterns
-- Can extract keys from smart cards
-- <strong>Mitigation</strong>: Power analysis resistant hardware</p>
-<p><strong>Cache Timing</strong>:
-- CPU cache behavior leaks information
-- Spectre/Meltdown-style attacks
-- <strong>Mitigation</strong>: Algorithm redesign, hardware countermeasures</p>
+<p><strong>Timing Attacks</strong>:</p>
+<ul>
+<li>Operation timing varies based on key bits</li>
+<li>Attacker measures execution time to infer keys</li>
+<li><strong>Mitigation</strong>: Constant-time implementations</li>
+</ul>
+<p><strong>Power Analysis</strong>:</p>
+<ul>
+<li>Power consumption reveals computation patterns</li>
+<li>Can extract keys from smart cards</li>
+<li><strong>Mitigation</strong>: Power analysis resistant hardware</li>
+</ul>
+<p><strong>Cache Timing</strong>:</p>
+<ul>
+<li>CPU cache behavior leaks information</li>
+<li>Spectre/Meltdown-style attacks</li>
+<li><strong>Mitigation</strong>: Algorithm redesign, hardware countermeasures</li>
+</ul>
 <p><strong>Recommendation</strong>: Use vetted cryptographic libraries (OpenSSL, BouncyCastle, libsodium) rather than custom implementations.</p>
 <h3 id="algorithm-agility">Algorithm Agility</h3>
 <p>Design systems for cryptographic algorithm changes:</p>
-<p><strong>Best Practices</strong>:
-- Version algorithm identifiers in protocols
-- Support multiple algorithms simultaneously
-- Plan migration paths before algorithms break
-- Test algorithm transitions regularly
-- Don't hard-code algorithm assumptions</p>
+<p><strong>Best Practices</strong>:</p>
+<ul>
+<li>Version algorithm identifiers in protocols</li>
+<li>Support multiple algorithms simultaneously</li>
+<li>Plan migration paths before algorithms break</li>
+<li>Test algorithm transitions regularly</li>
+<li>Don't hard-code algorithm assumptions</li>
+</ul>
 <p><strong>Example</strong>: TLS protocol supports algorithm negotiation, enabling transition from RSA to ECDHE without protocol changes.</p>
 <h2 id="real-world-examples">Real-World Examples</h2>
 <h3 id="case-study-sha-1-deprecation-timeline">Case Study: SHA-1 Deprecation Timeline</h3>
@@ -3055,12 +3139,14 @@ Based on discrete logarithm problem on elliptic curves.</p>
 </tbody>
 </table>
 <hr />
-<p><strong>Quality Checks</strong>: 
-- [x] All claims cited from authoritative sources
-- [x] Cross-references validated
-- [x] Practical guidance included
-- [x] Examples are current and relevant
-- [x] Security considerations addressed</p>
+<p><strong>Quality Checks</strong>: </p>
+<ul>
+<li>[x] All claims cited from authoritative sources</li>
+<li>[x] Cross-references validated</li>
+<li>[x] Practical guidance included</li>
+<li>[x] Examples are current and relevant</li>
+<li>[x] Security considerations addressed</li>
+</ul>
 
 
 

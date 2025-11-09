@@ -2529,112 +2529,150 @@
 <h2 id="key-concepts">Key Concepts</h2>
 <h3 id="hsm-architecture">HSM Architecture</h3>
 <h4 id="hardware-components">Hardware Components</h4>
-<p><strong>Cryptographic Processor</strong>:
-- Dedicated hardware for crypto operations
-- Implements algorithms (RSA, ECDSA, AES, SHA-256)
-- Performs operations at wire speed
-- Isolated from host system</p>
-<p><strong>Secure Key Storage</strong>:
-- Keys generated inside HSM
-- Keys never leave HSM in plaintext
-- Battery-backed RAM or flash storage
-- Encrypted at rest within HSM</p>
-<p><strong>Tamper Detection</strong>:
-- Physical sensors detect intrusion attempts
-- Temperature, voltage, radiation monitoring
-- Immediate key zeroization on tamper
-- Tamper-evident seals and coatings</p>
-<p><strong>Random Number Generator</strong>:
-- Hardware true random number generator (TRNG)
-- Certified entropy source (NIST SP 800-90B)
-- Used for key generation, nonces
-- Critical for cryptographic security</p>
-<p><strong>Firmware</strong>:
-- HSM operating system and crypto library
-- Signed and authenticated firmware
-- Secure update mechanism
-- Vendor-controlled, user cannot modify</p>
+<p><strong>Cryptographic Processor</strong>:</p>
+<ul>
+<li>Dedicated hardware for crypto operations</li>
+<li>Implements algorithms (RSA, ECDSA, AES, SHA-256)</li>
+<li>Performs operations at wire speed</li>
+<li>Isolated from host system</li>
+</ul>
+<p><strong>Secure Key Storage</strong>:</p>
+<ul>
+<li>Keys generated inside HSM</li>
+<li>Keys never leave HSM in plaintext</li>
+<li>Battery-backed RAM or flash storage</li>
+<li>Encrypted at rest within HSM</li>
+</ul>
+<p><strong>Tamper Detection</strong>:</p>
+<ul>
+<li>Physical sensors detect intrusion attempts</li>
+<li>Temperature, voltage, radiation monitoring</li>
+<li>Immediate key zeroization on tamper</li>
+<li>Tamper-evident seals and coatings</li>
+</ul>
+<p><strong>Random Number Generator</strong>:</p>
+<ul>
+<li>Hardware true random number generator (TRNG)</li>
+<li>Certified entropy source (NIST SP 800-90B)</li>
+<li>Used for key generation, nonces</li>
+<li>Critical for cryptographic security</li>
+</ul>
+<p><strong>Firmware</strong>:</p>
+<ul>
+<li>HSM operating system and crypto library</li>
+<li>Signed and authenticated firmware</li>
+<li>Secure update mechanism</li>
+<li>Vendor-controlled, user cannot modify</li>
+</ul>
 <h4 id="fips-140-2-levels">FIPS 140-2 Levels</h4>
 <p>Federal Information Processing Standard 140-2 defines security levels[^1]:</p>
-<p><strong>Level 1</strong>:
-- Basic requirements
-- No physical security requirements
-- Software and firmware components
-- Example: Software crypto libraries</p>
-<p><strong>Level 2</strong> (Minimum for production PKI):
-- Physical tamper-evidence required
-- Role-based authentication
-- Operating system is optional
-- Example: Most USB crypto tokens</p>
-<p><strong>Level 3</strong> (Recommended for CAs):
-- Physical tamper-resistance required
-- Intrusion detection and zeroization
-- Separation between key entry and output
-- Example: Network HSMs, smart cards with sensors</p>
-<p><strong>Level 4</strong> (Highest security):
-- Active tamper detection
-- Environmental protection
-- Complete envelope protection
-- Example: Government/military HSMs</p>
-<p><strong>PKI Recommendations</strong>:
-- Root CA keys: FIPS 140-2 Level 3 minimum
-- Intermediate CA keys: FIPS 140-2 Level 2/3
-- Code signing: FIPS 140-2 Level 2 minimum (EV requires Level 3)
-- TLS servers: Software key storage acceptable for most cases</p>
+<p><strong>Level 1</strong>:</p>
+<ul>
+<li>Basic requirements</li>
+<li>No physical security requirements</li>
+<li>Software and firmware components</li>
+<li>Example: Software crypto libraries</li>
+</ul>
+<p><strong>Level 2</strong> (Minimum for production PKI):</p>
+<ul>
+<li>Physical tamper-evidence required</li>
+<li>Role-based authentication</li>
+<li>Operating system is optional</li>
+<li>Example: Most USB crypto tokens</li>
+</ul>
+<p><strong>Level 3</strong> (Recommended for CAs):</p>
+<ul>
+<li>Physical tamper-resistance required</li>
+<li>Intrusion detection and zeroization</li>
+<li>Separation between key entry and output</li>
+<li>Example: Network HSMs, smart cards with sensors</li>
+</ul>
+<p><strong>Level 4</strong> (Highest security):</p>
+<ul>
+<li>Active tamper detection</li>
+<li>Environmental protection</li>
+<li>Complete envelope protection</li>
+<li>Example: Government/military HSMs</li>
+</ul>
+<p><strong>PKI Recommendations</strong>:</p>
+<ul>
+<li>Root CA keys: FIPS 140-2 Level 3 minimum</li>
+<li>Intermediate CA keys: FIPS 140-2 Level 2/3</li>
+<li>Code signing: FIPS 140-2 Level 2 minimum (EV requires Level 3)</li>
+<li>TLS servers: Software key storage acceptable for most cases</li>
+</ul>
 <h3 id="hsm-types">HSM Types</h3>
 <h4 id="network-hsm-enterprise">Network HSM (Enterprise)</h4>
-<p><strong>Characteristics</strong>:
-- Network-attached appliance
-- Ethernet connectivity
-- Multiple client connections
-- High throughput (thousands of operations/second)
-- Hardware redundancy, hot-swappable components</p>
-<p><strong>Vendors</strong>:
-- <strong>Thales Luna</strong>: Industry leader, high performance
-- <strong>Entrust nShield</strong>: Strong enterprise adoption
-- <strong>Utimaco SecurityServer</strong>: European vendor, compliance focus
-- <strong>Futurex</strong>: US vendor, high-assurance</p>
+<p><strong>Characteristics</strong>:</p>
+<ul>
+<li>Network-attached appliance</li>
+<li>Ethernet connectivity</li>
+<li>Multiple client connections</li>
+<li>High throughput (thousands of operations/second)</li>
+<li>Hardware redundancy, hot-swappable components</li>
+</ul>
+<p><strong>Vendors</strong>:</p>
+<ul>
+<li><strong>Thales Luna</strong>: Industry leader, high performance</li>
+<li><strong>Entrust nShield</strong>: Strong enterprise adoption</li>
+<li><strong>Utimaco SecurityServer</strong>: European vendor, compliance focus</li>
+<li><strong>Futurex</strong>: US vendor, high-assurance</li>
+</ul>
 <p><strong>Typical Cost</strong>: $20,000 - $100,000+ per device</p>
-<p><strong>Use Cases</strong>:
-- Certificate Authority operations
-- High-volume code signing
-- SSL/TLS offload at scale
-- Payment processing (PCI DSS)</p>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Certificate Authority operations</li>
+<li>High-volume code signing</li>
+<li>SSL/TLS offload at scale</li>
+<li>Payment processing (PCI DSS)</li>
+</ul>
 <h4 id="cloud-hsm">Cloud HSM</h4>
-<p><strong>Characteristics</strong>:
-- Dedicated HSM in cloud provider data center
-- Network-attached via VPN/dedicated connection
-- Provider manages hardware, customer controls keys
-- Pay-per-use pricing model
-- FIPS 140-2 Level 3 certified</p>
-<p><strong>Providers</strong>:
-- <strong>AWS CloudHSM</strong>: Uses Thales Luna, VPC integration
-- <strong>Azure Dedicated HSM</strong>: Thales Luna, VNet injection
-- <strong>GCP Cloud HSM</strong>: Managed service, lower cost
-- <strong>IBM Cloud HSM</strong>: Thales Luna, various regions</p>
+<p><strong>Characteristics</strong>:</p>
+<ul>
+<li>Dedicated HSM in cloud provider data center</li>
+<li>Network-attached via VPN/dedicated connection</li>
+<li>Provider manages hardware, customer controls keys</li>
+<li>Pay-per-use pricing model</li>
+<li>FIPS 140-2 Level 3 certified</li>
+</ul>
+<p><strong>Providers</strong>:</p>
+<ul>
+<li><strong>AWS CloudHSM</strong>: Uses Thales Luna, VPC integration</li>
+<li><strong>Azure Dedicated HSM</strong>: Thales Luna, VNet injection</li>
+<li><strong>GCP Cloud HSM</strong>: Managed service, lower cost</li>
+<li><strong>IBM Cloud HSM</strong>: Thales Luna, various regions</li>
+</ul>
 <p><strong>Typical Cost</strong>: $1-2/hour + usage fees</p>
-<p><strong>Use Cases</strong>:
-- Cloud-native applications requiring HSM
-- Reducing capital expenditure
-- Geographic distribution
-- Rapid scaling</p>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Cloud-native applications requiring HSM</li>
+<li>Reducing capital expenditure</li>
+<li>Geographic distribution</li>
+<li>Rapid scaling</li>
+</ul>
 <h4 id="usb-hsm-smart-card">USB HSM / Smart Card</h4>
-<p><strong>Characteristics</strong>:
-- USB form factor
-- Personal/workstation use
-- Lower cost
-- FIPS 140-2 Level 2/3</p>
-<p><strong>Products</strong>:
-- <strong>YubiKey 5 FIPS</strong>: Consumer accessible, FIPS Level 2
-- <strong>Nitrokey HSM</strong>: Open source firmware
-- <strong>SafeNet eToken</strong>: Enterprise USB tokens
-- <strong>Gemalto (Thales) USB tokens</strong>: Various models</p>
+<p><strong>Characteristics</strong>:</p>
+<ul>
+<li>USB form factor</li>
+<li>Personal/workstation use</li>
+<li>Lower cost</li>
+<li>FIPS 140-2 Level 2/3</li>
+</ul>
+<p><strong>Products</strong>:</p>
+<ul>
+<li><strong>YubiKey 5 FIPS</strong>: Consumer accessible, FIPS Level 2</li>
+<li><strong>Nitrokey HSM</strong>: Open source firmware</li>
+<li><strong>SafeNet eToken</strong>: Enterprise USB tokens</li>
+<li><strong>Gemalto (Thales) USB tokens</strong>: Various models</li>
+</ul>
 <p><strong>Typical Cost</strong>: $50 - $500</p>
-<p><strong>Use Cases</strong>:
-- Code signing by individual developers
-- Personal S/MIME certificates
-- SSH authentication
-- Developer workstations</p>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Code signing by individual developers</li>
+<li>Personal S/MIME certificates</li>
+<li>SSH authentication</li>
+<li>Developer workstations</li>
+</ul>
 <h3 id="pkcs11-interface">PKCS#11 Interface</h3>
 <p>PKCS#11 (Cryptoki) is the standard API for HSM access.</p>
 <h4 id="core-concepts">Core Concepts</h4>
@@ -2701,24 +2739,30 @@
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">CKA_EXTRACTABLE</span><span class="w">   </span><span class="c1">// Can be exported (should be FALSE for sensitive keys)</span>
 <a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">CKA_SENSITIVE</span><span class="w">     </span><span class="c1">// Sensitive key, cannot be revealed</span>
 </code></pre></div>
-<p><strong>Security Best Practices</strong>:
-- Set <code>CKA_EXTRACTABLE = FALSE</code> for CA and code signing keys
-- Set <code>CKA_SENSITIVE = TRUE</code> for all private keys
-- Use <code>CKA_SIGN = TRUE, CKA_DECRYPT = FALSE</code> to limit key usage
-- Set appropriate <code>CKA_LABEL</code> for key identification</p>
+<p><strong>Security Best Practices</strong>:</p>
+<ul>
+<li>Set <code>CKA_EXTRACTABLE = FALSE</code> for CA and code signing keys</li>
+<li>Set <code>CKA_SENSITIVE = TRUE</code> for all private keys</li>
+<li>Use <code>CKA_SIGN = TRUE, CKA_DECRYPT = FALSE</code> to limit key usage</li>
+<li>Set appropriate <code>CKA_LABEL</code> for key identification</li>
+</ul>
 <h3 id="hsm-partitioning">HSM Partitioning</h3>
 <p>Enterprise HSMs support partitioning: multiple isolated environments on one device.</p>
 <h4 id="partition-types">Partition Types</h4>
-<p><strong>Physical Partitions</strong>:
-- Hardware-enforced separation
-- Separate crypto processors (some models)
-- Complete isolation between partitions
-- Requires HSM support for multi-tenant architecture</p>
-<p><strong>Logical Partitions</strong>:
-- Software-enforced separation
-- Shared crypto resources
-- Independent authentication
-- Per-partition key storage</p>
+<p><strong>Physical Partitions</strong>:</p>
+<ul>
+<li>Hardware-enforced separation</li>
+<li>Separate crypto processors (some models)</li>
+<li>Complete isolation between partitions</li>
+<li>Requires HSM support for multi-tenant architecture</li>
+</ul>
+<p><strong>Logical Partitions</strong>:</p>
+<ul>
+<li>Software-enforced separation</li>
+<li>Shared crypto resources</li>
+<li>Independent authentication</li>
+<li>Per-partition key storage</li>
+</ul>
 <h4 id="use-cases">Use Cases</h4>
 <p><strong>Multi-Application</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>HSM Device
@@ -2738,44 +2782,58 @@
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>├── Partition 1: Production CA
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>└── Partition 2: Development/Test CA
 </code></pre></div></p>
-<p><strong>Benefits</strong>:
-- Cost efficiency (one device, multiple uses)
-- Simplified hardware management
-- Reduced data center space
-- Centralized HSM administration</p>
-<p><strong>Security Considerations</strong>:
-- Firmware vulnerabilities affect all partitions
-- Ensure partitions are truly isolated
-- Review vendor documentation on separation guarantees
-- Consider separate HSMs for truly critical keys</p>
+<p><strong>Benefits</strong>:</p>
+<ul>
+<li>Cost efficiency (one device, multiple uses)</li>
+<li>Simplified hardware management</li>
+<li>Reduced data center space</li>
+<li>Centralized HSM administration</li>
+</ul>
+<p><strong>Security Considerations</strong>:</p>
+<ul>
+<li>Firmware vulnerabilities affect all partitions</li>
+<li>Ensure partitions are truly isolated</li>
+<li>Review vendor documentation on separation guarantees</li>
+<li>Consider separate HSMs for truly critical keys</li>
+</ul>
 <h2 id="practical-guidance">Practical Guidance</h2>
 <h3 id="hsm-selection-criteria">HSM Selection Criteria</h3>
 <h4 id="requirements-assessment">Requirements Assessment</h4>
-<p><strong>Key Volume</strong>:
-- How many keys will be stored?
-- How many crypto operations per second?
-- Network HSM: Thousands of operations/second
-- USB HSM: Hundreds of operations/second</p>
-<p><strong>Algorithm Support</strong>:
-- RSA: Key sizes (2048, 3072, 4096)
-- ECDSA: Curves (P-256, P-384, P-521)
-- Hashing: SHA-256, SHA-384, SHA-512
-- Symmetric: AES-128, AES-256</p>
-<p><strong>Compliance Requirements</strong>:
-- FIPS 140-2 Level (2, 3, or 4)
-- Common Criteria certification
-- Industry-specific (PCI HSM, eIDAS qualified)
-- Government approvals (FIPS, TAA compliant)</p>
-<p><strong>Operational Requirements</strong>:
-- High availability (failover, clustering)
-- Geographic distribution
-- Cloud vs on-premises
-- Backup and disaster recovery</p>
-<p><strong>Budget</strong>:
-- Capital expenditure: $20K-100K per network HSM
-- Operational expenditure: Cloud HSM $1-2/hour
-- Support contracts: 15-20% of purchase price annually
-- Staff training and expertise</p>
+<p><strong>Key Volume</strong>:</p>
+<ul>
+<li>How many keys will be stored?</li>
+<li>How many crypto operations per second?</li>
+<li>Network HSM: Thousands of operations/second</li>
+<li>USB HSM: Hundreds of operations/second</li>
+</ul>
+<p><strong>Algorithm Support</strong>:</p>
+<ul>
+<li>RSA: Key sizes (2048, 3072, 4096)</li>
+<li>ECDSA: Curves (P-256, P-384, P-521)</li>
+<li>Hashing: SHA-256, SHA-384, SHA-512</li>
+<li>Symmetric: AES-128, AES-256</li>
+</ul>
+<p><strong>Compliance Requirements</strong>:</p>
+<ul>
+<li>FIPS 140-2 Level (2, 3, or 4)</li>
+<li>Common Criteria certification</li>
+<li>Industry-specific (PCI HSM, eIDAS qualified)</li>
+<li>Government approvals (FIPS, TAA compliant)</li>
+</ul>
+<p><strong>Operational Requirements</strong>:</p>
+<ul>
+<li>High availability (failover, clustering)</li>
+<li>Geographic distribution</li>
+<li>Cloud vs on-premises</li>
+<li>Backup and disaster recovery</li>
+</ul>
+<p><strong>Budget</strong>:</p>
+<ul>
+<li>Capital expenditure: $20K-100K per network HSM</li>
+<li>Operational expenditure: Cloud HSM $1-2/hour</li>
+<li>Support contracts: 15-20% of purchase price annually</li>
+<li>Staff training and expertise</li>
+</ul>
 <h4 id="vendor-comparison">Vendor Comparison</h4>
 <table>
 <thead>
@@ -2863,16 +2921,20 @@
 </code></pre></div></p>
 <h4 id="backup-and-recovery">Backup and Recovery</h4>
 <p><strong>Key Backup Strategies</strong>:</p>
-<p><strong>M-of-N Key Splitting</strong>:
-- Master key split into N shares
-- Require M shares to reconstruct (e.g., 3-of-5)
-- Shares distributed to separate custodians
-- Reconstructed only in emergencies</p>
-<p><strong>HSM Backup</strong>:
-- HSM-to-HSM backup (encrypted transfer)
-- Backup to encrypted files (protected by M-of-N)
-- Geographic distribution of backups
-- Regular backup testing (verify restorability)</p>
+<p><strong>M-of-N Key Splitting</strong>:</p>
+<ul>
+<li>Master key split into N shares</li>
+<li>Require M shares to reconstruct (e.g., 3-of-5)</li>
+<li>Shares distributed to separate custodians</li>
+<li>Reconstructed only in emergencies</li>
+</ul>
+<p><strong>HSM Backup</strong>:</p>
+<ul>
+<li>HSM-to-HSM backup (encrypted transfer)</li>
+<li>Backup to encrypted files (protected by M-of-N)</li>
+<li>Geographic distribution of backups</li>
+<li>Regular backup testing (verify restorability)</li>
+</ul>
 <p><strong>Backup Procedures</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Thales Luna HSM backup</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>lunash:&gt;<span class="w"> </span>partition<span class="w"> </span>backup<span class="w"> </span>-partition<span class="w"> </span>RootCA<span class="w"> </span>-file<span class="w"> </span>/backup/rootca-backup.bak
@@ -2883,11 +2945,13 @@
 <a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1"># Restore (on replacement HSM)</span>
 <a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>lunash:&gt;<span class="w"> </span>partition<span class="w"> </span>restore<span class="w"> </span>-file<span class="w"> </span>/backup/rootca-backup.bak<span class="w"> </span>-partition<span class="w"> </span>RootCA
 </code></pre></div></p>
-<p><strong>Disaster Recovery Testing</strong>:
-- Quarterly: Verify backups are accessible
-- Annually: Full restore test to spare HSM
-- Document recovery procedures
-- Train staff on recovery process</p>
+<p><strong>Disaster Recovery Testing</strong>:</p>
+<ul>
+<li>Quarterly: Verify backups are accessible</li>
+<li>Annually: Full restore test to spare HSM</li>
+<li>Document recovery procedures</li>
+<li>Train staff on recovery process</li>
+</ul>
 <h3 id="pkcs11-integration">PKCS#11 Integration</h3>
 <h4 id="openssl-integration">OpenSSL Integration</h4>
 <p><strong>Configure OpenSSL for PKCS#11</strong>:
@@ -3076,11 +3140,13 @@
 <a id="__codelineno-24-27" name="__codelineno-24-27" href="#__codelineno-24-27"></a>    <span class="c1"># Build final certificate</span>
 <a id="__codelineno-24-28" name="__codelineno-24-28" href="#__codelineno-24-28"></a>    <span class="n">certificate</span> <span class="o">=</span> <span class="n">build_certificate</span><span class="p">(</span><span class="n">tbs_certificate</span><span class="p">,</span> <span class="n">signature</span><span class="p">)</span>
 </code></pre></div></p>
-<p><strong>Performance Optimization</strong>:
-- Keep HSM session open (avoid repeated login)
-- Batch operations when possible
-- Use session pooling for concurrent operations
-- Monitor HSM load and add capacity as needed</p>
+<p><strong>Performance Optimization</strong>:</p>
+<ul>
+<li>Keep HSM session open (avoid repeated login)</li>
+<li>Batch operations when possible</li>
+<li>Use session pooling for concurrent operations</li>
+<li>Monitor HSM load and add capacity as needed</li>
+</ul>
 <h3 id="monitoring-and-maintenance">Monitoring and Maintenance</h3>
 <h4 id="operational-monitoring">Operational Monitoring</h4>
 <p><strong>Key Metrics</strong>:
@@ -3100,12 +3166,14 @@
 <a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a>-<span class="w"> </span>Session<span class="w"> </span>count<span class="w"> </span>/<span class="w"> </span>maximum<span class="w"> </span>sessions
 <a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>-<span class="w"> </span>Memory<span class="w"> </span>utilization
 </code></pre></div></p>
-<p><strong>Alerting Thresholds</strong>:
-- Operations queue depth &gt; 1000: Warning
-- Response time p95 &gt; 100ms: Warning
-- Error rate &gt; 1%: Alert
-- Failed login attempts &gt; 5 in 5 minutes: Security alert
-- HSM unreachable: Critical alert</p>
+<p><strong>Alerting Thresholds</strong>:</p>
+<ul>
+<li>Operations queue depth &gt; 1000: Warning</li>
+<li>Response time p95 &gt; 100ms: Warning</li>
+<li>Error rate &gt; 1%: Alert</li>
+<li>Failed login attempts &gt; 5 in 5 minutes: Security alert</li>
+<li>HSM unreachable: Critical alert</li>
+</ul>
 <h4 id="hsm-health-checks">HSM Health Checks</h4>
 <p><strong>Daily</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># Verify HSM accessibility</span>
@@ -3119,15 +3187,19 @@
 <a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>pkcs11-tool<span class="w"> </span>--module<span class="w"> </span>/usr/lib/libCryptoki2.so<span class="w"> </span>--login<span class="w"> </span>--pin<span class="w"> </span><span class="nv">$PIN</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="w">  </span>--list-objects<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;Private Key Object&quot;</span>
 </code></pre></div></p>
-<p><strong>Weekly</strong>:
-- Review audit logs for unauthorized access attempts
-- Verify backup integrity
-- Check firmware version (security updates)</p>
-<p><strong>Quarterly</strong>:
-- Full disaster recovery test
-- Review access controls and permissions
-- Security assessment
-- Capacity planning review</p>
+<p><strong>Weekly</strong>:</p>
+<ul>
+<li>Review audit logs for unauthorized access attempts</li>
+<li>Verify backup integrity</li>
+<li>Check firmware version (security updates)</li>
+</ul>
+<p><strong>Quarterly</strong>:</p>
+<ul>
+<li>Full disaster recovery test</li>
+<li>Review access controls and permissions</li>
+<li>Security assessment</li>
+<li>Capacity planning review</li>
+</ul>
 <h4 id="firmware-updates">Firmware Updates</h4>
 <p><strong>Update Process</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>1. Review vendor security advisories
@@ -3139,11 +3211,13 @@
 <a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>7. Test critical operations
 <a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>8. Monitor for issues
 </code></pre></div></p>
-<p><strong>Rollback Plan</strong>:
-- Document rollback procedure
-- Keep previous firmware version available
-- Test rollback in non-production
-- Define rollback criteria (what triggers rollback)</p>
+<p><strong>Rollback Plan</strong>:</p>
+<ul>
+<li>Document rollback procedure</li>
+<li>Keep previous firmware version available</li>
+<li>Test rollback in non-production</li>
+<li>Define rollback criteria (what triggers rollback)</li>
+</ul>
 <h2 id="common-pitfalls">Common Pitfalls</h2>
 <ul>
 <li><strong>Single HSM without redundancy</strong>: No backup HSM, creating single point of failure</li>
@@ -3185,42 +3259,54 @@
 </ul>
 <h2 id="security-considerations">Security Considerations</h2>
 <h3 id="physical-security">Physical Security</h3>
-<p><strong>HSM Location</strong>:
-- Secure data center with access controls
-- Video surveillance
-- Earthquake/fire protection
-- Climate control (temperature, humidity)
-- Separate secure storage for backup media</p>
-<p><strong>Access Control</strong>:
-- Background checks for personnel with HSM access
-- Dual control for sensitive operations
-- Logging of all physical access
-- Regular access reviews</p>
+<p><strong>HSM Location</strong>:</p>
+<ul>
+<li>Secure data center with access controls</li>
+<li>Video surveillance</li>
+<li>Earthquake/fire protection</li>
+<li>Climate control (temperature, humidity)</li>
+<li>Separate secure storage for backup media</li>
+</ul>
+<p><strong>Access Control</strong>:</p>
+<ul>
+<li>Background checks for personnel with HSM access</li>
+<li>Dual control for sensitive operations</li>
+<li>Logging of all physical access</li>
+<li>Regular access reviews</li>
+</ul>
 <h3 id="logical-security">Logical Security</h3>
-<p><strong>Authentication</strong>:
-- Strong PINs/passwords (minimum 12 characters)
-- M-of-N quorum for critical operations
-- Role separation (security officer vs crypto officer)
-- MFA for administrative access</p>
-<p><strong>Network Security</strong>:
-- Dedicated VLAN for HSM traffic
-- Firewall rules restricting HSM access
-- VPN for remote HSM access
-- TLS for client-HSM communication</p>
-<p><strong>Audit Logging</strong>:
-- Log all HSM operations
-- Centralized log collection (SIEM)
-- Tamper-evident logs (signed, write-once)
-- Regular log review
-- Long-term log retention (7+ years)</p>
+<p><strong>Authentication</strong>:</p>
+<ul>
+<li>Strong PINs/passwords (minimum 12 characters)</li>
+<li>M-of-N quorum for critical operations</li>
+<li>Role separation (security officer vs crypto officer)</li>
+<li>MFA for administrative access</li>
+</ul>
+<p><strong>Network Security</strong>:</p>
+<ul>
+<li>Dedicated VLAN for HSM traffic</li>
+<li>Firewall rules restricting HSM access</li>
+<li>VPN for remote HSM access</li>
+<li>TLS for client-HSM communication</li>
+</ul>
+<p><strong>Audit Logging</strong>:</p>
+<ul>
+<li>Log all HSM operations</li>
+<li>Centralized log collection (SIEM)</li>
+<li>Tamper-evident logs (signed, write-once)</li>
+<li>Regular log review</li>
+<li>Long-term log retention (7+ years)</li>
+</ul>
 <h3 id="key-ceremony-best-practices">Key Ceremony Best Practices</h3>
-<p><strong>Root CA Key Generation</strong>:
-- Multi-person attendance (3+ witnesses)
-- Video recording of entire ceremony
-- Documented procedures
-- Verified equipment (tamper seals intact)
-- Air-gapped environment
-- Signed attestation by all participants</p>
+<p><strong>Root CA Key Generation</strong>:</p>
+<ul>
+<li>Multi-person attendance (3+ witnesses)</li>
+<li>Video recording of entire ceremony</li>
+<li>Documented procedures</li>
+<li>Verified equipment (tamper seals intact)</li>
+<li>Air-gapped environment</li>
+<li>Signed attestation by all participants</li>
+</ul>
 <p><strong>Ceremony Steps</strong>:
 1. Verify HSM tamper seals
 2. Initialize HSM with strong credentials
@@ -3230,12 +3316,14 @@
 6. Distribute backup shares to custodians
 7. Document ceremony (sign attestation)</p>
 <h3 id="hsm-compromise-response">HSM Compromise Response</h3>
-<p><strong>Indicators</strong>:
-- Unexpected key operations
-- Failed authentication spikes
-- Firmware tampering detected
-- Physical tamper indicators triggered
-- Anomalous network traffic</p>
+<p><strong>Indicators</strong>:</p>
+<ul>
+<li>Unexpected key operations</li>
+<li>Failed authentication spikes</li>
+<li>Firmware tampering detected</li>
+<li>Physical tamper indicators triggered</li>
+<li>Anomalous network traffic</li>
+</ul>
 <p><strong>Response Plan</strong>:
 1. <strong>Contain</strong>: Isolate HSM from network immediately
 2. <strong>Assess</strong>: Determine scope of compromise
@@ -3247,16 +3335,20 @@
 <h2 id="real-world-examples">Real-World Examples</h2>
 <h3 id="case-study-lets-encrypt-hsm-architecture">Case Study: Let's Encrypt HSM Architecture</h3>
 <p><strong>Scale</strong>: Issues 3+ million certificates daily</p>
-<p><strong>HSM Strategy</strong>:
-- Root keys in offline HSMs (air-gapped)
-- Intermediate keys in online HSMs (production)
-- Geographic distribution for disaster recovery
-- Custom PKCS#11 integration with Boulder CA software</p>
-<p><strong>Key Decisions</strong>:
-- Root ceremonies performed with strict security
-- Intermediate keys rotated annually
-- Multiple HSM vendors for redundancy
-- Performance optimization critical at scale</p>
+<p><strong>HSM Strategy</strong>:</p>
+<ul>
+<li>Root keys in offline HSMs (air-gapped)</li>
+<li>Intermediate keys in online HSMs (production)</li>
+<li>Geographic distribution for disaster recovery</li>
+<li>Custom PKCS#11 integration with Boulder CA software</li>
+</ul>
+<p><strong>Key Decisions</strong>:</p>
+<ul>
+<li>Root ceremonies performed with strict security</li>
+<li>Intermediate keys rotated annually</li>
+<li>Multiple HSM vendors for redundancy</li>
+<li>Performance optimization critical at scale</li>
+</ul>
 <p><strong>Key Takeaway</strong>: HSM integration essential for operating CA at internet scale with proper security.</p>
 <h3 id="case-study-stuxnet-code-signing-certificate-theft">Case Study: Stuxnet Code Signing Certificate Theft</h3>
 <p><strong>Incident</strong>: Stuxnet malware signed with stolen Realtek certificate</p>
@@ -3264,10 +3356,12 @@
 - Stole code signing certificate and private key
 - Likely stored in software, not HSM
 - Used to sign malicious code</p>
-<p><strong>Impact</strong>: 
-- Malware bypassed security controls
-- Required certificate revocation
-- Damaged Realtek reputation</p>
+<p><strong>Impact</strong>: </p>
+<ul>
+<li>Malware bypassed security controls</li>
+<li>Required certificate revocation</li>
+<li>Damaged Realtek reputation</li>
+</ul>
 <p><strong>Lesson</strong>: High-value signing keys must be in HSM
 - Hardware protection prevents key theft
 - EV code signing now requires HSM (CA/Browser Forum)
@@ -3320,12 +3414,14 @@
 </tbody>
 </table>
 <hr />
-<p><strong>Quality Checks</strong>: 
-- [x] All claims cited from authoritative sources
-- [x] Cross-references validated
-- [x] Practical guidance included
-- [x] Examples are current and relevant
-- [x] Security considerations addressed</p>
+<p><strong>Quality Checks</strong>: </p>
+<ul>
+<li>[x] All claims cited from authoritative sources</li>
+<li>[x] Cross-references validated</li>
+<li>[x] Practical guidance included</li>
+<li>[x] Examples are current and relevant</li>
+<li>[x] Security considerations addressed</li>
+</ul>
 
 
 

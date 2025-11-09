@@ -2063,13 +2063,15 @@
 </ul>
 <p>Why does this keep happening? Because monitoring expiry alone is insufficient.</p>
 <h3 id="the-complexity-problem">The Complexity Problem</h3>
-<p>Modern PKI monitoring must account for:
-- <strong>Distributed deployment</strong>: Certificates across cloud, on-prem, edge
-- <strong>Dynamic infrastructure</strong>: Containers, auto-scaling, ephemeral workloads
-- <strong>Trust chain dependencies</strong>: CA certificates, intermediate certificates, root certificates
-- <strong>Protocol variations</strong>: TLS 1.2 vs 1.3, mutual TLS, client certificates
-- <strong>Cryptographic agility</strong>: Algorithm deprecation, key length requirements
-- <strong>Compliance requirements</strong>: Policy violations, audit requirements</p>
+<p>Modern PKI monitoring must account for:</p>
+<ul>
+<li><strong>Distributed deployment</strong>: Certificates across cloud, on-prem, edge</li>
+<li><strong>Dynamic infrastructure</strong>: Containers, auto-scaling, ephemeral workloads</li>
+<li><strong>Trust chain dependencies</strong>: CA certificates, intermediate certificates, root certificates</li>
+<li><strong>Protocol variations</strong>: TLS 1.2 vs 1.3, mutual TLS, client certificates</li>
+<li><strong>Cryptographic agility</strong>: Algorithm deprecation, key length requirements</li>
+<li><strong>Compliance requirements</strong>: Policy violations, audit requirements</li>
+</ul>
 <h2 id="what-to-monitor">What to Monitor</h2>
 <h3 id="certificate-lifecycle-stages">Certificate Lifecycle Stages</h3>
 <p><strong>Issuance monitoring</strong>:
@@ -2097,13 +2099,15 @@
 <a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>                                 <span class="s1">&#39;Failed validation attempts&#39;</span><span class="p">,</span>
 <a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>                                 <span class="p">[</span><span class="s1">&#39;validation_type&#39;</span><span class="p">,</span> <span class="s1">&#39;reason&#39;</span><span class="p">])</span>
 </code></pre></div></p>
-<p>Key issuance signals:
-- Issuance request rate (requests per hour/day)
-- Success vs. failure rate
-- Time to issue (p50, p95, p99)
-- Validation failure reasons
-- Certificate profile usage
-- Issuing CA distribution</p>
+<p>Key issuance signals:</p>
+<ul>
+<li>Issuance request rate (requests per hour/day)</li>
+<li>Success vs. failure rate</li>
+<li>Time to issue (p50, p95, p99)</li>
+<li>Validation failure reasons</li>
+<li>Certificate profile usage</li>
+<li>Issuing CA distribution</li>
+</ul>
 <p><strong>Deployment monitoring</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">DeploymentMetrics</span><span class="p">:</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2129,12 +2133,14 @@
 <a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>                       <span class="s1">&#39;Certificate deployment rollbacks&#39;</span><span class="p">,</span>
 <a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>                       <span class="p">[</span><span class="s1">&#39;reason&#39;</span><span class="p">])</span>
 </code></pre></div></p>
-<p>Deployment signals:
-- Time from issuance to active use
-- Deployment success rate
-- Staging vs. production deployment patterns
-- Rollback frequency and causes
-- Configuration drift detection</p>
+<p>Deployment signals:</p>
+<ul>
+<li>Time from issuance to active use</li>
+<li>Deployment success rate</li>
+<li>Staging vs. production deployment patterns</li>
+<li>Rollback frequency and causes</li>
+<li>Configuration drift detection</li>
+</ul>
 <p><strong>Operational monitoring</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">OperationalMetrics</span><span class="p">:</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2160,13 +2166,15 @@
 <a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>                                <span class="s1">&#39;Cipher suite usage&#39;</span><span class="p">,</span>
 <a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>                                <span class="p">[</span><span class="s1">&#39;cipher_suite&#39;</span><span class="p">,</span> <span class="s1">&#39;service&#39;</span><span class="p">])</span>
 </code></pre></div></p>
-<p>Operational signals:
-- Certificate validation status (valid, expired, revoked)
-- Trust chain completeness
-- OCSP/CRL check success rate
-- TLS handshake success rate
-- Protocol version distribution
-- Cipher suite usage patterns</p>
+<p>Operational signals:</p>
+<ul>
+<li>Certificate validation status (valid, expired, revoked)</li>
+<li>Trust chain completeness</li>
+<li>OCSP/CRL check success rate</li>
+<li>TLS handshake success rate</li>
+<li>Protocol version distribution</li>
+<li>Cipher suite usage patterns</li>
+</ul>
 <p><strong>Expiry monitoring</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">ExpiryMetrics</span><span class="p">:</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2192,12 +2200,14 @@
 <a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>                              <span class="s1">&#39;Days until certificate renewal needed&#39;</span><span class="p">,</span>
 <a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>                              <span class="p">[</span><span class="s1">&#39;certificate_id&#39;</span><span class="p">,</span> <span class="s1">&#39;hostname&#39;</span><span class="p">])</span>
 </code></pre></div></p>
-<p>Expiry signals:
-- Certificates expiring in 7/14/30/60/90 days
-- Already expired certificates
-- Renewal workflow status (pending, in-progress, failed)
-- Historical renewal success rate
-- Average time-to-renewal</p>
+<p>Expiry signals:</p>
+<ul>
+<li>Certificates expiring in 7/14/30/60/90 days</li>
+<li>Already expired certificates</li>
+<li>Renewal workflow status (pending, in-progress, failed)</li>
+<li>Historical renewal success rate</li>
+<li>Average time-to-renewal</li>
+</ul>
 <h3 id="infrastructure-health">Infrastructure Health</h3>
 <p><strong>CA availability</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">monitor_ca_health</span><span class="p">(</span><span class="n">ca_endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HealthStatus</span><span class="p">:</span>
@@ -2236,21 +2246,25 @@
 <a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a>
 <a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>    <span class="k">return</span> <span class="n">health</span>
 </code></pre></div></p>
-<p>CA health signals:
-- Endpoint availability (uptime percentage)
-- Response time (p50, p95, p99)
-- Error rate
-- OCSP responder availability
-- CRL availability and freshness
-- Rate limiting violations
-- Certificate queue depth</p>
-<p><strong>Validation infrastructure</strong>:
-- OCSP responder availability per CA
-- OCSP response time
-- CRL download success rate
-- CRL size and update frequency
-- CT log availability
-- DNS CAA record validation</p>
+<p>CA health signals:</p>
+<ul>
+<li>Endpoint availability (uptime percentage)</li>
+<li>Response time (p50, p95, p99)</li>
+<li>Error rate</li>
+<li>OCSP responder availability</li>
+<li>CRL availability and freshness</li>
+<li>Rate limiting violations</li>
+<li>Certificate queue depth</li>
+</ul>
+<p><strong>Validation infrastructure</strong>:</p>
+<ul>
+<li>OCSP responder availability per CA</li>
+<li>OCSP response time</li>
+<li>CRL download success rate</li>
+<li>CRL size and update frequency</li>
+<li>CT log availability</li>
+<li>DNS CAA record validation</li>
+</ul>
 <h3 id="security-signals">Security Signals</h3>
 <p><strong>Cryptographic strength</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">assess_cryptographic_strength</span><span class="p">(</span><span class="n">cert</span><span class="p">:</span> <span class="n">Certificate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SecurityAssessment</span><span class="p">:</span>
@@ -2284,14 +2298,16 @@
 <a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>
 <a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>    <span class="k">return</span> <span class="n">assessment</span>
 </code></pre></div></p>
-<p>Security monitoring signals:
-- Weak key algorithms in use
-- Deprecated signature algorithms
-- Certificate policy violations
-- Unauthorized CA usage
-- Self-signed certificates in production
-- Certificate key compromise indicators
-- Anomalous certificate usage patterns</p>
+<p>Security monitoring signals:</p>
+<ul>
+<li>Weak key algorithms in use</li>
+<li>Deprecated signature algorithms</li>
+<li>Certificate policy violations</li>
+<li>Unauthorized CA usage</li>
+<li>Self-signed certificates in production</li>
+<li>Certificate key compromise indicators</li>
+<li>Anomalous certificate usage patterns</li>
+</ul>
 <p><strong>Trust chain validation</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">monitor_trust_chain</span><span class="p">(</span><span class="n">cert</span><span class="p">:</span> <span class="n">Certificate</span><span class="p">,</span> 
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>                       <span class="n">trusted_roots</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Certificate</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">TrustStatus</span><span class="p">:</span>
@@ -2330,12 +2346,14 @@
 <a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a>
 <a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a>    <span class="k">return</span> <span class="n">status</span>
 </code></pre></div></p>
-<p>Trust signals:
-- Incomplete certificate chains
-- Untrusted root certificates
-- Revoked certificates in chains
-- Expired intermediate certificates
-- Cross-signed certificate usage</p>
+<p>Trust signals:</p>
+<ul>
+<li>Incomplete certificate chains</li>
+<li>Untrusted root certificates</li>
+<li>Revoked certificates in chains</li>
+<li>Expired intermediate certificates</li>
+<li>Cross-signed certificate usage</li>
+</ul>
 <h3 id="compliance-monitoring">Compliance Monitoring</h3>
 <p><strong>Policy violations</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">ComplianceMonitor</span><span class="p">:</span>
@@ -2387,12 +2405,14 @@
 <a id="__codelineno-7-47" name="__codelineno-7-47" href="#__codelineno-7-47"></a>
 <a id="__codelineno-7-48" name="__codelineno-7-48" href="#__codelineno-7-48"></a>        <span class="k">return</span> <span class="n">result</span>
 </code></pre></div></p>
-<p>Compliance signals:
-- Policy violation count by type
-- Non-compliant certificates by team
-- Time to remediation for violations
-- Compliance score trends
-- Audit-ready certificate percentage</p>
+<p>Compliance signals:</p>
+<ul>
+<li>Policy violation count by type</li>
+<li>Non-compliant certificates by team</li>
+<li>Time to remediation for violations</li>
+<li>Compliance score trends</li>
+<li>Audit-ready certificate percentage</li>
+</ul>
 <h3 id="business-impact-signals">Business Impact Signals</h3>
 <p><strong>Service dependencies</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nd">@dataclass</span>
@@ -2423,12 +2443,14 @@
 <a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a>        <span class="k">else</span><span class="p">:</span>
 <a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a>            <span class="k">return</span> <span class="s1">&#39;P3&#39;</span>  <span class="c1"># Low</span>
 </code></pre></div></p>
-<p>Business signals:
-- Services at risk from certificate expiry
-- User-facing vs. internal service certificates
-- Revenue-critical certificate health
-- SLA compliance impact
-- Customer-reported certificate errors</p>
+<p>Business signals:</p>
+<ul>
+<li>Services at risk from certificate expiry</li>
+<li>User-facing vs. internal service certificates</li>
+<li>Revenue-critical certificate health</li>
+<li>SLA compliance impact</li>
+<li>Customer-reported certificate errors</li>
+</ul>
 <h2 id="alerting-strategy">Alerting Strategy</h2>
 <h3 id="alert-design-principles">Alert Design Principles</h3>
 <p><strong>Actionability</strong>: Every alert must have a clear action. No "FYI" alerts.</p>
@@ -3415,37 +3437,49 @@
 </code></pre></div></p>
 <h2 id="best-practices">Best Practices</h2>
 <h3 id="dos">Do's</h3>
-<p><strong>Comprehensive monitoring</strong>:
-- Monitor the entire certificate lifecycle, not just expiry
-- Track both certificate and CA infrastructure health
-- Implement synthetic checks for critical services
-- Correlate certificate events with business metrics</p>
-<p><strong>Actionable alerts</strong>:
-- Every alert must have a clear response action
-- Include context and remediation steps in alerts
-- Route alerts to appropriate teams with escalation
-- Use severity levels consistently</p>
-<p><strong>Continuous improvement</strong>:
-- Analyze alert fatigue and false positive rates
-- Tune thresholds based on historical patterns
-- Review incident post-mortems for monitoring gaps
-- Update runbooks based on actual response patterns</p>
+<p><strong>Comprehensive monitoring</strong>:</p>
+<ul>
+<li>Monitor the entire certificate lifecycle, not just expiry</li>
+<li>Track both certificate and CA infrastructure health</li>
+<li>Implement synthetic checks for critical services</li>
+<li>Correlate certificate events with business metrics</li>
+</ul>
+<p><strong>Actionable alerts</strong>:</p>
+<ul>
+<li>Every alert must have a clear response action</li>
+<li>Include context and remediation steps in alerts</li>
+<li>Route alerts to appropriate teams with escalation</li>
+<li>Use severity levels consistently</li>
+</ul>
+<p><strong>Continuous improvement</strong>:</p>
+<ul>
+<li>Analyze alert fatigue and false positive rates</li>
+<li>Tune thresholds based on historical patterns</li>
+<li>Review incident post-mortems for monitoring gaps</li>
+<li>Update runbooks based on actual response patterns</li>
+</ul>
 <h3 id="donts">Don'ts</h3>
-<p><strong>Avoid alert fatigue</strong>:
-- Don't alert on everything
-- Don't use the same severity for all alerts
-- Don't send alerts without clear ownership
-- Don't ignore deduplication and throttling</p>
-<p><strong>Don't neglect maintenance</strong>:
-- Don't let dashboards become stale
-- Don't ignore monitoring system health
-- Don't skip regular review of alert effectiveness
-- Don't forget to update runbooks</p>
-<p><strong>Avoid single points of failure</strong>:
-- Don't rely on single monitoring system
-- Don't monitor only from one location
-- Don't ignore backup CA monitoring
-- Don't assume API data is complete</p>
+<p><strong>Avoid alert fatigue</strong>:</p>
+<ul>
+<li>Don't alert on everything</li>
+<li>Don't use the same severity for all alerts</li>
+<li>Don't send alerts without clear ownership</li>
+<li>Don't ignore deduplication and throttling</li>
+</ul>
+<p><strong>Don't neglect maintenance</strong>:</p>
+<ul>
+<li>Don't let dashboards become stale</li>
+<li>Don't ignore monitoring system health</li>
+<li>Don't skip regular review of alert effectiveness</li>
+<li>Don't forget to update runbooks</li>
+</ul>
+<p><strong>Avoid single points of failure</strong>:</p>
+<ul>
+<li>Don't rely on single monitoring system</li>
+<li>Don't monitor only from one location</li>
+<li>Don't ignore backup CA monitoring</li>
+<li>Don't assume API data is complete</li>
+</ul>
 <h2 id="integration-with-incident-response">Integration with Incident Response</h2>
 <h3 id="automated-remediation">Automated remediation**:</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">AutomatedRemediator</span><span class="p">:</span>

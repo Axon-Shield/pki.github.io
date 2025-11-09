@@ -2272,16 +2272,20 @@
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── Client Certificate 1
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>└── Device Certificate 1
 </code></pre></div>
-<p><strong>Use Cases</strong>:
-- Small organizations (&lt;100 certificates)
-- Development/testing environments
-- Proof-of-concept implementations</p>
-<p><strong>Limitations</strong>:
-- Root CA private key online and exposed to operational risk
-- CA compromise requires complete PKI rebuild
-- No operational flexibility or delegation
-- Single point of failure
-- Difficult to implement different issuance policies</p>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Small organizations (&lt;100 certificates)</li>
+<li>Development/testing environments</li>
+<li>Proof-of-concept implementations</li>
+</ul>
+<p><strong>Limitations</strong>:</p>
+<ul>
+<li>Root CA private key online and exposed to operational risk</li>
+<li>CA compromise requires complete PKI rebuild</li>
+<li>No operational flexibility or delegation</li>
+<li>Single point of failure</li>
+<li>Difficult to implement different issuance policies</li>
+</ul>
 <p><strong>NIST Guidance</strong>: Single-tier architectures are explicitly discouraged for production use[^1] due to unacceptable risk if the CA is compromised.</p>
 <h4 id="two-tier-architecture">Two-Tier Architecture</h4>
 <p>Offline root CA with one or more online intermediate (issuing) CAs. This is the minimum viable architecture for production PKI.</p>
@@ -2291,19 +2295,25 @@
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    ├── Server Certificate 2
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    └── Client Certificate 1
 </code></pre></div>
-<p><strong>Characteristics</strong>:
-- Root CA: Air-gapped, powered on only for intermediate CA issuance and CRL signing
-- Issuing CA: Online, handles day-to-day certificate issuance
-- Root CA compromise is less likely due to offline status
-- Intermediate CA compromise is recoverable: revoke and issue new intermediate</p>
-<p><strong>Use Cases</strong>:
-- Medium organizations (100-10,000 certificates)
-- Single-purpose PKI (e.g., TLS only)
-- Organizations with basic security requirements</p>
-<p><strong>Operational Model</strong>:
-- Root CA ceremony for initial setup and intermediate issuance
-- Issuing CA online 24/7 for certificate operations
-- Periodic root CA activation for CRL signing and intermediate renewal</p>
+<p><strong>Characteristics</strong>:</p>
+<ul>
+<li>Root CA: Air-gapped, powered on only for intermediate CA issuance and CRL signing</li>
+<li>Issuing CA: Online, handles day-to-day certificate issuance</li>
+<li>Root CA compromise is less likely due to offline status</li>
+<li>Intermediate CA compromise is recoverable: revoke and issue new intermediate</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Medium organizations (100-10,000 certificates)</li>
+<li>Single-purpose PKI (e.g., TLS only)</li>
+<li>Organizations with basic security requirements</li>
+</ul>
+<p><strong>Operational Model</strong>:</p>
+<ul>
+<li>Root CA ceremony for initial setup and intermediate issuance</li>
+<li>Issuing CA online 24/7 for certificate operations</li>
+<li>Periodic root CA activation for CRL signing and intermediate renewal</li>
+</ul>
 <h4 id="three-tier-architecture">Three-Tier Architecture</h4>
 <p>Offline root CA, offline or restricted-access policy CAs, and online issuing CAs. This provides maximum security and operational flexibility.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Root CA (Offline)
@@ -2313,48 +2323,62 @@
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>└── Policy CA: Code Signing (Offline)
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    └── Issuing CA: Windows Code Signing (Restricted Access)
 </code></pre></div>
-<p><strong>Characteristics</strong>:
-- Root CA: Maximum security, powered on only for major events
-- Policy CAs: Intermediate layer representing different certificate policies/purposes
-- Issuing CAs: Day-to-day operational certificate issuance
-- Enables different security models for different certificate types
-- Provides operational and policy segregation</p>
-<p><strong>Use Cases</strong>:
-- Large enterprises (&gt;10,000 certificates)
-- Organizations with diverse certificate requirements (TLS, code signing, email, authentication)
-- Regulated industries requiring strong security controls
-- Organizations requiring segregation of duties</p>
-<p><strong>Example Policy Segregation</strong>:
-- <strong>Public-facing TLS Policy CA</strong>: For internet-exposed services
-- <strong>Internal TLS Policy CA</strong>: For internal infrastructure
-- <strong>Code Signing Policy CA</strong>: For software release signing (highest security)
-- <strong>Email Policy CA</strong>: For S/MIME email certificates
-- <strong>Authentication Policy CA</strong>: For user authentication certificates</p>
+<p><strong>Characteristics</strong>:</p>
+<ul>
+<li>Root CA: Maximum security, powered on only for major events</li>
+<li>Policy CAs: Intermediate layer representing different certificate policies/purposes</li>
+<li>Issuing CAs: Day-to-day operational certificate issuance</li>
+<li>Enables different security models for different certificate types</li>
+<li>Provides operational and policy segregation</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Large enterprises (&gt;10,000 certificates)</li>
+<li>Organizations with diverse certificate requirements (TLS, code signing, email, authentication)</li>
+<li>Regulated industries requiring strong security controls</li>
+<li>Organizations requiring segregation of duties</li>
+</ul>
+<p><strong>Example Policy Segregation</strong>:</p>
+<ul>
+<li><strong>Public-facing TLS Policy CA</strong>: For internet-exposed services</li>
+<li><strong>Internal TLS Policy CA</strong>: For internal infrastructure</li>
+<li><strong>Code Signing Policy CA</strong>: For software release signing (highest security)</li>
+<li><strong>Email Policy CA</strong>: For S/MIME email certificates</li>
+<li><strong>Authentication Policy CA</strong>: For user authentication certificates</li>
+</ul>
 <h3 id="root-ca-design">Root CA Design</h3>
 <p>The root CA is the ultimate trust anchor. Its compromise invalidates the entire PKI and requires rebuilding all trust relationships.</p>
 <h4 id="root-ca-security-controls">Root CA Security Controls</h4>
-<p><strong>Physical Security</strong>:
-- Dedicated secure facility with access controls
-- Separate secure storage for CA private key (HSM or encrypted storage)
-- Video surveillance and access logging
-- Minimal number of personnel with physical access</p>
-<p><strong>Logical Security</strong>:
-- Dedicated, hardened hardware (never virtualized for high-security environments)
-- Minimal OS installation with no unnecessary services
-- No network connectivity (air-gapped)
-- Full disk encryption
-- Strong authentication for administrative access (smartcards, multi-factor)</p>
-<p><strong>Operational Security</strong>:
-- Multi-person integrity (requires 2+ people for operations)
-- Comprehensive audit logging stored externally
-- Formal ceremony procedures for all operations
-- Regular security assessments
-- Backup and recovery procedures tested annually</p>
-<p><strong>Key Protection</strong>:
-- FIPS 140-2 Level 3 or higher HSM for high-security environments[^2]
-- Encrypted backup keys in separate secure location
-- Key ceremony with witnesses and documentation
-- Dual control and split knowledge for key access</p>
+<p><strong>Physical Security</strong>:</p>
+<ul>
+<li>Dedicated secure facility with access controls</li>
+<li>Separate secure storage for CA private key (HSM or encrypted storage)</li>
+<li>Video surveillance and access logging</li>
+<li>Minimal number of personnel with physical access</li>
+</ul>
+<p><strong>Logical Security</strong>:</p>
+<ul>
+<li>Dedicated, hardened hardware (never virtualized for high-security environments)</li>
+<li>Minimal OS installation with no unnecessary services</li>
+<li>No network connectivity (air-gapped)</li>
+<li>Full disk encryption</li>
+<li>Strong authentication for administrative access (smartcards, multi-factor)</li>
+</ul>
+<p><strong>Operational Security</strong>:</p>
+<ul>
+<li>Multi-person integrity (requires 2+ people for operations)</li>
+<li>Comprehensive audit logging stored externally</li>
+<li>Formal ceremony procedures for all operations</li>
+<li>Regular security assessments</li>
+<li>Backup and recovery procedures tested annually</li>
+</ul>
+<p><strong>Key Protection</strong>:</p>
+<ul>
+<li>FIPS 140-2 Level 3 or higher HSM for high-security environments[^2]</li>
+<li>Encrypted backup keys in separate secure location</li>
+<li>Key ceremony with witnesses and documentation</li>
+<li>Dual control and split knowledge for key access</li>
+</ul>
 <h4 id="root-ca-operational-model">Root CA Operational Model</h4>
 <p>Root CAs should be powered on only for:</p>
 <ol>
@@ -2364,43 +2388,55 @@
 <li><strong>Emergency Response</strong>: Revoking compromised intermediate CAs</li>
 <li><strong>Decommissioning</strong>: Controlled shutdown and key destruction at end-of-life</li>
 </ol>
-<p><strong>Activation Frequency</strong>: 
-- High security environments: 1-2 times per year
-- Medium security: Quarterly
-- Lower security: Monthly</p>
+<p><strong>Activation Frequency</strong>: </p>
+<ul>
+<li>High security environments: 1-2 times per year</li>
+<li>Medium security: Quarterly</li>
+<li>Lower security: Monthly</li>
+</ul>
 <p><strong>Procedure</strong>: Formal "CA ceremony" with multiple authorized personnel, documented procedures, witnessed operations, and signed attestations.</p>
 <h3 id="intermediate-ca-design">Intermediate CA Design</h3>
 <p>Intermediate CAs balance security and operational requirements. They're online enough for operations but protected against compromise through layered security.</p>
 <h4 id="issuing-ca-characteristics">Issuing CA Characteristics</h4>
 <p><strong>Purpose</strong>: Handle day-to-day certificate issuance, revocation, and CRL/OCSP operations.</p>
-<p><strong>Security Posture</strong>:
-- HSM-based private key storage
-- Hardened systems with minimal attack surface
-- Network segmentation (dedicated PKI VLAN)
-- Strong authentication and authorization
-- Comprehensive audit logging</p>
-<p><strong>High Availability</strong>:
-- Redundant issuing CAs for business continuity
-- Geographic distribution for disaster recovery
-- Automated failover mechanisms
-- Load balancing for performance</p>
-<p><strong>Operational Accessibility</strong>:
-- API endpoints for certificate issuance automation
-- Integration with identity systems for validation
-- ACME protocol support for automated renewals
-- Web enrollment portals (where appropriate)</p>
+<p><strong>Security Posture</strong>:</p>
+<ul>
+<li>HSM-based private key storage</li>
+<li>Hardened systems with minimal attack surface</li>
+<li>Network segmentation (dedicated PKI VLAN)</li>
+<li>Strong authentication and authorization</li>
+<li>Comprehensive audit logging</li>
+</ul>
+<p><strong>High Availability</strong>:</p>
+<ul>
+<li>Redundant issuing CAs for business continuity</li>
+<li>Geographic distribution for disaster recovery</li>
+<li>Automated failover mechanisms</li>
+<li>Load balancing for performance</li>
+</ul>
+<p><strong>Operational Accessibility</strong>:</p>
+<ul>
+<li>API endpoints for certificate issuance automation</li>
+<li>Integration with identity systems for validation</li>
+<li>ACME protocol support for automated renewals</li>
+<li>Web enrollment portals (where appropriate)</li>
+</ul>
 <h4 id="policy-ca-characteristics">Policy CA Characteristics</h4>
 <p>Policy CAs sit between root and issuing CAs, representing different certificate policies or security domains.</p>
 <p><strong>Purpose</strong>: Segregate certificate purposes while maintaining single root of trust.</p>
-<p><strong>Security Posture</strong>:
-- More secure than issuing CAs, less accessible than root
-- May be offline or have restricted network access
-- HSM key storage required
-- Formal procedures for certificate issuance (to issuing CAs)</p>
-<p><strong>Operational Model</strong>:
-- Activated for issuing CA creation, renewal, and revocation
-- May be activated quarterly or annually depending on issuing CA validity periods
-- Less formal ceremony than root CA but documented procedures</p>
+<p><strong>Security Posture</strong>:</p>
+<ul>
+<li>More secure than issuing CAs, less accessible than root</li>
+<li>May be offline or have restricted network access</li>
+<li>HSM key storage required</li>
+<li>Formal procedures for certificate issuance (to issuing CAs)</li>
+</ul>
+<p><strong>Operational Model</strong>:</p>
+<ul>
+<li>Activated for issuing CA creation, renewal, and revocation</li>
+<li>May be activated quarterly or annually depending on issuing CA validity periods</li>
+<li>Less formal ceremony than root CA but documented procedures</li>
+</ul>
 <h3 id="certificate-chain-structure">Certificate Chain Structure</h3>
 <p>Understanding how certificates chain to roots is critical for validation and troubleshooting.</p>
 <h4 id="chain-building">Chain Building</h4>
@@ -2417,32 +2453,38 @@
 3. Fetch and validate issuer certificate
 4. Repeat until reaching a certificate in the trust store
 5. Validate entire chain (signatures, validity dates, revocation status)</p>
-<p><strong>Common Issues</strong>:
-- Missing intermediate certificates (server must send full chain)
-- Incorrect chain order
-- Expired intermediate certificates
-- Cross-signed certificates creating multiple valid paths</p>
+<p><strong>Common Issues</strong>:</p>
+<ul>
+<li>Missing intermediate certificates (server must send full chain)</li>
+<li>Incorrect chain order</li>
+<li>Expired intermediate certificates</li>
+<li>Cross-signed certificates creating multiple valid paths</li>
+</ul>
 <h4 id="cross-certification">Cross-Certification</h4>
 <p>Cross-certification establishes trust between different PKI hierarchies without requiring all parties to trust the same root.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Organization A Root CA ←→ Organization B Root CA
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>       ↓                           ↓
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>   Issuing CA A                Issuing CA B
 </code></pre></div>
-<p><strong>Use Cases</strong>:
-- Federal Bridge CA connecting government agencies
-- B2B partnerships requiring mutual certificate trust
-- PKI migration (old and new root CAs trusted simultaneously)</p>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Federal Bridge CA connecting government agencies</li>
+<li>B2B partnerships requiring mutual certificate trust</li>
+<li>PKI migration (old and new root CAs trusted simultaneously)</li>
+</ul>
 <p><strong>Complexity</strong>: Cross-certification creates operational overhead in managing multiple trust relationships and longer validation chains.</p>
 <h2 id="practical-guidance">Practical Guidance</h2>
 <h3 id="designing-your-ca-architecture">Designing Your CA Architecture</h3>
 <h4 id="step-1-requirements-gathering">Step 1: Requirements Gathering</h4>
-<p><strong>Questions to Answer</strong>:
-- How many certificates will be issued? (Current and 5-year projection)
-- What certificate types are needed? (TLS, code signing, email, authentication, IoT)
-- What are the security requirements? (Regulatory compliance, risk tolerance)
-- What operational capabilities exist? (Staff expertise, infrastructure availability)
-- What's the organizational structure? (Centralized vs. federated IT)
-- What are availability requirements? (RPO/RTO for certificate services)</p>
+<p><strong>Questions to Answer</strong>:</p>
+<ul>
+<li>How many certificates will be issued? (Current and 5-year projection)</li>
+<li>What certificate types are needed? (TLS, code signing, email, authentication, IoT)</li>
+<li>What are the security requirements? (Regulatory compliance, risk tolerance)</li>
+<li>What operational capabilities exist? (Staff expertise, infrastructure availability)</li>
+<li>What's the organizational structure? (Centralized vs. federated IT)</li>
+<li>What are availability requirements? (RPO/RTO for certificate services)</li>
+</ul>
 <h4 id="step-2-architecture-selection">Step 2: Architecture Selection</h4>
 <table>
 <thead>
@@ -2493,43 +2535,55 @@
 </tbody>
 </table>
 <h4 id="step-3-security-control-design">Step 3: Security Control Design</h4>
-<p><strong>For All CA Tiers</strong>:
-- Define access control policies (who can perform what operations)
-- Implement audit logging sent to centralized SIEM
-- Establish backup and recovery procedures
-- Define key management lifecycle (generation, storage, rotation, destruction)
-- Plan for compliance auditing (SOC 2, ISO 27001, WebTrust)</p>
-<p><strong>Root CA Specific</strong>:
-- Physical security requirements and location
-- Ceremony procedures and documentation
-- Multi-person integrity requirements
-- HSM selection and configuration
-- Offline storage requirements</p>
-<p><strong>Issuing CA Specific</strong>:
-- High availability and disaster recovery
-- Performance and scalability requirements
-- Integration points (APIs, ACME, SCEP)
-- Automated monitoring and alerting
-- Certificate issuance policies and validation procedures</p>
+<p><strong>For All CA Tiers</strong>:</p>
+<ul>
+<li>Define access control policies (who can perform what operations)</li>
+<li>Implement audit logging sent to centralized SIEM</li>
+<li>Establish backup and recovery procedures</li>
+<li>Define key management lifecycle (generation, storage, rotation, destruction)</li>
+<li>Plan for compliance auditing (SOC 2, ISO 27001, WebTrust)</li>
+</ul>
+<p><strong>Root CA Specific</strong>:</p>
+<ul>
+<li>Physical security requirements and location</li>
+<li>Ceremony procedures and documentation</li>
+<li>Multi-person integrity requirements</li>
+<li>HSM selection and configuration</li>
+<li>Offline storage requirements</li>
+</ul>
+<p><strong>Issuing CA Specific</strong>:</p>
+<ul>
+<li>High availability and disaster recovery</li>
+<li>Performance and scalability requirements</li>
+<li>Integration points (APIs, ACME, SCEP)</li>
+<li>Automated monitoring and alerting</li>
+<li>Certificate issuance policies and validation procedures</li>
+</ul>
 <h4 id="step-4-naming-and-trust-anchor-distribution">Step 4: Naming and Trust Anchor Distribution</h4>
-<p><strong>Root CA Naming</strong>: 
-- Choose descriptive, long-lived name (root CAs operate for 20+ years)
-- Include organization name and purpose
-- Example: "Acme Corporation Root CA 2024"</p>
-<p><strong>Certificate Distribution</strong>:
-- How will devices/applications receive root certificate?
-- Enterprise: Group Policy, MDM, configuration management
-- External: Browser trust programs (requires WebTrust audit), certificate pinning
-- B2B: Manual trust store import with verification procedures</p>
+<p><strong>Root CA Naming</strong>: </p>
+<ul>
+<li>Choose descriptive, long-lived name (root CAs operate for 20+ years)</li>
+<li>Include organization name and purpose</li>
+<li>Example: "Acme Corporation Root CA 2024"</li>
+</ul>
+<p><strong>Certificate Distribution</strong>:</p>
+<ul>
+<li>How will devices/applications receive root certificate?</li>
+<li>Enterprise: Group Policy, MDM, configuration management</li>
+<li>External: Browser trust programs (requires WebTrust audit), certificate pinning</li>
+<li>B2B: Manual trust store import with verification procedures</li>
+</ul>
 <h4 id="step-5-policy-documentation">Step 5: Policy Documentation</h4>
 <p>Document CA policies in Certificate Policy (CP) and Certificate Practice Statement (CPS):</p>
 <p><strong>Certificate Policy (CP)</strong>: High-level policy statements about certificate purpose, validation requirements, and organizational commitments.</p>
 <p><strong>Certificate Practice Statement (CPS)</strong>: Detailed procedures for CA operations, security controls, and technical implementation.</p>
-<p>These documents are essential for:
-- Compliance audits
-- External trust establishment
-- Operational consistency
-- Legal and liability frameworks</p>
+<p>These documents are essential for:</p>
+<ul>
+<li>Compliance audits</li>
+<li>External trust establishment</li>
+<li>Operational consistency</li>
+<li>Legal and liability frameworks</li>
+</ul>
 <h3 id="implementation-steps">Implementation Steps</h3>
 <ol>
 <li><strong>Establish Secure Environment</strong></li>
@@ -2727,12 +2781,14 @@
 </tbody>
 </table>
 <hr />
-<p><strong>Quality Checks</strong>: 
-- [x] All claims cited from authoritative sources
-- [x] Cross-references validated
-- [x] Practical guidance included
-- [x] Examples are current and relevant
-- [x] Security considerations addressed</p>
+<p><strong>Quality Checks</strong>: </p>
+<ul>
+<li>[x] All claims cited from authoritative sources</li>
+<li>[x] Cross-references validated</li>
+<li>[x] Practical guidance included</li>
+<li>[x] Examples are current and relevant</li>
+<li>[x] Security considerations addressed</li>
+</ul>
 
 
 

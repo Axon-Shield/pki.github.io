@@ -2479,51 +2479,63 @@
 <h2 id="key-concepts">Key Concepts</h2>
 <h3 id="standard-evolution-and-versions">Standard Evolution and Versions</h3>
 <h4 id="x509-v1-1988">X.509 v1 (1988)</h4>
-<p>The original specification with basic fields:
-- Serial number
-- Signature algorithm
-- Issuer DN
-- Validity period
-- Subject DN
-- Subject public key
-- CA signature</p>
+<p>The original specification with basic fields:</p>
+<ul>
+<li>Serial number</li>
+<li>Signature algorithm</li>
+<li>Issuer DN</li>
+<li>Validity period</li>
+<li>Subject DN</li>
+<li>Subject public key</li>
+<li>CA signature</li>
+</ul>
 <p><strong>Limitations</strong>: No extensions, no way to specify certificate purposes or additional names. Insufficient for modern PKI needs.</p>
 <p><strong>Current Use</strong>: Essentially obsolete. No modern PKI should issue v1 certificates.</p>
 <h4 id="x509-v2-1993">X.509 v2 (1993)</h4>
-<p>Added two optional identifier fields:
-- Issuer Unique Identifier
-- Subject Unique Identifier</p>
+<p>Added two optional identifier fields:</p>
+<ul>
+<li>Issuer Unique Identifier</li>
+<li>Subject Unique Identifier</li>
+</ul>
 <p><strong>Purpose</strong>: Intended to handle DN reuse after revocation. Proven to be an inadequate solution.</p>
 <p><strong>Current Use</strong>: Also obsolete. The unique identifier approach was superseded by extensions.</p>
 <h4 id="x509-v3-1996-present">X.509 v3 (1996-Present)</h4>
-<p>Introduced the extension mechanism, enabling:
-- Subject Alternative Names (SAN)
-- Key Usage constraints
-- Certificate Policies
-- CRL Distribution Points
-- Authority Information Access
-- Hundreds of other extensions</p>
+<p>Introduced the extension mechanism, enabling:</p>
+<ul>
+<li>Subject Alternative Names (SAN)</li>
+<li>Key Usage constraints</li>
+<li>Certificate Policies</li>
+<li>CRL Distribution Points</li>
+<li>Authority Information Access</li>
+<li>Hundreds of other extensions</li>
+</ul>
 <p><strong>Significance</strong>: This is the version used for all modern certificates. The extension mechanism provides the flexibility needed for evolving security requirements without changing the core standard[^1].</p>
 <p><strong>Current Use</strong>: Universal. All publicly-trusted certificates must be v3. CA/Browser Forum Baseline Requirements mandate v3[^2].</p>
 <h3 id="itu-t-vs-ietf-standards">ITU-T vs. IETF Standards</h3>
 <h4 id="itu-t-x509-isoiec-9594-8">ITU-T X.509 (ISO/IEC 9594-8)</h4>
-<p>The original standard published by the International Telecommunication Union:
-- Broader scope including X.500 directory integration
-- More general purpose
-- Updates less frequently
-- Current version: X.509 (10/2019)[^3]</p>
+<p>The original standard published by the International Telecommunication Union:</p>
+<ul>
+<li>Broader scope including X.500 directory integration</li>
+<li>More general purpose</li>
+<li>Updates less frequently</li>
+<li>Current version: X.509 (10/2019)[^3]</li>
+</ul>
 <h4 id="rfc-5280-internet-x509-profile">RFC 5280 - Internet X.509 Profile</h4>
-<p>The IETF adaptation for internet use:
-- Specifies internet-specific constraints
-- Defines required and optional extensions
-- Provides validation algorithms
-- References additional RFCs for specific extensions
-- Updates more frequently through internet standards process</p>
-<p><strong>Key Differences</strong>:
-- RFC 5280 prohibits some X.509 features (e.g., v1 and v2 certificates)
-- RFC 5280 mandates extensions that X.509 makes optional
-- RFC 5280 specifies DNS name encoding in SAN (X.509 is protocol-agnostic)
-- RFC 5280 defines internet-specific validation behavior</p>
+<p>The IETF adaptation for internet use:</p>
+<ul>
+<li>Specifies internet-specific constraints</li>
+<li>Defines required and optional extensions</li>
+<li>Provides validation algorithms</li>
+<li>References additional RFCs for specific extensions</li>
+<li>Updates more frequently through internet standards process</li>
+</ul>
+<p><strong>Key Differences</strong>:</p>
+<ul>
+<li>RFC 5280 prohibits some X.509 features (e.g., v1 and v2 certificates)</li>
+<li>RFC 5280 mandates extensions that X.509 makes optional</li>
+<li>RFC 5280 specifies DNS name encoding in SAN (X.509 is protocol-agnostic)</li>
+<li>RFC 5280 defines internet-specific validation behavior</li>
+</ul>
 <p><strong>For Internet PKI</strong>: RFC 5280 is the authoritative reference, not the ITU-T standard.</p>
 <h3 id="asn1-encoding">ASN.1 Encoding</h3>
 <p>X.509 certificates use Abstract Syntax Notation One (ASN.1) for structure definition and Distinguished Encoding Rules (DER) for binary encoding.</p>
@@ -2546,17 +2558,21 @@
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">     </span><span class="nv">subjectUniqueID</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="k">IMPLICIT</span><span class="w"> </span><span class="n n-Type">UniqueIdentifier</span><span class="w"> </span><span class="kd">OPTIONAL</span><span class="p">,</span>
 <a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">     </span><span class="nv">extensions</span><span class="w">      </span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="k">EXPLICIT</span><span class="w"> </span><span class="n n-Type">Extensions</span><span class="w"> </span><span class="kd">OPTIONAL</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-<p><strong>Key Points</strong>:
-- <code>SEQUENCE</code> indicates ordered collection of fields
-- <code>[0]</code>, <code>[1]</code>, <code>[2]</code>, <code>[3]</code> are context-specific tags for optional fields
-- <code>OPTIONAL</code> fields may be omitted
-- <code>DEFAULT</code> specifies assumed value if absent</p>
+<p><strong>Key Points</strong>:</p>
+<ul>
+<li><code>SEQUENCE</code> indicates ordered collection of fields</li>
+<li><code>[0]</code>, <code>[1]</code>, <code>[2]</code>, <code>[3]</code> are context-specific tags for optional fields</li>
+<li><code>OPTIONAL</code> fields may be omitted</li>
+<li><code>DEFAULT</code> specifies assumed value if absent</li>
+</ul>
 <h4 id="der-encoding">DER Encoding</h4>
-<p>Distinguished Encoding Rules provide canonical binary encoding:
-- Each ASN.1 type has specific encoding rules
-- Ensures unique encoding (critical for signatures)
-- Tag-Length-Value (TLV) structure
-- Network byte order (big-endian)</p>
+<p>Distinguished Encoding Rules provide canonical binary encoding:</p>
+<ul>
+<li>Each ASN.1 type has specific encoding rules</li>
+<li>Ensures unique encoding (critical for signatures)</li>
+<li>Tag-Length-Value (TLV) structure</li>
+<li>Network byte order (big-endian)</li>
+</ul>
 <p><strong>Example</strong>: Integer encoding
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Tag: 0x02 (INTEGER type)
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Length: 0x01 (1 byte)
@@ -2572,24 +2588,30 @@
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>[... base64 encoded data ...]
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>-----END CERTIFICATE-----
 </code></pre></div>
-<p><strong>Characteristics</strong>:
-- Base64 encoding of DER certificate
-- Header: <code>-----BEGIN CERTIFICATE-----</code>
-- Footer: <code>-----END CERTIFICATE-----</code>
-- 64 characters per line (typically)
-- Human-transportable (email, copy-paste)</p>
-<p><strong>Common Variants</strong>:
-- <code>BEGIN/END CERTIFICATE REQUEST</code> - CSR (PKCS#10)
-- <code>BEGIN/END RSA PRIVATE KEY</code> - Unencrypted private key
-- <code>BEGIN/END ENCRYPTED PRIVATE KEY</code> - Encrypted private key (PKCS#8)
-- <code>BEGIN/END CERTIFICATE CHAIN</code> - Multiple certificates</p>
+<p><strong>Characteristics</strong>:</p>
+<ul>
+<li>Base64 encoding of DER certificate</li>
+<li>Header: <code>-----BEGIN CERTIFICATE-----</code></li>
+<li>Footer: <code>-----END CERTIFICATE-----</code></li>
+<li>64 characters per line (typically)</li>
+<li>Human-transportable (email, copy-paste)</li>
+</ul>
+<p><strong>Common Variants</strong>:</p>
+<ul>
+<li><code>BEGIN/END CERTIFICATE REQUEST</code> - CSR (PKCS#10)</li>
+<li><code>BEGIN/END RSA PRIVATE KEY</code> - Unencrypted private key</li>
+<li><code>BEGIN/END ENCRYPTED PRIVATE KEY</code> - Encrypted private key (PKCS#8)</li>
+<li><code>BEGIN/END CERTIFICATE CHAIN</code> - Multiple certificates</li>
+</ul>
 <h3 id="extension-framework">Extension Framework</h3>
 <p>Extensions are the key innovation in X.509 v3, enabling extensibility without breaking backward compatibility.</p>
 <h4 id="extension-structure">Extension Structure</h4>
-<p>Each extension has:
-- <strong>OID (Object Identifier)</strong>: Unique identifier (e.g., 2.5.29.17 for SAN)
-- <strong>Critical flag</strong>: Boolean indicating if unknown extensions must cause rejection
-- <strong>Value</strong>: DER-encoded extension-specific data</p>
+<p>Each extension has:</p>
+<ul>
+<li><strong>OID (Object Identifier)</strong>: Unique identifier (e.g., 2.5.29.17 for SAN)</li>
+<li><strong>Critical flag</strong>: Boolean indicating if unknown extensions must cause rejection</li>
+<li><strong>Value</strong>: DER-encoded extension-specific data</li>
+</ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n n-Type">Extension</span><span class="w">  </span><span class="o">::=</span><span class="w">  </span><span class="kd">SEQUENCE</span><span class="w">  </span><span class="p">{</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">     </span><span class="nv">extnID</span><span class="w">      </span><span class="kt">OBJECT IDENTIFIER</span><span class="p">,</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">     </span><span class="nv">critical</span><span class="w">    </span><span class="kt">BOOLEAN</span><span class="w"> </span><span class="kd">DEFAULT</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span>
@@ -2609,14 +2631,18 @@
 - Provides additional context but doesn't affect security if ignored
 - Allows gradual deployment of new extensions</p>
 <p><strong>Example Scenarios</strong>:</p>
-<p>Certificate with critical Key Usage restricting to digital signature only:
-- Old software that doesn't understand Key Usage: <strong>Rejects certificate</strong> (correct behavior)
-- Software that understands Key Usage: Allows only signing operations
-- This prevents accidental key misuse by legacy software</p>
-<p>Certificate with non-critical Certificate Transparency SCTs:
-- Old software that doesn't understand CT: Ignores extension, accepts certificate
-- Software that understands CT: Validates SCTs
-- Allows CT adoption without breaking legacy clients</p>
+<p>Certificate with critical Key Usage restricting to digital signature only:</p>
+<ul>
+<li>Old software that doesn't understand Key Usage: <strong>Rejects certificate</strong> (correct behavior)</li>
+<li>Software that understands Key Usage: Allows only signing operations</li>
+<li>This prevents accidental key misuse by legacy software</li>
+</ul>
+<p>Certificate with non-critical Certificate Transparency SCTs:</p>
+<ul>
+<li>Old software that doesn't understand CT: Ignores extension, accepts certificate</li>
+<li>Software that understands CT: Validates SCTs</li>
+<li>Allows CT adoption without breaking legacy clients</li>
+</ul>
 <h4 id="standard-extensions-rfc-5280">Standard Extensions (RFC 5280)</h4>
 <p><strong>Key Usage</strong> (2.5.29.15) - Critical
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>KeyUsage ::= BIT STRING {
@@ -2635,11 +2661,13 @@
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>KeyPurposeId ::= OBJECT IDENTIFIER
 </code></pre></div></p>
-<p>Common OIDs:
-- <code>1.3.6.1.5.5.7.3.1</code> - serverAuth (TLS server)
-- <code>1.3.6.1.5.5.7.3.2</code> - clientAuth (TLS client)
-- <code>1.3.6.1.5.5.7.3.3</code> - codeSigning
-- <code>1.3.6.1.5.5.7.3.4</code> - emailProtection</p>
+<p>Common OIDs:</p>
+<ul>
+<li><code>1.3.6.1.5.5.7.3.1</code> - serverAuth (TLS server)</li>
+<li><code>1.3.6.1.5.5.7.3.2</code> - clientAuth (TLS client)</li>
+<li><code>1.3.6.1.5.5.7.3.3</code> - codeSigning</li>
+<li><code>1.3.6.1.5.5.7.3.4</code> - emailProtection</li>
+</ul>
 <p><strong>Subject Alternative Name</strong> (2.5.29.17)
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>SubjectAltName ::= GeneralNames
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
@@ -2669,9 +2697,11 @@
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>        accessMethod          OBJECT IDENTIFIER,
 <a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>        accessLocation        GeneralName  }
 </code></pre></div></p>
-<p>Common access methods:
-- <code>1.3.6.1.5.5.7.48.1</code> - OCSP
-- <code>1.3.6.1.5.5.7.48.2</code> - caIssuers</p>
+<p>Common access methods:</p>
+<ul>
+<li><code>1.3.6.1.5.5.7.48.1</code> - OCSP</li>
+<li><code>1.3.6.1.5.5.7.48.2</code> - caIssuers</li>
+</ul>
 <h3 id="certificate-path-validation">Certificate Path Validation</h3>
 <p>RFC 5280 defines the algorithm for validating certificate chains (certification paths). This is one of the most critical and complex aspects of the standard.</p>
 <h4 id="validation-inputs">Validation Inputs</h4>
@@ -2841,25 +2871,31 @@
 <h3 id="compliance-checking">Compliance Checking</h3>
 <h4 id="cabrowser-forum-requirements">CA/Browser Forum Requirements</h4>
 <p>For publicly-trusted TLS certificates[^2]:</p>
-<p><strong>Required Extensions</strong>:
-- Subject Alternative Name (critical if Subject DN empty)
-- Certificate Policies (with DV/OV/EV OID)
-- Authority Information Access (with OCSP and caIssuers)
-- Basic Constraints (CA:FALSE for end-entity)
-- Key Usage (critical)
-- Extended Key Usage (with serverAuth)</p>
-<p><strong>Prohibited</strong>:
-- Version 1 or 2 certificates
-- OU field in Subject DN (deprecated as of April 2024)
-- Validity period exceeding 398 days (825 days prior to March 2018)
-- MD5 or SHA-1 signatures
-- RSA keys less than 2048 bits
-- Certificate serial numbers with less than 64 bits entropy</p>
-<p><strong>Validation Requirements</strong>:
-- Domain control validation for DV
-- Organization validation for OV
-- Extended validation for EV
-- Certificate Transparency logging (2+ SCTs)</p>
+<p><strong>Required Extensions</strong>:</p>
+<ul>
+<li>Subject Alternative Name (critical if Subject DN empty)</li>
+<li>Certificate Policies (with DV/OV/EV OID)</li>
+<li>Authority Information Access (with OCSP and caIssuers)</li>
+<li>Basic Constraints (CA:FALSE for end-entity)</li>
+<li>Key Usage (critical)</li>
+<li>Extended Key Usage (with serverAuth)</li>
+</ul>
+<p><strong>Prohibited</strong>:</p>
+<ul>
+<li>Version 1 or 2 certificates</li>
+<li>OU field in Subject DN (deprecated as of April 2024)</li>
+<li>Validity period exceeding 398 days (825 days prior to March 2018)</li>
+<li>MD5 or SHA-1 signatures</li>
+<li>RSA keys less than 2048 bits</li>
+<li>Certificate serial numbers with less than 64 bits entropy</li>
+</ul>
+<p><strong>Validation Requirements</strong>:</p>
+<ul>
+<li>Domain control validation for DV</li>
+<li>Organization validation for OV</li>
+<li>Extended validation for EV</li>
+<li>Certificate Transparency logging (2+ SCTs)</li>
+</ul>
 <h4 id="automated-compliance-testing">Automated Compliance Testing</h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Check validity period</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>openssl<span class="w"> </span>x509<span class="w"> </span>-in<span class="w"> </span>cert.pem<span class="w"> </span>-noout<span class="w"> </span>-startdate<span class="w"> </span>-enddate
@@ -3002,9 +3038,11 @@
 <p><strong>Key Takeaway</strong>: Critical extensions exist for a reason. Validators must reject certificates with unknown critical extensions.</p>
 <h3 id="case-study-certificate-transparency-integration-2013">Case Study: Certificate Transparency Integration (2013+)</h3>
 <p>Certificate Transparency required extending X.509 without breaking existing validators. CT used non-critical extensions for Signed Certificate Timestamps (SCTs).</p>
-<p><strong>Implementation</strong>: New extension (1.3.6.1.4.1.11129.2.4.2) marked non-critical allows:
-- Old validators: Ignore extension, accept certificate
-- CT-aware validators: Validate SCTs, enforce CT requirements</p>
+<p><strong>Implementation</strong>: New extension (1.3.6.1.4.1.11129.2.4.2) marked non-critical allows:</p>
+<ul>
+<li>Old validators: Ignore extension, accept certificate</li>
+<li>CT-aware validators: Validate SCTs, enforce CT requirements</li>
+</ul>
 <p><strong>Key Takeaway</strong>: X.509 extension framework enables evolution without breaking backward compatibility. Non-critical extensions allow gradual feature adoption.</p>
 <h2 id="further-reading">Further Reading</h2>
 <h3 id="essential-resources">Essential Resources</h3>
@@ -3053,12 +3091,14 @@
 </tbody>
 </table>
 <hr />
-<p><strong>Quality Checks</strong>: 
-- [x] All claims cited from authoritative sources
-- [x] Cross-references validated
-- [x] Practical guidance included
-- [x] Examples are current and relevant
-- [x] Security considerations addressed</p>
+<p><strong>Quality Checks</strong>: </p>
+<ul>
+<li>[x] All claims cited from authoritative sources</li>
+<li>[x] Cross-references validated</li>
+<li>[x] Practical guidance included</li>
+<li>[x] Examples are current and relevant</li>
+<li>[x] Security considerations addressed</li>
+</ul>
 
 
 

@@ -2699,16 +2699,20 @@
 </code></pre></div></p>
 <h4 id="entropy-and-randomness">Entropy and Randomness</h4>
 <p>Private keys must be generated with cryptographically secure random number generators (CSRNG).</p>
-<p><strong>Good Entropy Sources</strong>:
-- <code>/dev/urandom</code> (Linux)
-- <code>CryptGenRandom</code> (Windows)
-- Hardware RNG (RDRAND, TPM)
-- HSM internal RNG</p>
-<p><strong>Poor Entropy Sources</strong> (Never Use):
-- <code>rand()</code> function
-- Current timestamp
-- Process ID
-- Predictable seeds</p>
+<p><strong>Good Entropy Sources</strong>:</p>
+<ul>
+<li><code>/dev/urandom</code> (Linux)</li>
+<li><code>CryptGenRandom</code> (Windows)</li>
+<li>Hardware RNG (RDRAND, TPM)</li>
+<li>HSM internal RNG</li>
+</ul>
+<p><strong>Poor Entropy Sources</strong> (Never Use):</p>
+<ul>
+<li><code>rand()</code> function</li>
+<li>Current timestamp</li>
+<li>Process ID</li>
+<li>Predictable seeds</li>
+</ul>
 <p><strong>Verify Entropy</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Check available entropy (Linux)</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>cat<span class="w"> </span>/proc/sys/kernel/random/entropy_avail
@@ -2732,11 +2736,13 @@
 <a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>openssl<span class="w"> </span>pkey<span class="w"> </span>-in<span class="w"> </span>private-encrypted.key<span class="w"> </span>-text<span class="w"> </span>-noout
 <a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="c1"># Will prompt for password</span>
 </code></pre></div>
-<p><strong>Password Selection</strong>:
-- Minimum 20 characters
-- Mix of character types
-- Use password manager or generated passwords
-- Consider using key derivation function (KDF)</p>
+<p><strong>Password Selection</strong>:</p>
+<ul>
+<li>Minimum 20 characters</li>
+<li>Mix of character types</li>
+<li>Use password manager or generated passwords</li>
+<li>Consider using key derivation function (KDF)</li>
+</ul>
 <h4 id="key-encryption-key-kek-architecture">Key Encryption Key (KEK) Architecture</h4>
 <p>For automated systems requiring unattended key access:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Master Key (KEK) → Stored in HSM/KMS
@@ -2751,18 +2757,22 @@
 3. Encrypt DEKs with KEK, store encrypted DEKs
 4. Encrypt private keys with DEKs
 5. For key use: Decrypt DEK with KEK, decrypt private key with DEK, use key, clear from memory</p>
-<p><strong>Benefits</strong>:
-- Private keys never unencrypted on disk
-- KEK rotation doesn't require re-encrypting all keys
-- Access control at KEK level
-- Audit trail at KEK access points</p>
+<p><strong>Benefits</strong>:</p>
+<ul>
+<li>Private keys never unencrypted on disk</li>
+<li>KEK rotation doesn't require re-encrypting all keys</li>
+<li>Access control at KEK level</li>
+<li>Audit trail at KEK access points</li>
+</ul>
 <h3 id="access-control">Access Control</h3>
 <h4 id="principle-of-least-privilege">Principle of Least Privilege</h4>
-<p><strong>Who Needs Access</strong>:
-- <strong>CA Operations</strong>: Only authorized CA administrators
-- <strong>Server Keys</strong>: Only the application process running the service
-- <strong>Code Signing</strong>: Only authorized build systems/developers
-- <strong>User Keys</strong>: Only the individual user</p>
+<p><strong>Who Needs Access</strong>:</p>
+<ul>
+<li><strong>CA Operations</strong>: Only authorized CA administrators</li>
+<li><strong>Server Keys</strong>: Only the application process running the service</li>
+<li><strong>Code Signing</strong>: Only authorized build systems/developers</li>
+<li><strong>User Keys</strong>: Only the individual user</li>
+</ul>
 <p><strong>Access Control Matrix Example</strong>:</p>
 <table>
 <thead>
@@ -2883,28 +2893,34 @@
 </code></pre></div>
 <h3 id="monitoring-and-auditing">Monitoring and Auditing</h3>
 <h4 id="what-to-log">What to Log</h4>
-<p><strong>Key Operations</strong>:
-- Key generation events
-- Key usage (signing, decryption operations)
-- Key access attempts (successful and failed)
-- Key export or backup operations
-- Key deletion or destruction
-- Permission changes</p>
-<p><strong>Context Information</strong>:
-- User/service identity
-- Source IP address
-- Timestamp
-- Operation type
-- Key identifier
-- Success/failure status
-- Request parameters</p>
+<p><strong>Key Operations</strong>:</p>
+<ul>
+<li>Key generation events</li>
+<li>Key usage (signing, decryption operations)</li>
+<li>Key access attempts (successful and failed)</li>
+<li>Key export or backup operations</li>
+<li>Key deletion or destruction</li>
+<li>Permission changes</li>
+</ul>
+<p><strong>Context Information</strong>:</p>
+<ul>
+<li>User/service identity</li>
+<li>Source IP address</li>
+<li>Timestamp</li>
+<li>Operation type</li>
+<li>Key identifier</li>
+<li>Success/failure status</li>
+<li>Request parameters</li>
+</ul>
 <h4 id="detection-scenarios">Detection Scenarios</h4>
-<p><strong>Anomaly Detection</strong>:
-- Unusual number of key operations
-- Key access from unexpected IP addresses
-- Key operations outside business hours
-- Failed authentication attempts spike
-- Key access by terminated users</p>
+<p><strong>Anomaly Detection</strong>:</p>
+<ul>
+<li>Unusual number of key operations</li>
+<li>Key access from unexpected IP addresses</li>
+<li>Key operations outside business hours</li>
+<li>Failed authentication attempts spike</li>
+<li>Key access by terminated users</li>
+</ul>
 <p><strong>Example Alert Rules</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ALERT: PrivateKeyAccessFromNewIP
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  IF key_access_event.ip NOT IN historical_ips
@@ -2924,14 +2940,18 @@
 </code></pre></div></p>
 <h3 id="key-rotation">Key Rotation</h3>
 <h4 id="rotation-strategies">Rotation Strategies</h4>
-<p><strong>Proactive Rotation</strong> (Preventive):
-- Scheduled key replacement
-- Reduces exposure window
-- Limits damage if past compromise undiscovered</p>
-<p><strong>Reactive Rotation</strong> (Incident Response):
-- Immediate replacement after compromise
-- Emergency procedures required
-- Requires certificate revocation</p>
+<p><strong>Proactive Rotation</strong> (Preventive):</p>
+<ul>
+<li>Scheduled key replacement</li>
+<li>Reduces exposure window</li>
+<li>Limits damage if past compromise undiscovered</li>
+</ul>
+<p><strong>Reactive Rotation</strong> (Incident Response):</p>
+<ul>
+<li>Immediate replacement after compromise</li>
+<li>Emergency procedures required</li>
+<li>Requires certificate revocation</li>
+</ul>
 <p><strong>Rotation Frequency Guidelines</strong>:</p>
 <table>
 <thead>
@@ -3094,31 +3114,39 @@
 <h2 id="security-considerations">Security Considerations</h2>
 <h3 id="forward-secrecy">Forward Secrecy</h3>
 <p>TLS connections using Diffie-Hellman key exchange provide forward secrecy—compromise of server private key doesn't allow decryption of past captured traffic.</p>
-<p><strong>Without Forward Secrecy</strong> (RSA key exchange):
-- Attacker captures encrypted traffic
-- Later compromises server private key
-- Can decrypt all captured traffic</p>
-<p><strong>With Forward Secrecy</strong> (DHE/ECDHE):
-- Ephemeral keys used for each session
-- Session keys not derivable from server private key
-- Past traffic remains secure even if private key compromised</p>
+<p><strong>Without Forward Secrecy</strong> (RSA key exchange):</p>
+<ul>
+<li>Attacker captures encrypted traffic</li>
+<li>Later compromises server private key</li>
+<li>Can decrypt all captured traffic</li>
+</ul>
+<p><strong>With Forward Secrecy</strong> (DHE/ECDHE):</p>
+<ul>
+<li>Ephemeral keys used for each session</li>
+<li>Session keys not derivable from server private key</li>
+<li>Past traffic remains secure even if private key compromised</li>
+</ul>
 <p><strong>Implementation</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a># Prefer ECDHE cipher suites (nginx)
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>ssl_ciphers &#39;ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384&#39;;
 <a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>ssl_prefer_server_ciphers on;
 </code></pre></div></p>
 <h3 id="memory-protection">Memory Protection</h3>
-<p>Private keys in application memory are vulnerable to:
-- Memory dumps
-- Debugger attachment
-- Process memory reading
-- Swap/hibernation file exposure</p>
-<p><strong>Mitigations</strong>:
-- Clear sensitive data from memory after use (memset to zero)
-- Use secure memory allocation (mlock to prevent swapping)
-- Disable core dumps for sensitive processes
-- Enable address space layout randomization (ASLR)
-- Use memory-hard functions for key derivation</p>
+<p>Private keys in application memory are vulnerable to:</p>
+<ul>
+<li>Memory dumps</li>
+<li>Debugger attachment</li>
+<li>Process memory reading</li>
+<li>Swap/hibernation file exposure</li>
+</ul>
+<p><strong>Mitigations</strong>:</p>
+<ul>
+<li>Clear sensitive data from memory after use (memset to zero)</li>
+<li>Use secure memory allocation (mlock to prevent swapping)</li>
+<li>Disable core dumps for sensitive processes</li>
+<li>Enable address space layout randomization (ASLR)</li>
+<li>Use memory-hard functions for key derivation</li>
+</ul>
 <p><strong>Example (C)</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/mman.h&gt;</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
@@ -3134,16 +3162,20 @@
 <a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="n">munmap</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">key_size</span><span class="p">);</span>
 </code></pre></div></p>
 <h3 id="side-channel-attacks">Side-Channel Attacks</h3>
-<p>Private key operations may leak information through:
-- <strong>Timing attacks</strong>: Key operations taking different time based on key bits
-- <strong>Power analysis</strong>: Power consumption revealing key material
-- <strong>EM radiation</strong>: Electromagnetic emissions during crypto operations
-- <strong>Cache timing</strong>: CPU cache behavior leaking key information</p>
-<p><strong>Mitigations</strong>:
-- Use constant-time cryptographic implementations
-- Hardware with side-channel countermeasures (HSMs)
-- Blinding techniques for RSA operations
-- Regular security assessments</p>
+<p>Private key operations may leak information through:</p>
+<ul>
+<li><strong>Timing attacks</strong>: Key operations taking different time based on key bits</li>
+<li><strong>Power analysis</strong>: Power consumption revealing key material</li>
+<li><strong>EM radiation</strong>: Electromagnetic emissions during crypto operations</li>
+<li><strong>Cache timing</strong>: CPU cache behavior leaking key information</li>
+</ul>
+<p><strong>Mitigations</strong>:</p>
+<ul>
+<li>Use constant-time cryptographic implementations</li>
+<li>Hardware with side-channel countermeasures (HSMs)</li>
+<li>Blinding techniques for RSA operations</li>
+<li>Regular security assessments</li>
+</ul>
 <h2 id="real-world-examples">Real-World Examples</h2>
 <h3 id="case-study-github-rsa-key-exposure-2023">Case Study: GitHub RSA Key Exposure (2023)</h3>
 <p>GitHub accidentally exposed RSA SSH private host key in public repository. While not a certificate private key, this demonstrates how easily keys can be exposed.</p>
@@ -3197,12 +3229,14 @@
 </tbody>
 </table>
 <hr />
-<p><strong>Quality Checks</strong>: 
-- [x] All claims cited from authoritative sources
-- [x] Cross-references validated
-- [x] Practical guidance included
-- [x] Examples are current and relevant
-- [x] Security considerations addressed</p>
+<p><strong>Quality Checks</strong>: </p>
+<ul>
+<li>[x] All claims cited from authoritative sources</li>
+<li>[x] Cross-references validated</li>
+<li>[x] Practical guidance included</li>
+<li>[x] Examples are current and relevant</li>
+<li>[x] Security considerations addressed</li>
+</ul>
 
 
 

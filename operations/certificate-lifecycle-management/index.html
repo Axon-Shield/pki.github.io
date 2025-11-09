@@ -2086,13 +2086,15 @@
 <li>VPN certificates</li>
 <li>IoT device certificates</li>
 </ol>
-<p><strong>Deliverable</strong>: Certificate inventory database containing:
-- Certificate details (issuer, subject, SAN, expiration)
-- Location (hostname, IP, cloud resource ID)
-- Owner/responsible team
-- Criticality/business impact
-- Issuing CA
-- Discovery method and date</p>
+<p><strong>Deliverable</strong>: Certificate inventory database containing:</p>
+<ul>
+<li>Certificate details (issuer, subject, SAN, expiration)</li>
+<li>Location (hostname, IP, cloud resource ID)</li>
+<li>Owner/responsible team</li>
+<li>Criticality/business impact</li>
+<li>Issuing CA</li>
+<li>Discovery method and date</li>
+</ul>
 <h4 id="phase-2-prioritization-and-risk-assessment-month-3">Phase 2: Prioritization and Risk Assessment (Month 3)</h4>
 <p><strong>Objective</strong>: Identify highest-risk certificates requiring immediate lifecycle management.</p>
 <p><strong>Risk Scoring Framework</strong>:</p>
@@ -2209,25 +2211,31 @@
 <li>Certificates issued outside approved CAs</li>
 <li>Mean time to remediate expiring certificates</li>
 </ol>
-<p><strong>Alert Fatigue Prevention</strong>: 
-- Noise reduction: Alert only on actionable issues
-- Owner assignment: Route alerts to responsible teams
-- Automated remediation: Trigger auto-renewal when possible
-- Status pages: Self-service visibility reduces manual inquiries</p>
+<p><strong>Alert Fatigue Prevention</strong>: </p>
+<ul>
+<li>Noise reduction: Alert only on actionable issues</li>
+<li>Owner assignment: Route alerts to responsible teams</li>
+<li>Automated remediation: Trigger auto-renewal when possible</li>
+<li>Status pages: Self-service visibility reduces manual inquiries</li>
+</ul>
 <h4 id="phase-5-continuous-improvement-ongoing">Phase 5: Continuous Improvement (Ongoing)</h4>
 <p><strong>Objective</strong>: Mature the lifecycle management program over time.</p>
-<p><strong>Metrics to Track</strong>:
-- <strong>Mean Time to Renewal (MTTR)</strong>: Target &lt;24 hours from expiration alert
-- <strong>Automation Rate</strong>: Percentage of certificates with automated renewal (target: &gt;90%)
-- <strong>Discovery Coverage</strong>: Percentage of infrastructure regularly scanned (target: 100%)
-- <strong>Certificate Age</strong>: Average days remaining until expiration (target: &gt;60)
-- <strong>Incident Rate</strong>: Certificate-related outages per quarter (target: 0)</p>
-<p><strong>Improvement Activities</strong>:
-- Quarterly inventory audits to identify new certificates
-- Annual review of CA relationships and certificate policies
-- Regular automation testing (fail renewal process intentionally to validate alerting)
-- Post-incident reviews for any certificate-related outages
-- Security reviews of private key storage and access controls</p>
+<p><strong>Metrics to Track</strong>:</p>
+<ul>
+<li><strong>Mean Time to Renewal (MTTR)</strong>: Target &lt;24 hours from expiration alert</li>
+<li><strong>Automation Rate</strong>: Percentage of certificates with automated renewal (target: &gt;90%)</li>
+<li><strong>Discovery Coverage</strong>: Percentage of infrastructure regularly scanned (target: 100%)</li>
+<li><strong>Certificate Age</strong>: Average days remaining until expiration (target: &gt;60)</li>
+<li><strong>Incident Rate</strong>: Certificate-related outages per quarter (target: 0)</li>
+</ul>
+<p><strong>Improvement Activities</strong>:</p>
+<ul>
+<li>Quarterly inventory audits to identify new certificates</li>
+<li>Annual review of CA relationships and certificate policies</li>
+<li>Regular automation testing (fail renewal process intentionally to validate alerting)</li>
+<li>Post-incident reviews for any certificate-related outages</li>
+<li>Security reviews of private key storage and access controls</li>
+</ul>
 <h3 id="implementation-steps">Implementation Steps</h3>
 <ol>
 <li><strong>Start Small</strong>: Pilot with non-critical certificates to refine processes</li>
@@ -2414,12 +2422,14 @@
 </tbody>
 </table>
 <hr />
-<p><strong>Quality Checks</strong>: 
-- [x] All claims cited from authoritative sources
-- [x] Cross-references validated
-- [x] Practical guidance included
-- [x] Examples are current and relevant
-- [x] Security considerations addressed</p>
+<p><strong>Quality Checks</strong>: </p>
+<ul>
+<li>[x] All claims cited from authoritative sources</li>
+<li>[x] Cross-references validated</li>
+<li>[x] Practical guidance included</li>
+<li>[x] Examples are current and relevant</li>
+<li>[x] Security considerations addressed</li>
+</ul>
 
 
 

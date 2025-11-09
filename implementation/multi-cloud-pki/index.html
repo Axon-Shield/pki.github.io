@@ -2343,46 +2343,58 @@
 <hr />
 <h2 id="overview">Overview</h2>
 <p>Multi-cloud PKI addresses the operational reality that most enterprises use multiple cloud providers, maintain on-premises infrastructure, and require consistent certificate management across all environments. This creates challenges around:</p>
-<p><strong>Architectural Challenges</strong>:
-- Divergent APIs and data models across cloud providers
-- Different certificate validation and renewal workflows
-- Incompatible secrets management systems
-- Varied integration patterns for compute services
-- Cloud-specific networking and security boundaries</p>
-<p><strong>Operational Challenges</strong>:
-- Maintaining visibility across dispersed certificate inventory
-- Consistent policy enforcement independent of cloud provider
-- Unified renewal and lifecycle management
-- Cross-cloud certificate distribution
-- Audit and compliance across heterogeneous environments</p>
-<p><strong>Strategic Considerations</strong>:
-- Vendor lock-in risks when using cloud-native PKI services
-- Cost optimization across cloud billing models
-- Disaster recovery and multi-region failover
-- Regulatory requirements for data sovereignty
-- Migration flexibility between clouds</p>
+<p><strong>Architectural Challenges</strong>:</p>
+<ul>
+<li>Divergent APIs and data models across cloud providers</li>
+<li>Different certificate validation and renewal workflows</li>
+<li>Incompatible secrets management systems</li>
+<li>Varied integration patterns for compute services</li>
+<li>Cloud-specific networking and security boundaries</li>
+</ul>
+<p><strong>Operational Challenges</strong>:</p>
+<ul>
+<li>Maintaining visibility across dispersed certificate inventory</li>
+<li>Consistent policy enforcement independent of cloud provider</li>
+<li>Unified renewal and lifecycle management</li>
+<li>Cross-cloud certificate distribution</li>
+<li>Audit and compliance across heterogeneous environments</li>
+</ul>
+<p><strong>Strategic Considerations</strong>:</p>
+<ul>
+<li>Vendor lock-in risks when using cloud-native PKI services</li>
+<li>Cost optimization across cloud billing models</li>
+<li>Disaster recovery and multi-region failover</li>
+<li>Regulatory requirements for data sovereignty</li>
+<li>Migration flexibility between clouds</li>
+</ul>
 <hr />
 <h2 id="cloud-provider-certificate-services">Cloud Provider Certificate Services</h2>
 <h3 id="aws-certificate-manager-acm">AWS Certificate Manager (ACM)</h3>
 <p>AWS's managed certificate service for AWS resources:</p>
-<p><strong>Capabilities</strong>:
-- Free certificates for AWS-integrated services
-- Automatic renewal with no customer action
-- Integration with ELB, CloudFront, API Gateway, Elastic Beanstalk
-- Supports public (via Amazon's CA) and private certificates
-- Regional service with certificate-per-region requirement
-- No export of private keys for public certificates</p>
-<p><strong>Limitations</strong>:
-- Only works with AWS services (cannot export most certificates)
-- No support for client certificates
-- Limited to 398-day validity
-- Regional isolation requires certificate duplication
-- Cannot use with EC2 instances directly (must use load balancer)</p>
-<p><strong>Use Cases</strong>:
-- Public-facing websites on CloudFront or ALB
-- API Gateway REST APIs
-- Internal services using Private CA
-- Temporary certificates for testing</p>
+<p><strong>Capabilities</strong>:</p>
+<ul>
+<li>Free certificates for AWS-integrated services</li>
+<li>Automatic renewal with no customer action</li>
+<li>Integration with ELB, CloudFront, API Gateway, Elastic Beanstalk</li>
+<li>Supports public (via Amazon's CA) and private certificates</li>
+<li>Regional service with certificate-per-region requirement</li>
+<li>No export of private keys for public certificates</li>
+</ul>
+<p><strong>Limitations</strong>:</p>
+<ul>
+<li>Only works with AWS services (cannot export most certificates)</li>
+<li>No support for client certificates</li>
+<li>Limited to 398-day validity</li>
+<li>Regional isolation requires certificate duplication</li>
+<li>Cannot use with EC2 instances directly (must use load balancer)</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Public-facing websites on CloudFront or ALB</li>
+<li>API Gateway REST APIs</li>
+<li>Internal services using Private CA</li>
+<li>Temporary certificates for testing</li>
+</ul>
 <p><strong>Terraform Example</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Request ACM certificate</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_acm_certificate&quot;</span><span class="w"> </span><span class="nv">&quot;example&quot;</span><span class="w"> </span><span class="p">{</span>
@@ -2475,26 +2487,32 @@
 </code></pre></div></p>
 <h3 id="azure-key-vault-certificates">Azure Key Vault Certificates</h3>
 <p>Azure's integrated certificate management within Key Vault:</p>
-<p><strong>Capabilities</strong>:
-- Unified storage for certificates, keys, and secrets
-- Automatic renewal with supported CAs (DigiCert, GlobalSign)
-- Manual import of certificates from any CA
-- Export of certificates with private keys (for entitled users)
-- Integration with Azure App Service, Application Gateway, CDN
-- RBAC integration with Azure AD
-- Soft-delete and purge protection</p>
-<p><strong>Limitations</strong>:
-- Per-vault limits (5000 certificate versions)
-- Regional service requiring cross-region replication
-- API throttling can impact automation at scale
-- Cost per certificate operation (retrieval, update)
-- Limited to Azure-integrated services</p>
-<p><strong>Use Cases</strong>:
-- Azure App Service custom domains
-- Application Gateway SSL termination
-- Azure Functions HTTPS
-- VM-based applications with Key Vault integration
-- Client certificate authentication</p>
+<p><strong>Capabilities</strong>:</p>
+<ul>
+<li>Unified storage for certificates, keys, and secrets</li>
+<li>Automatic renewal with supported CAs (DigiCert, GlobalSign)</li>
+<li>Manual import of certificates from any CA</li>
+<li>Export of certificates with private keys (for entitled users)</li>
+<li>Integration with Azure App Service, Application Gateway, CDN</li>
+<li>RBAC integration with Azure AD</li>
+<li>Soft-delete and purge protection</li>
+</ul>
+<p><strong>Limitations</strong>:</p>
+<ul>
+<li>Per-vault limits (5000 certificate versions)</li>
+<li>Regional service requiring cross-region replication</li>
+<li>API throttling can impact automation at scale</li>
+<li>Cost per certificate operation (retrieval, update)</li>
+<li>Limited to Azure-integrated services</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Azure App Service custom domains</li>
+<li>Application Gateway SSL termination</li>
+<li>Azure Functions HTTPS</li>
+<li>VM-based applications with Key Vault integration</li>
+<li>Client certificate authentication</li>
+</ul>
 <p><strong>Terraform Example</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Create Key Vault</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;azurerm_key_vault&quot;</span><span class="w"> </span><span class="nv">&quot;example&quot;</span><span class="w"> </span><span class="p">{</span>
@@ -2593,24 +2611,30 @@
 </code></pre></div></p>
 <h3 id="google-cloud-certificate-manager">Google Cloud Certificate Manager</h3>
 <p>GCP's newer certificate management service:</p>
-<p><strong>Capabilities</strong>:
-- Global service (not regional like AWS ACM)
-- Automatic certificate provisioning for external HTTPS load balancers
-- DNS authorization via Cloud DNS
-- Certificate maps for routing to multiple certificates
-- Integration with Cloud Load Balancing, Cloud CDN
-- Self-managed certificates for custom CAs</p>
-<p><strong>Limitations</strong>:
-- Relatively new service (GA in 2021)
-- Limited to GCP load balancers and CDN
-- Cannot use certificates on Compute Engine instances
-- No client certificate support
-- Regional Certificate Manager for internal load balancers</p>
-<p><strong>Use Cases</strong>:
-- Global HTTPS load balancers
-- Multi-region CDN deployments
-- GKE ingress with managed certificates
-- Cloud Run custom domains</p>
+<p><strong>Capabilities</strong>:</p>
+<ul>
+<li>Global service (not regional like AWS ACM)</li>
+<li>Automatic certificate provisioning for external HTTPS load balancers</li>
+<li>DNS authorization via Cloud DNS</li>
+<li>Certificate maps for routing to multiple certificates</li>
+<li>Integration with Cloud Load Balancing, Cloud CDN</li>
+<li>Self-managed certificates for custom CAs</li>
+</ul>
+<p><strong>Limitations</strong>:</p>
+<ul>
+<li>Relatively new service (GA in 2021)</li>
+<li>Limited to GCP load balancers and CDN</li>
+<li>Cannot use certificates on Compute Engine instances</li>
+<li>No client certificate support</li>
+<li>Regional Certificate Manager for internal load balancers</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Global HTTPS load balancers</li>
+<li>Multi-region CDN deployments</li>
+<li>GKE ingress with managed certificates</li>
+<li>Cloud Run custom domains</li>
+</ul>
 <p><strong>Terraform Example</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># DNS authorization for domain validation</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;google_certificate_manager_dns_authorization&quot;</span><span class="w"> </span><span class="nv">&quot;default&quot;</span><span class="w"> </span><span class="p">{</span>
@@ -2835,16 +2859,20 @@
 <a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>   Local issuance    Local issuance    Local issuance
 <a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>   in AWS VPC        in Azure VNet     in GCP VPC
 </code></pre></div>
-<p><strong>Benefits</strong>:
-- Reduced latency (local issuance)
-- Cloud isolation for security
-- Compliance with data residency
-- Failure isolation</p>
-<p><strong>Challenges</strong>:
-- Complex trust chain management
-- Certificate distribution complexity
-- Increased operational overhead
-- CA key management per cloud</p>
+<p><strong>Benefits</strong>:</p>
+<ul>
+<li>Reduced latency (local issuance)</li>
+<li>Cloud isolation for security</li>
+<li>Compliance with data residency</li>
+<li>Failure isolation</li>
+</ul>
+<p><strong>Challenges</strong>:</p>
+<ul>
+<li>Complex trust chain management</li>
+<li>Certificate distribution complexity</li>
+<li>Increased operational overhead</li>
+<li>CA key management per cloud</li>
+</ul>
 <h3 id="service-mesh-integration">Service Mesh Integration</h3>
 <p>Using service mesh for multi-cloud certificate automation:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Istio configuration for multi-cloud</span>
@@ -3577,34 +3605,40 @@
 <hr />
 <h2 id="real-world-examples">Real-World Examples</h2>
 <h3 id="large-financial-institution">Large Financial Institution</h3>
-<p>Multi-cloud deployment across AWS, Azure, on-premises:
-- Centralized Vault cluster for certificate issuance
-- 50,000+ certificates across 3 clouds and on-prem
-- 90-day certificate lifetimes with automated renewal
-- Kubernetes cert-manager in all clouds
-- Istio service mesh for mTLS across clouds
-- Centralized monitoring via Splunk
-- Compliance reporting for PCI-DSS, SOC 2</p>
+<p>Multi-cloud deployment across AWS, Azure, on-premises:</p>
+<ul>
+<li>Centralized Vault cluster for certificate issuance</li>
+<li>50,000+ certificates across 3 clouds and on-prem</li>
+<li>90-day certificate lifetimes with automated renewal</li>
+<li>Kubernetes cert-manager in all clouds</li>
+<li>Istio service mesh for mTLS across clouds</li>
+<li>Centralized monitoring via Splunk</li>
+<li>Compliance reporting for PCI-DSS, SOC 2</li>
+</ul>
 <p><strong>Lessons</strong>: Centralization essential at scale, cloud-agnostic tools critical, automation non-negotiable, visibility requires dedicated tooling.</p>
 <h3 id="saas-provider">SaaS Provider</h3>
-<p>Global deployment across AWS and GCP:
-- HashiCorp Vault in both clouds
-- Let's Encrypt for external certificates
-- Vault PKI for internal microservices
-- Cert-manager in all Kubernetes clusters
-- Unified certificate inventory system
-- Automated renewal 30 days before expiry
-- Prometheus metrics for monitoring</p>
+<p>Global deployment across AWS and GCP:</p>
+<ul>
+<li>HashiCorp Vault in both clouds</li>
+<li>Let's Encrypt for external certificates</li>
+<li>Vault PKI for internal microservices</li>
+<li>Cert-manager in all Kubernetes clusters</li>
+<li>Unified certificate inventory system</li>
+<li>Automated renewal 30 days before expiry</li>
+<li>Prometheus metrics for monitoring</li>
+</ul>
 <p><strong>Lessons</strong>: Public and private PKI can coexist, Kubernetes makes multi-cloud simpler, observability prevents outages, automation enables developer self-service.</p>
 <h3 id="enterprise-with-hybrid-cloud">Enterprise with Hybrid Cloud</h3>
-<p>Azure primary, AWS secondary, large on-premises:
-- On-premises root CA (air-gapped)
-- Issuing CAs in Azure and AWS
-- SCEP for legacy systems
-- ACME for modern workloads
-- Azure Key Vault and AWS Secrets Manager
-- Manual approval for external certificates
-- Automated internal certificates</p>
+<p>Azure primary, AWS secondary, large on-premises:</p>
+<ul>
+<li>On-premises root CA (air-gapped)</li>
+<li>Issuing CAs in Azure and AWS</li>
+<li>SCEP for legacy systems</li>
+<li>ACME for modern workloads</li>
+<li>Azure Key Vault and AWS Secrets Manager</li>
+<li>Manual approval for external certificates</li>
+<li>Automated internal certificates</li>
+</ul>
 <p><strong>Lessons</strong>: Hybrid requires multiple protocols, legacy systems need different approaches, governance layers can slow automation, gradual migration necessary.</p>
 <hr />
 <h2 id="further-reading">Further Reading</h2>

@@ -2114,11 +2114,13 @@
 <p>The identity of the Certificate Authority that issued this certificate. Uses X.500 Distinguished Name format with hierarchical components:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Issuer: C=US, O=DigiCert Inc, CN=DigiCert TLS RSA SHA256 2020 CA1
 </code></pre></div>
-<p>Common components:
-- <strong>C</strong> (Country): Two-letter country code
-- <strong>O</strong> (Organization): Legal entity name
-- <strong>OU</strong> (Organizational Unit): Department (deprecated in modern certs)
-- <strong>CN</strong> (Common Name): The CA name</p>
+<p>Common components:</p>
+<ul>
+<li><strong>C</strong> (Country): Two-letter country code</li>
+<li><strong>O</strong> (Organization): Legal entity name</li>
+<li><strong>OU</strong> (Organizational Unit): Department (deprecated in modern certs)</li>
+<li><strong>CN</strong> (Common Name): The CA name</li>
+</ul>
 <h4 id="validity-period">Validity Period</h4>
 <p>Specifies when the certificate becomes valid and when it expires. Certificates must not be trusted outside this period.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Validity
@@ -2143,9 +2145,11 @@
 <h3 id="x509-extensions">X.509 Extensions</h3>
 <p>Extensions provide additional capabilities beyond the basic certificate fields. Version 3 certificates introduced extensions, which are now essential for modern PKI.</p>
 <h4 id="critical-vs-non-critical">Critical vs Non-Critical</h4>
-<p>Extensions can be marked as:
-- <strong>Critical</strong>: Must be processed and understood by the relying party. If unknown, the certificate must be rejected.
-- <strong>Non-Critical</strong>: Can be safely ignored if not understood.</p>
+<p>Extensions can be marked as:</p>
+<ul>
+<li><strong>Critical</strong>: Must be processed and understood by the relying party. If unknown, the certificate must be rejected.</li>
+<li><strong>Non-Critical</strong>: Can be safely ignored if not understood.</li>
+</ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>X509v3 extensions:
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    X509v3 Basic Constraints: critical
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>        CA:FALSE
@@ -2157,32 +2161,38 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>X509v3 Subject Alternative Name:
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    DNS:www.example.com, DNS:example.com, DNS:*.example.com
 </code></pre></div>
-<p>Can include:
-- DNS names
-- IP addresses
-- Email addresses
-- URIs
-- Other name forms</p>
+<p>Can include:</p>
+<ul>
+<li>DNS names</li>
+<li>IP addresses</li>
+<li>Email addresses</li>
+<li>URIs</li>
+<li>Other name forms</li>
+</ul>
 <p><strong>Key Usage</strong>: Defines cryptographic operations this key can perform. This is critical for security—prevents misuse of keys.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>X509v3 Key Usage: critical
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    Digital Signature, Key Encipherment
 </code></pre></div>
-<p>Common values:
-- <strong>Digital Signature</strong>: For signing data
-- <strong>Key Encipherment</strong>: For encrypting keys (RSA key exchange)
-- <strong>Key Agreement</strong>: For key agreement protocols (ECDH)
-- <strong>Certificate Sign</strong>: For CA certificates
-- <strong>CRL Sign</strong>: For signing CRLs</p>
+<p>Common values:</p>
+<ul>
+<li><strong>Digital Signature</strong>: For signing data</li>
+<li><strong>Key Encipherment</strong>: For encrypting keys (RSA key exchange)</li>
+<li><strong>Key Agreement</strong>: For key agreement protocols (ECDH)</li>
+<li><strong>Certificate Sign</strong>: For CA certificates</li>
+<li><strong>CRL Sign</strong>: For signing CRLs</li>
+</ul>
 <p><strong>Extended Key Usage (EKU)</strong>: Specifies application-specific purposes.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>X509v3 Extended Key Usage:
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    TLS Web Server Authentication, TLS Web Client Authentication
 </code></pre></div>
-<p>Common OIDs:
-- <code>serverAuth</code> (1.3.6.1.5.5.7.3.1): TLS server certificates
-- <code>clientAuth</code> (1.3.6.1.5.5.7.3.2): TLS client certificates
-- <code>codeSigning</code> (1.3.6.1.5.5.7.3.3): Code signing
-- <code>emailProtection</code> (1.3.6.1.5.5.7.3.4): S/MIME email
-- <code>timeStamping</code> (1.3.6.1.5.5.7.3.8): Trusted timestamping</p>
+<p>Common OIDs:</p>
+<ul>
+<li><code>serverAuth</code> (1.3.6.1.5.5.7.3.1): TLS server certificates</li>
+<li><code>clientAuth</code> (1.3.6.1.5.5.7.3.2): TLS client certificates</li>
+<li><code>codeSigning</code> (1.3.6.1.5.5.7.3.3): Code signing</li>
+<li><code>emailProtection</code> (1.3.6.1.5.5.7.3.4): S/MIME email</li>
+<li><code>timeStamping</code> (1.3.6.1.5.5.7.3.8): Trusted timestamping</li>
+</ul>
 <p><strong>Basic Constraints</strong>: Indicates if this is a CA certificate and the maximum path length.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>X509v3 Basic Constraints: critical
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    CA:TRUE, pathlen:0
@@ -2215,10 +2225,12 @@
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    Policy: 2.23.140.1.2.2
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    Policy: 2.16.840.1.114412.1.1
 </code></pre></div>
-<p>Common OIDs:
-- <code>2.23.140.1.2.2</code>: Domain Validated (DV)
-- <code>2.23.140.1.2.1</code>: Organization Validated (OV)
-- <code>2.23.140.1.1</code>: Extended Validation (EV)</p>
+<p>Common OIDs:</p>
+<ul>
+<li><code>2.23.140.1.2.2</code>: Domain Validated (DV)</li>
+<li><code>2.23.140.1.2.1</code>: Organization Validated (OV)</li>
+<li><code>2.23.140.1.1</code>: Extended Validation (EV)</li>
+</ul>
 <p><strong>Certificate Transparency SCTs</strong>: Signed Certificate Timestamps proving the certificate was logged to CT logs[^6].</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>CT Precertificate SCTs:
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    Signed Certificate Timestamp:
@@ -2241,17 +2253,23 @@
 <a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>openssl<span class="w"> </span>x509<span class="w"> </span>-in<span class="w"> </span>cert.pem<span class="w"> </span>-noout<span class="w"> </span>-ext<span class="w"> </span>subjectAltName
 </code></pre></div>
 <h3 id="validating-certificate-structure">Validating Certificate Structure</h3>
-<p><strong>Check for required extensions</strong>:
-- TLS server certs must have: SAN, Key Usage, Extended Key Usage
-- CA certs must have: Basic Constraints (CA:TRUE), Key Usage (Certificate Sign)</p>
-<p><strong>Verify critical extensions</strong>:
-- Unknown critical extensions must cause validation failure
-- Key Usage must match intended purpose</p>
-<p><strong>Validate against CA/B Forum requirements</strong> (for publicly-trusted certs):
-- Maximum 398 day validity
-- No OU field in subject (deprecated)
-- SAN must contain all domain names
-- Must include Certificate Transparency SCTs</p>
+<p><strong>Check for required extensions</strong>:</p>
+<ul>
+<li>TLS server certs must have: SAN, Key Usage, Extended Key Usage</li>
+<li>CA certs must have: Basic Constraints (CA:TRUE), Key Usage (Certificate Sign)</li>
+</ul>
+<p><strong>Verify critical extensions</strong>:</p>
+<ul>
+<li>Unknown critical extensions must cause validation failure</li>
+<li>Key Usage must match intended purpose</li>
+</ul>
+<p><strong>Validate against CA/B Forum requirements</strong> (for publicly-trusted certs):</p>
+<ul>
+<li>Maximum 398 day validity</li>
+<li>No OU field in subject (deprecated)</li>
+<li>SAN must contain all domain names</li>
+<li>Must include Certificate Transparency SCTs</li>
+</ul>
 <h3 id="common-certificate-issues">Common Certificate Issues</h3>
 <p><strong>Missing SAN</strong>: Older certificates relied on CN for domain name. Modern browsers require SAN.</p>
 <p><strong>Incorrect Key Usage</strong>: Certificate used for purpose not specified in Key Usage/EKU extensions.</p>
@@ -2318,12 +2336,14 @@
 </tbody>
 </table>
 <hr />
-<p><strong>Quality Checks</strong>: 
-- [x] All claims cited from authoritative sources
-- [x] Cross-references validated
-- [x] Practical guidance included
-- [x] Examples are current and relevant
-- [x] Security considerations addressed</p>
+<p><strong>Quality Checks</strong>: </p>
+<ul>
+<li>[x] All claims cited from authoritative sources</li>
+<li>[x] Cross-references validated</li>
+<li>[x] Practical guidance included</li>
+<li>[x] Examples are current and relevant</li>
+<li>[x] Security considerations addressed</li>
+</ul>
 
 
 

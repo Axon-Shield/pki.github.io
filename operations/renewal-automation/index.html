@@ -2372,14 +2372,18 @@
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Renewal Window: 30 days (Days 60-89)
 </code></pre></div></p>
-<p><strong>Recommendations</strong>:
-- <strong>90-day certificates</strong>: Renew at 60 days (1/3 remaining)
-- <strong>1-year certificates</strong>: Renew at 30-60 days remaining
-- <strong>Multi-year certificates</strong>: Renew at 90 days remaining</p>
-<p><strong>Rationale</strong>:
-- Provides retry window if renewal fails
-- Balances freshness with operational stability
-- Aligns with industry best practices</p>
+<p><strong>Recommendations</strong>:</p>
+<ul>
+<li><strong>90-day certificates</strong>: Renew at 60 days (1/3 remaining)</li>
+<li><strong>1-year certificates</strong>: Renew at 30-60 days remaining</li>
+<li><strong>Multi-year certificates</strong>: Renew at 90 days remaining</li>
+</ul>
+<p><strong>Rationale</strong>:</p>
+<ul>
+<li>Provides retry window if renewal fails</li>
+<li>Balances freshness with operational stability</li>
+<li>Aligns with industry best practices</li>
+</ul>
 <p><strong>Percentage-Based Threshold</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">should_renew</span><span class="p">(</span><span class="n">cert</span><span class="p">):</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">total_lifetime</span> <span class="o">=</span> <span class="n">cert</span><span class="o">.</span><span class="n">not_after</span> <span class="o">-</span> <span class="n">cert</span><span class="o">.</span><span class="n">not_before</span>
@@ -2388,17 +2392,21 @@
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="k">return</span> <span class="n">percent_remaining</span> <span class="o">&lt;</span> <span class="mi">33</span>  <span class="c1"># Renew when &lt;1/3 lifetime remains</span>
 </code></pre></div></p>
-<p><strong>Benefits</strong>:
-- Scales to any certificate lifetime
-- Consistent renewal behavior
-- Easy to understand and configure</p>
+<p><strong>Benefits</strong>:</p>
+<ul>
+<li>Scales to any certificate lifetime</li>
+<li>Consistent renewal behavior</li>
+<li>Easy to understand and configure</li>
+</ul>
 <h4 id="event-based-renewal">Event-Based Renewal</h4>
-<p><strong>Triggers</strong>:
-- <strong>Key compromise</strong>: Immediate renewal with new key
-- <strong>Certificate revocation</strong>: Replace revoked certificate
-- <strong>Configuration change</strong>: New SANs, updated metadata
-- <strong>Compliance requirement</strong>: Algorithm upgrade, key size increase
-- <strong>Vulnerability disclosure</strong>: Replace weak signatures (e.g., SHA-1 to SHA-256)</p>
+<p><strong>Triggers</strong>:</p>
+<ul>
+<li><strong>Key compromise</strong>: Immediate renewal with new key</li>
+<li><strong>Certificate revocation</strong>: Replace revoked certificate</li>
+<li><strong>Configuration change</strong>: New SANs, updated metadata</li>
+<li><strong>Compliance requirement</strong>: Algorithm upgrade, key size increase</li>
+<li><strong>Vulnerability disclosure</strong>: Replace weak signatures (e.g., SHA-1 to SHA-256)</li>
+</ul>
 <p><strong>Event-Driven Workflow</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Security Event Detected
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    ↓
@@ -2423,18 +2431,24 @@
 3. Receive new certificate (same public key)
 4. Replace certificate file
 5. Reload/restart service</p>
-<p><strong>Advantages</strong>:
-- Simpler process (no new key)
-- Certificate pinning compatible (same key)
-- Fewer files to manage</p>
-<p><strong>Disadvantages</strong>:
-- Extended key exposure window
-- Doesn't follow key rotation best practices
-- Compromised key remains in use</p>
-<p><strong>Use Cases</strong>:
-- Rapid renewals needed
-- Certificate pinning requirements
-- Legacy systems with complex key distribution</p>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li>Simpler process (no new key)</li>
+<li>Certificate pinning compatible (same key)</li>
+<li>Fewer files to manage</li>
+</ul>
+<p><strong>Disadvantages</strong>:</p>
+<ul>
+<li>Extended key exposure window</li>
+<li>Doesn't follow key rotation best practices</li>
+<li>Compromised key remains in use</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Rapid renewals needed</li>
+<li>Certificate pinning requirements</li>
+<li>Legacy systems with complex key distribution</li>
+</ul>
 <h4 id="key-rotation-renewal">Key Rotation Renewal</h4>
 <p>Generate new key pair with each renewal.</p>
 <p><strong>Process</strong>:
@@ -2445,18 +2459,24 @@
 5. Deploy new certificate and key
 6. Reload/restart service
 7. Secure deletion of old key</p>
-<p><strong>Advantages</strong>:
-- Limits key exposure window
-- Follows security best practices
-- Key compromise affects only one certificate lifetime</p>
-<p><strong>Disadvantages</strong>:
-- More complex deployment
-- Requires key management
-- May break certificate pinning</p>
-<p><strong>Use Cases</strong>:
-- High-security environments
-- Recommended default approach
-- Compliance requirements (PCI DSS)</p>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li>Limits key exposure window</li>
+<li>Follows security best practices</li>
+<li>Key compromise affects only one certificate lifetime</li>
+</ul>
+<p><strong>Disadvantages</strong>:</p>
+<ul>
+<li>More complex deployment</li>
+<li>Requires key management</li>
+<li>May break certificate pinning</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>High-security environments</li>
+<li>Recommended default approach</li>
+<li>Compliance requirements (PCI DSS)</li>
+</ul>
 <h4 id="blue-green-renewal">Blue-Green Renewal</h4>
 <p>Deploy new certificate alongside old, switch when validated.</p>
 <p><strong>Process</strong>:
@@ -2467,18 +2487,24 @@
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>5. Monitor for issues
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>6. After validation period, remove blue certificate
 </code></pre></div></p>
-<p><strong>Advantages</strong>:
-- Zero-downtime renewal
-- Easy rollback if issues detected
-- Validation before cutover</p>
-<p><strong>Disadvantages</strong>:
-- Requires dual certificate support
-- More complex configuration
-- Temporary increased resource usage</p>
-<p><strong>Use Cases</strong>:
-- High-availability services
-- Large-scale deployments
-- Risk-averse environments</p>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li>Zero-downtime renewal</li>
+<li>Easy rollback if issues detected</li>
+<li>Validation before cutover</li>
+</ul>
+<p><strong>Disadvantages</strong>:</p>
+<ul>
+<li>Requires dual certificate support</li>
+<li>More complex configuration</li>
+<li>Temporary increased resource usage</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>High-availability services</li>
+<li>Large-scale deployments</li>
+<li>Risk-averse environments</li>
+</ul>
 <h3 id="acme-based-automation">ACME-Based Automation</h3>
 <h4 id="certbot-automation">Certbot Automation</h4>
 <p><strong>Setup for Automatic Renewal</strong>:
@@ -2590,14 +2616,16 @@
 <a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">    </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2048</span>
 <a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">    </span><span class="nt">rotationPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span><span class="w">  </span><span class="c1"># Generate new key with each renewal</span>
 </code></pre></div></p>
-<p><strong>cert-manager Controller</strong> (handles renewal automatically):
-- Monitors all Certificate resources
-- Checks expiration dates continuously
-- Triggers renewal when <code>renewBefore</code> threshold reached
-- Generates new CSR
-- Submits to configured issuer (ACME)
-- Updates Kubernetes Secret with new certificate
-- Pods using the Secret automatically get new certificate</p>
+<p><strong>cert-manager Controller</strong> (handles renewal automatically):</p>
+<ul>
+<li>Monitors all Certificate resources</li>
+<li>Checks expiration dates continuously</li>
+<li>Triggers renewal when <code>renewBefore</code> threshold reached</li>
+<li>Generates new CSR</li>
+<li>Submits to configured issuer (ACME)</li>
+<li>Updates Kubernetes Secret with new certificate</li>
+<li>Pods using the Secret automatically get new certificate</li>
+</ul>
 <p><strong>Monitoring Renewal</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Check certificate status</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>kubectl<span class="w"> </span>describe<span class="w"> </span>certificate<span class="w"> </span>example-com-tls<span class="w"> </span>-n<span class="w"> </span>production
@@ -2709,11 +2737,13 @@
 <a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="c1">  # Updates automatically when certificate renewed</span>
 <a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="p">}</span>
 </code></pre></div></p>
-<p><strong>Benefits</strong>:
-- Certificate configuration in version control
-- Declarative renewal (Terraform detects expiration)
-- Automatic deployment
-- Audit trail in Git history</p>
+<p><strong>Benefits</strong>:</p>
+<ul>
+<li>Certificate configuration in version control</li>
+<li>Declarative renewal (Terraform detects expiration)</li>
+<li>Automatic deployment</li>
+<li>Audit trail in Git history</li>
+</ul>
 <h2 id="practical-guidance">Practical Guidance</h2>
 <h3 id="implementing-renewal-automation">Implementing Renewal Automation</h3>
 <h4 id="phase-1-assessment-week-1-2">Phase 1: Assessment (Week 1-2)</h4>
@@ -2727,26 +2757,34 @@
 <a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">    </span>openssl<span class="w"> </span>x509<span class="w"> </span>-in<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$cert</span><span class="s2">&quot;</span><span class="w"> </span>-noout<span class="w"> </span>-enddate<span class="w"> </span><span class="m">2</span>&gt;/dev/null
 <a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="k">done</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>certificates-audit.txt
 </code></pre></div></p>
-<p><strong>Categorize by Renewal Type</strong>:
-- <strong>ACME-compatible</strong>: Public TLS certificates, domain-validated
-- <strong>Manual CA submission</strong>: Internal CA, requires approval workflow
-- <strong>Vendor-managed</strong>: Load balancer certificates, CDN certificates
-- <strong>Cannot automate</strong>: Hardware appliances, legacy systems</p>
+<p><strong>Categorize by Renewal Type</strong>:</p>
+<ul>
+<li><strong>ACME-compatible</strong>: Public TLS certificates, domain-validated</li>
+<li><strong>Manual CA submission</strong>: Internal CA, requires approval workflow</li>
+<li><strong>Vendor-managed</strong>: Load balancer certificates, CDN certificates</li>
+<li><strong>Cannot automate</strong>: Hardware appliances, legacy systems</li>
+</ul>
 <p><strong>Prioritize by Risk</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>High Priority:
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>- Expiring within 60 days
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>- Customer-facing services
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>- No existing renewal process
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
-<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>Medium Priority:
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>- Expiring within 90 days
-<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>- Internal services
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>- Manual renewal in place
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>- Expiring within 60 days
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>- Customer-facing services
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>- No existing renewal process
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>Medium Priority:
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
 <a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
-<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>Low Priority:
-<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>- Expiring &gt; 90 days
-<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>- Non-production
-<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>- Already automated
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>- Expiring within 90 days
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>- Internal services
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>- Manual renewal in place
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>Low Priority:
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>- Expiring &gt; 90 days
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>- Non-production
+<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>- Already automated
 </code></pre></div></p>
 <h4 id="phase-2-quick-wins-week-3-4">Phase 2: Quick Wins (Week 3-4)</h4>
 <p><strong>Automate High-Priority Certificates</strong>:</p>
@@ -2918,13 +2956,15 @@
 <a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a><span class="w">        </span><span class="nt">secret</span><span class="p">:</span>
 <a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a><span class="w">          </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-com-tls</span><span class="w">  </span><span class="c1"># Updated by cert-manager</span>
 </code></pre></div></p>
-<p><strong>Certificate Updates Trigger Rolling Update</strong>:
-- cert-manager renews certificate
-- Updates Kubernetes Secret
-- Deployment controller detects change
-- Triggers rolling update
-- Pods restarted with new certificate
-- Zero downtime (maxUnavailable: 1)</p>
+<p><strong>Certificate Updates Trigger Rolling Update</strong>:</p>
+<ul>
+<li>cert-manager renews certificate</li>
+<li>Updates Kubernetes Secret</li>
+<li>Deployment controller detects change</li>
+<li>Triggers rolling update</li>
+<li>Pods restarted with new certificate</li>
+<li>Zero downtime (maxUnavailable: 1)</li>
+</ul>
 <p><strong>Approach 3: Blue-Green Deployment</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>1. Deploy new version with new certificate (green)
 <a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>2. Test green deployment
@@ -3073,14 +3113,18 @@
 <a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>    <span class="s2">&quot;minimum_key_lifetime&quot;</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">90</span><span class="p">),</span>  <span class="c1"># Keys live max 90 days</span>
 <a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="p">}</span>
 </code></pre></div></p>
-<p><strong>Benefits</strong>:
-- Limits key compromise exposure window
-- Best security practice
-- Compliance requirement (some industries)</p>
-<p><strong>Considerations</strong>:
-- More complex than key reuse
-- Certificate pinning breaks
-- Requires secure key distribution</p>
+<p><strong>Benefits</strong>:</p>
+<ul>
+<li>Limits key compromise exposure window</li>
+<li>Best security practice</li>
+<li>Compliance requirement (some industries)</li>
+</ul>
+<p><strong>Considerations</strong>:</p>
+<ul>
+<li>More complex than key reuse</li>
+<li>Certificate pinning breaks</li>
+<li>Requires secure key distribution</li>
+</ul>
 <h3 id="secure-credential-storage">Secure Credential Storage</h3>
 <p><strong>ACME Account Keys</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1"># Protect account key</span>
@@ -3135,10 +3179,12 @@
 - Monitoring insufficient
 - Failure alerts not properly routed
 - Manual intervention not triggered in time</p>
-<p><strong>Impact</strong>: 
-- 12+ hour outage
-- Millions of customers affected
-- Emergency manual renewal required</p>
+<p><strong>Impact</strong>: </p>
+<ul>
+<li>12+ hour outage</li>
+<li>Millions of customers affected</li>
+<li>Emergency manual renewal required</li>
+</ul>
 <p><strong>Key Takeaway</strong>: Automation must include robust monitoring, alerting, and escalation procedures.</p>
 <h3 id="case-study-microsoft-teams-outage-2020">Case Study: Microsoft Teams Outage (2020)</h3>
 <p><strong>Incident</strong>: Expired certificate caused Teams and Office 365 outages</p>
@@ -3147,21 +3193,27 @@
 - One critical certificate excluded from automation
 - Manual renewal missed
 - Certificate expired causing cascading failures</p>
-<p><strong>Impact</strong>:
-- Several hours of degraded service
-- Global user impact</p>
+<p><strong>Impact</strong>:</p>
+<ul>
+<li>Several hours of degraded service</li>
+<li>Global user impact</li>
+</ul>
 <p><strong>Key Takeaway</strong>: Complete coverage essential—one missed certificate can cause outages. Comprehensive inventory and 100% automation coverage required.</p>
 <h3 id="case-study-lets-encrypt-automated-renewals-at-scale">Case Study: Let's Encrypt Automated Renewals at Scale</h3>
 <p><strong>Challenge</strong>: 3+ million certificates renewed daily</p>
-<p><strong>Solution</strong>:
-- ACME protocol enabling full automation
-- Client-side renewal automation (certbot, acme.sh)
-- 90-day lifetime forcing automation
-- Retry logic handling transient failures</p>
-<p><strong>Results</strong>:
-- 99%+ renewal success rate
-- Eliminated manual renewal bottleneck
-- Enabled massive scaling</p>
+<p><strong>Solution</strong>:</p>
+<ul>
+<li>ACME protocol enabling full automation</li>
+<li>Client-side renewal automation (certbot, acme.sh)</li>
+<li>90-day lifetime forcing automation</li>
+<li>Retry logic handling transient failures</li>
+</ul>
+<p><strong>Results</strong>:</p>
+<ul>
+<li>99%+ renewal success rate</li>
+<li>Eliminated manual renewal bottleneck</li>
+<li>Enabled massive scaling</li>
+</ul>
 <p><strong>Key Takeaway</strong>: Short-lived certificates + automation enable scaling. Well-designed automation handles failures gracefully.</p>
 <h2 id="further-reading">Further Reading</h2>
 <h3 id="essential-resources">Essential Resources</h3>
@@ -3199,12 +3251,14 @@
 </tbody>
 </table>
 <hr />
-<p><strong>Quality Checks</strong>: 
-- [x] All claims cited from authoritative sources
-- [x] Cross-references validated
-- [x] Practical guidance included
-- [x] Examples are current and relevant
-- [x] Security considerations addressed</p>
+<p><strong>Quality Checks</strong>: </p>
+<ul>
+<li>[x] All claims cited from authoritative sources</li>
+<li>[x] Cross-references validated</li>
+<li>[x] Practical guidance included</li>
+<li>[x] Examples are current and relevant</li>
+<li>[x] Security considerations addressed</li>
+</ul>
 
 
 

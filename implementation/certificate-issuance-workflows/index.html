@@ -2594,53 +2594,65 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Request → Email Approval → Manual Validation → Manual Generation → 
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Email Delivery → Manual Installation → Manual Verification
 </code></pre></div>
-<p><strong>Characteristics</strong>:
-- High touch, multiple handoffs between teams
-- Days to weeks for certificate issuance
-- Prone to errors and omissions
-- Limited audit trail
-- Does not scale beyond hundreds of certificates
-- Often bypassed through "shadow IT" channels</p>
-<p><strong>When Appropriate</strong>:
-- High-value certificates (root CAs, signing certificates)
-- External-facing certificates requiring extensive validation
-- Initial PKI standup with limited automation
-- Organizations under 500 total certificates</p>
+<p><strong>Characteristics</strong>:</p>
+<ul>
+<li>High touch, multiple handoffs between teams</li>
+<li>Days to weeks for certificate issuance</li>
+<li>Prone to errors and omissions</li>
+<li>Limited audit trail</li>
+<li>Does not scale beyond hundreds of certificates</li>
+<li>Often bypassed through "shadow IT" channels</li>
+</ul>
+<p><strong>When Appropriate</strong>:</p>
+<ul>
+<li>High-value certificates (root CAs, signing certificates)</li>
+<li>External-facing certificates requiring extensive validation</li>
+<li>Initial PKI standup with limited automation</li>
+<li>Organizations under 500 total certificates</li>
+</ul>
 <h3 id="semi-automated-workflow">Semi-Automated Workflow</h3>
 <p>Hybrid approach combining automated technical operations with manual approval gates:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>API Request → Policy Check → Approval Queue → 
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Auto-Generation → Auto-Distribution → Manual Installation → Auto-Verification
 </code></pre></div>
-<p><strong>Characteristics</strong>:
-- Automated technical operations
-- Human approval for policy decisions
-- Hours to days for issuance
-- Better audit trails
-- Scales to thousands of certificates
-- Balances security and efficiency</p>
-<p><strong>When Appropriate</strong>:
-- Organizations transitioning to automation
-- Certificates requiring business approval
-- Mixed environment with varying risk levels
-- Compliance requirements mandate human oversight</p>
+<p><strong>Characteristics</strong>:</p>
+<ul>
+<li>Automated technical operations</li>
+<li>Human approval for policy decisions</li>
+<li>Hours to days for issuance</li>
+<li>Better audit trails</li>
+<li>Scales to thousands of certificates</li>
+<li>Balances security and efficiency</li>
+</ul>
+<p><strong>When Appropriate</strong>:</p>
+<ul>
+<li>Organizations transitioning to automation</li>
+<li>Certificates requiring business approval</li>
+<li>Mixed environment with varying risk levels</li>
+<li>Compliance requirements mandate human oversight</li>
+</ul>
 <h3 id="fully-automated-workflow-modern">Fully Automated Workflow (Modern)</h3>
 <p>Policy-driven automation with no manual intervention:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>API Request → Policy Engine → Auto-Validation → Auto-Generation → 
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Auto-Distribution → Auto-Installation → Auto-Verification → Audit Log
 </code></pre></div>
-<p><strong>Characteristics</strong>:
-- Minutes to seconds for issuance
-- Policy-driven decisions
-- Complete audit automation
-- Scales to millions of certificates
-- Infrastructure-as-code compatible
-- Requires robust policy framework</p>
-<p><strong>When Appropriate</strong>:
-- Cloud-native environments
-- Container and microservices architectures
-- Short-lived certificate strategies
-- DevOps/GitOps workflows
-- High-volume environments</p>
+<p><strong>Characteristics</strong>:</p>
+<ul>
+<li>Minutes to seconds for issuance</li>
+<li>Policy-driven decisions</li>
+<li>Complete audit automation</li>
+<li>Scales to millions of certificates</li>
+<li>Infrastructure-as-code compatible</li>
+<li>Requires robust policy framework</li>
+</ul>
+<p><strong>When Appropriate</strong>:</p>
+<ul>
+<li>Cloud-native environments</li>
+<li>Container and microservices architectures</li>
+<li>Short-lived certificate strategies</li>
+<li>DevOps/GitOps workflows</li>
+<li>High-volume environments</li>
+</ul>
 <hr />
 <h2 id="request-validation">Request Validation</h2>
 <p>Request validation is the critical security control that prevents unauthorized certificate issuance. Modern validation combines multiple verification methods.</p>
@@ -3340,60 +3352,62 @@
 <a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>            <span class="s1">&#39;short_description&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Deploy TLS certificate for </span><span class="si">{</span><span class="n">certificate_info</span><span class="p">[</span><span class="s1">&#39;common_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
 <a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>            <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a><span class="s2">Certificate Details:</span>
-<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a><span class="s2">- Common Name: </span><span class="si">{</span><span class="n">certificate_info</span><span class="p">[</span><span class="s1">&#39;common_name&#39;</span><span class="p">]</span><span class="si">}</span>
-<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a><span class="s2">- SANs: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">certificate_info</span><span class="p">[</span><span class="s1">&#39;sans&#39;</span><span class="p">])</span><span class="si">}</span>
-<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a><span class="s2">- Validity: </span><span class="si">{</span><span class="n">certificate_info</span><span class="p">[</span><span class="s1">&#39;not_before&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">certificate_info</span><span class="p">[</span><span class="s1">&#39;not_after&#39;</span><span class="p">]</span><span class="si">}</span>
-<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a><span class="s2">- Serial: </span><span class="si">{</span><span class="n">certificate_info</span><span class="p">[</span><span class="s1">&#39;serial&#39;</span><span class="p">]</span><span class="si">}</span>
-<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>
-<a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a><span class="s2">Impact: Service restart required</span>
-<a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a><span class="s2">Risk: Low - automated deployment with rollback capability</span>
-<a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a><span class="s2">            &quot;&quot;&quot;</span><span class="p">,</span>
-<a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;standard&#39;</span><span class="p">,</span>
-<a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a>            <span class="s1">&#39;risk&#39;</span><span class="p">:</span> <span class="s1">&#39;low&#39;</span><span class="p">,</span>
-<a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>            <span class="s1">&#39;impact&#39;</span><span class="p">:</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span>
-<a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>            <span class="s1">&#39;priority&#39;</span><span class="p">:</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span>
-<a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a>            <span class="s1">&#39;assignment_group&#39;</span><span class="p">:</span> <span class="s1">&#39;PKI Team&#39;</span><span class="p">,</span>
-<a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a>            <span class="s1">&#39;implementation_plan&#39;</span><span class="p">:</span> <span class="s1">&#39;Automated deployment via Ansible&#39;</span>
-<a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>        <span class="p">}</span>
-<a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a>
-<a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
-<a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a>            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/change_request&quot;</span><span class="p">,</span>
-<a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a>            <span class="n">auth</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">auth</span><span class="p">,</span>
-<a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a>            <span class="n">json</span><span class="o">=</span><span class="n">change_data</span><span class="p">,</span>
-<a id="__codelineno-23-37" name="__codelineno-23-37" href="#__codelineno-23-37"></a>            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">}</span>
-<a id="__codelineno-23-38" name="__codelineno-23-38" href="#__codelineno-23-38"></a>        <span class="p">)</span>
-<a id="__codelineno-23-39" name="__codelineno-23-39" href="#__codelineno-23-39"></a>
-<a id="__codelineno-23-40" name="__codelineno-23-40" href="#__codelineno-23-40"></a>        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">201</span><span class="p">:</span>
-<a id="__codelineno-23-41" name="__codelineno-23-41" href="#__codelineno-23-41"></a>            <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">][</span><span class="s1">&#39;sys_id&#39;</span><span class="p">]</span>
-<a id="__codelineno-23-42" name="__codelineno-23-42" href="#__codelineno-23-42"></a>        <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-23-43" name="__codelineno-23-43" href="#__codelineno-23-43"></a>            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to create change request: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-23-44" name="__codelineno-23-44" href="#__codelineno-23-44"></a>
-<a id="__codelineno-23-45" name="__codelineno-23-45" href="#__codelineno-23-45"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">update_cmdb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">server_name</span><span class="p">,</span> <span class="n">certificate_info</span><span class="p">):</span>
-<a id="__codelineno-23-46" name="__codelineno-23-46" href="#__codelineno-23-46"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Update CMDB with certificate information&quot;&quot;&quot;</span>
-<a id="__codelineno-23-47" name="__codelineno-23-47" href="#__codelineno-23-47"></a>
-<a id="__codelineno-23-48" name="__codelineno-23-48" href="#__codelineno-23-48"></a>        <span class="c1"># Find server CI</span>
-<a id="__codelineno-23-49" name="__codelineno-23-49" href="#__codelineno-23-49"></a>        <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;name=</span><span class="si">{</span><span class="n">server_name</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-23-50" name="__codelineno-23-50" href="#__codelineno-23-50"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-<a id="__codelineno-23-51" name="__codelineno-23-51" href="#__codelineno-23-51"></a>            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/cmdb_ci_server&quot;</span><span class="p">,</span>
-<a id="__codelineno-23-52" name="__codelineno-23-52" href="#__codelineno-23-52"></a>            <span class="n">auth</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">auth</span><span class="p">,</span>
-<a id="__codelineno-23-53" name="__codelineno-23-53" href="#__codelineno-23-53"></a>            <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;sysparm_query&#39;</span><span class="p">:</span> <span class="n">query</span><span class="p">}</span>
-<a id="__codelineno-23-54" name="__codelineno-23-54" href="#__codelineno-23-54"></a>        <span class="p">)</span>
-<a id="__codelineno-23-55" name="__codelineno-23-55" href="#__codelineno-23-55"></a>
-<a id="__codelineno-23-56" name="__codelineno-23-56" href="#__codelineno-23-56"></a>        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">]:</span>
-<a id="__codelineno-23-57" name="__codelineno-23-57" href="#__codelineno-23-57"></a>            <span class="n">ci_sys_id</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;sys_id&#39;</span><span class="p">]</span>
-<a id="__codelineno-23-58" name="__codelineno-23-58" href="#__codelineno-23-58"></a>
-<a id="__codelineno-23-59" name="__codelineno-23-59" href="#__codelineno-23-59"></a>            <span class="c1"># Update certificate fields</span>
-<a id="__codelineno-23-60" name="__codelineno-23-60" href="#__codelineno-23-60"></a>            <span class="n">update_data</span> <span class="o">=</span> <span class="p">{</span>
-<a id="__codelineno-23-61" name="__codelineno-23-61" href="#__codelineno-23-61"></a>                <span class="s1">&#39;u_tls_certificate_serial&#39;</span><span class="p">:</span> <span class="n">certificate_info</span><span class="p">[</span><span class="s1">&#39;serial&#39;</span><span class="p">],</span>
-<a id="__codelineno-23-62" name="__codelineno-23-62" href="#__codelineno-23-62"></a>                <span class="s1">&#39;u_tls_certificate_expiry&#39;</span><span class="p">:</span> <span class="n">certificate_info</span><span class="p">[</span><span class="s1">&#39;not_after&#39;</span><span class="p">],</span>
-<a id="__codelineno-23-63" name="__codelineno-23-63" href="#__codelineno-23-63"></a>                <span class="s1">&#39;u_tls_certificate_issuer&#39;</span><span class="p">:</span> <span class="n">certificate_info</span><span class="p">[</span><span class="s1">&#39;issuer&#39;</span><span class="p">]</span>
-<a id="__codelineno-23-64" name="__codelineno-23-64" href="#__codelineno-23-64"></a>            <span class="p">}</span>
-<a id="__codelineno-23-65" name="__codelineno-23-65" href="#__codelineno-23-65"></a>
-<a id="__codelineno-23-66" name="__codelineno-23-66" href="#__codelineno-23-66"></a>            <span class="n">requests</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span>
-<a id="__codelineno-23-67" name="__codelineno-23-67" href="#__codelineno-23-67"></a>                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/cmdb_ci_server/</span><span class="si">{</span><span class="n">ci_sys_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-<a id="__codelineno-23-68" name="__codelineno-23-68" href="#__codelineno-23-68"></a>                <span class="n">auth</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">auth</span><span class="p">,</span>
-<a id="__codelineno-23-69" name="__codelineno-23-69" href="#__codelineno-23-69"></a>                <span class="n">json</span><span class="o">=</span><span class="n">update_data</span>
-<a id="__codelineno-23-70" name="__codelineno-23-70" href="#__codelineno-23-70"></a>            <span class="p">)</span>
+<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>
+<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>
+<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a><span class="s2">- Common Name: </span><span class="si">{</span><span class="n">certificate_info</span><span class="p">[</span><span class="s1">&#39;common_name&#39;</span><span class="p">]</span><span class="si">}</span>
+<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a><span class="s2">- SANs: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">certificate_info</span><span class="p">[</span><span class="s1">&#39;sans&#39;</span><span class="p">])</span><span class="si">}</span>
+<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a><span class="s2">- Validity: </span><span class="si">{</span><span class="n">certificate_info</span><span class="p">[</span><span class="s1">&#39;not_before&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">certificate_info</span><span class="p">[</span><span class="s1">&#39;not_after&#39;</span><span class="p">]</span><span class="si">}</span>
+<a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a><span class="s2">- Serial: </span><span class="si">{</span><span class="n">certificate_info</span><span class="p">[</span><span class="s1">&#39;serial&#39;</span><span class="p">]</span><span class="si">}</span>
+<a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>
+<a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a><span class="s2">Impact: Service restart required</span>
+<a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a><span class="s2">Risk: Low - automated deployment with rollback capability</span>
+<a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a><span class="s2">            &quot;&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;standard&#39;</span><span class="p">,</span>
+<a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>            <span class="s1">&#39;risk&#39;</span><span class="p">:</span> <span class="s1">&#39;low&#39;</span><span class="p">,</span>
+<a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a>            <span class="s1">&#39;impact&#39;</span><span class="p">:</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span>
+<a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a>            <span class="s1">&#39;priority&#39;</span><span class="p">:</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span>
+<a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>            <span class="s1">&#39;assignment_group&#39;</span><span class="p">:</span> <span class="s1">&#39;PKI Team&#39;</span><span class="p">,</span>
+<a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a>            <span class="s1">&#39;implementation_plan&#39;</span><span class="p">:</span> <span class="s1">&#39;Automated deployment via Ansible&#39;</span>
+<a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a>        <span class="p">}</span>
+<a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a>
+<a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+<a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a>            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/change_request&quot;</span><span class="p">,</span>
+<a id="__codelineno-23-37" name="__codelineno-23-37" href="#__codelineno-23-37"></a>            <span class="n">auth</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">auth</span><span class="p">,</span>
+<a id="__codelineno-23-38" name="__codelineno-23-38" href="#__codelineno-23-38"></a>            <span class="n">json</span><span class="o">=</span><span class="n">change_data</span><span class="p">,</span>
+<a id="__codelineno-23-39" name="__codelineno-23-39" href="#__codelineno-23-39"></a>            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">}</span>
+<a id="__codelineno-23-40" name="__codelineno-23-40" href="#__codelineno-23-40"></a>        <span class="p">)</span>
+<a id="__codelineno-23-41" name="__codelineno-23-41" href="#__codelineno-23-41"></a>
+<a id="__codelineno-23-42" name="__codelineno-23-42" href="#__codelineno-23-42"></a>        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">201</span><span class="p">:</span>
+<a id="__codelineno-23-43" name="__codelineno-23-43" href="#__codelineno-23-43"></a>            <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">][</span><span class="s1">&#39;sys_id&#39;</span><span class="p">]</span>
+<a id="__codelineno-23-44" name="__codelineno-23-44" href="#__codelineno-23-44"></a>        <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-23-45" name="__codelineno-23-45" href="#__codelineno-23-45"></a>            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to create change request: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-46" name="__codelineno-23-46" href="#__codelineno-23-46"></a>
+<a id="__codelineno-23-47" name="__codelineno-23-47" href="#__codelineno-23-47"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">update_cmdb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">server_name</span><span class="p">,</span> <span class="n">certificate_info</span><span class="p">):</span>
+<a id="__codelineno-23-48" name="__codelineno-23-48" href="#__codelineno-23-48"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Update CMDB with certificate information&quot;&quot;&quot;</span>
+<a id="__codelineno-23-49" name="__codelineno-23-49" href="#__codelineno-23-49"></a>
+<a id="__codelineno-23-50" name="__codelineno-23-50" href="#__codelineno-23-50"></a>        <span class="c1"># Find server CI</span>
+<a id="__codelineno-23-51" name="__codelineno-23-51" href="#__codelineno-23-51"></a>        <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;name=</span><span class="si">{</span><span class="n">server_name</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-23-52" name="__codelineno-23-52" href="#__codelineno-23-52"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<a id="__codelineno-23-53" name="__codelineno-23-53" href="#__codelineno-23-53"></a>            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/cmdb_ci_server&quot;</span><span class="p">,</span>
+<a id="__codelineno-23-54" name="__codelineno-23-54" href="#__codelineno-23-54"></a>            <span class="n">auth</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">auth</span><span class="p">,</span>
+<a id="__codelineno-23-55" name="__codelineno-23-55" href="#__codelineno-23-55"></a>            <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;sysparm_query&#39;</span><span class="p">:</span> <span class="n">query</span><span class="p">}</span>
+<a id="__codelineno-23-56" name="__codelineno-23-56" href="#__codelineno-23-56"></a>        <span class="p">)</span>
+<a id="__codelineno-23-57" name="__codelineno-23-57" href="#__codelineno-23-57"></a>
+<a id="__codelineno-23-58" name="__codelineno-23-58" href="#__codelineno-23-58"></a>        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">]:</span>
+<a id="__codelineno-23-59" name="__codelineno-23-59" href="#__codelineno-23-59"></a>            <span class="n">ci_sys_id</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;sys_id&#39;</span><span class="p">]</span>
+<a id="__codelineno-23-60" name="__codelineno-23-60" href="#__codelineno-23-60"></a>
+<a id="__codelineno-23-61" name="__codelineno-23-61" href="#__codelineno-23-61"></a>            <span class="c1"># Update certificate fields</span>
+<a id="__codelineno-23-62" name="__codelineno-23-62" href="#__codelineno-23-62"></a>            <span class="n">update_data</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-23-63" name="__codelineno-23-63" href="#__codelineno-23-63"></a>                <span class="s1">&#39;u_tls_certificate_serial&#39;</span><span class="p">:</span> <span class="n">certificate_info</span><span class="p">[</span><span class="s1">&#39;serial&#39;</span><span class="p">],</span>
+<a id="__codelineno-23-64" name="__codelineno-23-64" href="#__codelineno-23-64"></a>                <span class="s1">&#39;u_tls_certificate_expiry&#39;</span><span class="p">:</span> <span class="n">certificate_info</span><span class="p">[</span><span class="s1">&#39;not_after&#39;</span><span class="p">],</span>
+<a id="__codelineno-23-65" name="__codelineno-23-65" href="#__codelineno-23-65"></a>                <span class="s1">&#39;u_tls_certificate_issuer&#39;</span><span class="p">:</span> <span class="n">certificate_info</span><span class="p">[</span><span class="s1">&#39;issuer&#39;</span><span class="p">]</span>
+<a id="__codelineno-23-66" name="__codelineno-23-66" href="#__codelineno-23-66"></a>            <span class="p">}</span>
+<a id="__codelineno-23-67" name="__codelineno-23-67" href="#__codelineno-23-67"></a>
+<a id="__codelineno-23-68" name="__codelineno-23-68" href="#__codelineno-23-68"></a>            <span class="n">requests</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span>
+<a id="__codelineno-23-69" name="__codelineno-23-69" href="#__codelineno-23-69"></a>                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/cmdb_ci_server/</span><span class="si">{</span><span class="n">ci_sys_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+<a id="__codelineno-23-70" name="__codelineno-23-70" href="#__codelineno-23-70"></a>                <span class="n">auth</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">auth</span><span class="p">,</span>
+<a id="__codelineno-23-71" name="__codelineno-23-71" href="#__codelineno-23-71"></a>                <span class="n">json</span><span class="o">=</span><span class="n">update_data</span>
+<a id="__codelineno-23-72" name="__codelineno-23-72" href="#__codelineno-23-72"></a>            <span class="p">)</span>
 </code></pre></div>
 <hr />
 <h2 id="audit-and-compliance">Audit and Compliance</h2>
@@ -3853,28 +3867,34 @@
 <hr />
 <h2 id="real-world-examples">Real-World Examples</h2>
 <h3 id="google-certificate-automation">Google Certificate Automation</h3>
-<p>Google issues millions of certificates daily with fully automated workflows:
-- Custom ACME implementation for internal services
-- Policy-driven issuance with no manual approvals
-- 6-day certificate lifetimes for maximum security
-- Automated deployment via service mesh (Istio)
-- Complete visibility and control through centralized management</p>
+<p>Google issues millions of certificates daily with fully automated workflows:</p>
+<ul>
+<li>Custom ACME implementation for internal services</li>
+<li>Policy-driven issuance with no manual approvals</li>
+<li>6-day certificate lifetimes for maximum security</li>
+<li>Automated deployment via service mesh (Istio)</li>
+<li>Complete visibility and control through centralized management</li>
+</ul>
 <p><strong>Key Lessons</strong>: Extreme automation possible with proper policy framework, short lifetimes eliminate revocation concerns, infrastructure-as-code enables at scale.</p>
 <h3 id="financial-services-manual-to-automated">Financial Services Manual to Automated</h3>
-<p>Large bank transformed certificate management:
-- <strong>Before</strong>: 200+ hours/month, manual processes, 90-day issuance time
-- <strong>Transformation</strong>: Implemented approval workflows, ACME integration, policy engine
-- <strong>After</strong>: 12 hours/month, 5-minute issuance, 99.9% automated
-- <strong>Investment</strong>: $400K over 6 months
-- <strong>Return</strong>: $2.67M first-year value from efficiency and incident prevention</p>
+<p>Large bank transformed certificate management:</p>
+<ul>
+<li><strong>Before</strong>: 200+ hours/month, manual processes, 90-day issuance time</li>
+<li><strong>Transformation</strong>: Implemented approval workflows, ACME integration, policy engine</li>
+<li><strong>After</strong>: 12 hours/month, 5-minute issuance, 99.9% automated</li>
+<li><strong>Investment</strong>: $400K over 6 months</li>
+<li><strong>Return</strong>: $2.67M first-year value from efficiency and incident prevention</li>
+</ul>
 <p><strong>Key Lessons</strong>: Semi-automated workflow sufficient for most enterprises, policy engine enables automation while maintaining control, approval workflows bridge manual to automated.</p>
 <h3 id="cloud-provider-instant-issuance">Cloud Provider Instant Issuance</h3>
-<p>AWS Certificate Manager model:
-- Instant validation for AWS-hosted domains
-- Automated renewal with no customer action
-- Integration with load balancers, CloudFront, API Gateway
-- No certificate storage or management required
-- Transparent deployment and renewal</p>
+<p>AWS Certificate Manager model:</p>
+<ul>
+<li>Instant validation for AWS-hosted domains</li>
+<li>Automated renewal with no customer action</li>
+<li>Integration with load balancers, CloudFront, API Gateway</li>
+<li>No certificate storage or management required</li>
+<li>Transparent deployment and renewal</li>
+</ul>
 <p><strong>Key Lessons</strong>: Platform integration enables seamless experience, automated validation reduces friction, hiding complexity increases adoption.</p>
 <hr />
 <h2 id="further-reading">Further Reading</h2>

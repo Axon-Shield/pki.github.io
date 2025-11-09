@@ -2581,21 +2581,27 @@
 </code></pre></div>
 <h4 id="trust-anchor-distribution">Trust Anchor Distribution</h4>
 <p>The critical decision in hierarchical trust: who do you trust as root authorities?</p>
-<p><strong>Browser/OS Trust Stores</strong>:
-- Operating systems and browsers ship with ~150-200 root CA certificates
-- These represent publicly-trusted CAs (DigiCert, Let's Encrypt, Sectigo, etc.)
-- Inclusion requires rigorous auditing (WebTrust, ETSI) and policy compliance[^1]
-- Root programs (Mozilla, Microsoft, Apple, Google) maintain trust stores</p>
-<p><strong>Enterprise Trust Stores</strong>:
-- Organizations add private root CAs to employee device trust stores
-- Distributed via Group Policy, MDM, or configuration management
-- Enables internal PKI for intranet sites, VPN, authentication
-- Users must trust employer to manage trust store appropriately</p>
-<p><strong>Manual Trust Decisions</strong>:
-- Users can manually trust certificate or CA
-- Browser warnings for self-signed certificates
-- "Proceed anyway" decisions that bypass validation
-- Security risk: users condition to click through warnings</p>
+<p><strong>Browser/OS Trust Stores</strong>:</p>
+<ul>
+<li>Operating systems and browsers ship with ~150-200 root CA certificates</li>
+<li>These represent publicly-trusted CAs (DigiCert, Let's Encrypt, Sectigo, etc.)</li>
+<li>Inclusion requires rigorous auditing (WebTrust, ETSI) and policy compliance[^1]</li>
+<li>Root programs (Mozilla, Microsoft, Apple, Google) maintain trust stores</li>
+</ul>
+<p><strong>Enterprise Trust Stores</strong>:</p>
+<ul>
+<li>Organizations add private root CAs to employee device trust stores</li>
+<li>Distributed via Group Policy, MDM, or configuration management</li>
+<li>Enables internal PKI for intranet sites, VPN, authentication</li>
+<li>Users must trust employer to manage trust store appropriately</li>
+</ul>
+<p><strong>Manual Trust Decisions</strong>:</p>
+<ul>
+<li>Users can manually trust certificate or CA</li>
+<li>Browser warnings for self-signed certificates</li>
+<li>"Proceed anyway" decisions that bypass validation</li>
+<li>Security risk: users condition to click through warnings</li>
+</ul>
 <h4 id="trust-chain-validation">Trust Chain Validation</h4>
 <p>When encountering an end-entity certificate, validators build a chain to a trusted root:</p>
 <ol>
@@ -2608,31 +2614,39 @@
 <li><strong>Verify root CA</strong> is in trust store</li>
 <li><strong>Validate entire chain</strong> (expiration dates, revocation status, constraints)</li>
 </ol>
-<p><strong>Success Conditions</strong>:
-- Unbroken chain to trusted root
-- All signatures valid
-- No expired certificates
-- No revoked certificates
-- All constraints satisfied (name, policy, path length)</p>
-<p><strong>Failure Scenarios</strong>:
-- Cannot build chain to trusted root (untrusted issuer)
-- Signature verification failure (wrong issuer or tampered certificate)
-- Expired certificate anywhere in chain
-- Revoked certificate
-- Constraint violation (e.g., intermediate used beyond path length limit)</p>
+<p><strong>Success Conditions</strong>:</p>
+<ul>
+<li>Unbroken chain to trusted root</li>
+<li>All signatures valid</li>
+<li>No expired certificates</li>
+<li>No revoked certificates</li>
+<li>All constraints satisfied (name, policy, path length)</li>
+</ul>
+<p><strong>Failure Scenarios</strong>:</p>
+<ul>
+<li>Cannot build chain to trusted root (untrusted issuer)</li>
+<li>Signature verification failure (wrong issuer or tampered certificate)</li>
+<li>Expired certificate anywhere in chain</li>
+<li>Revoked certificate</li>
+<li>Constraint violation (e.g., intermediate used beyond path length limit)</li>
+</ul>
 <h4 id="security-properties">Security Properties</h4>
-<p><strong>Advantages</strong>:
-- <strong>Clear accountability</strong>: Each CA responsible for subordinates
-- <strong>Scalable validation</strong>: Simple chain building algorithm
-- <strong>Centralized revocation</strong>: CA can revoke subordinate certificates
-- <strong>Policy enforcement</strong>: Root programs can enforce requirements on CAs
-- <strong>Unambiguous trust</strong>: Either trusted or not, no ambiguity</p>
-<p><strong>Disadvantages</strong>:
-- <strong>Single point of failure</strong>: Root CA compromise is catastrophic
-- <strong>Centralized control</strong>: Root programs (browsers) control who is trusted
-- <strong>CA compromise impact</strong>: Malicious CA can issue certificates for any name
-- <strong>Root distribution problem</strong>: Adding new roots requires OS/browser updates
-- <strong>Limited accountability</strong>: CA mistakes affect all relying parties</p>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li><strong>Clear accountability</strong>: Each CA responsible for subordinates</li>
+<li><strong>Scalable validation</strong>: Simple chain building algorithm</li>
+<li><strong>Centralized revocation</strong>: CA can revoke subordinate certificates</li>
+<li><strong>Policy enforcement</strong>: Root programs can enforce requirements on CAs</li>
+<li><strong>Unambiguous trust</strong>: Either trusted or not, no ambiguity</li>
+</ul>
+<p><strong>Disadvantages</strong>:</p>
+<ul>
+<li><strong>Single point of failure</strong>: Root CA compromise is catastrophic</li>
+<li><strong>Centralized control</strong>: Root programs (browsers) control who is trusted</li>
+<li><strong>CA compromise impact</strong>: Malicious CA can issue certificates for any name</li>
+<li><strong>Root distribution problem</strong>: Adding new roots requires OS/browser updates</li>
+<li><strong>Limited accountability</strong>: CA mistakes affect all relying parties</li>
+</ul>
 <h4 id="use-cases">Use Cases</h4>
 <p><strong>Internet TLS</strong>: Hierarchical trust with browser-managed root stores
 - Publicly-trusted CAs issue certificates for public websites
@@ -2661,11 +2675,13 @@
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>     |         |
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    Grace    Henry
 </code></pre></div>
-<p>Each person:
-- Generates their own key pair
-- Publishes public key to key servers
-- Signs other people's keys after verifying their identity
-- Builds local trust decisions based on signature paths</p>
+<p>Each person:</p>
+<ul>
+<li>Generates their own key pair</li>
+<li>Publishes public key to key servers</li>
+<li>Signs other people's keys after verifying their identity</li>
+<li>Builds local trust decisions based on signature paths</li>
+</ul>
 <h4 id="trust-calculation">Trust Calculation</h4>
 <p>To decide if you trust a key, you evaluate paths from your key to the target key:</p>
 <p><strong>Direct Signature</strong>: You personally signed the key
@@ -2692,31 +2708,39 @@
 - <strong>Invalid</strong>: No trust path exists or negative trust</p>
 <p>Typical calculation: One fully-trusted signature OR three marginally-trusted signatures = fully valid key</p>
 <h4 id="security-properties_1">Security Properties</h4>
-<p><strong>Advantages</strong>:
-- <strong>No central authority</strong>: No single point of failure or control
-- <strong>Personal trust decisions</strong>: You decide who to trust, not imposed by CA
-- <strong>Resilient</strong>: Network continues functioning even if nodes compromised
-- <strong>Flexible trust</strong>: Can express varying levels of trust
-- <strong>No commercial gatekeepers</strong>: Anyone can participate equally</p>
-<p><strong>Disadvantages</strong>:
-- <strong>Complex trust decisions</strong>: Users must understand trust calculations
-- <strong>Scalability problems</strong>: Doesn't scale to internet-wide deployment
-- <strong>Inconsistent trust</strong>: Different people reach different conclusions about same key
-- <strong>Key discovery</strong>: Finding trust paths is computationally expensive
-- <strong>Weak links</strong>: One untrustworthy introducer can compromise security
-- <strong>Social engineering</strong>: Attackers can manipulate trust relationships
-- <strong>Revocation difficulties</strong>: No authority to revoke compromised keys globally</p>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li><strong>No central authority</strong>: No single point of failure or control</li>
+<li><strong>Personal trust decisions</strong>: You decide who to trust, not imposed by CA</li>
+<li><strong>Resilient</strong>: Network continues functioning even if nodes compromised</li>
+<li><strong>Flexible trust</strong>: Can express varying levels of trust</li>
+<li><strong>No commercial gatekeepers</strong>: Anyone can participate equally</li>
+</ul>
+<p><strong>Disadvantages</strong>:</p>
+<ul>
+<li><strong>Complex trust decisions</strong>: Users must understand trust calculations</li>
+<li><strong>Scalability problems</strong>: Doesn't scale to internet-wide deployment</li>
+<li><strong>Inconsistent trust</strong>: Different people reach different conclusions about same key</li>
+<li><strong>Key discovery</strong>: Finding trust paths is computationally expensive</li>
+<li><strong>Weak links</strong>: One untrustworthy introducer can compromise security</li>
+<li><strong>Social engineering</strong>: Attackers can manipulate trust relationships</li>
+<li><strong>Revocation difficulties</strong>: No authority to revoke compromised keys globally</li>
+</ul>
 <h4 id="use-cases_1">Use Cases</h4>
-<p><strong>Email Encryption (PGP/GPG)</strong>:
-- Personal email security
-- Cypherpunk and privacy communities<br />
-- Environments where institutional trust is undesirable
-- Situations requiring personal verification</p>
-<p><strong>Not Suitable For</strong>:
-- Public website HTTPS (too complex for average users)
-- Enterprise PKI (no centralized management)
-- Legally binding signatures (no clear accountability)
-- Large-scale deployments requiring consistent trust decisions</p>
+<p><strong>Email Encryption (PGP/GPG)</strong>:</p>
+<ul>
+<li>Personal email security</li>
+<li>Cypherpunk and privacy communities  </li>
+<li>Environments where institutional trust is undesirable</li>
+<li>Situations requiring personal verification</li>
+</ul>
+<p><strong>Not Suitable For</strong>:</p>
+<ul>
+<li>Public website HTTPS (too complex for average users)</li>
+<li>Enterprise PKI (no centralized management)</li>
+<li>Legally binding signatures (no clear accountability)</li>
+<li>Large-scale deployments requiring consistent trust decisions</li>
+</ul>
 <h3 id="bridge-ca-model">Bridge CA Model</h3>
 <p>Bridge CAs connect separate hierarchical PKI systems, enabling trust across organizational boundaries without requiring all parties to trust the same root.</p>
 <h4 id="structure_2">Structure</h4>
@@ -2726,29 +2750,35 @@
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>     ↓                             ↓
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  Alice&#39;s Cert               Bob&#39;s Cert
 </code></pre></div>
-<p>The Bridge CA:
-- Has its own root certificate
-- Cross-certifies with participating organization root CAs
-- Each org trusts the bridge, which trusts other orgs
-- Creates transitive trust relationships</p>
+<p>The Bridge CA:</p>
+<ul>
+<li>Has its own root certificate</li>
+<li>Cross-certifies with participating organization root CAs</li>
+<li>Each org trusts the bridge, which trusts other orgs</li>
+<li>Creates transitive trust relationships</li>
+</ul>
 <h4 id="cross-certification">Cross-Certification</h4>
 <p>Organizations issue certificates to each other:</p>
 <p><strong>Bilateral Cross-Certification</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Org A signs Org B&#39;s CA certificate
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Org B signs Org A&#39;s CA certificate
 </code></pre></div></p>
-<p>This enables:
-- Org A users to validate Org B certificates (following chain through Org A → Org B)
-- Org B users to validate Org A certificates (following chain through Org B → Org A)</p>
+<p>This enables:</p>
+<ul>
+<li>Org A users to validate Org B certificates (following chain through Org A → Org B)</li>
+<li>Org B users to validate Org A certificates (following chain through Org B → Org A)</li>
+</ul>
 <p><strong>Bridge-Based Cross-Certification</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Org A signs Bridge CA certificate
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Bridge CA signs Org A CA certificate
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>Org B signs Bridge CA certificate  
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Bridge CA signs Org B CA certificate
 </code></pre></div></p>
-<p>This enables:
-- Org A users to validate Org B certificates through bridge
-- Path: Org B cert → Org B CA → Bridge CA → Org A CA → Org A root (in Org A trust store)</p>
+<p>This enables:</p>
+<ul>
+<li>Org A users to validate Org B certificates through bridge</li>
+<li>Path: Org B cert → Org B CA → Bridge CA → Org A CA → Org A root (in Org A trust store)</li>
+</ul>
 <h4 id="name-constraints">Name Constraints</h4>
 <p>Critical security control in bridge/cross-certification scenarios:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Org A CA cross-certified with constraint:
@@ -2759,69 +2789,89 @@
 <p><strong>Without Name Constraints</strong>: Compromised Org A could issue certificates for Org B domains
 <strong>With Name Constraints</strong>: Org A certificates for Org B domains fail validation</p>
 <h4 id="security-properties_2">Security Properties</h4>
-<p><strong>Advantages</strong>:
-- <strong>Federated trust</strong>: Organizations maintain independent PKI
-- <strong>Scalable cross-org trust</strong>: N organizations need N connections to bridge, not N² bilateral connections
-- <strong>Policy isolation</strong>: Each organization controls own issuance policies
-- <strong>Reduced trust requirements</strong>: Don't need to fully trust all organizations, just the bridge</p>
-<p><strong>Disadvantages</strong>:
-- <strong>Complex validation</strong>: Longer certificate chains, more complex path building
-- <strong>Bridge compromise impact</strong>: Compromised bridge affects all participants
-- <strong>Name constraint implementation</strong>: Validators must properly enforce constraints
-- <strong>Operational complexity</strong>: Managing cross-certificates adds operational burden
-- <strong>Performance</strong>: Longer chains increase validation time</p>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li><strong>Federated trust</strong>: Organizations maintain independent PKI</li>
+<li><strong>Scalable cross-org trust</strong>: N organizations need N connections to bridge, not N² bilateral connections</li>
+<li><strong>Policy isolation</strong>: Each organization controls own issuance policies</li>
+<li><strong>Reduced trust requirements</strong>: Don't need to fully trust all organizations, just the bridge</li>
+</ul>
+<p><strong>Disadvantages</strong>:</p>
+<ul>
+<li><strong>Complex validation</strong>: Longer certificate chains, more complex path building</li>
+<li><strong>Bridge compromise impact</strong>: Compromised bridge affects all participants</li>
+<li><strong>Name constraint implementation</strong>: Validators must properly enforce constraints</li>
+<li><strong>Operational complexity</strong>: Managing cross-certificates adds operational burden</li>
+<li><strong>Performance</strong>: Longer chains increase validation time</li>
+</ul>
 <h4 id="use-cases_2">Use Cases</h4>
-<p><strong>Federal PKI Bridge</strong>:
-- Connects U.S. federal agencies
-- Agencies maintain separate PKI hierarchies
-- Bridge enables cross-agency certificate validation
-- Supports government-wide authentication and encryption</p>
-<p><strong>Industry Consortia</strong>:
-- Healthcare organizations sharing patient records
-- Financial institutions in payment networks<br />
-- Supply chain partners with B2B integrations
-- Academic research collaborations</p>
-<p><strong>Enterprise Mergers</strong>:
-- Acquired companies maintain separate PKI
-- Bridge enables integration while preserving independence
-- Allows gradual migration to unified PKI if desired</p>
+<p><strong>Federal PKI Bridge</strong>:</p>
+<ul>
+<li>Connects U.S. federal agencies</li>
+<li>Agencies maintain separate PKI hierarchies</li>
+<li>Bridge enables cross-agency certificate validation</li>
+<li>Supports government-wide authentication and encryption</li>
+</ul>
+<p><strong>Industry Consortia</strong>:</p>
+<ul>
+<li>Healthcare organizations sharing patient records</li>
+<li>Financial institutions in payment networks  </li>
+<li>Supply chain partners with B2B integrations</li>
+<li>Academic research collaborations</li>
+</ul>
+<p><strong>Enterprise Mergers</strong>:</p>
+<ul>
+<li>Acquired companies maintain separate PKI</li>
+<li>Bridge enables integration while preserving independence</li>
+<li>Allows gradual migration to unified PKI if desired</li>
+</ul>
 <h3 id="hybrid-and-emerging-models">Hybrid and Emerging Models</h3>
 <h4 id="dane-dns-based-authentication-of-named-entities">DANE (DNS-Based Authentication of Named Entities)</h4>
 <p>Uses DNSSEC to publish certificate associations, creating alternative trust model:</p>
 <p><strong>Traditional</strong>: Trust CA to vouch for domain certificate
 <strong>DANE</strong>: Domain owner publishes certificate hash in DNSSEC-signed DNS record</p>
-<p><strong>Advantages</strong>:
-- Domain owner controls trust assertion
-- No CA required (or CA is secondary validation)
-- Reduces CA compromise impact</p>
-<p><strong>Disadvantages</strong>:
-- Requires DNSSEC deployment (limited adoption)
-- Complexity of managing DNSSEC
-- Limited client support</p>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li>Domain owner controls trust assertion</li>
+<li>No CA required (or CA is secondary validation)</li>
+<li>Reduces CA compromise impact</li>
+</ul>
+<p><strong>Disadvantages</strong>:</p>
+<ul>
+<li>Requires DNSSEC deployment (limited adoption)</li>
+<li>Complexity of managing DNSSEC</li>
+<li>Limited client support</li>
+</ul>
 <p><strong>Specified In</strong>: RFC 6698[^2] (TLSA records)</p>
 <h4 id="certificate-transparency">Certificate Transparency</h4>
 <p>Not a complete trust model but augments hierarchical trust with transparency:</p>
 <p><strong>Concept</strong>: All certificates logged to public, append-only, cryptographically-verifiable logs before issuance</p>
-<p><strong>Trust Enhancement</strong>:
-- Certificate misissuance detectable by domain owners
-- Monitors can detect rogue certificates
-- Creates accountability for CAs
-- Doesn't prevent misissuance but makes it discoverable</p>
+<p><strong>Trust Enhancement</strong>:</p>
+<ul>
+<li>Certificate misissuance detectable by domain owners</li>
+<li>Monitors can detect rogue certificates</li>
+<li>Creates accountability for CAs</li>
+<li>Doesn't prevent misissuance but makes it discoverable</li>
+</ul>
 <p><strong>Specified In</strong>: RFC 6962[^3]</p>
 <p><strong>Browser Requirements</strong>: Chrome and Safari require CT for publicly-trusted certificates</p>
 <h4 id="blockchain-based-pki">Blockchain-Based PKI</h4>
 <p>Experimental approaches using blockchain for certificate management:</p>
-<p><strong>Concepts</strong>:
-- Certificates or certificate hashes stored on blockchain
-- Decentralized, tamper-evident certificate storage
-- No central CA authority required
-- Certificate status verifiable via blockchain queries</p>
-<p><strong>Challenges</strong>:
-- Scalability (blockchain throughput limitations)
-- Privacy (all certificates potentially public)
-- Key recovery (lost private keys irrecoverable)
-- Governance (who decides protocol changes)
-- Limited deployment</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>Certificates or certificate hashes stored on blockchain</li>
+<li>Decentralized, tamper-evident certificate storage</li>
+<li>No central CA authority required</li>
+<li>Certificate status verifiable via blockchain queries</li>
+</ul>
+<p><strong>Challenges</strong>:</p>
+<ul>
+<li>Scalability (blockchain throughput limitations)</li>
+<li>Privacy (all certificates potentially public)</li>
+<li>Key recovery (lost private keys irrecoverable)</li>
+<li>Governance (who decides protocol changes)</li>
+<li>Limited deployment</li>
+</ul>
 <p><strong>Status</strong>: Research and pilot projects, not production-ready for general use</p>
 <h2 id="practical-guidance">Practical Guidance</h2>
 <h3 id="choosing-a-trust-model">Choosing a Trust Model</h3>
@@ -2933,11 +2983,13 @@
 <a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># macOS</span>
 <a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>security<span class="w"> </span>find-certificate<span class="w"> </span>-a<span class="w"> </span>-p<span class="w"> </span>/System/Library/Keychains/SystemRootCertificates.keychain<span class="w"> </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>x509<span class="w"> </span>-noout<span class="w"> </span>-subject
 </code></pre></div></p>
-<p><strong>Identify Risky Roots</strong>:
-- Government-operated CAs (potential interception)
-- CAs with history of misissuance
-- Unknown or untrusted organizations
-- Expired root certificates (should be removed)</p>
+<p><strong>Identify Risky Roots</strong>:</p>
+<ul>
+<li>Government-operated CAs (potential interception)</li>
+<li>CAs with history of misissuance</li>
+<li>Unknown or untrusted organizations</li>
+<li>Expired root certificates (should be removed)</li>
+</ul>
 <h3 id="implementing-certificate-path-validation">Implementing Certificate Path Validation</h3>
 <h4 id="basic-validation-algorithm">Basic Validation Algorithm</h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">validate_certificate_chain</span><span class="p">(</span><span class="n">end_entity_cert</span><span class="p">,</span> <span class="n">trust_store</span><span class="p">):</span>
@@ -3105,25 +3157,31 @@
 - <strong>Impact</strong>: Cross-certified CA can issue certificates outside permitted namespace
 - <strong>Mitigation</strong>: Comprehensive constraint validation testing; regular security assessments</p>
 <h3 id="trust-transitivity">Trust Transitivity</h3>
-<p>Trust is transitive in hierarchical models:
-- If you trust Root CA
-- And Root CA trusts Intermediate CA
-- Then you implicitly trust Intermediate CA</p>
+<p>Trust is transitive in hierarchical models:</p>
+<ul>
+<li>If you trust Root CA</li>
+<li>And Root CA trusts Intermediate CA</li>
+<li>Then you implicitly trust Intermediate CA</li>
+</ul>
 <p><strong>Security Implication</strong>: Your security depends on weakest CA in chain, not just the root you explicitly trust.</p>
-<p><strong>Mitigation Strategies</strong>:
-- Certificate Transparency (detect misissuance)
-- CAA records (restrict which CAs can issue for your domain)
-- HPKP/Certificate Pinning (restrict which certificates accepted)
-- Regular monitoring of issued certificates</p>
+<p><strong>Mitigation Strategies</strong>:</p>
+<ul>
+<li>Certificate Transparency (detect misissuance)</li>
+<li>CAA records (restrict which CAs can issue for your domain)</li>
+<li>HPKP/Certificate Pinning (restrict which certificates accepted)</li>
+<li>Regular monitoring of issued certificates</li>
+</ul>
 <h2 id="real-world-examples">Real-World Examples</h2>
 <h3 id="case-study-mozilla-root-program">Case Study: Mozilla Root Program</h3>
 <p>Mozilla operates one of the major root programs determining which CAs browsers trust.</p>
-<p><strong>Requirements</strong>[^4]:
-- Annual WebTrust or ETSI audit
-- Publicly disclosed Certificate Practice Statement
-- Compliance with CA/Browser Forum Baseline Requirements
-- Timely incident reporting
-- Regular communication with Mozilla</p>
+<p><strong>Requirements</strong>[^4]:</p>
+<ul>
+<li>Annual WebTrust or ETSI audit</li>
+<li>Publicly disclosed Certificate Practice Statement</li>
+<li>Compliance with CA/Browser Forum Baseline Requirements</li>
+<li>Timely incident reporting</li>
+<li>Regular communication with Mozilla</li>
+</ul>
 <p><strong>Impact</strong>: Inclusion in Mozilla root program makes CA trusted by Firefox users worldwide. Removal (e.g., DigiNotar, CNNIC) eliminates trust globally.</p>
 <p><strong>Key Takeaway</strong>: Hierarchical trust model's security depends on root program governance. Strong root programs protect users.</p>
 <h3 id="case-study-pgp-web-of-trust-scalability">Case Study: PGP Web of Trust Scalability</h3>
@@ -3139,20 +3197,24 @@
 <p><strong>Architecture</strong>: Bridge CA with cross-certification to agency CAs
 <strong>Benefit</strong>: Federal employee at Agency A can validate certificates from Agency B
 <strong>Challenge</strong>: Complex certification paths (sometimes 5+ certificates)</p>
-<p><strong>Success Factors</strong>:
-- Strong name constraints on all cross-certificates
-- Centralized policy management
-- Regular auditing of cross-certification relationships</p>
+<p><strong>Success Factors</strong>:</p>
+<ul>
+<li>Strong name constraints on all cross-certificates</li>
+<li>Centralized policy management</li>
+<li>Regular auditing of cross-certification relationships</li>
+</ul>
 <p><strong>Key Takeaway</strong>: Bridge CAs enable large-scale federation but require rigorous operational governance.</p>
 <h3 id="case-study-diginotar-ca-compromise-impact-on-trust">Case Study: DigiNotar CA Compromise Impact on Trust</h3>
 <p>DigiNotar compromise (2011) demonstrated how CA compromise affects hierarchical trust:</p>
 <p><strong>Event</strong>: Attackers compromised DigiNotar CA, issued rogue certificates
 <strong>Response</strong>: All major browsers removed DigiNotar from trust stores
 <strong>Impact</strong>: All legitimate DigiNotar certificates stopped working immediately</p>
-<p><strong>Lessons</strong>:
-- Hierarchical trust enables rapid response to CA compromise
-- CA compromise has existential consequences for CA business
-- Certificate Transparency would have enabled faster detection</p>
+<p><strong>Lessons</strong>:</p>
+<ul>
+<li>Hierarchical trust enables rapid response to CA compromise</li>
+<li>CA compromise has existential consequences for CA business</li>
+<li>Certificate Transparency would have enabled faster detection</li>
+</ul>
 <h2 id="further-reading">Further Reading</h2>
 <h3 id="essential-resources">Essential Resources</h3>
 <ul>
@@ -3193,12 +3255,14 @@
 </tbody>
 </table>
 <hr />
-<p><strong>Quality Checks</strong>: 
-- [x] All claims cited from authoritative sources
-- [x] Cross-references validated
-- [x] Practical guidance included
-- [x] Examples are current and relevant
-- [x] Security considerations addressed</p>
+<p><strong>Quality Checks</strong>: </p>
+<ul>
+<li>[x] All claims cited from authoritative sources</li>
+<li>[x] Cross-references validated</li>
+<li>[x] Practical guidance included</li>
+<li>[x] Examples are current and relevant</li>
+<li>[x] Security considerations addressed</li>
+</ul>
 
 
 

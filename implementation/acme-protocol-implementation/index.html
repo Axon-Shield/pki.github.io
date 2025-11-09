@@ -3677,29 +3677,35 @@
 <hr />
 <h2 id="real-world-examples">Real-World Examples</h2>
 <h3 id="lets-encrypt-boulder">Let's Encrypt (Boulder)</h3>
-<p>The largest ACME CA, issuing 3+ million certificates daily:
-- Go-based implementation for performance
-- Multi-region deployment with anycast
-- Comprehensive rate limiting (50 orders/account/hour, 300 pending/account)
-- Multiple validation perspectives (4+ geographically distributed validators)
-- Integration with Certificate Transparency
-- Publicly audited code: https://github.com/letsencrypt/boulder</p>
+<p>The largest ACME CA, issuing 3+ million certificates daily:</p>
+<ul>
+<li>Go-based implementation for performance</li>
+<li>Multi-region deployment with anycast</li>
+<li>Comprehensive rate limiting (50 orders/account/hour, 300 pending/account)</li>
+<li>Multiple validation perspectives (4+ geographically distributed validators)</li>
+<li>Integration with Certificate Transparency</li>
+<li>Publicly audited code: https://github.com/letsencrypt/boulder</li>
+</ul>
 <p><strong>Lessons</strong>: Horizontal scaling critical, validation must be geographically diverse, rate limiting essential, observability non-negotiable.</p>
 <h3 id="sectigo-scm">Sectigo (SCM)</h3>
-<p>Enterprise ACME CA with private deployments:
-- Customizable validation workflows for internal networks
-- Integration with enterprise directory services (LDAP, AD)
-- Custom challenge types for air-gapped environments
-- Policy-driven issuance with approval gates
-- Support for client certificates and code signing</p>
+<p>Enterprise ACME CA with private deployments:</p>
+<ul>
+<li>Customizable validation workflows for internal networks</li>
+<li>Integration with enterprise directory services (LDAP, AD)</li>
+<li>Custom challenge types for air-gapped environments</li>
+<li>Policy-driven issuance with approval gates</li>
+<li>Support for client certificates and code signing</li>
+</ul>
 <p><strong>Lessons</strong>: ACME protocol extensible for enterprise needs, internal validation methods necessary, policy layer enables governance.</p>
 <h3 id="hashicorp-vault-pki">HashiCorp Vault PKI</h3>
-<p>ACME implementation for internal certificates:
-- Integrated with Vault's authentication methods
-- Dynamic certificate lifetimes based on requester
-- Automated renewal via Vault agents
-- Multi-tenancy with namespace isolation
-- Audit logging through Vault audit devices</p>
+<p>ACME implementation for internal certificates:</p>
+<ul>
+<li>Integrated with Vault's authentication methods</li>
+<li>Dynamic certificate lifetimes based on requester</li>
+<li>Automated renewal via Vault agents</li>
+<li>Multi-tenancy with namespace isolation</li>
+<li>Audit logging through Vault audit devices</li>
+</ul>
 <p><strong>Lessons</strong>: ACME works for private PKI, integration with existing auth simplifies adoption, short lifetimes reduce operational burden.</p>
 <hr />
 <h2 id="further-reading">Further Reading</h2>

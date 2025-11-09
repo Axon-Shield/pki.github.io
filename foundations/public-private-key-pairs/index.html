@@ -2320,9 +2320,11 @@
 3. Compute φ(n) = (p-1)(q-1) (Euler's totient)
 4. Choose public exponent e (typically 65537)
 5. Compute private exponent d where (e × d) ≡ 1 (mod φ(n))</p>
-<p><strong>Result</strong>:
-- Public key: (n, e)
-- Private key: (n, d, p, q)</p>
+<p><strong>Result</strong>:</p>
+<ul>
+<li>Public key: (n, e)</li>
+<li>Private key: (n, d, p, q)</li>
+</ul>
 <p><strong>Mathematical Relationship</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>For any message m:
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  Encrypt: c = m^e mod n
@@ -2330,10 +2332,12 @@
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Due to: (m^e)^d ≡ m (mod n)
 </code></pre></div></p>
-<p><strong>Security Foundation</strong>: 
-- Given n and e, computing d requires knowing factors p and q
-- Factoring large n is computationally infeasible (no known polynomial-time algorithm)
-- Best known algorithms (General Number Field Sieve) require exponential time</p>
+<p><strong>Security Foundation</strong>: </p>
+<ul>
+<li>Given n and e, computing d requires knowing factors p and q</li>
+<li>Factoring large n is computationally infeasible (no known polynomial-time algorithm)</li>
+<li>Best known algorithms (General Number Field Sieve) require exponential time</li>
+</ul>
 <p><strong>Example</strong> (Small Numbers for Illustration):
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>p = 61, q = 53
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>n = 61 × 53 = 3233
@@ -2357,17 +2361,23 @@
 2. Curve has base point G
 3. Generate random private key d (scalar)
 4. Compute public key Q = d × G (point multiplication)</p>
-<p><strong>Result</strong>:
-- Public key: Q (point on elliptic curve)
-- Private key: d (large random number)</p>
-<p><strong>Mathematical Relationship</strong>:
-- Public key is private key multiplied by base point
-- Point multiplication easy (compute Q from d)
-- Discrete logarithm hard (find d from Q)</p>
-<p><strong>Security Foundation</strong>:
-- Given Q and G, finding d such that Q = d × G is elliptic curve discrete logarithm problem (ECDLP)
-- No known efficient algorithm for ECDLP
-- 256-bit ECDSA provides security equivalent to 3072-bit RSA</p>
+<p><strong>Result</strong>:</p>
+<ul>
+<li>Public key: Q (point on elliptic curve)</li>
+<li>Private key: d (large random number)</li>
+</ul>
+<p><strong>Mathematical Relationship</strong>:</p>
+<ul>
+<li>Public key is private key multiplied by base point</li>
+<li>Point multiplication easy (compute Q from d)</li>
+<li>Discrete logarithm hard (find d from Q)</li>
+</ul>
+<p><strong>Security Foundation</strong>:</p>
+<ul>
+<li>Given Q and G, finding d such that Q = d × G is elliptic curve discrete logarithm problem (ECDLP)</li>
+<li>No known efficient algorithm for ECDLP</li>
+<li>256-bit ECDSA provides security equivalent to 3072-bit RSA</li>
+</ul>
 <h3 id="dual-functionality">Dual Functionality</h3>
 <p>Key pairs enable two complementary operations:</p>
 <h4 id="encryption-confidentiality">Encryption (Confidentiality)</h4>
@@ -2377,11 +2387,13 @@
 2. Sender encrypts message with public key
 3. Only recipient's <strong>private key</strong> can decrypt</p>
 <p><strong>Direction</strong>: Public key encrypts → Private key decrypts</p>
-<p><strong>Use Cases</strong>:
-- Email encryption (recipient's public key)
-- TLS key exchange (server's public key)
-- Secure file sharing
-- Key encapsulation</p>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Email encryption (recipient's public key)</li>
+<li>TLS key exchange (server's public key)</li>
+<li>Secure file sharing</li>
+<li>Key encapsulation</li>
+</ul>
 <p><strong>Important</strong>: Direct RSA encryption limited to small messages (&lt; key size). In practice, hybrid encryption is used: RSA encrypts symmetric key, symmetric key encrypts data.</p>
 <p><strong>Example</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Alice wants to send secret to Bob:
@@ -2399,15 +2411,19 @@
 2. Signer encrypts hash with <strong>private key</strong> (signature)
 3. Anyone with <strong>public key</strong> can verify signature</p>
 <p><strong>Direction</strong>: Private key signs → Public key verifies</p>
-<p><strong>Use Cases</strong>:
-- Certificate signatures (CA signs certificates)
-- Code signing (developer signs software)
-- Document signing (sign contracts, emails)
-- Firmware signing (manufacturer signs firmware)</p>
-<p><strong>Properties Provided</strong>:
-- <strong>Authentication</strong>: Only private key holder could create signature
-- <strong>Integrity</strong>: Any message modification invalidates signature
-- <strong>Non-repudiation</strong>: Signer can't deny signing (assuming private key protected)</p>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Certificate signatures (CA signs certificates)</li>
+<li>Code signing (developer signs software)</li>
+<li>Document signing (sign contracts, emails)</li>
+<li>Firmware signing (manufacturer signs firmware)</li>
+</ul>
+<p><strong>Properties Provided</strong>:</p>
+<ul>
+<li><strong>Authentication</strong>: Only private key holder could create signature</li>
+<li><strong>Integrity</strong>: Any message modification invalidates signature</li>
+<li><strong>Non-repudiation</strong>: Signer can't deny signing (assuming private key protected)</li>
+</ul>
 <p><strong>Example</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Alice wants to sign document for Bob:
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>1. Alice computes hash: h = hash(document)
@@ -2421,30 +2437,40 @@
 </code></pre></div></p>
 <h3 id="why-this-works-the-non-intuitive-math">Why This Works: The Non-Intuitive Math</h3>
 <p>The "magic" of asymmetric cryptography is mathematical functions with special properties:</p>
-<p><strong>One-Way Functions</strong>:
-- Easy to compute in one direction: f(x) = y
-- Hard to reverse: Given y, find x
-- Examples: Modular exponentiation, elliptic curve point multiplication</p>
-<p><strong>Trapdoor Functions</strong>:
-- One-way functions with a secret "trapdoor"
-- With trapdoor (private key), easy to reverse
-- Without trapdoor, hard to reverse
-- RSA trapdoor: Knowing p and q (factors of n) enables computing d from e</p>
-<p><strong>Why Knowing Public Key Doesn't Help</strong>:
-- Public key: Result of applying one-way function to private key
-- Reversing one-way function is computationally infeasible
-- Example: Given Q = d × G on elliptic curve, finding d requires solving discrete log (no efficient algorithm)</p>
+<p><strong>One-Way Functions</strong>:</p>
+<ul>
+<li>Easy to compute in one direction: f(x) = y</li>
+<li>Hard to reverse: Given y, find x</li>
+<li>Examples: Modular exponentiation, elliptic curve point multiplication</li>
+</ul>
+<p><strong>Trapdoor Functions</strong>:</p>
+<ul>
+<li>One-way functions with a secret "trapdoor"</li>
+<li>With trapdoor (private key), easy to reverse</li>
+<li>Without trapdoor, hard to reverse</li>
+<li>RSA trapdoor: Knowing p and q (factors of n) enables computing d from e</li>
+</ul>
+<p><strong>Why Knowing Public Key Doesn't Help</strong>:</p>
+<ul>
+<li>Public key: Result of applying one-way function to private key</li>
+<li>Reversing one-way function is computationally infeasible</li>
+<li>Example: Given Q = d × G on elliptic curve, finding d requires solving discrete log (no efficient algorithm)</li>
+</ul>
 <p><strong>Security Assumption</strong>: These mathematical problems remain hard. If efficient algorithms discovered (e.g., via quantum computing), asymmetric crypto breaks.</p>
 <h2 id="practical-guidance">Practical Guidance</h2>
 <h3 id="key-pair-lifecycle">Key Pair Lifecycle</h3>
 <h4 id="generation">Generation</h4>
-<p><strong>Where to Generate</strong>:
-- <strong>On-device</strong>: Generate keys where they'll be used (preferred)
-  - Private key never transmitted
-  - Reduces exposure window
-  - Examples: Server generates key, submits CSR to CA</p>
+<p><strong>Where to Generate</strong>:</p>
 <ul>
-<li><strong>In HSM</strong>: Generate keys in Hardware Security Module</li>
+<li><strong>On-device</strong>: Generate keys where they'll be used (preferred)</li>
+<li>Private key never transmitted</li>
+<li>Reduces exposure window</li>
+<li>
+<p>Examples: Server generates key, submits CSR to CA</p>
+</li>
+<li>
+<p><strong>In HSM</strong>: Generate keys in Hardware Security Module</p>
+</li>
 <li>Keys never leave secure hardware</li>
 <li>Highest security for CA keys</li>
 <li>
@@ -2468,20 +2494,24 @@
 <a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>openssl<span class="w"> </span>pkey<span class="w"> </span>-in<span class="w"> </span>private.pem<span class="w"> </span>-pubout<span class="w"> </span>-out<span class="w"> </span>public.pem
 </code></pre></div>
 <h4 id="distribution">Distribution</h4>
-<p><strong>Public Key Distribution</strong> (Freely shareable):
-- Embed in certificate (primary mechanism)
-- Publish to key servers (PGP)
-- Include in application packages
-- Distribute via secure website
-- Email (though verify fingerprint out-of-band)</p>
-<p><strong>Private Key Distribution</strong> (Avoid if possible):
-- Should never be transmitted in plaintext
-- If must transmit:
-  - Encrypt with strong passphrase (AES-256)
-  - Use secure channel (TLS, IPsec)
-  - Temporary, one-time access
-  - Destroy transmission copy after receipt
-- Better: Generate on destination, never transmit</p>
+<p><strong>Public Key Distribution</strong> (Freely shareable):</p>
+<ul>
+<li>Embed in certificate (primary mechanism)</li>
+<li>Publish to key servers (PGP)</li>
+<li>Include in application packages</li>
+<li>Distribute via secure website</li>
+<li>Email (though verify fingerprint out-of-band)</li>
+</ul>
+<p><strong>Private Key Distribution</strong> (Avoid if possible):</p>
+<ul>
+<li>Should never be transmitted in plaintext</li>
+<li>If must transmit:</li>
+<li>Encrypt with strong passphrase (AES-256)</li>
+<li>Use secure channel (TLS, IPsec)</li>
+<li>Temporary, one-time access</li>
+<li>Destroy transmission copy after receipt</li>
+<li>Better: Generate on destination, never transmit</li>
+</ul>
 <p><strong>Public Key Verification</strong>:
 Always verify public key authenticity:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Compute fingerprint</span>
@@ -2491,23 +2521,29 @@ Always verify public key authenticity:
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># Phone call, different website, printed material, etc.</span>
 </code></pre></div></p>
 <h4 id="usage">Usage</h4>
-<p><strong>Private Key Usage Restrictions</strong>:
-- Minimal exposure time (load for operation, clear from memory after)
-- Access controls (file permissions, HSM authorization)
-- Audit logging (log every private key operation)
-- Dedicated systems (don't use CA keys on multi-purpose servers)</p>
-<p><strong>Public Key Usage</strong> (Unrestricted):
-- Freely shareable
-- Can be cached
-- No access controls needed
-- Integrity verification recommended (via certificate)</p>
+<p><strong>Private Key Usage Restrictions</strong>:</p>
+<ul>
+<li>Minimal exposure time (load for operation, clear from memory after)</li>
+<li>Access controls (file permissions, HSM authorization)</li>
+<li>Audit logging (log every private key operation)</li>
+<li>Dedicated systems (don't use CA keys on multi-purpose servers)</li>
+</ul>
+<p><strong>Public Key Usage</strong> (Unrestricted):</p>
+<ul>
+<li>Freely shareable</li>
+<li>Can be cached</li>
+<li>No access controls needed</li>
+<li>Integrity verification recommended (via certificate)</li>
+</ul>
 <h4 id="rotation">Rotation</h4>
-<p><strong>When to Rotate Key Pairs</strong>:
-- Scheduled rotation (e.g., annually)
-- After private key compromise or suspected exposure
-- After personnel changes (lost access control)
-- Before cryptographic algorithm deprecation
-- When certificate expires (generate new key with renewal)</p>
+<p><strong>When to Rotate Key Pairs</strong>:</p>
+<ul>
+<li>Scheduled rotation (e.g., annually)</li>
+<li>After private key compromise or suspected exposure</li>
+<li>After personnel changes (lost access control)</li>
+<li>Before cryptographic algorithm deprecation</li>
+<li>When certificate expires (generate new key with renewal)</li>
+</ul>
 <p><strong>Rotation Process</strong>:
 1. Generate new key pair
 2. Obtain new certificate for new public key
@@ -2524,13 +2560,17 @@ Always verify public key authenticity:
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Verify deletion</span>
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>ls<span class="w"> </span>private.key<span class="w">  </span><span class="c1"># Should not exist</span>
 </code></pre></div>
-<p><strong>HSM Key Destruction</strong>:
-- Use HSM-specific deletion commands
-- Verify key no longer listed
-- Some HSMs maintain key backups (be aware)</p>
-<p><strong>Certificate Revocation</strong>:
-- After key rotation, revoke old certificate
-- Prevents use of old key pair even if private key recovered</p>
+<p><strong>HSM Key Destruction</strong>:</p>
+<ul>
+<li>Use HSM-specific deletion commands</li>
+<li>Verify key no longer listed</li>
+<li>Some HSMs maintain key backups (be aware)</li>
+</ul>
+<p><strong>Certificate Revocation</strong>:</p>
+<ul>
+<li>After key rotation, revoke old certificate</li>
+<li>Prevents use of old key pair even if private key recovered</li>
+</ul>
 <h3 id="key-pair-formats">Key Pair Formats</h3>
 <h4 id="private-key-formats">Private Key Formats</h4>
 <p><strong>PKCS#1 (RSA Only)</strong>:
@@ -2657,34 +2697,44 @@ Always verify public key authenticity:
 </tr>
 </tbody>
 </table>
-<p><strong>NIST Guidance</strong>[^1]:
-- 2048-bit RSA or 256-bit ECDSA: Through 2030
-- 3072-bit RSA or 384-bit ECDSA: Beyond 2030
-- Consider certificate lifetime in key size selection</p>
+<p><strong>NIST Guidance</strong>[^1]:</p>
+<ul>
+<li>2048-bit RSA or 256-bit ECDSA: Through 2030</li>
+<li>3072-bit RSA or 384-bit ECDSA: Beyond 2030</li>
+<li>Consider certificate lifetime in key size selection</li>
+</ul>
 <h4 id="performance-vs-security-tradeoff">Performance vs. Security Tradeoff</h4>
-<p><strong>RSA Key Size Impact</strong>:
-- 2048 → 3072 bit: ~3x slower signing
-- 2048 → 4096 bit: ~7x slower signing
-- Verification speed less affected (small exponent)</p>
-<p><strong>ECDSA Advantages</strong>:
-- P-256 ECDSA ≈ 3072-bit RSA security
-- Much faster key generation
-- Much faster signing
-- Smaller keys and signatures</p>
-<p><strong>Decision Factors</strong>:
-- <strong>Performance</strong>: ECDSA better for high-volume operations
-- <strong>Compatibility</strong>: RSA more widely supported (legacy systems)
-- <strong>Certificate size</strong>: ECDSA produces smaller certificates (mobile/IoT)
-- <strong>Lifetime</strong>: Longer lifetime = larger keys
-- <strong>Regulation</strong>: Some industries mandate specific algorithms/sizes</p>
+<p><strong>RSA Key Size Impact</strong>:</p>
+<ul>
+<li>2048 → 3072 bit: ~3x slower signing</li>
+<li>2048 → 4096 bit: ~7x slower signing</li>
+<li>Verification speed less affected (small exponent)</li>
+</ul>
+<p><strong>ECDSA Advantages</strong>:</p>
+<ul>
+<li>P-256 ECDSA ≈ 3072-bit RSA security</li>
+<li>Much faster key generation</li>
+<li>Much faster signing</li>
+<li>Smaller keys and signatures</li>
+</ul>
+<p><strong>Decision Factors</strong>:</p>
+<ul>
+<li><strong>Performance</strong>: ECDSA better for high-volume operations</li>
+<li><strong>Compatibility</strong>: RSA more widely supported (legacy systems)</li>
+<li><strong>Certificate size</strong>: ECDSA produces smaller certificates (mobile/IoT)</li>
+<li><strong>Lifetime</strong>: Longer lifetime = larger keys</li>
+<li><strong>Regulation</strong>: Some industries mandate specific algorithms/sizes</li>
+</ul>
 <h3 id="multi-key-scenarios">Multi-Key Scenarios</h3>
 <h4 id="key-usage-separation">Key Usage Separation</h4>
 <p><strong>Best Practice</strong>: Separate key pairs for different purposes</p>
-<p><strong>Rationale</strong>:
-- Limits compromise impact
-- Enables different rotation schedules
-- Allows purpose-specific protection levels
-- Simplifies key management policies</p>
+<p><strong>Rationale</strong>:</p>
+<ul>
+<li>Limits compromise impact</li>
+<li>Enables different rotation schedules</li>
+<li>Allows purpose-specific protection levels</li>
+<li>Simplifies key management policies</li>
+</ul>
 <p><strong>Example Separation</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Organization key pairs:
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>├── TLS Encryption: RSA-2048 (90-day certificates)
@@ -2761,15 +2811,19 @@ Enforces key purpose separation:
 </ul>
 <h2 id="security-considerations">Security Considerations</h2>
 <h3 id="private-key-compromise-impact">Private Key Compromise Impact</h3>
-<p><strong>Immediate Risks</strong>:
-- Attacker can impersonate key owner
-- Past encrypted traffic decryptable (without forward secrecy)
-- Attacker can sign content as legitimate key owner
-- Complete trust breakdown for affected certificates</p>
-<p><strong>Cascade Effects</strong>:
-- If CA key compromised: All subordinate certificates compromised
-- If code signing key compromised: Malware signed as legitimate software
-- If user key compromised: Access to all resources protected by that key</p>
+<p><strong>Immediate Risks</strong>:</p>
+<ul>
+<li>Attacker can impersonate key owner</li>
+<li>Past encrypted traffic decryptable (without forward secrecy)</li>
+<li>Attacker can sign content as legitimate key owner</li>
+<li>Complete trust breakdown for affected certificates</li>
+</ul>
+<p><strong>Cascade Effects</strong>:</p>
+<ul>
+<li>If CA key compromised: All subordinate certificates compromised</li>
+<li>If code signing key compromised: Malware signed as legitimate software</li>
+<li>If user key compromised: Access to all resources protected by that key</li>
+</ul>
 <p><strong>Response Requirements</strong>:
 1. Immediately revoke certificate
 2. Generate new key pair
@@ -2792,34 +2846,46 @@ Enforces key purpose separation:
 </code></pre></div></p>
 <p><strong>Trade-off</strong>: Slightly slower handshake (must compute DHE), but much better security.</p>
 <h3 id="quantum-computing-threat">Quantum Computing Threat</h3>
-<p><strong>Current Algorithms Vulnerable</strong>:
-- RSA: Shor's algorithm can factor in polynomial time on quantum computer
-- ECDSA: Shor's algorithm solves discrete log on quantum computer
-- All current public-key cryptography breakable on large quantum computers</p>
-<p><strong>Timeline</strong>: 
-- No large-scale quantum computers yet (2024)
-- Optimistic estimates: 2030s
-- Conservative: 2040s</p>
-<p><strong>"Harvest Now, Decrypt Later" Threat</strong>:
-- Adversaries capture encrypted traffic today
-- Store for future decryption when quantum computers available
-- High-value long-term secrets at risk</p>
-<p><strong>Post-Quantum Cryptography</strong>:
-- NIST standardizing quantum-resistant algorithms
-- Based on different mathematical problems (lattices, hash-based, etc.)
-- Hybrid approach: Classical + post-quantum
-- Transition period: 2025-2035 expected</p>
-<p><strong>Action Items</strong>:
-- Monitor NIST PQC standardization
-- Plan for algorithm agility
-- Consider data lifetime sensitivity
-- Begin hybrid implementations for long-term keys</p>
+<p><strong>Current Algorithms Vulnerable</strong>:</p>
+<ul>
+<li>RSA: Shor's algorithm can factor in polynomial time on quantum computer</li>
+<li>ECDSA: Shor's algorithm solves discrete log on quantum computer</li>
+<li>All current public-key cryptography breakable on large quantum computers</li>
+</ul>
+<p><strong>Timeline</strong>: </p>
+<ul>
+<li>No large-scale quantum computers yet (2024)</li>
+<li>Optimistic estimates: 2030s</li>
+<li>Conservative: 2040s</li>
+</ul>
+<p><strong>"Harvest Now, Decrypt Later" Threat</strong>:</p>
+<ul>
+<li>Adversaries capture encrypted traffic today</li>
+<li>Store for future decryption when quantum computers available</li>
+<li>High-value long-term secrets at risk</li>
+</ul>
+<p><strong>Post-Quantum Cryptography</strong>:</p>
+<ul>
+<li>NIST standardizing quantum-resistant algorithms</li>
+<li>Based on different mathematical problems (lattices, hash-based, etc.)</li>
+<li>Hybrid approach: Classical + post-quantum</li>
+<li>Transition period: 2025-2035 expected</li>
+</ul>
+<p><strong>Action Items</strong>:</p>
+<ul>
+<li>Monitor NIST PQC standardization</li>
+<li>Plan for algorithm agility</li>
+<li>Consider data lifetime sensitivity</li>
+<li>Begin hybrid implementations for long-term keys</li>
+</ul>
 <h3 id="key-entropy">Key Entropy</h3>
 <p><strong>Critical Requirement</strong>: Private keys must be generated from cryptographically secure random numbers</p>
-<p><strong>Insufficient Entropy Examples</strong>:
-- Debian OpenSSL bug (2008): Only 2^15 possible keys due to PRNG flaw
-- Predictable seeds: Using timestamp or process ID as seed
-- Reused random values: ECDSA nonce reuse</p>
+<p><strong>Insufficient Entropy Examples</strong>:</p>
+<ul>
+<li>Debian OpenSSL bug (2008): Only 2^15 possible keys due to PRNG flaw</li>
+<li>Predictable seeds: Using timestamp or process ID as seed</li>
+<li>Reused random values: ECDSA nonce reuse</li>
+</ul>
 <p><strong>Proper Entropy Sources</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Python example</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">secrets</span>
@@ -2831,41 +2897,53 @@ Enforces key purpose separation:
 <a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
 <a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="n">bad_key</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span>  <span class="c1"># NOT cryptographically secure</span>
 </code></pre></div></p>
-<p><strong>Verification</strong>:
-- Use established libraries (OpenSSL, cryptography.io)
-- Never implement crypto primitives from scratch
-- Test with statistical randomness tests (NIST test suite)</p>
+<p><strong>Verification</strong>:</p>
+<ul>
+<li>Use established libraries (OpenSSL, cryptography.io)</li>
+<li>Never implement crypto primitives from scratch</li>
+<li>Test with statistical randomness tests (NIST test suite)</li>
+</ul>
 <h2 id="real-world-examples">Real-World Examples</h2>
 <h3 id="case-study-debian-openssl-predictable-keys-2008">Case Study: Debian OpenSSL Predictable Keys (2008)</h3>
 <p><strong>Incident</strong>: Debian maintainer modified OpenSSL to eliminate compiler warning, inadvertently removed entropy source</p>
-<p><strong>Impact</strong>:
-- Only 2^15 possible RSA keys (32,768) instead of 2^2048
-- All keys generated on affected systems (2006-2008) were weak
-- Attackers could brute-force all possibilities in hours</p>
-<p><strong>Response</strong>:
-- Mass revocation of affected certificates
-- Key regeneration for all affected systems
-- Demonstrated importance of entropy in key generation</p>
+<p><strong>Impact</strong>:</p>
+<ul>
+<li>Only 2^15 possible RSA keys (32,768) instead of 2^2048</li>
+<li>All keys generated on affected systems (2006-2008) were weak</li>
+<li>Attackers could brute-force all possibilities in hours</li>
+</ul>
+<p><strong>Response</strong>:</p>
+<ul>
+<li>Mass revocation of affected certificates</li>
+<li>Key regeneration for all affected systems</li>
+<li>Demonstrated importance of entropy in key generation</li>
+</ul>
 <p><strong>Key Takeaway</strong>: Cryptographic key generation requires proper entropy. Don't modify crypto code without expert review.</p>
 <h3 id="case-study-rsa-vs-ecdsa-adoption">Case Study: RSA vs. ECDSA Adoption</h3>
-<p><strong>Historical Context</strong>:
-- RSA patented until 2000, limiting adoption
-- ECDSA introduced later (1999), patent issues slower adoption
-- RSA became standard due to earlier patent expiration and tooling</p>
-<p><strong>Modern Transition</strong>:
-- Let's Encrypt supports both RSA and ECDSA
-- Major browsers support ECDSA
-- Mobile and IoT prefer ECDSA (smaller keys, better performance)
-- Gradual transition: ~20% of certificates ECDSA (2024), growing</p>
+<p><strong>Historical Context</strong>:</p>
+<ul>
+<li>RSA patented until 2000, limiting adoption</li>
+<li>ECDSA introduced later (1999), patent issues slower adoption</li>
+<li>RSA became standard due to earlier patent expiration and tooling</li>
+</ul>
+<p><strong>Modern Transition</strong>:</p>
+<ul>
+<li>Let's Encrypt supports both RSA and ECDSA</li>
+<li>Major browsers support ECDSA</li>
+<li>Mobile and IoT prefer ECDSA (smaller keys, better performance)</li>
+<li>Gradual transition: ~20% of certificates ECDSA (2024), growing</li>
+</ul>
 <p><strong>Key Takeaway</strong>: Algorithm transitions take decades. Start early, support multiple algorithms during transition.</p>
 <h3 id="case-study-https-certificate-pinning">Case Study: HTTPS Certificate Pinning</h3>
 <p>Some organizations pin specific public keys or certificates in applications:</p>
 <p><strong>Concept</strong>: Application only accepts specific public keys
 <strong>Goal</strong>: Prevent CA compromise from affecting the application
 <strong>Risk</strong>: If pinned key rotated without app update, app breaks</p>
-<p><strong>Notable Incidents</strong>:
-- Banking apps unable to connect after certificate rotation
-- Mobile apps requiring updates to fix pinning</p>
+<p><strong>Notable Incidents</strong>:</p>
+<ul>
+<li>Banking apps unable to connect after certificate rotation</li>
+<li>Mobile apps requiring updates to fix pinning</li>
+</ul>
 <p><strong>Key Takeaway</strong>: Key rotation must be planned carefully. Pinning trades flexibility for security. Consider pinning CA public key rather than leaf certificate.</p>
 <h2 id="further-reading">Further Reading</h2>
 <h3 id="essential-resources">Essential Resources</h3>
@@ -2904,12 +2982,14 @@ Enforces key purpose separation:
 </tbody>
 </table>
 <hr />
-<p><strong>Quality Checks</strong>: 
-- [x] All claims cited from authoritative sources
-- [x] Cross-references validated
-- [x] Practical guidance included
-- [x] Examples are current and relevant
-- [x] Security considerations addressed</p>
+<p><strong>Quality Checks</strong>: </p>
+<ul>
+<li>[x] All claims cited from authoritative sources</li>
+<li>[x] Cross-references validated</li>
+<li>[x] Practical guidance included</li>
+<li>[x] Examples are current and relevant</li>
+<li>[x] Security considerations addressed</li>
+</ul>
 
 
 

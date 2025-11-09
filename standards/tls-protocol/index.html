@@ -2823,15 +2823,19 @@
 <h2 id="key-concepts">Key Concepts</h2>
 <h3 id="protocol-versions-and-evolution">Protocol Versions and Evolution</h3>
 <h4 id="ssl-20-and-30-deprecated">SSL 2.0 and 3.0 (Deprecated)</h4>
-<p><strong>SSL 2.0</strong> (1995):
-- Netscape's original protocol
-- Numerous security flaws
-- No longer supported anywhere
-- <strong>Status</strong>: Completely broken, never use</p>
-<p><strong>SSL 3.0</strong> (1996):
-- Complete redesign addressing SSL 2.0 flaws
-- POODLE attack (2014) demonstrated practical vulnerability[^2]
-- <strong>Status</strong>: Deprecated, RFC 7568 prohibits use</p>
+<p><strong>SSL 2.0</strong> (1995):</p>
+<ul>
+<li>Netscape's original protocol</li>
+<li>Numerous security flaws</li>
+<li>No longer supported anywhere</li>
+<li><strong>Status</strong>: Completely broken, never use</li>
+</ul>
+<p><strong>SSL 3.0</strong> (1996):</p>
+<ul>
+<li>Complete redesign addressing SSL 2.0 flaws</li>
+<li>POODLE attack (2014) demonstrated practical vulnerability[^2]</li>
+<li><strong>Status</strong>: Deprecated, RFC 7568 prohibits use</li>
+</ul>
 <h4 id="tls-10-deprecated">TLS 1.0 (Deprecated)</h4>
 <p><strong>Released</strong>: 1999 (RFC 2246)
 - Minor upgrade from SSL 3.0
@@ -2854,12 +2858,14 @@
 - Widely deployed and supported
 - <strong>Status</strong>: Current standard, will remain supported for years
 - <strong>Use</strong>: Default for most implementations</p>
-<p><strong>Key Features</strong>:
-- Authenticated encryption with GCM mode
-- SHA-256 and SHA-384 hash functions
-- Elliptic curve cryptography support
-- Session resumption via session tickets
-- Application layer protocol negotiation (ALPN)</p>
+<p><strong>Key Features</strong>:</p>
+<ul>
+<li>Authenticated encryption with GCM mode</li>
+<li>SHA-256 and SHA-384 hash functions</li>
+<li>Elliptic curve cryptography support</li>
+<li>Session resumption via session tickets</li>
+<li>Application layer protocol negotiation (ALPN)</li>
+</ul>
 <h4 id="tls-13-modern-standard">TLS 1.3 (Modern Standard)</h4>
 <p><strong>Released</strong>: 2018 (RFC 8446[^4])
 - Complete redesign focused on security and performance
@@ -2869,15 +2875,19 @@
 - Simplified cipher suite selection
 - <strong>Status</strong>: Modern standard, increasing adoption
 - <strong>Use</strong>: Preferred when both client and server support</p>
-<p><strong>Major Changes from TLS 1.2</strong>:
-- <strong>Removed</strong>: RSA key exchange, static DH, CBC mode ciphers, compression, renegotiation
-- <strong>Added</strong>: Only AEAD ciphers, mandatory perfect forward secrecy, encrypted handshake
-- <strong>Improved</strong>: Faster handshake (0-RTT resumption), simpler cipher suite selection</p>
-<p><strong>Security Improvements</strong>:
-- All handshake messages except ClientHello encrypted
-- Removed known-vulnerable algorithms
-- No algorithm downgrade attacks possible
-- Better resistance to timing attacks</p>
+<p><strong>Major Changes from TLS 1.2</strong>:</p>
+<ul>
+<li><strong>Removed</strong>: RSA key exchange, static DH, CBC mode ciphers, compression, renegotiation</li>
+<li><strong>Added</strong>: Only AEAD ciphers, mandatory perfect forward secrecy, encrypted handshake</li>
+<li><strong>Improved</strong>: Faster handshake (0-RTT resumption), simpler cipher suite selection</li>
+</ul>
+<p><strong>Security Improvements</strong>:</p>
+<ul>
+<li>All handshake messages except ClientHello encrypted</li>
+<li>Removed known-vulnerable algorithms</li>
+<li>No algorithm downgrade attacks possible</li>
+<li>Better resistance to timing attacks</li>
+</ul>
 <h3 id="the-tls-handshake">The TLS Handshake</h3>
 <p>The handshake establishes a secure connection before application data transmission.</p>
 <h4 id="tls-12-handshake-simplified">TLS 1.2 Handshake (Simplified)</h4>
@@ -2939,11 +2949,13 @@
 <a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>* Optional or situation-dependent
 <a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>{} Encrypted messages
 </code></pre></div>
-<p><strong>Major Differences</strong>:
-- <strong>1-RTT</strong>: Client sends key share in first message, reducing latency
-- <strong>0-RTT</strong>: Resumption can send data in first packet (with replay risk)
-- <strong>Encrypted</strong>: All handshake messages after ServerHello encrypted
-- <strong>Simplified</strong>: No separate ChangeCipherSpec, cleaner state machine</p>
+<p><strong>Major Differences</strong>:</p>
+<ul>
+<li><strong>1-RTT</strong>: Client sends key share in first message, reducing latency</li>
+<li><strong>0-RTT</strong>: Resumption can send data in first packet (with replay risk)</li>
+<li><strong>Encrypted</strong>: All handshake messages after ServerHello encrypted</li>
+<li><strong>Simplified</strong>: No separate ChangeCipherSpec, cleaner state machine</li>
+</ul>
 <p><strong>Performance</strong>: ~40% faster than TLS 1.2 (1-RTT vs 2-RTT)</p>
 <h4 id="tls-13-0-rtt-resumption">TLS 1.3 0-RTT Resumption</h4>
 <p>For resumed connections, TLS 1.3 allows 0-RTT data:</p>
@@ -3074,13 +3086,15 @@
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
 </code></pre></div></p>
 <h4 id="deprecated-cipher-suites">Deprecated Cipher Suites</h4>
-<p><strong>Never Use</strong>:
-- Any cipher with <code>RC4</code> (broken stream cipher)
-- Any cipher with <code>MD5</code> (broken hash function)
-- Any cipher with <code>DES</code> or <code>3DES</code> (weak encryption)
-- Any cipher with <code>EXPORT</code> (intentionally weakened)
-- Any cipher with <code>NULL</code> (no encryption)
-- Any cipher with <code>CBC</code> mode in TLS 1.2 without proper mitigations (BEAST, Lucky13)</p>
+<p><strong>Never Use</strong>:</p>
+<ul>
+<li>Any cipher with <code>RC4</code> (broken stream cipher)</li>
+<li>Any cipher with <code>MD5</code> (broken hash function)</li>
+<li>Any cipher with <code>DES</code> or <code>3DES</code> (weak encryption)</li>
+<li>Any cipher with <code>EXPORT</code> (intentionally weakened)</li>
+<li>Any cipher with <code>NULL</code> (no encryption)</li>
+<li>Any cipher with <code>CBC</code> mode in TLS 1.2 without proper mitigations (BEAST, Lucky13)</li>
+</ul>
 <p><strong>Example Bad Ciphers</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>TLS_RSA_WITH_RC4_128_MD5
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>TLS_RSA_EXPORT_WITH_DES40_CBC_SHA
@@ -3115,10 +3129,12 @@
 3. Subsequent connection: Client sends session ID
 4. Server looks up session, resumes if found
 5. Abbreviated handshake (skip certificate exchange)</p>
-<p><strong>Limitations</strong>:
-- Server must maintain session cache
-- Not practical for load-balanced servers
-- Session cache requires memory</p>
+<p><strong>Limitations</strong>:</p>
+<ul>
+<li>Server must maintain session cache</li>
+<li>Not practical for load-balanced servers</li>
+<li>Session cache requires memory</li>
+</ul>
 <h4 id="session-tickets-tls-12">Session Tickets (TLS 1.2+)</h4>
 <p><strong>Process</strong>:
 1. Full handshake completes
@@ -3126,20 +3142,26 @@
 3. Client stores ticket
 4. Subsequent connection: Client sends ticket
 5. Server decrypts ticket, resumes session</p>
-<p><strong>Advantages</strong>:
-- Server doesn't maintain state (stateless)
-- Works across load-balanced servers
-- Client stores encrypted session state</p>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li>Server doesn't maintain state (stateless)</li>
+<li>Works across load-balanced servers</li>
+<li>Client stores encrypted session state</li>
+</ul>
 <p><strong>Security</strong>: Ticket encryption key must be rotated regularly and shared securely across servers.</p>
 <h4 id="tls-13-psk-resumption">TLS 1.3 PSK Resumption</h4>
-<p><strong>Pre-Shared Key</strong> mode:
-- Server sends PSK after handshake
-- Client uses PSK for future connections
-- Enables 1-RTT or 0-RTT resumption</p>
-<p><strong>Security Considerations</strong>:
-- 0-RTT vulnerable to replay attacks
-- PSK should expire after reasonable time
-- Not forward secret (PSK compromise affects resumed sessions)</p>
+<p><strong>Pre-Shared Key</strong> mode:</p>
+<ul>
+<li>Server sends PSK after handshake</li>
+<li>Client uses PSK for future connections</li>
+<li>Enables 1-RTT or 0-RTT resumption</li>
+</ul>
+<p><strong>Security Considerations</strong>:</p>
+<ul>
+<li>0-RTT vulnerable to replay attacks</li>
+<li>PSK should expire after reasonable time</li>
+<li>Not forward secret (PSK compromise affects resumed sessions)</li>
+</ul>
 <h2 id="practical-guidance">Practical Guidance</h2>
 <h3 id="configuring-tls-servers">Configuring TLS Servers</h3>
 <h4 id="nginx-configuration">Nginx Configuration</h4>
@@ -3248,15 +3270,17 @@
 <a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="c1"># - Warnings about weak ciphers</span>
 </code></pre></div></p>
 <h4 id="using-ssl-labs">Using SSL Labs</h4>
-<p><strong>Online Testing</strong>:
-- Visit: https://www.ssllabs.com/ssltest/
-- Enter domain name
-- Comprehensive report includes:
-  - Protocol support
-  - Cipher suite evaluation
-  - Certificate validation
-  - Known vulnerability checks
-  - Grade (A+ to F)</p>
+<p><strong>Online Testing</strong>:</p>
+<ul>
+<li>Visit: https://www.ssllabs.com/ssltest/</li>
+<li>Enter domain name</li>
+<li>Comprehensive report includes:</li>
+<li>Protocol support</li>
+<li>Cipher suite evaluation</li>
+<li>Certificate validation</li>
+<li>Known vulnerability checks</li>
+<li>Grade (A+ to F)</li>
+</ul>
 <p><strong>Automated Testing</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Install ssllabs-scan tool</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>go<span class="w"> </span>install<span class="w"> </span>github.com/ssllabs/ssllabs-scan/v3@latest
@@ -3318,9 +3342,11 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">ssl_stapling</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
 <a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="k">ssl_stapling_verify</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
 </code></pre></div></p>
-<p><strong>Use TLS 1.3</strong> (faster handshake):
-- Ensure client and server both support TLS 1.3
-- 1-RTT handshake vs 2-RTT in TLS 1.2</p>
+<p><strong>Use TLS 1.3</strong> (faster handshake):</p>
+<ul>
+<li>Ensure client and server both support TLS 1.3</li>
+<li>1-RTT handshake vs 2-RTT in TLS 1.2</li>
+</ul>
 <h3 id="mutual-tls-mtls">Mutual TLS (mTLS)</h3>
 <p>Client authentication using certificates.</p>
 <h4 id="server-configuration-nginx">Server Configuration (Nginx)</h4>
@@ -3437,20 +3463,24 @@
 <h3 id="downgrade-attacks">Downgrade Attacks</h3>
 <p><strong>Problem</strong>: Attacker manipulates handshake to force use of weaker protocols/ciphers</p>
 <p><strong>Example</strong>: Man-in-the-middle removes TLS 1.3 from ClientHello, forcing TLS 1.2</p>
-<p><strong>Mitigations</strong>:
-- <strong>TLS_FALLBACK_SCSV</strong>: Signaling cipher suite value prevents version rollback
-- <strong>TLS 1.3 Design</strong>: Downgrade protection built into protocol
-- <strong>Certificate Transparency</strong>: Monitor for unexpected certificate issuance</p>
+<p><strong>Mitigations</strong>:</p>
+<ul>
+<li><strong>TLS_FALLBACK_SCSV</strong>: Signaling cipher suite value prevents version rollback</li>
+<li><strong>TLS 1.3 Design</strong>: Downgrade protection built into protocol</li>
+<li><strong>Certificate Transparency</strong>: Monitor for unexpected certificate issuance</li>
+</ul>
 <p><strong>Server Configuration</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># Don&#39;t support old protocols that enable downgrade</span>
 <a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="k">ssl_protocols</span><span class="w"> </span><span class="s">TLSv1.2</span><span class="w"> </span><span class="s">TLSv1.3</span><span class="p">;</span>
 </code></pre></div></p>
 <h3 id="certificate-pinning">Certificate Pinning</h3>
 <p><strong>Concept</strong>: Application only accepts specific certificates or public keys</p>
-<p><strong>Types</strong>:
-- <strong>Certificate Pinning</strong>: Pin entire certificate
-- <strong>Public Key Pinning</strong>: Pin public key (survives certificate renewal)
-- <strong>CA Pinning</strong>: Pin intermediate or root CA</p>
+<p><strong>Types</strong>:</p>
+<ul>
+<li><strong>Certificate Pinning</strong>: Pin entire certificate</li>
+<li><strong>Public Key Pinning</strong>: Pin public key (survives certificate renewal)</li>
+<li><strong>CA Pinning</strong>: Pin intermediate or root CA</li>
+</ul>
 <p><strong>HTTP Public Key Pinning (HPKP)</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>Public-Key-Pins: pin-sha256=&quot;base64==&quot;; max-age=5184000; includeSubDomains
 </code></pre></div></p>
@@ -3458,38 +3488,48 @@
 <p><strong>Modern Alternative</strong>: Certificate Transparency monitoring instead of pinning</p>
 <p><strong>Mobile Apps</strong>: Still use certificate/public key pinning for additional security</p>
 <h3 id="man-in-the-middle-mitm-detection">Man-in-the-Middle (MitM) Detection</h3>
-<p><strong>Indicators</strong>:
-- Certificate hostname mismatch
-- Untrusted root certificate
-- Self-signed certificate warnings
-- Certificate with suspicious issuance date
-- Different certificate than expected (compare fingerprints)</p>
-<p><strong>Protection</strong>:
-- Never ignore certificate warnings
-- Verify certificate fingerprints out-of-band
-- Use Certificate Transparency monitoring
-- Implement certificate pinning in controlled environments</p>
+<p><strong>Indicators</strong>:</p>
+<ul>
+<li>Certificate hostname mismatch</li>
+<li>Untrusted root certificate</li>
+<li>Self-signed certificate warnings</li>
+<li>Certificate with suspicious issuance date</li>
+<li>Different certificate than expected (compare fingerprints)</li>
+</ul>
+<p><strong>Protection</strong>:</p>
+<ul>
+<li>Never ignore certificate warnings</li>
+<li>Verify certificate fingerprints out-of-band</li>
+<li>Use Certificate Transparency monitoring</li>
+<li>Implement certificate pinning in controlled environments</li>
+</ul>
 <h2 id="real-world-examples">Real-World Examples</h2>
 <h3 id="case-study-tls-13-adoption-at-cloudflare">Case Study: TLS 1.3 Adoption at Cloudflare</h3>
 <p><strong>Implementation</strong>: Cloudflare enabled TLS 1.3 for all customers in 2018</p>
-<p><strong>Results</strong>:
-- 40% reduction in handshake latency
-- Improved mobile performance (fewer round trips)
-- Enhanced security (mandatory forward secrecy)
-- No compatibility issues with major browsers</p>
+<p><strong>Results</strong>:</p>
+<ul>
+<li>40% reduction in handshake latency</li>
+<li>Improved mobile performance (fewer round trips)</li>
+<li>Enhanced security (mandatory forward secrecy)</li>
+<li>No compatibility issues with major browsers</li>
+</ul>
 <p><strong>Key Takeaway</strong>: TLS 1.3 provides significant performance and security benefits with minimal deployment complexity.</p>
 <h3 id="case-study-heartbleed-global-impact-2014">Case Study: Heartbleed Global Impact (2014)</h3>
 <p><strong>Vulnerability</strong>: OpenSSL buffer over-read allowed memory disclosure</p>
-<p><strong>Impact</strong>:
-- 17% of secure web servers vulnerable
-- Private keys, session keys, user credentials exposed
-- Required certificate regeneration and revocation
-- Demonstrated critical infrastructure dependency on OpenSSL</p>
-<p><strong>Response</strong>:
-- Immediate patching of OpenSSL
-- Mass certificate revocation and reissuance
-- Increased funding for OpenSSL development
-- Birth of alternative TLS libraries (BoringSSL, LibreSSL)</p>
+<p><strong>Impact</strong>:</p>
+<ul>
+<li>17% of secure web servers vulnerable</li>
+<li>Private keys, session keys, user credentials exposed</li>
+<li>Required certificate regeneration and revocation</li>
+<li>Demonstrated critical infrastructure dependency on OpenSSL</li>
+</ul>
+<p><strong>Response</strong>:</p>
+<ul>
+<li>Immediate patching of OpenSSL</li>
+<li>Mass certificate revocation and reissuance</li>
+<li>Increased funding for OpenSSL development</li>
+<li>Birth of alternative TLS libraries (BoringSSL, LibreSSL)</li>
+</ul>
 <p><strong>Key Takeaway</strong>: Critical cryptographic libraries need proper funding, auditing, and architectural review.</p>
 <h3 id="case-study-ssltls-stripping-attacks">Case Study: SSL/TLS Stripping Attacks</h3>
 <p><strong>Attack</strong>: Moxie Marlinspike's sslstrip (2009) demonstrated converting HTTPS to HTTP</p>
@@ -3543,12 +3583,14 @@
 </tbody>
 </table>
 <hr />
-<p><strong>Quality Checks</strong>: 
-- [x] All claims cited from authoritative sources
-- [x] Cross-references validated
-- [x] Practical guidance included
-- [x] Examples are current and relevant
-- [x] Security considerations addressed</p>
+<p><strong>Quality Checks</strong>: </p>
+<ul>
+<li>[x] All claims cited from authoritative sources</li>
+<li>[x] Cross-references validated</li>
+<li>[x] Practical guidance included</li>
+<li>[x] Examples are current and relevant</li>
+<li>[x] Security considerations addressed</li>
+</ul>
 
 
 

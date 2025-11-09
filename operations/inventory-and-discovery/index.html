@@ -2486,59 +2486,75 @@
 <p><strong>Key principle</strong>: You cannot manage what you cannot see.</p>
 <h2 id="the-discovery-challenge">The Discovery Challenge</h2>
 <h3 id="scale-and-distribution">Scale and Distribution</h3>
-<p>Modern enterprises face certificate sprawl across:
-- <strong>Cloud infrastructure</strong>: AWS, Azure, GCP instances and services
-- <strong>Container platforms</strong>: Kubernetes clusters, Docker environments
-- <strong>Traditional infrastructure</strong>: Load balancers, web servers, application servers
-- <strong>Network devices</strong>: Firewalls, VPN concentrators, wireless controllers
-- <strong>Endpoints</strong>: Workstations, mobile devices, IoT sensors
-- <strong>Applications</strong>: Databases, message queues, API gateways
-- <strong>Development environments</strong>: CI/CD pipelines, testing infrastructure</p>
+<p>Modern enterprises face certificate sprawl across:</p>
+<ul>
+<li><strong>Cloud infrastructure</strong>: AWS, Azure, GCP instances and services</li>
+<li><strong>Container platforms</strong>: Kubernetes clusters, Docker environments</li>
+<li><strong>Traditional infrastructure</strong>: Load balancers, web servers, application servers</li>
+<li><strong>Network devices</strong>: Firewalls, VPN concentrators, wireless controllers</li>
+<li><strong>Endpoints</strong>: Workstations, mobile devices, IoT sensors</li>
+<li><strong>Applications</strong>: Databases, message queues, API gateways</li>
+<li><strong>Development environments</strong>: CI/CD pipelines, testing infrastructure</li>
+</ul>
 <p>A typical Fortune 500 organization manages 50,000 to 500,000+ certificates across these environments.</p>
 <h3 id="visibility-gaps">Visibility Gaps</h3>
-<p>Common blind spots include:
-- Certificates created outside centralized PKI systems
-- Self-signed certificates in development environments
-- Certificates embedded in application code or configuration
-- Short-lived certificates in dynamic infrastructure
-- Certificates on decommissioned but still-running systems
-- Shadow IT certificate deployments</p>
+<p>Common blind spots include:</p>
+<ul>
+<li>Certificates created outside centralized PKI systems</li>
+<li>Self-signed certificates in development environments</li>
+<li>Certificates embedded in application code or configuration</li>
+<li>Short-lived certificates in dynamic infrastructure</li>
+<li>Certificates on decommissioned but still-running systems</li>
+<li>Shadow IT certificate deployments</li>
+</ul>
 <h3 id="discovery-complexity">Discovery Complexity</h3>
-<p>Technical challenges:
-- <strong>Access control</strong>: Different teams control different infrastructure segments
-- <strong>Network segmentation</strong>: DMZs, private networks, cloud VPCs require different access patterns
-- <strong>Protocol diversity</strong>: TLS/SSL, code signing, email encryption, VPN use different discovery methods
-- <strong>Dynamic infrastructure</strong>: Containers and cloud instances appear and disappear constantly
-- <strong>Authentication requirements</strong>: Different systems require different credentials
-- <strong>Performance impact</strong>: Aggressive scanning can affect production systems</p>
+<p>Technical challenges:</p>
+<ul>
+<li><strong>Access control</strong>: Different teams control different infrastructure segments</li>
+<li><strong>Network segmentation</strong>: DMZs, private networks, cloud VPCs require different access patterns</li>
+<li><strong>Protocol diversity</strong>: TLS/SSL, code signing, email encryption, VPN use different discovery methods</li>
+<li><strong>Dynamic infrastructure</strong>: Containers and cloud instances appear and disappear constantly</li>
+<li><strong>Authentication requirements</strong>: Different systems require different credentials</li>
+<li><strong>Performance impact</strong>: Aggressive scanning can affect production systems</li>
+</ul>
 <h2 id="discovery-methods">Discovery Methods</h2>
 <h3 id="passive-discovery">Passive Discovery</h3>
-<p><strong>Network traffic analysis</strong>:
-- Monitor TLS handshakes to identify certificates in use
-- Capture SNI (Server Name Indication) data
-- Analyze certificate chains in transit
-- Identify certificate authorities being used</p>
-<p>Advantages:
-- No authentication required
-- Minimal system impact
-- Discovers certificates actually in use
-- Works across heterogeneous environments</p>
-<p>Limitations:
-- Only finds certificates actively serving traffic
-- Misses unused or backup certificates
-- Requires network tap or SPAN port access
-- May miss encrypted internal traffic</p>
-<p><strong>Log aggregation</strong>:
-- Parse web server logs for certificate information
-- Extract certificate data from load balancer logs
-- Analyze application logs for TLS errors
-- Monitor CA issuance logs</p>
+<p><strong>Network traffic analysis</strong>:</p>
+<ul>
+<li>Monitor TLS handshakes to identify certificates in use</li>
+<li>Capture SNI (Server Name Indication) data</li>
+<li>Analyze certificate chains in transit</li>
+<li>Identify certificate authorities being used</li>
+</ul>
+<p>Advantages:</p>
+<ul>
+<li>No authentication required</li>
+<li>Minimal system impact</li>
+<li>Discovers certificates actually in use</li>
+<li>Works across heterogeneous environments</li>
+</ul>
+<p>Limitations:</p>
+<ul>
+<li>Only finds certificates actively serving traffic</li>
+<li>Misses unused or backup certificates</li>
+<li>Requires network tap or SPAN port access</li>
+<li>May miss encrypted internal traffic</li>
+</ul>
+<p><strong>Log aggregation</strong>:</p>
+<ul>
+<li>Parse web server logs for certificate information</li>
+<li>Extract certificate data from load balancer logs</li>
+<li>Analyze application logs for TLS errors</li>
+<li>Monitor CA issuance logs</li>
+</ul>
 <h3 id="active-discovery">Active Discovery</h3>
-<p><strong>Network scanning</strong>:
-- Port scanning for TLS services (443, 8443, etc.)
-- Certificate retrieval via TLS connection
-- SNI-based virtual host enumeration
-- Certificate chain extraction</p>
+<p><strong>Network scanning</strong>:</p>
+<ul>
+<li>Port scanning for TLS services (443, 8443, etc.)</li>
+<li>Certificate retrieval via TLS connection</li>
+<li>SNI-based virtual host enumeration</li>
+<li>Certificate chain extraction</li>
+</ul>
 <p>Scan configurations:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">scan_profile</span><span class="p">:</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Enterprise</span><span class="nv"> </span><span class="s">TLS</span><span class="nv"> </span><span class="s">Discovery&quot;</span>
@@ -2563,11 +2579,13 @@
 <a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.1.50.0/24</span><span class="w">  </span><span class="c1"># Sensitive lab network</span>
 <a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.16.99.0/24</span><span class="w">  </span><span class="c1"># Critical production</span>
 </code></pre></div></p>
-<p><strong>API-based discovery</strong>:
-- Query cloud provider APIs (AWS Certificate Manager, Azure Key Vault)
-- Extract certificates from load balancer configurations
-- Read Kubernetes secrets and TLS ingress configurations
-- Query certificate management platforms</p>
+<p><strong>API-based discovery</strong>:</p>
+<ul>
+<li>Query cloud provider APIs (AWS Certificate Manager, Azure Key Vault)</li>
+<li>Extract certificates from load balancer configurations</li>
+<li>Read Kubernetes secrets and TLS ingress configurations</li>
+<li>Query certificate management platforms</li>
+</ul>
 <p>Example AWS discovery:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
@@ -2609,11 +2627,13 @@
 <a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>
 <a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>    <span class="k">return</span> <span class="n">certificates</span>
 </code></pre></div></p>
-<p><strong>Filesystem scanning</strong>:
-- Search for certificate file patterns (.pem, .crt, .cer, .pfx, .p12)
-- Parse configuration files for certificate paths
-- Extract certificates from Java keystores
-- Read from Windows certificate stores</p>
+<p><strong>Filesystem scanning</strong>:</p>
+<ul>
+<li>Search for certificate file patterns (.pem, .crt, .cer, .pfx, .p12)</li>
+<li>Parse configuration files for certificate paths</li>
+<li>Extract certificates from Java keystores</li>
+<li>Read from Windows certificate stores</li>
+</ul>
 <p>Filesystem search patterns:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Common certificate locations</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>/etc/ssl/certs/
@@ -2633,11 +2653,13 @@
 <a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>*.keystore
 <a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>*.truststore
 </code></pre></div></p>
-<p><strong>Agent-based discovery</strong>:
-- Deploy lightweight agents on endpoints
-- Query local certificate stores directly
-- Extract certificates from application configurations
-- Report to central inventory system</p>
+<p><strong>Agent-based discovery</strong>:</p>
+<ul>
+<li>Deploy lightweight agents on endpoints</li>
+<li>Query local certificate stores directly</li>
+<li>Extract certificates from application configurations</li>
+<li>Report to central inventory system</li>
+</ul>
 <p>Agent architecture:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>┌─────────────────────────────────────────┐
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>│          Central Inventory              │
@@ -2656,11 +2678,13 @@
 <a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>   └─────────┘   └─────────┘   └─────────┘
 </code></pre></div></p>
 <h3 id="hybrid-discovery">Hybrid Discovery</h3>
-<p><strong>Multi-method orchestration</strong>:
-- Combine passive and active techniques
-- Correlate findings across discovery methods
-- Validate API data with network scans
-- Cross-reference filesystem and runtime discoveries</p>
+<p><strong>Multi-method orchestration</strong>:</p>
+<ul>
+<li>Combine passive and active techniques</li>
+<li>Correlate findings across discovery methods</li>
+<li>Validate API data with network scans</li>
+<li>Cross-reference filesystem and runtime discoveries</li>
+</ul>
 <p>Strategy example:
 1. Use API discovery for known infrastructure (AWS, K8s)
 2. Perform network scanning to find unknown endpoints
@@ -2744,11 +2768,13 @@
 </code></pre></div></p>
 <h3 id="storage-and-indexing">Storage and Indexing</h3>
 <p><strong>Database schema considerations</strong>:</p>
-<p>Time-series data:
-- Certificate history over time
-- Discovery event logs
-- Expiry timeline projections
-- Compliance status changes</p>
+<p>Time-series data:</p>
+<ul>
+<li>Certificate history over time</li>
+<li>Discovery event logs</li>
+<li>Expiry timeline projections</li>
+<li>Compliance status changes</li>
+</ul>
 <p>Relational structure:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">-- Core certificate table</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">certificates</span><span class="w"> </span><span class="p">(</span>
@@ -2798,13 +2824,15 @@
 <a id="__codelineno-6-46" name="__codelineno-6-46" href="#__codelineno-6-46"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_location_owner</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">certificate_locations</span><span class="p">(</span><span class="n">owner_team</span><span class="p">);</span>
 </code></pre></div></p>
 <p><strong>Search and query capabilities</strong>:</p>
-<p>Critical queries:
-- Certificates expiring within N days
-- All certificates for a given hostname
-- Certificates issued by specific CA
-- Weak cryptography identification
-- Orphaned certificates (no active locations)
-- Duplicate certificates across environments</p>
+<p>Critical queries:</p>
+<ul>
+<li>Certificates expiring within N days</li>
+<li>All certificates for a given hostname</li>
+<li>Certificates issued by specific CA</li>
+<li>Weak cryptography identification</li>
+<li>Orphaned certificates (no active locations)</li>
+<li>Duplicate certificates across environments</li>
+</ul>
 <p>Example search interface:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">CertificateInventory</span><span class="p">:</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
@@ -2834,16 +2862,20 @@
 </code></pre></div></p>
 <h2 id="discovery-scheduling">Discovery Scheduling</h2>
 <h3 id="continuous-discovery">Continuous Discovery</h3>
-<p><strong>Real-time discovery</strong>:
-- Event-driven triggers (new host appears, configuration change)
-- Kubernetes admission controller integration
-- Cloud provider event streams (CloudTrail, Activity Log)
-- Infrastructure-as-code pipeline integration</p>
-<p><strong>Periodic scanning</strong>:
-- Full network scans: Weekly or monthly
-- Critical infrastructure: Daily
-- Cloud API queries: Hourly
-- Passive monitoring: Continuous</p>
+<p><strong>Real-time discovery</strong>:</p>
+<ul>
+<li>Event-driven triggers (new host appears, configuration change)</li>
+<li>Kubernetes admission controller integration</li>
+<li>Cloud provider event streams (CloudTrail, Activity Log)</li>
+<li>Infrastructure-as-code pipeline integration</li>
+</ul>
+<p><strong>Periodic scanning</strong>:</p>
+<ul>
+<li>Full network scans: Weekly or monthly</li>
+<li>Critical infrastructure: Daily</li>
+<li>Cloud API queries: Hourly</li>
+<li>Passive monitoring: Continuous</li>
+</ul>
 <p>Schedule example:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">discovery_schedule</span><span class="p">:</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">continuous</span><span class="p">:</span>
@@ -2875,16 +2907,20 @@
 </code></pre></div></p>
 <h3 id="discovery-performance">Discovery Performance</h3>
 <p><strong>Optimization strategies</strong>:</p>
-<p>Rate limiting:
-- Prevent network congestion
-- Avoid triggering IDS/IPS systems
-- Respect API rate limits
-- Distribute load across time windows</p>
-<p>Incremental discovery:
-- Track what's been scanned recently
-- Focus on changes since last scan
-- Use change detection mechanisms
-- Prioritize critical infrastructure</p>
+<p>Rate limiting:</p>
+<ul>
+<li>Prevent network congestion</li>
+<li>Avoid triggering IDS/IPS systems</li>
+<li>Respect API rate limits</li>
+<li>Distribute load across time windows</li>
+</ul>
+<p>Incremental discovery:</p>
+<ul>
+<li>Track what's been scanned recently</li>
+<li>Focus on changes since last scan</li>
+<li>Use change detection mechanisms</li>
+<li>Prioritize critical infrastructure</li>
+</ul>
 <p>Parallelization:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">concurrent.futures</span><span class="w"> </span><span class="kn">import</span> <span class="n">ThreadPoolExecutor</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
@@ -2916,21 +2952,27 @@
 </code></pre></div></p>
 <h2 id="inventory-enrichment">Inventory Enrichment</h2>
 <h3 id="contextual-data">Contextual Data</h3>
-<p><strong>Ownership attribution</strong>:
-- CMDB integration for asset owners
-- Cloud resource tags for team identification
-- Network subnet to team mappings
-- LDAP/Active Directory lookups for responsible parties</p>
-<p><strong>Business context</strong>:
-- Application criticality ratings
-- Compliance requirements by system
-- Data classification levels
-- SLA requirements</p>
-<p><strong>Technical metadata</strong>:
-- Certificate usage patterns (traffic volume)
-- Related infrastructure (load balancers, firewalls)
-- Deployment history (when installed, by whom)
-- Renewal history (success/failure patterns)</p>
+<p><strong>Ownership attribution</strong>:</p>
+<ul>
+<li>CMDB integration for asset owners</li>
+<li>Cloud resource tags for team identification</li>
+<li>Network subnet to team mappings</li>
+<li>LDAP/Active Directory lookups for responsible parties</li>
+</ul>
+<p><strong>Business context</strong>:</p>
+<ul>
+<li>Application criticality ratings</li>
+<li>Compliance requirements by system</li>
+<li>Data classification levels</li>
+<li>SLA requirements</li>
+</ul>
+<p><strong>Technical metadata</strong>:</p>
+<ul>
+<li>Certificate usage patterns (traffic volume)</li>
+<li>Related infrastructure (load balancers, firewalls)</li>
+<li>Deployment history (when installed, by whom)</li>
+<li>Renewal history (success/failure patterns)</li>
+</ul>
 <h3 id="risk-scoring">Risk Scoring</h3>
 <p>Automated risk assessment:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">calculate_risk_score</span><span class="p">(</span><span class="n">cert</span><span class="p">:</span> <span class="n">Certificate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
@@ -2972,11 +3014,13 @@
 </code></pre></div></p>
 <h2 id="deduplication-and-correlation">Deduplication and Correlation</h2>
 <h3 id="challenge-same-certificate-multiple-locations">Challenge: Same Certificate, Multiple Locations</h3>
-<p>A single certificate may be discovered:
-- Multiple times via different methods
-- Across different locations (servers, load balancers)
-- In different states (active, backup, archived)
-- With different metadata (ownership, context)</p>
+<p>A single certificate may be discovered:</p>
+<ul>
+<li>Multiple times via different methods</li>
+<li>Across different locations (servers, load balancers)</li>
+<li>In different states (active, backup, archived)</li>
+<li>With different metadata (ownership, context)</li>
+</ul>
 <h3 id="deduplication-strategy">Deduplication Strategy</h3>
 <p><strong>Primary key identification</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">deduplicate_certificates</span><span class="p">(</span><span class="n">discoveries</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Certificate</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Certificate</span><span class="p">]:</span>
@@ -3000,35 +3044,45 @@
 <a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>
 <a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">unique_by_fingerprint</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 </code></pre></div></p>
-<p><strong>Location consolidation</strong>:
-- Aggregate all locations where certificate appears
-- Track which discovery method found each location
-- Maintain most recent verification timestamp
-- Preserve ownership information for each location</p>
+<p><strong>Location consolidation</strong>:</p>
+<ul>
+<li>Aggregate all locations where certificate appears</li>
+<li>Track which discovery method found each location</li>
+<li>Maintain most recent verification timestamp</li>
+<li>Preserve ownership information for each location</li>
+</ul>
 <h3 id="correlation-analysis">Correlation Analysis</h3>
-<p><strong>Certificate relationships</strong>:
-- Certificates sharing same private key
-- Certificates in the same chain
-- Certificates from the same issuance request
-- Replacement certificates (renewed versions)</p>
-<p><strong>Infrastructure relationships</strong>:
-- Certificates used by related services
-- Load-balanced configurations
-- High-availability pairs
-- Disaster recovery duplicates</p>
+<p><strong>Certificate relationships</strong>:</p>
+<ul>
+<li>Certificates sharing same private key</li>
+<li>Certificates in the same chain</li>
+<li>Certificates from the same issuance request</li>
+<li>Replacement certificates (renewed versions)</li>
+</ul>
+<p><strong>Infrastructure relationships</strong>:</p>
+<ul>
+<li>Certificates used by related services</li>
+<li>Load-balanced configurations</li>
+<li>High-availability pairs</li>
+<li>Disaster recovery duplicates</li>
+</ul>
 <h2 id="integration-points">Integration Points</h2>
 <h3 id="cmdb-integration">CMDB Integration</h3>
 <p><strong>Bi-directional synchronization</strong>:</p>
-<p>From CMDB to inventory:
-- Asset ownership information
-- Configuration item relationships
-- Change management data
-- Business service mappings</p>
-<p>From inventory to CMDB:
-- Certificate configuration items
-- Certificate-to-asset relationships
-- Expiry and compliance status
-- Discovery timestamps</p>
+<p>From CMDB to inventory:</p>
+<ul>
+<li>Asset ownership information</li>
+<li>Configuration item relationships</li>
+<li>Change management data</li>
+<li>Business service mappings</li>
+</ul>
+<p>From inventory to CMDB:</p>
+<ul>
+<li>Certificate configuration items</li>
+<li>Certificate-to-asset relationships</li>
+<li>Expiry and compliance status</li>
+<li>Discovery timestamps</li>
+</ul>
 <p>Integration example:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">CMDBIntegration</span><span class="p">:</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">enrich_from_cmdb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cert</span><span class="p">:</span> <span class="n">Certificate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Certificate</span><span class="p">:</span>
@@ -3064,11 +3118,13 @@
 <a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmdb_client</span><span class="o">.</span><span class="n">create_ci</span><span class="p">(</span><span class="n">ci_data</span><span class="p">)</span>
 </code></pre></div></p>
 <h3 id="monitoring-integration">Monitoring Integration</h3>
-<p><strong>Alert generation</strong>:
-- Feed expiry data to monitoring systems
-- Generate alerts for compliance violations
-- Trigger incidents for high-risk certificates
-- Create tickets for renewal workflows</p>
+<p><strong>Alert generation</strong>:</p>
+<ul>
+<li>Feed expiry data to monitoring systems</li>
+<li>Generate alerts for compliance violations</li>
+<li>Trigger incidents for high-risk certificates</li>
+<li>Create tickets for renewal workflows</li>
+</ul>
 <p><strong>Metric export</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Prometheus metrics example</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">prometheus_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">Gauge</span><span class="p">,</span> <span class="n">Counter</span>
@@ -3102,11 +3158,13 @@
 <a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a><span class="p">)</span>
 </code></pre></div></p>
 <h3 id="workflow-integration">Workflow Integration</h3>
-<p><strong>Automated remediation</strong>:
-- Trigger renewal workflows for expiring certificates
-- Generate change requests for certificate replacement
-- Queue validation tasks for new discoveries
-- Schedule decommissioning for orphaned certificates</p>
+<p><strong>Automated remediation</strong>:</p>
+<ul>
+<li>Trigger renewal workflows for expiring certificates</li>
+<li>Generate change requests for certificate replacement</li>
+<li>Queue validation tasks for new discoveries</li>
+<li>Schedule decommissioning for orphaned certificates</li>
+</ul>
 <p><strong>Approval routing</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">WorkflowIntegration</span><span class="p">:</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">handle_expiring_certificate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cert</span><span class="p">:</span> <span class="n">Certificate</span><span class="p">):</span>
@@ -3132,21 +3190,27 @@
 </code></pre></div></p>
 <h2 id="inventory-accuracy">Inventory Accuracy</h2>
 <h3 id="data-quality-challenges">Data Quality Challenges</h3>
-<p><strong>Stale data</strong>:
-- Certificates removed but still in inventory
-- Hosts decommissioned but still showing locations
-- Changed configurations not yet discovered
-- Cached discovery results</p>
-<p><strong>False positives</strong>:
-- Test certificates in production scans
-- Backup certificates reported as active
-- Development certificates in staging
-- Certificates in archived configurations</p>
-<p><strong>False negatives</strong>:
-- Certificates behind authentication
-- Certificates in air-gapped networks
-- Certificates created outside discovery windows
-- Dynamic certificates with very short lifetimes</p>
+<p><strong>Stale data</strong>:</p>
+<ul>
+<li>Certificates removed but still in inventory</li>
+<li>Hosts decommissioned but still showing locations</li>
+<li>Changed configurations not yet discovered</li>
+<li>Cached discovery results</li>
+</ul>
+<p><strong>False positives</strong>:</p>
+<ul>
+<li>Test certificates in production scans</li>
+<li>Backup certificates reported as active</li>
+<li>Development certificates in staging</li>
+<li>Certificates in archived configurations</li>
+</ul>
+<p><strong>False negatives</strong>:</p>
+<ul>
+<li>Certificates behind authentication</li>
+<li>Certificates in air-gapped networks</li>
+<li>Certificates created outside discovery windows</li>
+<li>Dynamic certificates with very short lifetimes</li>
+</ul>
 <h3 id="verification-strategies">Verification Strategies</h3>
 <p><strong>Active verification</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">verify_certificate_in_use</span><span class="p">(</span><span class="n">location</span><span class="p">:</span> <span class="n">CertificateLocation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -3209,23 +3273,29 @@
 </code></pre></div></p>
 <h2 id="operational-patterns">Operational Patterns</h2>
 <h3 id="initial-inventory-build">Initial Inventory Build</h3>
-<p><strong>Phase 1: Quick wins (Week 1)</strong>:
-- Query cloud provider APIs
-- Scan DMZ and external-facing systems
-- Extract from certificate management platforms
-- Query load balancer configurations</p>
+<p><strong>Phase 1: Quick wins (Week 1)</strong>:</p>
+<ul>
+<li>Query cloud provider APIs</li>
+<li>Scan DMZ and external-facing systems</li>
+<li>Extract from certificate management platforms</li>
+<li>Query load balancer configurations</li>
+</ul>
 <p>Target: 60-70% coverage of production certificates</p>
-<p><strong>Phase 2: Deep discovery (Weeks 2-4)</strong>:
-- Full network scanning
-- Filesystem searches on critical servers
-- Agent deployment to key infrastructure
-- Integration with CMDB and asset management</p>
+<p><strong>Phase 2: Deep discovery (Weeks 2-4)</strong>:</p>
+<ul>
+<li>Full network scanning</li>
+<li>Filesystem searches on critical servers</li>
+<li>Agent deployment to key infrastructure</li>
+<li>Integration with CMDB and asset management</li>
+</ul>
 <p>Target: 85-90% coverage</p>
-<p><strong>Phase 3: Continuous improvement (Ongoing)</strong>:
-- Enable passive monitoring
-- Implement change-driven discovery
-- Expand agent deployment
-- Refine search patterns based on gaps</p>
+<p><strong>Phase 3: Continuous improvement (Ongoing)</strong>:</p>
+<ul>
+<li>Enable passive monitoring</li>
+<li>Implement change-driven discovery</li>
+<li>Expand agent deployment</li>
+<li>Refine search patterns based on gaps</li>
+</ul>
 <p>Target: 95%+ coverage</p>
 <h3 id="maintenance-operations">Maintenance Operations</h3>
 <p><strong>Regular cleanup</strong>:
@@ -3253,39 +3323,49 @@
 <a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a>    <span class="c1"># Archive expired certificates</span>
 <a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a>    <span class="n">archive_expired_certificates</span><span class="p">(</span><span class="n">expired_for_days</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
 </code></pre></div></p>
-<p><strong>Quality metrics</strong>:
-- Coverage percentage (discovered vs. expected)
-- Verification freshness (% verified in last 7 days)
-- Accuracy rate (verified as active vs. total)
-- Discovery lag (time from deployment to discovery)
-- False positive rate
-- False negative rate (from manual audit sampling)</p>
+<p><strong>Quality metrics</strong>:</p>
+<ul>
+<li>Coverage percentage (discovered vs. expected)</li>
+<li>Verification freshness (% verified in last 7 days)</li>
+<li>Accuracy rate (verified as active vs. total)</li>
+<li>Discovery lag (time from deployment to discovery)</li>
+<li>False positive rate</li>
+<li>False negative rate (from manual audit sampling)</li>
+</ul>
 <h2 id="reporting-and-dashboards">Reporting and Dashboards</h2>
 <h3 id="executive-dashboard">Executive Dashboard</h3>
-<p>Key metrics:
-- Total certificates under management
-- Certificates expiring in next 30/60/90 days
-- Expired certificates count
-- Weak cryptography count
-- Compliance violations
-- High-risk certificate count</p>
-<p><strong>Trends over time</strong>:
-- Certificate population growth
-- Expiry rate vs. renewal rate
-- Time-to-discovery for new certificates
-- Discovery coverage percentage</p>
+<p>Key metrics:</p>
+<ul>
+<li>Total certificates under management</li>
+<li>Certificates expiring in next 30/60/90 days</li>
+<li>Expired certificates count</li>
+<li>Weak cryptography count</li>
+<li>Compliance violations</li>
+<li>High-risk certificate count</li>
+</ul>
+<p><strong>Trends over time</strong>:</p>
+<ul>
+<li>Certificate population growth</li>
+<li>Expiry rate vs. renewal rate</li>
+<li>Time-to-discovery for new certificates</li>
+<li>Discovery coverage percentage</li>
+</ul>
 <h3 id="operational-dashboard">Operational Dashboard</h3>
-<p><strong>Real-time views</strong>:
-- Recent discoveries (last 24 hours)
-- Verification failures
-- Discovery job status
-- Active alerts and incidents</p>
-<p><strong>Detailed breakdowns</strong>:
-- Certificates by team/business unit
-- Certificates by environment
-- Certificates by issuing CA
-- Certificates by cryptographic algorithm
-- Certificates by cloud provider/region</p>
+<p><strong>Real-time views</strong>:</p>
+<ul>
+<li>Recent discoveries (last 24 hours)</li>
+<li>Verification failures</li>
+<li>Discovery job status</li>
+<li>Active alerts and incidents</li>
+</ul>
+<p><strong>Detailed breakdowns</strong>:</p>
+<ul>
+<li>Certificates by team/business unit</li>
+<li>Certificates by environment</li>
+<li>Certificates by issuing CA</li>
+<li>Certificates by cryptographic algorithm</li>
+<li>Certificates by cloud provider/region</li>
+</ul>
 <h3 id="compliance-reporting">Compliance Reporting</h3>
 <p>Required for audits:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">generate_compliance_report</span><span class="p">(</span><span class="n">policy</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Report</span><span class="p">:</span>
@@ -3319,67 +3399,87 @@
 </code></pre></div></p>
 <h2 id="best-practices">Best Practices</h2>
 <h3 id="dos">Do's</h3>
-<p><strong>Comprehensive coverage</strong>:
-- Use multiple discovery methods for redundancy
-- Prioritize critical infrastructure for deep discovery
-- Implement both scheduled and event-driven discovery
-- Maintain discovery method diversity</p>
-<p><strong>Data accuracy</strong>:
-- Regularly verify certificate locations
-- Implement confidence scoring
-- Perform manual audits to identify gaps
-- Clean up stale data systematically</p>
-<p><strong>Integration</strong>:
-- Connect inventory to monitoring and alerting
-- Synchronize with CMDB for ownership data
-- Feed compliance reporting from inventory
-- Trigger workflows from inventory insights</p>
-<p><strong>Performance</strong>:
-- Implement rate limiting to avoid network impact
-- Use incremental discovery where possible
-- Cache API results appropriately
-- Optimize database queries with proper indexing</p>
+<p><strong>Comprehensive coverage</strong>:</p>
+<ul>
+<li>Use multiple discovery methods for redundancy</li>
+<li>Prioritize critical infrastructure for deep discovery</li>
+<li>Implement both scheduled and event-driven discovery</li>
+<li>Maintain discovery method diversity</li>
+</ul>
+<p><strong>Data accuracy</strong>:</p>
+<ul>
+<li>Regularly verify certificate locations</li>
+<li>Implement confidence scoring</li>
+<li>Perform manual audits to identify gaps</li>
+<li>Clean up stale data systematically</li>
+</ul>
+<p><strong>Integration</strong>:</p>
+<ul>
+<li>Connect inventory to monitoring and alerting</li>
+<li>Synchronize with CMDB for ownership data</li>
+<li>Feed compliance reporting from inventory</li>
+<li>Trigger workflows from inventory insights</li>
+</ul>
+<p><strong>Performance</strong>:</p>
+<ul>
+<li>Implement rate limiting to avoid network impact</li>
+<li>Use incremental discovery where possible</li>
+<li>Cache API results appropriately</li>
+<li>Optimize database queries with proper indexing</li>
+</ul>
 <h3 id="donts">Don'ts</h3>
-<p><strong>Avoid aggressive scanning</strong>:
-- Don't scan production systems during business hours without approval
-- Don't exceed API rate limits
-- Don't trigger IDS/IPS systems with aggressive probes
-- Don't impact application performance with filesystem scans</p>
-<p><strong>Don't trust single sources</strong>:
-- Don't rely solely on self-reported inventory
-- Don't assume APIs are complete
-- Don't skip verification of passive discoveries
-- Don't ignore discovery method blind spots</p>
-<p><strong>Avoid data quality issues</strong>:
-- Don't keep unverified data indefinitely
-- Don't ignore duplicate detection
-- Don't skip ownership attribution
-- Don't neglect contextual enrichment</p>
+<p><strong>Avoid aggressive scanning</strong>:</p>
+<ul>
+<li>Don't scan production systems during business hours without approval</li>
+<li>Don't exceed API rate limits</li>
+<li>Don't trigger IDS/IPS systems with aggressive probes</li>
+<li>Don't impact application performance with filesystem scans</li>
+</ul>
+<p><strong>Don't trust single sources</strong>:</p>
+<ul>
+<li>Don't rely solely on self-reported inventory</li>
+<li>Don't assume APIs are complete</li>
+<li>Don't skip verification of passive discoveries</li>
+<li>Don't ignore discovery method blind spots</li>
+</ul>
+<p><strong>Avoid data quality issues</strong>:</p>
+<ul>
+<li>Don't keep unverified data indefinitely</li>
+<li>Don't ignore duplicate detection</li>
+<li>Don't skip ownership attribution</li>
+<li>Don't neglect contextual enrichment</li>
+</ul>
 <h2 id="common-challenges-and-solutions">Common Challenges and Solutions</h2>
 <h3 id="challenge-shadow-it-certificates">Challenge: Shadow IT Certificates</h3>
 <p><strong>Problem</strong>: Teams create certificates outside central PKI, often using public CAs or self-signed certificates.</p>
-<p><strong>Solution</strong>:
-- Implement network-based discovery to find all certificates regardless of source
-- Use passive monitoring to identify certificates as they're used
-- Establish clear policies and communication about approved certificate sources
-- Provide easy-to-use self-service certificate issuance as an alternative
-- Monitor public CT logs for unauthorized certificates on company domains</p>
+<p><strong>Solution</strong>:</p>
+<ul>
+<li>Implement network-based discovery to find all certificates regardless of source</li>
+<li>Use passive monitoring to identify certificates as they're used</li>
+<li>Establish clear policies and communication about approved certificate sources</li>
+<li>Provide easy-to-use self-service certificate issuance as an alternative</li>
+<li>Monitor public CT logs for unauthorized certificates on company domains</li>
+</ul>
 <h3 id="challenge-dynamic-infrastructure">Challenge: Dynamic Infrastructure</h3>
 <p><strong>Problem</strong>: Container platforms and cloud auto-scaling create and destroy infrastructure rapidly, making inventory tracking difficult.</p>
-<p><strong>Solution</strong>:
-- Integrate with orchestration platforms (Kubernetes, ECS) at the API level
-- Implement event-driven discovery triggered by infrastructure changes
-- Focus on certificate templates and policies rather than individual instances
-- Use short-lived certificates that don't require long-term tracking
-- Aggregate metrics at the service level rather than instance level</p>
+<p><strong>Solution</strong>:</p>
+<ul>
+<li>Integrate with orchestration platforms (Kubernetes, ECS) at the API level</li>
+<li>Implement event-driven discovery triggered by infrastructure changes</li>
+<li>Focus on certificate templates and policies rather than individual instances</li>
+<li>Use short-lived certificates that don't require long-term tracking</li>
+<li>Aggregate metrics at the service level rather than instance level</li>
+</ul>
 <h3 id="challenge-access-restrictions">Challenge: Access Restrictions</h3>
 <p><strong>Problem</strong>: Security boundaries, network segmentation, and access controls prevent comprehensive discovery.</p>
-<p><strong>Solution</strong>:
-- Deploy distributed discovery agents within each security zone
-- Coordinate with security teams for approved access methods
-- Use API-based discovery where available to avoid network scanning
-- Implement agent-based discovery on systems where network access is restricted
-- Maintain separate inventories per zone with aggregation at reporting layer</p>
+<p><strong>Solution</strong>:</p>
+<ul>
+<li>Deploy distributed discovery agents within each security zone</li>
+<li>Coordinate with security teams for approved access methods</li>
+<li>Use API-based discovery where available to avoid network scanning</li>
+<li>Implement agent-based discovery on systems where network access is restricted</li>
+<li>Maintain separate inventories per zone with aggregation at reporting layer</li>
+</ul>
 <h3 id="challenge-performance-at-scale">Challenge: Performance at Scale</h3>
 <p><strong>Problem</strong>: Scanning hundreds of thousands of hosts and certificates becomes time and resource intensive.</p>
 <p><strong>Solution</strong>:
@@ -3413,28 +3513,36 @@
 </code></pre></div></p>
 <h2 id="future-directions">Future Directions</h2>
 <h3 id="machine-learning-for-discovery">Machine Learning for Discovery</h3>
-<p><strong>Predictive patterns</strong>:
-- Learn typical certificate deployment patterns
-- Identify anomalous certificate usage
-- Predict where certificates are likely to be found
-- Suggest new discovery targets based on infrastructure patterns</p>
-<p><strong>Automated classification</strong>:
-- Automatically categorize certificates by usage type
-- Identify certificate purposes from context
-- Cluster related certificates
-- Detect certificate sprawl patterns</p>
+<p><strong>Predictive patterns</strong>:</p>
+<ul>
+<li>Learn typical certificate deployment patterns</li>
+<li>Identify anomalous certificate usage</li>
+<li>Predict where certificates are likely to be found</li>
+<li>Suggest new discovery targets based on infrastructure patterns</li>
+</ul>
+<p><strong>Automated classification</strong>:</p>
+<ul>
+<li>Automatically categorize certificates by usage type</li>
+<li>Identify certificate purposes from context</li>
+<li>Cluster related certificates</li>
+<li>Detect certificate sprawl patterns</li>
+</ul>
 <h3 id="service-mesh-integration">Service Mesh Integration</h3>
-<p>As service mesh adoption grows:
-- Integrate with Istio, Linkerd certificate management
-- Discover sidecar proxy certificates
-- Track mutual TLS configurations
-- Monitor certificate rotation in service mesh</p>
+<p>As service mesh adoption grows:</p>
+<ul>
+<li>Integrate with Istio, Linkerd certificate management</li>
+<li>Discover sidecar proxy certificates</li>
+<li>Track mutual TLS configurations</li>
+<li>Monitor certificate rotation in service mesh</li>
+</ul>
 <h3 id="zero-trust-architecture">Zero Trust Architecture</h3>
-<p>Discovery in zero trust:
-- Track certificate-based authentication everywhere
-- Monitor device certificates and endpoint certificates
-- Integrate with identity providers
-- Discover certificates used in continuous authentication</p>
+<p>Discovery in zero trust:</p>
+<ul>
+<li>Track certificate-based authentication everywhere</li>
+<li>Monitor device certificates and endpoint certificates</li>
+<li>Integrate with identity providers</li>
+<li>Discover certificates used in continuous authentication</li>
+</ul>
 <h2 id="conclusion">Conclusion</h2>
 <p>Certificate inventory and discovery is not a one-time project but an ongoing operational capability. Comprehensive visibility enables everything else in PKI operations: you cannot renew what you don't know exists, you cannot comply with policies for certificates you haven't discovered, and you cannot respond to vulnerabilities in certificates you can't find.</p>
 <p>The investment in robust discovery pays dividends across the entire PKI lifecycle: reduced outages from unexpected expirations, faster response to security issues, improved compliance posture, and transformation of PKI from cost center to strategic capability.</p>

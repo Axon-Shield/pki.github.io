@@ -2526,10 +2526,12 @@
 - <strong>Serial Number</strong>: Unique identifier of revoked certificate
 - <strong>Revocation Date</strong>: When certificate was revoked
 - <strong>Reason Code</strong>: Why certificate was revoked (optional)</p>
-<p><strong>Extensions</strong>:
-- <strong>CRL Number</strong>: Monotonically increasing number for tracking
-- <strong>Authority Key Identifier</strong>: Identifies CA that signed CRL
-- <strong>Issuing Distribution Point</strong>: Scope of CRL (which certificates it covers)</p>
+<p><strong>Extensions</strong>:</p>
+<ul>
+<li><strong>CRL Number</strong>: Monotonically increasing number for tracking</li>
+<li><strong>Authority Key Identifier</strong>: Identifies CA that signed CRL</li>
+<li><strong>Issuing Distribution Point</strong>: Scope of CRL (which certificates it covers)</li>
+</ul>
 <h4 id="revocation-reason-codes">Revocation Reason Codes</h4>
 <p>Defined in RFC 5280[^2], reasons explain why certificate revoked:</p>
 <table>
@@ -2606,23 +2608,31 @@
 </table>
 <p><strong>Note</strong>: <code>certificateHold</code> (6) is the only reversible revocation. Once a certificate is revoked with any other reason, it cannot be un-revoked.</p>
 <h4 id="crl-types">CRL Types</h4>
-<p><strong>Base CRL</strong>:
-- Complete list of all revoked certificates
-- Issued periodically (daily, weekly)
-- Can grow very large for CAs with many revocations</p>
-<p><strong>Delta CRL</strong>:
-- Contains only changes since last base CRL
-- Smaller size, more frequent updates
-- References base CRL via Base CRL Number extension
-- Client must obtain both base and delta</p>
-<p><strong>Indirect CRL</strong>:
-- Published by entity other than certificate issuer
-- Certificate Issuer extension identifies actual issuer
-- Enables centralized CRL distribution</p>
-<p><strong>Partitioned CRL</strong>:
-- CRL divided into multiple segments
-- Issuing Distribution Point extension specifies partition
-- Reduces download size for clients</p>
+<p><strong>Base CRL</strong>:</p>
+<ul>
+<li>Complete list of all revoked certificates</li>
+<li>Issued periodically (daily, weekly)</li>
+<li>Can grow very large for CAs with many revocations</li>
+</ul>
+<p><strong>Delta CRL</strong>:</p>
+<ul>
+<li>Contains only changes since last base CRL</li>
+<li>Smaller size, more frequent updates</li>
+<li>References base CRL via Base CRL Number extension</li>
+<li>Client must obtain both base and delta</li>
+</ul>
+<p><strong>Indirect CRL</strong>:</p>
+<ul>
+<li>Published by entity other than certificate issuer</li>
+<li>Certificate Issuer extension identifies actual issuer</li>
+<li>Enables centralized CRL distribution</li>
+</ul>
+<p><strong>Partitioned CRL</strong>:</p>
+<ul>
+<li>CRL divided into multiple segments</li>
+<li>Issuing Distribution Point extension specifies partition</li>
+<li>Reduces download size for clients</li>
+</ul>
 <h4 id="crl-distribution-points-cdp">CRL Distribution Points (CDP)</h4>
 <p>Certificates include CRL Distribution Points extension indicating where to obtain CRLs:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>X509v3 CRL Distribution Points:
@@ -2630,22 +2640,28 @@
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>      URI:http://crl.example.com/ExampleCA.crl
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>      URI:ldap://ldap.example.com/cn=ExampleCA,ou=CAs,o=Example?certificateRevocationList
 </code></pre></div>
-<p><strong>Protocol Support</strong>:
-- <strong>HTTP</strong>: Most common, simple download
-- <strong>LDAP</strong>: Directory service access
-- <strong>FTP</strong>: Rarely used
-- <strong>File</strong>: Local file system (internal use only)</p>
+<p><strong>Protocol Support</strong>:</p>
+<ul>
+<li><strong>HTTP</strong>: Most common, simple download</li>
+<li><strong>LDAP</strong>: Directory service access</li>
+<li><strong>FTP</strong>: Rarely used</li>
+<li><strong>File</strong>: Local file system (internal use only)</li>
+</ul>
 <h4 id="crl-advantages-and-disadvantages">CRL Advantages and Disadvantages</h4>
-<p><strong>Advantages</strong>:
-- <strong>Simple</strong>: Easy to implement and understand
-- <strong>Offline</strong>: Can download and cache for offline validation
-- <strong>Privacy</strong>: No per-certificate queries reveal which sites visited
-- <strong>Deterministic</strong>: Same CRL for all validators at same time</p>
-<p><strong>Disadvantages</strong>:
-- <strong>Latency</strong>: Revocations not visible until next CRL published
-- <strong>Size</strong>: Can grow to megabytes for large CAs
-- <strong>Bandwidth</strong>: Every client downloads entire list
-- <strong>Scalability</strong>: Doesn't scale well for high-revocation-rate CAs</p>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li><strong>Simple</strong>: Easy to implement and understand</li>
+<li><strong>Offline</strong>: Can download and cache for offline validation</li>
+<li><strong>Privacy</strong>: No per-certificate queries reveal which sites visited</li>
+<li><strong>Deterministic</strong>: Same CRL for all validators at same time</li>
+</ul>
+<p><strong>Disadvantages</strong>:</p>
+<ul>
+<li><strong>Latency</strong>: Revocations not visible until next CRL published</li>
+<li><strong>Size</strong>: Can grow to megabytes for large CAs</li>
+<li><strong>Bandwidth</strong>: Every client downloads entire list</li>
+<li><strong>Scalability</strong>: Doesn't scale well for high-revocation-rate CAs</li>
+</ul>
 <h3 id="online-certificate-status-protocol-ocsp">Online Certificate Status Protocol (OCSP)</h3>
 <p>OCSP provides real-time certificate status queries via request-response protocol.</p>
 <h4 id="ocsp-request-response-flow">OCSP Request-Response Flow</h4>
@@ -2687,11 +2703,13 @@
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>  Request Extensions:
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>      Nonce: F1E2D3C4B5A69788... (optional)
 </code></pre></div></p>
-<p><strong>Key Components</strong>:
-- <strong>Issuer Name Hash</strong>: SHA-256 hash of certificate issuer DN
-- <strong>Issuer Key Hash</strong>: SHA-256 hash of CA public key
-- <strong>Serial Number</strong>: Certificate to check
-- <strong>Nonce</strong>: Random value to prevent replay attacks (optional)</p>
+<p><strong>Key Components</strong>:</p>
+<ul>
+<li><strong>Issuer Name Hash</strong>: SHA-256 hash of certificate issuer DN</li>
+<li><strong>Issuer Key Hash</strong>: SHA-256 hash of CA public key</li>
+<li><strong>Serial Number</strong>: Certificate to check</li>
+<li><strong>Nonce</strong>: Random value to prevent replay attacks (optional)</li>
+</ul>
 <h4 id="ocsp-response-format">OCSP Response Format</h4>
 <p><strong>Response Structure</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>OCSP Response:
@@ -2723,24 +2741,30 @@
 <p><strong>Unknown</strong>: Responder doesn't know about this certificate
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Cert Status: unknown
 </code></pre></div></p>
-<p><strong>Response Status Codes</strong>:
-- <strong>successful (0)</strong>: Valid response included
-- <strong>malformedRequest (1)</strong>: Request syntax error
-- <strong>internalError (2)</strong>: Responder internal error
-- <strong>tryLater (3)</strong>: Service temporarily unavailable
-- <strong>sigRequired (5)</strong>: Request must be signed
-- <strong>unauthorized (6)</strong>: Requestor not authorized</p>
+<p><strong>Response Status Codes</strong>:</p>
+<ul>
+<li><strong>successful (0)</strong>: Valid response included</li>
+<li><strong>malformedRequest (1)</strong>: Request syntax error</li>
+<li><strong>internalError (2)</strong>: Responder internal error</li>
+<li><strong>tryLater (3)</strong>: Service temporarily unavailable</li>
+<li><strong>sigRequired (5)</strong>: Request must be signed</li>
+<li><strong>unauthorized (6)</strong>: Requestor not authorized</li>
+</ul>
 <h4 id="ocsp-advantages-and-disadvantages">OCSP Advantages and Disadvantages</h4>
-<p><strong>Advantages</strong>:
-- <strong>Real-time</strong>: Near-instant revocation visibility
-- <strong>Efficient</strong>: Only query status of certificates actually needed
-- <strong>Smaller</strong>: Responses much smaller than CRLs
-- <strong>Dynamic</strong>: Can implement custom policies per request</p>
-<p><strong>Disadvantages</strong>:
-- <strong>Privacy</strong>: CA sees which certificates clients are validating
-- <strong>Availability</strong>: Requires network connection and OCSP responder availability
-- <strong>Performance</strong>: Network round-trip adds latency to TLS handshake
-- <strong>Reliability</strong>: OCSP responder failure can prevent certificate validation</p>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li><strong>Real-time</strong>: Near-instant revocation visibility</li>
+<li><strong>Efficient</strong>: Only query status of certificates actually needed</li>
+<li><strong>Smaller</strong>: Responses much smaller than CRLs</li>
+<li><strong>Dynamic</strong>: Can implement custom policies per request</li>
+</ul>
+<p><strong>Disadvantages</strong>:</p>
+<ul>
+<li><strong>Privacy</strong>: CA sees which certificates clients are validating</li>
+<li><strong>Availability</strong>: Requires network connection and OCSP responder availability</li>
+<li><strong>Performance</strong>: Network round-trip adds latency to TLS handshake</li>
+<li><strong>Reliability</strong>: OCSP responder failure can prevent certificate validation</li>
+</ul>
 <h3 id="ocsp-stapling">OCSP Stapling</h3>
 <p>OCSP Stapling (formally "TLS Certificate Status Request extension") addresses OCSP privacy and performance concerns.</p>
 <h4 id="how-ocsp-stapling-works">How OCSP Stapling Works</h4>
@@ -2840,29 +2864,39 @@
 <p>Critical decision: what happens when revocation check fails?</p>
 <h4 id="soft-fail-default-in-most-browsers">Soft-Fail (Default in Most Browsers)</h4>
 <p><strong>Behavior</strong>: If revocation check fails, proceed anyway</p>
-<p><strong>Rationale</strong>:
-- OCSP responders frequently have availability issues
-- Hard-fail would break many legitimate sites
-- Balance security against usability</p>
-<p><strong>Example Scenarios</strong>:
-- OCSP responder timeout: <strong>Accept certificate</strong>
-- CRL download fails: <strong>Accept certificate</strong>
-- OCSP response indicates "tryLater": <strong>Accept certificate</strong></p>
+<p><strong>Rationale</strong>:</p>
+<ul>
+<li>OCSP responders frequently have availability issues</li>
+<li>Hard-fail would break many legitimate sites</li>
+<li>Balance security against usability</li>
+</ul>
+<p><strong>Example Scenarios</strong>:</p>
+<ul>
+<li>OCSP responder timeout: <strong>Accept certificate</strong></li>
+<li>CRL download fails: <strong>Accept certificate</strong></li>
+<li>OCSP response indicates "tryLater": <strong>Accept certificate</strong></li>
+</ul>
 <p><strong>Security Trade-off</strong>: Attackers can cause revocation check failures (DoS OCSP responder) to make revoked certificates accepted</p>
 <h4 id="hard-fail">Hard-Fail</h4>
 <p><strong>Behavior</strong>: If revocation check fails, reject certificate</p>
-<p><strong>Rationale</strong>:
-- Security over availability
-- Don't trust certificates if can't verify revocation status</p>
-<p><strong>Use Cases</strong>:
-- High-security environments
-- Internal PKI with reliable infrastructure
-- Certificate pinning scenarios
-- OCSP Must-Staple certificates</p>
-<p><strong>Example Scenarios</strong>:
-- OCSP responder timeout: <strong>Reject certificate</strong>
-- CRL download fails: <strong>Reject certificate</strong>
-- OCSP response indicates "tryLater": <strong>Reject certificate</strong></p>
+<p><strong>Rationale</strong>:</p>
+<ul>
+<li>Security over availability</li>
+<li>Don't trust certificates if can't verify revocation status</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>High-security environments</li>
+<li>Internal PKI with reliable infrastructure</li>
+<li>Certificate pinning scenarios</li>
+<li>OCSP Must-Staple certificates</li>
+</ul>
+<p><strong>Example Scenarios</strong>:</p>
+<ul>
+<li>OCSP responder timeout: <strong>Reject certificate</strong></li>
+<li>CRL download fails: <strong>Reject certificate</strong></li>
+<li>OCSP response indicates "tryLater": <strong>Reject certificate</strong></li>
+</ul>
 <p><strong>Configuration</strong> (Example):
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># OpenSSL hard-fail verification</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>openssl<span class="w"> </span>verify<span class="w"> </span>-CRLfile<span class="w"> </span>crl.pem<span class="w"> </span>-crl_check_all<span class="w"> </span>server.crt
@@ -2871,46 +2905,64 @@
 <h3 id="the-revocation-problem">The Revocation Problem</h3>
 <p>The persistent challenge of effective certificate revocation.</p>
 <h4 id="key-issues">Key Issues</h4>
-<p><strong>Browser Soft-Fail</strong>:
-- Most browsers default to soft-fail
-- Attackers can exploit by blocking revocation checks
-- Security vs. availability trade-off</p>
-<p><strong>CRL Scalability</strong>:
-- CRLs can grow to many megabytes
-- Clients must download entire list
-- Inefficient for CAs with many certificates</p>
-<p><strong>OCSP Privacy</strong>:
-- Every certificate validation reveals sites visited
-- Without stapling, CA tracks user browsing
-- Privacy-conscious users may disable OCSP</p>
-<p><strong>OCSP Performance</strong>:
-- Network latency for each TLS connection
-- OCSP responder must handle high query volume
-- Failures impact certificate validation</p>
-<p><strong>Incomplete Checking</strong>:
-- Many applications don't check revocation at all
-- Legacy systems lack OCSP support
-- Configuration errors disable checking</p>
+<p><strong>Browser Soft-Fail</strong>:</p>
+<ul>
+<li>Most browsers default to soft-fail</li>
+<li>Attackers can exploit by blocking revocation checks</li>
+<li>Security vs. availability trade-off</li>
+</ul>
+<p><strong>CRL Scalability</strong>:</p>
+<ul>
+<li>CRLs can grow to many megabytes</li>
+<li>Clients must download entire list</li>
+<li>Inefficient for CAs with many certificates</li>
+</ul>
+<p><strong>OCSP Privacy</strong>:</p>
+<ul>
+<li>Every certificate validation reveals sites visited</li>
+<li>Without stapling, CA tracks user browsing</li>
+<li>Privacy-conscious users may disable OCSP</li>
+</ul>
+<p><strong>OCSP Performance</strong>:</p>
+<ul>
+<li>Network latency for each TLS connection</li>
+<li>OCSP responder must handle high query volume</li>
+<li>Failures impact certificate validation</li>
+</ul>
+<p><strong>Incomplete Checking</strong>:</p>
+<ul>
+<li>Many applications don't check revocation at all</li>
+<li>Legacy systems lack OCSP support</li>
+<li>Configuration errors disable checking</li>
+</ul>
 <h4 id="proposed-solutions">Proposed Solutions</h4>
-<p><strong>Certificate Transparency</strong>:
-- Public logs of all issued certificates
-- Domain owners monitor for unexpected certificates
-- Detects misissuance, doesn't prevent it
-- Complementary to revocation</p>
-<p><strong>Short-Lived Certificates</strong>:
-- Issue certificates with short validity (hours/days)
-- No need for revocation (expires quickly)
-- Requires reliable automation
-- Let's Encrypt model: 90-day certificates</p>
-<p><strong>CRLite</strong> (Mozilla):
-- Compressed, space-efficient revocation data
-- Aggregates CRL data from all CAs
-- Ships with Firefox updates
-- Enables hard-fail without performance penalty</p>
-<p><strong>OCSP Stapling + Must-Staple</strong>:
-- Mandatory stapling prevents soft-fail exploitation
-- Server responsible for OCSP queries
-- Requires careful operational planning</p>
+<p><strong>Certificate Transparency</strong>:</p>
+<ul>
+<li>Public logs of all issued certificates</li>
+<li>Domain owners monitor for unexpected certificates</li>
+<li>Detects misissuance, doesn't prevent it</li>
+<li>Complementary to revocation</li>
+</ul>
+<p><strong>Short-Lived Certificates</strong>:</p>
+<ul>
+<li>Issue certificates with short validity (hours/days)</li>
+<li>No need for revocation (expires quickly)</li>
+<li>Requires reliable automation</li>
+<li>Let's Encrypt model: 90-day certificates</li>
+</ul>
+<p><strong>CRLite</strong> (Mozilla):</p>
+<ul>
+<li>Compressed, space-efficient revocation data</li>
+<li>Aggregates CRL data from all CAs</li>
+<li>Ships with Firefox updates</li>
+<li>Enables hard-fail without performance penalty</li>
+</ul>
+<p><strong>OCSP Stapling + Must-Staple</strong>:</p>
+<ul>
+<li>Mandatory stapling prevents soft-fail exploitation</li>
+<li>Server responsible for OCSP queries</li>
+<li>Requires careful operational planning</li>
+</ul>
 <h2 id="practical-guidance">Practical Guidance</h2>
 <h3 id="implementing-revocation-checking">Implementing Revocation Checking</h3>
 <h4 id="openssl-certificate-verification">OpenSSL Certificate Verification</h4>
@@ -2994,19 +3046,25 @@
 </code></pre></div></p>
 <h3 id="operating-an-ocsp-responder">Operating an OCSP Responder</h3>
 <h4 id="architecture-considerations">Architecture Considerations</h4>
-<p><strong>High Availability</strong>:
-- Multiple responder instances behind load balancer
-- Geographic distribution for low latency
-- Database replication for revocation status</p>
-<p><strong>Performance Requirements</strong>:
-- Handle thousands of queries per second
-- Millisecond response times
-- Minimal memory and CPU overhead</p>
-<p><strong>Security</strong>:
-- Dedicated OCSP signing key (not CA key)
-- Responder key access controls
-- Rate limiting and DoS protection
-- Audit logging of all queries</p>
+<p><strong>High Availability</strong>:</p>
+<ul>
+<li>Multiple responder instances behind load balancer</li>
+<li>Geographic distribution for low latency</li>
+<li>Database replication for revocation status</li>
+</ul>
+<p><strong>Performance Requirements</strong>:</p>
+<ul>
+<li>Handle thousands of queries per second</li>
+<li>Millisecond response times</li>
+<li>Minimal memory and CPU overhead</li>
+</ul>
+<p><strong>Security</strong>:</p>
+<ul>
+<li>Dedicated OCSP signing key (not CA key)</li>
+<li>Responder key access controls</li>
+<li>Rate limiting and DoS protection</li>
+<li>Audit logging of all queries</li>
+</ul>
 <h4 id="ocsp-responder-implementation">OCSP Responder Implementation</h4>
 <p><strong>Using OpenSSL ocsp</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Generate OCSP responder certificate</span>
@@ -3032,11 +3090,13 @@
 <a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>
 <a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a><span class="c1"># Responder listens on http://localhost:8080</span>
 </code></pre></div></p>
-<p><strong>Production OCSP Responders</strong>:
-- <strong>Boulder</strong> (Let's Encrypt): High-performance, Go-based
-- <strong>EJBCA</strong>: Enterprise PKI with built-in OCSP
-- <strong>OpenXPKI</strong>: Open-source PKI suite with OCSP
-- <strong>Custom</strong>: Build on top of web frameworks (Flask, Express)</p>
+<p><strong>Production OCSP Responders</strong>:</p>
+<ul>
+<li><strong>Boulder</strong> (Let's Encrypt): High-performance, Go-based</li>
+<li><strong>EJBCA</strong>: Enterprise PKI with built-in OCSP</li>
+<li><strong>OpenXPKI</strong>: Open-source PKI suite with OCSP</li>
+<li><strong>Custom</strong>: Build on top of web frameworks (Flask, Express)</li>
+</ul>
 <h4 id="response-caching-and-pre-generation">Response Caching and Pre-Generation</h4>
 <p><strong>Pre-Generate Responses</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Generate OCSP responses for all valid certificates</span>
@@ -3047,14 +3107,18 @@
 <a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">generate_ocsp_response</span><span class="p">(</span><span class="n">cert</span><span class="p">)</span>
 <a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>    <span class="n">cache</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="n">cert</span><span class="o">.</span><span class="n">serial_number</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
 </code></pre></div></p>
-<p><strong>Benefits</strong>:
-- Faster response times (no database query)
-- Reduced load on backend database
-- Better scalability</p>
-<p><strong>Refresh Strategy</strong>:
-- Regenerate responses periodically (e.g., every hour)
-- Update immediately on revocation
-- Include reasonable Next Update time</p>
+<p><strong>Benefits</strong>:</p>
+<ul>
+<li>Faster response times (no database query)</li>
+<li>Reduced load on backend database</li>
+<li>Better scalability</li>
+</ul>
+<p><strong>Refresh Strategy</strong>:</p>
+<ul>
+<li>Regenerate responses periodically (e.g., every hour)</li>
+<li>Update immediately on revocation</li>
+<li>Include reasonable Next Update time</li>
+</ul>
 <h3 id="troubleshooting-revocation-issues">Troubleshooting Revocation Issues</h3>
 <h4 id="unable-to-get-crl">"Unable to Get CRL"</h4>
 <p><strong>Diagnosis</strong>:
@@ -3071,10 +3135,12 @@
 1. <strong>CRL URL not accessible</strong>: Firewall, DNS issues
 2. <strong>CRL expired</strong>: Next Update in past
 3. <strong>CRL not published</strong>: CA operational issue</p>
-<p><strong>Fixes</strong>:
-- Ensure network access to CRL URL
-- Configure CA to publish CRLs regularly
-- Check Next Update time in CRL</p>
+<p><strong>Fixes</strong>:</p>
+<ul>
+<li>Ensure network access to CRL URL</li>
+<li>Configure CA to publish CRLs regularly</li>
+<li>Check Next Update time in CRL</li>
+</ul>
 <h4 id="ocsp-responder-timeout">"OCSP Responder Timeout"</h4>
 <p><strong>Diagnosis</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Test OCSP directly</span>
@@ -3090,11 +3156,13 @@
 1. <strong>Network issues</strong>: Firewall blocking OCSP traffic
 2. <strong>Responder overloaded</strong>: Too many queries
 3. <strong>Responder down</strong>: Service failure</p>
-<p><strong>Fixes</strong>:
-- Enable OCSP stapling (server-side caching)
-- Increase OCSP responder capacity
-- Implement responder redundancy
-- Consider soft-fail policies</p>
+<p><strong>Fixes</strong>:</p>
+<ul>
+<li>Enable OCSP stapling (server-side caching)</li>
+<li>Increase OCSP responder capacity</li>
+<li>Implement responder redundancy</li>
+<li>Consider soft-fail policies</li>
+</ul>
 <h4 id="ocsp-response-verification-failed">"OCSP Response Verification Failed"</h4>
 <p><strong>Diagnosis</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># Verbose OCSP query</span>
@@ -3110,10 +3178,12 @@
 1. <strong>Wrong OCSP signing certificate</strong>: Not trusted by CA
 2. <strong>Clock skew</strong>: Server/client time mismatch
 3. <strong>Expired response</strong>: Next Update in past</p>
-<p><strong>Fixes</strong>:
-- Verify OCSP responder certificate properly signed
-- Sync system clocks (NTP)
-- Configure responder to issue fresh responses</p>
+<p><strong>Fixes</strong>:</p>
+<ul>
+<li>Verify OCSP responder certificate properly signed</li>
+<li>Sync system clocks (NTP)</li>
+<li>Configure responder to issue fresh responses</li>
+</ul>
 <h2 id="common-pitfalls">Common Pitfalls</h2>
 <ul>
 <li><strong>Not checking revocation at all</strong>: Applications validating certificates without revocation checking</li>
@@ -3156,18 +3226,24 @@
 <h2 id="security-considerations">Security Considerations</h2>
 <h3 id="revocation-check-bypass">Revocation Check Bypass</h3>
 <p><strong>Attack Scenarios</strong>:</p>
-<p><strong>OCSP Responder DoS</strong>:
-- Attacker blocks access to OCSP responder
-- Soft-fail allows revoked certificate acceptance
-- <strong>Mitigation</strong>: OCSP stapling (server caches responses)</p>
-<p><strong>CRL Download Prevention</strong>:
-- Attacker blocks CRL download
-- Client cannot verify revocation status
-- <strong>Mitigation</strong>: Local CRL caching; alternative verification methods</p>
-<p><strong>Clock Manipulation</strong>:
-- Attacker manipulates system clock
-- OCSP response appears expired or not yet valid
-- <strong>Mitigation</strong>: Secure time synchronization (NTP); detect clock skew</p>
+<p><strong>OCSP Responder DoS</strong>:</p>
+<ul>
+<li>Attacker blocks access to OCSP responder</li>
+<li>Soft-fail allows revoked certificate acceptance</li>
+<li><strong>Mitigation</strong>: OCSP stapling (server caches responses)</li>
+</ul>
+<p><strong>CRL Download Prevention</strong>:</p>
+<ul>
+<li>Attacker blocks CRL download</li>
+<li>Client cannot verify revocation status</li>
+<li><strong>Mitigation</strong>: Local CRL caching; alternative verification methods</li>
+</ul>
+<p><strong>Clock Manipulation</strong>:</p>
+<ul>
+<li>Attacker manipulates system clock</li>
+<li>OCSP response appears expired or not yet valid</li>
+<li><strong>Mitigation</strong>: Secure time synchronization (NTP); detect clock skew</li>
+</ul>
 <h3 id="revocation-timing">Revocation Timing</h3>
 <p><strong>Key Challenge</strong>: Revocation takes time to propagate</p>
 <p><strong>CRL Propagation Delay</strong>:
@@ -3187,27 +3263,35 @@
 <a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>
 <a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>Exposure window: T0 to T3 (minutes typically)
 </code></pre></div></p>
-<p><strong>Mitigation Strategies</strong>:
-- Minimize exposure windows with frequent updates
-- Use OCSP for time-critical revocations
-- Consider short-lived certificates eliminating revocation need
-- Implement Certificate Transparency monitoring</p>
+<p><strong>Mitigation Strategies</strong>:</p>
+<ul>
+<li>Minimize exposure windows with frequent updates</li>
+<li>Use OCSP for time-critical revocations</li>
+<li>Consider short-lived certificates eliminating revocation need</li>
+<li>Implement Certificate Transparency monitoring</li>
+</ul>
 <h3 id="privacy-vs-security">Privacy vs. Security</h3>
-<p><strong>Privacy Concerns</strong>:
-- OCSP queries reveal which certificates (and therefore sites) users validate
-- CA can track user browsing behavior
-- ISPs or network observers see OCSP queries</p>
-<p><strong>Privacy-Preserving Approaches</strong>:
-- <strong>OCSP Stapling</strong>: Server queries, client doesn't contact CA
-- <strong>CRLite</strong>: Pre-fetched revocation data, no per-certificate queries
-- <strong>Short-Lived Certificates</strong>: No revocation checking needed</p>
+<p><strong>Privacy Concerns</strong>:</p>
+<ul>
+<li>OCSP queries reveal which certificates (and therefore sites) users validate</li>
+<li>CA can track user browsing behavior</li>
+<li>ISPs or network observers see OCSP queries</li>
+</ul>
+<p><strong>Privacy-Preserving Approaches</strong>:</p>
+<ul>
+<li><strong>OCSP Stapling</strong>: Server queries, client doesn't contact CA</li>
+<li><strong>CRLite</strong>: Pre-fetched revocation data, no per-certificate queries</li>
+<li><strong>Short-Lived Certificates</strong>: No revocation checking needed</li>
+</ul>
 <h2 id="real-world-examples">Real-World Examples</h2>
 <h3 id="case-study-symantec-certificate-revocation-2017">Case Study: Symantec Certificate Revocation (2017)</h3>
 <p><strong>Event</strong>: Google Chrome announced distrust of Symantec CA certificates</p>
-<p><strong>Revocation Challenge</strong>:
-- Thousands of certificates needed revocation/replacement
-- Immediate revocation would break many websites
-- Phased approach over 18 months</p>
+<p><strong>Revocation Challenge</strong>:</p>
+<ul>
+<li>Thousands of certificates needed revocation/replacement</li>
+<li>Immediate revocation would break many websites</li>
+<li>Phased approach over 18 months</li>
+</ul>
 <p><strong>Process</strong>:
 1. Announce deprecation timeline
 2. Issue warnings in Chrome
@@ -3216,26 +3300,34 @@
 <p><strong>Key Takeaway</strong>: Mass revocation requires careful planning. Immediate revocation of many certificates is operationally challenging.</p>
 <h3 id="case-study-lets-encrypt-ocsp-capacity">Case Study: Let's Encrypt OCSP Capacity</h3>
 <p><strong>Challenge</strong>: Let's Encrypt issues over 200 million certificates</p>
-<p><strong>OCSP Requirements</strong>:
-- Billions of OCSP queries per day
-- Sub-100ms response times
-- 99.99% availability</p>
-<p><strong>Solution</strong>:
-- Pre-generated OCSP responses
-- CDN distribution of responses
-- Minimal response sizes (no certificates in response)
-- Aggressive caching strategies</p>
+<p><strong>OCSP Requirements</strong>:</p>
+<ul>
+<li>Billions of OCSP queries per day</li>
+<li>Sub-100ms response times</li>
+<li>99.99% availability</li>
+</ul>
+<p><strong>Solution</strong>:</p>
+<ul>
+<li>Pre-generated OCSP responses</li>
+<li>CDN distribution of responses</li>
+<li>Minimal response sizes (no certificates in response)</li>
+<li>Aggressive caching strategies</li>
+</ul>
 <p><strong>Key Takeaway</strong>: OCSP at scale requires architectural optimization. Pre-generation and caching critical for performance.</p>
 <h3 id="case-study-crl-distribution-point-outages">Case Study: CRL Distribution Point Outages</h3>
 <p><strong>Common Issue</strong>: CRL servers going down breaking certificate validation</p>
-<p><strong>Example Incidents</strong>:
-- Corporate firewall blocking CRL access
-- CRL server capacity exceeded
-- DNS issues preventing CRL resolution</p>
-<p><strong>Impact</strong>:
-- Applications fail to validate certificates
-- Soft-fail browsers continue working
-- Hard-fail applications break</p>
+<p><strong>Example Incidents</strong>:</p>
+<ul>
+<li>Corporate firewall blocking CRL access</li>
+<li>CRL server capacity exceeded</li>
+<li>DNS issues preventing CRL resolution</li>
+</ul>
+<p><strong>Impact</strong>:</p>
+<ul>
+<li>Applications fail to validate certificates</li>
+<li>Soft-fail browsers continue working</li>
+<li>Hard-fail applications break</li>
+</ul>
 <p><strong>Key Takeaway</strong>: CRL infrastructure must be as reliable as CA infrastructure. Redundancy and monitoring essential.</p>
 <h2 id="further-reading">Further Reading</h2>
 <h3 id="essential-resources">Essential Resources</h3>
@@ -3275,12 +3367,14 @@
 </tbody>
 </table>
 <hr />
-<p><strong>Quality Checks</strong>: 
-- [x] All claims cited from authoritative sources
-- [x] Cross-references validated
-- [x] Practical guidance included
-- [x] Examples are current and relevant
-- [x] Security considerations addressed</p>
+<p><strong>Quality Checks</strong>: </p>
+<ul>
+<li>[x] All claims cited from authoritative sources</li>
+<li>[x] Cross-references validated</li>
+<li>[x] Practical guidance included</li>
+<li>[x] Examples are current and relevant</li>
+<li>[x] Security considerations addressed</li>
+</ul>
 
 
 

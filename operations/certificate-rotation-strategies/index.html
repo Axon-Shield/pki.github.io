@@ -2241,43 +2241,57 @@
 <h2 id="why-certificate-rotation-matters">Why Certificate Rotation Matters</h2>
 <h3 id="the-cost-of-reactive-renewal">The Cost of Reactive Renewal</h3>
 <p>Organizations that treat certificate renewal as an ad-hoc, manual process pay steep costs:</p>
-<p><strong>Operational costs</strong>:
-- Emergency weekend work to renew expiring certificates
-- War rooms mobilized for certificate-related outages
-- Cross-team coordination overhead for every renewal
-- Testing cycles compressed under time pressure</p>
-<p><strong>Business costs</strong>:
-- Revenue loss from certificate-related outages
-- Customer trust erosion from repeated availability issues
-- SLA violations and financial penalties
-- Opportunity cost of engineering time on manual tasks</p>
-<p><strong>Security costs</strong>:
-- Certificates used beyond recommended lifetime
-- Weak cryptography persisting due to renewal difficulty
-- Delayed response to CA compromise
-- Reduced cryptographic agility</p>
+<p><strong>Operational costs</strong>:</p>
+<ul>
+<li>Emergency weekend work to renew expiring certificates</li>
+<li>War rooms mobilized for certificate-related outages</li>
+<li>Cross-team coordination overhead for every renewal</li>
+<li>Testing cycles compressed under time pressure</li>
+</ul>
+<p><strong>Business costs</strong>:</p>
+<ul>
+<li>Revenue loss from certificate-related outages</li>
+<li>Customer trust erosion from repeated availability issues</li>
+<li>SLA violations and financial penalties</li>
+<li>Opportunity cost of engineering time on manual tasks</li>
+</ul>
+<p><strong>Security costs</strong>:</p>
+<ul>
+<li>Certificates used beyond recommended lifetime</li>
+<li>Weak cryptography persisting due to renewal difficulty</li>
+<li>Delayed response to CA compromise</li>
+<li>Reduced cryptographic agility</li>
+</ul>
 <h3 id="the-value-of-strategic-rotation">The Value of Strategic Rotation</h3>
 <p>Proactive rotation strategies deliver:</p>
-<p><strong>Predictability</strong>:
-- Scheduled maintenance windows for certificate updates
-- Coordinated deployments across infrastructure
-- Testing integrated into normal development cycles
-- Capacity planning for CA infrastructure load</p>
-<p><strong>Automation</strong>:
-- Reduced manual effort through tooling
-- Consistent, repeatable processes
-- Self-service capabilities for teams
-- Integration with existing deployment pipelines</p>
-<p><strong>Risk reduction</strong>:
-- Time buffer for handling renewal failures
-- Opportunity to update cryptographic parameters
-- Gradual migration to new CAs or policies
-- Practice for emergency response scenarios</p>
-<p><strong>Compliance</strong>:
-- Demonstrable compliance with certificate lifetime policies
-- Audit trail of rotation activities
-- Consistent application of security standards
-- Regular validation of trust chains</p>
+<p><strong>Predictability</strong>:</p>
+<ul>
+<li>Scheduled maintenance windows for certificate updates</li>
+<li>Coordinated deployments across infrastructure</li>
+<li>Testing integrated into normal development cycles</li>
+<li>Capacity planning for CA infrastructure load</li>
+</ul>
+<p><strong>Automation</strong>:</p>
+<ul>
+<li>Reduced manual effort through tooling</li>
+<li>Consistent, repeatable processes</li>
+<li>Self-service capabilities for teams</li>
+<li>Integration with existing deployment pipelines</li>
+</ul>
+<p><strong>Risk reduction</strong>:</p>
+<ul>
+<li>Time buffer for handling renewal failures</li>
+<li>Opportunity to update cryptographic parameters</li>
+<li>Gradual migration to new CAs or policies</li>
+<li>Practice for emergency response scenarios</li>
+</ul>
+<p><strong>Compliance</strong>:</p>
+<ul>
+<li>Demonstrable compliance with certificate lifetime policies</li>
+<li>Audit trail of rotation activities</li>
+<li>Consistent application of security standards</li>
+<li>Regular validation of trust chains</li>
+</ul>
 <h2 id="rotation-timing-strategies">Rotation Timing Strategies</h2>
 <h3 id="fixed-schedule-rotation">Fixed Schedule Rotation</h3>
 <p><strong>Calendar-based rotation</strong>:
@@ -2297,20 +2311,26 @@ Renew certificates on fixed schedule regardless of remaining validity.</p>
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="nt">lead_time_days</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14</span><span class="w">  </span><span class="c1"># Start rotation 14 days before scheduled date</span>
 </code></pre></div></p>
-<p>Advantages:
-- Predictable change calendar
-- Coordinated with other maintenance activities
-- Enables bulk rotation efficiencies
-- Easier capacity planning for CA infrastructure</p>
-<p>Disadvantages:
-- May renew certificates with significant remaining validity
-- Fixed schedule may conflict with business constraints
-- All certificates on same schedule creates load spikes</p>
-<p><strong>Use cases</strong>:
-- High-security environments requiring frequent rotation
-- Environments with coordinated change windows
-- Certificates for internal services with flexible timing
-- Compliance requirements for maximum certificate age</p>
+<p>Advantages:</p>
+<ul>
+<li>Predictable change calendar</li>
+<li>Coordinated with other maintenance activities</li>
+<li>Enables bulk rotation efficiencies</li>
+<li>Easier capacity planning for CA infrastructure</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>May renew certificates with significant remaining validity</li>
+<li>Fixed schedule may conflict with business constraints</li>
+<li>All certificates on same schedule creates load spikes</li>
+</ul>
+<p><strong>Use cases</strong>:</p>
+<ul>
+<li>High-security environments requiring frequent rotation</li>
+<li>Environments with coordinated change windows</li>
+<li>Certificates for internal services with flexible timing</li>
+<li>Compliance requirements for maximum certificate age</li>
+</ul>
 <h3 id="validity-based-rotation">Validity-Based Rotation</h3>
 <p><strong>Percentage of lifetime</strong>:
 Trigger renewal when certificate reaches certain percentage of its validity period.</p>
@@ -2336,25 +2356,33 @@ Trigger renewal when certificate reaches certain percentage of its validity peri
 <a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="n">trigger</span> <span class="o">=</span> <span class="n">calculate_renewal_trigger</span><span class="p">(</span><span class="n">cert</span><span class="p">,</span> <span class="n">policy</span><span class="p">)</span>
 <a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="c1"># trigger = 2025-03-02 (60 days after issuance, 30 days before expiry)</span>
 </code></pre></div>
-<p>Common thresholds:
-- <strong>67% (2/3 lifetime)</strong>: Balanced approach, 1/3 validity remaining
-- <strong>75%</strong>: More frequent rotation, 1/4 validity remaining
-- <strong>80%</strong>: Aggressive rotation, 1/5 validity remaining
-- <strong>50%</strong>: Conservative, half validity remaining</p>
-<p>Advantages:
-- Distributes rotation workload over time
-- Natural staggering of renewal tasks
-- Scales with certificate validity period
-- Industry standard practice</p>
-<p>Disadvantages:
-- Less predictable timing
-- Requires per-certificate tracking
-- Complex coordination for related certificates</p>
-<p><strong>Use cases</strong>:
-- Public-facing TLS certificates
-- Automated certificate management (ACME)
-- Large-scale certificate estates
-- Default rotation strategy</p>
+<p>Common thresholds:</p>
+<ul>
+<li><strong>67% (2/3 lifetime)</strong>: Balanced approach, 1/3 validity remaining</li>
+<li><strong>75%</strong>: More frequent rotation, 1/4 validity remaining</li>
+<li><strong>80%</strong>: Aggressive rotation, 1/5 validity remaining</li>
+<li><strong>50%</strong>: Conservative, half validity remaining</li>
+</ul>
+<p>Advantages:</p>
+<ul>
+<li>Distributes rotation workload over time</li>
+<li>Natural staggering of renewal tasks</li>
+<li>Scales with certificate validity period</li>
+<li>Industry standard practice</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>Less predictable timing</li>
+<li>Requires per-certificate tracking</li>
+<li>Complex coordination for related certificates</li>
+</ul>
+<p><strong>Use cases</strong>:</p>
+<ul>
+<li>Public-facing TLS certificates</li>
+<li>Automated certificate management (ACME)</li>
+<li>Large-scale certificate estates</li>
+<li>Default rotation strategy</li>
+</ul>
 <h3 id="absolute-time-window">Absolute Time Window</h3>
 <p><strong>Days before expiry</strong>:
 Fixed number of days before expiry regardless of initial validity.</p>
@@ -2375,25 +2403,33 @@ Fixed number of days before expiry regardless of initial validity.</p>
 <a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>        <span class="n">renewal_date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_renewal_date</span><span class="p">(</span><span class="n">cert</span><span class="p">)</span>
 <a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">renewal_date</span>
 </code></pre></div>
-<p>Common windows:
-- <strong>30 days</strong>: Standard for many organizations
-- <strong>45 days</strong>: Conservative buffer for complex deployments
-- <strong>14 days</strong>: Minimum for production certificates
-- <strong>7 days</strong>: Emergency threshold (should trigger high-priority alerts)</p>
-<p>Advantages:
-- Simple to understand and communicate
-- Consistent buffer time for all certificates
-- Easy to align with change management processes
-- Clear escalation thresholds</p>
-<p>Disadvantages:
-- Doesn't account for certificate age
-- May result in very frequent rotations for long-lived certs
-- Fixed buffer may be too short for complex deployments</p>
-<p><strong>Use cases</strong>:
-- Simple environments with consistent certificate validity
-- Compliance requirements with specific lead time
-- Emergency rotation thresholds
-- Alert trigger points</p>
+<p>Common windows:</p>
+<ul>
+<li><strong>30 days</strong>: Standard for many organizations</li>
+<li><strong>45 days</strong>: Conservative buffer for complex deployments</li>
+<li><strong>14 days</strong>: Minimum for production certificates</li>
+<li><strong>7 days</strong>: Emergency threshold (should trigger high-priority alerts)</li>
+</ul>
+<p>Advantages:</p>
+<ul>
+<li>Simple to understand and communicate</li>
+<li>Consistent buffer time for all certificates</li>
+<li>Easy to align with change management processes</li>
+<li>Clear escalation thresholds</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>Doesn't account for certificate age</li>
+<li>May result in very frequent rotations for long-lived certs</li>
+<li>Fixed buffer may be too short for complex deployments</li>
+</ul>
+<p><strong>Use cases</strong>:</p>
+<ul>
+<li>Simple environments with consistent certificate validity</li>
+<li>Compliance requirements with specific lead time</li>
+<li>Emergency rotation thresholds</li>
+<li>Alert trigger points</li>
+</ul>
 <h3 id="event-driven-rotation">Event-Driven Rotation</h3>
 <p><strong>Trigger-based rotation</strong>:
 Rotate certificates in response to specific events rather than schedule.</p>
@@ -2460,21 +2496,27 @@ Rotate certificates in response to specific events rather than schedule.</p>
 <a id="__codelineno-3-60" name="__codelineno-3-60" href="#__codelineno-3-60"></a>
 <a id="__codelineno-3-61" name="__codelineno-3-61" href="#__codelineno-3-61"></a>        <span class="k">return</span> <span class="n">tasks</span>
 </code></pre></div></p>
-<p>Advantages:
-- Responsive to security requirements
-- Enables coordinated infrastructure changes
-- Forces rotation when conditions require it
-- Clear justification for rotation activity</p>
-<p>Disadvantages:
-- Unpredictable timing and load
-- May require emergency procedures
-- Coordination challenges across teams
-- Testing may be compressed</p>
-<p><strong>Use cases</strong>:
-- CA compromise response
-- Algorithm deprecation (SHA-1, short keys)
-- Infrastructure migrations
-- Zero-day vulnerability response</p>
+<p>Advantages:</p>
+<ul>
+<li>Responsive to security requirements</li>
+<li>Enables coordinated infrastructure changes</li>
+<li>Forces rotation when conditions require it</li>
+<li>Clear justification for rotation activity</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>Unpredictable timing and load</li>
+<li>May require emergency procedures</li>
+<li>Coordination challenges across teams</li>
+<li>Testing may be compressed</li>
+</ul>
+<p><strong>Use cases</strong>:</p>
+<ul>
+<li>CA compromise response</li>
+<li>Algorithm deprecation (SHA-1, short keys)</li>
+<li>Infrastructure migrations</li>
+<li>Zero-day vulnerability response</li>
+</ul>
 <h3 id="hybrid-strategies">Hybrid Strategies</h3>
 <p>Real-world rotation strategies combine multiple approaches:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">HybridRotationStrategy</span><span class="p">:</span>
@@ -3790,82 +3832,104 @@ Rotate certificates in response to specific events rather than schedule.</p>
 </code></pre></div></p>
 <h2 id="best-practices">Best Practices</h2>
 <h3 id="dos">Do's</h3>
-<p><strong>Planning and preparation</strong>:
-- Plan rotations well in advance (60-90 days for complex services)
-- Understand dependencies before rotating
-- Test rotation procedures in non-production first
-- Have rollback procedures ready before starting
-- Coordinate with other planned maintenance</p>
-<p><strong>Automation</strong>:
-- Automate repetitive rotation tasks
-- Use ACME for public certificates where possible
-- Integrate rotation with CI/CD pipelines
-- Implement automatic verification
-- Enable self-service for development certificates</p>
-<p><strong>Communication</strong>:
-- Notify stakeholders of upcoming rotations
-- Provide clear timelines and expectations
-- Keep status updated during rotation
-- Document lessons learned
-- Maintain runbooks and procedures</p>
-<p><strong>Verification</strong>:
-- Always verify deployments
-- Monitor metrics post-deployment
-- Test rollback procedures regularly
-- Validate trust chains
-- Check for application-specific issues</p>
+<p><strong>Planning and preparation</strong>:</p>
+<ul>
+<li>Plan rotations well in advance (60-90 days for complex services)</li>
+<li>Understand dependencies before rotating</li>
+<li>Test rotation procedures in non-production first</li>
+<li>Have rollback procedures ready before starting</li>
+<li>Coordinate with other planned maintenance</li>
+</ul>
+<p><strong>Automation</strong>:</p>
+<ul>
+<li>Automate repetitive rotation tasks</li>
+<li>Use ACME for public certificates where possible</li>
+<li>Integrate rotation with CI/CD pipelines</li>
+<li>Implement automatic verification</li>
+<li>Enable self-service for development certificates</li>
+</ul>
+<p><strong>Communication</strong>:</p>
+<ul>
+<li>Notify stakeholders of upcoming rotations</li>
+<li>Provide clear timelines and expectations</li>
+<li>Keep status updated during rotation</li>
+<li>Document lessons learned</li>
+<li>Maintain runbooks and procedures</li>
+</ul>
+<p><strong>Verification</strong>:</p>
+<ul>
+<li>Always verify deployments</li>
+<li>Monitor metrics post-deployment</li>
+<li>Test rollback procedures regularly</li>
+<li>Validate trust chains</li>
+<li>Check for application-specific issues</li>
+</ul>
 <h3 id="donts">Don'ts</h3>
-<p><strong>Timing</strong>:
-- Don't rotate during high-traffic periods
-- Don't combine with other major changes
-- Don't rotate on Friday afternoons (unless automated with monitoring)
-- Don't rush rotations under time pressure
-- Don't skip testing phases</p>
-<p><strong>Process</strong>:
-- Don't skip impact assessment
-- Don't deploy to all targets simultaneously
-- Don't ignore validation failures
-- Don't disable monitoring during rotation
-- Don't assume success without verification</p>
-<p><strong>Risk management</strong>:
-- Don't rotate certificates with &lt; 7 days until expiry (too risky)
-- Don't reuse private keys across rotations
-- Don't skip rollback planning
-- Don't ignore warnings from validation
-- Don't rotate without backups</p>
+<p><strong>Timing</strong>:</p>
+<ul>
+<li>Don't rotate during high-traffic periods</li>
+<li>Don't combine with other major changes</li>
+<li>Don't rotate on Friday afternoons (unless automated with monitoring)</li>
+<li>Don't rush rotations under time pressure</li>
+<li>Don't skip testing phases</li>
+</ul>
+<p><strong>Process</strong>:</p>
+<ul>
+<li>Don't skip impact assessment</li>
+<li>Don't deploy to all targets simultaneously</li>
+<li>Don't ignore validation failures</li>
+<li>Don't disable monitoring during rotation</li>
+<li>Don't assume success without verification</li>
+</ul>
+<p><strong>Risk management</strong>:</p>
+<ul>
+<li>Don't rotate certificates with &lt; 7 days until expiry (too risky)</li>
+<li>Don't reuse private keys across rotations</li>
+<li>Don't skip rollback planning</li>
+<li>Don't ignore warnings from validation</li>
+<li>Don't rotate without backups</li>
+</ul>
 <h2 id="common-challenges-and-solutions">Common Challenges and Solutions</h2>
 <h3 id="challenge-coordinating-multi-system-rotation">Challenge: Coordinating Multi-System Rotation</h3>
 <p><strong>Problem</strong>: Certificate used across multiple systems that must stay synchronized.</p>
-<p><strong>Solution</strong>:
-- Use configuration management for atomic updates
-- Implement leader-follower deployment pattern
-- Deploy to canary subset first
-- Maintain compatibility period with dual certificate support
-- Use infrastructure-as-code for coordination</p>
+<p><strong>Solution</strong>:</p>
+<ul>
+<li>Use configuration management for atomic updates</li>
+<li>Implement leader-follower deployment pattern</li>
+<li>Deploy to canary subset first</li>
+<li>Maintain compatibility period with dual certificate support</li>
+<li>Use infrastructure-as-code for coordination</li>
+</ul>
 <h3 id="challenge-long-running-connections">Challenge: Long-Running Connections</h3>
 <p><strong>Problem</strong>: Existing connections don't pick up new certificate.</p>
-<p><strong>Solution</strong>:
-- Plan for connection drain periods
-- Implement graceful connection termination
-- Use dual certificate mode during transition
-- Monitor for lingering old connections
-- Force reconnection for critical updates only</p>
+<p><strong>Solution</strong>:</p>
+<ul>
+<li>Plan for connection drain periods</li>
+<li>Implement graceful connection termination</li>
+<li>Use dual certificate mode during transition</li>
+<li>Monitor for lingering old connections</li>
+<li>Force reconnection for critical updates only</li>
+</ul>
 <h3 id="challenge-third-party-dependencies">Challenge: Third-Party Dependencies</h3>
 <p><strong>Problem</strong>: External systems or partners need notice of certificate changes.</p>
-<p><strong>Solution</strong>:
-- Provide advance notice (30+ days)
-- Publish certificate information to known endpoint
-- Maintain overlap period with both certificates
-- Provide clear documentation and support contacts
-- Monitor for errors from partner systems</p>
+<p><strong>Solution</strong>:</p>
+<ul>
+<li>Provide advance notice (30+ days)</li>
+<li>Publish certificate information to known endpoint</li>
+<li>Maintain overlap period with both certificates</li>
+<li>Provide clear documentation and support contacts</li>
+<li>Monitor for errors from partner systems</li>
+</ul>
 <h3 id="challenge-certificate-pinning">Challenge: Certificate Pinning</h3>
 <p><strong>Problem</strong>: Mobile apps or clients with certificate pinning can't adapt quickly.</p>
-<p><strong>Solution</strong>:
-- Plan 90+ day rotation cycles
-- Include both old and new pins in app updates
-- Deploy new certificate while old is still valid
-- Monitor app version adoption before removing old certificate
-- Maintain backup pinning mechanism</p>
+<p><strong>Solution</strong>:</p>
+<ul>
+<li>Plan 90+ day rotation cycles</li>
+<li>Include both old and new pins in app updates</li>
+<li>Deploy new certificate while old is still valid</li>
+<li>Monitor app version adoption before removing old certificate</li>
+<li>Maintain backup pinning mechanism</li>
+</ul>
 <h2 id="measuring-rotation-success">Measuring Rotation Success</h2>
 <h3 id="key-metrics">Key Metrics</h3>
 <p><strong>Rotation efficiency</strong>:
