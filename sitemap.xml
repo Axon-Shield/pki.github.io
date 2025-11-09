@@ -45,6 +45,22 @@
          <lastmod>2025-11-09</lastmod>
     </url>
     <url>
+         <loc>https://vault.axonshield.com/standards/acme-protocol/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://vault.axonshield.com/standards/ocsp-and-crl/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://vault.axonshield.com/standards/pkcs-standards/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://vault.axonshield.com/standards/tls-protocol/</loc>
+         <lastmod>2025-11-09</lastmod>
+    </url>
+    <url>
          <loc>https://vault.axonshield.com/standards/x509-standard/</loc>
          <lastmod>2025-11-09</lastmod>
     </url>
