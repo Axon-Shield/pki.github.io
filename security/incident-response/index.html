@@ -1,0 +1,2592 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://vault.axonshield.com/security/incident-response/">
+      
+      
+        <link rel="prev" href="../compliance-and-audit/">
+      
+      
+        <link rel="next" href="../key-management-best-practices/">
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Incident Response - Shield Vault</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+    
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WJXPDRF2');</script>
+  <!-- End Google Tag Manager -->
+  
+  <!-- Apollo Tracking -->
+  <script>
+    (function() {
+      var apolloScript = document.createElement('script');
+      apolloScript.type = 'text/javascript';
+      apolloScript.async = true;
+      apolloScript.src = 'https://cdn.apollo.io/v1/apollo.js';
+      apolloScript.setAttribute('data-apollo-id', '68b8b91c5e883f0021f7f7aa');
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(apolloScript, s);
+    })();
+  </script>
+  <!-- End Apollo Tracking -->
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#incident-response" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Shield Vault" class="md-header__button md-logo" aria-label="Shield Vault" data-md-component="logo">
+      
+  <img src="../../assets/axon-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Shield Vault
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Incident Response
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Foundations for Infrastructure Intelligence - Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../book/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Book
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../glossary/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../foundations/certificate-anatomy/" class="md-tabs__link">
+          
+  
+  
+  Foundations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../implementation/acme-protocol-implementation/" class="md-tabs__link">
+          
+  
+  
+  Implementation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../operations/certificate-lifecycle-management/" class="md-tabs__link">
+          
+  
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../compliance-and-audit/" class="md-tabs__link">
+          
+  
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../standards/acme-protocol/" class="md-tabs__link">
+          
+  
+  
+  Standards
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Shield Vault" class="md-nav__button md-logo" aria-label="Shield Vault" data-md-component="logo">
+      
+  <img src="../../assets/axon-logo.png" alt="logo">
+
+    </a>
+    Shield Vault
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Foundations for Infrastructure Intelligence - Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Book
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Foundations
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Foundations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundations/certificate-anatomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Anatomy
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundations/cryptographic-primitives/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cryptographic Primitives
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundations/public-private-key-pairs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public-Private Key Pairs
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundations/trust-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Trust Models
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundations/what-is-pki/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What is PKI?
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Implementation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Implementation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../implementation/acme-protocol-implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ACME Protocol Implementation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../implementation/ca-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CA Architecture
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../implementation/certificate-issuance-workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Issuance Workflows
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../implementation/hsm-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HSM Integration
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../implementation/multi-cloud-pki/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Multi-Cloud PKI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Operations
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Operations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/certificate-lifecycle-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Lifecycle Management
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/certificate-rotation-strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Rotation Strategies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/inventory-and-discovery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inventory and Discovery
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/monitoring-and-alerting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monitoring and Alerting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/renewal-automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Renewal Automation
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Security
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compliance-and-audit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Compliance and Audit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Incident Response
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Incident Response
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pki-specific-incident-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      PKI-Specific Incident Response
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PKI-Specific Incident Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unique-characteristics-of-pki-incidents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unique Characteristics of PKI Incidents
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#incident-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Incident Classification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Incident Classification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pki-incident-severity-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      PKI Incident Severity Levels
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incident-type-taxonomy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Incident Type Taxonomy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detection-and-alerting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detection and Alerting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detection and Alerting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monitoring-for-incidents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring for Incidents
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alert-triage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alert Triage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#incident-response-phases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Incident Response Phases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Incident Response Phases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 1: Preparation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-detection-and-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 2: Detection and Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-containment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 3: Containment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-4-eradication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 4: Eradication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-5-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 5: Recovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-6-post-incident-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 6: Post-Incident Activity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#incident-scenarios-and-response-playbooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Incident Scenarios and Response Playbooks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Incident Scenarios and Response Playbooks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario-1-root-ca-private-key-compromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario 1: Root CA Private Key Compromise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-2-tls-certificate-private-key-leaked" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario 2: TLS Certificate Private Key Leaked
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-3-unauthorized-certificate-issuance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario 3: Unauthorized Certificate Issuance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#communication-during-incidents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Communication During Incidents
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Communication During Incidents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internal-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Communication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      External Communication
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools-and-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tools and Automation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools and Automation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#incident-response-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Incident Response Automation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forensic-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Forensic Tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-incident-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      Post-Incident Review
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../key-management-best-practices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Key Management Best Practices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../private-key-protection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Private Key Protection
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../threat-models-and-attack-vectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Threat Models and Attack Vectors
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Standards
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Standards
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standards/acme-protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ACME Protocol
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standards/ocsp-and-crl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OCSP and CRL
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standards/pkcs-standards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PKCS Standards
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standards/tls-protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TLS Protocol
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standards/x509-standard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    X.509 Standard
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pki-specific-incident-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      PKI-Specific Incident Response
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PKI-Specific Incident Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unique-characteristics-of-pki-incidents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unique Characteristics of PKI Incidents
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#incident-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Incident Classification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Incident Classification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pki-incident-severity-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      PKI Incident Severity Levels
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incident-type-taxonomy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Incident Type Taxonomy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detection-and-alerting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detection and Alerting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detection and Alerting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monitoring-for-incidents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring for Incidents
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alert-triage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alert Triage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#incident-response-phases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Incident Response Phases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Incident Response Phases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 1: Preparation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-detection-and-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 2: Detection and Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-containment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 3: Containment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-4-eradication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 4: Eradication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-5-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 5: Recovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-6-post-incident-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 6: Post-Incident Activity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#incident-scenarios-and-response-playbooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Incident Scenarios and Response Playbooks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Incident Scenarios and Response Playbooks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario-1-root-ca-private-key-compromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario 1: Root CA Private Key Compromise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-2-tls-certificate-private-key-leaked" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario 2: TLS Certificate Private Key Leaked
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-3-unauthorized-certificate-issuance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario 3: Unauthorized Certificate Issuance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#communication-during-incidents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Communication During Incidents
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Communication During Incidents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internal-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Communication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      External Communication
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools-and-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tools and Automation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools and Automation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#incident-response-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Incident Response Automation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forensic-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Forensic Tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-incident-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      Post-Incident Review
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WJXPDRF2"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+  <!-- Right sidebar with disclaimer above TOC -->
+  
+    <style>
+      @media screen and (min-width: 76.25em) {
+        .md-sidebar--secondary {
+          order: 1;
+        }
+        .md-sidebar--secondary::before {
+          content: '';
+          display: block;
+          margin-bottom: 1rem;
+        }
+      }
+    </style>
+  
+  
+  
+                  
+
+
+
+<h1 id="incident-response">Incident Response</h1>
+<h2 id="overview">Overview</h2>
+<p>Despite best efforts at prevention, PKI security incidents will occur. The difference between a manageable incident and a catastrophic breach often comes down to preparation and response speed. Effective incident response for PKI requires specialized procedures beyond general security incident response, because certificate compromise affects trust relationships across entire infrastructures and potentially with customers and partners.</p>
+<p><strong>Core principle</strong>: Hope for the best, but prepare for the worst. Fast, decisive incident response limits damage and demonstrates security maturity to stakeholders and auditors.</p>
+<h2 id="pki-specific-incident-response">PKI-Specific Incident Response</h2>
+<h3 id="unique-characteristics-of-pki-incidents">Unique Characteristics of PKI Incidents</h3>
+<p>PKI incidents differ from typical security incidents in several critical ways:</p>
+<p><strong>Trust relationships</strong>: A compromised CA affects not just the directly compromised system but everything that trusts certificates from that CA. This includes internal systems, customer applications, partner integrations, and potentially millions of users.</p>
+<p><strong>Time sensitivity</strong>: Certificate compromise requires immediate action. Every hour of delay is another hour attackers can issue fraudulent certificates or use stolen private keys for impersonation.</p>
+<p><strong>Widespread impact</strong>: A single compromised intermediate CA might affect thousands of certificates across hundreds of services. Revoking and replacing them all requires coordinated</p>
+<p>action across multiple teams and business units.</p>
+<p><strong>Detection difficulty</strong>: Unlike a ransomware attack where systems stop working, certificate compromise may go undetected for extended periods. Attackers can stealthily use compromised keys or issue fraudulent certificates while everything appears normal.</p>
+<p><strong>Recovery complexity</strong>: Recovery isn't as simple as restoring from backup. Compromised certificates must be revoked and replaced, trust chains updated, and potentially entire CA hierarchies rebuilt. This takes time even with good preparation.</p>
+<h2 id="incident-classification">Incident Classification</h2>
+<h3 id="pki-incident-severity-levels">PKI Incident Severity Levels</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">severity_levels</span><span class="p">:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">p0_critical</span><span class="p">:</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Critical</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Root</span><span class="nv"> </span><span class="s">CA</span><span class="nv"> </span><span class="s">Compromise&quot;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Root</span><span class="nv"> </span><span class="s">CA</span><span class="nv"> </span><span class="s">private</span><span class="nv"> </span><span class="s">key</span><span class="nv"> </span><span class="s">compromised</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">suspected</span><span class="nv"> </span><span class="s">compromised&quot;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">impact</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Complete</span><span class="nv"> </span><span class="s">PKI</span><span class="nv"> </span><span class="s">failure,</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">certificates</span><span class="nv"> </span><span class="s">potentially</span><span class="nv"> </span><span class="s">invalid&quot;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">response_time</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Immediate</span><span class="nv"> </span><span class="s">(minutes)&quot;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nt">escalation</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;C-level</span><span class="nv"> </span><span class="s">executives,</span><span class="nv"> </span><span class="s">external</span><span class="nv"> </span><span class="s">auditors,</span><span class="nv"> </span><span class="s">legal&quot;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nt">examples</span><span class="p">:</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Root CA private key stolen</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HSM tamper detection for root CA</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unauthorized access to root CA ceremony</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="nt">p1_high</span><span class="p">:</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;High</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Intermediate</span><span class="nv"> </span><span class="s">CA</span><span class="nv"> </span><span class="s">Compromise&quot;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Intermediate</span><span class="nv"> </span><span class="s">CA</span><span class="nv"> </span><span class="s">private</span><span class="nv"> </span><span class="s">key</span><span class="nv"> </span><span class="s">compromised&quot;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="nt">impact</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;All</span><span class="nv"> </span><span class="s">certificates</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">CA</span><span class="nv"> </span><span class="s">must</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">revoked</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">replaced&quot;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="nt">response_time</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Within</span><span class="nv"> </span><span class="s">1</span><span class="nv"> </span><span class="s">hour&quot;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="nt">escalation</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Security</span><span class="nv"> </span><span class="s">leadership,</span><span class="nv"> </span><span class="s">infrastructure</span><span class="nv"> </span><span class="s">directors&quot;</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="nt">examples</span><span class="p">:</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Intermediate CA private key exposed</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unauthorized certificate issuance detected</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CA operator credentials stolen</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">  </span><span class="nt">p2_medium</span><span class="p">:</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Medium</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Certificate</span><span class="nv"> </span><span class="s">Compromise&quot;</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Individual</span><span class="nv"> </span><span class="s">certificate</span><span class="nv"> </span><span class="s">private</span><span class="nv"> </span><span class="s">key</span><span class="nv"> </span><span class="s">compromised&quot;</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="nt">impact</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Specific</span><span class="nv"> </span><span class="s">service</span><span class="nv"> </span><span class="s">impersonation</span><span class="nv"> </span><span class="s">possible&quot;</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="nt">response_time</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Within</span><span class="nv"> </span><span class="s">4</span><span class="nv"> </span><span class="s">hours&quot;</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">    </span><span class="nt">escalation</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Security</span><span class="nv"> </span><span class="s">team,</span><span class="nv"> </span><span class="s">service</span><span class="nv"> </span><span class="s">owners&quot;</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span><span class="nt">examples</span><span class="p">:</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TLS certificate private key leaked</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Certificate found in public repository</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Suspected use of stolen certificate</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">  </span><span class="nt">p3_low</span><span class="p">:</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Low</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Process</span><span class="nv"> </span><span class="s">Violation&quot;</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Policy</span><span class="nv"> </span><span class="s">violation</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">process</span><span class="nv"> </span><span class="s">failure&quot;</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">    </span><span class="nt">impact</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Potential</span><span class="nv"> </span><span class="s">security</span><span class="nv"> </span><span class="s">weakness,</span><span class="nv"> </span><span class="s">no</span><span class="nv"> </span><span class="s">confirmed</span><span class="nv"> </span><span class="s">compromise&quot;</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">    </span><span class="nt">response_time</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Within</span><span class="nv"> </span><span class="s">24</span><span class="nv"> </span><span class="s">hours&quot;</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">    </span><span class="nt">escalation</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;PKI</span><span class="nv"> </span><span class="s">team,</span><span class="nv"> </span><span class="s">compliance&quot;</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">    </span><span class="nt">examples</span><span class="p">:</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Weak certificate issued against policy</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Validation procedure bypassed</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Missing documentation for issuance</span>
+</code></pre></div>
+<h3 id="incident-type-taxonomy">Incident Type Taxonomy</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">PKIIncidentTypes</span><span class="p">:</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="sd">    Classification of PKI security incidents</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">INCIDENT_TYPES</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        <span class="s1">&#39;key_compromise&#39;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>            <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Private key material accessed by unauthorized party&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>            <span class="s1">&#39;subtypes&#39;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>                <span class="s1">&#39;root_ca_key_theft&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>                <span class="s1">&#39;intermediate_ca_key_theft&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>                <span class="s1">&#39;certificate_private_key_theft&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>                <span class="s1">&#39;key_backup_compromise&#39;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>            <span class="p">],</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>            <span class="s1">&#39;indicators&#39;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>                <span class="s1">&#39;Unauthorized certificate issuance&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>                <span class="s1">&#39;Unexpected certificate usage from unusual IPs&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>                <span class="s1">&#39;File access logs show key file access&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>                <span class="s1">&#39;HSM tamper alert&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>                <span class="s1">&#39;Key found in public location&#39;</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>            <span class="p">]</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>        <span class="p">},</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>        <span class="s1">&#39;unauthorized_issuance&#39;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>            <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Certificate issued without proper authorization&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>            <span class="s1">&#39;subtypes&#39;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>                <span class="s1">&#39;fraudulent_domain_validation&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>                <span class="s1">&#39;insider_abuse&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>                <span class="s1">&#39;compromised_ra_credentials&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>                <span class="s1">&#39;validation_bypass&#39;</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>            <span class="p">],</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>            <span class="s1">&#39;indicators&#39;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>                <span class="s1">&#39;Certificate appears in CT logs unexpectedly&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>                <span class="s1">&#39;Domain owner didn</span><span class="se">\&#39;</span><span class="s1">t request certificate&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>                <span class="s1">&#39;Certificate doesn</span><span class="se">\&#39;</span><span class="s1">t match internal records&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>                <span class="s1">&#39;Validation steps missing from audit log&#39;</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>            <span class="p">]</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>        <span class="p">},</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>        <span class="s1">&#39;validation_failure&#39;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>            <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Certificate validation procedures failed&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>            <span class="s1">&#39;subtypes&#39;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>                <span class="s1">&#39;domain_validation_bypass&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>                <span class="s1">&#39;organization_validation_failure&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a>                <span class="s1">&#39;ev_validation_shortcut&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a>                <span class="s1">&#39;policy_violation&#39;</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a>            <span class="p">],</span>
+<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a>            <span class="s1">&#39;indicators&#39;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a>                <span class="s1">&#39;Certificate issued for domain without validation&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a>                <span class="s1">&#39;Missing documentation in issuance record&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a>                <span class="s1">&#39;Validation completed too quickly&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a>                <span class="s1">&#39;Automated checks bypassed&#39;</span>
+<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a>            <span class="p">]</span>
+<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a>        <span class="p">},</span>
+<a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a>
+<a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a>        <span class="s1">&#39;availability&#39;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a>            <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;PKI services unavailable&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a>            <span class="s1">&#39;subtypes&#39;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a>                <span class="s1">&#39;ca_system_outage&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a>                <span class="s1">&#39;ocsp_responder_down&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a>                <span class="s1">&#39;crl_publication_failure&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a>                <span class="s1">&#39;hsm_failure&#39;</span>
+<a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a>            <span class="p">],</span>
+<a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a>            <span class="s1">&#39;indicators&#39;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a>                <span class="s1">&#39;Certificate issuance requests failing&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a>                <span class="s1">&#39;Validation checks timing out&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a>                <span class="s1">&#39;Certificate revocation checks failing&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a>                <span class="s1">&#39;HSM not responding&#39;</span>
+<a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a>            <span class="p">]</span>
+<a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a>        <span class="p">},</span>
+<a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a>
+<a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a>        <span class="s1">&#39;process_failure&#39;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a>            <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;PKI operational processes not followed&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a>            <span class="s1">&#39;subtypes&#39;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a>                <span class="s1">&#39;missing_approval&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-76" name="__codelineno-1-76" href="#__codelineno-1-76"></a>                <span class="s1">&#39;inadequate_validation&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-77" name="__codelineno-1-77" href="#__codelineno-1-77"></a>                <span class="s1">&#39;improper_revocation&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a>                <span class="s1">&#39;expired_certificates&#39;</span>
+<a id="__codelineno-1-79" name="__codelineno-1-79" href="#__codelineno-1-79"></a>            <span class="p">],</span>
+<a id="__codelineno-1-80" name="__codelineno-1-80" href="#__codelineno-1-80"></a>            <span class="s1">&#39;indicators&#39;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-1-81" name="__codelineno-1-81" href="#__codelineno-1-81"></a>                <span class="s1">&#39;Audit findings&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-82" name="__codelineno-1-82" href="#__codelineno-1-82"></a>                <span class="s1">&#39;Compliance violations&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-83" name="__codelineno-1-83" href="#__codelineno-1-83"></a>                <span class="s1">&#39;Process documentation gaps&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-84" name="__codelineno-1-84" href="#__codelineno-1-84"></a>                <span class="s1">&#39;Certificate expiry causing outage&#39;</span>
+<a id="__codelineno-1-85" name="__codelineno-1-85" href="#__codelineno-1-85"></a>            <span class="p">]</span>
+<a id="__codelineno-1-86" name="__codelineno-1-86" href="#__codelineno-1-86"></a>        <span class="p">}</span>
+<a id="__codelineno-1-87" name="__codelineno-1-87" href="#__codelineno-1-87"></a>    <span class="p">}</span>
+</code></pre></div>
+<h2 id="detection-and-alerting">Detection and Alerting</h2>
+<h3 id="monitoring-for-incidents">Monitoring for Incidents</h3>
+<p>Effective incident response starts with detection. Organizations need multiple detection mechanisms:</p>
+<p><strong>Certificate Transparency monitoring</strong>: Subscribe to CT log feeds for your domains. Alert immediately on any unexpected certificate issuance. This is your early warning system for fraudulent certificates.</p>
+<p><strong>Audit log monitoring</strong>: Analyze CA audit logs in real-time for anomalies: unusual issuance volumes, off-hours activity, operations by unexpected users, validation failures, authentication failures, or privilege escalations.</p>
+<p><strong>Network monitoring</strong>: Watch for certificates appearing on your network that weren't issued by your CA. Monitor for unexpected certificate changes on services. Track certificate fingerprints and alert on changes.</p>
+<p><strong>Endpoint detection</strong>: Monitor access to private key files and certificate stores. Alert on key file reads by unauthorized processes. Track certificate installation and removal. Monitor HSM access patterns.</p>
+<p><strong>External notification</strong>: Monitor security mailing lists for CA compromise announcements. Watch for reports of your certificates being used maliciously. Subscribe to threat intelligence feeds mentioning your domains.</p>
+<h3 id="alert-triage">Alert Triage</h3>
+<p>Not every alert indicates an incident requiring full response. Implement triage procedures:</p>
+<p><strong>Automated triage</strong>: Use SIEM rules to correlate alerts, suppress false positives based on known patterns, escalate based on severity and confidence, and enrich alerts with context.</p>
+<p><strong>Human triage</strong>: For ambiguous alerts, investigate quickly (within 15 minutes), gather additional context, make escalation decision, and document triage outcome.</p>
+<p><strong>Escalation criteria</strong>: Escalate immediately for confirmed key compromise, unauthorized certificate in CT logs, HSM tamper alerts, or CA system breaches. Escalate within 1 hour for suspicious activity with incomplete information, policy violations with potential security impact, or repeated validation failures. Standard handling for routine operational issues and false positives.</p>
+<h2 id="incident-response-phases">Incident Response Phases</h2>
+<h3 id="phase-1-preparation">Phase 1: Preparation</h3>
+<p>Preparation happens before incidents occur. This is the most important phase—poor preparation makes effective response impossible.</p>
+<p><strong>Response team</strong>: Establish a PKI incident response team with defined roles: Incident Commander (coordinates overall response), PKI Security Lead (technical expertise), CA Administrator (system access), Security Operations (investigation), Legal Counsel (compliance and notification), Communications (internal and external), and Business Representatives (service owners).</p>
+<p>Define communication channels: dedicated Slack/Teams channel for incidents, conference bridge for major incidents, escalation procedures and contact information, and out-of-band communication for CA compromise.</p>
+<p><strong>Playbooks</strong>: Develop detailed playbooks for each incident type. Each playbook should cover detection indicators, severity assessment, immediate containment actions, investigation steps, eradication procedures, recovery steps, and communication requirements.</p>
+<p><strong>Tools and access</strong>: Ensure the response team has necessary access pre-approved: CA system access (with break-glass procedures), HSM access, audit log access, certificate inventory system, revocation mechanisms, and communication tools.</p>
+<p>Maintain incident response toolkits: CA CLI tools for emergency operations, scripts for bulk certificate revocation, CRL/OCSP manipulation tools, forensic analysis tools, and backup/restore utilities.</p>
+<p><strong>Practice</strong>: Conduct tabletop exercises quarterly to walk through incident scenarios. Run full-scale simulations annually with all teams involved. Test specific procedures like emergency revocation and CA failover. Document lessons learned and update playbooks.</p>
+<h3 id="phase-2-detection-and-analysis">Phase 2: Detection and Analysis</h3>
+<p>When a potential incident is detected:</p>
+<p><strong>Initial assessment</strong>: Verify the alert is legitimate and not a false positive. Determine initial scope and impact. Classify incident severity. Decide if escalation is needed.</p>
+<p><strong>Evidence collection</strong>: Preserve all evidence immediately. Capture system logs, audit logs, network traffic captures, system memory dumps, and disk images if appropriate. Maintain chain of custody for forensic evidence.</p>
+<p><strong>Scope determination</strong>: Identify what was compromised: which keys, how many certificates, which systems, what time period. Determine how the compromise occurred. Assess potential attacker access and capabilities. Identify all affected services and users.</p>
+<p><strong>Impact analysis</strong>: Assess business impact: which services are affected, how many users or customers impacted, what data might be at risk, and potential financial or reputation impact.</p>
+<h3 id="phase-3-containment">Phase 3: Containment</h3>
+<p>Immediate actions to stop ongoing damage:</p>
+<p><strong>Short-term containment</strong>: Isolate compromised systems from the network immediately. Revoke compromised credentials. Disable affected accounts or services. Block attacker access. Begin monitoring for additional compromise.</p>
+<p>For confirmed key compromise, emergency revoke the certificate immediately, disable the compromised key, notify all relying parties, publish emergency CRL, and update OCSP responders.</p>
+<p><strong>Long-term containment</strong>: Implement workarounds to maintain service availability. Deploy temporary replacement certificates. Route around compromised infrastructure. Maintain containment while preparing for eradication.</p>
+<p><strong>Evidence preservation</strong>: Create forensic images of affected systems. Save all logs with extended retention. Document all containment actions taken. Maintain access to evidence for investigation.</p>
+<h3 id="phase-4-eradication">Phase 4: Eradication</h3>
+<p>Remove the threat from the environment:</p>
+<p><strong>Root cause analysis</strong>: Determine exactly how the compromise occurred. Identify the vulnerability exploited. Assess if other systems have the same vulnerability. Document the complete attack chain.</p>
+<p><strong>Threat removal</strong>: Remove malware or backdoors from compromised systems. Patch vulnerabilities that enabled the attack. Secure insecure configurations. Remove attacker access methods. Verify attacker no longer has access.</p>
+<p><strong>System remediation</strong>: Rebuild compromised systems from trusted media. Update all authentication credentials. Rotate all potentially compromised keys. Harden systems against re-compromise. Verify security baseline restored.</p>
+<h3 id="phase-5-recovery">Phase 5: Recovery</h3>
+<p>Restore normal operations:</p>
+<p><strong>Service restoration</strong>: Deploy replacement certificates. Verify trust chains. Test critical applications. Gradually restore services. Monitor for issues during restoration. Communicate status to stakeholders.</p>
+<p><strong>Verification</strong>: Confirm replacement certificates working correctly. Verify compromised certificates revoked. Test that old certificates no longer accepted. Validate all security controls functioning. Confirm normal operations restored.</p>
+<p><strong>Post-recovery monitoring</strong>: Enhanced monitoring for 30+ days after recovery. Watch for signs of re-compromise. Monitor for use of old certificates. Track relying party adoption of new certificates.</p>
+<h3 id="phase-6-post-incident-activity">Phase 6: Post-Incident Activity</h3>
+<p>Learning from the incident:</p>
+<p><strong>Post-mortem</strong>: Conduct blameless post-mortem within one week. Document detailed timeline of events. Identify what worked well. Identify gaps and failures. Generate action items for improvement.</p>
+<p><strong>Documentation</strong>: Write complete incident report including what happened, impact and scope, response actions taken, lessons learned, and recommendations. Update incident response playbooks based on lessons learned. Share knowledge with broader organization.</p>
+<p><strong>Process improvement</strong>: Implement security improvements to prevent recurrence. Update monitoring to detect similar incidents faster. Improve containment procedures based on experience. Train team on new procedures.</p>
+<h2 id="incident-scenarios-and-response-playbooks">Incident Scenarios and Response Playbooks</h2>
+<h3 id="scenario-1-root-ca-private-key-compromise">Scenario 1: Root CA Private Key Compromise</h3>
+<p>This is the worst-case PKI incident.</p>
+<p><strong>Detection</strong>: HSM tamper alert, unauthorized access to root CA vault, root CA key found in backup that shouldn't exist, or unexpected certificate issuance from root CA.</p>
+<p><strong>Immediate actions</strong> (within 1 hour):
+1. Activate critical incident response team, including C-level executives
+2. Isolate root CA systems completely (air-gap if necessary)
+3. Stop all certificate issuance from affected root
+4. Begin forensic evidence collection
+5. Notify board, legal counsel, and cyber insurance
+6. Prepare public disclosure if required by regulations</p>
+<p><strong>Investigation</strong> (hours 1-24):
+1. Determine extent of compromise: when did it occur, what was accessed, how many certificates might be affected
+2. Identify all certificates issued from compromised root
+3. Assess if any fraudulent certificates were issued
+4. Determine if subordinate CA keys also compromised
+5. Build complete timeline of compromise</p>
+<p><strong>Containment</strong> (days 1-3):
+1. Revoke root CA certificate in all trust stores (if possible and appropriate)
+2. Notify all browser vendors and OS vendors
+3. Communicate with all customers and partners
+4. Deploy new temporary root CA for critical operations
+5. Begin mass revocation of certificates from compromised root</p>
+<p><strong>Recovery</strong> (weeks 1-12):
+1. Generate new root CA with enhanced security
+2. Issue new intermediate CAs
+3. Re-issue all affected certificates
+4. Update all relying party trust stores
+5. Decommission compromised root CA completely</p>
+<p><strong>Long-term</strong> (months 1-6):
+1. Enhanced security review of all PKI infrastructure
+2. Third-party security audit
+3. Process improvements to prevent recurrence
+4. Potential reorganization of CA hierarchy
+5. Regular progress reporting to leadership</p>
+<h3 id="scenario-2-tls-certificate-private-key-leaked">Scenario 2: TLS Certificate Private Key Leaked</h3>
+<p>More common scenario with more limited scope.</p>
+<p><strong>Detection</strong>: Private key found in public GitHub repository, key file discovered in backup with wrong permissions, CT log shows same certificate serial number used with different keys, or certificate observed in use from unexpected IP addresses.</p>
+<p><strong>Immediate actions</strong> (within 1 hour):
+1. Revoke the compromised certificate immediately
+2. Remove the exposed key from wherever it was found
+3. Notify service owner
+4. Generate replacement certificate with new key
+5. Begin deployment of replacement</p>
+<p><strong>Investigation</strong> (hours 1-6):
+1. Determine how key was exposed
+2. Check if other keys exposed the same way
+3. Review audit logs for unauthorized usage
+4. Assess if key was actually used by attackers
+5. Identify all systems using this certificate</p>
+<p><strong>Containment and recovery</strong> (hours 6-24):
+1. Deploy replacement certificate to all affected systems
+2. Verify old certificate no longer in use
+3. Confirm revocation effective via OCSP/CRL
+4. Monitor for attempted use of revoked certificate
+5. Update deployment procedures to prevent recurrence</p>
+<p><strong>Post-incident</strong>:
+1. Document how exposure occurred
+2. Implement controls to prevent similar exposure
+3. Review other certificates for similar issues
+4. Training for developers on secure key handling
+5. Update git pre-commit hooks to catch secrets</p>
+<h3 id="scenario-3-unauthorized-certificate-issuance">Scenario 3: Unauthorized Certificate Issuance</h3>
+<p>Certificate issued without proper authorization.</p>
+<p><strong>Detection</strong>: Certificate appears in CT logs that wasn't requested, domain owner reports certificate they didn't issue, certificate doesn't appear in internal issuance records, or validation documentation missing.</p>
+<p><strong>Immediate actions</strong> (within 2 hours):
+1. Determine if issuance was malicious or error
+2. Revoke the unauthorized certificate
+3. Verify domain owner awareness
+4. Check for other unauthorized issuances
+5. Secure CA credentials if compromised</p>
+<p><strong>Investigation</strong> (hours 2-12):
+1. Review CA audit logs for issuance
+2. Identify who/what issued the certificate
+3. Determine how validation was bypassed
+4. Check if CA credentials were compromised
+5. Assess insider threat possibility</p>
+<p><strong>Remediation</strong> (hours 12-48):
+1. Fix validation bypass vulnerability
+2. Rotate CA credentials if compromised
+3. Enhanced monitoring for similar issues
+4. Review all recent issuances for anomalies
+5. Strengthen validation procedures</p>
+<p><strong>Post-incident</strong>:
+1. Update issuance validation procedures
+2. Implement additional authorization checks
+3. Enhance CT monitoring
+4. Training for CA operators
+5. Consider external audit of CA processes</p>
+<h2 id="communication-during-incidents">Communication During Incidents</h2>
+<h3 id="internal-communication">Internal Communication</h3>
+<p><strong>Stakeholder updates</strong>: Provide regular status updates to leadership (every 2 hours for critical incidents, every 4 hours for high severity), technical teams (continuous updates during active response), business units (when services are affected), and legal and compliance (throughout incident lifecycle).</p>
+<p><strong>Communication format</strong>: Use standard templates for incident updates including current status, actions taken, actions in progress, next steps, estimated time to resolution, and impact assessment.</p>
+<p><strong>Escalation communication</strong>: Clearly communicate when escalating: severity level, business impact, resources needed, decisions required, and timeline for escalation path.</p>
+<h3 id="external-communication">External Communication</h3>
+<p><strong>Customer communication</strong>: For incidents affecting customers, communicate quickly and transparently. Explain what happened (at appropriate detail level), what the impact is, what actions customers should take, what you're doing to fix it, and when resolution is expected.</p>
+<p><strong>Regulatory notification</strong>: Understand notification requirements: data breach laws (vary by jurisdiction), industry-specific requirements (PCI-DSS, HIPAA, etc.), CA/Browser Forum requirements for public CAs, and contractual obligations.</p>
+<p>Notify within required timeframes: preliminary notification within hours, detailed notification within days, and final report within weeks.</p>
+<p><strong>Public disclosure</strong>: For incidents involving public CA compromise or significant customer impact, prepare public statements coordinated with legal, public relations, and executive leadership. Be transparent but don't provide attackers with operational details. Focus on customer impact and remediation.</p>
+<p><strong>Partner notification</strong>: Notify partners who depend on your certificates promptly. Provide technical details partners need for their own response. Coordinate if partner systems also affected. Maintain communication throughout incident.</p>
+<h2 id="tools-and-automation">Tools and Automation</h2>
+<h3 id="incident-response-automation">Incident Response Automation</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">PKIIncidentResponse</span><span class="p">:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="sd">    Automated incident response actions for PKI</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">handle_compromised_certificate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>                                            <span class="n">cert</span><span class="p">:</span> <span class="n">Certificate</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>                                            <span class="n">severity</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResponseResult</span><span class="p">:</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="sd">        Automated response to certificate compromise</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">ResponseResult</span><span class="p">()</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>        <span class="c1"># Step 1: Immediate revocation</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>        <span class="n">result</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="s2">&quot;Revoking certificate&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        <span class="n">revocation</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">emergency_revoke</span><span class="p">(</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>            <span class="n">cert</span><span class="p">,</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>            <span class="n">reason</span><span class="o">=</span><span class="s1">&#39;keyCompromise&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>            <span class="n">revocation_date</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>        <span class="p">)</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>        <span class="c1"># Step 2: Notify stakeholders</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>        <span class="n">result</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="s2">&quot;Notifying stakeholders&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">notify_certificate_compromise</span><span class="p">(</span><span class="n">cert</span><span class="p">,</span> <span class="n">severity</span><span class="p">)</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>        <span class="c1"># Step 3: Generate replacement</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>        <span class="n">result</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="s2">&quot;Generating replacement certificate&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>        <span class="n">replacement</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">issue_replacement_certificate</span><span class="p">(</span><span class="n">cert</span><span class="p">)</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>        <span class="c1"># Step 4: Deploy replacement</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>        <span class="n">result</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="s2">&quot;Deploying replacement&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>        <span class="n">deployment</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">emergency_deploy</span><span class="p">(</span><span class="n">replacement</span><span class="p">)</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>        <span class="c1"># Step 5: Verify</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>        <span class="n">result</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="s2">&quot;Verifying remediation&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>        <span class="n">verification</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">verify_compromise_remediation</span><span class="p">(</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>            <span class="n">original</span><span class="o">=</span><span class="n">cert</span><span class="p">,</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>            <span class="n">replacement</span><span class="o">=</span><span class="n">replacement</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>        <span class="p">)</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>        <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+<h3 id="forensic-tools">Forensic Tools</h3>
+<p>Maintain tools for incident investigation: certificate parsing and analysis tools, CT log querying scripts, audit log analysis scripts, network traffic analysis (Wireshark, tcpdump), memory forensics tools, and disk forensics tools.</p>
+<h2 id="post-incident-review">Post-Incident Review</h2>
+<p>Every incident should result in documented learnings and improvements.</p>
+<p><strong>Post-mortem template</strong>:
+- Incident summary (what happened, when, impact)
+- Timeline of events (detailed chronology)
+- Root cause analysis (how it happened)
+- Response evaluation (what worked, what didn't)
+- Lessons learned
+- Action items (with owners and due dates)
+- Playbook updates needed</p>
+<p><strong>Continuous improvement</strong>: Track incident metrics (time to detect, time to contain, time to recover), identify recurring issues, measure improvement over time, and share lessons across organization.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>PKI incident response requires specialized knowledge, advance preparation, and decisive action. Organizations that invest in preparation—developing playbooks, training teams, conducting exercises, and maintaining tooling—respond to incidents faster and more effectively, limiting damage and demonstrating security maturity.</p>
+<p>The key to effective incident response is not avoiding all incidents (impossible), but responding so well that incidents have minimal impact, recovery is swift, and the organization emerges stronger with improved security posture.</p>
+<p>Remember: It's not if an incident will occur, but when. Your preparation today determines your success tomorrow.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/axonsecurity/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+  
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var sidebar = document.querySelector('.md-sidebar--secondary .md-sidebar__scrollwrap');
+      if (sidebar) {
+        var disclaimer = document.createElement('div');
+        disclaimer.className = 'md-sidebar-disclaimer';
+        disclaimer.innerHTML = `
+          <div class="md-typeset">
+            <div class="admonition info">
+              <p class="admonition-title">📚 Our Books</p>
+              <p><a href="https://axonshield.com/book"><strong>The Invisible Certificate Management Tax and How Automation Eliminates 94% of It</strong></a></p>
+            </div>
+            <div class="admonition warning">
+              <p class="admonition-title">⚠️ Disclaimer</p>
+              <p><small>This documentation is based on "best practices". We've observed these ignore 
+                unique organizational needs and often prove ineffective for long-term, sustainable 
+                operations and ignore strategic advanteges of building infrastructure intelligence.</small></p>
+            </div>
+          </div>
+        `;
+        sidebar.insertBefore(disclaimer, sidebar.firstChild);
+      }
+    });
+  </script>
+  
+
+  </body>
+</html>
