@@ -1,9 +1,18 @@
 ---
-title: Certificate Management Automation - Executive Summary
+title: Why Certificate Management Matters
 last_updated: 2024-11-10
 ---
 
-# Why Certificate Management Automation Matters to Your Business
+# Why (Certificate) Automation and Infra Intelligence Matters to Your Business
+
+## Finding Your Starting Point
+
+Every organization's certificate management journey is different. Whether you're responding to an outage, planning automation, or evaluating vendors, the [Quick Start Guide](quick-start.md) provides scenario-based navigation organized by your role:
+
+- **Executives:** Business case, vendor evaluation, ROI measurement, post-incident response
+- **Security Leaders:** Implementation planning, compliance requirements, architecture decisions
+- **Engineers:** Technical implementation, troubleshooting, automation patterns
+
 
 ## The Problem Executives Care About
 
@@ -100,7 +109,7 @@ We sell the operational transformation from manual firefighting to systematic in
 
 ### The Consulting Value
 
-We've done this transformation at Barclays (global financial infrastructure), Deutsche Bank (multi-cloud complexity), and Sky UK (consumer-scale). We know the difference between:
+We've done certificate transformations at a number of companies, including Barclays (global financial infrastructure), Deutsche Bank (integration with software and hardware use-cases), or Sky UK (multi-cloud). We know the difference between:
 
 - Organizations that think they're ready for automation (they're not)
 - Technology problems (easy) versus organizational problems (hard)
