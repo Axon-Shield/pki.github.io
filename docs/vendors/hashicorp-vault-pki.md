@@ -67,7 +67,7 @@ vault_pki:
 
 ### PKI Secrets Engine Architecture
 
-```
+```text
 ┌─────────────────────────────────────────────────────┐
 │              HashiCorp Vault Cluster                │
 │                                                     │

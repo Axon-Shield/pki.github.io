@@ -249,7 +249,7 @@ spec:
 ### Deployment Options
 
 **On-Premises Architecture**:
-```
+```text
 ┌──────────────────────────────────────────────────┐
 │         Keyfactor Command (On-Prem)              │
 │                                                  │

@@ -251,7 +251,7 @@ cert = conn.retrieve_cert(request)
 ### Deployment Models
 
 **On-Premises**:
-```
+```text
 ┌────────────────────────────────────────────────────┐
 │              Venafi Platform (On-Prem)             │
 │                                                    │
