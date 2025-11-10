@@ -42,12 +42,14 @@ Welcome to your strategic guide for automating certificate management. This know
 ### Quick Cost Analysis
 
 **Manual Management Costs (1,000 certificates):**
+
 - Time per certificate: 2-4 hours
 - Average security engineer salary: $120K/year = $60/hour
 - Cost per certificate: $120-$240
 - **Annual cost: $120K-$240K** (just for renewal, excluding outages)
 
 **Automation Costs:**
+
 - Platform licensing: $50K-$200K/year (depending on scale)
 - Implementation: $50K-$150K (one-time)
 - Ongoing maintenance: ~10% of platform cost

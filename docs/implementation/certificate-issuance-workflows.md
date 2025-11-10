@@ -13,6 +13,7 @@ Certificate issuance is the core operational process of any PKI, transforming ce
 Certificate issuance workflows encompass the entire process from initial request through final certificate delivery and installation. In enterprise environments, these workflows must handle thousands or millions of certificates across diverse use cases while maintaining security, compliance, and operational efficiency.
 
 **Core Workflow Stages**:
+
 1. **Request Initiation** - Certificate request generated with required identifiers
 2. **Identity Validation** - Verifying requester authorization and identifier ownership
 3. **Policy Enforcement** - Applying organizational rules and compliance requirements
@@ -39,8 +40,6 @@ Email Delivery → Manual Installation → Manual Verification
 
 **Characteristics**:
 
-
-
 - High touch, multiple handoffs between teams
 - Days to weeks for certificate issuance
 - Prone to errors and omissions
@@ -49,8 +48,6 @@ Email Delivery → Manual Installation → Manual Verification
 - Often bypassed through "shadow IT" channels
 
 **When Appropriate**:
-
-
 
 - High-value certificates (root CAs, signing certificates)
 - External-facing certificates requiring extensive validation
@@ -68,8 +65,6 @@ Auto-Generation → Auto-Distribution → Manual Installation → Auto-Verificat
 
 **Characteristics**:
 
-
-
 - Automated technical operations
 - Human approval for policy decisions
 - Hours to days for issuance
@@ -78,8 +73,6 @@ Auto-Generation → Auto-Distribution → Manual Installation → Auto-Verificat
 - Balances security and efficiency
 
 **When Appropriate**:
-
-
 
 - Organizations transitioning to automation
 - Certificates requiring business approval
@@ -97,8 +90,6 @@ Auto-Distribution → Auto-Installation → Auto-Verification → Audit Log
 
 **Characteristics**:
 
-
-
 - Minutes to seconds for issuance
 - Policy-driven decisions
 - Complete audit automation
@@ -107,8 +98,6 @@ Auto-Distribution → Auto-Installation → Auto-Verification → Audit Log
 - Requires robust policy framework
 
 **When Appropriate**:
-
-
 
 - Cloud-native environments
 - Container and microservices architectures
