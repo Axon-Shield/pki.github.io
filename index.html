@@ -1,0 +1,3058 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://vault.axonshield.com/">
+      
+      
+      
+        <link rel="next" href="glossary/">
+      
+      
+      <link rel="icon" href="assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Why Certificate Management Matters - Shield Vault</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+    
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WJXPDRF2');</script>
+  <!-- End Google Tag Manager -->
+  
+  <!-- Apollo Tracking -->
+  <script>
+    (function() {
+      var apolloScript = document.createElement('script');
+      apolloScript.type = 'text/javascript';
+      apolloScript.async = true;
+      apolloScript.src = 'https://cdn.apollo.io/v1/apollo.js';
+      apolloScript.setAttribute('data-apollo-id', '68b8b91c5e883f0021f7f7aa');
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(apolloScript, s);
+    })();
+  </script>
+  <!-- End Apollo Tracking -->
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#why-certificate-automation-and-infra-intelligence-matters-to-your-business" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Shield Vault" class="md-header__button md-logo" aria-label="Shield Vault" data-md-component="logo">
+      
+  <img src="assets/axon-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Shield Vault
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Why Certificate Management Matters
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Why Certificate Management Matters
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="glossary/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="quick-start/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Quick Start Guide
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="technical-guide/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Foundations for Infrastructure Intelligence - Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="architecture/case-studies/" class="md-tabs__link">
+          
+  
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="business/cost_of_certificate_management/" class="md-tabs__link">
+          
+  
+  
+  Business
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="foundations/certificate-anatomy/" class="md-tabs__link">
+          
+  
+  
+  Foundations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="implementation/acme-protocol-implementation/" class="md-tabs__link">
+          
+  
+  
+  Implementation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="operations/certificate-lifecycle-management/" class="md-tabs__link">
+          
+  
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="patterns/ca-hierarchies/" class="md-tabs__link">
+          
+  
+  
+  Patterns
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="security/ca-compromise-scenarios/" class="md-tabs__link">
+          
+  
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="standards/acme-protocol/" class="md-tabs__link">
+          
+  
+  
+  Standards
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="strategy/success-metrics/" class="md-tabs__link">
+          
+  
+  
+  Strategy
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="troubleshooting/chain-validation-errors/" class="md-tabs__link">
+          
+  
+  
+  Troubleshooting
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="vendors/digicert-certcentral/" class="md-tabs__link">
+          
+  
+  
+  Vendors
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Shield Vault" class="md-nav__button md-logo" aria-label="Shield Vault" data-md-component="logo">
+      
+  <img src="assets/axon-logo.png" alt="logo">
+
+    </a>
+    Shield Vault
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Why Certificate Management Matters
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Why Certificate Management Matters
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#finding-your-starting-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding Your Starting Point
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-problem-executives-care-about" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Problem Executives Care About
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-actually-means" class="md-nav__link">
+    <span class="md-ellipsis">
+      What This Actually Means
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-component-management-to-operational-capability" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Component Management to Operational Capability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="From Component Management to Operational Capability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-doghouse-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Doghouse Problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-mansion-reality" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Mansion Reality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-actually-creates-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Actually Creates Value
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-business-case-in-three-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Business Case in Three Numbers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Now
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-success-looks-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Success Looks Like
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-we-actually-sell" class="md-nav__link">
+    <span class="md-ellipsis">
+      What We Actually Sell
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What We Actually Sell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#that-transformation-requires" class="md-nav__link">
+    <span class="md-ellipsis">
+      That Transformation Requires
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-consulting-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Consulting Value
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-executive-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Executive Questions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-knowledge-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      About This Knowledge Base
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Start Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="technical-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Foundations for Infrastructure Intelligence - Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="architecture/case-studies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Case Studies - Certificate Management at Scale
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="architecture/certificate-as-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate-as-Code
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="architecture/mutual-tls-patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mutual TLS Patterns
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="architecture/service-mesh-certificates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Service Mesh Certificates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="architecture/zero-trust-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Zero-Trust Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Business
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Business
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="business/cost_of_certificate_management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The $67 Million Risk: Hidden Costs of Manual Certificate Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Foundations
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Foundations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="foundations/certificate-anatomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Anatomy
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="foundations/cryptographic-primitives/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cryptographic Primitives
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="foundations/public-private-key-pairs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public-Private Key Pairs
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="foundations/trust-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Trust Models
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="foundations/what-is-pki/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What is PKI?
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Implementation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Implementation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="implementation/acme-protocol-implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ACME Protocol Implementation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="implementation/ca-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CA Architecture
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="implementation/certificate-issuance-workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Issuance Workflows
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="implementation/hsm-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HSM Integration
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="implementation/multi-cloud-pki/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Multi-Cloud PKI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Operations
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Operations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="operations/certificate-lifecycle-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Lifecycle Management
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="operations/certificate-rotation-strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Rotation Strategies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="operations/inventory-and-discovery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inventory and Discovery
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="operations/monitoring-and-alerting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monitoring and Alerting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="operations/renewal-automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Renewal Automation
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Patterns
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Patterns
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="patterns/ca-hierarchies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CA Hierarchies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="patterns/cloud-vs-on-premises/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloud vs On-Premises
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="patterns/high-availability-disaster-recovery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    High Availability and Disaster Recovery
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="patterns/multi-tenancy-considerations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Multi-Tenancy Considerations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Security
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security/ca-compromise-scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CA Compromise Scenarios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security/certificate-pinning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Pinning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security/common-vulnerabilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Common Vulnerabilities
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security/compliance-and-audit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Compliance and Audit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security/incident-response/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Incident Response
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security/key-management-best-practices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Key Management Best Practices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security/private-key-protection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Private Key Protection
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security/threat-models-and-attack-vectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Threat Models and Attack Vectors
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Standards
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            Standards
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="standards/acme-protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ACME Protocol
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="standards/ocsp-and-crl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OCSP and CRL
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="standards/pkcs-standards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PKCS Standards
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="standards/tls-protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TLS Protocol
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="standards/x509-standard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    X.509 Standard
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Strategy
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            Strategy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="strategy/success-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Success Metrics and KPIs for Certificate Automation
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--stable"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            Troubleshooting
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="troubleshooting/chain-validation-errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chain Validation Errors
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="troubleshooting/common-misconfigurations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Common Misconfigurations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="troubleshooting/expired-certificate-outages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Expired Certificate Outages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="troubleshooting/performance-bottlenecks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Performance Bottlenecks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Vendors
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Vendors
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vendors/digicert-certcentral/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DigiCert CertCentral
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vendors/hashicorp-vault-pki/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HashiCorp Vault PKI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vendors/keyfactor-command/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Keyfactor Command
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vendors/venafi-platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Venafi Platform
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vendors/vendor-comparison-matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vendor Comparison Matrix
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#finding-your-starting-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding Your Starting Point
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-problem-executives-care-about" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Problem Executives Care About
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-actually-means" class="md-nav__link">
+    <span class="md-ellipsis">
+      What This Actually Means
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-component-management-to-operational-capability" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Component Management to Operational Capability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="From Component Management to Operational Capability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-doghouse-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Doghouse Problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-mansion-reality" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Mansion Reality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-actually-creates-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Actually Creates Value
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-business-case-in-three-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Business Case in Three Numbers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Now
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-success-looks-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Success Looks Like
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-we-actually-sell" class="md-nav__link">
+    <span class="md-ellipsis">
+      What We Actually Sell
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What We Actually Sell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#that-transformation-requires" class="md-nav__link">
+    <span class="md-ellipsis">
+      That Transformation Requires
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-consulting-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Consulting Value
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-executive-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Executive Questions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-knowledge-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      About This Knowledge Base
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WJXPDRF2"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+  <!-- Right sidebar with disclaimer above TOC -->
+  
+    <style>
+      @media screen and (min-width: 76.25em) {
+        .md-sidebar--secondary {
+          order: 1;
+        }
+        .md-sidebar--secondary::before {
+          content: '';
+          display: block;
+          margin-bottom: 1rem;
+        }
+      }
+    </style>
+  
+  
+  
+                  
+
+
+
+<h1 id="why-certificate-automation-and-infra-intelligence-matters-to-your-business">Why (Certificate) Automation and Infra Intelligence Matters to Your Business</h1>
+<h2 id="finding-your-starting-point">Finding Your Starting Point</h2>
+<p>Every organization's certificate management journey is different. Whether you're responding to an outage, planning automation, or evaluating vendors, the <a href="quick-start/">Quick Start Guide</a> provides scenario-based navigation organized by your role:</p>
+<ul>
+<li><strong>Executives:</strong> Business case, vendor evaluation, ROI measurement, post-incident response</li>
+<li><strong>Security Leaders:</strong> Implementation planning, compliance requirements, architecture decisions</li>
+<li><strong>Engineers:</strong> Technical implementation, troubleshooting, automation patterns</li>
+</ul>
+<h2 id="the-problem-executives-care-about">The Problem Executives Care About</h2>
+<p>Certificate expiration caused 94% of preventable outages last year. When certificates fail, revenue stops. Your average outage costs $300K-$1M in downtime, plus the reputation damage when customers can't access your services.</p>
+<p>Most organizations discover they have a certificate problem at 2am when something critical expires. By then, you're in crisis mode - emergency vendor calls, all-hands war rooms, executives explaining to customers why the site is down.</p>
+<h2 id="what-this-actually-means">What This Actually Means</h2>
+<p>Your infrastructure runs on thousands of digital certificates that expire like milk. Most organizations manage these manually: spreadsheets, email reminders, weekend emergency responses. It doesn't scale, and eventually it breaks spectacularly.</p>
+<p>The typical enterprise manages 10,000+ certificates across their infrastructure. Manual renewal takes 2-4 hours per certificate - discovery, request, validation, deployment, verification. That's 20,000-40,000 hours annually just keeping the lights on.</p>
+<h2 id="from-component-management-to-operational-capability">From Component Management to Operational Capability</h2>
+<p>Certificates are commodities - like nails, bolts, or electrical wiring. No one builds competitive advantage by having better nails. But your ability to manage thousands of nails at scale without losing track of which ones are holding up load-bearing walls? That's operational capability that determines whether you can build a mansion or you're stuck with a doghouse.</p>
+<h3 id="the-doghouse-problem">The Doghouse Problem</h3>
+<p>Small infrastructure, manual processes work fine. You have 100 certificates, a spreadsheet, calendar reminders. Someone remembers to renew things. When something breaks, one person fixes it in an afternoon. You're running a doghouse with a hammer and memory.</p>
+<h3 id="the-mansion-reality">The Mansion Reality</h3>
+<p>Enterprise infrastructure has 10,000+ certificates. Cloud-native architectures have 100,000+. Microservices, zero-trust, multi-cloud - every architectural decision multiplies certificate count by 10-100x.</p>
+<p>You cannot manage a mansion with doghouse tools. The math doesn't work. At scale, manual processes don't just become inefficient - they become impossible. You need systematic operational capability, not heroic individual effort.</p>
+<h3 id="what-actually-creates-value">What Actually Creates Value</h3>
+<p>Certificate automation forces you to answer fundamental questions: Which services actually talk to each other? Which systems are production versus abandoned? Where do trust boundaries exist? What depends on what?</p>
+<p>Manual certificate management lets you avoid these questions. You just renew whatever's about to expire. It's like maintaining a building by replacing rotting boards one at a time without understanding the structure underneath.</p>
+<p>When you automate certificate management, you build infrastructure intelligence as a byproduct: service dependency maps, trust boundary definitions, compliance audit trails, and systematic understanding of how your systems actually connect.</p>
+<p>You can manage a doghouse with a hammer and memory. You need blueprints for a mansion. Certificate automation creates those blueprints while solving the operational problem.</p>
+<h2 id="the-business-case-in-three-numbers">The Business Case in Three Numbers</h2>
+<p><strong>Manual management cost:</strong> $120K-$240K annually for 1,000 certificates (just labor, excluding outages)</p>
+<p><strong>Automation cost:</strong> $50K-$200K platform license + $50K-$150K implementation (one-time)</p>
+<p><strong>ROI timeline:</strong> 6-12 months to payback, then 50-80% ongoing cost reduction</p>
+<p>That calculation only includes labor. It doesn't count the value of preventing even a single outage, which typically exceeds your entire annual certificate management budget.</p>
+<h2 id="why-now">Why Now</h2>
+<p><strong>Zero-trust architecture requires automated certificate management.</strong> You can't implement zero-trust with manual processes - the math doesn't work. Zero-trust means every service, every workload, every connection gets its own certificate. That's 10-100x more certificates than traditional perimeter security models.</p>
+<p><strong>Cloud migration multiplies your certificate count.</strong> On-premises infrastructure might have hundreds of certificates. Multi-cloud infrastructure has tens of thousands. Microservices architectures have hundreds of thousands. Your current process won't survive contact with that reality.</p>
+<p><strong>Compliance frameworks are tightening.</strong> SOC 2, PCI-DSS, FedRAMP, and industry-specific regulations increasingly require automated certificate lifecycle management with full audit trails. Manual processes create compliance gaps that auditors flag immediately.</p>
+<p><strong>Certificate lifespans are shrinking.</strong> Industry is moving toward shorter lifespans (90 days becoming standard, 30 days increasingly common) because compromise detection time averages 200+ days. Apple, Google, and Mozilla are forcing this change through browser policy. Manual management becomes mathematically impossible.</p>
+<h2 id="what-success-looks-like">What Success Looks Like</h2>
+<p><strong>Operational metrics:</strong></p>
+<ul>
+<li>Zero expiration-related outages</li>
+<li>94% reduction in certificate management time (hours to minutes per certificate)</li>
+<li>30-day certificate lifespans without operational overhead</li>
+<li>Automated compliance audit trails with zero manual effort</li>
+</ul>
+<p><strong>Financial metrics:</strong></p>
+<ul>
+<li>Security team focused on strategic initiatives instead of firefighting</li>
+<li>Infrastructure that scales without linear cost increases</li>
+<li>Outage prevention worth 10-50x the automation investment</li>
+<li>Reduced cyber insurance premiums through demonstrated controls</li>
+</ul>
+<p><strong>Strategic capabilities:</strong></p>
+<ul>
+<li>Foundation for zero-trust architecture implementation</li>
+<li>Seamless certificate management across hybrid and multi-cloud environments</li>
+<li>Rapid deployment cycles enabled by automated certificate provisioning</li>
+<li>Real-time visibility into certificate inventory and compliance status</li>
+<li>Infrastructure intelligence showing actual service dependencies and trust relationships</li>
+</ul>
+<h2 id="what-we-actually-sell">What We Actually Sell</h2>
+<p>Not better certificates. Not even better certificate management software (that's commodity too - buy Venafi, HashiCorp, or get our technology for free).</p>
+<p>We sell the operational transformation from manual firefighting to systematic infrastructure management.</p>
+<h3 id="that-transformation-requires">That Transformation Requires</h3>
+<p><strong>Understanding what you actually built.</strong> Most organizations don't know which services trust which other services. Certificate automation forces you to document reality, not aspirations.</p>
+<p><strong>Building operational discipline.</strong> Automation isn't magic - it's systematic process that eliminates human decision-making from repetitive tasks. That requires organizational change, not just technology deployment.</p>
+<p><strong>Creating infrastructure intelligence.</strong> When certificates are automated, you gain systematic visibility into service dependencies, trust boundaries, and compliance status. That's intelligence you can't get from spreadsheets.</p>
+<p><strong>Scaling without linear cost increases.</strong> Manual management means more certificates = more headcount. Automated management means more certificates = same operational cost. That's what lets you build the mansion.</p>
+<h3 id="the-consulting-value">The Consulting Value</h3>
+<p>We've done certificate transformations at a number of companies, including Barclays (global financial infrastructure), Deutsche Bank (integration with software and hardware use-cases), or Sky UK (multi-cloud). We know the difference between:</p>
+<ul>
+<li>Organizations that think they're ready for automation (they're not)</li>
+<li>Technology problems (easy) versus organizational problems (hard)</li>
+<li>Implementations that work on paper versus implementations that survive production</li>
+<li>ROI projections versus actual operational reality</li>
+</ul>
+<p>You're not buying PKI expertise from us. You're buying the operational playbook for infrastructure transformation - the blueprint for going from doghouse operations to mansion-scale capability.</p>
+<p>Certificates are just where the organizational dysfunction becomes visible and measurable. Fix certificate management, and you've built the operational capability to fix everything else.</p>
+<h2 id="common-executive-questions">Common Executive Questions</h2>
+<p><strong>"Can't we just buy more headcount?"</strong></p>
+<p>No. Manual processes don't scale linearly. At 1,000 certificates, you need 1-2 FTEs. At 10,000 certificates, you don't need 10-20 FTEs - the operational complexity makes manual management impossible regardless of headcount. You need automation or you need to accept regular outages.</p>
+<p><strong>"Why not just use longer certificate lifespans?"</strong></p>
+<p>Industry is moving toward shorter lifespans (90 days becoming standard, 30 days increasingly common) because compromise detection time averages 200+ days. Shorter lifespans limit blast radius. Apple, Google, and Mozilla are forcing this change through browser policy. Fighting it means compatibility problems.</p>
+<p><strong>"Can we phase this in slowly?"</strong></p>
+<p>Yes, but recognize that partial automation often costs more than full automation. You maintain two processes (manual and automated), confusion about which certificates are managed which way, and gaps where certificates fall through cracks. Faster implementation paradoxically reduces risk and cost.</p>
+<p><strong>"What's the actual implementation timeline?"</strong></p>
+<p>Proof of concept: 2-4 weeks<br />
+Pilot deployment: 1-2 months<br />
+Full enterprise rollout: 3-6 months<br />
+Steady state operations: 6-9 months from start</p>
+<p>The limiting factor is usually organizational change management, not technical implementation. Teams need to trust automation before they'll decommission manual processes.</p>
+<p><strong>"What happens if the automation platform fails?"</strong></p>
+<p>Well-designed automation architectures have higher availability than manual processes. The automation platform becomes infrastructure you monitor and maintain like any critical system. Failure modes are "certificates don't renew automatically" (which gives you 30-90 days to fix) not "immediate outage."</p>
+<p><strong>"How do we know if we're ready for this?"</strong></p>
+<p>If you're asking this question, you're probably not ready yet - but that's okay. Most organizations need assessment before implementation. Can you answer these questions: How many certificates do you have? Where are they deployed? Who owns renewal for each one? What was your last certificate-related outage? If you can't answer these, you need discovery before automation.</p>
+<h2 id="next-steps">Next Steps</h2>
+<p>If you're evaluating certificate management automation:</p>
+<p><strong>Establish your baseline:</strong> How many certificates do you actually have? What does manual management currently cost? What was your last certificate-related outage? Most organizations discover they have 3-10x more certificates than they thought.</p>
+<p><strong>Define success metrics:</strong> What does good look like for your organization? Time savings? Outage prevention? Compliance readiness? Cloud migration enablement? Zero-trust foundation? Be specific about what you're measuring.</p>
+<p><strong>Review the technical foundation:</strong> Your engineering teams should read the <a href="technical-guide/">complete technical knowledge base</a> to understand implementation requirements, architecture patterns, and operational procedures.</p>
+<p><strong>Evaluate solutions:</strong> The <a href="vendors/vendor-comparison-matrix/">Vendor Comparison Matrix</a> provides objective analysis of commercial platforms. Implementation patterns are platform-agnostic - the organizational transformation matters more than the technology choice.</p>
+<p><strong>Plan your implementation:</strong> Most organizations benefit from external expertise during initial implementation. We've done this at Barclays, Deutsche Bank, and Sky - we know where the complexity hides, which vendors oversell capabilities, and what actually matters for production success.</p>
+<h2 id="about-this-knowledge-base">About This Knowledge Base</h2>
+<p>This knowledge base combines deep technical expertise from enterprise PKI implementations with practical operational guidance from large-scale deployments. It's maintained by <a href="https://axonshield.com">Axon Shield</a>, a cybersecurity consulting firm specializing in PKI and certificate management automation.</p>
+<p>The technical content provides authoritative, implementation-focused guidance for engineering teams. This executive summary provides the strategic context for business decision-making.</p>
+<p><strong>For technical teams:</strong> See the complete <a href="technical-guide/">Technical Knowledge Base</a> for implementation details, architecture patterns, troubleshooting guides, vendor comparisons, and operational procedures across 47+ comprehensive pages.</p>
+<p><strong>For business stakeholders:</strong> This executive summary provides the strategic context. Technical implementation details are available but not required for business decision-making.</p>
+<hr />
+<p><strong>Questions about certificate management automation for your organization?</strong> <a href="https://axonshield.com/contact">Contact Axon Shield</a> for expert guidance on assessment, planning, and implementation.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/axonsecurity/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+  
+      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var sidebar = document.querySelector('.md-sidebar--secondary .md-sidebar__scrollwrap');
+      if (sidebar) {
+        var disclaimer = document.createElement('div');
+        disclaimer.className = 'md-sidebar-disclaimer';
+        disclaimer.innerHTML = `
+          <div class="md-typeset">
+            <div class="admonition info">
+              <p class="admonition-title">📚 Our Books</p>
+              <p><a href="https://axonshield.com/book"><strong>The Invisible Certificate Management Tax and How Automation Eliminates 94% of It</strong></a></p>
+            </div>
+            <div class="admonition warning">
+              <p class="admonition-title">⚠️ Disclaimer</p>
+              <p><small>This documentation is based on "best practices". We've observed these ignore 
+                unique organizational needs and often prove ineffective for long-term, sustainable 
+                operations and ignore strategic advanteges of building infrastructure intelligence.</small></p>
+            </div>
+          </div>
+        `;
+        sidebar.insertBefore(disclaimer, sidebar.firstChild);
+      }
+    });
+  </script>
+  
+
+  </body>
+</html>
