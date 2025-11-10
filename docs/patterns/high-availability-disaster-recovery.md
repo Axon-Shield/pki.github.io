@@ -13,18 +13,21 @@ PKI infrastructure is critical path for most organizations—when certificate se
 Not all PKI components need the same availability:
 
 **Certificate issuance**:
+
 - For automated systems (ACME, APIs): High availability needed (99.9%+)
 - For manual requests: Lower availability acceptable (99%)
 - Can often tolerate brief outages if retry mechanisms exist
 - Impact: New certificates can't be issued during outage
 
 **Certificate validation** (OCSP/CRL):
+
 - Critical for security: Should be highly available (99.95%+)
 - Failure may block all TLS connections depending on policy
 - Caching provides resilience during brief outages
 - Impact: Applications may fail to start or reject connections
 
 **Certificate revocation**:
+
 - Emergency revocations need immediate processing
 - Regular revocations can tolerate some delay
 - Impact: Compromised certificates remain trusted longer
@@ -121,6 +124,7 @@ Classic HA pattern: two CA servers sharing certificate database and HSM.
 ```
 
 **Characteristics**:
+
 - Primary handles all requests
 - Secondary monitors primary health
 - Failover when primary fails
@@ -128,12 +132,14 @@ Classic HA pattern: two CA servers sharing certificate database and HSM.
 - Single HSM (network-attached)
 
 **Advantages**:
+
 - Simple to understand and operate
 - Consistent data (single database)
 - Fast failover (seconds to minutes)
 - Lower infrastructure cost
 
 **Disadvantages**:
+
 - Database is single point of failure
 - HSM is single point of failure
 - No geographic distribution
@@ -235,18 +241,21 @@ Multiple CA servers actively handling requests.
 ```
 
 **Characteristics**:
+
 - All servers active and processing requests
 - Load balancer distributes traffic
 - Shared database cluster
 - HSM pool or key replication
 
 **Advantages**:
+
 - Higher throughput than active-passive
 - No failover needed (load balancer routes around failures)
 - Better resource utilization
 - Scales horizontally
 
 **Disadvantages**:
+
 - More complex configuration
 - Database synchronization challenges
 - HSM key synchronization required
@@ -343,6 +352,7 @@ CA infrastructure across multiple regions for resilience and latency.
 ```
 
 **Characteristics**:
+
 - CA infrastructure in multiple geographic regions
 - Primary region handles normal traffic
 - DR region ready for failover
@@ -350,12 +360,14 @@ CA infrastructure across multiple regions for resilience and latency.
 - HSM key replication (or backup/restore)
 
 **Advantages**:
+
 - Resilience to regional outages
 - Lower latency for distributed users
 - Geographic redundancy
 - Disaster recovery built-in
 
 **Disadvantages**:
+
 - Complex replication and consistency
 - Higher latency for cross-region operations
 - More expensive infrastructure
@@ -867,6 +879,7 @@ class PKIHealthMonitoring:
 ## Best Practices
 
 **High availability**:
+
 - Active-passive sufficient for most organizations
 - Active-active for high-volume or global deployments
 - Load balancer with health checks
@@ -875,6 +888,7 @@ class PKIHealthMonitoring:
 - Regular failover testing
 
 **Disaster recovery**:
+
 - Define RTO and RPO for each component
 - Backup everything (keys, data, configuration, docs)
 - Test backups regularly (monthly minimum)
@@ -883,6 +897,7 @@ class PKIHealthMonitoring:
 - DR site ready and regularly validated
 
 **Monitoring**:
+
 - Comprehensive health checks
 - Replication lag monitoring
 - Backup success monitoring
@@ -891,6 +906,7 @@ class PKIHealthMonitoring:
 - Regular capacity planning
 
 **Testing**:
+
 - Monthly component recovery tests
 - Quarterly full DR failovers
 - Annual disaster simulation

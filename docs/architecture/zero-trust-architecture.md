@@ -831,6 +831,7 @@ class ShortLivedCertificateManager:
 ```
 
 **Benefits of short-lived certificates**:
+
 - Reduced blast radius of compromise
 - No need for revocation (expires quickly)
 - Forces automation (manual rotation impossible)
@@ -838,6 +839,7 @@ class ShortLivedCertificateManager:
 - Aligns with zero-trust principles
 
 **Challenges**:
+
 - Requires robust automation
 - Increased CA load
 - Clock synchronization critical
@@ -938,6 +940,7 @@ Phase 4: Full Zero-Trust (Month 12+)
 ## Best Practices
 
 **Certificate design**:
+
 - Use SPIFFE IDs for interoperability
 - Short validity periods (1-24 hours)
 - Automatic rotation required
@@ -945,6 +948,7 @@ Phase 4: Full Zero-Trust (Month 12+)
 - Both serverAuth and clientAuth key usage
 
 **Policy enforcement**:
+
 - Default deny (explicit allow required)
 - Attribute-based access control
 - Continuous evaluation
@@ -952,6 +956,7 @@ Phase 4: Full Zero-Trust (Month 12+)
 - Graceful degradation when possible
 
 **Operational**:
+
 - Robust automation essential
 - Monitoring and observability critical
 - Test certificate rotation under load
@@ -959,6 +964,7 @@ Phase 4: Full Zero-Trust (Month 12+)
 - Document troubleshooting procedures
 
 **Security**:
+
 - Protect CA private keys (HSM)
 - Secure workload attestation
 - Monitor for anomalous usage

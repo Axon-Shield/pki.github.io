@@ -30,6 +30,7 @@ Each tenant gets dedicated CA certificates while sharing physical infrastructure
 ```
 
 **Characteristics**:
+
 - Shared physical servers and HSMs
 - Separate CA certificate per tenant
 - Logical isolation via HSM partitions
@@ -135,12 +136,14 @@ Tenant A Infrastructure        Tenant B Infrastructure
 ```
 
 **Characteristics**:
+
 - Complete physical isolation
 - No shared infrastructure
 - Maximum security and performance guarantees
 - Higher cost per tenant
 
 **When to use**:
+
 - High-value tenants requiring dedicated infrastructure
 - Compliance requirements mandate isolation (PCI-DSS Level 1, government)
 - Tenant-specific performance SLAs
@@ -167,6 +170,7 @@ Master CA signs tenant sub-CAs, tenant manages their own sub-CA:
 ```
 
 **Characteristics**:
+
 - Provider maintains root CA
 - Tenants operate their own subordinate CAs
 - Tenant has full control over their sub-CA
@@ -855,6 +859,7 @@ class TenantOffboarding:
 ## Best Practices
 
 **Isolation**:
+
 - Separate database schema per tenant (minimum)
 - Separate HSM partition per tenant
 - Row-level security policies enforced
@@ -862,6 +867,7 @@ class TenantOffboarding:
 - Regular isolation testing
 
 **Security**:
+
 - Never trust tenant-provided tenant_id
 - Validate all cross-tenant access attempts
 - Audit all operations with tenant context
@@ -869,6 +875,7 @@ class TenantOffboarding:
 - Protect against tenant enumeration
 
 **Operations**:
+
 - Automated tenant onboarding/offboarding
 - Fair resource allocation and monitoring
 - Tenant-specific SLAs and monitoring
@@ -876,6 +883,7 @@ class TenantOffboarding:
 - Regular isolation verification testing
 
 **Customization**:
+
 - Tenant-specific certificate policies
 - Flexible branding and customization
 - Configurable feature flags per tenant

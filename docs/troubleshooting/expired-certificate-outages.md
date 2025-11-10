@@ -47,6 +47,7 @@ The paradox: organizations know exactly when certificates will expire, yet still
 ### Why Expiry Outages Happen
 
 **Organizational failures**:
+
 - **No ownership**: "Someone else's job" mentality
 - **Alert fatigue**: Too many low-priority alerts drown critical ones
 - **Process gaps**: Manual renewal processes don't scale
@@ -54,12 +55,14 @@ The paradox: organizations know exactly when certificates will expire, yet still
 - **Knowledge silos**: Only one person knows how to renew specific certificates
 
 **Technical failures**:
+
 - **Discovery gaps**: Unknown certificates that can't be renewed
 - **Deployment complexity**: Renewal requires coordinating dozens of systems
 - **Testing requirements**: Can't validate renewals without production-like environment
 - **Automation failures**: Automated renewal fails silently weeks before expiry
 
 **Communication failures**:
+
 - **Stakeholder notifications**: Service owners unaware of expiring certificates
 - **Cross-team dependencies**: Certificate used by multiple teams
 - **Vendor coordination**: Third-party systems need advance notice
@@ -1038,11 +1041,13 @@ class CertificateExpiryGameDay:
 ### Case Study: LinkedIn (2023)
 
 **What happened**:
+
 - Certificate expired during business hours
 - Global outage affecting millions of users
 - Duration: Several hours
 
 **Contributing factors**:
+
 - Automated renewal process had undiscovered bug
 - Backup manual process not executed
 - Monitoring alerts didn't escalate appropriately
@@ -1055,11 +1060,13 @@ class CertificateExpiryGameDay:
 ### Case Study: Ericsson (2018)
 
 **What happened**:
+
 - Software certificate expired in mobile network equipment
 - Affected 32 million mobile subscribers across UK and Japan
 - Duration: 12+ hours
 
 **Contributing factors**:
+
 - Certificate embedded in software
 - No monitoring for embedded certificate expiry
 - Global deployment meant rolling back affected millions
@@ -1072,11 +1079,13 @@ class CertificateExpiryGameDay:
 ### Case Study: Microsoft Teams (2023)
 
 **What happened**:
+
 - Authentication certificate expired
 - Users unable to access Teams
 - Duration: ~4 hours
 
 **Contributing factors**:
+
 - Certificate in authentication flow
 - Complex deployment requiring coordination across multiple services
 

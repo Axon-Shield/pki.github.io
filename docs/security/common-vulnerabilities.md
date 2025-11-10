@@ -200,6 +200,7 @@ def check_caa_compliance(domain: str, issuing_ca: str) -> bool:
 ```
 
 **Mitigation**:
+
 - RFC 8659 requires CAs to check CAA records (since 2019)
 - Set CAA records for your domains
 - Monitor Certificate Transparency logs for unauthorized issuance
@@ -1174,17 +1175,20 @@ class SecureRandomGenerator:
 **Incident Examples**:
 
 **DigiNotar (2011)**:
+
 - Dutch CA compromised by attackers
 - Issued fraudulent certificates for google.com, gmail.com, etc.
 - Used for surveillance in Iran
 - Impact: CA removed from all trust stores, company bankrupt
 
 **CNNIC (2015)**:
+
 - Chinese CA issued unauthorized intermediate CA certificate
 - Used to intercept HTTPS traffic
 - Impact: CNNIC removed from trust stores
 
 **Symantec (2017)**:
+
 - Improper issuance of 30,000+ certificates
 - Failed to follow industry standards
 - Impact: All Symantec certificates distrusted by browsers
@@ -1259,6 +1263,7 @@ class CACompromiseDetector:
 **Vulnerability**: Compromised PKI libraries or dependencies.
 
 **Event Stream Incident (2018)**:
+
 - Popular npm package compromised
 - Injected code to steal cryptocurrency wallets
 - Affected thousands of applications
@@ -1341,6 +1346,7 @@ class DependencyVerification:
 **Impact**: Service outages when certificates expire unexpectedly.
 
 **Famous Incidents**:
+
 - Microsoft Teams (2020): Global outage due to expired certificate
 - Spotify (2020): Outage from expired cert
 - Ericsson (2018): Mobile network outage affecting millions

@@ -11,24 +11,28 @@ Public Key Infrastructure is a critical security foundation, yet it presents a r
 ### Attacker Profiles
 
 **Nation-state actors**:
+
 - Capabilities: Advanced persistent threats, zero-day exploits, supply chain compromise
 - Motivations: Espionage, sabotage, strategic advantage
 - Targets: Certificate authorities, root key material, signing infrastructure
 - Notable examples: Stuxnet (2010), DigiNotar compromise (2011)
 
 **Organized cybercrime**:
+
 - Capabilities: Sophisticated tooling, insider recruitment, targeted phishing
 - Motivations: Financial gain, ransomware, data theft
 - Targets: Private keys for impersonation, certificate authorities for fraudulent issuance
 - Notable examples: Comodo CA breach attempt (2011)
 
 **Insider threats**:
+
 - Capabilities: Legitimate access, knowledge of internal systems, trust relationships
 - Motivations: Financial, ideological, coercion, negligence
 - Targets: Private keys, CA credentials, certificate issuance systems
 - Risk: 30-40% of security incidents involve insider elements
 
 **Opportunistic attackers**:
+
 - Capabilities: Automated scanning, known exploits, social engineering
 - Motivations: Any available attack surface, broad targeting
 - Targets: Weak implementations, misconfigurations, expired certificates
@@ -102,6 +106,7 @@ def md5_collision_attack_scenario():
 ```
 
 Defense:
+
 - **Never use MD5 or SHA-1 for certificate signatures**
 - Minimum: SHA-256
 - Preferred: SHA-384 or SHA-512
@@ -110,6 +115,7 @@ Defense:
 **RSA key length attacks**:
 
 Factorization timeline:
+
 - 512-bit RSA: Factored in 1999
 - 768-bit RSA: Factored in 2009
 - 1024-bit RSA: Considered breakable by well-resourced adversaries
@@ -207,6 +213,7 @@ def secure_signature_verify(signature: bytes,
 **Power analysis**:
 
 Physical attacks on cryptographic hardware:
+
 - **Simple Power Analysis (SPA)**: Observing power consumption during crypto operations
 - **Differential Power Analysis (DPA)**: Statistical analysis of power traces
 - **Correlation Power Analysis (CPA)**: Advanced statistical techniques
@@ -252,6 +259,7 @@ class SecureKeyOperations:
 **Post-quantum cryptography timeline**:
 
 Current status (2025):
+
 - **RSA/ECDSA**: Vulnerable to Shor's algorithm on quantum computers
 - **Timeline**: Large-scale quantum computers 10-20 years away
 - **Action required**: Begin transition planning now

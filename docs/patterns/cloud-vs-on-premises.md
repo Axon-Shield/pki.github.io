@@ -29,6 +29,7 @@ All PKI infrastructure in company-controlled data centers:
 ```
 
 **Advantages**:
+
 - Complete physical control
 - No data leaves organization
 - Custom hardware configurations
@@ -37,6 +38,7 @@ All PKI infrastructure in company-controlled data centers:
 - Air-gap root CA from internet
 
 **Disadvantages**:
+
 - High capital expenditure
 - Operational overhead
 - Scaling challenges
@@ -45,6 +47,7 @@ All PKI infrastructure in company-controlled data centers:
 - Requires specialized staff
 
 **When to choose**:
+
 - Regulatory requirements mandate on-premises (some government, defense)
 - High-value root CA requiring air-gap
 - Organization has mature datacenter operations
@@ -75,6 +78,7 @@ All PKI infrastructure in public cloud (AWS, Azure, GCP):
 ```
 
 **Advantages**:
+
 - Elastic scaling
 - Pay-as-you-go pricing
 - Managed services reduce operational burden
@@ -83,6 +87,7 @@ All PKI infrastructure in public cloud (AWS, Azure, GCP):
 - Fast deployment
 
 **Disadvantages**:
+
 - Less physical control
 - Cloud provider access to infrastructure
 - Vendor lock-in
@@ -91,6 +96,7 @@ All PKI infrastructure in public cloud (AWS, Azure, GCP):
 - Internet-connected (root CA challenges)
 
 **When to choose**:
+
 - Cloud-native organization
 - Rapid deployment needed
 - Variable workload (scaling requirements)
@@ -122,12 +128,14 @@ Combination of on-premises and cloud:
 ```
 
 **Characteristics**:
+
 - Root CA on-premises (offline, air-gapped)
 - Issuing CAs in cloud (online, operational)
 - Root signs intermediates during ceremonies
 - Day-to-day operations in cloud
 
 **Advantages**:
+
 - Root CA security (air-gapped on-premises)
 - Operational agility (cloud issuing CAs)
 - Compliance (root CA physical control)
@@ -135,12 +143,14 @@ Combination of on-premises and cloud:
 - Best of both models
 
 **Disadvantages**:
+
 - Most complex to operate
 - Requires expertise in both models
 - Coordination overhead
 - Higher total cost (both on-prem and cloud)
 
 **When to choose**:
+
 - Most organizations (recommended default)
 - Need root CA security with operational flexibility
 - Compliance requires root CA control
@@ -151,18 +161,21 @@ Combination of on-premises and cloud:
 ### AWS PKI Services
 
 **AWS Certificate Manager (ACM)**:
+
 - Fully managed certificate service
 - Free certificates for AWS resources
 - Automatic renewal
 - Integration with ELB, CloudFront, API Gateway
 
 Limitations:
+
 - Certificates only usable within AWS
 - Cannot export private keys
 - Limited control over certificate properties
 - Not suitable for general-purpose PKI
 
 **AWS Private CA**:
+
 - Managed private certificate authority
 - Pay per certificate issued
 - Integration with AWS services
@@ -235,12 +248,14 @@ pricing = {
 ```
 
 **AWS CloudHSM**:
+
 - FIPS 140-2 Level 3 validated HSMs
 - Customer controls keys completely
 - Cluster for high availability
 - No AWS access to key material
 
 Considerations:
+
 - $1.45/hour per HSM (~$1,000/month)
 - Minimum 2 HSMs per cluster for HA
 - Customer manages HSM
@@ -249,17 +264,20 @@ Considerations:
 ### Azure PKI Services
 
 **Azure Key Vault**:
+
 - Managed key and secret storage
 - Integrated with Azure services
 - Two tiers: Standard (software) and Premium (HSM-backed)
 
 **Azure Key Vault - Managed HSM**:
+
 - FIPS 140-2 Level 3 HSMs
 - Dedicated HSM pool
 - Customer controls keys
 - Higher cost than standard Key Vault
 
 **Azure Dedicated HSM**:
+
 - Entire HSM dedicated to customer
 - Most control and isolation
 - Thales Luna Network HSM
@@ -268,12 +286,14 @@ Considerations:
 ### GCP PKI Services
 
 **Certificate Authority Service (CAS)**:
+
 - Fully managed private CA
 - Regional and global deployment
 - Automatic key rotation
 - Integration with GCP services
 
 **Cloud HSM**:
+
 - FIPS 140-2 Level 3 HSMs
 - Customer-controlled keys
 - Integration with Cloud KMS
@@ -310,6 +330,7 @@ Considerations:
 ```
 
 **Advantages**:
+
 - Root CA maximum security (offline, on-premises)
 - Operational efficiency (cloud scaling)
 - Compliance (physical control of root)
@@ -450,6 +471,7 @@ class CloudNativePKI:
 ```
 
 **Security considerations**:
+
 - CloudHSM provides FIPS 140-2 Level 3
 - No AWS access to key material
 - Still internet-connected (even if stopped)
@@ -476,12 +498,14 @@ class CloudNativePKI:
 ```
 
 **Advantages**:
+
 - No single cloud vendor dependency
 - Geographic diversity
 - Compliance with multi-cloud strategies
 - Disaster recovery across clouds
 
 **Disadvantages**:
+
 - Highest operational complexity
 - Multiple vendor relationships
 - Different APIs and capabilities
@@ -578,18 +602,21 @@ def calculate_tco(model: str, years: int, cert_volume: int) -> float:
 ### Physical Security
 
 **On-premises advantages**:
+
 - Complete physical control
 - Air-gap possible for root CA
 - Custom physical security measures
 - No cloud provider physical access
 
 **Cloud disadvantages**:
+
 - Cloud provider physical access
 - Shared facilities (multi-tenant datacenter)
 - Cannot air-gap (internet-connected)
 - Trust cloud provider security
 
 **Mitigation for cloud**:
+
 - CloudHSM ensures no provider key access
 - VPC isolation
 - Customer-managed encryption keys
@@ -598,18 +625,21 @@ def calculate_tco(model: str, years: int, cert_volume: int) -> float:
 ### Compliance Considerations
 
 **Regulations favoring on-premises**:
+
 - ITAR (defense)
 - Some national security workloads
 - Banking regulations (varies by country)
 - Healthcare (varies by interpretation)
 
 **Cloud-friendly regulations**:
+
 - PCI-DSS (with CloudHSM)
 - HIPAA (with proper controls)
 - SOC 2
 - ISO 27001
 
 **Hybrid satisfies most**:
+
 - Root CA on-premises (ultimate control)
 - Issuing CAs in cloud (compliance controls)
 - Best of both for most regulations
@@ -647,6 +677,7 @@ Phase 4: Complete (Month 19+)
 ### Cloud to On-Premises (Less Common)
 
 Reasons for reverse migration:
+
 - Compliance requirements change
 - Cost at scale
 - Security requirements
@@ -657,12 +688,14 @@ Similar phased approach in reverse.
 ## Best Practices
 
 **Hybrid architecture (recommended)**:
+
 - Root CA on-premises (offline, air-gapped)
 - Issuing CAs in cloud (operational, scalable)
 - Best security and operational balance
 - Satisfies most compliance requirements
 
 **Pure cloud**:
+
 - Use CloudHSM or Dedicated HSM
 - VPC isolation mandatory
 - MFA for all sensitive operations
@@ -670,6 +703,7 @@ Similar phased approach in reverse.
 - Understand vendor access model
 
 **Pure on-premises**:
+
 - Only if regulatory requirements mandate
 - Or very high volume (>500K certs/year)
 - Ensure proper physical security
@@ -677,6 +711,7 @@ Similar phased approach in reverse.
 - Build operational expertise
 
 **General**:
+
 - Match deployment model to requirements
 - Don't follow blanket mandates
 - Consider hybrid for flexibility

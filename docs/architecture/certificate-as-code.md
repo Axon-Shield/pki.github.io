@@ -21,6 +21,7 @@ Certificate-as-Code treats certificate definitions, policies, and lifecycle mana
 ## Why Certificate-as-Code
 
 Traditional manual certificate management fails at scale:
+
 - Error-prone manual processes
 - Inconsistent configurations
 - Poor auditability
@@ -28,6 +29,7 @@ Traditional manual certificate management fails at scale:
 - Difficult disaster recovery
 
 Certificate-as-Code provides:
+
 - Version-controlled certificate definitions
 - Automated provisioning and renewal
 - Consistent enforcement of policies
@@ -37,6 +39,7 @@ Certificate-as-Code provides:
 ## Decision Framework
 
 **Use Certificate-as-Code when:**
+
 - Managing 100+ certificates across infrastructure
 - Using infrastructure-as-code tools (Terraform, CloudFormation, Kubernetes)
 - Implementing DevOps/GitOps workflows
@@ -44,17 +47,20 @@ Certificate-as-Code provides:
 - Frequent certificate provisioning (daily/weekly deployments)
 
 **Don't use Certificate-as-Code when:**
+
 - Small scale (<20 certificates) with infrequent changes
 - Manual processes are working fine and won't scale
 - Team lacks Git/IaC expertise and can't invest in training
 - Legacy systems that can't integrate with automation
 
 **Hybrid approach when:**
+
 - Mixed environment (some modern, some legacy)
 - Gradual migration from manual to automated processes
 - Different certificate types with different management needs (long-lived certs manually, short-lived certs automated)
 
 **Red flags:**
+
 - Implementing Certificate-as-Code without automated certificate management platform (will just automate the manual work, not eliminate it)
 - No code review process (defeats audit trail benefit)
 - Storing private keys in code repositories (never do this)
@@ -345,12 +351,14 @@ Sky UK implemented Certificate-as-Code using cert-manager in Kubernetes for 15,0
 **Problem 1: "Everything automated" created blind spots**
 
 We assumed that once cert-manager was configured, certificates would "just work." In production:
+
 - Certificate validation failures were silent (pods just failed to start)
 - No visibility into certificate issuance attempts or failures
 - When Let's Encrypt rate limits hit, we had no warning system
 - Debugging required diving into cert-manager logs across multiple clusters
 
 **What we did:** Built comprehensive observability layer:
+
 - Prometheus metrics for certificate issuance success/failure rates
 - Alerts for certificates not issuing within 5 minutes of request
 - Dashboard showing certificate status, expiry, and renewal attempts
@@ -359,16 +367,19 @@ We assumed that once cert-manager was configured, certificates would "just work.
 **Problem 2: Policy-as-code was too restrictive at first**
 
 We implemented strict OPA policies requiring:
+
 - All certificates ECDSA (not RSA)
 - All certificates 90 days or less
 - All certificates use DNS-01 validation
 
 This broke legitimate use cases:
+
 - Some legacy applications only supported RSA
 - External partners required longer-lived certificates
 - Some domains couldn't use DNS-01 (no API access to DNS provider)
 
 **What we did:** Implemented policy exceptions with approval workflow:
+
 - Default policies apply to 95% of certificates
 - Exception process for legitimate edge cases
 - Exceptions documented in code with justification
@@ -377,11 +388,13 @@ This broke legitimate use cases:
 **Problem 3: Git became operational bottleneck**
 
 With 50+ developers deploying services, certificate PRs piled up:
+
 - Platform team reviewing hundreds of certificate PRs per week
 - Developers waited hours/days for certificate approval
 - "Just copy/paste from another certificate" led to inconsistent configurations
 
 **What we did:** Implemented self-service with automated policy enforcement:
+
 - Developers create certificate definitions in their service repos
 - CI/CD automatically validates against policies
 - Auto-approve if policy compliant
@@ -389,6 +402,7 @@ With 50+ developers deploying services, certificate PRs piled up:
 - Reduced platform team review burden by 90%
 
 **Warning signs you're heading for same mistakes:**
+
 - Implementing Certificate-as-Code without observability into certificate operations
 - Setting policies without understanding existing legitimate use cases
 - Centralizing certificate definitions when scale demands distributed ownership
@@ -401,16 +415,19 @@ Deutsche Bank implemented Certificate-as-Code with Terraform managing certificat
 **Problem 1: State management became complex**
 
 Certificate state in Terraform included sensitive data:
+
 - Private keys (should never be in state)
 - Certificate serial numbers and expiry dates
 - Deployment locations
 
 With 25,000+ certificates, Terraform state files grew to hundreds of MB. State management became operational burden:
+
 - Long terraform plan/apply times
 - Merge conflicts in state
 - Difficulty troubleshooting state drift
 
 **What we did:** Hybrid approach with state separation:
+
 - Terraform manages certificate definitions and policies
 - cert-manager/Venafi manages actual certificate issuance and renewal
 - Terraform references certificates by identifier, doesn't manage full lifecycle
@@ -433,6 +450,7 @@ lifecycle {
 **Problem 3: Multi-cloud complexity**
 
 Different cloud providers had different certificate management capabilities:
+
 - AWS ACM: Automatic renewal, limited export
 - Azure Key Vault: Manual renewal, full export capability
 - On-premises: Full manual management
@@ -440,12 +458,14 @@ Different cloud providers had different certificate management capabilities:
 Trying to abstract this into single Terraform module created more complexity than it solved.
 
 **What we did:** Platform-specific implementations with shared policy layer:
+
 - Separate Terraform modules for AWS, Azure, on-prem
 - Shared OPA policies enforced across all platforms
 - Accept that certificate management will look different per platform
 - Focus on consistent outcomes (all certificates monitored, all auto-renewed) not consistent implementation
 
 **Warning signs you're heading for same mistakes:**
+
 - Putting sensitive data in Terraform state
 - Ignoring state drift from certificate renewal
 - Trying to abstract multi-cloud differences into single implementation
@@ -454,30 +474,35 @@ Trying to abstract this into single Terraform module created more complexity tha
 ## Best Practices
 
 **Version control:**
+
 - All certificate definitions in Git
 - Meaningful commit messages explaining certificate purpose
 - Required code reviews for certificate changes
 - Separate repos for production vs non-production environments
 
 **Automation:**
+
 - Automatic certificate issuance on merge
 - Automatic renewal without human intervention
 - Automatic deployment to target systems
 - Zero manual SSH into servers for certificate operations
 
 **Testing:**
+
 - Validate syntax in CI (yamllint, terraform validate)
 - Test against policies before merge (conftest, OPA)
 - Preview changes before apply (terraform plan)
 - Smoke tests after deployment (curl with certificate validation)
 
 **Security:**
+
 - NEVER commit private keys to Git
 - Use secrets management (Vault, AWS Secrets Manager, Sealed Secrets)
 - Least-privilege service accounts for certificate operations
 - Audit all certificate changes through Git history
 
 **Observability:**
+
 - Metrics for certificate issuance success/failure
 - Alerts for failed certificate operations
 - Dashboard showing certificate inventory and expiry
@@ -528,18 +553,21 @@ Allowing any certificate configuration in code without validation. Defeats benef
 ## When to Bring in Expertise
 
 **You can probably handle this yourself if:**
+
 - You have <500 certificates and single cloud environment
 - Team has strong IaC and GitOps experience
 - You're using mature tooling (cert-manager, Terraform cloud providers)
 - Simple use cases without complex policy requirements
 
 **Consider getting help if:**
+
 - You have 1,000+ certificates or multi-cloud complexity
 - Need to implement policy-as-code with exception handling
 - Migrating from manual to automated certificate management
 - Team lacks Certificate-as-Code experience and needs training
 
 **Definitely call us if:**
+
 - You have 5,000+ certificates across complex infrastructure
 - Need to integrate Certificate-as-Code with existing enterprise PKI
 - Implementing in regulated environment (financial services, healthcare)

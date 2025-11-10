@@ -13,6 +13,7 @@ Certificate Authority compromise represents the worst-case scenario in PKI secur
 The catastrophic scenario—compromise of the ultimate trust anchor.
 
 **Impact**:
+
 - Entire PKI hierarchy becomes untrustworthy
 - All subordinate CAs potentially compromised
 - Every certificate issued by the hierarchy must be distrusted
@@ -114,6 +115,7 @@ class RootCAAttackVectors:
 More common but still severe scenario.
 
 **Impact**:
+
 - All certificates from this intermediate must be revoked
 - Subordinate CAs under this intermediate compromised
 - Root CA remains trusted
@@ -754,6 +756,7 @@ class RootCARecovery:
 ## Best Practices
 
 **Prevention**:
+
 - Defense in depth—multiple independent security layers
 - Offline root CA (air-gapped)
 - HSM key storage (FIPS 140-2 Level 3+)
@@ -762,6 +765,7 @@ class RootCARecovery:
 - Regular security assessments and penetration testing
 
 **Detection**:
+
 - Certificate Transparency monitoring
 - Real-time anomaly detection
 - HSM tamper monitoring
@@ -769,6 +773,7 @@ class RootCARecovery:
 - Regular reviews of issuance patterns
 
 **Response**:
+
 - Pre-planned incident response procedures
 - Documented recovery processes
 - Regular incident response drills
@@ -776,6 +781,7 @@ class RootCARecovery:
 - Forensic investigation capabilities
 
 **Recovery**:
+
 - Tested backup and recovery procedures
 - Geographic distribution of key backups
 - Established relationships with browser vendors

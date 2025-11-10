@@ -277,6 +277,7 @@ openssl pkey -in private.pem -pubout -out public.pem
 
 - Should never be transmitted in plaintext
 - If must transmit:
+
   - Encrypt with strong passphrase (AES-256)
   - Use secure channel (TLS, IPsec)
   - Temporary, one-time access

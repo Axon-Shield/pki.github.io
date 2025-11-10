@@ -17,6 +17,7 @@ Compliance is not just checkbox exercises for auditors—it represents codified 
 The CA/Browser Forum establishes requirements for publicly trusted certificate authorities. These requirements are not optional—violation can result in browser distrust.
 
 Key requirements:
+
 - **Domain validation**: Approved methods only (DNS, HTTP, email with restrictions)
 - **Certificate lifetimes**: Maximum 398 days for TLS certificates (since September 2020)
 - **Key size minimums**: RSA 2048+ bits, ECC P-256+
@@ -26,6 +27,7 @@ Key requirements:
 - **Annual audits**: WebTrust or ETSI audit required
 
 Non-compliance consequences:
+
 - Certificate distrust by browsers (Chrome, Firefox, Safari, Edge)
 - Public incident reports damaging reputation
 - Potential removal from root programs
@@ -37,12 +39,14 @@ Non-compliance consequences:
 Organizations in regulated industries face additional PKI requirements:
 
 *Payment Card Industry (PCI-DSS)*:
+
 - Requirement 3: Protect stored cardholder data (encryption keys)
 - Requirement 4: Encrypt transmission of cardholder data (TLS certificates)
 - Requirement 8: Strong authentication (certificate-based authentication)
 - Key management requirements including generation, distribution, storage, rotation, and destruction
 
 *Healthcare (HIPAA)*:
+
 - Administrative safeguards for access control
 - Technical safeguards for encryption
 - Transmission security standards
@@ -50,6 +54,7 @@ Organizations in regulated industries face additional PKI requirements:
 - Certificate-based authentication for ePHI access
 
 *Financial Services (SOX, GLBA)*:
+
 - Strong authentication requirements
 - Encryption of sensitive financial data
 - Audit trails for all transactions
@@ -57,6 +62,7 @@ Organizations in regulated industries face additional PKI requirements:
 - Disaster recovery for certificate services
 
 *Government (FIPS 140-2/3, NIST SP 800-57)*:
+
 - FIPS 140-2 Level 2+ for key storage
 - NIST-approved algorithms only
 - Specific key management lifecycle requirements
@@ -167,6 +173,7 @@ A Certificate Policy is the high-level statement of the purpose and applicabilit
 The CPS is the detailed implementation document describing how the CA implements its Certificate Policy.
 
 **CPS vs CP**:
+
 - CP: "What" (policy and rules)
 - CPS: "How" (implementation and procedures)
 
@@ -315,6 +322,7 @@ Not applicable - suspension not supported.
 Organizations should conduct regular internal PKI audits:
 
 **Audit Scope**:
+
 - Certificate issuance procedures followed correctly
 - Validation procedures adequate and executed
 - Access controls functioning as designed
@@ -325,6 +333,7 @@ Organizations should conduct regular internal PKI audits:
 - Compliance with CP/CPS
 
 **Audit Frequency**:
+
 - **Quarterly**: Process compliance checks
 - **Bi-annually**: Technical security controls
 - **Annually**: Comprehensive audit of entire PKI
@@ -372,6 +381,7 @@ Public CAs require annual WebTrust or ETSI audits. Private CAs should consider p
 **WebTrust for Certification Authorities**:
 
 Audit program covering:
+
 - CA business practices disclosure
 - Service integrity
 - CA environmental controls
@@ -384,6 +394,7 @@ Audit program covering:
 **ETSI Audits** (European Standard):
 
 Alternative to WebTrust, common in Europe:
+
 - ETSI EN 319 401: General requirements for trust service providers
 - ETSI EN 319 411-1: Requirements for TSPs issuing certificates (general)
 - ETSI EN 319 411-2: Requirements for TSPs issuing EU qualified certificates
@@ -391,6 +402,7 @@ Alternative to WebTrust, common in Europe:
 **Preparing for External Audits**:
 
 1. **Pre-audit preparation** (2-3 months before):
+
    - Conduct internal audit and remediate findings
    - Ensure all documentation current
    - Verify audit log completeness
@@ -398,6 +410,7 @@ Alternative to WebTrust, common in Europe:
    - Train personnel on audit expectations
 
 2. **Documentation preparation**:
+
    - Certificate Policy
    - Certification Practice Statement
    - Security policies and procedures
@@ -409,6 +422,7 @@ Alternative to WebTrust, common in Europe:
    - Technical system documentation
 
 3. **During audit**:
+
    - Provide requested documentation promptly
    - Arrange interviews with personnel
    - Provide access to systems as needed
@@ -416,6 +430,7 @@ Alternative to WebTrust, common in Europe:
    - Document all audit activities
 
 4. **Post-audit**:
+
    - Review audit report
    - Develop remediation plan for findings
    - Implement corrections
@@ -429,6 +444,7 @@ Alternative to WebTrust, common in Europe:
 Comprehensive audit logging is essential for compliance and security. Log all security-relevant events:
 
 **Authentication and Authorization**:
+
 - All login attempts (successful and failed)
 - Logout events
 - Role or permission changes
@@ -437,6 +453,7 @@ Comprehensive audit logging is essential for compliance and security. Log all se
 - Privilege escalation attempts
 
 **Certificate Lifecycle**:
+
 - Certificate requests submitted
 - Validation procedures executed
 - Approval or rejection decisions
@@ -447,6 +464,7 @@ Comprehensive audit logging is essential for compliance and security. Log all se
 - Revocation list publication
 
 **Key Management**:
+
 - Key generation
 - Key import/export
 - Key backup
@@ -456,6 +474,7 @@ Comprehensive audit logging is essential for compliance and security. Log all se
 - Key usage (signing operations)
 
 **System Administration**:
+
 - Configuration changes
 - Software updates
 - User account creation/deletion
@@ -465,6 +484,7 @@ Comprehensive audit logging is essential for compliance and security. Log all se
 - Backup operations
 
 **Security Events**:
+
 - Intrusion detection alerts
 - Firewall blocks
 - Anti-virus detections
@@ -505,6 +525,7 @@ Each log entry should contain:
 ### Log Protection and Retention
 
 **Log protection**:
+
 - Send logs to centralized SIEM immediately
 - Use write-once/append-only storage
 - Encrypt logs at rest and in transit
@@ -513,6 +534,7 @@ Each log entry should contain:
 - Consider blockchain or similar for tamper evidence
 
 **Retention requirements**:
+
 - **CA audit logs**: Minimum 7 years (often longer by regulation)
 - **System logs**: Minimum 1 year
 - **Security event logs**: Minimum 3 years
@@ -582,6 +604,7 @@ class ComplianceMonitor:
 ```
 
 **Process Compliance Monitoring**:
+
 - Are validation procedures documented and followed?
 - Are approval workflows executed correctly?
 - Are revocation procedures followed?
@@ -592,6 +615,7 @@ class ComplianceMonitor:
 **Compliance Dashboards**:
 
 Create dashboards showing:
+
 - Policy compliance percentage
 - Violations by type
 - Violations by team/owner
@@ -604,6 +628,7 @@ Create dashboards showing:
 Generate regular compliance reports for stakeholders:
 
 **Monthly Reports** (to PKI operations team):
+
 - Certificate issuance volume
 - Validation success/failure rates
 - Policy violations detected
@@ -612,6 +637,7 @@ Generate regular compliance reports for stakeholders:
 - System availability
 
 **Quarterly Reports** (to security leadership):
+
 - Compliance posture summary
 - Significant violations and remediation
 - Audit findings and status
@@ -620,6 +646,7 @@ Generate regular compliance reports for stakeholders:
 - Resource needs
 
 **Annual Reports** (to executives and board):
+
 - Overall PKI health
 - Major incidents and response
 - Compliance achievements
@@ -634,6 +661,7 @@ Generate regular compliance reports for stakeholders:
 **Problem**: Actual practices diverge from documented procedures as systems evolve.
 
 **Solution**:
+
 - Assign documentation owners
 - Review and update procedures quarterly
 - Link procedure updates to change management
@@ -646,6 +674,7 @@ Generate regular compliance reports for stakeholders:
 **Problem**: Too many logs to review effectively; important events lost in noise.
 
 **Solution**:
+
 - Implement log aggregation and analysis (SIEM)
 - Define critical vs informational events
 - Automated alerting on critical events
@@ -658,6 +687,7 @@ Generate regular compliance reports for stakeholders:
 **Problem**: Compliance controls slow down certificate issuance and rotation.
 
 **Solution**:
+
 - Automate compliance checks in workflows
 - Pre-approved certificate profiles
 - Self-service for compliant requests
@@ -670,6 +700,7 @@ Generate regular compliance reports for stakeholders:
 **Problem**: Different regulations in different countries.
 
 **Solution**:
+
 - Document requirements by jurisdiction
 - Implement most stringent requirements globally
 - Separate PKI instances if necessary
@@ -680,6 +711,7 @@ Generate regular compliance reports for stakeholders:
 ## Best Practices
 
 **Do's**:
+
 - Document everything (policies, procedures, decisions)
 - Conduct regular internal audits
 - Prepare for external audits proactively
@@ -691,6 +723,7 @@ Generate regular compliance reports for stakeholders:
 - Treat compliance as security enhancement, not overhead
 
 **Don'ts**:
+
 - Don't wait for audits to discover issues
 - Don't ignore minor compliance violations
 - Don't skip documentation because "everyone knows"

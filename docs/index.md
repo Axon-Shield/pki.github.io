@@ -73,18 +73,21 @@ That calculation only includes labor. It doesn't count the value of preventing e
 ## What Success Looks Like
 
 **Operational metrics:**
+
 - Zero expiration-related outages
 - 94% reduction in certificate management time (hours to minutes per certificate)
 - 30-day certificate lifespans without operational overhead
 - Automated compliance audit trails with zero manual effort
 
 **Financial metrics:**
+
 - Security team focused on strategic initiatives instead of firefighting
 - Infrastructure that scales without linear cost increases
 - Outage prevention worth 10-50x the automation investment
 - Reduced cyber insurance premiums through demonstrated controls
 
 **Strategic capabilities:**
+
 - Foundation for zero-trust architecture implementation
 - Seamless certificate management across hybrid and multi-cloud environments
 - Rapid deployment cycles enabled by automated certificate provisioning

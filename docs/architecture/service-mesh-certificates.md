@@ -28,6 +28,7 @@ Service meshes deploy sidecar proxies alongside application containers, intercep
 ```
 
 Proxies handle:
+
 - Certificate acquisition from mesh CA
 - Automatic rotation before expiry
 - Mutual TLS for all connections
@@ -720,12 +721,14 @@ class ServiceMeshCertificateTroubleshooting:
 ## Best Practices
 
 **Certificate design**:
+
 - Short TTL (1-24 hours typical)
 - Automatic rotation essential
 - SPIFFE-compatible identities
 - Include workload metadata in certificates
 
 **Operations**:
+
 - Monitor CA health and performance
 - Track certificate issuance rates
 - Alert on rotation failures
@@ -733,6 +736,7 @@ class ServiceMeshCertificateTroubleshooting:
 - Test certificate rotation under load
 
 **Security**:
+
 - Enable strict mTLS mode
 - Use authorization policies
 - Monitor for anomalous connections
@@ -740,6 +744,7 @@ class ServiceMeshCertificateTroubleshooting:
 - Regular security audits
 
 **Integration**:
+
 - Integrate with enterprise CA when needed
 - Use consistent trust domain across clusters
 - Plan for multi-cluster federation

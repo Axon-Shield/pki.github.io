@@ -456,6 +456,7 @@ Maintain tools for incident investigation: certificate parsing and analysis tool
 Every incident should result in documented learnings and improvements.
 
 **Post-mortem template**:
+
 - Incident summary (what happened, when, impact)
 - Timeline of events (detailed chronology)
 - Root cause analysis (how it happened)

@@ -71,6 +71,7 @@ Welcome to your strategic guide for automating certificate management. This know
 **Or browse by topic below for comprehensive technical reference.**
 
 ### 🎯 Start Here (Foundations)
+
 - [What is PKI?](foundations/what-is-pki.md) - Understanding the fundamentals
 - [Certificate Anatomy](foundations/certificate-anatomy.md) - How certificates are structured
 - [Trust Models](foundations/trust-models.md) - Different approaches to establishing trust
@@ -78,6 +79,7 @@ Welcome to your strategic guide for automating certificate management. This know
 - [Public-Private Key Pairs](foundations/public-private-key-pairs.md) - Understanding key pair concepts
 
 ### 📋 Standards & Protocols
+
 - [X.509 Standard](standards/x509-standard.md) - Certificate and CRL format
 - [TLS Protocol](standards/tls-protocol.md) - Secure transport layer
 - [OCSP and CRL](standards/ocsp-and-crl.md) - Revocation checking
@@ -85,6 +87,7 @@ Welcome to your strategic guide for automating certificate management. This know
 - [PKCS Standards](standards/pkcs-standards.md) - Public-Key Cryptography Standards
 
 ### 🏗️ Implementation
+
 - [CA Architecture](implementation/ca-architecture.md) - Designing CA hierarchies
 - [HSM Integration](implementation/hsm-integration.md) - Hardware security modules
 - [Certificate Issuance Workflows](implementation/certificate-issuance-workflows.md) - How certificates are generated
@@ -92,6 +95,7 @@ Welcome to your strategic guide for automating certificate management. This know
 - [Multi-Cloud PKI](implementation/multi-cloud-pki.md) - PKI across cloud providers
 
 ### ⚙️ Operations
+
 - [Certificate Lifecycle Management](operations/certificate-lifecycle-management.md) - Complete operational guide
 - [Renewal Automation](operations/renewal-automation.md) - Preventing expiration outages
 - [Inventory and Discovery](operations/inventory-and-discovery.md) - Finding all your certificates
@@ -99,6 +103,7 @@ Welcome to your strategic guide for automating certificate management. This know
 - [Certificate Rotation Strategies](operations/certificate-rotation-strategies.md) - When and how to rotate
 
 ### 🔒 Security
+
 - [Private Key Protection](security/private-key-protection.md) - Securing your keys
 - [Threat Models and Attack Vectors](security/threat-models-and-attack-vectors.md) - Understanding security threats
 - [Key Management Best Practices](security/key-management-best-practices.md) - Secure key handling
@@ -109,6 +114,7 @@ Welcome to your strategic guide for automating certificate management. This know
 - [Common Vulnerabilities](security/common-vulnerabilities.md) - Known attacks and defenses
 
 ### 🏢 Vendors & Products
+
 - [Venafi Platform](vendors/venafi-platform.md) - Enterprise certificate management
 - [DigiCert CertCentral](vendors/digicert-certcentral.md) - Public CA with management
 - [Keyfactor Command](vendors/keyfactor-command.md) - Certificate lifecycle automation
@@ -116,6 +122,7 @@ Welcome to your strategic guide for automating certificate management. This know
 - [Vendor Comparison Matrix](vendors/vendor-comparison-matrix.md) - Side-by-side evaluation
 
 ### 🎨 Architecture Patterns
+
 - [Zero-Trust Architecture](architecture/zero-trust-architecture.md) - Certificates in zero-trust
 - [Service Mesh Certificates](architecture/service-mesh-certificates.md) - Istio, Linkerd, Consul
 - [Mutual TLS Patterns](architecture/mutual-tls-patterns.md) - Client authentication
@@ -123,18 +130,21 @@ Welcome to your strategic guide for automating certificate management. This know
 - [Case Studies](architecture/case-studies.md) - Real-world implementations
 
 ### 🏗️ Implementation Patterns
+
 - [CA Hierarchies](patterns/ca-hierarchies.md) - Designing certificate authority structures
 - [Cloud vs On-Premises](patterns/cloud-vs-on-premises.md) - Deployment strategy decisions
 - [High Availability & Disaster Recovery](patterns/high-availability-disaster-recovery.md) - Resilient PKI architectures
 - [Multi-Tenancy Considerations](patterns/multi-tenancy-considerations.md) - PKI for shared infrastructure
 
 ### 🔧 Troubleshooting
+
 - [Expired Certificate Outages](troubleshooting/expired-certificate-outages.md) - Emergency response
 - [Chain Validation Errors](troubleshooting/chain-validation-errors.md) - Why validation fails
 - [Performance Bottlenecks](troubleshooting/performance-bottlenecks.md) - Scaling PKI operations
 - [Common Misconfigurations](troubleshooting/common-misconfigurations.md) - Frequent mistakes
 
 ### 📖 Reference
+
 - [Glossary](glossary.md) - Comprehensive terminology guide
 
 ## Content Quality

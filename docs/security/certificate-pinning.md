@@ -14,6 +14,7 @@ Certificate pinning is a security technique where applications explicitly trust 
 ### Why Pin Certificates?
 
 **Traditional TLS validation weaknesses**:
+
 - Any CA in the trust store can issue certificates for any domain
 - ~100+ root CAs trusted by default on most systems
 - Compromise of any single CA threatens all connections
@@ -36,11 +37,13 @@ With Pinning:
 Pin the entire certificate (including validity dates and signature).
 
 **Advantages**:
+
 - Simple to implement
 - Exact match required
 - No ambiguity
 
 **Disadvantages**:
+
 - Requires app update when certificate expires
 - Inflexible for certificate rotation
 - High operational burden
@@ -93,12 +96,14 @@ pinner = CertificatePinner(API_CERT_PINS)
 Pin the public key component only, ignoring certificate metadata.
 
 **Advantages**:
+
 - Survives certificate renewal (same key pair)
 - More flexible for operations
 - Recommended by OWASP
 - Can pin intermediate or root CA keys
 
 **Disadvantages**:
+
 - Slightly more complex to extract public key
 - Must still rotate when keys change
 
@@ -172,11 +177,13 @@ pinner = PublicKeyPinner(API_SPKI_PINS)
 Pin the intermediate or root CA certificate/key.
 
 **Advantages**:
+
 - No updates needed for individual certificate rotation
 - Reasonable security improvement
 - Lower operational burden
 
 **Disadvantages**:
+
 - Less protection than endpoint pinning
 - Still vulnerable if CA is compromised
 - Doesn't protect against CA mis-issuance
@@ -527,6 +534,7 @@ Public-Key-Pins:
 ```
 
 **Why HPKP was deprecated**:
+
 - Pin misconfiguration could permanently break websites
 - No safe recovery mechanism if all pinned keys lost
 - Limited adoption due to risk
@@ -762,10 +770,12 @@ class DynamicPinner:
 ```
 
 **Risks of dynamic updates**:
+
 - If update mechanism is compromised, attacker can inject pins
 - Creates additional attack surface
 - Defeats purpose of pinning if not carefully implemented
 - Only use if combined with:
+
   - Digital signatures on updates
   - Never removing all existing pins
   - Rate limiting and anomaly detection
@@ -1233,6 +1243,7 @@ With pinning:
 ### Threats NOT Mitigated
 
 **Pinning does NOT protect against**:
+
 - Application-level attacks (SQL injection, XSS, etc.)
 - Compromised application code
 - Stolen API keys or credentials
@@ -1265,6 +1276,7 @@ Mitigation: Environment-specific pins, build-time configuration
 ### Best Practices Summary
 
 **DO**:
+
 - ✅ Pin public keys (SPKI), not full certificates
 - ✅ Maintain multiple pins (current + backup)
 - ✅ Pin both leaf and intermediate/root certificates
@@ -1275,6 +1287,7 @@ Mitigation: Environment-specific pins, build-time configuration
 - ✅ Generate backup keys before deployment
 
 **DON'T**:
+
 - ❌ Pin only one certificate
 - ❌ Use HPKP (deprecated)
 - ❌ Deploy without backup pins
@@ -1290,11 +1303,13 @@ Mitigation: Environment-specific pins, build-time configuration
 **Challenge**: Protect against compromised CAs after DigiNotar incident
 
 **Solution**:
+
 - Implemented certificate pinning in Twitter iOS app
 - Pinned both leaf certificates and CA keys
 - Maintained multiple pins for rotation flexibility
 
 **Outcome**:
+
 - Successfully detected and blocked MITM attempts
 - Set industry example for mobile app security
 
@@ -1311,6 +1326,7 @@ static const char* kGooglePins[] = {
 ```
 
 **Results**:
+
 - Protected hundreds of millions of users
 - Detected multiple MITM attempts
 - Influenced industry to adopt pinning
@@ -1318,6 +1334,7 @@ static const char* kGooglePins[] = {
 ### Case Study 3: Banking App Implementation
 
 **Requirements**:
+
 - Protect customer financial data
 - Meet PCI-DSS requirements
 - Support certificate rotation
@@ -1339,6 +1356,7 @@ Rotation Process:
 ```
 
 **Results**:
+
 - Zero outages during multiple rotations
 - Detected 3 MITM attempts in corporate environments
 - Achieved PCI-DSS compliance

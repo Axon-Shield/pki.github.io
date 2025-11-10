@@ -13,6 +13,7 @@ Certificate Authority hierarchy design is the foundational architectural decisio
 The root CA is the ultimate trust anchor. If compromised, the entire PKI collapses. By isolating the root CA offline and using intermediate CAs for day-to-day operations, you create security boundaries that limit the impact of compromise.
 
 **Offline root CA benefits**:
+
 - Root private key never exposed to network attacks
 - Physical security controls protect the root
 - Limited access windows reduce attack surface
@@ -20,6 +21,7 @@ The root CA is the ultimate trust anchor. If compromised, the entire PKI collaps
 - Root remains trustworthy even if intermediate compromised
 
 **Intermediate CA compromise containment**:
+
 - Revoke compromised intermediate without affecting root
 - Other intermediates continue operating
 - Only certificates from compromised intermediate need replacement
@@ -31,12 +33,14 @@ The root CA is the ultimate trust anchor. If compromised, the entire PKI collaps
 Different certificate types have different operational characteristics. TLS certificates may need 90-day automated rotation. Code signing certificates require manual approval and longer validity. Email certificates have different validation requirements. A hierarchy enables customized operational models per certificate type.
 
 **Purpose-specific intermediates**:
+
 - TLS intermediate: Automated issuance, short validity, high volume
 - Code signing intermediate: Manual approval, longer validity, low volume
 - Email intermediate: Identity validation, moderate validity, medium volume
 - Internal intermediate: Relaxed validation, flexible validity, high trust
 
 Each intermediate can have different:
+
 - Certificate Practices Statement (CPS)
 - Issuance procedures and automation level
 - Validation requirements
@@ -78,6 +82,7 @@ The simplest and most common production hierarchy:
 ```
 
 **Characteristics**:
+
 - Root CA offline, generates intermediates
 - Issuing CAs operational, issue end-entity certificates
 - Clean separation between security (root) and operations (issuing)
@@ -85,6 +90,7 @@ The simplest and most common production hierarchy:
 - Simple to understand and operate
 
 **When to use**:
+
 - Most organizations' default choice
 - Clear security/operations boundary needed
 - Moderate certificate volume (thousands to millions)
@@ -161,6 +167,7 @@ Adds a policy layer between root and issuing CAs:
 ```
 
 **Characteristics**:
+
 - Root CA signs policy CAs
 - Policy CAs establish different certificate policies
 - Issuing CAs under each policy CA
@@ -168,6 +175,7 @@ Adds a policy layer between root and issuing CAs:
 - Clear policy boundaries
 
 **When to use**:
+
 - Multiple distinct certificate policies needed
 - Different environments with different risk profiles
 - Organizational boundaries need policy separation
@@ -175,12 +183,14 @@ Adds a policy layer between root and issuing CAs:
 - Large organizations (>10,000 certificates)
 
 **Benefits**:
+
 - Policy CA compromise doesn't affect root
 - Can revoke entire policy CA if needed
 - Different policies for different contexts
 - Enables policy evolution without root changes
 
 **Drawbacks**:
+
 - More complexity to manage
 - Additional layer adds validation overhead
 - Longer certificate chains
@@ -202,6 +212,7 @@ Issuing CA  Issuing CA    Issuing CA  Issuing CA
 ```
 
 **Use cases**:
+
 - Mergers and acquisitions (transition period)
 - Migration to new root CA
 - Multiple trust anchors for different purposes
@@ -274,12 +285,14 @@ Connect multiple independent PKI hierarchies:
 ```
 
 **Characteristics**:
+
 - Bridge CA cross-certified with multiple roots
 - Enables trust between otherwise independent PKIs
 - Used in government/defense for interoperability
 - Complex trust relationships
 
 **When to use**:
+
 - Multiple independent organizations need interoperability
 - Government PKI interconnection
 - Federation scenarios
@@ -316,6 +329,7 @@ set_path_length_constraint(issuing_ca_cert, 0)  # Can only sign end-entity certs
 ```
 
 **Best practices**:
+
 - Root CA: pathLen = number of intermediate tiers
 - Intermediate CAs: pathLen = remaining tiers below them
 - Issuing CAs: pathLen = 0 (only end-entity certificates)
@@ -360,6 +374,7 @@ apply_name_constraints(
 ```
 
 **Use cases**:
+
 - Restrict departmental CAs to their domains
 - Prevent wildcard abuse
 - Enforce geographic boundaries
@@ -422,6 +437,7 @@ CertificatePolicy.apply_policy_to_certificate(
 **Problem**: Root CA online and issuing certificates directly.
 
 **Why it's bad**:
+
 - Root compromise = complete PKI failure
 - No containment boundaries
 - Single point of failure
@@ -434,6 +450,7 @@ CertificatePolicy.apply_policy_to_certificate(
 **Problem**: One intermediate CA used for all certificate types.
 
 **Why it's bad**:
+
 - No operational flexibility
 - Can't have different policies per use case
 - Compromise affects all certificate types
@@ -446,6 +463,7 @@ CertificatePolicy.apply_policy_to_certificate(
 **Problem**: Four or five-tier hierarchies with excessive nesting.
 
 **Why it's bad**:
+
 - Unnecessary complexity
 - Longer certificate chains (validation overhead)
 - More CAs to manage and secure
@@ -459,6 +477,7 @@ CertificatePolicy.apply_policy_to_certificate(
 **Problem**: Intermediate CAs without name constraints can issue for any domain.
 
 **Why it's bad**:
+
 - Compromise enables issuance for arbitrary domains
 - No technical enforcement of policy boundaries
 - Violates principle of least privilege
@@ -470,6 +489,7 @@ CertificatePolicy.apply_policy_to_certificate(
 **Problem**: Mix of RSA, ECDSA, different key sizes throughout hierarchy.
 
 **Why it's bad**:
+
 - Validation complexity
 - Weakest algorithm determines chain security
 - Migration difficulties
@@ -482,6 +502,7 @@ CertificatePolicy.apply_policy_to_certificate(
 ### Root CA Operations
 
 **Generation ceremony**:
+
 - Multi-party key generation
 - Witnessed and documented
 - Secure facility with physical controls
@@ -490,6 +511,7 @@ CertificatePolicy.apply_policy_to_certificate(
 - All participants sign documentation
 
 **Root CA usage**:
+
 - Brought online only for intermediate CA issuance
 - Requires security officer presence
 - Limited time window (hours)
@@ -497,6 +519,7 @@ CertificatePolicy.apply_policy_to_certificate(
 - All operations logged and audited
 
 **Root CA renewal**:
+
 - Plan 1-2 years before expiry
 - Communicate to all stakeholders
 - Coordinated update of trust stores
@@ -506,24 +529,28 @@ CertificatePolicy.apply_policy_to_certificate(
 ### Intermediate CA Operations
 
 **Key generation**:
+
 - Generated in production HSM
 - Or generated offline and imported
 - CSR submitted to root CA
 - Root CA signs during limited online window
 
 **Certificate issuance**:
+
 - Online and automated (for appropriate use cases)
 - Rate limiting to prevent abuse
 - Comprehensive audit logging
 - Anomaly detection
 
 **Renewal before expiry**:
+
 - Renew at 67-75% of validity consumed
 - Generates new key pair (recommended)
 - Overlap period for migration
 - Gradual deployment to avoid disruption
 
 **Revocation**:
+
 - Revoke if private key compromised
 - Revoke all end-entity certificates issued by compromised CA
 - Communicate to all relying parties
@@ -565,6 +592,7 @@ class HAIntermediateCA:
 ```
 
 **Active-active intermediates**:
+
 - Multiple intermediates with different keys
 - Load distributed across all
 - Failure of one doesn't affect others
@@ -572,6 +600,7 @@ class HAIntermediateCA:
 - Higher operational complexity
 
 **Geographic distribution**:
+
 - Intermediate CAs in multiple regions
 - Lower latency for issuance
 - Resilience to regional outages
@@ -594,6 +623,7 @@ Organizations' PKI needs evolve. Plan for evolution:
 8. Begin issuing from new intermediate
 
 **Considerations**:
+
 - No impact to existing intermediates
 - Test thoroughly before production use
 - Document purpose and policy
@@ -651,6 +681,7 @@ When intermediate CA is no longer needed:
 ## Best Practices Summary
 
 **Hierarchy design**:
+
 - Two-tier for most organizations
 - Three-tier if multiple distinct policies needed
 - Offline root CA (non-negotiable)
@@ -659,6 +690,7 @@ When intermediate CA is no longer needed:
 - Consistent algorithms throughout hierarchy
 
 **Security**:
+
 - Root CA always offline, HSM-protected
 - Multi-party ceremonies for root operations
 - Intermediate CA keys in HSM
@@ -666,6 +698,7 @@ When intermediate CA is no longer needed:
 - Regular security assessments
 
 **Operations**:
+
 - Clear operational procedures for each CA type
 - Automated where appropriate (issuance)
 - Manual where necessary (root operations)
@@ -673,6 +706,7 @@ When intermediate CA is no longer needed:
 - Regular backup and recovery testing
 
 **Evolution**:
+
 - Plan for change from the beginning
 - Build flexibility into design
 - Document migration paths

@@ -1250,6 +1250,7 @@ PKI performance bottlenecks stem from three core issues:
 3. **Lack of caching** - Solved with multi-level caching strategies
 
 Scaling from thousands to millions of certificates requires architectural evolution:
+
 - Queue-based processing for decoupling
 - Batch operations for efficiency
 - Aggressive caching at multiple levels

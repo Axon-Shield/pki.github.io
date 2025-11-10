@@ -31,6 +31,7 @@ subjectAltName: []  # Empty!
 ```
 
 **Why It Happens**:
+
 - Confusion between CN (legacy) and SAN (modern standard)
 - Certificate tools defaulting to CN-only certificates
 - Copying old configurations from pre-2017 era
@@ -105,6 +106,7 @@ openssl s_client -connect api.example.com:443 -servername api.example.com
 ```
 
 **Why It Happens**:
+
 - Copy/paste from examples without thinking about security
 - Automated deployment tools with wrong umask
 - Lack of post-deployment validation
@@ -200,6 +202,7 @@ Result: Certificate validation fails
 ```
 
 **Why It Happens**:
+
 - Using internal hostnames in certificates
 - Not understanding load balancer DNS mapping
 - Certificates issued before DNS configuration finalized
@@ -278,6 +281,7 @@ Result: Chain validation fails despite leaf certificate being valid
 ```
 
 **Why It Happens**:
+
 - Intermediate certificates have shorter validity than roots
 - Automated renewal focuses on leaf certificates only
 - Intermediate certificate updates require manual intervention
@@ -361,6 +365,7 @@ Should have: digitalSignature, keyEncipherment, serverAuth
 ```
 
 **Why It Happens**:
+
 - Wrong certificate profile selected during issuance
 - Copy/paste from incompatible certificate example
 - CA configuration error
@@ -438,6 +443,7 @@ These certificates aren't related!
 ```
 
 **Why It Happens**:
+
 - Copy/paste from different certificate deployments
 - Automated scripts concatenating wrong files
 - Lack of validation during deployment
@@ -499,6 +505,7 @@ If any environment compromised, all environments compromised!
 ```
 
 **Why It Happens**:
+
 - Copying production configs to other environments
 - Lack of key rotation procedures
 - "It works, don't change it" mentality
@@ -569,6 +576,7 @@ Result: TLS handshake fails with cryptographic error
 ```
 
 **Why It Happens**:
+
 - Renewed certificate but kept old private key
 - Copied files from different systems
 - Deployment script error
@@ -646,6 +654,7 @@ tls_config:
 ```
 
 **Why It Happens**:
+
 - Old configuration files copied forward
 - Lack of security policy enforcement
 - Compatibility concerns with legacy clients
@@ -745,6 +754,7 @@ server {
 ```
 
 **Why It Happens**:
+
 - Lack of awareness of OCSP stapling
 - Default configurations don't enable it
 - Complexity of configuration

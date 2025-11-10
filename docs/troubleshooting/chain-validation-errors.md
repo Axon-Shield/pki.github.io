@@ -515,6 +515,7 @@ echo "Complete chain saved to: $OUTPUT_CHAIN"
 **Cause**: Client's trust store doesn't include the root CA that issued the certificate.
 
 **Common scenarios**:
+
 - Private/internal CA not in default trust stores
 - Outdated trust store missing new root CAs
 - Custom application with empty trust store
