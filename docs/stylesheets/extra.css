@@ -76,3 +76,14 @@
   padding-left: 0.5em;
 }
 
+/* Ensure code blocks with ASCII art render correctly */
+.md-typeset pre code {
+  font-family: 'Courier New', Courier, monospace;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.md-typeset code {
+  font-family: 'Courier New', Courier, monospace;
+}
+
