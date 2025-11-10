@@ -131,30 +131,30 @@ policy_configuration = {
 **Certificate lifecycle automation**:
 
 1. **Request/Enrollment**:
-   - Self-service portal for certificate requests
-   - Approval workflows (multi-stage, conditional)
-   - Integration with ITSM (ServiceNow, Jira)
-   - Automated CSR generation
+    - Self-service portal for certificate requests
+    - Approval workflows (multi-stage, conditional)
+    - Integration with ITSM (ServiceNow, Jira)
+    - Automated CSR generation
 2. **Issuance**:
-   - Multi-CA support (public and private)
-   - Parallel issuance to multiple CAs
-   - Validation of certificate contents
-   - Key escrow (optional, for recovery)
+    - Multi-CA support (public and private)
+    - Parallel issuance to multiple CAs
+    - Validation of certificate contents
+    - Key escrow (optional, for recovery)
 3. **Installation**:
-   - Automated deployment to targets
-   - Support for 100+ platform types
-   - Rolling deployment strategies
-   - Rollback capabilities
+    - Automated deployment to targets
+    - Support for 100+ platform types
+    - Rolling deployment strategies
+    - Rollback capabilities
 4. **Renewal**:
-   - Automated renewal at configurable thresholds
-   - Smart renewal (only when needed)
-   - Bulk renewal operations
-   - Emergency renewal workflows
+    - Automated renewal at configurable thresholds
+    - Smart renewal (only when needed)
+    - Bulk renewal operations
+    - Emergency renewal workflows
 5. **Revocation**:
-   - Automated revocation triggers
-   - Multi-CA revocation coordination
-   - CRL/OCSP propagation verification
-   - Post-revocation cleanup
+    - Automated revocation triggers
+    - Multi-CA revocation coordination
+    - CRL/OCSP propagation verification
+    - Post-revocation cleanup
 
 ### Integration Ecosystem
 
