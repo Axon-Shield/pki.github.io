@@ -1101,6 +1101,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#why-this-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why This Matters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       Overview
@@ -3053,6 +3062,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#why-this-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why This Matters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       Overview
@@ -3643,6 +3661,12 @@
 
 
 <h1 id="trust-models">Trust Models</h1>
+<h2 id="why-this-matters">Why This Matters</h2>
+<p><strong>For executives:</strong> Trust models determine who can issue certificates your organization trusts - a fundamental security architecture decision. Public CAs trust internet-wide but cost money. Private CAs trust only within organization but require infrastructure. Choosing wrong trust model creates security gaps or operational friction that's expensive to fix later.</p>
+<p><strong>For security leaders:</strong> Trust model selection has cascading implications: CA architecture, certificate validation, cross-organization integration, regulatory compliance, disaster recovery. This isn't just technical plumbing - it's security policy codified in infrastructure. Getting it wrong means either security vulnerabilities or business disruption.</p>
+<p><strong>For engineers:</strong> Understanding trust models helps you debug certificate validation failures, implement proper certificate verification, and design systems that work across organizational boundaries. When certificate validation fails, the problem is often trust model mismatch, not the certificate itself.</p>
+<p><strong>Common scenario:</strong> Your application needs to trust certificates from both public CAs (for third-party APIs) and internal CAs (for internal services). You need to understand trust anchors, certificate chains, and validation to make this work securely without accepting every certificate (which would be insecure).</p>
+<hr />
 <blockquote>
 <p><strong>TL;DR</strong>: Trust models define how entities establish trust in digital certificates. The three primary models are hierarchical (certificate chains to root CAs), web of trust (peer-to-peer endorsements), and bridge/hybrid (connecting different PKI hierarchies). Each model has distinct security properties, operational characteristics, and appropriate use cases.</p>
 </blockquote>
@@ -3737,18 +3761,24 @@
 <li><strong>Limited accountability</strong>: CA mistakes affect all relying parties</li>
 </ul>
 <h4 id="use-cases">Use Cases</h4>
-<p><strong>Internet TLS</strong>: Hierarchical trust with browser-managed root stores
-- Publicly-trusted CAs issue certificates for public websites
-- Browsers validate chains to trusted roots
-- CA/Browser Forum requirements ensure CA accountability</p>
-<p><strong>Enterprise PKI</strong>: Hierarchical trust with enterprise-managed roots
-- Internal CA issues certificates for internal services
-- Enterprise distributes root certificate to managed devices
-- IT controls trust store, can revoke trust if needed</p>
-<p><strong>Code Signing</strong>: Hierarchical trust with OS-managed roots
-- Code signing CAs issue certificates to software vendors
-- Operating systems verify code signatures against trusted roots
-- Revocation critical for responding to compromised signing keys</p>
+<p><strong>Internet TLS</strong>: Hierarchical trust with browser-managed root stores</p>
+<ul>
+<li>Publicly-trusted CAs issue certificates for public websites</li>
+<li>Browsers validate chains to trusted roots</li>
+<li>CA/Browser Forum requirements ensure CA accountability</li>
+</ul>
+<p><strong>Enterprise PKI</strong>: Hierarchical trust with enterprise-managed roots</p>
+<ul>
+<li>Internal CA issues certificates for internal services</li>
+<li>Enterprise distributes root certificate to managed devices</li>
+<li>IT controls trust store, can revoke trust if needed</li>
+</ul>
+<p><strong>Code Signing</strong>: Hierarchical trust with OS-managed roots</p>
+<ul>
+<li>Code signing CAs issue certificates to software vendors</li>
+<li>Operating systems verify code signatures against trusted roots</li>
+<li>Revocation critical for responding to compromised signing keys</li>
+</ul>
 <h3 id="web-of-trust-model">Web of Trust Model</h3>
 <p>The web of trust (WoT) is a decentralized trust model where individuals directly sign each other's keys, creating a network of trust relationships. Most notably used in PGP/GPG.</p>
 <h4 id="structure_1">Structure</h4>
@@ -3773,28 +3803,38 @@
 </ul>
 <h4 id="trust-calculation">Trust Calculation</h4>
 <p>To decide if you trust a key, you evaluate paths from your key to the target key:</p>
-<p><strong>Direct Signature</strong>: You personally signed the key
-- Highest trust (you verified identity yourself)
-- No intermediaries needed</p>
-<p><strong>One Hop</strong>: Someone you trust signed the key
-- Trust depends on how much you trust the intermediary
-- Question: "Do I trust Alice's judgment about who Bob is?"</p>
-<p><strong>Multiple Hops</strong>: Chain of signatures connecting you to target
-- Trust degrades with each hop
-- Must trust each person's judgment in the chain
-- Example: You → Alice → Bob → Carol
-  - "Do I trust Alice's judgment about Bob?"
-  - "Do I trust Bob's judgment about Carol?"</p>
-<p><strong>Trust Levels</strong>: PGP defines trust levels
-- <strong>Unknown</strong>: Never evaluated this person's trustworthiness
-- <strong>None</strong>: Know this person, don't trust their key-signing judgment<br />
-- <strong>Marginal</strong>: Some trust in their key-signing judgment
-- <strong>Full</strong>: Complete trust in their key-signing judgment
-- <strong>Ultimate</strong>: Your own key (implicitly trusted)</p>
-<p><strong>Validity Calculation</strong>: How valid is a key?
-- <strong>Fully valid</strong>: Either you signed it, or sufficient trusted signatures exist
-- <strong>Marginally valid</strong>: Some but insufficient trust
-- <strong>Invalid</strong>: No trust path exists or negative trust</p>
+<p><strong>Direct Signature</strong>: You personally signed the key</p>
+<ul>
+<li>Highest trust (you verified identity yourself)</li>
+<li>No intermediaries needed</li>
+</ul>
+<p><strong>One Hop</strong>: Someone you trust signed the key</p>
+<ul>
+<li>Trust depends on how much you trust the intermediary</li>
+<li>Question: "Do I trust Alice's judgment about who Bob is?"</li>
+</ul>
+<p><strong>Multiple Hops</strong>: Chain of signatures connecting you to target</p>
+<ul>
+<li>Trust degrades with each hop</li>
+<li>Must trust each person's judgment in the chain</li>
+<li>Example: You → Alice → Bob → Carol</li>
+<li>"Do I trust Alice's judgment about Bob?"</li>
+<li>"Do I trust Bob's judgment about Carol?"</li>
+</ul>
+<p><strong>Trust Levels</strong>: PGP defines trust levels</p>
+<ul>
+<li><strong>Unknown</strong>: Never evaluated this person's trustworthiness</li>
+<li><strong>None</strong>: Know this person, don't trust their key-signing judgment  </li>
+<li><strong>Marginal</strong>: Some trust in their key-signing judgment</li>
+<li><strong>Full</strong>: Complete trust in their key-signing judgment</li>
+<li><strong>Ultimate</strong>: Your own key (implicitly trusted)</li>
+</ul>
+<p><strong>Validity Calculation</strong>: How valid is a key?</p>
+<ul>
+<li><strong>Fully valid</strong>: Either you signed it, or sufficient trusted signatures exist</li>
+<li><strong>Marginally valid</strong>: Some but insufficient trust</li>
+<li><strong>Invalid</strong>: No trust path exists or negative trust</li>
+</ul>
 <p>Typical calculation: One fully-trusted signature OR three marginally-trusted signatures = fully valid key</p>
 <h4 id="security-properties_1">Security Properties</h4>
 <p><strong>Advantages</strong>:</p>
@@ -4014,26 +4054,34 @@
 </tbody>
 </table>
 <h4 id="implementation-scenarios">Implementation Scenarios</h4>
-<p><strong>Scenario 1: Public Website</strong>
-- <strong>Choice</strong>: Hierarchical trust
-- <strong>Reasoning</strong>: Users expect browser to handle trust decisions
-- <strong>Implementation</strong>: Obtain certificate from publicly-trusted CA
-- <strong>Trust distribution</strong>: Already handled by browsers</p>
-<p><strong>Scenario 2: Enterprise Internal Services</strong>
-- <strong>Choice</strong>: Hierarchical trust
-- <strong>Reasoning</strong>: Centralized management, consistent policy enforcement
-- <strong>Implementation</strong>: Deploy internal CA, distribute root to managed devices
-- <strong>Trust distribution</strong>: Group Policy, MDM, configuration management</p>
-<p><strong>Scenario 3: Personal Email Encryption</strong>
-- <strong>Choice</strong>: Web of trust (PGP/GPG)
-- <strong>Reasoning</strong>: No central authority needed, personal relationships
-- <strong>Implementation</strong>: Generate PGP key, sign keys at key-signing parties
-- <strong>Trust distribution</strong>: Key servers, personal verification</p>
-<p><strong>Scenario 4: B2B Integration</strong>
-- <strong>Choice</strong>: Bridge CA or bilateral cross-certification
-- <strong>Reasoning</strong>: Separate organizations, independent PKI systems
-- <strong>Implementation</strong>: Establish bridge or cross-certify CAs
-- <strong>Trust distribution</strong>: Organizations distribute trust anchors to their users</p>
+<p><strong>Scenario 1: Public Website</strong></p>
+<ul>
+<li><strong>Choice</strong>: Hierarchical trust</li>
+<li><strong>Reasoning</strong>: Users expect browser to handle trust decisions</li>
+<li><strong>Implementation</strong>: Obtain certificate from publicly-trusted CA</li>
+<li><strong>Trust distribution</strong>: Already handled by browsers</li>
+</ul>
+<p><strong>Scenario 2: Enterprise Internal Services</strong></p>
+<ul>
+<li><strong>Choice</strong>: Hierarchical trust</li>
+<li><strong>Reasoning</strong>: Centralized management, consistent policy enforcement</li>
+<li><strong>Implementation</strong>: Deploy internal CA, distribute root to managed devices</li>
+<li><strong>Trust distribution</strong>: Group Policy, MDM, configuration management</li>
+</ul>
+<p><strong>Scenario 3: Personal Email Encryption</strong></p>
+<ul>
+<li><strong>Choice</strong>: Web of trust (PGP/GPG)</li>
+<li><strong>Reasoning</strong>: No central authority needed, personal relationships</li>
+<li><strong>Implementation</strong>: Generate PGP key, sign keys at key-signing parties</li>
+<li><strong>Trust distribution</strong>: Key servers, personal verification</li>
+</ul>
+<p><strong>Scenario 4: B2B Integration</strong></p>
+<ul>
+<li><strong>Choice</strong>: Bridge CA or bilateral cross-certification</li>
+<li><strong>Reasoning</strong>: Separate organizations, independent PKI systems</li>
+<li><strong>Implementation</strong>: Establish bridge or cross-certify CAs</li>
+<li><strong>Trust distribution</strong>: Organizations distribute trust anchors to their users</li>
+</ul>
 <h3 id="managing-trust-stores">Managing Trust Stores</h3>
 <h4 id="enterprise-trust-store-management">Enterprise Trust Store Management</h4>
 <p><strong>Adding Internal Root CA</strong>:</p>
@@ -4219,19 +4267,27 @@
 <h2 id="security-considerations">Security Considerations</h2>
 <h3 id="trust-model-attack-surfaces">Trust Model Attack Surfaces</h3>
 <h4 id="hierarchical-trust-attacks">Hierarchical Trust Attacks</h4>
-<p><strong>CA Compromise</strong>: Attacker compromises CA, issues rogue certificates
-- <strong>Impact</strong>: Can issue trusted certificates for any domain
-- <strong>Mitigation</strong>: HSM key protection, strict CA operations, Certificate Transparency, CAA records</p>
-<p><strong>Root Store Manipulation</strong>: Attacker adds malicious root to trust store
-- <strong>Impact</strong>: All certificates from malicious CA become trusted
-- <strong>Mitigation</strong>: Protect trust store with OS security; require admin privileges; monitor changes</p>
-<p><strong>Certificate Misissuance</strong>: CA mistakenly issues certificate to wrong party
-- <strong>Impact</strong>: Attacker has valid certificate for victim domain
-- <strong>Mitigation</strong>: Certificate Transparency, domain validation improvements, CAA records</p>
+<p><strong>CA Compromise</strong>: Attacker compromises CA, issues rogue certificates</p>
+<ul>
+<li><strong>Impact</strong>: Can issue trusted certificates for any domain</li>
+<li><strong>Mitigation</strong>: HSM key protection, strict CA operations, Certificate Transparency, CAA records</li>
+</ul>
+<p><strong>Root Store Manipulation</strong>: Attacker adds malicious root to trust store</p>
+<ul>
+<li><strong>Impact</strong>: All certificates from malicious CA become trusted</li>
+<li><strong>Mitigation</strong>: Protect trust store with OS security; require admin privileges; monitor changes</li>
+</ul>
+<p><strong>Certificate Misissuance</strong>: CA mistakenly issues certificate to wrong party</p>
+<ul>
+<li><strong>Impact</strong>: Attacker has valid certificate for victim domain</li>
+<li><strong>Mitigation</strong>: Certificate Transparency, domain validation improvements, CAA records</li>
+</ul>
 <h4 id="web-of-trust-attacks">Web of Trust Attacks</h4>
-<p><strong>Sybil Attacks</strong>: Attacker creates many fake identities to game trust calculations
-- <strong>Impact</strong>: Malicious keys appear trusted through multiple trust paths
-- <strong>Mitigation</strong>: In-person key signing; require stronger identification; adjust trust thresholds</p>
+<p><strong>Sybil Attacks</strong>: Attacker creates many fake identities to game trust calculations</p>
+<ul>
+<li><strong>Impact</strong>: Malicious keys appear trusted through multiple trust paths</li>
+<li><strong>Mitigation</strong>: In-person key signing; require stronger identification; adjust trust thresholds</li>
+</ul>
 <p><strong>Social Engineering</strong>: Manipulating individuals to sign attacker's key
 - <strong>Impact</strong>: Attacker's key gains trust through legitimate signatures
 - <strong>Mitigation</strong>: Key signing policies; identity verification; training</p>
@@ -4239,12 +4295,16 @@
 - <strong>Impact</strong>: User thinks they have victim's key but actually has attacker's
 - <strong>Mitigation</strong>: Out-of-band key fingerprint verification; key signing parties</p>
 <h4 id="bridge-ca-attacks">Bridge CA Attacks</h4>
-<p><strong>Bridge Compromise</strong>: Attacker compromises bridge CA
-- <strong>Impact</strong>: Can issue cross-certificates, potentially enabling rogue certificate issuance
-- <strong>Mitigation</strong>: Strong bridge CA security; name constraints; monitoring</p>
-<p><strong>Name Constraint Bypass</strong>: Validator doesn't properly enforce name constraints
-- <strong>Impact</strong>: Cross-certified CA can issue certificates outside permitted namespace
-- <strong>Mitigation</strong>: Comprehensive constraint validation testing; regular security assessments</p>
+<p><strong>Bridge Compromise</strong>: Attacker compromises bridge CA</p>
+<ul>
+<li><strong>Impact</strong>: Can issue cross-certificates, potentially enabling rogue certificate issuance</li>
+<li><strong>Mitigation</strong>: Strong bridge CA security; name constraints; monitoring</li>
+</ul>
+<p><strong>Name Constraint Bypass</strong>: Validator doesn't properly enforce name constraints</p>
+<ul>
+<li><strong>Impact</strong>: Cross-certified CA can issue certificates outside permitted namespace</li>
+<li><strong>Mitigation</strong>: Comprehensive constraint validation testing; regular security assessments</li>
+</ul>
 <h3 id="trust-transitivity">Trust Transitivity</h3>
 <p>Trust is transitive in hierarchical models:</p>
 <ul>
@@ -4275,10 +4335,12 @@
 <p><strong>Key Takeaway</strong>: Hierarchical trust model's security depends on root program governance. Strong root programs protect users.</p>
 <h3 id="case-study-pgp-web-of-trust-scalability">Case Study: PGP Web of Trust Scalability</h3>
 <p>PGP's web of trust faces scalability challenges as user base grows:</p>
-<p><strong>Problem</strong>: Finding trust paths becomes computationally expensive
-- Average path length increases with network size
-- Trust calculation complexity grows
-- Key server synchronization delays</p>
+<p><strong>Problem</strong>: Finding trust paths becomes computationally expensive</p>
+<ul>
+<li>Average path length increases with network size</li>
+<li>Trust calculation complexity grows</li>
+<li>Key server synchronization delays</li>
+</ul>
 <p><strong>User Impact</strong>: Many users default to accepting keys without verification, undermining security model.</p>
 <p><strong>Key Takeaway</strong>: Web of trust works for small, interconnected communities but doesn't scale to internet-wide deployment.</p>
 <h3 id="case-study-us-federal-pki-bridge">Case Study: U.S. Federal PKI Bridge</h3>
@@ -4332,7 +4394,7 @@
 </thead>
 <tbody>
 <tr>
-<td>2024-11-09</td>
+<td>2025-11-09</td>
 <td>1.0</td>
 <td>Initial creation</td>
 <td>Foundational trust model documentation</td>
