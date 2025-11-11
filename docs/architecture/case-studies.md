@@ -189,7 +189,7 @@ Root CA (air-gapped, HSM-backed, offline)
 **Multi-region deployment:**
 
 - Active-active CA infrastructure across London, New York, Hong Kong
-- Sub-50ms certificate issuance latency for trading systems
+- Sub-100ms certificate issuance latency for trading systems
 - Automated failover without service disruption
 - Cross-region certificate replication with consistency guarantees
 
@@ -222,7 +222,7 @@ We initially planned to consolidate all certificate issuance through a single ce
 
 **Operational metrics:**
 
-- Certificate issuance latency: <50ms (99th percentile)
+- Certificate issuance latency: <100ms (99th percentile)
 - Zero certificate-related trading system outages
 - Compliance audit prep time: 40 hours → 4 hours
 - Certificate management team: 8 FTEs → 2 FTEs

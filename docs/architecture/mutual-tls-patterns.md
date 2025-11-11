@@ -235,9 +235,9 @@ class CertificateAuthorization:
 
 ## Lessons from Production
 
-### What We Learned at Sky UK (Istio Service Mesh)
+### What We Learned at Aobut Service Mesh (Istio Service Mesh)
 
-When Sky UK implemented Istio service mesh with automatic mTLS, we initially configured 24-hour certificate lifespans thinking this was "secure by default." In production, we discovered:
+When a client implemented Istio service mesh with automatic mTLS, we initially configured 24-hour certificate lifespans thinking this was "secure by default." In production, we discovered:
 
 **Problem 1: Certificate rotation created cascading failures**
 
@@ -281,9 +281,9 @@ Some older services (10+ years old) couldn't handle mTLS:
 - You assume all services can adopt mTLS simultaneously
 - You're not testing certificate rotation under production-like load
 
-### What We Learned at Deutsche Bank (API Gateway mTLS)
+### What We Learned (API Gateway mTLS)
 
-Deutsche Bank implemented mTLS for partner API access, requiring external partners to authenticate with client certificates. Initial implementation had problems:
+A banking client implemented mTLS for partner API access, requiring external partners to authenticate with client certificates. Initial implementation had problems:
 
 **Problem 1: Partner onboarding was painful**
 
@@ -434,7 +434,7 @@ Some partners implemented certificate pinning (trusting specific certificates in
 - You need to integrate mTLS with existing identity systems (AD, LDAP, etc.)
 - You're implementing mTLS for financial services or other highly regulated environments
 
-We've implemented mTLS at Sky UK (15,000+ services in service mesh), Deutsche Bank (external partner APIs with complex onboarding), and Barclays (high-performance trading systems). We know where the edge cases hide and what actually breaks in production.
+We've implemented mTLS for a large service mesh, Deutsche Bank (external partner APIs with complex onboarding), and Barclays (security retail banking systems). We know where the edge cases hide and what actually breaks in production.
 
 ---
 

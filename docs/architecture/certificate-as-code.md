@@ -344,9 +344,9 @@ jobs:
 
 ## Lessons from Production
 
-### What We Learned at Sky UK (Kubernetes + cert-manager)
+### What We Learned in a Project (Kubernetes + cert-manager)
 
-Sky UK implemented Certificate-as-Code using cert-manager in Kubernetes for 15,000+ certificates. Initial implementation had challenges:
+A client implemented Certificate-as-Code using cert-manager in Kubernetes for 15,000+ certificates. Initial implementation had challenges:
 
 **Problem 1: "Everything automated" created blind spots**
 
@@ -408,9 +408,9 @@ With 50+ developers deploying services, certificate PRs piled up:
 - Centralizing certificate definitions when scale demands distributed ownership
 - Assuming "automated" means "zero operational overhead"
 
-### What We Learned at Deutsche Bank (Terraform + Multi-Cloud)
+### What We Learned (Terraform + Multi-Cloud)
 
-Deutsche Bank implemented Certificate-as-Code with Terraform managing certificates across AWS, Azure, and on-premises. Challenges:
+A banking client implemented Certificate-as-Code with Terraform managing certificates across AWS, Azure, and on-premises. Challenges:
 
 **Problem 1: State management became complex**
 
@@ -573,7 +573,7 @@ Allowing any certificate configuration in code without validation. Defeats benef
 - Implementing in regulated environment (financial services, healthcare)
 - Previous automation attempts failed and need troubleshooting
 
-We've implemented Certificate-as-Code at Sky UK (15,000+ certificates, Kubernetes/cert-manager), Deutsche Bank (multi-cloud Terraform, 25,000+ certificates), and Barclays (enterprise PKI integration). We know where the complexity hides and what actually works at scale.
+We've implemented Certificate-as-Code at an internet company (15,000+ certificates, Kubernetes/cert-manager), Deutsche Bank (multi-cloud, home-brew PKI service), and Barclays (enterprise PKI integration). We know where the complexity hides and what actually works at scale.
 
 ---
 

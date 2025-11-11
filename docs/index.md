@@ -166,7 +166,7 @@ If you're evaluating certificate management automation:
 
 **Evaluate solutions:** The [Vendor Comparison Matrix](vendors/vendor-comparison-matrix.md) provides objective analysis of commercial platforms. Implementation patterns are platform-agnostic - the organizational transformation matters more than the technology choice.
 
-**Plan your implementation:** Most organizations benefit from external expertise during initial implementation. We've done this at Barclays, Deutsche Bank, and Sky - we know where the complexity hides, which vendors oversell capabilities, and what actually matters for production success.
+**Plan your implementation:** Most organizations benefit from external expertise during initial implementation. We've done this at TSB Bank, Deutsche Bank, and Sky/Comcast - we know where the complexity hides, which vendors oversell capabilities, and what actually matters for production success.
 
 ## About This Knowledge Base
 
