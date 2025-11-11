@@ -1,5 +1,17 @@
 # Certificate Issuance Workflows
 
+## Why This Matters
+
+**For executives:** Certificate issuance workflows determine operational cost, security posture, and business agility. Manual workflows cost $50-200 per certificate in labor, create 2-4 week lead times that slow deployments, and generate security incidents through expired certificates. Automated workflows reduce cost to near-zero, enable same-day deployments, and eliminate human error. This is operational efficiency that directly impacts business velocity.
+
+**For security leaders:** Certificate issuance workflows are where security policy meets operational reality. Manual workflows create inconsistent policy enforcement, incomplete audit trails, and security gaps. Automated workflows enforce policy consistently, provide complete audit trails, and eliminate the "security exception" problem. This is how you achieve security at scale.
+
+**For engineers:** Certificate issuance workflow maturity determines your day-to-day operational pain. Manual workflows mean tickets, waiting, and late-night emergency certificate renewals. Automated workflows mean infrastructure-as-code, self-service, and 3 AM renewals handled automatically. This is quality of life.
+
+**Common scenario:** Your organization issues hundreds or thousands of certificates. Current process: engineer creates ticket → security approves (2-3 days) → operations generates certificate (1-2 days) → engineer installs manually. Total: 1-2 weeks per certificate. Automated workflow: engineer runs terraform apply, certificate issued in 30 seconds. This is the transformation modern PKI enables.
+
+---
+
 ## TL;DR
 
 Certificate issuance is the core operational process of any PKI, transforming certificate requests into signed certificates through validation, generation, and distribution workflows. Modern issuance systems must balance security (strong validation, audit trails) with operational efficiency (automation, self-service), while supporting multiple protocols (ACME, SCEP, EST) and integration patterns. Organizations typically evolve from manual, ad-hoc processes to systematic, automated workflows with policy enforcement, eventually reaching fully integrated infrastructure-as-code approaches. The key challenge is building workflows that are simultaneously secure enough to meet compliance requirements, automated enough to handle scale, and flexible enough to support diverse use cases from IoT devices to load balancers to developer workstations.
@@ -1406,24 +1418,28 @@ class CertificateCache:
 ## Security Considerations
 
 ### Request Authentication
+
 - Use strong authentication (mTLS, OAuth) not just API keys
 - Implement rate limiting per identity
 - Log all authentication attempts
 - Use short-lived tokens for temporary access
 
 ### Domain Validation Security
+
 - DNS validation preferred over HTTP for security
 - Implement CAA checking before issuance
 - Verify requester owns domains, not just can modify DNS
 - Use multiple validation methods for high-value certificates
 
 ### Private Key Protection
+
 - Generate keys on endpoint when possible
 - Never email or expose keys in logs
 - Use HSMs for CA signing keys
 - Implement key escrow only when required by policy
 
 ### Approval Bypass Prevention
+
 - No "emergency" backdoors bypassing policy
 - All exceptions logged and reviewed
 - Temporary elevated access with automatic expiration
@@ -1474,6 +1490,7 @@ AWS Certificate Manager model:
 ## Further Reading
 
 ### Standards and RFCs
+
 - RFC 2986: PKCS #10 Certificate Request Syntax
 - RFC 8555: ACME Protocol
 - RFC 8894: SCEP Protocol
@@ -1482,6 +1499,7 @@ AWS Certificate Manager model:
 - RFC 6125: Domain Name Representation in Certificates
 
 ### Related Pages
+
 - [ACME Protocol Implementation](./acme-protocol.md) - Building ACME servers
 - [Certificate Lifecycle Management](./certificate-lifecycle-management.md) - Complete lifecycle
 - [CA Architecture](./ca-architecture.md) - CA design and operation
@@ -1489,6 +1507,7 @@ AWS Certificate Manager model:
 - [Multi-Cloud PKI](./multi-cloud-pki.md) - Cloud certificate management
 
 ### Industry Resources
+
 - CA/Browser Forum Baseline Requirements
 - NIST SP 800-57: Key Management Recommendations
 - CIS Controls: Certificate and SSL/TLS Management

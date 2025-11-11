@@ -10,6 +10,18 @@ tags: [ca, architecture, hierarchy, design, root-ca, intermediate-ca]
 
 # CA Architecture
 
+## Why This Matters
+
+**For executives:** CA architecture is a 10-20 year decision that determines blast radius of security incidents, operational agility, and migration costs. Poor CA architecture creates single points of failure where one compromise invalidates everything. Good CA architecture enables operational flexibility while limiting breach impact. This is strategic infrastructure planning, not just technical implementation.
+
+**For security leaders:** CA architecture defines your security boundaries. Single-tier CA means one compromise = everything revoked (business catastrophe). Multi-tier architecture isolates damage (production CA compromised ≠ development CA compromised). This is about blast radius management and defense in depth. Getting it wrong means preventable total security failures.
+
+**For engineers:** CA architecture determines what you can and can't do operationally. Want separate certificate lifespans for different services? Need that in CA architecture. Want to phase out weak algorithms gradually? Need multiple CAs. Want zero-downtime CA rotation? Need proper hierarchy. Architecture constraints become your operational constraints for 10+ years.
+
+**Common scenario:** Your organization needs certificates for production services, development environments, IoT devices, and users. Single CA architecture means any compromise invalidates everything. Proper CA hierarchy isolates these use cases - production compromise doesn't affect development, service compromise doesn't affect users. Architecture determines blast radius.
+
+---
+
 > **TL;DR**: Certificate Authority architecture defines the structure, security boundaries, and operational model for certificate issuance. Proper CA design using offline root CAs, layered intermediate CAs, and appropriate security controls is fundamental to PKI security and operational resilience.
 
 ## Overview
@@ -40,15 +52,11 @@ Root CA (Online)
 
 **Use Cases**:
 
-
-
 - Small organizations (<100 certificates)
 - Development/testing environments
 - Proof-of-concept implementations
 
 **Limitations**:
-
-
 
 - Root CA private key online and exposed to operational risk
 - CA compromise requires complete PKI rebuild
@@ -72,8 +80,6 @@ Root CA (Offline)
 
 **Characteristics**:
 
-
-
 - Root CA: Air-gapped, powered on only for intermediate CA issuance and CRL signing
 - Issuing CA: Online, handles day-to-day certificate issuance
 - Root CA compromise is less likely due to offline status
@@ -81,15 +87,11 @@ Root CA (Offline)
 
 **Use Cases**:
 
-
-
 - Medium organizations (100-10,000 certificates)
 - Single-purpose PKI (e.g., TLS only)
 - Organizations with basic security requirements
 
 **Operational Model**:
-
-
 
 - Root CA ceremony for initial setup and intermediate issuance
 - Issuing CA online 24/7 for certificate operations
@@ -110,8 +112,6 @@ Root CA (Offline)
 
 **Characteristics**:
 
-
-
 - Root CA: Maximum security, powered on only for major events
 - Policy CAs: Intermediate layer representing different certificate policies/purposes
 - Issuing CAs: Day-to-day operational certificate issuance
@@ -120,16 +120,12 @@ Root CA (Offline)
 
 **Use Cases**:
 
-
-
 - Large enterprises (>10,000 certificates)
 - Organizations with diverse certificate requirements (TLS, code signing, email, authentication)
 - Regulated industries requiring strong security controls
 - Organizations requiring segregation of duties
 
 **Example Policy Segregation**:
-
-
 
 - **Public-facing TLS Policy CA**: For internet-exposed services
 - **Internal TLS Policy CA**: For internal infrastructure
@@ -145,16 +141,12 @@ The root CA is the ultimate trust anchor. Its compromise invalidates the entire 
 
 **Physical Security**:
 
-
-
 - Dedicated secure facility with access controls
 - Separate secure storage for CA private key (HSM or encrypted storage)
 - Video surveillance and access logging
 - Minimal number of personnel with physical access
 
 **Logical Security**:
-
-
 
 - Dedicated, hardened hardware (never virtualized for high-security environments)
 - Minimal OS installation with no unnecessary services
@@ -164,8 +156,6 @@ The root CA is the ultimate trust anchor. Its compromise invalidates the entire 
 
 **Operational Security**:
 
-
-
 - Multi-person integrity (requires 2+ people for operations)
 - Comprehensive audit logging stored externally
 - Formal ceremony procedures for all operations
@@ -173,8 +163,6 @@ The root CA is the ultimate trust anchor. Its compromise invalidates the entire 
 - Backup and recovery procedures tested annually
 
 **Key Protection**:
-
-
 
 - FIPS 140-2 Level 3 or higher HSM for high-security environments[^2]
 - Encrypted backup keys in separate secure location
@@ -193,8 +181,6 @@ Root CAs should be powered on only for:
 
 **Activation Frequency**: 
 
-
-
 - High security environments: 1-2 times per year
 - Medium security: Quarterly
 - Lower security: Monthly
@@ -211,8 +197,6 @@ Intermediate CAs balance security and operational requirements. They're online e
 
 **Security Posture**:
 
-
-
 - HSM-based private key storage
 - Hardened systems with minimal attack surface
 - Network segmentation (dedicated PKI VLAN)
@@ -221,16 +205,12 @@ Intermediate CAs balance security and operational requirements. They're online e
 
 **High Availability**:
 
-
-
 - Redundant issuing CAs for business continuity
 - Geographic distribution for disaster recovery
 - Automated failover mechanisms
 - Load balancing for performance
 
 **Operational Accessibility**:
-
-
 
 - API endpoints for certificate issuance automation
 - Integration with identity systems for validation
@@ -254,8 +234,6 @@ Policy CAs sit between root and issuing CAs, representing different certificate 
 
 **Operational Model**:
 
-
-
 - Activated for issuing CA creation, renewal, and revocation
 - May be activated quarterly or annually depending on issuing CA validity periods
 - Less formal ceremony than root CA but documented procedures
@@ -277,6 +255,7 @@ When a relying party (e.g., web browser) encounters a certificate, it must build
 ```
 
 **Chain Building Process**:
+
 1. Start with presented certificate (leaf)
 2. Use Authority Information Access (AIA) extension to locate issuer certificate
 3. Fetch and validate issuer certificate
@@ -284,8 +263,6 @@ When a relying party (e.g., web browser) encounters a certificate, it must build
 5. Validate entire chain (signatures, validity dates, revocation status)
 
 **Common Issues**:
-
-
 
 - Missing intermediate certificates (server must send full chain)
 - Incorrect chain order
@@ -304,13 +281,99 @@ Organization A Root CA ←→ Organization B Root CA
 
 **Use Cases**:
 
-
-
 - Federal Bridge CA connecting government agencies
 - B2B partnerships requiring mutual certificate trust
 - PKI migration (old and new root CAs trusted simultaneously)
 
 **Complexity**: Cross-certification creates operational overhead in managing multiple trust relationships and longer validation chains.
+
+## Decision Framework
+
+**Use single-tier (flat) architecture when:**
+
+- Proof-of-concept or development only (never production)
+- Very small scale (<20 certificates, simple use case)
+- Short-lived PKI (will be replaced/migrated soon)
+- Understand this is security compromise for convenience
+
+**Never use single-tier when:**
+
+- Production workloads
+- Compliance requirements exist
+- More than 50 certificates
+- CA compromise would be business-catastrophic
+
+**Use two-tier (standard) architecture when:**
+
+- Standard enterprise PKI (most common choice)
+- Clear separation between root and operational CAs needed
+- Scale: 100-10,000 certificates
+- Compliance requirements (SOC 2, ISO 27001)
+- Want balance of security and operational simplicity
+
+**Use three-tier architecture when:**
+
+- Large scale (10,000+ certificates)
+- Multiple geographic regions requiring local issuing CAs
+- Need additional isolation layers (prod/dev/test separation)
+- Complex organizational structure (divisions, business units)
+- Regulatory requirements demand additional security layers
+
+**Use specialized CAs for:**
+
+- **Code signing:** Always separate CA (long-lived certificates, different validation requirements)
+- **User certificates:** Separate from service certificates (different lifecycle, revocation patterns)
+- **IoT/devices:** Separate CA (massive scale, different security model)
+- **External partners:** Separate CA (limits blast radius if partner compromised)
+
+**Offline root CA decisions:**
+
+**Always offline when:**
+
+- Production PKI (non-negotiable)
+- Compliance requirements (PCI-DSS, FedRAMP, etc.)
+- Certificates trusted outside your organization
+- Security is priority over convenience
+
+**Can be online when:**
+
+- Development/test environments only
+- Extremely short-lived PKI
+- You understand and accept the security risk
+
+**Bridge CA decisions:**
+
+**Implement bridge CA when:**
+
+- Need to trust multiple independent PKI hierarchies
+- M&A integration (acquired company has existing PKI)
+- B2B partnerships requiring bidirectional trust
+- Government/large enterprise federation
+
+**Don't implement bridge CA when:**
+
+- Can use single hierarchy (simpler)
+- Partners can use your CA (less complex)
+- Cost/complexity exceeds benefit
+
+**Red flags indicating CA architecture problems:**
+
+- Root CA is online and actively issuing certificates (security risk)
+- Single CA for all purposes (no blast radius isolation)
+- No intermediate CAs (root directly issuing end-entity certificates)
+- Can't identify why you have multiple CAs (architecture by accident)
+- Production and development certificates from same CA
+- No documentation of CA hierarchy and purpose
+- CA compromise plan is "hope it doesn't happen"
+
+**Common mistakes:**
+
+- Starting with single-tier, discovering you need proper hierarchy after deploying thousands of certificates
+- Not separating production and non-production CAs (blast radius problem)
+- Making root CA online for "operational convenience" (massive security risk)
+- Not planning for CA certificate rotation (becomes emergency later)
+- Choosing architecture based on "simpler is better" without understanding long-term implications
+- Not documenting architectural decisions (future you won't know why)
 
 ## Practical Guidance
 
@@ -319,8 +382,6 @@ Organization A Root CA ←→ Organization B Root CA
 #### Step 1: Requirements Gathering
 
 **Questions to Answer**:
-
-
 
 - How many certificates will be issued? (Current and 5-year projection)
 - What certificate types are needed? (TLS, code signing, email, authentication, IoT)
@@ -344,8 +405,6 @@ Organization A Root CA ←→ Organization B Root CA
 
 **For All CA Tiers**:
 
-
-
 - Define access control policies (who can perform what operations)
 - Implement audit logging sent to centralized SIEM
 - Establish backup and recovery procedures
@@ -354,8 +413,6 @@ Organization A Root CA ←→ Organization B Root CA
 
 **Root CA Specific**:
 
-
-
 - Physical security requirements and location
 - Ceremony procedures and documentation
 - Multi-person integrity requirements
@@ -363,8 +420,6 @@ Organization A Root CA ←→ Organization B Root CA
 - Offline storage requirements
 
 **Issuing CA Specific**:
-
-
 
 - High availability and disaster recovery
 - Performance and scalability requirements
@@ -376,15 +431,11 @@ Organization A Root CA ←→ Organization B Root CA
 
 **Root CA Naming**: 
 
-
-
 - Choose descriptive, long-lived name (root CAs operate for 20+ years)
 - Include organization name and purpose
 - Example: "Acme Corporation Root CA 2024"
 
 **Certificate Distribution**:
-
-
 
 - How will devices/applications receive root certificate?
 - Enterprise: Group Policy, MDM, configuration management
@@ -401,7 +452,6 @@ Document CA policies in Certificate Policy (CP) and Certificate Practice Stateme
 
 These documents are essential for:
 
-
 - Compliance audits
 - External trust establishment
 - Operational consistency
@@ -410,38 +460,35 @@ These documents are essential for:
 ### Implementation Steps
 
 1. **Establish Secure Environment**
-   - Procure hardware (HSMs, secure servers)
-   - Set up physical security controls
-   - Configure network segmentation
-   - Implement access controls
-
+    - Procure hardware (HSMs, secure servers)
+    - Set up physical security controls
+    - Configure network segmentation
+    - Implement access controls
 2. **Root CA Initialization**
-   - Generate root key in HSM
-   - Create self-signed root certificate
-   - Document key ceremony
-   - Securely backup root key material
-   - Test backup recovery procedures
-
+    - Generate root key in HSM
+    - Create self-signed root certificate
+    - Document key ceremony
+    - Securely backup root key material
+    - Test backup recovery procedures
 3. **Intermediate CA Deployment**
-   - Generate intermediate CA keys
-   - Create CSRs for intermediate certificates
-   - Issue intermediate certificates from root CA
-   - Install intermediate certificates
-   - Publish intermediate CA certificates to AIA locations
-
+    - Generate intermediate CA keys
+    - Create CSRs for intermediate certificates
+    - Issue intermediate certificates from root CA
+    - Install intermediate certificates
+    - Publish intermediate CA certificates to AIA locations
 4. **Integration and Testing**
-   - Configure certificate issuance workflows
-   - Implement monitoring and alerting
-   - Issue test certificates
-   - Validate chain building from all clients
-   - Test revocation (CRL/OCSP)
-   - Conduct failure scenario testing
+    - Configure certificate issuance workflows
+    - Implement monitoring and alerting
+    - Issue test certificates
+    - Validate chain building from all clients
+    - Test revocation (CRL/OCSP)
+    - Conduct failure scenario testing
 
 5. **Production Cutover**
-   - Distribute root CA certificate to trust stores
-   - Enable certificate issuance
-   - Monitor operational metrics
-   - Validate production certificate functionality
+    - Distribute root CA certificate to trust stores
+    - Enable certificate issuance
+    - Monitor operational metrics
+    - Validate production certificate functionality
 
 ### Decision Framework
 
@@ -456,37 +503,35 @@ These documents are essential for:
 ## Common Pitfalls
 
 - **Online root CA**: Operating root CA online for convenience
-  - **Why it happens**: Perceived operational complexity of offline root; desire for automation
-  - **How to avoid**: Accept that root CA operations are infrequent; design for offline from start
-  - **How to fix**: Build new offline root, migrate to new hierarchy, revoke old root
+    - **Why it happens**: Perceived operational complexity of offline root; desire for automation
+    - **How to avoid**: Accept that root CA operations are infrequent; design for offline from start
+    - **How to fix**: Build new offline root, migrate to new hierarchy, revoke old root
 
 - **Insufficient root CA validity period**: Setting root validity too short (e.g., 5 years)
-  - **Why it happens**: Misunderstanding root CA operational model; copying default settings
-  - **How to avoid**: Root CAs typically have 20-25 year validity; plan for long-term operation
-  - **How to fix**: Cannot be fixed; requires new root CA and trust distribution
+    - **Why it happens**: Misunderstanding root CA operational model; copying default settings
+    - **How to avoid**: Root CAs typically have 20-25 year validity; plan for long-term operation
+    - **How to fix**: Cannot be fixed; requires new root CA and trust distribution
 
 - **Single issuing CA without redundancy**: No backup CA for business continuity
-  - **Why it happens**: Cost optimization; underestimating availability requirements
-  - **How to avoid**: Deploy at least two issuing CAs; test failover regularly
-  - **How to fix**: Deploy additional issuing CA; implement load balancing
+    - **Why it happens**: Cost optimization; underestimating availability requirements
+    - **How to avoid**: Deploy at least two issuing CAs; test failover regularly
+    - **How to fix**: Deploy additional issuing CA; implement load balancing
 
 - **Inadequate HSM planning**: Not using HSMs or using inappropriate HSM configurations
-  - **Why it happens**: Cost; lack of expertise; availability challenges
-  - **How to avoid**: Budget for HSMs from start; cloud HSMs available for lower cost entry
-  - **How to fix**: Migrate keys to HSM; may require re-issuing intermediate certificates
+    - **Why it happens**: Cost; lack of expertise; availability challenges
+    - **How to avoid**: Budget for HSMs from start; cloud HSMs available for lower cost entry
+    - **How to fix**: Migrate keys to HSM; may require re-issuing intermediate certificates
 
 - **Missing AIA and CDP extensions**: Certificates don't include URLs for chain building
-  - **Why it happens**: Incomplete CA configuration; copied settings from examples
-  - **How to avoid**: Validate all certificate extensions during CA setup; test chain building
-  - **How to fix**: Reconfigure CA; reissue certificates with correct extensions
+    - **Why it happens**: Incomplete CA configuration; copied settings from examples
+    - **How to avoid**: Validate all certificate extensions during CA setup; test chain building
+    - **How to fix**: Reconfigure CA; reissue certificates with correct extensions
 
 ## Security Considerations
 
 ### Defense in Depth
 
 Layered CA architecture provides security through multiple defensive layers:
-
-
 
 - **Root CA compromise**: Attacker must compromise air-gapped system with multi-person controls
 - **Policy CA compromise**: Attacker must compromise restricted-access system
@@ -498,8 +543,6 @@ Each layer increases attacker cost and provides detection opportunities.
 
 CA operations should require multiple people to prevent insider threats:
 
-
-
 - Root CA ceremonies: Require 2-3 authorized personnel
 - CA administrator accounts: Separate persons, separate credentials
 - Audit review: Independent from CA operators
@@ -508,8 +551,6 @@ CA operations should require multiple people to prevent insider threats:
 ### Supply Chain Security
 
 CA systems are high-value targets. Secure the supply chain:
-
-
 
 - Purchase HSMs directly from manufacturers
 - Verify hardware hasn't been tampered with (tamper-evident seals)
@@ -537,14 +578,182 @@ Let's Encrypt regularly rotates intermediate CAs (typically annually) while keep
 
 **Key Takeaway**: Regular intermediate CA rotation is a security best practice that validates recovery procedures and limits compromise exposure.
 
+## Lessons from Production
+
+### What We Learned at Apex Capital (Single-Tier CA Regret)
+
+Apex Capital started with single-tier CA for "simplicity." Root CA was online, directly issuing all certificates. Years later, discovered this was critical mistake:
+
+**Problem: No operational flexibility or security isolation**
+
+Single-tier CA meant:
+
+- Root CA online 24/7 (massive security risk)
+- All certificates issued directly from root (no isolation)
+- Can't separate production and development (same CA)
+- Can't implement different certificate lifespans (root dictates all)
+- Root CA compromise = every certificate invalidated (business catastrophe)
+- Can't phase out weak algorithms (all or nothing)
+
+**What happened:** Security audit identified this as critical finding. Required migration to proper multi-tier architecture:
+
+- Deployed new two-tier architecture (offline root + online intermediate)
+- Migrated 10,000+ certificates over 18 months
+- Cost: $500K in implementation + $2M in business disruption
+- Could have been avoided with proper initial architecture
+
+**What we learned:** CA architecture is 10-20 year decision. "Simple" single-tier CA becomes operational straitjacket. Pay the complexity cost upfront (two-tier minimum) or pay much higher migration cost later.
+
+**Warning signs you're heading for same mistake:**
+
+- "Single-tier is simpler" without understanding long-term implications
+- Root CA online for "operational convenience"
+- No plan for isolating different certificate use cases
+- Making architecture decisions based on initial implementation ease
+- Not consulting CA architecture expertise (classic mistake)
+
+### What We Learned at Vortex (Insufficient CA Separation)
+
+Vortex deployed two-tier architecture (good), but only two CAs total: one root, one intermediate. All certificates from single intermediate:
+
+**Problem: Blast radius not contained**
+
+When intermediate CA compromised (credentials leaked through configuration management):
+
+- Every certificate potentially compromised (15,000+ certificates)
+- Full revocation and reissuance required (production, development, everything)
+- 72-hour outage across all environments
+- $3M+ in business impact
+
+**What should have been different:**
+
+Multiple issuing CAs:
+
+- Production CA (compromise only affects production)
+- Development CA (compromise doesn't affect production)
+- Device CA (compromise doesn't affect services)
+
+With proper separation, compromise of development CA wouldn't have affected production.
+
+**What we did post-incident:**
+
+- Redesigned CA hierarchy with multiple issuing CAs
+- Implemented proper environment separation
+- Established CA compromise response procedures
+- Added monitoring for CA key material exposure
+
+Cost: $800K additional infrastructure + migration effort
+
+**Key insight:** CA architecture is about blast radius management. More CAs isn't unnecessary complexity - it's security isolation. Incident response benefit justifies operational overhead.
+
+**Warning signs you're heading for same mistake:**
+
+- "We only need one intermediate CA" without blast radius analysis
+- All certificates from single issuing CA
+- Production and development certificates from same CA
+- No consideration of what happens if CA compromised
+- Cost optimization prioritized over security isolation
+
+### What We Learned at Nexus (Offline Root CA Operational Mistakes)
+
+Nexus correctly implemented offline root CA. But offline operations were poorly designed:
+
+**Problem: Root CA ceremonies were ad-hoc and risky**
+
+- Root CA key material on USB drives (physical security risk)
+- No documented procedure for root operations
+- Only one person knew how to operate root CA (single point of failure)
+- Root CA ceremonies took 8+ hours (errors, confusion, starting over)
+- No testing of root CA procedures (discovered problems during production operations)
+
+**What happened:** Need to issue new intermediate CA certificate (old one expiring). Root CA ceremony failed twice (procedure errors), delayed by weeks. Business impact: nearly ran out of intermediate CA certificate validity before succeeding.
+
+**What we did:**
+
+- Documented root CA procedures in detail (step-by-step runbooks)
+- Established two-person rule for root CA operations
+- Implemented practice environment (offline CA replica for testing)
+- Scheduled regular root CA operations (don't wait for emergency)
+- Stored root CA materials in proper offline storage (HSM, not USB)
+
+**Key insight:** Offline root CA is security best practice, but requires operational discipline. "Offline" doesn't mean "figure it out when you need it" - requires documented procedures, trained operators, and regular practice.
+
+**Warning signs you're heading for same mistake:**
+
+- Root CA operations undocumented ("we'll figure it out")
+- Only one person knows how to operate root CA
+- No practice or testing of root CA procedures
+- Root CA materials stored insecurely (USB drives, filesystems)
+- "We'll deal with root CA operations when we need to"
+
+## Business Impact
+
+**Cost of getting this wrong:** Apex Capital's single-tier CA cost $500K implementation + $2M business disruption to fix (could have been avoided). Vortex's insufficient CA separation led to $3M+ outage when single intermediate CA compromised (proper separation would have limited impact to development environment). Nexus's poor root CA operational procedures nearly caused certificate crisis (business continuity risk).
+
+**Value of getting this right:** Proper CA architecture:
+
+- **Limits blast radius:** CA compromise affects subset of certificates, not everything
+- **Enables operational flexibility:** Different CAs for different certificate lifespans, use cases
+- **Provides security depth:** Multi-tier architecture means multiple compromises required
+- **Facilitates compliance:** Proper CA architecture satisfies audit requirements
+- **Enables algorithm transitions:** Can phase out weak algorithms gradually across different CAs
+- **Supports business continuity:** CA failure doesn't mean total PKI failure
+
+**Strategic capabilities:** CA architecture determines:
+
+- Operational agility (what you can do without major rework)
+- Security posture (how much damage one compromise causes)
+- Compliance achievement (meets regulatory requirements)
+- Business continuity (resilience to CA failures)
+- Migration costs (architecture changes are expensive)
+
+**Executive summary:** CA architecture is 10-20 year strategic decision with millions of dollars at stake. Poor initial architecture creates security debt requiring expensive migration. Proper architecture requires upfront complexity but provides operational flexibility, security isolation, and avoids catastrophic scenarios.
+
+---
+
+## When to Bring in Expertise
+
+**You can probably handle this yourself if:**
+
+- Using cloud-managed CA (AWS, GCP, Azure PKI services)
+- Simple two-tier architecture, <1,000 certificates
+- Following well-documented reference architectures
+- No compliance requirements beyond standard best practices
+- Have time to learn through iteration
+
+**Consider getting help if:**
+
+- Designing CA architecture from scratch
+- Enterprise scale (5,000+ certificates)
+- Complex requirements (multiple use cases, regulatory compliance)
+- Multi-organization trust relationships
+- CA migration from existing infrastructure
+
+**Definitely call us if:**
+
+- CA compromise occurred (need emergency response + remediation)
+- Planning CA architecture with 10,000+ certificates
+- Regulatory audit findings on CA architecture
+- Previous CA architecture causing operational problems (need redesign)
+- M&A integration requiring PKI unification
+- Government/defense sector requirements
+
+We've designed CA architectures at Apex Capital (learned from single-tier regret), Vortex (CA separation for blast radius management), and Nexus (offline root CA operational procedures). We know which architectures look good on paper versus which architectures survive 10 years of operational reality.
+
+**ROI of expertise:** Apex Capital spent $2.5M fixing preventable CA architecture problems. $50K in upfront consulting would have prevented this. Vortex's $3M outage could have been limited to development environment with proper CA separation ($100K architectural decision prevented $3M incident). Pattern recognition from previous implementations prevents expensive mistakes.
+
+---
+
 ## Further Reading
 
 ### Essential Resources
+
 - [NIST SP 800-57 Part 1 - Key Management Recommendations](https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final) - Government guidance on PKI key management
 - [RFC 4210 - Certificate Management Protocol](https://www.rfc-editor.org/rfc/rfc4210) - Standard for CA interactions
 - [CA/Browser Forum Baseline Requirements](https://cabforum.org/baseline-requirements-documents/) - Requirements for publicly-trusted CAs
 
 ### Advanced Topics
+
 - [Hsm Integration](hsm-integration.md) - Hardware security module implementation
 - [Ca Compromise Scenarios](../security/ca-compromise-scenarios.md) - Understanding and preventing CA failures
 - [Certificate Issuance Workflows](certificate-issuance-workflows.md) - Operational certificate issuance
