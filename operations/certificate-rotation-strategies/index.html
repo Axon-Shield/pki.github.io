@@ -1406,6 +1406,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#why-this-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why This Matters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       Overview
@@ -3004,6 +3013,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#why-this-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why This Matters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       Overview
@@ -3552,6 +3570,12 @@
 
 
 <h1 id="certificate-rotation-strategies">Certificate Rotation Strategies</h1>
+<h2 id="why-this-matters">Why This Matters</h2>
+<p><strong>For executives:</strong> Certificate rotation failures cause production outages costing $300K-$1M+ per incident. Vortex experienced certificate rotation cascading failures affecting 5-10% of requests during overlapping certificate validity windows. Rotation strategy determines whether certificate operations are smooth and invisible or disruptive and high-risk. This is operational risk management.</p>
+<p><strong>For security leaders:</strong> Rotation strategy enables cryptographic agility - ability to phase out weak algorithms, respond to CA compromise, and adopt new security standards. Manual rotation means security improvements are delayed or skipped due to operational burden. Automated rotation enables rapid security response. This is security operational capability.</p>
+<p><strong>For engineers:</strong> Certificate rotation is constant operational burden. Services at scale (thousands of services) rotate certificates daily or hourly. Manual rotation doesn't scale. Rotation strategy determines whether this is automated background operation or middle-of-night emergency work. This is operational sanity.</p>
+<p><strong>Common scenario:</strong> Your service mesh deploys thousands of certificates with 24-hour lifespans. Rotation must happen automatically and reliably, otherwise services lose connectivity. Your rotation strategy determines whether this works smoothly or creates constant operational fires. Same applies to traditional infrastructure at smaller scale.</p>
+<hr />
 <h2 id="overview">Overview</h2>
 <p>Certificate rotation is the planned replacement of certificates before expiry, encompassing the entire process from renewal initiation through deployment verification. Unlike emergency renewals triggered by compromise or imminent expiry, strategic rotation is a scheduled operational practice that prevents outages, reduces risk, and enables infrastructure evolution.</p>
 <p><strong>Core principle</strong>: Certificate rotation should be a routine, automated operation, not an emergency response.</p>
@@ -5066,86 +5090,95 @@ Rotate certificates in response to specific events rather than schedule.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="gh"># Certificate Rollback Procedure</span>
 <a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
 <a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="gu">## When to Use</span>
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="k">-</span><span class="w"> </span>Automated rollback failed
-<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="k">-</span><span class="w"> </span>Issues detected after grace period
-<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="k">-</span><span class="w"> </span>Certificate causing application-specific problems
-<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>
-<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="gu">## Prerequisites</span>
-<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="k">-</span><span class="w"> </span>Access to deployment targets
-<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="k">-</span><span class="w"> </span>Previous certificate files available
-<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="k">-</span><span class="w"> </span>Monitoring dashboard access
-<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="k">-</span><span class="w"> </span>Approval from on-call lead (for production)
-<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>
-<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a><span class="gu">## Procedure</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="k">-</span><span class="w"> </span>Automated rollback failed
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="k">-</span><span class="w"> </span>Issues detected after grace period
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="k">-</span><span class="w"> </span>Certificate causing application-specific problems
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="gu">## Prerequisites</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="k">-</span><span class="w"> </span>Access to deployment targets
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="k">-</span><span class="w"> </span>Previous certificate files available
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="k">-</span><span class="w"> </span>Monitoring dashboard access
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a><span class="k">-</span><span class="w"> </span>Approval from on-call lead (for production)
 <a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a>
-<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="gu">### Step 1: Assess Situation</span>
-<a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a><span class="k">- [ ]</span> Confirm rollback is necessary
-<a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a><span class="k">- [ ]</span> Identify affected services/hosts
-<a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a><span class="k">- [ ]</span> Locate previous certificate files
-<a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a><span class="k">- [ ]</span> Check for any dependencies
-<a id="__codelineno-29-21" name="__codelineno-29-21" href="#__codelineno-29-21"></a>
-<a id="__codelineno-29-22" name="__codelineno-29-22" href="#__codelineno-29-22"></a><span class="gu">### Step 2: Prepare</span>
-<a id="__codelineno-29-23" name="__codelineno-29-23" href="#__codelineno-29-23"></a><span class="k">- [ ]</span> Notify stakeholders of rollback
-<a id="__codelineno-29-24" name="__codelineno-29-24" href="#__codelineno-29-24"></a><span class="k">- [ ]</span> Create rollback ticket: [TICKET]
-<a id="__codelineno-29-25" name="__codelineno-29-25" href="#__codelineno-29-25"></a><span class="k">- [ ]</span> Start incident bridge if critical
-<a id="__codelineno-29-26" name="__codelineno-29-26" href="#__codelineno-29-26"></a><span class="k">- [ ]</span> Have backup contact ready
-<a id="__codelineno-29-27" name="__codelineno-29-27" href="#__codelineno-29-27"></a>
-<a id="__codelineno-29-28" name="__codelineno-29-28" href="#__codelineno-29-28"></a><span class="gu">### Step 3: Execute Rollback</span>
-<a id="__codelineno-29-29" name="__codelineno-29-29" href="#__codelineno-29-29"></a>For each affected target:
-<a id="__codelineno-29-30" name="__codelineno-29-30" href="#__codelineno-29-30"></a>
-<a id="__codelineno-29-31" name="__codelineno-29-31" href="#__codelineno-29-31"></a><span class="k">1.</span> Backup current (failing) certificate:
-<a id="__codelineno-29-32" name="__codelineno-29-32" href="#__codelineno-29-32"></a><span class="sb">   ```bash</span>
-<a id="__codelineno-29-33" name="__codelineno-29-33" href="#__codelineno-29-33"></a><span class="w">   </span>cp<span class="w"> </span>/etc/ssl/certs/service.pem<span class="w"> </span>/etc/ssl/certs/service.pem.failed
-<a id="__codelineno-29-34" name="__codelineno-29-34" href="#__codelineno-29-34"></a><span class="w">   </span>cp<span class="w"> </span>/etc/ssl/private/service.key<span class="w"> </span>/etc/ssl/private/service.key.failed
-<a id="__codelineno-29-35" name="__codelineno-29-35" href="#__codelineno-29-35"></a><span class="sb">   ```</span>
-<a id="__codelineno-29-36" name="__codelineno-29-36" href="#__codelineno-29-36"></a>
-<a id="__codelineno-29-37" name="__codelineno-29-37" href="#__codelineno-29-37"></a><span class="k">2.</span> Restore previous certificate:
-<a id="__codelineno-29-38" name="__codelineno-29-38" href="#__codelineno-29-38"></a><span class="sb">   ```bash</span>
-<a id="__codelineno-29-39" name="__codelineno-29-39" href="#__codelineno-29-39"></a><span class="w">   </span>cp<span class="w"> </span>/etc/ssl/certs/service.pem.backup<span class="w"> </span>/etc/ssl/certs/service.pem
-<a id="__codelineno-29-40" name="__codelineno-29-40" href="#__codelineno-29-40"></a><span class="w">   </span>cp<span class="w"> </span>/etc/ssl/private/service.key.backup<span class="w"> </span>/etc/ssl/private/service.key
-<a id="__codelineno-29-41" name="__codelineno-29-41" href="#__codelineno-29-41"></a><span class="sb">   ```</span>
-<a id="__codelineno-29-42" name="__codelineno-29-42" href="#__codelineno-29-42"></a>
-<a id="__codelineno-29-43" name="__codelineno-29-43" href="#__codelineno-29-43"></a><span class="k">3.</span> Restart service:
-<a id="__codelineno-29-44" name="__codelineno-29-44" href="#__codelineno-29-44"></a><span class="sb">   ```bash</span>
-<a id="__codelineno-29-45" name="__codelineno-29-45" href="#__codelineno-29-45"></a><span class="w">   </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx<span class="w">  </span><span class="c1"># or appropriate service</span>
-<a id="__codelineno-29-46" name="__codelineno-29-46" href="#__codelineno-29-46"></a><span class="sb">   ```</span>
-<a id="__codelineno-29-47" name="__codelineno-29-47" href="#__codelineno-29-47"></a>
-<a id="__codelineno-29-48" name="__codelineno-29-48" href="#__codelineno-29-48"></a><span class="k">4.</span> Verify:
-<a id="__codelineno-29-49" name="__codelineno-29-49" href="#__codelineno-29-49"></a><span class="sb">   ```bash</span>
-<a id="__codelineno-29-50" name="__codelineno-29-50" href="#__codelineno-29-50"></a><span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>s_client<span class="w"> </span>-connect<span class="w"> </span>localhost:443<span class="w"> </span>-servername<span class="w"> </span>service.example.com<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>x509<span class="w"> </span>-noout<span class="w"> </span>-fingerprint
-<a id="__codelineno-29-51" name="__codelineno-29-51" href="#__codelineno-29-51"></a><span class="w">   </span><span class="c1"># Should match previous certificate fingerprint: AA:BB:CC:...</span>
-<a id="__codelineno-29-52" name="__codelineno-29-52" href="#__codelineno-29-52"></a><span class="sb">   ```</span>
-<a id="__codelineno-29-53" name="__codelineno-29-53" href="#__codelineno-29-53"></a>
-<a id="__codelineno-29-54" name="__codelineno-29-54" href="#__codelineno-29-54"></a><span class="gu">### Step 4: Verify</span>
-<a id="__codelineno-29-55" name="__codelineno-29-55" href="#__codelineno-29-55"></a><span class="k">- [ ]</span> All targets reverted to previous certificate
-<a id="__codelineno-29-56" name="__codelineno-29-56" href="#__codelineno-29-56"></a><span class="k">- [ ]</span> TLS handshakes succeeding
-<a id="__codelineno-29-57" name="__codelineno-29-57" href="#__codelineno-29-57"></a><span class="k">- [ ]</span> Application health checks passing
-<a id="__codelineno-29-58" name="__codelineno-29-58" href="#__codelineno-29-58"></a><span class="k">- [ ]</span> Error rates returned to normal
-<a id="__codelineno-29-59" name="__codelineno-29-59" href="#__codelineno-29-59"></a><span class="k">- [ ]</span> No certificate validation errors
-<a id="__codelineno-29-60" name="__codelineno-29-60" href="#__codelineno-29-60"></a>
-<a id="__codelineno-29-61" name="__codelineno-29-61" href="#__codelineno-29-61"></a><span class="gu">### Step 5: Monitor</span>
-<a id="__codelineno-29-62" name="__codelineno-29-62" href="#__codelineno-29-62"></a><span class="k">- [ ]</span> Monitor for 30 minutes post-rollback
-<a id="__codelineno-29-63" name="__codelineno-29-63" href="#__codelineno-29-63"></a><span class="k">- [ ]</span> Check dashboard: [DASHBOARD_URL]
-<a id="__codelineno-29-64" name="__codelineno-29-64" href="#__codelineno-29-64"></a><span class="k">- [ ]</span> Verify no new alerts
-<a id="__codelineno-29-65" name="__codelineno-29-65" href="#__codelineno-29-65"></a><span class="k">- [ ]</span> Confirm customer impact resolved
-<a id="__codelineno-29-66" name="__codelineno-29-66" href="#__codelineno-29-66"></a>
-<a id="__codelineno-29-67" name="__codelineno-29-67" href="#__codelineno-29-67"></a><span class="gu">### Step 6: Post-Rollback</span>
-<a id="__codelineno-29-68" name="__codelineno-29-68" href="#__codelineno-29-68"></a><span class="k">- [ ]</span> Update incident ticket
-<a id="__codelineno-29-69" name="__codelineno-29-69" href="#__codelineno-29-69"></a><span class="k">- [ ]</span> Notify stakeholders of completion
-<a id="__codelineno-29-70" name="__codelineno-29-70" href="#__codelineno-29-70"></a><span class="k">- [ ]</span> Schedule post-mortem
-<a id="__codelineno-29-71" name="__codelineno-29-71" href="#__codelineno-29-71"></a><span class="k">- [ ]</span> Document failure cause
-<a id="__codelineno-29-72" name="__codelineno-29-72" href="#__codelineno-29-72"></a><span class="k">- [ ]</span> Plan remediation approach
-<a id="__codelineno-29-73" name="__codelineno-29-73" href="#__codelineno-29-73"></a>
-<a id="__codelineno-29-74" name="__codelineno-29-74" href="#__codelineno-29-74"></a><span class="gu">## Escalation</span>
-<a id="__codelineno-29-75" name="__codelineno-29-75" href="#__codelineno-29-75"></a>If rollback doesn&#39;t resolve issues:
-<a id="__codelineno-29-76" name="__codelineno-29-76" href="#__codelineno-29-76"></a><span class="k">1.</span> Page: platform-lead
-<a id="__codelineno-29-77" name="__codelineno-29-77" href="#__codelineno-29-77"></a><span class="k">2.</span> Escalate to: director-infrastructure
-<a id="__codelineno-29-78" name="__codelineno-29-78" href="#__codelineno-29-78"></a><span class="k">3.</span> Emergency contact: [PHONE]
-<a id="__codelineno-29-79" name="__codelineno-29-79" href="#__codelineno-29-79"></a>
-<a id="__codelineno-29-80" name="__codelineno-29-80" href="#__codelineno-29-80"></a><span class="gu">## Rollback Contacts</span>
-<a id="__codelineno-29-81" name="__codelineno-29-81" href="#__codelineno-29-81"></a><span class="k">-</span><span class="w"> </span>Primary: platform-team Slack channel
-<a id="__codelineno-29-82" name="__codelineno-29-82" href="#__codelineno-29-82"></a><span class="k">-</span><span class="w"> </span>On-call: [PAGERDUTY_LINK]
-<a id="__codelineno-29-83" name="__codelineno-29-83" href="#__codelineno-29-83"></a><span class="k">-</span><span class="w"> </span>Emergency: [PHONE]
+<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="gu">## Procedure</span>
+<a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a>
+<a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a><span class="gu">### Step 1: Assess Situation</span>
+<a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a>
+<a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a><span class="k">- [ ]</span> Confirm rollback is necessary
+<a id="__codelineno-29-21" name="__codelineno-29-21" href="#__codelineno-29-21"></a><span class="k">- [ ]</span> Identify affected services/hosts
+<a id="__codelineno-29-22" name="__codelineno-29-22" href="#__codelineno-29-22"></a><span class="k">- [ ]</span> Locate previous certificate files
+<a id="__codelineno-29-23" name="__codelineno-29-23" href="#__codelineno-29-23"></a><span class="k">- [ ]</span> Check for any dependencies
+<a id="__codelineno-29-24" name="__codelineno-29-24" href="#__codelineno-29-24"></a>
+<a id="__codelineno-29-25" name="__codelineno-29-25" href="#__codelineno-29-25"></a><span class="gu">### Step 2: Prepare</span>
+<a id="__codelineno-29-26" name="__codelineno-29-26" href="#__codelineno-29-26"></a>
+<a id="__codelineno-29-27" name="__codelineno-29-27" href="#__codelineno-29-27"></a><span class="k">- [ ]</span> Notify stakeholders of rollback
+<a id="__codelineno-29-28" name="__codelineno-29-28" href="#__codelineno-29-28"></a><span class="k">- [ ]</span> Create rollback ticket: [TICKET]
+<a id="__codelineno-29-29" name="__codelineno-29-29" href="#__codelineno-29-29"></a><span class="k">- [ ]</span> Start incident bridge if critical
+<a id="__codelineno-29-30" name="__codelineno-29-30" href="#__codelineno-29-30"></a><span class="k">- [ ]</span> Have backup contact ready
+<a id="__codelineno-29-31" name="__codelineno-29-31" href="#__codelineno-29-31"></a>
+<a id="__codelineno-29-32" name="__codelineno-29-32" href="#__codelineno-29-32"></a><span class="gu">### Step 3: Execute Rollback</span>
+<a id="__codelineno-29-33" name="__codelineno-29-33" href="#__codelineno-29-33"></a>For each affected target:
+<a id="__codelineno-29-34" name="__codelineno-29-34" href="#__codelineno-29-34"></a>
+<a id="__codelineno-29-35" name="__codelineno-29-35" href="#__codelineno-29-35"></a><span class="k">1.</span> Backup current (failing) certificate:
+<a id="__codelineno-29-36" name="__codelineno-29-36" href="#__codelineno-29-36"></a><span class="sb">   ```bash</span>
+<a id="__codelineno-29-37" name="__codelineno-29-37" href="#__codelineno-29-37"></a><span class="w">   </span>cp<span class="w"> </span>/etc/ssl/certs/service.pem<span class="w"> </span>/etc/ssl/certs/service.pem.failed
+<a id="__codelineno-29-38" name="__codelineno-29-38" href="#__codelineno-29-38"></a><span class="w">   </span>cp<span class="w"> </span>/etc/ssl/private/service.key<span class="w"> </span>/etc/ssl/private/service.key.failed
+<a id="__codelineno-29-39" name="__codelineno-29-39" href="#__codelineno-29-39"></a><span class="sb">   ```</span>
+<a id="__codelineno-29-40" name="__codelineno-29-40" href="#__codelineno-29-40"></a>
+<a id="__codelineno-29-41" name="__codelineno-29-41" href="#__codelineno-29-41"></a><span class="k">2.</span> Restore previous certificate:
+<a id="__codelineno-29-42" name="__codelineno-29-42" href="#__codelineno-29-42"></a><span class="sb">   ```bash</span>
+<a id="__codelineno-29-43" name="__codelineno-29-43" href="#__codelineno-29-43"></a><span class="w">   </span>cp<span class="w"> </span>/etc/ssl/certs/service.pem.backup<span class="w"> </span>/etc/ssl/certs/service.pem
+<a id="__codelineno-29-44" name="__codelineno-29-44" href="#__codelineno-29-44"></a><span class="w">   </span>cp<span class="w"> </span>/etc/ssl/private/service.key.backup<span class="w"> </span>/etc/ssl/private/service.key
+<a id="__codelineno-29-45" name="__codelineno-29-45" href="#__codelineno-29-45"></a><span class="sb">   ```</span>
+<a id="__codelineno-29-46" name="__codelineno-29-46" href="#__codelineno-29-46"></a>
+<a id="__codelineno-29-47" name="__codelineno-29-47" href="#__codelineno-29-47"></a><span class="k">3.</span> Restart service:
+<a id="__codelineno-29-48" name="__codelineno-29-48" href="#__codelineno-29-48"></a><span class="sb">   ```bash</span>
+<a id="__codelineno-29-49" name="__codelineno-29-49" href="#__codelineno-29-49"></a><span class="w">   </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx<span class="w">  </span><span class="c1"># or appropriate service</span>
+<a id="__codelineno-29-50" name="__codelineno-29-50" href="#__codelineno-29-50"></a><span class="sb">   ```</span>
+<a id="__codelineno-29-51" name="__codelineno-29-51" href="#__codelineno-29-51"></a>
+<a id="__codelineno-29-52" name="__codelineno-29-52" href="#__codelineno-29-52"></a><span class="k">4.</span> Verify:
+<a id="__codelineno-29-53" name="__codelineno-29-53" href="#__codelineno-29-53"></a><span class="sb">   ```bash</span>
+<a id="__codelineno-29-54" name="__codelineno-29-54" href="#__codelineno-29-54"></a><span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>s_client<span class="w"> </span>-connect<span class="w"> </span>localhost:443<span class="w"> </span>-servername<span class="w"> </span>service.example.com<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>x509<span class="w"> </span>-noout<span class="w"> </span>-fingerprint
+<a id="__codelineno-29-55" name="__codelineno-29-55" href="#__codelineno-29-55"></a><span class="w">   </span><span class="c1"># Should match previous certificate fingerprint: AA:BB:CC:...</span>
+<a id="__codelineno-29-56" name="__codelineno-29-56" href="#__codelineno-29-56"></a><span class="sb">   ```</span>
+<a id="__codelineno-29-57" name="__codelineno-29-57" href="#__codelineno-29-57"></a>
+<a id="__codelineno-29-58" name="__codelineno-29-58" href="#__codelineno-29-58"></a><span class="gu">### Step 4: Verify</span>
+<a id="__codelineno-29-59" name="__codelineno-29-59" href="#__codelineno-29-59"></a>
+<a id="__codelineno-29-60" name="__codelineno-29-60" href="#__codelineno-29-60"></a><span class="k">- [ ]</span> All targets reverted to previous certificate
+<a id="__codelineno-29-61" name="__codelineno-29-61" href="#__codelineno-29-61"></a><span class="k">- [ ]</span> TLS handshakes succeeding
+<a id="__codelineno-29-62" name="__codelineno-29-62" href="#__codelineno-29-62"></a><span class="k">- [ ]</span> Application health checks passing
+<a id="__codelineno-29-63" name="__codelineno-29-63" href="#__codelineno-29-63"></a><span class="k">- [ ]</span> Error rates returned to normal
+<a id="__codelineno-29-64" name="__codelineno-29-64" href="#__codelineno-29-64"></a><span class="k">- [ ]</span> No certificate validation errors
+<a id="__codelineno-29-65" name="__codelineno-29-65" href="#__codelineno-29-65"></a>
+<a id="__codelineno-29-66" name="__codelineno-29-66" href="#__codelineno-29-66"></a><span class="gu">### Step 5: Monitor</span>
+<a id="__codelineno-29-67" name="__codelineno-29-67" href="#__codelineno-29-67"></a>
+<a id="__codelineno-29-68" name="__codelineno-29-68" href="#__codelineno-29-68"></a><span class="k">- [ ]</span> Monitor for 30 minutes post-rollback
+<a id="__codelineno-29-69" name="__codelineno-29-69" href="#__codelineno-29-69"></a><span class="k">- [ ]</span> Check dashboard: [DASHBOARD_URL]
+<a id="__codelineno-29-70" name="__codelineno-29-70" href="#__codelineno-29-70"></a><span class="k">- [ ]</span> Verify no new alerts
+<a id="__codelineno-29-71" name="__codelineno-29-71" href="#__codelineno-29-71"></a><span class="k">- [ ]</span> Confirm customer impact resolved
+<a id="__codelineno-29-72" name="__codelineno-29-72" href="#__codelineno-29-72"></a>
+<a id="__codelineno-29-73" name="__codelineno-29-73" href="#__codelineno-29-73"></a><span class="gu">### Step 6: Post-Rollback</span>
+<a id="__codelineno-29-74" name="__codelineno-29-74" href="#__codelineno-29-74"></a>
+<a id="__codelineno-29-75" name="__codelineno-29-75" href="#__codelineno-29-75"></a><span class="k">- [ ]</span> Update incident ticket
+<a id="__codelineno-29-76" name="__codelineno-29-76" href="#__codelineno-29-76"></a><span class="k">- [ ]</span> Notify stakeholders of completion
+<a id="__codelineno-29-77" name="__codelineno-29-77" href="#__codelineno-29-77"></a><span class="k">- [ ]</span> Schedule post-mortem
+<a id="__codelineno-29-78" name="__codelineno-29-78" href="#__codelineno-29-78"></a><span class="k">- [ ]</span> Document failure cause
+<a id="__codelineno-29-79" name="__codelineno-29-79" href="#__codelineno-29-79"></a><span class="k">- [ ]</span> Plan remediation approach
+<a id="__codelineno-29-80" name="__codelineno-29-80" href="#__codelineno-29-80"></a>
+<a id="__codelineno-29-81" name="__codelineno-29-81" href="#__codelineno-29-81"></a><span class="gu">## Escalation</span>
+<a id="__codelineno-29-82" name="__codelineno-29-82" href="#__codelineno-29-82"></a>If rollback doesn&#39;t resolve issues:
+<a id="__codelineno-29-83" name="__codelineno-29-83" href="#__codelineno-29-83"></a>
+<a id="__codelineno-29-84" name="__codelineno-29-84" href="#__codelineno-29-84"></a><span class="k">1.</span> Page: platform-lead
+<a id="__codelineno-29-85" name="__codelineno-29-85" href="#__codelineno-29-85"></a><span class="k">2.</span> Escalate to: director-infrastructure
+<a id="__codelineno-29-86" name="__codelineno-29-86" href="#__codelineno-29-86"></a><span class="k">3.</span> Emergency contact: [PHONE]
+<a id="__codelineno-29-87" name="__codelineno-29-87" href="#__codelineno-29-87"></a>
+<a id="__codelineno-29-88" name="__codelineno-29-88" href="#__codelineno-29-88"></a><span class="gu">## Rollback Contacts</span>
+<a id="__codelineno-29-89" name="__codelineno-29-89" href="#__codelineno-29-89"></a>
+<a id="__codelineno-29-90" name="__codelineno-29-90" href="#__codelineno-29-90"></a><span class="k">-</span><span class="w"> </span>Primary: platform-team Slack channel
+<a id="__codelineno-29-91" name="__codelineno-29-91" href="#__codelineno-29-91"></a><span class="k">-</span><span class="w"> </span>On-call: [PAGERDUTY_LINK]
+<a id="__codelineno-29-92" name="__codelineno-29-92" href="#__codelineno-29-92"></a><span class="k">-</span><span class="w"> </span>Emergency: [PHONE]
 </code></pre></div></p>
 <h2 id="best-practices">Best Practices</h2>
 <h3 id="dos">Do's</h3>

@@ -1429,6 +1429,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#why-this-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why This Matters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       Overview
@@ -3163,6 +3172,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#why-this-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why This Matters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       Overview
@@ -3870,6 +3888,12 @@
 
 
 <h1 id="inventory-and-discovery">Inventory and Discovery</h1>
+<h2 id="why-this-matters">Why This Matters</h2>
+<p><strong>For executives:</strong> Unknown certificates are unmanaged risk. Nexus discovered 5,000 certificates when they thought they had 500 - that 10x gap caused $1M+ in preventable outages. Certificate discovery is operational risk assessment. You can't protect what you don't know exists. This is foundational visibility enabling all other certificate operations.</p>
+<p><strong>For security leaders:</strong> Certificate inventory is security inventory. Unknown certificates = unknown attack surface, expired certificates causing failures, compliance violations, inability to respond to vulnerabilities. Discovery provides the visibility required for security operations. Without comprehensive inventory, you're flying blind.</p>
+<p><strong>For engineers:</strong> You can't automate renewal for certificates you don't know exist. Discovery is prerequisite for everything else - monitoring, automation, compliance. Manual discovery (asking teams "what certificates do you have?") is fiction. Automated discovery finds the certificates teams forgot they deployed.</p>
+<p><strong>Common scenario:</strong> Your organization knows about major certificates (public-facing web servers) but has no visibility into certificates deployed across development environments, legacy applications, shadow IT, embedded in code, or on decommissioned systems. Result: certificates expire unexpectedly, causing outages. Discovery transforms this from reactive firefighting to proactive management.</p>
+<hr />
 <h2 id="overview">Overview</h2>
 <p>Certificate inventory and discovery is the foundational operational capability that enables effective PKI management. Without comprehensive visibility into certificate deployment, organizations cannot effectively manage expiration, ensure compliance, or maintain security posture. This capability transforms PKI operations from reactive firefighting to proactive infrastructure management.</p>
 <p><strong>Key principle</strong>: You cannot manage what you cannot see.</p>
@@ -4074,12 +4098,14 @@
 <li>Validate API data with network scans</li>
 <li>Cross-reference filesystem and runtime discoveries</li>
 </ul>
-<p>Strategy example:
-1. Use API discovery for known infrastructure (AWS, K8s)
-2. Perform network scanning to find unknown endpoints
-3. Deploy agents on critical systems for deep visibility
-4. Enable passive monitoring on network boundaries
-5. Aggregate and deduplicate across all sources</p>
+<p>Strategy example:</p>
+<ol>
+<li>Use API discovery for known infrastructure (AWS, K8s)</li>
+<li>Perform network scanning to find unknown endpoints</li>
+<li>Deploy agents on critical systems for deep visibility</li>
+<li>Enable passive monitoring on network boundaries</li>
+<li>Aggregate and deduplicate across all sources</li>
+</ol>
 <h2 id="inventory-architecture">Inventory Architecture</h2>
 <h3 id="data-model">Data Model</h3>
 <p>Core certificate attributes:
