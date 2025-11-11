@@ -3482,7 +3482,7 @@
 <p><strong>Traditional perimeter security</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>                    Firewall
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>         Untrusted  │  Trusted
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    ─────────────────┼─────────────────
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    ────────────────┼─────────────────
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>         Internet   │  Internal Network
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                    │  
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    [Attackers]     │  [Users &amp; Services]
@@ -4466,333 +4466,439 @@
 <h3 id="what-we-learned-at-vortex-zero-trust-with-service-mesh">What We Learned at Vortex (Zero-Trust with Service Mesh)</h3>
 <p>Vortex implemented zero-trust architecture using Istio service mesh. Challenges:</p>
 <p><strong>Problem 1: mTLS everywhere was too aggressive initially</strong></p>
-<p>We enabled strict mTLS for all services on day one. Result:
-- Services that depended on external APIs (third-party payment processors, shipping APIs) broke
-- Health check endpoints failed (load balancers expected HTTP, got mTLS rejection)
-- Debugging tools couldn't inspect traffic (everything encrypted)
-- Developer productivity tanked (local development required mTLS setup)</p>
-<p><strong>What we did:</strong> Implemented permissive mode rollout:
-- Phase 1: Permissive (allow both mTLS and plaintext)
-- Phase 2: Gradual strict enforcement per namespace
-- Phase 3: Exceptions documented for external integrations
-- Phase 4: Full strict mTLS after 6 months</p>
+<p>We enabled strict mTLS for all services on day one. Result:</p>
+<ul>
+<li>Services that depended on external APIs (third-party payment processors, shipping APIs) broke</li>
+<li>Health check endpoints failed (load balancers expected HTTP, got mTLS rejection)</li>
+<li>Debugging tools couldn't inspect traffic (everything encrypted)</li>
+<li>Developer productivity tanked (local development required mTLS setup)</li>
+</ul>
+<p><strong>What we did:</strong> Implemented permissive mode rollout:</p>
+<ul>
+<li>Phase 1: Permissive (allow both mTLS and plaintext)</li>
+<li>Phase 2: Gradual strict enforcement per namespace</li>
+<li>Phase 3: Exceptions documented for external integrations</li>
+<li>Phase 4: Full strict mTLS after 6 months</li>
+</ul>
 <p><strong>Problem 2: Authorization policies were too coarse</strong></p>
-<p>Initial implementation: "service A can talk to service B" binary authorization. But reality was more complex:
-- Service A's read-only endpoints should be accessible to everyone
-- Service A's write endpoints should require specific permissions
-- Service A's admin endpoints should require elevated privileges</p>
+<p>Initial implementation: "service A can talk to service B" binary authorization. But reality was more complex:</p>
+<ul>
+<li>Service A's read-only endpoints should be accessible to everyone</li>
+<li>Service A's write endpoints should require specific permissions</li>
+<li>Service A's admin endpoints should require elevated privileges</li>
+</ul>
 <p>Binary authorization couldn't express these nuances.</p>
-<p><strong>What we did:</strong> Implemented attribute-based access control (ABAC):
-- Authorization decisions based on certificate attributes + HTTP method + URL path
-- Service identity + request context = authorization decision
-- Policy-as-code with Open Policy Agent
-- Gradual migration from coarse to fine-grained policies</p>
-<p><strong>Warning signs you're heading for same mistakes:</strong>
-- Enabling strict mTLS everywhere without testing integrations
-- Not planning for developer experience and debugging
-- Implementing coarse authorization that will need to be refined later
-- Not using policy-as-code (manual policy management doesn't scale)</p>
+<p><strong>What we did:</strong> Implemented attribute-based access control (ABAC):</p>
+<ul>
+<li>Authorization decisions based on certificate attributes + HTTP method + URL path</li>
+<li>Service identity + request context = authorization decision</li>
+<li>Policy-as-code with Open Policy Agent</li>
+<li>Gradual migration from coarse to fine-grained policies</li>
+</ul>
+<p><strong>Warning signs you're heading for same mistakes:</strong></p>
+<ul>
+<li>Enabling strict mTLS everywhere without testing integrations</li>
+<li>Not planning for developer experience and debugging</li>
+<li>Implementing coarse authorization that will need to be refined later</li>
+<li>Not using policy-as-code (manual policy management doesn't scale)</li>
+</ul>
 <h2 id="business-impact">Business Impact</h2>
 <p><strong>Cost of getting this wrong:</strong> Traditional perimeter-based security enables lateral movement - once attackers breach perimeter, they move freely inside network. Average breach costs $4.45M (IBM 2023), with average detection time 277 days. Zero-trust without proper PKI foundation creates operational chaos - certificate outages, manual operations that don't scale, and incomplete implementation that provides false security.</p>
-<p><strong>Value of getting this right:</strong> Zero-trust architecture with certificate-based identity reduces breach impact by 60-80% by limiting lateral movement. Every connection requires cryptographic proof of identity, so compromised credentials or services can't access other resources. Organizations with mature zero-trust report:
-- 70% reduction in time to detect breaches (comprehensive logging)
-- 80% reduction in lateral movement (microsegmentation + mTLS)
-- 50% reduction in compliance audit costs (automated evidence collection)
-- Improved security team productivity (policy enforcement automated)</p>
-<p><strong>Strategic capabilities:</strong> Zero-trust isn't just about breach prevention:
-- <strong>Regulatory compliance:</strong> Meets NIST 800-207, Executive Order 14028, FedRAMP requirements
-- <strong>Cloud migration enabler:</strong> Security model works across on-premises, cloud, hybrid
-- <strong>M&amp;A integration:</strong> Unified security across acquired companies without VPN hell
-- <strong>Remote workforce:</strong> Secure access from anywhere without traditional VPN
-- <strong>Reduced cyber insurance costs:</strong> Mature zero-trust implementations qualify for better rates</p>
+<p><strong>Value of getting this right:</strong> Zero-trust architecture with certificate-based identity reduces breach impact by 60-80% by limiting lateral movement. Every connection requires cryptographic proof of identity, so compromised credentials or services can't access other resources. Organizations with mature zero-trust report:</p>
+<ul>
+<li>70% reduction in time to detect breaches (comprehensive logging)</li>
+<li>80% reduction in lateral movement (microsegmentation + mTLS)</li>
+<li>50% reduction in compliance audit costs (automated evidence collection)</li>
+<li>Improved security team productivity (policy enforcement automated)</li>
+</ul>
+<p><strong>Strategic capabilities:</strong> Zero-trust isn't just about breach prevention:</p>
+<ul>
+<li><strong>Regulatory compliance:</strong> Meets NIST 800-207, Executive Order 14028, FedRAMP requirements</li>
+<li><strong>Cloud migration enabler:</strong> Security model works across on-premises, cloud, hybrid</li>
+<li><strong>M&amp;A integration:</strong> Unified security across acquired companies without VPN hell</li>
+<li><strong>Remote workforce:</strong> Secure access from anywhere without traditional VPN</li>
+<li><strong>Reduced cyber insurance costs:</strong> Mature zero-trust implementations qualify for better rates</li>
+</ul>
 <p><strong>Executive summary:</strong> Zero-trust is strategic security architecture for next decade. Implementation takes 12-24 months and requires executive sponsorship, but payoff in reduced breach risk and regulatory compliance is substantial.</p>
 <hr />
 <h2 id="when-to-bring-in-expertise">When to Bring in Expertise</h2>
-<p><strong>You can probably handle this yourself if:</strong>
-- Organization has mature PKI and identity management capabilities
-- Small scale (&lt;50 services) and homogeneous environment
-- Strong internal expertise in certificates, service mesh, and zero-trust principles
-- 24+ month timeline for implementation (learning as you go)</p>
-<p><strong>Consider getting help if:</strong>
-- Regulatory mandate requires zero-trust with specific timeline
-- Large scale (500+ services) or complex environment (legacy + modern)
-- Limited internal PKI expertise
-- Post-breach remediation requires rapid implementation
-- Need to integrate zero-trust with existing security tools</p>
-<p><strong>Definitely call us if:</strong>
-- Enterprise scale (1,000+ services) across multiple clouds/datacenters
-- Financial services or government with strict compliance requirements
-- Previous zero-trust attempts failed
-- Need implementation in 6-12 months (can't afford 24-month learning curve)
-- M&amp;A integration requires unified zero-trust architecture</p>
+<p><strong>You can probably handle this yourself if:</strong></p>
+<ul>
+<li>Organization has mature PKI and identity management capabilities</li>
+<li>Small scale (&lt;50 services) and homogeneous environment</li>
+<li>Strong internal expertise in certificates, service mesh, and zero-trust principles</li>
+<li>24+ month timeline for implementation (learning as you go)</li>
+</ul>
+<p><strong>Consider getting help if:</strong></p>
+<ul>
+<li>Regulatory mandate requires zero-trust with specific timeline</li>
+<li>Large scale (500+ services) or complex environment (legacy + modern)</li>
+<li>Limited internal PKI expertise</li>
+<li>Post-breach remediation requires rapid implementation</li>
+<li>Need to integrate zero-trust with existing security tools</li>
+</ul>
+<p><strong>Definitely call us if:</strong></p>
+<ul>
+<li>Enterprise scale (1,000+ services) across multiple clouds/datacenters</li>
+<li>Financial services or government with strict compliance requirements</li>
+<li>Previous zero-trust attempts failed</li>
+<li>Need implementation in 6-12 months (can't afford 24-month learning curve)</li>
+<li>M&amp;A integration requires unified zero-trust architecture</li>
+</ul>
 <p>We've implemented zero-trust at Nexus (financial services with regulatory requirements), Vortex (service mesh-based with 15,000 services), and Apex Capital (hybrid legacy + modern with physical access integration). We know the difference between zero-trust marketing claims and production reality.</p>
 <p><strong>ROI of expertise:</strong> Organizations implementing zero-trust without expertise typically take 24-36 months and make expensive mistakes (breaking production, incomplete implementation, false sense of security). With expertise, implementation takes 12-18 months with pragmatic architecture that actually improves security posture.</p>
 <hr />
 <h2 id="conclusion_1">Conclusion</h2>
 <h3 id="zero-trust-frameworks-and-standards">Zero-Trust Frameworks and Standards</h3>
-<p><strong>NIST SP 800-207 - Zero Trust Architecture</strong>
-- Rose, S., et al. "Zero Trust Architecture." NIST Special Publication 800-207, August 2020.
-  - <a href="https://csrc.nist.gov/publications/detail/sp/800-207/final">Nist - Detail</a>
-- Foundational zero-trust architecture document
-- Core principles and logical components
-- Deployment models and use cases</p>
-<p><strong>CISA Zero Trust Maturity Model</strong>
-- Cybersecurity &amp; Infrastructure Security Agency. "Zero Trust Maturity Model." September 2021.
-  - <a href="https://www.cisa.gov/zero-trust-maturity-model">Cisa - Zero Trust Maturity Model</a>
-- Five pillars: Identity, Devices, Networks, Applications/Workloads, Data
-- Maturity progression (Traditional → Initial → Advanced → Optimal)
-- Federal zero-trust strategy implementation</p>
-<p><strong>DoD Zero Trust Reference Architecture</strong>
-- Department of Defense. "DoD Zero Trust Reference Architecture." February 2021.
-  - <a href="https://dodcio.defense.gov/Portals/0/Documents/Library/DoD-ZTReferenceArchitecture.pdf">Defense - Documents</a>
-- Defense-specific zero-trust requirements
-- Department of Defense implementation approach</p>
-<p><strong>BeyondCorp - Google's Zero Trust Approach</strong>
-- Ward, R., Beyer, B. "BeyondCorp: A New Approach to Enterprise Security." ;login: December 2014.
-  - <a href="https://research.google/pubs/pub43231/">Research - Pub43231</a>
-- Pioneering zero-trust implementation
-- Device inventory, per-request authentication
-- Lessons from Google's deployment</p>
+<p><strong>NIST SP 800-207 - Zero Trust Architecture</strong></p>
+<ul>
+<li>Rose, S., et al. "Zero Trust Architecture." NIST Special Publication 800-207, August 2020.</li>
+<li><a href="https://csrc.nist.gov/publications/detail/sp/800-207/final">Nist - Detail</a></li>
+<li>Foundational zero-trust architecture document</li>
+<li>Core principles and logical components</li>
+<li>Deployment models and use cases</li>
+</ul>
+<p><strong>CISA Zero Trust Maturity Model</strong></p>
+<ul>
+<li>Cybersecurity &amp; Infrastructure Security Agency. "Zero Trust Maturity Model." September 2021.</li>
+<li><a href="https://www.cisa.gov/zero-trust-maturity-model">Cisa - Zero Trust Maturity Model</a></li>
+<li>Five pillars: Identity, Devices, Networks, Applications/Workloads, Data</li>
+<li>Maturity progression (Traditional → Initial → Advanced → Optimal)</li>
+<li>Federal zero-trust strategy implementation</li>
+</ul>
+<p><strong>DoD Zero Trust Reference Architecture</strong></p>
+<ul>
+<li>Department of Defense. "DoD Zero Trust Reference Architecture." February 2021.</li>
+<li><a href="https://dodcio.defense.gov/Portals/0/Documents/Library/DoD-ZTReferenceArchitecture.pdf">Defense - Documents</a></li>
+<li>Defense-specific zero-trust requirements</li>
+<li>Department of Defense implementation approach</li>
+</ul>
+<p><strong>BeyondCorp - Google's Zero Trust Approach</strong></p>
+<ul>
+<li>Ward, R., Beyer, B. "BeyondCorp: A New Approach to Enterprise Security." ;login: December 2014.</li>
+<li><a href="https://research.google/pubs/pub43231/">Research - Pub43231</a></li>
+<li>Pioneering zero-trust implementation</li>
+<li>Device inventory, per-request authentication</li>
+<li>Lessons from Google's deployment</li>
+</ul>
 <h3 id="spiffespire-standards-and-documentation">SPIFFE/SPIRE Standards and Documentation</h3>
-<p><strong>SPIFFE Specification</strong>
-- SPIFFE Authors. "Secure Production Identity Framework for Everyone (SPIFFE)."
-  - <a href="https://github.com/spiffe/spiffe/tree/main/standards">Github - Spiffe</a>
-- SPIFFE ID format and structure
-- X.509-SVID and JWT-SVID specifications
-- Trust domain federation</p>
-<p><strong>SPIFFE Workload API</strong>
-- SPIFFE Authors. "SPIFFE Workload API Specification."
-  - <a href="https://github.com/spiffe/spiffe/blob/main/standards/SPIFFE_Workload_API.md">Github - Spiffe</a>
-- API for workload identity retrieval
-- Certificate rotation mechanisms
-- Trust bundle updates</p>
-<p><strong>SPIRE Documentation</strong>
-- SPIRE Project. "SPIRE - The SPIFFE Runtime Environment."
-  - <a href="https://spiffe.io/docs/latest/spire-about/">Spiffe - Spire About</a>
-- Architecture and components
-- Deployment guides
-- Plugin ecosystem</p>
-<p><strong>SPIFFE Federation</strong>
-- SPIFFE Authors. "SPIFFE Federation Specification."
-  - <a href="https://github.com/spiffe/spiffe/blob/main/standards/SPIFFE_Federation.md">Github - Spiffe</a>
-- Cross-domain trust establishment
-- Federation bundles and policies</p>
+<p><strong>SPIFFE Specification</strong></p>
+<ul>
+<li>SPIFFE Authors. "Secure Production Identity Framework for Everyone (SPIFFE)."</li>
+<li><a href="https://github.com/spiffe/spiffe/tree/main/standards">Github - Spiffe</a></li>
+<li>SPIFFE ID format and structure</li>
+<li>X.509-SVID and JWT-SVID specifications</li>
+<li>Trust domain federation</li>
+</ul>
+<p><strong>SPIFFE Workload API</strong></p>
+<ul>
+<li>SPIFFE Authors. "SPIFFE Workload API Specification."</li>
+<li><a href="https://github.com/spiffe/spiffe/blob/main/standards/SPIFFE_Workload_API.md">Github - Spiffe</a></li>
+<li>API for workload identity retrieval</li>
+<li>Certificate rotation mechanisms</li>
+<li>Trust bundle updates</li>
+</ul>
+<p><strong>SPIRE Documentation</strong></p>
+<ul>
+<li>SPIRE Project. "SPIRE - The SPIFFE Runtime Environment."</li>
+<li><a href="https://spiffe.io/docs/latest/spire-about/">Spiffe - Spire About</a></li>
+<li>Architecture and components</li>
+<li>Deployment guides</li>
+<li>Plugin ecosystem</li>
+</ul>
+<p><strong>SPIFFE Federation</strong></p>
+<ul>
+<li>SPIFFE Authors. "SPIFFE Federation Specification."</li>
+<li><a href="https://github.com/spiffe/spiffe/blob/main/standards/SPIFFE_Federation.md">Github - Spiffe</a></li>
+<li>Cross-domain trust establishment</li>
+<li>Federation bundles and policies</li>
+</ul>
 <h3 id="workload-identity-and-attestation">Workload Identity and Attestation</h3>
-<p><strong>Kubernetes Service Account Token Volume Projection</strong>
-- Kubernetes Documentation. "Service Account Token Volume Projection."
-  - <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#service-account-token-volume-projection">Kubernetes - Configure Pod Container</a>
-- Bound service account tokens
-- Token audience and expiration
-- SPIRE Kubernetes attestation</p>
-<p><strong>AWS IAM Roles for Service Accounts (IRSA)</strong>
-- AWS Documentation. "IAM Roles for Service Accounts."
-  - <a href="https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html">Amazon - Latest</a>
-- Workload identity in AWS EKS
-- OIDC provider integration
-- Fine-grained IAM permissions</p>
-<p><strong>GCP Workload Identity</strong>
-- Google Cloud Documentation. "Workload Identity."
-  - <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/workload-identity">Google - Concepts</a>
-- GKE workload identity federation
-- Service account impersonation
-- Identity binding</p>
-<p><strong>Azure AD Workload Identity</strong>
-- Microsoft Documentation. "Azure AD Workload Identity."
-  - <a href="https://azure.github.io/azure-workload-identity/">Github - Azure Workload Identity</a>
-- Workload identity for AKS
-- Federated identity credentials
-- Token exchange</p>
+<p><strong>Kubernetes Service Account Token Volume Projection</strong></p>
+<ul>
+<li>Kubernetes Documentation. "Service Account Token Volume Projection."</li>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#service-account-token-volume-projection">Kubernetes - Configure Pod Container</a></li>
+<li>Bound service account tokens</li>
+<li>Token audience and expiration</li>
+<li>SPIRE Kubernetes attestation</li>
+</ul>
+<p><strong>AWS IAM Roles for Service Accounts (IRSA)</strong></p>
+<ul>
+<li>AWS Documentation. "IAM Roles for Service Accounts."</li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html">Amazon - Latest</a></li>
+<li>Workload identity in AWS EKS</li>
+<li>OIDC provider integration</li>
+<li>Fine-grained IAM permissions</li>
+</ul>
+<p><strong>GCP Workload Identity</strong></p>
+<ul>
+<li>Google Cloud Documentation. "Workload Identity."</li>
+<li><a href="https://cloud.google.com/kubernetes-engine/docs/concepts/workload-identity">Google - Concepts</a></li>
+<li>GKE workload identity federation</li>
+<li>Service account impersonation</li>
+<li>Identity binding</li>
+</ul>
+<p><strong>Azure AD Workload Identity</strong></p>
+<ul>
+<li>Microsoft Documentation. "Azure AD Workload Identity."</li>
+<li><a href="https://azure.github.io/azure-workload-identity/">Github - Azure Workload Identity</a></li>
+<li>Workload identity for AKS</li>
+<li>Federated identity credentials</li>
+<li>Token exchange</li>
+</ul>
 <h3 id="mutual-tls-and-service-mesh">Mutual TLS and Service Mesh</h3>
-<p><strong>Istio Security Architecture</strong>
-- Istio Documentation. "Security."
-  - <a href="https://istio.io/latest/docs/concepts/security/">Istio - Concepts</a>
-- Certificate management with istiod
-- Mutual TLS enforcement
-- Authorization policies</p>
-<p><strong>Linkerd Identity and mTLS</strong>
-- Linkerd Documentation. "Automatic mTLS."
-  - <a href="https://linkerd.io/2/features/automatic-mtls/">Linkerd - Automatic Mtls</a>
-- Identity trust anchor
-- Certificate rotation
-- Policy enforcement</p>
-<p><strong>Envoy TLS Documentation</strong>
-- Envoy Proxy Documentation. "TLS."
-  - <a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ssl">Envoyproxy - Latest</a>
-- Certificate validation
-- mTLS configuration
-- Secret discovery service (SDS)</p>
+<p><strong>Istio Security Architecture</strong></p>
+<ul>
+<li>Istio Documentation. "Security."</li>
+<li><a href="https://istio.io/latest/docs/concepts/security/">Istio - Concepts</a></li>
+<li>Certificate management with istiod</li>
+<li>Mutual TLS enforcement</li>
+<li>Authorization policies</li>
+</ul>
+<p><strong>Linkerd Identity and mTLS</strong></p>
+<ul>
+<li>Linkerd Documentation. "Automatic mTLS."</li>
+<li><a href="https://linkerd.io/2/features/automatic-mtls/">Linkerd - Automatic Mtls</a></li>
+<li>Identity trust anchor</li>
+<li>Certificate rotation</li>
+<li>Policy enforcement</li>
+</ul>
+<p><strong>Envoy TLS Documentation</strong></p>
+<ul>
+<li>Envoy Proxy Documentation. "TLS."</li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ssl">Envoyproxy - Latest</a></li>
+<li>Certificate validation</li>
+<li>mTLS configuration</li>
+<li>Secret discovery service (SDS)</li>
+</ul>
 <h3 id="policy-enforcement">Policy Enforcement</h3>
-<p><strong>Open Policy Agent (OPA)</strong>
-- Open Policy Agent Documentation.
-  - <a href="https://www.openpolicyagent.org/docs/latest/">Openpolicyagent - Latest</a>
-- Policy as code with Rego
-- Kubernetes admission control
-- Service authorization</p>
-<p><strong>Rego Policy Language</strong>
-- OPA. "Policy Language - Rego."
-  - <a href="https://www.openpolicyagent.org/docs/latest/policy-language/">Openpolicyagent - Policy Language</a>
-- Declarative policy syntax
-- Built-in functions
-- Testing and debugging</p>
-<p><strong>OPA Envoy Plugin</strong>
-- OPA. "Envoy Authorization."
-  - <a href="https://www.openpolicyagent.org/docs/latest/envoy-introduction/">Openpolicyagent - Envoy Introduction</a>
-- External authorization with Envoy
-- Context-aware authorization
-- Performance considerations</p>
+<p><strong>Open Policy Agent (OPA)</strong></p>
+<ul>
+<li>Open Policy Agent Documentation.</li>
+<li><a href="https://www.openpolicyagent.org/docs/latest/">Openpolicyagent - Latest</a></li>
+<li>Policy as code with Rego</li>
+<li>Kubernetes admission control</li>
+<li>Service authorization</li>
+</ul>
+<p><strong>Rego Policy Language</strong></p>
+<ul>
+<li>OPA. "Policy Language - Rego."</li>
+<li><a href="https://www.openpolicyagent.org/docs/latest/policy-language/">Openpolicyagent - Policy Language</a></li>
+<li>Declarative policy syntax</li>
+<li>Built-in functions</li>
+<li>Testing and debugging</li>
+</ul>
+<p><strong>OPA Envoy Plugin</strong></p>
+<ul>
+<li>OPA. "Envoy Authorization."</li>
+<li><a href="https://www.openpolicyagent.org/docs/latest/envoy-introduction/">Openpolicyagent - Envoy Introduction</a></li>
+<li>External authorization with Envoy</li>
+<li>Context-aware authorization</li>
+<li>Performance considerations</li>
+</ul>
 <h3 id="device-identity-and-trust">Device Identity and Trust</h3>
-<p><strong>Trusted Platform Module (TPM)</strong>
-- Trusted Computing Group. "TPM 2.0 Library Specification."
-  - <a href="https://trustedcomputinggroup.org/resource/tpm-library-specification/">Trustedcomputinggroup - Tpm Library Specification</a>
-- Hardware root of trust
-- Attestation protocols
-- Key storage and protection</p>
-<p><strong>Device Attestation</strong>
-- Sailer, R., et al. "Design and Implementation of a TCG-based Integrity Measurement Architecture." USENIX Security 2004.
-- Remote attestation protocols
-- Integrity measurement
-- Trust establishment</p>
-<p><strong>FIDO Device Attestation</strong>
-- FIDO Alliance. "FIDO2: Web Authentication (WebAuthn)."
-  - <a href="https://fidoalliance.org/fido2/">Fidoalliance - Fido2</a>
-- Device authentication
-- Passwordless authentication
-- Attestation formats</p>
+<p><strong>Trusted Platform Module (TPM)</strong></p>
+<ul>
+<li>Trusted Computing Group. "TPM 2.0 Library Specification."</li>
+<li><a href="https://trustedcomputinggroup.org/resource/tpm-library-specification/">Trustedcomputinggroup - Tpm Library Specification</a></li>
+<li>Hardware root of trust</li>
+<li>Attestation protocols</li>
+<li>Key storage and protection</li>
+</ul>
+<p><strong>Device Attestation</strong></p>
+<ul>
+<li>Sailer, R., et al. "Design and Implementation of a TCG-based Integrity Measurement Architecture." USENIX Security 2004.</li>
+<li>Remote attestation protocols</li>
+<li>Integrity measurement</li>
+<li>Trust establishment</li>
+</ul>
+<p><strong>FIDO Device Attestation</strong></p>
+<ul>
+<li>FIDO Alliance. "FIDO2: Web Authentication (WebAuthn)."</li>
+<li><a href="https://fidoalliance.org/fido2/">Fidoalliance - Fido2</a></li>
+<li>Device authentication</li>
+<li>Passwordless authentication</li>
+<li>Attestation formats</li>
+</ul>
 <h3 id="certificate-lifecycle-automation">Certificate Lifecycle Automation</h3>
-<p><strong>cert-manager Documentation</strong>
-- cert-manager. "cert-manager Documentation."
-  - <a href="https://cert-manager.io/docs/">Cert-manager</a>
-- Kubernetes certificate automation
-- ACME integration
-- Certificate renewal</p>
-<p><strong>ACME Protocol</strong>
-- Barnes, R., et al. "Automatic Certificate Management Environment (ACME)." RFC 8555, March 2019.
-  - <a href="https://tools.ietf.org/html/rfc8555">Ietf - Rfc8555</a>
-- Automated certificate issuance
-- Domain validation challenges
-- Certificate lifecycle</p>
-<p><strong>Let's Encrypt - Certificate Automation</strong>
-- Let's Encrypt. "How It Works."
-  - <a href="https://letsencrypt.org/how-it-works/">Letsencrypt - How It Works</a>
-- Free, automated certificate authority
-- ACME protocol implementation
-- Rate limits and best practices</p>
+<p><strong>cert-manager Documentation</strong></p>
+<ul>
+<li>cert-manager. "cert-manager Documentation."</li>
+<li><a href="https://cert-manager.io/docs/">Cert-manager</a></li>
+<li>Kubernetes certificate automation</li>
+<li>ACME integration</li>
+<li>Certificate renewal</li>
+</ul>
+<p><strong>ACME Protocol</strong></p>
+<ul>
+<li>Barnes, R., et al. "Automatic Certificate Management Environment (ACME)." RFC 8555, March 2019.</li>
+<li><a href="https://tools.ietf.org/html/rfc8555">Ietf - Rfc8555</a></li>
+<li>Automated certificate issuance</li>
+<li>Domain validation challenges</li>
+<li>Certificate lifecycle</li>
+</ul>
+<p><strong>Let's Encrypt - Certificate Automation</strong></p>
+<ul>
+<li>Let's Encrypt. "How It Works."</li>
+<li><a href="https://letsencrypt.org/how-it-works/">Letsencrypt - How It Works</a></li>
+<li>Free, automated certificate authority</li>
+<li>ACME protocol implementation</li>
+<li>Rate limits and best practices</li>
+</ul>
 <h3 id="observability-and-monitoring">Observability and Monitoring</h3>
-<p><strong>Prometheus</strong>
-- Prometheus Documentation. "Monitoring with Prometheus."
-  - <a href="https://prometheus.io/docs/introduction/overview/">Prometheus - Overview</a>
-- Metrics collection
-- Certificate expiry monitoring
-- Service mesh metrics</p>
-<p><strong>Jaeger Distributed Tracing</strong>
-- Jaeger Documentation.
-  - <a href="https://www.jaegertracing.io/docs/">Jaegertracing</a>
-- Distributed tracing
-- mTLS connection tracking
-- Performance analysis</p>
-<p><strong>Certificate Transparency for Monitoring</strong>
-- Laurie, B., Langley, A., Kasper, E. "Certificate Transparency." RFC 6962, June 2013.
-  - <a href="https://tools.ietf.org/html/rfc6962">Ietf - Rfc6962</a>
-- Public certificate logs
-- Anomaly detection
-- Fraudulent certificate monitoring</p>
+<p><strong>Prometheus</strong></p>
+<ul>
+<li>Prometheus Documentation. "Monitoring with Prometheus."</li>
+<li><a href="https://prometheus.io/docs/introduction/overview/">Prometheus - Overview</a></li>
+<li>Metrics collection</li>
+<li>Certificate expiry monitoring</li>
+<li>Service mesh metrics</li>
+</ul>
+<p><strong>Jaeger Distributed Tracing</strong></p>
+<ul>
+<li>Jaeger Documentation.</li>
+<li><a href="https://www.jaegertracing.io/docs/">Jaegertracing</a></li>
+<li>Distributed tracing</li>
+<li>mTLS connection tracking</li>
+<li>Performance analysis</li>
+</ul>
+<p><strong>Certificate Transparency for Monitoring</strong></p>
+<ul>
+<li>Laurie, B., Langley, A., Kasper, E. "Certificate Transparency." RFC 6962, June 2013.</li>
+<li><a href="https://tools.ietf.org/html/rfc6962">Ietf - Rfc6962</a></li>
+<li>Public certificate logs</li>
+<li>Anomaly detection</li>
+<li>Fraudulent certificate monitoring</li>
+</ul>
 <h3 id="api-gateway-and-zero-trust">API Gateway and Zero-Trust</h3>
-<p><strong>Kong Gateway with mTLS</strong>
-- Kong Documentation. "Mutual TLS Authentication."
-  - <a href="https://docs.konghq.com/gateway/latest/plan-and-deploy/security/mutual-tls/">Konghq - Latest</a>
-- API gateway mTLS enforcement
-- Client certificate validation
-- Plugin ecosystem</p>
-<p><strong>AWS API Gateway Mutual TLS</strong>
-- AWS Documentation. "Configuring mutual TLS authentication for an HTTP API."
-  - <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-mutual-tls.html">Amazon - Latest</a>
-- Regional API with mTLS
-- Truststore configuration
-- Domain name configuration</p>
-<p><strong>Google Cloud Endpoints</strong>
-- Google Cloud Documentation. "Authenticating users."
-  - <a href="https://cloud.google.com/endpoints/docs/openapi/authenticating-users">Google - Openapi</a>
-- API authentication options
-- Service-to-service authentication
-- mTLS configuration</p>
+<p><strong>Kong Gateway with mTLS</strong></p>
+<ul>
+<li>Kong Documentation. "Mutual TLS Authentication."</li>
+<li><a href="https://docs.konghq.com/gateway/latest/plan-and-deploy/security/mutual-tls/">Konghq - Latest</a></li>
+<li>API gateway mTLS enforcement</li>
+<li>Client certificate validation</li>
+<li>Plugin ecosystem</li>
+</ul>
+<p><strong>AWS API Gateway Mutual TLS</strong></p>
+<ul>
+<li>AWS Documentation. "Configuring mutual TLS authentication for an HTTP API."</li>
+<li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-mutual-tls.html">Amazon - Latest</a></li>
+<li>Regional API with mTLS</li>
+<li>Truststore configuration</li>
+<li>Domain name configuration</li>
+</ul>
+<p><strong>Google Cloud Endpoints</strong></p>
+<ul>
+<li>Google Cloud Documentation. "Authenticating users."</li>
+<li><a href="https://cloud.google.com/endpoints/docs/openapi/authenticating-users">Google - Openapi</a></li>
+<li>API authentication options</li>
+<li>Service-to-service authentication</li>
+<li>mTLS configuration</li>
+</ul>
 <h3 id="identity-aware-proxy">Identity-Aware Proxy</h3>
-<p><strong>BeyondCorp Enterprise (Google)</strong>
-- Google Cloud. "BeyondCorp Enterprise."
-  - <a href="https://cloud.google.com/beyondcorp-enterprise">Google - Beyondcorp Enterprise</a>
-- Context-aware access
-- Identity and device verification
-- Zero-trust access proxy</p>
-<p><strong>Azure AD Application Proxy</strong>
-- Microsoft Documentation. "Azure AD Application Proxy."
-  - <a href="https://docs.microsoft.com/en-us/azure/active-directory/app-proxy/">Microsoft - Azure</a>
-- Remote access without VPN
-- Pre-authentication
-- Conditional access integration</p>
-<p><strong>Cloudflare Access</strong>
-- Cloudflare Documentation. "Cloudflare Access."
-  - <a href="https://developers.cloudflare.com/cloudflare-one/applications/">Cloudflare - Applications</a>
-- Identity-aware proxy
-- Zero-trust network access
-- Device posture checks</p>
+<p><strong>BeyondCorp Enterprise (Google)</strong></p>
+<ul>
+<li>Google Cloud. "BeyondCorp Enterprise."</li>
+<li><a href="https://cloud.google.com/beyondcorp-enterprise">Google - Beyondcorp Enterprise</a></li>
+<li>Context-aware access</li>
+<li>Identity and device verification</li>
+<li>Zero-trust access proxy</li>
+</ul>
+<p><strong>Azure AD Application Proxy</strong></p>
+<ul>
+<li>Microsoft Documentation. "Azure AD Application Proxy."</li>
+<li><a href="https://docs.microsoft.com/en-us/azure/active-directory/app-proxy/">Microsoft - Azure</a></li>
+<li>Remote access without VPN</li>
+<li>Pre-authentication</li>
+<li>Conditional access integration</li>
+</ul>
+<p><strong>Cloudflare Access</strong></p>
+<ul>
+<li>Cloudflare Documentation. "Cloudflare Access."</li>
+<li><a href="https://developers.cloudflare.com/cloudflare-one/applications/">Cloudflare - Applications</a></li>
+<li>Identity-aware proxy</li>
+<li>Zero-trust network access</li>
+<li>Device posture checks</li>
+</ul>
 <h3 id="research-and-whitepapers">Research and Whitepapers</h3>
-<p><strong>"BeyondProd: A New Approach to Cloud-Native Security" (Google)</strong>
-- Google. "BeyondProd: A New Approach to Cloud-Native Security." 2019.
-  - <a href="https://cloud.google.com/security/beyondprod">Google - Beyondprod</a>
-- Zero-trust for cloud-native workloads
-- Service identity and encryption
-- Automated policy enforcement</p>
-<p><strong>"Zero Trust Networks" (O'Reilly)</strong>
-- Gilman, E., Barth, D. "Zero Trust Networks: Building Secure Systems in Untrusted Networks." O'Reilly Media, 2017.
-- Comprehensive zero-trust guide
-- Implementation patterns
-- Real-world case studies</p>
-<p><strong>NIST NCCoE Zero Trust Architecture Project</strong>
-- NIST National Cybersecurity Center of Excellence. "Implementing a Zero Trust Architecture."
-  - <a href="https://www.nccoe.nist.gov/projects/building-blocks/zero-trust-architecture">Nist - Building Blocks</a>
-- Practical implementation guidance
-- Reference architectures
-- Vendor demonstrations</p>
+<p><strong>"BeyondProd: A New Approach to Cloud-Native Security" (Google)</strong></p>
+<ul>
+<li>Google. "BeyondProd: A New Approach to Cloud-Native Security." 2019.</li>
+<li><a href="https://cloud.google.com/security/beyondprod">Google - Beyondprod</a></li>
+<li>Zero-trust for cloud-native workloads</li>
+<li>Service identity and encryption</li>
+<li>Automated policy enforcement</li>
+</ul>
+<p><strong>"Zero Trust Networks" (O'Reilly)</strong></p>
+<ul>
+<li>Gilman, E., Barth, D. "Zero Trust Networks: Building Secure Systems in Untrusted Networks." O'Reilly Media, 2017.</li>
+<li>Comprehensive zero-trust guide</li>
+<li>Implementation patterns</li>
+<li>Real-world case studies</li>
+</ul>
+<p><strong>NIST NCCoE Zero Trust Architecture Project</strong></p>
+<ul>
+<li>NIST National Cybersecurity Center of Excellence. "Implementing a Zero Trust Architecture."</li>
+<li><a href="https://www.nccoe.nist.gov/projects/building-blocks/zero-trust-architecture">Nist - Building Blocks</a></li>
+<li>Practical implementation guidance</li>
+<li>Reference architectures</li>
+<li>Vendor demonstrations</li>
+</ul>
 <h3 id="standards-and-compliance">Standards and Compliance</h3>
-<p><strong>PCI DSS and Zero Trust</strong>
-- PCI Security Standards Council. "Information Supplement: Multi-Factor Authentication." 2017.
-- Strong authentication requirements
-- Network segmentation alternatives
-- Compensating controls</p>
-<p><strong>FedRAMP and Zero Trust</strong>
-- FedRAMP. "Emerging Technology Prioritization Framework."
-  - <a href="https://www.fedramp.gov/assets/resources/documents/">Fedramp - Resources</a>
-- Federal zero-trust adoption
-- Cloud service provider requirements
-- Authorization considerations</p>
-<p><strong>ISO/IEC 27001 and Zero Trust</strong>
-- ISO/IEC 27001:2022. "Information security, cybersecurity and privacy protection."
-- Access control requirements
-- Cryptographic controls
-- Network security management</p>
+<p><strong>PCI DSS and Zero Trust</strong></p>
+<ul>
+<li>PCI Security Standards Council. "Information Supplement: Multi-Factor Authentication." 2017.</li>
+<li>Strong authentication requirements</li>
+<li>Network segmentation alternatives</li>
+<li>Compensating controls</li>
+</ul>
+<p><strong>FedRAMP and Zero Trust</strong></p>
+<ul>
+<li>FedRAMP. "Emerging Technology Prioritization Framework."</li>
+<li><a href="https://www.fedramp.gov/assets/resources/documents/">Fedramp - Resources</a></li>
+<li>Federal zero-trust adoption</li>
+<li>Cloud service provider requirements</li>
+<li>Authorization considerations</li>
+</ul>
+<p><strong>ISO/IEC 27001 and Zero Trust</strong></p>
+<ul>
+<li>ISO/IEC 27001:2022. "Information security, cybersecurity and privacy protection."</li>
+<li>Access control requirements</li>
+<li>Cryptographic controls</li>
+<li>Network security management</li>
+</ul>
 <h3 id="academic-research">Academic Research</h3>
-<p><strong>"Towards a Formal Model of Zero Trust Architecture"</strong>
-- Buck, C., et al. "Towards a Formal Model of Zero Trust Architecture." IEEE Security &amp; Privacy Workshop, 2020.
-- Formal verification approaches
-- Security property modeling
-- Architecture validation</p>
-<p><strong>"The Evolution of Trust Management"</strong>
-- Grandison, T., Sloman, M. "A Survey of Trust in Internet Applications." IEEE Communications Surveys, 2000.
-- Trust models evolution
-- Distributed trust systems
-- Zero-trust foundations</p>
+<p><strong>"Towards a Formal Model of Zero Trust Architecture"</strong></p>
+<ul>
+<li>Buck, C., et al. "Towards a Formal Model of Zero Trust Architecture." IEEE Security &amp; Privacy Workshop, 2020.</li>
+<li>Formal verification approaches</li>
+<li>Security property modeling</li>
+<li>Architecture validation</li>
+</ul>
+<p><strong>"The Evolution of Trust Management"</strong></p>
+<ul>
+<li>Grandison, T., Sloman, M. "A Survey of Trust in Internet Applications." IEEE Communications Surveys, 2000.</li>
+<li>Trust models evolution</li>
+<li>Distributed trust systems</li>
+<li>Zero-trust foundations</li>
+</ul>
 <h3 id="kubernetes-specific-resources">Kubernetes-Specific Resources</h3>
-<p><strong>Kubernetes Network Policies</strong>
-- Kubernetes Documentation. "Network Policies."
-  - <a href="https://kubernetes.io/docs/concepts/services-networking/network-policies/">Kubernetes - Services Networking</a>
-- Pod-to-pod communication control
-- Namespace isolation
-- Ingress/egress rules</p>
-<p><strong>Kubernetes Pod Security Standards</strong>
-- Kubernetes Documentation. "Pod Security Standards."
-  - <a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/">Kubernetes - Security</a>
-- Privileged, Baseline, Restricted policies
-- Security context configuration
-- Admission control</p>
+<p><strong>Kubernetes Network Policies</strong></p>
+<ul>
+<li>Kubernetes Documentation. "Network Policies."</li>
+<li><a href="https://kubernetes.io/docs/concepts/services-networking/network-policies/">Kubernetes - Services Networking</a></li>
+<li>Pod-to-pod communication control</li>
+<li>Namespace isolation</li>
+<li>Ingress/egress rules</li>
+</ul>
+<p><strong>Kubernetes Pod Security Standards</strong></p>
+<ul>
+<li>Kubernetes Documentation. "Pod Security Standards."</li>
+<li><a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/">Kubernetes - Security</a></li>
+<li>Privileged, Baseline, Restricted policies</li>
+<li>Security context configuration</li>
+<li>Admission control</li>
+</ul>
 
 
 

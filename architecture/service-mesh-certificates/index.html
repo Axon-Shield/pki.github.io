@@ -3574,35 +3574,45 @@
 <p>Service meshes abstract away the complexity of service-to-service communication, providing observability, traffic management, and security. Certificate management sits at the heart of service mesh security—every sidecar proxy needs certificates for mutual TLS, and these certificates must be issued, rotated, and validated automatically at scale. Service meshes transform PKI from infrastructure you manage to infrastructure that manages itself.</p>
 <p><strong>Core principle</strong>: Service mesh certificates are infrastructure—invisible, automatic, short-lived, and continuously rotated. Manual certificate operations don't scale to hundreds or thousands of services.</p>
 <h2 id="decision-framework">Decision Framework</h2>
-<p><strong>Choose Istio when:</strong>
-- You need feature-rich service mesh with extensive traffic management
-- Multi-cluster and multi-cloud deployments are requirements
-- You want flexible CA integration (can use external CA via plugins)
-- Team has capacity to manage complexity (Istio has steeper learning curve)
-- You need advanced authorization policies and traffic routing</p>
-<p><strong>Choose Linkerd when:</strong>
-- Simplicity and operational ease are priorities
-- You want minimal resource overhead (Linkerd is lightest-weight mesh)
-- Team wants "just works" defaults without extensive configuration
-- Performance is critical (Linkerd has lowest latency overhead)
-- You're comfortable with opinionated design choices</p>
-<p><strong>Choose Consul Connect when:</strong>
-- You're already using HashiCorp ecosystem (Vault, Terraform, Nomad)
-- You need service mesh across heterogeneous platforms (VMs + Kubernetes)
-- Vault integration for certificates is requirement
-- Multi-datacenter service mesh is needed
-- You want unified service discovery + mesh</p>
-<p><strong>Don't use service mesh when:</strong>
-- You have &lt;20 services (overhead exceeds benefit)
-- Services are monolithic (no service-to-service communication to secure)
-- Team lacks Kubernetes/microservices expertise
-- Performance requirements are extreme (sub-millisecond latency critical)</p>
-<p><strong>Red flags:</strong>
-- Implementing service mesh before understanding certificate basics
-- Assuming "automatic" means "zero operational overhead"
-- Not planning for certificate rotation failures under load
-- Deploying to production without testing mTLS enforcement
-- Ignoring metrics and observability for certificate operations</p>
+<p><strong>Choose Istio when:</strong></p>
+<ul>
+<li>You need feature-rich service mesh with extensive traffic management</li>
+<li>Multi-cluster and multi-cloud deployments are requirements</li>
+<li>You want flexible CA integration (can use external CA via plugins)</li>
+<li>Team has capacity to manage complexity (Istio has steeper learning curve)</li>
+<li>You need advanced authorization policies and traffic routing</li>
+</ul>
+<p><strong>Choose Linkerd when:</strong></p>
+<ul>
+<li>Simplicity and operational ease are priorities</li>
+<li>You want minimal resource overhead (Linkerd is lightest-weight mesh)</li>
+<li>Team wants "just works" defaults without extensive configuration</li>
+<li>Performance is critical (Linkerd has lowest latency overhead)</li>
+<li>You're comfortable with opinionated design choices</li>
+</ul>
+<p><strong>Choose Consul Connect when:</strong></p>
+<ul>
+<li>You're already using HashiCorp ecosystem (Vault, Terraform, Nomad)</li>
+<li>You need service mesh across heterogeneous platforms (VMs + Kubernetes)</li>
+<li>Vault integration for certificates is requirement</li>
+<li>Multi-datacenter service mesh is needed</li>
+<li>You want unified service discovery + mesh</li>
+</ul>
+<p><strong>Don't use service mesh when:</strong></p>
+<ul>
+<li>You have &lt;20 services (overhead exceeds benefit)</li>
+<li>Services are monolithic (no service-to-service communication to secure)</li>
+<li>Team lacks Kubernetes/microservices expertise</li>
+<li>Performance requirements are extreme (sub-millisecond latency critical)</li>
+</ul>
+<p><strong>Red flags:</strong></p>
+<ul>
+<li>Implementing service mesh before understanding certificate basics</li>
+<li>Assuming "automatic" means "zero operational overhead"</li>
+<li>Not planning for certificate rotation failures under load</li>
+<li>Deploying to production without testing mTLS enforcement</li>
+<li>Ignoring metrics and observability for certificate operations</li>
+</ul>
 <h2 id="service-mesh-architecture">Service Mesh Architecture</h2>
 <p>Service meshes deploy sidecar proxies alongside application containers, intercepting all network traffic:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>   Service A Pod              Service B Pod
@@ -4279,78 +4289,102 @@
 <h3 id="what-we-learned-at-vortex-istio-service-mesh">What We Learned at Vortex (Istio Service Mesh)</h3>
 <p>When Vortex implemented Istio for 15,000+ services, we initially configured 24-hour certificate lifespans thinking this was "secure by default." In production, we discovered problems:</p>
 <p><strong>Problem 1: Certificate rotation created cascading failures</strong></p>
-<p>Services with high request volumes (100K+ requests/minute) would occasionally fail certificate validation during rotation because:
-- New certificates were issued but not yet distributed to all Envoy sidecars
-- In-flight requests used old certificates while new requests expected new ones
-- This created brief windows where 5-10% of requests failed with "certificate validation error"</p>
+<p>Services with high request volumes (100K+ requests/minute) would occasionally fail certificate validation during rotation because:</p>
+<ul>
+<li>New certificates were issued but not yet distributed to all Envoy sidecars</li>
+<li>In-flight requests used old certificates while new requests expected new ones</li>
+<li>This created brief windows where 5-10% of requests failed with "certificate validation error"</li>
+</ul>
 <p><strong>What we did:</strong> Implemented overlapping certificate validity periods. New certificates are issued when current certificates are 50% through their lifetime, with both old and new certificates valid simultaneously. This eliminated rotation-related failures.</p>
 <p><strong>Problem 2: Debugging mTLS failures was opaque</strong></p>
-<p>When services couldn't communicate, error messages were unhelpful: "TLS handshake failed" or "certificate validation error." Engineers couldn't diagnose whether the problem was:
-- Certificate expired?
-- Wrong trust anchor?
-- Certificate revoked?
-- Network connectivity issue?</p>
-<p><strong>What we did:</strong> Built comprehensive mTLS observability:
-- Prometheus metrics for handshake success/failure rates per service pair
-- Detailed error logging with certificate serial numbers and validation failure reasons
-- Dashboard showing certificate expiry times and rotation status for all services
-- Automated alerts for certificate validation failure rate &gt;1%</p>
+<p>When services couldn't communicate, error messages were unhelpful: "TLS handshake failed" or "certificate validation error." Engineers couldn't diagnose whether the problem was:</p>
+<ul>
+<li>Certificate expired?</li>
+<li>Wrong trust anchor?</li>
+<li>Certificate revoked?</li>
+<li>Network connectivity issue?</li>
+</ul>
+<p><strong>What we did:</strong> Built comprehensive mTLS observability:</p>
+<ul>
+<li>Prometheus metrics for handshake success/failure rates per service pair</li>
+<li>Detailed error logging with certificate serial numbers and validation failure reasons</li>
+<li>Dashboard showing certificate expiry times and rotation status for all services</li>
+<li>Automated alerts for certificate validation failure rate &gt;1%</li>
+</ul>
 <p><strong>Problem 3: Legacy services couldn't participate in service mesh</strong></p>
-<p>Some older services (10+ years old) couldn't handle mTLS:
-- Hardcoded HTTP (not HTTPS)
-- TLS libraries too old to support modern cipher suites
-- No way to deploy client certificates</p>
+<p>Some older services (10+ years old) couldn't handle mTLS:</p>
+<ul>
+<li>Hardcoded HTTP (not HTTPS)</li>
+<li>TLS libraries too old to support modern cipher suites</li>
+<li>No way to deploy client certificates</li>
+</ul>
 <p><strong>What we did:</strong> Implemented "mesh boundary" pattern where mesh-native services used mTLS, but legacy services were accessed through sidecar proxies that handled mTLS on their behalf. This gave us gradual migration path instead of "big bang" requirements.</p>
-<p><strong>Warning signs you're heading for same mistakes:</strong>
-- You're implementing mTLS without understanding your service request patterns and failure tolerance
-- You don't have observability into certificate validation failures before going to production
-- You assume all services can adopt mTLS simultaneously
-- You're not testing certificate rotation under production-like load</p>
+<p><strong>Warning signs you're heading for same mistakes:</strong></p>
+<ul>
+<li>You're implementing mTLS without understanding your service request patterns and failure tolerance</li>
+<li>You don't have observability into certificate validation failures before going to production</li>
+<li>You assume all services can adopt mTLS simultaneously</li>
+<li>You're not testing certificate rotation under production-like load</li>
+</ul>
 <h3 id="what-we-learned-at-nexus-linkerd-simplicity-vs-features-trade-off">What We Learned at Nexus (Linkerd Simplicity vs. Features Trade-off)</h3>
 <p>Nexus chose Linkerd for service mesh based on "simplicity" promise. In production:</p>
 <p><strong>Problem 1: Linkerd's simplicity became constraint</strong></p>
-<p>Linkerd's opinionated design choices worked great for 80% of use cases, but the remaining 20% had no workarounds:
-- No support for external CA integration (must use Linkerd's built-in CA)
-- Limited traffic routing capabilities compared to Istio
-- Some compliance requirements couldn't be met with Linkerd's CA model</p>
+<p>Linkerd's opinionated design choices worked great for 80% of use cases, but the remaining 20% had no workarounds:</p>
+<ul>
+<li>No support for external CA integration (must use Linkerd's built-in CA)</li>
+<li>Limited traffic routing capabilities compared to Istio</li>
+<li>Some compliance requirements couldn't be met with Linkerd's CA model</li>
+</ul>
 <p><strong>What we did:</strong> Hybrid approach - Linkerd for internal services, traditional PKI for services requiring external CA. Not ideal, but pragmatic.</p>
 <p><strong>Problem 2: Trust anchor rotation was manual</strong></p>
-<p>Linkerd's root CA (trust anchor) rotation required manual process and rolling restart of all services. With 5,000+ services, this was:
-- Operationally complex (coordinate deployment across teams)
-- Risky (one mistake breaks entire mesh)
-- Infrequent (so process wasn't well-practiced)</p>
+<p>Linkerd's root CA (trust anchor) rotation required manual process and rolling restart of all services. With 5,000+ services, this was:</p>
+<ul>
+<li>Operationally complex (coordinate deployment across teams)</li>
+<li>Risky (one mistake breaks entire mesh)</li>
+<li>Infrequent (so process wasn't well-practiced)</li>
+</ul>
 <p><strong>What we did:</strong> Integrated cert-manager to automate trust anchor rotation. Significantly reduced operational burden and risk.</p>
-<p><strong>Warning signs you're heading for same mistakes:</strong>
-- Choosing service mesh based solely on "simplicity" without understanding feature requirements
-- Not validating compliance requirements with mesh's CA model
-- Assuming "simple" means "no operational overhead"</p>
+<p><strong>Warning signs you're heading for same mistakes:</strong></p>
+<ul>
+<li>Choosing service mesh based solely on "simplicity" without understanding feature requirements</li>
+<li>Not validating compliance requirements with mesh's CA model</li>
+<li>Assuming "simple" means "no operational overhead"</li>
+</ul>
 <h2 id="business-impact">Business Impact</h2>
 <p><strong>Cost of getting this wrong:</strong> Without service mesh, service-to-service authentication relies on API keys or passwords that can be stolen and replayed. This creates breach risk. Manual certificate management for hundreds of services costs $200K-$400K annually in labor and still results in outages from expired certificates.</p>
 <p><strong>Value of getting this right:</strong> Service mesh automates certificate lifecycle for all services, eliminating manual operations and expiration-related outages. More importantly, it enables zero-trust architecture - cryptographic proof of identity for every service enables fine-grained access control and reduces breach impact. Organizations with mature service mesh report 70-90% reduction in authentication-related security incidents.</p>
-<p><strong>Strategic capabilities:</strong> Service mesh isn't just about certificates - it's foundational infrastructure for:
-- Zero-trust architecture implementation
-- Microservices at scale (100s-1000s of services)
-- Multi-cluster and multi-cloud deployments
-- Observable security (every connection logged and monitored)
-- Policy-driven access control</p>
+<p><strong>Strategic capabilities:</strong> Service mesh isn't just about certificates - it's foundational infrastructure for:</p>
+<ul>
+<li>Zero-trust architecture implementation</li>
+<li>Microservices at scale (100s-1000s of services)</li>
+<li>Multi-cluster and multi-cloud deployments</li>
+<li>Observable security (every connection logged and monitored)</li>
+<li>Policy-driven access control</li>
+</ul>
 <p><strong>Executive summary:</strong> See <a href="../zero-trust-architecture/">Zero-Trust Architecture</a> for strategic context on why service mesh is foundational for modern security.</p>
 <hr />
 <h2 id="when-to-bring-in-expertise">When to Bring in Expertise</h2>
-<p><strong>You can probably handle this yourself if:</strong>
-- You have &lt;100 services and simple service-to-service communication
-- Team has strong Kubernetes expertise
-- You're using standard patterns (Istio on GKE, Linkerd on standard Kubernetes)
-- No compliance requirements around PKI/CA</p>
-<p><strong>Consider getting help if:</strong>
-- You have 500+ services or complex multi-cluster setup
-- Need to integrate with existing enterprise PKI/CA
-- Have compliance requirements (FIPS 140-2, specific CA requirements)
-- Team is new to service mesh concepts</p>
-<p><strong>Definitely call us if:</strong>
-- You have 1,000+ services across multiple clusters/clouds
-- Tried implementing service mesh before and it failed
-- Need custom CA integration or specialized security requirements
-- Previous mTLS implementation caused production incidents</p>
+<p><strong>You can probably handle this yourself if:</strong></p>
+<ul>
+<li>You have &lt;100 services and simple service-to-service communication</li>
+<li>Team has strong Kubernetes expertise</li>
+<li>You're using standard patterns (Istio on GKE, Linkerd on standard Kubernetes)</li>
+<li>No compliance requirements around PKI/CA</li>
+</ul>
+<p><strong>Consider getting help if:</strong></p>
+<ul>
+<li>You have 500+ services or complex multi-cluster setup</li>
+<li>Need to integrate with existing enterprise PKI/CA</li>
+<li>Have compliance requirements (FIPS 140-2, specific CA requirements)</li>
+<li>Team is new to service mesh concepts</li>
+</ul>
+<p><strong>Definitely call us if:</strong></p>
+<ul>
+<li>You have 1,000+ services across multiple clusters/clouds</li>
+<li>Tried implementing service mesh before and it failed</li>
+<li>Need custom CA integration or specialized security requirements</li>
+<li>Previous mTLS implementation caused production incidents</li>
+</ul>
 <p>We've implemented service mesh at Vortex (15,000 services, Istio with custom observability), Nexus (5,000 services, Linkerd with cert-manager integration), and Apex Capital (multi-cluster with external CA integration). We know where the implementation complexity hides and what actually breaks in production.</p>
 <hr />
 <h2 id="conclusion_1">Conclusion</h2>
@@ -4359,283 +4393,373 @@
 <p>The key insight: in service mesh environments, certificates are infrastructure managed by the mesh, not application concerns. Focus on policy definition and monitoring rather than certificate operations. The mesh handles the rest.</p>
 <h2 id="references">References</h2>
 <h3 id="istio-documentation-and-specifications">Istio Documentation and Specifications</h3>
-<p><strong>Istio Security Architecture</strong>
-- Istio Documentation. "Security."
-  - <a href="https://istio.io/latest/docs/concepts/security/">Istio - Concepts</a>
-- Identity and certificate management with istiod
-- Mutual TLS configuration
-- Authorization policy framework</p>
-<p><strong>Istio Certificate Management</strong>
-- Istio Documentation. "Certificate Management."
-  - <a href="https://istio.io/latest/docs/tasks/security/cert-management/">Istio - Tasks</a>
-- Built-in CA (Citadel/istiod)
-- Custom CA integration
-- Certificate rotation</p>
-<p><strong>Istio mTLS Configuration</strong>
-- Istio Documentation. "Mutual TLS Migration."
-  - <a href="https://istio.io/latest/docs/tasks/security/authentication/mtls-migration/">Istio - Tasks</a>
-- Permissive vs strict mode
-- Per-namespace configuration
-- Troubleshooting mTLS</p>
-<p><strong>Istio Multi-Cluster</strong>
-- Istio Documentation. "Multi-cluster Installation."
-  - <a href="https://istio.io/latest/docs/setup/install/multicluster/">Istio - Setup</a>
-- Cross-cluster trust
-- Shared control plane vs multi-primary
-- Certificate federation</p>
+<p><strong>Istio Security Architecture</strong></p>
+<ul>
+<li>Istio Documentation. "Security."</li>
+<li><a href="https://istio.io/latest/docs/concepts/security/">Istio - Concepts</a></li>
+<li>Identity and certificate management with istiod</li>
+<li>Mutual TLS configuration</li>
+<li>Authorization policy framework</li>
+</ul>
+<p><strong>Istio Certificate Management</strong></p>
+<ul>
+<li>Istio Documentation. "Certificate Management."</li>
+<li><a href="https://istio.io/latest/docs/tasks/security/cert-management/">Istio - Tasks</a></li>
+<li>Built-in CA (Citadel/istiod)</li>
+<li>Custom CA integration</li>
+<li>Certificate rotation</li>
+</ul>
+<p><strong>Istio mTLS Configuration</strong></p>
+<ul>
+<li>Istio Documentation. "Mutual TLS Migration."</li>
+<li><a href="https://istio.io/latest/docs/tasks/security/authentication/mtls-migration/">Istio - Tasks</a></li>
+<li>Permissive vs strict mode</li>
+<li>Per-namespace configuration</li>
+<li>Troubleshooting mTLS</li>
+</ul>
+<p><strong>Istio Multi-Cluster</strong></p>
+<ul>
+<li>Istio Documentation. "Multi-cluster Installation."</li>
+<li><a href="https://istio.io/latest/docs/setup/install/multicluster/">Istio - Setup</a></li>
+<li>Cross-cluster trust</li>
+<li>Shared control plane vs multi-primary</li>
+<li>Certificate federation</li>
+</ul>
 <h3 id="linkerd-documentation">Linkerd Documentation</h3>
-<p><strong>Linkerd Identity and Certificates</strong>
-- Linkerd Documentation. "Identity and mTLS."
-  - <a href="https://linkerd.io/2/features/automatic-mtls/">Linkerd - Automatic Mtls</a>
-- Trust anchor and identity issuer
-- Certificate rotation
-- Per-route policy</p>
-<p><strong>Linkerd Certificate Management</strong>
-- Linkerd Documentation. "Rotating your identity certificates."
-  - <a href="https://linkerd.io/2/tasks/rotating-identity-certificates/">Linkerd - Rotating Identity Certificates</a>
-- Manual rotation procedure
-- Cert-manager integration
-- Best practices</p>
-<p><strong>Linkerd Policy</strong>
-- Linkerd Documentation. "Authorization Policy."
-  - <a href="https://linkerd.io/2/features/server-policy/">Linkerd - Server Policy</a>
-- Server and authorization policy
-- Dynamic policy updates
-- Default deny semantics</p>
-<p><strong>Linkerd Multi-Cluster</strong>
-- Linkerd Documentation. "Multi-cluster communication."
-  - <a href="https://linkerd.io/2/features/multicluster/">Linkerd - Multicluster</a>
-- Service mirroring
-- Cross-cluster mTLS
-- Gateway configuration</p>
+<p><strong>Linkerd Identity and Certificates</strong></p>
+<ul>
+<li>Linkerd Documentation. "Identity and mTLS."</li>
+<li><a href="https://linkerd.io/2/features/automatic-mtls/">Linkerd - Automatic Mtls</a></li>
+<li>Trust anchor and identity issuer</li>
+<li>Certificate rotation</li>
+<li>Per-route policy</li>
+</ul>
+<p><strong>Linkerd Certificate Management</strong></p>
+<ul>
+<li>Linkerd Documentation. "Rotating your identity certificates."</li>
+<li><a href="https://linkerd.io/2/tasks/rotating-identity-certificates/">Linkerd - Rotating Identity Certificates</a></li>
+<li>Manual rotation procedure</li>
+<li>Cert-manager integration</li>
+<li>Best practices</li>
+</ul>
+<p><strong>Linkerd Policy</strong></p>
+<ul>
+<li>Linkerd Documentation. "Authorization Policy."</li>
+<li><a href="https://linkerd.io/2/features/server-policy/">Linkerd - Server Policy</a></li>
+<li>Server and authorization policy</li>
+<li>Dynamic policy updates</li>
+<li>Default deny semantics</li>
+</ul>
+<p><strong>Linkerd Multi-Cluster</strong></p>
+<ul>
+<li>Linkerd Documentation. "Multi-cluster communication."</li>
+<li><a href="https://linkerd.io/2/features/multicluster/">Linkerd - Multicluster</a></li>
+<li>Service mirroring</li>
+<li>Cross-cluster mTLS</li>
+<li>Gateway configuration</li>
+</ul>
 <h3 id="consul-connect-documentation">Consul Connect Documentation</h3>
-<p><strong>Consul Connect Architecture</strong>
-- HashiCorp. "Connect - Service Mesh."
-  - <a href="https://www.consul.io/docs/connect">Consul - Connect</a>
-- Built-in CA and Vault integration
-- Sidecar proxy deployment
-- Intentions for authorization</p>
-<p><strong>Consul CA Configuration</strong>
-- HashiCorp. "Connect Certificate Management."
-  - <a href="https://www.consul.io/docs/connect/ca">Consul - Connect</a>
-- Built-in CA provider
-- Vault CA integration
-- AWS ACM integration
-- Certificate rotation</p>
-<p><strong>Consul Service Mesh on Kubernetes</strong>
-- HashiCorp. "Consul on Kubernetes."
-  - <a href="https://www.consul.io/docs/k8s">Consul - K8S</a>
-- Kubernetes integration
-- Automatic sidecar injection
-- Service mesh gateway</p>
-<p><strong>Consul Intentions</strong>
-- HashiCorp. "Intentions."
-  - <a href="https://www.consul.io/docs/connect/intentions">Consul - Intentions</a>
-- Service-to-service authorization
-- Layer 4 and Layer 7 intentions
-- Certificate-based identity</p>
+<p><strong>Consul Connect Architecture</strong></p>
+<ul>
+<li>HashiCorp. "Connect - Service Mesh."</li>
+<li><a href="https://www.consul.io/docs/connect">Consul - Connect</a></li>
+<li>Built-in CA and Vault integration</li>
+<li>Sidecar proxy deployment</li>
+<li>Intentions for authorization</li>
+</ul>
+<p><strong>Consul CA Configuration</strong></p>
+<ul>
+<li>HashiCorp. "Connect Certificate Management."</li>
+<li><a href="https://www.consul.io/docs/connect/ca">Consul - Connect</a></li>
+<li>Built-in CA provider</li>
+<li>Vault CA integration</li>
+<li>AWS ACM integration</li>
+<li>Certificate rotation</li>
+</ul>
+<p><strong>Consul Service Mesh on Kubernetes</strong></p>
+<ul>
+<li>HashiCorp. "Consul on Kubernetes."</li>
+<li><a href="https://www.consul.io/docs/k8s">Consul - K8S</a></li>
+<li>Kubernetes integration</li>
+<li>Automatic sidecar injection</li>
+<li>Service mesh gateway</li>
+</ul>
+<p><strong>Consul Intentions</strong></p>
+<ul>
+<li>HashiCorp. "Intentions."</li>
+<li><a href="https://www.consul.io/docs/connect/intentions">Consul - Intentions</a></li>
+<li>Service-to-service authorization</li>
+<li>Layer 4 and Layer 7 intentions</li>
+<li>Certificate-based identity</li>
+</ul>
 <h3 id="envoy-proxy">Envoy Proxy</h3>
-<p><strong>Envoy Secret Discovery Service (SDS)</strong>
-- Envoy Documentation. "Secret Discovery Service (SDS)."
-  - <a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret">Envoyproxy - Latest</a>
-- Dynamic certificate delivery
-- Certificate rotation without restart
-- Integration with certificate providers</p>
-<p><strong>Envoy TLS Configuration</strong>
-- Envoy Documentation. "TLS."
-  - <a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ssl">Envoyproxy - Latest</a>
-- Client and server TLS
-- Certificate validation
-- ALPN and SNI</p>
-<p><strong>Envoy External Authorization</strong>
-- Envoy Documentation. "External Authorization."
-  - <a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ext_authz_filter">Envoyproxy - Latest</a>
-- Integration with OPA
-- Certificate-based authorization
-- Performance considerations</p>
+<p><strong>Envoy Secret Discovery Service (SDS)</strong></p>
+<ul>
+<li>Envoy Documentation. "Secret Discovery Service (SDS)."</li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret">Envoyproxy - Latest</a></li>
+<li>Dynamic certificate delivery</li>
+<li>Certificate rotation without restart</li>
+<li>Integration with certificate providers</li>
+</ul>
+<p><strong>Envoy TLS Configuration</strong></p>
+<ul>
+<li>Envoy Documentation. "TLS."</li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ssl">Envoyproxy - Latest</a></li>
+<li>Client and server TLS</li>
+<li>Certificate validation</li>
+<li>ALPN and SNI</li>
+</ul>
+<p><strong>Envoy External Authorization</strong></p>
+<ul>
+<li>Envoy Documentation. "External Authorization."</li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ext_authz_filter">Envoyproxy - Latest</a></li>
+<li>Integration with OPA</li>
+<li>Certificate-based authorization</li>
+<li>Performance considerations</li>
+</ul>
 <h3 id="spiffespire-integration">SPIFFE/SPIRE Integration</h3>
-<p><strong>SPIRE Integration with Istio</strong>
-- SPIFFE. "Using SPIRE with Istio."
-  - <a href="https://spiffe.io/docs/latest/microservices/istio/">Spiffe - Microservices</a>
-- Replace istiod CA with SPIRE
-- Workload attestation
-- Federation across clusters</p>
-<p><strong>SPIRE Integration with Envoy</strong>
-- SPIFFE. "Using SPIRE with Envoy."
-  - <a href="https://spiffe.io/docs/latest/microservices/envoy/">Spiffe - Microservices</a>
-- SDS integration
-- SPIFFE ID validation
-- Configuration examples</p>
-<p><strong>Linkerd SPIRE Integration (Experimental)</strong>
-- Linkerd Community. "SPIRE Integration."
-- Alternative identity provider
-- Enhanced attestation</p>
+<p><strong>SPIRE Integration with Istio</strong></p>
+<ul>
+<li>SPIFFE. "Using SPIRE with Istio."</li>
+<li><a href="https://spiffe.io/docs/latest/microservices/istio/">Spiffe - Microservices</a></li>
+<li>Replace istiod CA with SPIRE</li>
+<li>Workload attestation</li>
+<li>Federation across clusters</li>
+</ul>
+<p><strong>SPIRE Integration with Envoy</strong></p>
+<ul>
+<li>SPIFFE. "Using SPIRE with Envoy."</li>
+<li><a href="https://spiffe.io/docs/latest/microservices/envoy/">Spiffe - Microservices</a></li>
+<li>SDS integration</li>
+<li>SPIFFE ID validation</li>
+<li>Configuration examples</li>
+</ul>
+<p><strong>Linkerd SPIRE Integration (Experimental)</strong></p>
+<ul>
+<li>Linkerd Community. "SPIRE Integration."</li>
+<li>Alternative identity provider</li>
+<li>Enhanced attestation</li>
+</ul>
 <h3 id="service-mesh-interface-smi">Service Mesh Interface (SMI)</h3>
-<p><strong>SMI Specification</strong>
-- Service Mesh Interface. "SMI Spec."
-  - <a href="https://smi-spec.io/">Smi-spec</a>
-- Traffic policy (TrafficTarget)
-- Traffic metrics
-- Traffic split
-- Mesh-agnostic APIs</p>
-<p><strong>SMI Adoption</strong>
-- Various service meshes implementing SMI
-- Portability across meshes
-- Common abstractions</p>
+<p><strong>SMI Specification</strong></p>
+<ul>
+<li>Service Mesh Interface. "SMI Spec."</li>
+<li><a href="https://smi-spec.io/">Smi-spec</a></li>
+<li>Traffic policy (TrafficTarget)</li>
+<li>Traffic metrics</li>
+<li>Traffic split</li>
+<li>Mesh-agnostic APIs</li>
+</ul>
+<p><strong>SMI Adoption</strong></p>
+<ul>
+<li>Various service meshes implementing SMI</li>
+<li>Portability across meshes</li>
+<li>Common abstractions</li>
+</ul>
 <h3 id="certificate-automation">Certificate Automation</h3>
-<p><strong>cert-manager with Istio</strong>
-- cert-manager Documentation. "Securing Istio Service Mesh."
-  - <a href="https://cert-manager.io/docs/tutorials/istio-csr/">Cert-manager - Istio Csr</a>
-- istio-csr integration
-- Custom CA with cert-manager
-- Automated certificate lifecycle</p>
-<p><strong>cert-manager with Linkerd</strong>
-- cert-manager Documentation. "Securing Linkerd with cert-manager."
-  - <a href="https://cert-manager.io/docs/tutorials/securing-linkerd-with-cert-manager/">Cert-manager - Securing Linkerd With Cert Manager</a>
-- Trust anchor management
-- Identity issuer rotation
-- Automation patterns</p>
+<p><strong>cert-manager with Istio</strong></p>
+<ul>
+<li>cert-manager Documentation. "Securing Istio Service Mesh."</li>
+<li><a href="https://cert-manager.io/docs/tutorials/istio-csr/">Cert-manager - Istio Csr</a></li>
+<li>istio-csr integration</li>
+<li>Custom CA with cert-manager</li>
+<li>Automated certificate lifecycle</li>
+</ul>
+<p><strong>cert-manager with Linkerd</strong></p>
+<ul>
+<li>cert-manager Documentation. "Securing Linkerd with cert-manager."</li>
+<li><a href="https://cert-manager.io/docs/tutorials/securing-linkerd-with-cert-manager/">Cert-manager - Securing Linkerd With Cert Manager</a></li>
+<li>Trust anchor management</li>
+<li>Identity issuer rotation</li>
+<li>Automation patterns</li>
+</ul>
 <h3 id="performance-and-scalability">Performance and Scalability</h3>
-<p><strong>Envoy Performance</strong>
-- Envoy Blog. "Performance and scalability."
-  - <a href="https://blog.envoyproxy.io/">Envoyproxy</a>
-- TLS handshake performance
-- Connection pooling
-- Resource utilization</p>
-<p><strong>Istio Performance and Scalability</strong>
-- Istio Documentation. "Performance and Scalability."
-  - <a href="https://istio.io/latest/docs/ops/deployment/performance-and-scalability/">Istio - Ops</a>
-- Control plane scaling
-- Data plane overhead
-- Certificate rotation impact</p>
-<p><strong>Linkerd Benchmarks</strong>
-- Linkerd Documentation. "Benchmarks."
-  - <a href="https://linkerd.io/2/reference/architecture/">Linkerd - Architecture</a>
-- Resource consumption
-- Latency overhead
-- Throughput impact</p>
+<p><strong>Envoy Performance</strong></p>
+<ul>
+<li>Envoy Blog. "Performance and scalability."</li>
+<li><a href="https://blog.envoyproxy.io/">Envoyproxy</a></li>
+<li>TLS handshake performance</li>
+<li>Connection pooling</li>
+<li>Resource utilization</li>
+</ul>
+<p><strong>Istio Performance and Scalability</strong></p>
+<ul>
+<li>Istio Documentation. "Performance and Scalability."</li>
+<li><a href="https://istio.io/latest/docs/ops/deployment/performance-and-scalability/">Istio - Ops</a></li>
+<li>Control plane scaling</li>
+<li>Data plane overhead</li>
+<li>Certificate rotation impact</li>
+</ul>
+<p><strong>Linkerd Benchmarks</strong></p>
+<ul>
+<li>Linkerd Documentation. "Benchmarks."</li>
+<li><a href="https://linkerd.io/2/reference/architecture/">Linkerd - Architecture</a></li>
+<li>Resource consumption</li>
+<li>Latency overhead</li>
+<li>Throughput impact</li>
+</ul>
 <h3 id="troubleshooting-and-debugging">Troubleshooting and Debugging</h3>
-<p><strong>Istio Debugging</strong>
-- Istio Documentation. "Debugging Envoy and Istiod."
-  - <a href="https://istio.io/latest/docs/ops/diagnostic-tools/">Istio - Ops</a>
-- istioctl analyze
-- Proxy status and configuration
-- Certificate validation issues</p>
-<p><strong>Linkerd Diagnostics</strong>
-- Linkerd Documentation. "Debugging mTLS."
-  - <a href="https://linkerd.io/2/tasks/debugging-mtls/">Linkerd - Debugging Mtls</a>
-- linkerd check
-- Tap and top commands
-- Certificate inspection</p>
-<p><strong>Consul Connect Troubleshooting</strong>
-- HashiCorp. "Troubleshoot Consul Connect."
-  - <a href="https://www.consul.io/docs/connect/troubleshooting">Consul - Troubleshooting</a>
-- Proxy logs
-- Intention debugging
-- Certificate validation</p>
+<p><strong>Istio Debugging</strong></p>
+<ul>
+<li>Istio Documentation. "Debugging Envoy and Istiod."</li>
+<li><a href="https://istio.io/latest/docs/ops/diagnostic-tools/">Istio - Ops</a></li>
+<li>istioctl analyze</li>
+<li>Proxy status and configuration</li>
+<li>Certificate validation issues</li>
+</ul>
+<p><strong>Linkerd Diagnostics</strong></p>
+<ul>
+<li>Linkerd Documentation. "Debugging mTLS."</li>
+<li><a href="https://linkerd.io/2/tasks/debugging-mtls/">Linkerd - Debugging Mtls</a></li>
+<li>linkerd check</li>
+<li>Tap and top commands</li>
+<li>Certificate inspection</li>
+</ul>
+<p><strong>Consul Connect Troubleshooting</strong></p>
+<ul>
+<li>HashiCorp. "Troubleshoot Consul Connect."</li>
+<li><a href="https://www.consul.io/docs/connect/troubleshooting">Consul - Troubleshooting</a></li>
+<li>Proxy logs</li>
+<li>Intention debugging</li>
+<li>Certificate validation</li>
+</ul>
 <h3 id="standards-and-protocols">Standards and Protocols</h3>
-<p><strong>mTLS Standards</strong>
-- RFC 8446. "The Transport Layer Security (TLS) Protocol Version 1.3." August 2018.
-  - <a href="https://tools.ietf.org/html/rfc8446">Ietf - Rfc8446</a>
-- Modern TLS protocol
-- Mutual authentication
-- Performance improvements</p>
-<p><strong>X.509 Certificates</strong>
-- RFC 5280. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." May 2008.
-  - <a href="https://tools.ietf.org/html/rfc5280">Ietf - Rfc5280</a>
-- Certificate format and validation
-- Extension usage
-- Name constraints</p>
-<p><strong>gRPC Authentication</strong>
-- gRPC Documentation. "Authentication."
-  - <a href="https://grpc.io/docs/guides/auth/">Grpc - Auth</a>
-- mTLS with gRPC
-- Token-based authentication
-- Custom authentication</p>
+<p><strong>mTLS Standards</strong></p>
+<ul>
+<li>RFC 8446. "The Transport Layer Security (TLS) Protocol Version 1.3." August 2018.</li>
+<li><a href="https://tools.ietf.org/html/rfc8446">Ietf - Rfc8446</a></li>
+<li>Modern TLS protocol</li>
+<li>Mutual authentication</li>
+<li>Performance improvements</li>
+</ul>
+<p><strong>X.509 Certificates</strong></p>
+<ul>
+<li>RFC 5280. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." May 2008.</li>
+<li><a href="https://tools.ietf.org/html/rfc5280">Ietf - Rfc5280</a></li>
+<li>Certificate format and validation</li>
+<li>Extension usage</li>
+<li>Name constraints</li>
+</ul>
+<p><strong>gRPC Authentication</strong></p>
+<ul>
+<li>gRPC Documentation. "Authentication."</li>
+<li><a href="https://grpc.io/docs/guides/auth/">Grpc - Auth</a></li>
+<li>mTLS with gRPC</li>
+<li>Token-based authentication</li>
+<li>Custom authentication</li>
+</ul>
 <h3 id="kubernetes-integration">Kubernetes Integration</h3>
-<p><strong>Kubernetes Network Policies</strong>
-- Kubernetes Documentation. "Network Policies."
-  - <a href="https://kubernetes.io/docs/concepts/services-networking/network-policies/">Kubernetes - Services Networking</a>
-- Complement to service mesh
-- Pod-to-pod communication control
-- Egress and ingress rules</p>
-<p><strong>Kubernetes Pod Security</strong>
-- Kubernetes Documentation. "Pod Security Standards."
-  - <a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/">Kubernetes - Security</a>
-- Sidecar injection requirements
-- Security context configuration
-- Admission control integration</p>
+<p><strong>Kubernetes Network Policies</strong></p>
+<ul>
+<li>Kubernetes Documentation. "Network Policies."</li>
+<li><a href="https://kubernetes.io/docs/concepts/services-networking/network-policies/">Kubernetes - Services Networking</a></li>
+<li>Complement to service mesh</li>
+<li>Pod-to-pod communication control</li>
+<li>Egress and ingress rules</li>
+</ul>
+<p><strong>Kubernetes Pod Security</strong></p>
+<ul>
+<li>Kubernetes Documentation. "Pod Security Standards."</li>
+<li><a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/">Kubernetes - Security</a></li>
+<li>Sidecar injection requirements</li>
+<li>Security context configuration</li>
+<li>Admission control integration</li>
+</ul>
 <h3 id="observability">Observability</h3>
-<p><strong>Prometheus for Service Mesh</strong>
-- Prometheus Documentation. "Monitoring with Prometheus."
-  - <a href="https://prometheus.io/docs/introduction/overview/">Prometheus - Overview</a>
-- Certificate expiry metrics
-- TLS handshake metrics
-- Connection success rates</p>
-<p><strong>Grafana Dashboards</strong>
-- Grafana. "Service Mesh Dashboards."
-  - <a href="https://grafana.com/grafana/dashboards/">Grafana - Dashboards</a>
-- Pre-built Istio dashboards
-- Linkerd dashboards
-- Custom metric visualization</p>
-<p><strong>Jaeger Tracing</strong>
-- Jaeger Documentation.
-  - <a href="https://www.jaegertracing.io/docs/">Jaegertracing</a>
-- Distributed tracing
-- mTLS connection tracing
-- Performance analysis</p>
+<p><strong>Prometheus for Service Mesh</strong></p>
+<ul>
+<li>Prometheus Documentation. "Monitoring with Prometheus."</li>
+<li><a href="https://prometheus.io/docs/introduction/overview/">Prometheus - Overview</a></li>
+<li>Certificate expiry metrics</li>
+<li>TLS handshake metrics</li>
+<li>Connection success rates</li>
+</ul>
+<p><strong>Grafana Dashboards</strong></p>
+<ul>
+<li>Grafana. "Service Mesh Dashboards."</li>
+<li><a href="https://grafana.com/grafana/dashboards/">Grafana - Dashboards</a></li>
+<li>Pre-built Istio dashboards</li>
+<li>Linkerd dashboards</li>
+<li>Custom metric visualization</li>
+</ul>
+<p><strong>Jaeger Tracing</strong></p>
+<ul>
+<li>Jaeger Documentation.</li>
+<li><a href="https://www.jaegertracing.io/docs/">Jaegertracing</a></li>
+<li>Distributed tracing</li>
+<li>mTLS connection tracing</li>
+<li>Performance analysis</li>
+</ul>
 <h3 id="books-and-comprehensive-guides">Books and Comprehensive Guides</h3>
-<p><strong>"Istio: Up and Running" (O'Reilly)</strong>
-- Posta, L., Maloku, R., Klein, E. "Istio: Up and Running." O'Reilly Media, 2019.
-- Comprehensive Istio guide
-- Security and certificate management
-- Production deployment patterns</p>
-<p><strong>"Service Mesh Patterns" (Manning)</strong>
-- Calcote, L., Butcher, J. "Service Mesh Patterns." Manning Publications, 2021.
-- Design patterns for service meshes
-- Certificate management strategies
-- Multi-tenancy patterns</p>
-<p><strong>"Linkerd: Up and Running" (O'Reilly)</strong>
-- Hightower, K., et al. "Linkerd: Up and Running." (In progress)
-- Linkerd architecture and deployment
-- mTLS configuration
-- Best practices</p>
+<p><strong>"Istio: Up and Running" (O'Reilly)</strong></p>
+<ul>
+<li>Posta, L., Maloku, R., Klein, E. "Istio: Up and Running." O'Reilly Media, 2019.</li>
+<li>Comprehensive Istio guide</li>
+<li>Security and certificate management</li>
+<li>Production deployment patterns</li>
+</ul>
+<p><strong>"Service Mesh Patterns" (Manning)</strong></p>
+<ul>
+<li>Calcote, L., Butcher, J. "Service Mesh Patterns." Manning Publications, 2021.</li>
+<li>Design patterns for service meshes</li>
+<li>Certificate management strategies</li>
+<li>Multi-tenancy patterns</li>
+</ul>
+<p><strong>"Linkerd: Up and Running" (O'Reilly)</strong></p>
+<ul>
+<li>Hightower, K., et al. "Linkerd: Up and Running." (In progress)</li>
+<li>Linkerd architecture and deployment</li>
+<li>mTLS configuration</li>
+<li>Best practices</li>
+</ul>
 <h3 id="industry-reports-and-whitepapers">Industry Reports and Whitepapers</h3>
-<p><strong>CNCF Service Mesh Landscape</strong>
-- Cloud Native Computing Foundation. "CNCF Service Mesh Landscape."
-  - <a href="https://landscape.cncf.io/card-mode?category=service-mesh">Cncf - Card Mode</a>
-- Service mesh project comparison
-- Maturity assessment
-- Adoption trends</p>
-<p><strong>Service Mesh Comparison</strong>
-- Various. "Service Mesh Comparison."
-  - Community-driven comparisons of features
-  - Performance benchmarks
-  - Use case fit analysis</p>
+<p><strong>CNCF Service Mesh Landscape</strong></p>
+<ul>
+<li>Cloud Native Computing Foundation. "CNCF Service Mesh Landscape."</li>
+<li><a href="https://landscape.cncf.io/card-mode?category=service-mesh">Cncf - Card Mode</a></li>
+<li>Service mesh project comparison</li>
+<li>Maturity assessment</li>
+<li>Adoption trends</li>
+</ul>
+<p><strong>Service Mesh Comparison</strong></p>
+<ul>
+<li>Various. "Service Mesh Comparison."</li>
+<li>Community-driven comparisons of features</li>
+<li>Performance benchmarks</li>
+<li>Use case fit analysis</li>
+</ul>
 <h3 id="security-best-practices">Security Best Practices</h3>
-<p><strong>NIST SP 800-204 - Security Strategies for Microservices</strong>
-- NIST. "Security Strategies for Microservices-based Application Systems." NIST SP 800-204, August 2019.
-  - <a href="https://csrc.nist.gov/publications/detail/sp/800-204/final">Nist - Detail</a>
-- Authentication and authorization
-- Service-to-service security
-- API gateway patterns</p>
-<p><strong>OWASP Microservices Security</strong>
-- OWASP. "Microservices Security Cheat Sheet."
-  - <a href="https://cheatsheetseries.owasp.org/cheatsheets/Microservices_Security_Cheat_Sheet.html">Owasp - Microservices Security Cheat Sheet.Html</a>
-- Authentication patterns
-- Service-to-service communication
-- Certificate management</p>
+<p><strong>NIST SP 800-204 - Security Strategies for Microservices</strong></p>
+<ul>
+<li>NIST. "Security Strategies for Microservices-based Application Systems." NIST SP 800-204, August 2019.</li>
+<li><a href="https://csrc.nist.gov/publications/detail/sp/800-204/final">Nist - Detail</a></li>
+<li>Authentication and authorization</li>
+<li>Service-to-service security</li>
+<li>API gateway patterns</li>
+</ul>
+<p><strong>OWASP Microservices Security</strong></p>
+<ul>
+<li>OWASP. "Microservices Security Cheat Sheet."</li>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Microservices_Security_Cheat_Sheet.html">Owasp - Microservices Security Cheat Sheet.Html</a></li>
+<li>Authentication patterns</li>
+<li>Service-to-service communication</li>
+<li>Certificate management</li>
+</ul>
 <h3 id="research-papers">Research Papers</h3>
-<p><strong>"Experiences with TLS in Mission-Critical Systems"</strong>
-- Chown, T. "Experiences with TLS in Mission-Critical Systems." USENIX LISA, 2017.
-- Real-world TLS deployment challenges
-- Performance considerations
-- Operational lessons</p>
-<p><strong>"The Security of TLS 1.3"</strong>
-- Dowling, B., et al. "A Cryptographic Analysis of the TLS 1.3 Handshake Protocol." Journal of Cryptology, 2021.
-- TLS 1.3 security analysis
-- Formal verification
-- Protocol properties</p>
+<p><strong>"Experiences with TLS in Mission-Critical Systems"</strong></p>
+<ul>
+<li>Chown, T. "Experiences with TLS in Mission-Critical Systems." USENIX LISA, 2017.</li>
+<li>Real-world TLS deployment challenges</li>
+<li>Performance considerations</li>
+<li>Operational lessons</li>
+</ul>
+<p><strong>"The Security of TLS 1.3"</strong></p>
+<ul>
+<li>Dowling, B., et al. "A Cryptographic Analysis of the TLS 1.3 Handshake Protocol." Journal of Cryptology, 2021.</li>
+<li>TLS 1.3 security analysis</li>
+<li>Formal verification</li>
+<li>Protocol properties</li>
+</ul>
 
 
 

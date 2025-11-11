@@ -3344,50 +3344,54 @@
 <p><strong>When mTLS fails, diagnose systematically:</strong></p>
 <ol>
 <li><strong>Can client and server establish TCP connection?</strong></li>
-<li>No → Network connectivity problem, not mTLS</li>
 <li>
-<p>Yes → Continue</p>
+<p>No → Network connectivity problem, not mTLS</p>
+<ul>
+<li>Yes → Continue</li>
+</ul>
 </li>
 <li>
 <p><strong>Does server request client certificate?</strong></p>
-</li>
+<ul>
 <li>No → Server not configured for mTLS (<code>ssl.CERT_REQUIRED</code> not set)</li>
-<li>
-<p>Yes → Continue</p>
+<li>Yes → Continue</li>
+</ul>
 </li>
 <li>
 <p><strong>Does client send certificate?</strong></p>
-</li>
+<ul>
 <li>No → Client certificate not configured or not found</li>
-<li>
-<p>Yes → Continue</p>
+<li>Yes → Continue</li>
+</ul>
 </li>
 <li>
 <p><strong>Does server trust client certificate?</strong></p>
-</li>
+<ul>
 <li>No → Client certificate not signed by trusted CA</li>
-<li>
-<p>Yes → Continue</p>
+<li>Yes → Continue</li>
+</ul>
 </li>
 <li>
 <p><strong>Is client certificate expired?</strong></p>
-</li>
+<ul>
 <li>Yes → Certificate renewal needed</li>
-<li>
-<p>No → Continue</p>
+<li>No → Continue</li>
+</ul>
 </li>
 <li>
 <p><strong>Is client certificate revoked?</strong></p>
-</li>
+<ul>
 <li>Yes → Certificate reissue needed</li>
-<li>
-<p>No → Continue</p>
+<li>No → Continue</li>
+</ul>
 </li>
 <li>
 <p><strong>Does certificate Common Name match expected identity?</strong></p>
-</li>
+<ul>
 <li>No → Wrong certificate or hostname mismatch</li>
 <li>Yes → Connection should succeed</li>
+</ul>
+</li>
 </ol>
 <p><strong>Common issues and solutions:</strong></p>
 <table>
