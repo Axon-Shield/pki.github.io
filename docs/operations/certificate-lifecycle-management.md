@@ -1,8 +1,8 @@
 ---
 title: Certificate Lifecycle Management
 category: operations
-last_updated: 2024-11-09
-last_reviewed: 2024-11-09
+last_updated: 2025-11-09
+last_reviewed: 2025-11-09
 version: 1.0
 status: stable
 tags: [lifecycle, operations, automation, inventory, renewal]
@@ -362,7 +362,7 @@ An expired security certificate prevented Equifax from detecting vulnerabilities
 
 | Date | Version | Changes | Reason |
 |------|---------|---------|--------|
-| 2024-11-09 | 1.0 | Initial creation | Establishing operational lifecycle guidance |
+| 2025-11-09 | 1.0 | Initial creation | Establishing operational lifecycle guidance |
 
 ---
 

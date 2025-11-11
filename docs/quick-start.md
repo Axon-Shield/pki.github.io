@@ -1,6 +1,6 @@
 ---
 title: Quick Start Guide
-last_updated: 2024-11-10
+last_updated: 2025-11-10
 ---
 
 # Quick Start Guide

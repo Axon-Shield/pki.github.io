@@ -1,8 +1,8 @@
 ---
 title: TLS Protocol
 category: standards
-last_updated: 2024-11-09
-last_reviewed: 2024-11-09
+last_updated: 2025-11-09
+last_reviewed: 2025-11-09
 version: 1.0
 status: stable
 tags: [tls, ssl, https, protocol, handshake, encryption, certificates]
@@ -264,8 +264,8 @@ Error: Hostname mismatch
 
 **Expired Certificate**:
 ```
-Certificate Valid: 2023-01-01 to 2024-01-01
-Current Date: 2024-06-01
+Certificate Valid: 2023-01-01 to 2025-01-01
+Current Date: 2025-06-01
 
 Error: Certificate expired
 ```
@@ -283,7 +283,7 @@ Error: Unable to verify certificate chain
 **Revoked Certificate**:
 ```
 OCSP Response: Revoked
-Revocation Date: 2024-05-15
+Revocation Date: 2025-05-15
 
 Error: Certificate has been revoked
 ```
@@ -945,7 +945,7 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 
 | Date | Version | Changes | Reason |
 |------|---------|---------|--------|
-| 2024-11-09 | 1.0 | Initial creation | Core protocol standard documentation |
+| 2025-11-09 | 1.0 | Initial creation | Core protocol standard documentation |
 
 ---
 

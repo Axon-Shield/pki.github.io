@@ -1,8 +1,8 @@
 ---
 title: HSM Integration
 category: implementation
-last_updated: 2024-11-09
-last_reviewed: 2024-11-09
+last_updated: 2025-11-09
+last_reviewed: 2025-11-09
 version: 1.0
 status: stable
 tags: [hsm, hardware-security, pkcs11, key-protection, ca-operations]
@@ -1061,7 +1061,7 @@ pkcs11-tool --module /usr/lib/libCryptoki2.so --login --pin $PIN \
 
 | Date | Version | Changes | Reason |
 |------|---------|---------|--------|
-| 2024-11-09 | 1.0 | Initial creation | Essential HSM implementation guidance |
+| 2025-11-09 | 1.0 | Initial creation | Essential HSM implementation guidance |
 
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: X.509 Standard
 category: standards
-last_updated: 2024-11-09
-last_reviewed: 2024-11-09
+last_updated: 2025-11-09
+last_reviewed: 2025-11-09
 version: 1.0
 status: stable
 tags: [x509, standards, itu-t, rfc5280, certificates, asn1]
@@ -727,7 +727,7 @@ Certificate Transparency required extending X.509 without breaking existing vali
 
 | Date | Version | Changes | Reason |
 |------|---------|---------|--------|
-| 2024-11-09 | 1.0 | Initial creation | Foundational standard documentation |
+| 2025-11-09 | 1.0 | Initial creation | Foundational standard documentation |
 
 ---
 

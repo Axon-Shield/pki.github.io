@@ -193,7 +193,7 @@ According to RFC 5280[^1], certificate extensions provide...
 
 | Date | Version | Changes | Reason |
 |------|---------|---------|--------|
-| 2024-01-15 | 1.1 | Added ACME protocol section | New protocol adoption increasing |
+| 2025-01-15 | 1.1 | Added ACME protocol section | New protocol adoption increasing |
 | 2023-11-03 | 1.0 | Initial creation | - |
 
 ---
@@ -291,7 +291,7 @@ After each update:
    - Minor version (X.Y) for corrections and small additions
 
 2. Add entry to Change History table:
-   | 2024-11-08 | 1.3 | Fixed OCSP validation flow, added ref to RFC 6960 | Inaccurate description of nonce handling |
+   | 2025-11-08 | 1.3 | Fixed OCSP validation flow, added ref to RFC 6960 | Inaccurate description of nonce handling |
 
 3. Update last_updated field in frontmatter
 

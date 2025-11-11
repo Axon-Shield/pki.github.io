@@ -704,7 +704,7 @@ Actions Required:
   3. Update tracking ticket: CERT-12345
 
 Renewal Status: Not Started ❌
-Last Renewal: 2024-08-15 (90 days ago)
+Last Renewal: 2025-08-15 (90 days ago)
 
 Similar Incidents:
   • CERT-11234 (3 months ago) - Resolved in 4 hours

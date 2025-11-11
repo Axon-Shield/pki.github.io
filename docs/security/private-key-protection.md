@@ -1,8 +1,8 @@
 ---
 title: Private Key Protection
 category: security
-last_updated: 2024-11-09
-last_reviewed: 2024-11-09
+last_updated: 2025-11-09
+last_reviewed: 2025-11-09
 version: 1.0
 status: stable
 tags: [private-key, security, hsm, key-management, encryption, access-control]
@@ -972,7 +972,7 @@ DigiNotar's CA private keys were compromised, allowing attackers to issue rogue 
 
 | Date | Version | Changes | Reason |
 |------|---------|---------|--------|
-| 2024-11-09 | 1.0 | Initial creation | Critical security topic documentation |
+| 2025-11-09 | 1.0 | Initial creation | Critical security topic documentation |
 
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: Success Metrics and KPIs for Certificate Automation
 category: strategy
-last_updated: 2024-11-09
-last_reviewed: 2024-11-09
+last_updated: 2025-11-09
+last_reviewed: 2025-11-09
 version: 1.0
 status: stable
 tags: [metrics, kpi, roi, measurement, success]

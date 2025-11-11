@@ -1,6 +1,6 @@
 ---
 title: Foundations for Infrastructure Intelligence - Home
-last_updated: 2024-11-10
+last_updated: 2025-11-10
 ---
 
 We have built this generic knowledge base to show how DNS, Certificate and Network Perimeter Management

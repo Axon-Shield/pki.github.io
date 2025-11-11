@@ -1,8 +1,8 @@
 ---
 title: ACME Protocol
 category: standards
-last_updated: 2024-11-09
-last_reviewed: 2024-11-09
+last_updated: 2025-11-09
+last_reviewed: 2025-11-09
 version: 1.0
 status: stable
 tags: [acme, automation, lets-encrypt, certificate-automation, rfc8555]
@@ -1013,7 +1013,7 @@ Let's Encrypt rate limits (as of 2024)[^2]:
 
 | Date | Version | Changes | Reason |
 |------|---------|---------|--------|
-| 2024-11-09 | 1.0 | Initial creation | Essential automation standard documentation |
+| 2025-11-09 | 1.0 | Initial creation | Essential automation standard documentation |
 
 ---
 

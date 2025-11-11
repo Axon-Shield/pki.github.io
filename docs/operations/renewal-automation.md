@@ -1,8 +1,8 @@
 ---
 title: Renewal Automation
 category: operations
-last_updated: 2024-11-09
-last_reviewed: 2024-11-09
+last_updated: 2025-11-09
+last_reviewed: 2025-11-09
 version: 1.0
 status: stable
 tags: [automation, renewal, acme, expiration, operational-excellence]
@@ -383,7 +383,7 @@ kubectl describe certificate example-com-tls -n production
 
 # Output shows:
 # Status: True
-# Renewal Time: 2024-12-09T00:00:00Z
+# Renewal Time: 2025-12-09T00:00:00Z
 # Not After: 2025-01-08T00:00:00Z
 
 # Watch renewal events
@@ -1071,7 +1071,7 @@ No formal citations needed for this operational guide based on industry best pra
 
 | Date | Version | Changes | Reason |
 |------|---------|---------|--------|
-| 2024-11-09 | 1.0 | Initial creation | Essential renewal automation guidance |
+| 2025-11-09 | 1.0 | Initial creation | Essential renewal automation guidance |
 
 ---
 

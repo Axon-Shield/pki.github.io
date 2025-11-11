@@ -1,6 +1,6 @@
 ---
 title: Why Certificate Management Matters
-last_updated: 2024-11-10
+last_updated: 2025-11-10
 ---
 
 # Why (Certificate) Automation and Infra Intelligence Matters to Your Business
@@ -12,7 +12,6 @@ Every organization's certificate management journey is different. Whether you're
 - **Executives:** Business case, vendor evaluation, ROI measurement, post-incident response
 - **Security Leaders:** Implementation planning, compliance requirements, architecture decisions
 - **Engineers:** Technical implementation, troubleshooting, automation patterns
-
 
 ## The Problem Executives Care About
 
@@ -57,6 +56,10 @@ You can manage a doghouse with a hammer and memory. You need blueprints for a ma
 **Automation cost:** $50K-$200K platform license + $50K-$150K implementation (one-time)
 
 **ROI timeline:** 6-12 months to payback, then 50-80% ongoing cost reduction
+
+> For a deeper breakdown of direct and hidden costs, see the [Cost of Certificate Management](business/cost_of_certificate_management.md).
+>
+> Manual certificate management creates escalating, multi-million-dollar risks—outage losses, compliance penalties, shadow IT exposure, and massive opportunity costs.
 
 That calculation only includes labor. It doesn't count the value of preventing even a single outage, which typically exceeds your entire annual certificate management budget.
 
@@ -166,7 +169,7 @@ If you're evaluating certificate management automation:
 
 **Evaluate solutions:** The [Vendor Comparison Matrix](vendors/vendor-comparison-matrix.md) provides objective analysis of commercial platforms. Implementation patterns are platform-agnostic - the organizational transformation matters more than the technology choice.
 
-**Plan your implementation:** Most organizations benefit from external expertise during initial implementation. We've done this at TSB Bank, Deutsche Bank, and Sky/Comcast - we know where the complexity hides, which vendors oversell capabilities, and what actually matters for production success.
+**Plan your implementation:** Most organizations benefit from external expertise during initial implementation. We've done this at TSB Bank, Barclays Bank, and Sky/Comcast - we know where the complexity hides, which vendors oversell capabilities, and what actually matters for production success.
 
 ## About This Knowledge Base
 

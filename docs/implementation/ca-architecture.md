@@ -1,8 +1,8 @@
 ---
 title: CA Architecture
 category: implementation
-last_updated: 2024-11-09
-last_reviewed: 2024-11-09
+last_updated: 2025-11-09
+last_reviewed: 2025-11-09
 version: 1.0
 status: stable
 tags: [ca, architecture, hierarchy, design, root-ca, intermediate-ca]
@@ -560,7 +560,7 @@ Let's Encrypt regularly rotates intermediate CAs (typically annually) while keep
 
 | Date | Version | Changes | Reason |
 |------|---------|---------|--------|
-| 2024-11-09 | 1.0 | Initial creation | Foundational CA architecture guidance |
+| 2025-11-09 | 1.0 | Initial creation | Foundational CA architecture guidance |
 
 ---
 
