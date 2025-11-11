@@ -1,5 +1,17 @@
 # Certificate Rotation Strategies
 
+## Why This Matters
+
+**For executives:** Certificate rotation failures cause production outages costing $300K-$1M+ per incident. Vortex experienced certificate rotation cascading failures affecting 5-10% of requests during overlapping certificate validity windows. Rotation strategy determines whether certificate operations are smooth and invisible or disruptive and high-risk. This is operational risk management.
+
+**For security leaders:** Rotation strategy enables cryptographic agility - ability to phase out weak algorithms, respond to CA compromise, and adopt new security standards. Manual rotation means security improvements are delayed or skipped due to operational burden. Automated rotation enables rapid security response. This is security operational capability.
+
+**For engineers:** Certificate rotation is constant operational burden. Services at scale (thousands of services) rotate certificates daily or hourly. Manual rotation doesn't scale. Rotation strategy determines whether this is automated background operation or middle-of-night emergency work. This is operational sanity.
+
+**Common scenario:** Your service mesh deploys thousands of certificates with 24-hour lifespans. Rotation must happen automatically and reliably, otherwise services lose connectivity. Your rotation strategy determines whether this works smoothly or creates constant operational fires. Same applies to traditional infrastructure at smaller scale.
+
+---
+
 ## Overview
 
 Certificate rotation is the planned replacement of certificates before expiry, encompassing the entire process from renewal initiation through deployment verification. Unlike emergency renewals triggered by compromise or imminent expiry, strategic rotation is a scheduled operational practice that prevents outages, reduces risk, and enables infrastructure evolution.
@@ -1646,11 +1658,13 @@ Runbook for manual rollback:
 # Certificate Rollback Procedure
 
 ## When to Use
+
 - Automated rollback failed
 - Issues detected after grace period
 - Certificate causing application-specific problems
 
 ## Prerequisites
+
 - Access to deployment targets
 - Previous certificate files available
 - Monitoring dashboard access
@@ -1659,12 +1673,14 @@ Runbook for manual rollback:
 ## Procedure
 
 ### Step 1: Assess Situation
+
 - [ ] Confirm rollback is necessary
 - [ ] Identify affected services/hosts
 - [ ] Locate previous certificate files
 - [ ] Check for any dependencies
 
 ### Step 2: Prepare
+
 - [ ] Notify stakeholders of rollback
 - [ ] Create rollback ticket: [TICKET]
 - [ ] Start incident bridge if critical
@@ -1697,6 +1713,7 @@ For each affected target:
    ```
 
 ### Step 4: Verify
+
 - [ ] All targets reverted to previous certificate
 - [ ] TLS handshakes succeeding
 - [ ] Application health checks passing
@@ -1704,12 +1721,14 @@ For each affected target:
 - [ ] No certificate validation errors
 
 ### Step 5: Monitor
+
 - [ ] Monitor for 30 minutes post-rollback
 - [ ] Check dashboard: [DASHBOARD_URL]
 - [ ] Verify no new alerts
 - [ ] Confirm customer impact resolved
 
 ### Step 6: Post-Rollback
+
 - [ ] Update incident ticket
 - [ ] Notify stakeholders of completion
 - [ ] Schedule post-mortem
@@ -1718,11 +1737,13 @@ For each affected target:
 
 ## Escalation
 If rollback doesn't resolve issues:
+
 1. Page: platform-lead
 2. Escalate to: director-infrastructure
 3. Emergency contact: [PHONE]
 
 ## Rollback Contacts
+
 - Primary: platform-team Slack channel
 - On-call: [PAGERDUTY_LINK]
 - Emergency: [PHONE]
@@ -1734,8 +1755,6 @@ If rollback doesn't resolve issues:
 
 **Planning and preparation**:
 
-
-
 - Plan rotations well in advance (60-90 days for complex services)
 - Understand dependencies before rotating
 - Test rotation procedures in non-production first
@@ -1743,8 +1762,6 @@ If rollback doesn't resolve issues:
 - Coordinate with other planned maintenance
 
 **Automation**:
-
-
 
 - Automate repetitive rotation tasks
 - Use ACME for public certificates where possible
@@ -1754,8 +1771,6 @@ If rollback doesn't resolve issues:
 
 **Communication**:
 
-
-
 - Notify stakeholders of upcoming rotations
 - Provide clear timelines and expectations
 - Keep status updated during rotation
@@ -1763,8 +1778,6 @@ If rollback doesn't resolve issues:
 - Maintain runbooks and procedures
 
 **Verification**:
-
-
 
 - Always verify deployments
 - Monitor metrics post-deployment
@@ -1776,8 +1789,6 @@ If rollback doesn't resolve issues:
 
 **Timing**:
 
-
-
 - Don't rotate during high-traffic periods
 - Don't combine with other major changes
 - Don't rotate on Friday afternoons (unless automated with monitoring)
@@ -1786,8 +1797,6 @@ If rollback doesn't resolve issues:
 
 **Process**:
 
-
-
 - Don't skip impact assessment
 - Don't deploy to all targets simultaneously
 - Don't ignore validation failures
@@ -1795,8 +1804,6 @@ If rollback doesn't resolve issues:
 - Don't assume success without verification
 
 **Risk management**:
-
-
 
 - Don't rotate certificates with < 7 days until expiry (too risky)
 - Don't reuse private keys across rotations

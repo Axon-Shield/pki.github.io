@@ -1,5 +1,17 @@
 # Inventory and Discovery
 
+## Why This Matters
+
+**For executives:** Unknown certificates are unmanaged risk. Nexus discovered 5,000 certificates when they thought they had 500 - that 10x gap caused $1M+ in preventable outages. Certificate discovery is operational risk assessment. You can't protect what you don't know exists. This is foundational visibility enabling all other certificate operations.
+
+**For security leaders:** Certificate inventory is security inventory. Unknown certificates = unknown attack surface, expired certificates causing failures, compliance violations, inability to respond to vulnerabilities. Discovery provides the visibility required for security operations. Without comprehensive inventory, you're flying blind.
+
+**For engineers:** You can't automate renewal for certificates you don't know exist. Discovery is prerequisite for everything else - monitoring, automation, compliance. Manual discovery (asking teams "what certificates do you have?") is fiction. Automated discovery finds the certificates teams forgot they deployed.
+
+**Common scenario:** Your organization knows about major certificates (public-facing web servers) but has no visibility into certificates deployed across development environments, legacy applications, shadow IT, embedded in code, or on decommissioned systems. Result: certificates expire unexpectedly, causing outages. Discovery transforms this from reactive firefighting to proactive management.
+
+---
+
 ## Overview
 
 Certificate inventory and discovery is the foundational operational capability that enables effective PKI management. Without comprehensive visibility into certificate deployment, organizations cannot effectively manage expiration, ensure compliance, or maintain security posture. This capability transforms PKI operations from reactive firefighting to proactive infrastructure management.
@@ -244,6 +256,7 @@ Agent architecture:
 - Cross-reference filesystem and runtime discoveries
 
 Strategy example:
+
 1. Use API discovery for known infrastructure (AWS, K8s)
 2. Perform network scanning to find unknown endpoints
 3. Deploy agents on critical systems for deep visibility
