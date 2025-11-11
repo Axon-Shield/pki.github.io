@@ -434,7 +434,7 @@ Some partners implemented certificate pinning (trusting specific certificates in
 - You need to integrate mTLS with existing identity systems (AD, LDAP, etc.)
 - You're implementing mTLS for financial services or other highly regulated environments
 
-We've implemented mTLS for a large service mesh, Deutsche Bank (external partner APIs with complex onboarding), and Barclays (security retail banking systems). We know where the edge cases hide and what actually breaks in production.
+We've implemented mTLS for a large service mesh, Deutsche Bank (integration with hardware / access control appliactions), and Barclays (retail banking and payment systems). We know where the edge cases hide and what actually breaks in production.
 
 ---
 
