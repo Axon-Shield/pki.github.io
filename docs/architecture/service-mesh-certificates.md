@@ -21,6 +21,7 @@ Service meshes abstract away the complexity of service-to-service communication,
 ## Decision Framework
 
 **Choose Istio when:**
+
 - You need feature-rich service mesh with extensive traffic management
 - Multi-cluster and multi-cloud deployments are requirements
 - You want flexible CA integration (can use external CA via plugins)
@@ -28,6 +29,7 @@ Service meshes abstract away the complexity of service-to-service communication,
 - You need advanced authorization policies and traffic routing
 
 **Choose Linkerd when:**
+
 - Simplicity and operational ease are priorities
 - You want minimal resource overhead (Linkerd is lightest-weight mesh)
 - Team wants "just works" defaults without extensive configuration
@@ -35,6 +37,7 @@ Service meshes abstract away the complexity of service-to-service communication,
 - You're comfortable with opinionated design choices
 
 **Choose Consul Connect when:**
+
 - You're already using HashiCorp ecosystem (Vault, Terraform, Nomad)
 - You need service mesh across heterogeneous platforms (VMs + Kubernetes)
 - Vault integration for certificates is requirement
@@ -42,12 +45,14 @@ Service meshes abstract away the complexity of service-to-service communication,
 - You want unified service discovery + mesh
 
 **Don't use service mesh when:**
+
 - You have <20 services (overhead exceeds benefit)
 - Services are monolithic (no service-to-service communication to secure)
 - Team lacks Kubernetes/microservices expertise
 - Performance requirements are extreme (sub-millisecond latency critical)
 
 **Red flags:**
+
 - Implementing service mesh before understanding certificate basics
 - Assuming "automatic" means "zero operational overhead"
 - Not planning for certificate rotation failures under load
@@ -813,6 +818,7 @@ When Vortex implemented Istio for 15,000+ services, we initially configured 24-h
 **Problem 1: Certificate rotation created cascading failures**
 
 Services with high request volumes (100K+ requests/minute) would occasionally fail certificate validation during rotation because:
+
 - New certificates were issued but not yet distributed to all Envoy sidecars
 - In-flight requests used old certificates while new requests expected new ones
 - This created brief windows where 5-10% of requests failed with "certificate validation error"
@@ -822,12 +828,14 @@ Services with high request volumes (100K+ requests/minute) would occasionally fa
 **Problem 2: Debugging mTLS failures was opaque**
 
 When services couldn't communicate, error messages were unhelpful: "TLS handshake failed" or "certificate validation error." Engineers couldn't diagnose whether the problem was:
+
 - Certificate expired?
 - Wrong trust anchor?
 - Certificate revoked?
 - Network connectivity issue?
 
 **What we did:** Built comprehensive mTLS observability:
+
 - Prometheus metrics for handshake success/failure rates per service pair
 - Detailed error logging with certificate serial numbers and validation failure reasons
 - Dashboard showing certificate expiry times and rotation status for all services
@@ -836,6 +844,7 @@ When services couldn't communicate, error messages were unhelpful: "TLS handshak
 **Problem 3: Legacy services couldn't participate in service mesh**
 
 Some older services (10+ years old) couldn't handle mTLS:
+
 - Hardcoded HTTP (not HTTPS)
 - TLS libraries too old to support modern cipher suites
 - No way to deploy client certificates
@@ -843,6 +852,7 @@ Some older services (10+ years old) couldn't handle mTLS:
 **What we did:** Implemented "mesh boundary" pattern where mesh-native services used mTLS, but legacy services were accessed through sidecar proxies that handled mTLS on their behalf. This gave us gradual migration path instead of "big bang" requirements.
 
 **Warning signs you're heading for same mistakes:**
+
 - You're implementing mTLS without understanding your service request patterns and failure tolerance
 - You don't have observability into certificate validation failures before going to production
 - You assume all services can adopt mTLS simultaneously
@@ -855,6 +865,7 @@ Nexus chose Linkerd for service mesh based on "simplicity" promise. In productio
 **Problem 1: Linkerd's simplicity became constraint**
 
 Linkerd's opinionated design choices worked great for 80% of use cases, but the remaining 20% had no workarounds:
+
 - No support for external CA integration (must use Linkerd's built-in CA)
 - Limited traffic routing capabilities compared to Istio
 - Some compliance requirements couldn't be met with Linkerd's CA model
@@ -864,6 +875,7 @@ Linkerd's opinionated design choices worked great for 80% of use cases, but the 
 **Problem 2: Trust anchor rotation was manual**
 
 Linkerd's root CA (trust anchor) rotation required manual process and rolling restart of all services. With 5,000+ services, this was:
+
 - Operationally complex (coordinate deployment across teams)
 - Risky (one mistake breaks entire mesh)
 - Infrequent (so process wasn't well-practiced)
@@ -871,6 +883,7 @@ Linkerd's root CA (trust anchor) rotation required manual process and rolling re
 **What we did:** Integrated cert-manager to automate trust anchor rotation. Significantly reduced operational burden and risk.
 
 **Warning signs you're heading for same mistakes:**
+
 - Choosing service mesh based solely on "simplicity" without understanding feature requirements
 - Not validating compliance requirements with mesh's CA model
 - Assuming "simple" means "no operational overhead"
@@ -882,6 +895,7 @@ Linkerd's root CA (trust anchor) rotation required manual process and rolling re
 **Value of getting this right:** Service mesh automates certificate lifecycle for all services, eliminating manual operations and expiration-related outages. More importantly, it enables zero-trust architecture - cryptographic proof of identity for every service enables fine-grained access control and reduces breach impact. Organizations with mature service mesh report 70-90% reduction in authentication-related security incidents.
 
 **Strategic capabilities:** Service mesh isn't just about certificates - it's foundational infrastructure for:
+
 - Zero-trust architecture implementation
 - Microservices at scale (100s-1000s of services)
 - Multi-cluster and multi-cloud deployments
@@ -895,18 +909,21 @@ Linkerd's root CA (trust anchor) rotation required manual process and rolling re
 ## When to Bring in Expertise
 
 **You can probably handle this yourself if:**
+
 - You have <100 services and simple service-to-service communication
 - Team has strong Kubernetes expertise
 - You're using standard patterns (Istio on GKE, Linkerd on standard Kubernetes)
 - No compliance requirements around PKI/CA
 
 **Consider getting help if:**
+
 - You have 500+ services or complex multi-cluster setup
 - Need to integrate with existing enterprise PKI/CA
 - Have compliance requirements (FIPS 140-2, specific CA requirements)
 - Team is new to service mesh concepts
 
 **Definitely call us if:**
+
 - You have 1,000+ services across multiple clusters/clouds
 - Tried implementing service mesh before and it failed
 - Need custom CA integration or specialized security requirements
@@ -929,6 +946,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 ### Istio Documentation and Specifications
 
 **Istio Security Architecture**
+
 - Istio Documentation. "Security."
   - [Istio - Concepts](https://istio.io/latest/docs/concepts/security/)
 - Identity and certificate management with istiod
@@ -936,6 +954,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Authorization policy framework
 
 **Istio Certificate Management**
+
 - Istio Documentation. "Certificate Management."
   - [Istio - Tasks](https://istio.io/latest/docs/tasks/security/cert-management/)
 - Built-in CA (Citadel/istiod)
@@ -943,6 +962,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Certificate rotation
 
 **Istio mTLS Configuration**
+
 - Istio Documentation. "Mutual TLS Migration."
   - [Istio - Tasks](https://istio.io/latest/docs/tasks/security/authentication/mtls-migration/)
 - Permissive vs strict mode
@@ -950,6 +970,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Troubleshooting mTLS
 
 **Istio Multi-Cluster**
+
 - Istio Documentation. "Multi-cluster Installation."
   - [Istio - Setup](https://istio.io/latest/docs/setup/install/multicluster/)
 - Cross-cluster trust
@@ -959,6 +980,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 ### Linkerd Documentation
 
 **Linkerd Identity and Certificates**
+
 - Linkerd Documentation. "Identity and mTLS."
   - [Linkerd - Automatic Mtls](https://linkerd.io/2/features/automatic-mtls/)
 - Trust anchor and identity issuer
@@ -966,6 +988,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Per-route policy
 
 **Linkerd Certificate Management**
+
 - Linkerd Documentation. "Rotating your identity certificates."
   - [Linkerd - Rotating Identity Certificates](https://linkerd.io/2/tasks/rotating-identity-certificates/)
 - Manual rotation procedure
@@ -973,6 +996,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Best practices
 
 **Linkerd Policy**
+
 - Linkerd Documentation. "Authorization Policy."
   - [Linkerd - Server Policy](https://linkerd.io/2/features/server-policy/)
 - Server and authorization policy
@@ -980,6 +1004,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Default deny semantics
 
 **Linkerd Multi-Cluster**
+
 - Linkerd Documentation. "Multi-cluster communication."
   - [Linkerd - Multicluster](https://linkerd.io/2/features/multicluster/)
 - Service mirroring
@@ -989,6 +1014,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 ### Consul Connect Documentation
 
 **Consul Connect Architecture**
+
 - HashiCorp. "Connect - Service Mesh."
   - [Consul - Connect](https://www.consul.io/docs/connect)
 - Built-in CA and Vault integration
@@ -996,6 +1022,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Intentions for authorization
 
 **Consul CA Configuration**
+
 - HashiCorp. "Connect Certificate Management."
   - [Consul - Connect](https://www.consul.io/docs/connect/ca)
 - Built-in CA provider
@@ -1004,6 +1031,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Certificate rotation
 
 **Consul Service Mesh on Kubernetes**
+
 - HashiCorp. "Consul on Kubernetes."
   - [Consul - K8S](https://www.consul.io/docs/k8s)
 - Kubernetes integration
@@ -1011,6 +1039,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Service mesh gateway
 
 **Consul Intentions**
+
 - HashiCorp. "Intentions."
   - [Consul - Intentions](https://www.consul.io/docs/connect/intentions)
 - Service-to-service authorization
@@ -1020,6 +1049,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 ### Envoy Proxy
 
 **Envoy Secret Discovery Service (SDS)**
+
 - Envoy Documentation. "Secret Discovery Service (SDS)."
   - [Envoyproxy - Latest](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret)
 - Dynamic certificate delivery
@@ -1027,6 +1057,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Integration with certificate providers
 
 **Envoy TLS Configuration**
+
 - Envoy Documentation. "TLS."
   - [Envoyproxy - Latest](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ssl)
 - Client and server TLS
@@ -1034,6 +1065,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - ALPN and SNI
 
 **Envoy External Authorization**
+
 - Envoy Documentation. "External Authorization."
   - [Envoyproxy - Latest](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ext_authz_filter)
 - Integration with OPA
@@ -1043,6 +1075,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 ### SPIFFE/SPIRE Integration
 
 **SPIRE Integration with Istio**
+
 - SPIFFE. "Using SPIRE with Istio."
   - [Spiffe - Microservices](https://spiffe.io/docs/latest/microservices/istio/)
 - Replace istiod CA with SPIRE
@@ -1050,6 +1083,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Federation across clusters
 
 **SPIRE Integration with Envoy**
+
 - SPIFFE. "Using SPIRE with Envoy."
   - [Spiffe - Microservices](https://spiffe.io/docs/latest/microservices/envoy/)
 - SDS integration
@@ -1057,6 +1091,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Configuration examples
 
 **Linkerd SPIRE Integration (Experimental)**
+
 - Linkerd Community. "SPIRE Integration."
 - Alternative identity provider
 - Enhanced attestation
@@ -1064,6 +1099,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 ### Service Mesh Interface (SMI)
 
 **SMI Specification**
+
 - Service Mesh Interface. "SMI Spec."
   - [Smi-spec](https://smi-spec.io/)
 - Traffic policy (TrafficTarget)
@@ -1072,6 +1108,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Mesh-agnostic APIs
 
 **SMI Adoption**
+
 - Various service meshes implementing SMI
 - Portability across meshes
 - Common abstractions
@@ -1079,6 +1116,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 ### Certificate Automation
 
 **cert-manager with Istio**
+
 - cert-manager Documentation. "Securing Istio Service Mesh."
   - [Cert-manager - Istio Csr](https://cert-manager.io/docs/tutorials/istio-csr/)
 - istio-csr integration
@@ -1086,6 +1124,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Automated certificate lifecycle
 
 **cert-manager with Linkerd**
+
 - cert-manager Documentation. "Securing Linkerd with cert-manager."
   - [Cert-manager - Securing Linkerd With Cert Manager](https://cert-manager.io/docs/tutorials/securing-linkerd-with-cert-manager/)
 - Trust anchor management
@@ -1095,6 +1134,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 ### Performance and Scalability
 
 **Envoy Performance**
+
 - Envoy Blog. "Performance and scalability."
   - [Envoyproxy](https://blog.envoyproxy.io/)
 - TLS handshake performance
@@ -1102,6 +1142,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Resource utilization
 
 **Istio Performance and Scalability**
+
 - Istio Documentation. "Performance and Scalability."
   - [Istio - Ops](https://istio.io/latest/docs/ops/deployment/performance-and-scalability/)
 - Control plane scaling
@@ -1109,6 +1150,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Certificate rotation impact
 
 **Linkerd Benchmarks**
+
 - Linkerd Documentation. "Benchmarks."
   - [Linkerd - Architecture](https://linkerd.io/2/reference/architecture/)
 - Resource consumption
@@ -1118,6 +1160,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 ### Troubleshooting and Debugging
 
 **Istio Debugging**
+
 - Istio Documentation. "Debugging Envoy and Istiod."
   - [Istio - Ops](https://istio.io/latest/docs/ops/diagnostic-tools/)
 - istioctl analyze
@@ -1125,6 +1168,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Certificate validation issues
 
 **Linkerd Diagnostics**
+
 - Linkerd Documentation. "Debugging mTLS."
   - [Linkerd - Debugging Mtls](https://linkerd.io/2/tasks/debugging-mtls/)
 - linkerd check
@@ -1132,6 +1176,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Certificate inspection
 
 **Consul Connect Troubleshooting**
+
 - HashiCorp. "Troubleshoot Consul Connect."
   - [Consul - Troubleshooting](https://www.consul.io/docs/connect/troubleshooting)
 - Proxy logs
@@ -1141,6 +1186,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 ### Standards and Protocols
 
 **mTLS Standards**
+
 - RFC 8446. "The Transport Layer Security (TLS) Protocol Version 1.3." August 2018.
   - [Ietf - Rfc8446](https://tools.ietf.org/html/rfc8446)
 - Modern TLS protocol
@@ -1148,6 +1194,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Performance improvements
 
 **X.509 Certificates**
+
 - RFC 5280. "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile." May 2008.
   - [Ietf - Rfc5280](https://tools.ietf.org/html/rfc5280)
 - Certificate format and validation
@@ -1155,6 +1202,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Name constraints
 
 **gRPC Authentication**
+
 - gRPC Documentation. "Authentication."
   - [Grpc - Auth](https://grpc.io/docs/guides/auth/)
 - mTLS with gRPC
@@ -1164,6 +1212,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 ### Kubernetes Integration
 
 **Kubernetes Network Policies**
+
 - Kubernetes Documentation. "Network Policies."
   - [Kubernetes - Services Networking](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
 - Complement to service mesh
@@ -1171,6 +1220,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Egress and ingress rules
 
 **Kubernetes Pod Security**
+
 - Kubernetes Documentation. "Pod Security Standards."
   - [Kubernetes - Security](https://kubernetes.io/docs/concepts/security/pod-security-standards/)
 - Sidecar injection requirements
@@ -1180,6 +1230,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 ### Observability
 
 **Prometheus for Service Mesh**
+
 - Prometheus Documentation. "Monitoring with Prometheus."
   - [Prometheus - Overview](https://prometheus.io/docs/introduction/overview/)
 - Certificate expiry metrics
@@ -1187,6 +1238,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Connection success rates
 
 **Grafana Dashboards**
+
 - Grafana. "Service Mesh Dashboards."
   - [Grafana - Dashboards](https://grafana.com/grafana/dashboards/)
 - Pre-built Istio dashboards
@@ -1194,6 +1246,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Custom metric visualization
 
 **Jaeger Tracing**
+
 - Jaeger Documentation.
   - [Jaegertracing](https://www.jaegertracing.io/docs/)
 - Distributed tracing
@@ -1203,18 +1256,21 @@ The key insight: in service mesh environments, certificates are infrastructure m
 ### Books and Comprehensive Guides
 
 **"Istio: Up and Running" (O'Reilly)**
+
 - Posta, L., Maloku, R., Klein, E. "Istio: Up and Running." O'Reilly Media, 2019.
 - Comprehensive Istio guide
 - Security and certificate management
 - Production deployment patterns
 
 **"Service Mesh Patterns" (Manning)**
+
 - Calcote, L., Butcher, J. "Service Mesh Patterns." Manning Publications, 2021.
 - Design patterns for service meshes
 - Certificate management strategies
 - Multi-tenancy patterns
 
 **"Linkerd: Up and Running" (O'Reilly)**
+
 - Hightower, K., et al. "Linkerd: Up and Running." (In progress)
 - Linkerd architecture and deployment
 - mTLS configuration
@@ -1223,6 +1279,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 ### Industry Reports and Whitepapers
 
 **CNCF Service Mesh Landscape**
+
 - Cloud Native Computing Foundation. "CNCF Service Mesh Landscape."
   - [Cncf - Card Mode](https://landscape.cncf.io/card-mode?category=service-mesh)
 - Service mesh project comparison
@@ -1230,6 +1287,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - Adoption trends
 
 **Service Mesh Comparison**
+
 - Various. "Service Mesh Comparison."
   - Community-driven comparisons of features
   - Performance benchmarks
@@ -1238,6 +1296,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 ### Security Best Practices
 
 **NIST SP 800-204 - Security Strategies for Microservices**
+
 - NIST. "Security Strategies for Microservices-based Application Systems." NIST SP 800-204, August 2019.
   - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-204/final)
 - Authentication and authorization
@@ -1245,6 +1304,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 - API gateway patterns
 
 **OWASP Microservices Security**
+
 - OWASP. "Microservices Security Cheat Sheet."
   - [Owasp - Microservices Security Cheat Sheet.Html](https://cheatsheetseries.owasp.org/cheatsheets/Microservices_Security_Cheat_Sheet.html)
 - Authentication patterns
@@ -1254,12 +1314,14 @@ The key insight: in service mesh environments, certificates are infrastructure m
 ### Research Papers
 
 **"Experiences with TLS in Mission-Critical Systems"**
+
 - Chown, T. "Experiences with TLS in Mission-Critical Systems." USENIX LISA, 2017.
 - Real-world TLS deployment challenges
 - Performance considerations
 - Operational lessons
 
 **"The Security of TLS 1.3"**
+
 - Dowling, B., et al. "A Cryptographic Analysis of the TLS 1.3 Handshake Protocol." Journal of Cryptology, 2021.
 - TLS 1.3 security analysis
 - Formal verification

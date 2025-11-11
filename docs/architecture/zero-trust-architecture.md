@@ -26,7 +26,7 @@ Zero-trust architecture represents a fundamental shift from perimeter-based secu
 ```
                     Firewall
          Untrusted  │  Trusted
-    ─────────────────┼─────────────────
+    ────────────────┼─────────────────
          Internet   │  Internal Network
                     │  
     [Attackers]     │  [Users & Services]
@@ -1110,12 +1110,14 @@ Vortex implemented zero-trust architecture using Istio service mesh. Challenges:
 **Problem 1: mTLS everywhere was too aggressive initially**
 
 We enabled strict mTLS for all services on day one. Result:
+
 - Services that depended on external APIs (third-party payment processors, shipping APIs) broke
 - Health check endpoints failed (load balancers expected HTTP, got mTLS rejection)
 - Debugging tools couldn't inspect traffic (everything encrypted)
 - Developer productivity tanked (local development required mTLS setup)
 
 **What we did:** Implemented permissive mode rollout:
+
 - Phase 1: Permissive (allow both mTLS and plaintext)
 - Phase 2: Gradual strict enforcement per namespace
 - Phase 3: Exceptions documented for external integrations
@@ -1124,6 +1126,7 @@ We enabled strict mTLS for all services on day one. Result:
 **Problem 2: Authorization policies were too coarse**
 
 Initial implementation: "service A can talk to service B" binary authorization. But reality was more complex:
+
 - Service A's read-only endpoints should be accessible to everyone
 - Service A's write endpoints should require specific permissions
 - Service A's admin endpoints should require elevated privileges
@@ -1131,12 +1134,14 @@ Initial implementation: "service A can talk to service B" binary authorization. 
 Binary authorization couldn't express these nuances.
 
 **What we did:** Implemented attribute-based access control (ABAC):
+
 - Authorization decisions based on certificate attributes + HTTP method + URL path
 - Service identity + request context = authorization decision
 - Policy-as-code with Open Policy Agent
 - Gradual migration from coarse to fine-grained policies
 
 **Warning signs you're heading for same mistakes:**
+
 - Enabling strict mTLS everywhere without testing integrations
 - Not planning for developer experience and debugging
 - Implementing coarse authorization that will need to be refined later
@@ -1147,12 +1152,14 @@ Binary authorization couldn't express these nuances.
 **Cost of getting this wrong:** Traditional perimeter-based security enables lateral movement - once attackers breach perimeter, they move freely inside network. Average breach costs $4.45M (IBM 2023), with average detection time 277 days. Zero-trust without proper PKI foundation creates operational chaos - certificate outages, manual operations that don't scale, and incomplete implementation that provides false security.
 
 **Value of getting this right:** Zero-trust architecture with certificate-based identity reduces breach impact by 60-80% by limiting lateral movement. Every connection requires cryptographic proof of identity, so compromised credentials or services can't access other resources. Organizations with mature zero-trust report:
+
 - 70% reduction in time to detect breaches (comprehensive logging)
 - 80% reduction in lateral movement (microsegmentation + mTLS)
 - 50% reduction in compliance audit costs (automated evidence collection)
 - Improved security team productivity (policy enforcement automated)
 
 **Strategic capabilities:** Zero-trust isn't just about breach prevention:
+
 - **Regulatory compliance:** Meets NIST 800-207, Executive Order 14028, FedRAMP requirements
 - **Cloud migration enabler:** Security model works across on-premises, cloud, hybrid
 - **M&A integration:** Unified security across acquired companies without VPN hell
@@ -1166,12 +1173,14 @@ Binary authorization couldn't express these nuances.
 ## When to Bring in Expertise
 
 **You can probably handle this yourself if:**
+
 - Organization has mature PKI and identity management capabilities
 - Small scale (<50 services) and homogeneous environment
 - Strong internal expertise in certificates, service mesh, and zero-trust principles
 - 24+ month timeline for implementation (learning as you go)
 
 **Consider getting help if:**
+
 - Regulatory mandate requires zero-trust with specific timeline
 - Large scale (500+ services) or complex environment (legacy + modern)
 - Limited internal PKI expertise
@@ -1179,6 +1188,7 @@ Binary authorization couldn't express these nuances.
 - Need to integrate zero-trust with existing security tools
 
 **Definitely call us if:**
+
 - Enterprise scale (1,000+ services) across multiple clouds/datacenters
 - Financial services or government with strict compliance requirements
 - Previous zero-trust attempts failed
@@ -1196,6 +1206,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 ### Zero-Trust Frameworks and Standards
 
 **NIST SP 800-207 - Zero Trust Architecture**
+
 - Rose, S., et al. "Zero Trust Architecture." NIST Special Publication 800-207, August 2020.
   - [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-207/final)
 - Foundational zero-trust architecture document
@@ -1203,6 +1214,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Deployment models and use cases
 
 **CISA Zero Trust Maturity Model**
+
 - Cybersecurity & Infrastructure Security Agency. "Zero Trust Maturity Model." September 2021.
   - [Cisa - Zero Trust Maturity Model](https://www.cisa.gov/zero-trust-maturity-model)
 - Five pillars: Identity, Devices, Networks, Applications/Workloads, Data
@@ -1210,12 +1222,14 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Federal zero-trust strategy implementation
 
 **DoD Zero Trust Reference Architecture**
+
 - Department of Defense. "DoD Zero Trust Reference Architecture." February 2021.
   - [Defense - Documents](https://dodcio.defense.gov/Portals/0/Documents/Library/DoD-ZTReferenceArchitecture.pdf)
 - Defense-specific zero-trust requirements
 - Department of Defense implementation approach
 
 **BeyondCorp - Google's Zero Trust Approach**
+
 - Ward, R., Beyer, B. "BeyondCorp: A New Approach to Enterprise Security." ;login: December 2014.
   - [Research - Pub43231](https://research.google/pubs/pub43231/)
 - Pioneering zero-trust implementation
@@ -1225,6 +1239,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 ### SPIFFE/SPIRE Standards and Documentation
 
 **SPIFFE Specification**
+
 - SPIFFE Authors. "Secure Production Identity Framework for Everyone (SPIFFE)."
   - [Github - Spiffe](https://github.com/spiffe/spiffe/tree/main/standards)
 - SPIFFE ID format and structure
@@ -1232,6 +1247,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Trust domain federation
 
 **SPIFFE Workload API**
+
 - SPIFFE Authors. "SPIFFE Workload API Specification."
   - [Github - Spiffe](https://github.com/spiffe/spiffe/blob/main/standards/SPIFFE_Workload_API.md)
 - API for workload identity retrieval
@@ -1239,6 +1255,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Trust bundle updates
 
 **SPIRE Documentation**
+
 - SPIRE Project. "SPIRE - The SPIFFE Runtime Environment."
   - [Spiffe - Spire About](https://spiffe.io/docs/latest/spire-about/)
 - Architecture and components
@@ -1246,6 +1263,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Plugin ecosystem
 
 **SPIFFE Federation**
+
 - SPIFFE Authors. "SPIFFE Federation Specification."
   - [Github - Spiffe](https://github.com/spiffe/spiffe/blob/main/standards/SPIFFE_Federation.md)
 - Cross-domain trust establishment
@@ -1254,6 +1272,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 ### Workload Identity and Attestation
 
 **Kubernetes Service Account Token Volume Projection**
+
 - Kubernetes Documentation. "Service Account Token Volume Projection."
   - [Kubernetes - Configure Pod Container](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#service-account-token-volume-projection)
 - Bound service account tokens
@@ -1261,6 +1280,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - SPIRE Kubernetes attestation
 
 **AWS IAM Roles for Service Accounts (IRSA)**
+
 - AWS Documentation. "IAM Roles for Service Accounts."
   - [Amazon - Latest](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html)
 - Workload identity in AWS EKS
@@ -1268,6 +1288,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Fine-grained IAM permissions
 
 **GCP Workload Identity**
+
 - Google Cloud Documentation. "Workload Identity."
   - [Google - Concepts](https://cloud.google.com/kubernetes-engine/docs/concepts/workload-identity)
 - GKE workload identity federation
@@ -1275,6 +1296,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Identity binding
 
 **Azure AD Workload Identity**
+
 - Microsoft Documentation. "Azure AD Workload Identity."
   - [Github - Azure Workload Identity](https://azure.github.io/azure-workload-identity/)
 - Workload identity for AKS
@@ -1284,6 +1306,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 ### Mutual TLS and Service Mesh
 
 **Istio Security Architecture**
+
 - Istio Documentation. "Security."
   - [Istio - Concepts](https://istio.io/latest/docs/concepts/security/)
 - Certificate management with istiod
@@ -1291,6 +1314,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Authorization policies
 
 **Linkerd Identity and mTLS**
+
 - Linkerd Documentation. "Automatic mTLS."
   - [Linkerd - Automatic Mtls](https://linkerd.io/2/features/automatic-mtls/)
 - Identity trust anchor
@@ -1298,6 +1322,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Policy enforcement
 
 **Envoy TLS Documentation**
+
 - Envoy Proxy Documentation. "TLS."
   - [Envoyproxy - Latest](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ssl)
 - Certificate validation
@@ -1307,6 +1332,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 ### Policy Enforcement
 
 **Open Policy Agent (OPA)**
+
 - Open Policy Agent Documentation.
   - [Openpolicyagent - Latest](https://www.openpolicyagent.org/docs/latest/)
 - Policy as code with Rego
@@ -1314,6 +1340,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Service authorization
 
 **Rego Policy Language**
+
 - OPA. "Policy Language - Rego."
   - [Openpolicyagent - Policy Language](https://www.openpolicyagent.org/docs/latest/policy-language/)
 - Declarative policy syntax
@@ -1321,6 +1348,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Testing and debugging
 
 **OPA Envoy Plugin**
+
 - OPA. "Envoy Authorization."
   - [Openpolicyagent - Envoy Introduction](https://www.openpolicyagent.org/docs/latest/envoy-introduction/)
 - External authorization with Envoy
@@ -1330,6 +1358,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 ### Device Identity and Trust
 
 **Trusted Platform Module (TPM)**
+
 - Trusted Computing Group. "TPM 2.0 Library Specification."
   - [Trustedcomputinggroup - Tpm Library Specification](https://trustedcomputinggroup.org/resource/tpm-library-specification/)
 - Hardware root of trust
@@ -1337,12 +1366,14 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Key storage and protection
 
 **Device Attestation**
+
 - Sailer, R., et al. "Design and Implementation of a TCG-based Integrity Measurement Architecture." USENIX Security 2004.
 - Remote attestation protocols
 - Integrity measurement
 - Trust establishment
 
 **FIDO Device Attestation**
+
 - FIDO Alliance. "FIDO2: Web Authentication (WebAuthn)."
   - [Fidoalliance - Fido2](https://fidoalliance.org/fido2/)
 - Device authentication
@@ -1352,6 +1383,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 ### Certificate Lifecycle Automation
 
 **cert-manager Documentation**
+
 - cert-manager. "cert-manager Documentation."
   - [Cert-manager](https://cert-manager.io/docs/)
 - Kubernetes certificate automation
@@ -1359,6 +1391,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Certificate renewal
 
 **ACME Protocol**
+
 - Barnes, R., et al. "Automatic Certificate Management Environment (ACME)." RFC 8555, March 2019.
   - [Ietf - Rfc8555](https://tools.ietf.org/html/rfc8555)
 - Automated certificate issuance
@@ -1366,6 +1399,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Certificate lifecycle
 
 **Let's Encrypt - Certificate Automation**
+
 - Let's Encrypt. "How It Works."
   - [Letsencrypt - How It Works](https://letsencrypt.org/how-it-works/)
 - Free, automated certificate authority
@@ -1375,6 +1409,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 ### Observability and Monitoring
 
 **Prometheus**
+
 - Prometheus Documentation. "Monitoring with Prometheus."
   - [Prometheus - Overview](https://prometheus.io/docs/introduction/overview/)
 - Metrics collection
@@ -1382,6 +1417,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Service mesh metrics
 
 **Jaeger Distributed Tracing**
+
 - Jaeger Documentation.
   - [Jaegertracing](https://www.jaegertracing.io/docs/)
 - Distributed tracing
@@ -1389,6 +1425,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Performance analysis
 
 **Certificate Transparency for Monitoring**
+
 - Laurie, B., Langley, A., Kasper, E. "Certificate Transparency." RFC 6962, June 2013.
   - [Ietf - Rfc6962](https://tools.ietf.org/html/rfc6962)
 - Public certificate logs
@@ -1398,6 +1435,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 ### API Gateway and Zero-Trust
 
 **Kong Gateway with mTLS**
+
 - Kong Documentation. "Mutual TLS Authentication."
   - [Konghq - Latest](https://docs.konghq.com/gateway/latest/plan-and-deploy/security/mutual-tls/)
 - API gateway mTLS enforcement
@@ -1405,6 +1443,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Plugin ecosystem
 
 **AWS API Gateway Mutual TLS**
+
 - AWS Documentation. "Configuring mutual TLS authentication for an HTTP API."
   - [Amazon - Latest](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-mutual-tls.html)
 - Regional API with mTLS
@@ -1412,6 +1451,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Domain name configuration
 
 **Google Cloud Endpoints**
+
 - Google Cloud Documentation. "Authenticating users."
   - [Google - Openapi](https://cloud.google.com/endpoints/docs/openapi/authenticating-users)
 - API authentication options
@@ -1421,6 +1461,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 ### Identity-Aware Proxy
 
 **BeyondCorp Enterprise (Google)**
+
 - Google Cloud. "BeyondCorp Enterprise."
   - [Google - Beyondcorp Enterprise](https://cloud.google.com/beyondcorp-enterprise)
 - Context-aware access
@@ -1428,6 +1469,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Zero-trust access proxy
 
 **Azure AD Application Proxy**
+
 - Microsoft Documentation. "Azure AD Application Proxy."
   - [Microsoft - Azure](https://docs.microsoft.com/en-us/azure/active-directory/app-proxy/)
 - Remote access without VPN
@@ -1435,6 +1477,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Conditional access integration
 
 **Cloudflare Access**
+
 - Cloudflare Documentation. "Cloudflare Access."
   - [Cloudflare - Applications](https://developers.cloudflare.com/cloudflare-one/applications/)
 - Identity-aware proxy
@@ -1444,6 +1487,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 ### Research and Whitepapers
 
 **"BeyondProd: A New Approach to Cloud-Native Security" (Google)**
+
 - Google. "BeyondProd: A New Approach to Cloud-Native Security." 2019.
   - [Google - Beyondprod](https://cloud.google.com/security/beyondprod)
 - Zero-trust for cloud-native workloads
@@ -1451,12 +1495,14 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Automated policy enforcement
 
 **"Zero Trust Networks" (O'Reilly)**
+
 - Gilman, E., Barth, D. "Zero Trust Networks: Building Secure Systems in Untrusted Networks." O'Reilly Media, 2017.
 - Comprehensive zero-trust guide
 - Implementation patterns
 - Real-world case studies
 
 **NIST NCCoE Zero Trust Architecture Project**
+
 - NIST National Cybersecurity Center of Excellence. "Implementing a Zero Trust Architecture."
   - [Nist - Building Blocks](https://www.nccoe.nist.gov/projects/building-blocks/zero-trust-architecture)
 - Practical implementation guidance
@@ -1466,12 +1512,14 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 ### Standards and Compliance
 
 **PCI DSS and Zero Trust**
+
 - PCI Security Standards Council. "Information Supplement: Multi-Factor Authentication." 2017.
 - Strong authentication requirements
 - Network segmentation alternatives
 - Compensating controls
 
 **FedRAMP and Zero Trust**
+
 - FedRAMP. "Emerging Technology Prioritization Framework."
   - [Fedramp - Resources](https://www.fedramp.gov/assets/resources/documents/)
 - Federal zero-trust adoption
@@ -1479,6 +1527,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Authorization considerations
 
 **ISO/IEC 27001 and Zero Trust**
+
 - ISO/IEC 27001:2022. "Information security, cybersecurity and privacy protection."
 - Access control requirements
 - Cryptographic controls
@@ -1487,12 +1536,14 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 ### Academic Research
 
 **"Towards a Formal Model of Zero Trust Architecture"**
+
 - Buck, C., et al. "Towards a Formal Model of Zero Trust Architecture." IEEE Security & Privacy Workshop, 2020.
 - Formal verification approaches
 - Security property modeling
 - Architecture validation
 
 **"The Evolution of Trust Management"**
+
 - Grandison, T., Sloman, M. "A Survey of Trust in Internet Applications." IEEE Communications Surveys, 2000.
 - Trust models evolution
 - Distributed trust systems
@@ -1501,6 +1552,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 ### Kubernetes-Specific Resources
 
 **Kubernetes Network Policies**
+
 - Kubernetes Documentation. "Network Policies."
   - [Kubernetes - Services Networking](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
 - Pod-to-pod communication control
@@ -1508,6 +1560,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 - Ingress/egress rules
 
 **Kubernetes Pod Security Standards**
+
 - Kubernetes Documentation. "Pod Security Standards."
   - [Kubernetes - Security](https://kubernetes.io/docs/concepts/security/pod-security-standards/)
 - Privileged, Baseline, Restricted policies

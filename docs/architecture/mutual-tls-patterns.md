@@ -364,31 +364,31 @@ Some partners implemented certificate pinning (trusting specific certificates in
 
 1. **Can client and server establish TCP connection?**
    - No → Network connectivity problem, not mTLS
-   - Yes → Continue
+    - Yes → Continue
 
 2. **Does server request client certificate?**
-   - No → Server not configured for mTLS (`ssl.CERT_REQUIRED` not set)
-   - Yes → Continue
+    - No → Server not configured for mTLS (`ssl.CERT_REQUIRED` not set)
+    - Yes → Continue
 
 3. **Does client send certificate?**
-   - No → Client certificate not configured or not found
-   - Yes → Continue
+    - No → Client certificate not configured or not found
+    - Yes → Continue
 
 4. **Does server trust client certificate?**
-   - No → Client certificate not signed by trusted CA
-   - Yes → Continue
+    - No → Client certificate not signed by trusted CA
+    - Yes → Continue
 
 5. **Is client certificate expired?**
-   - Yes → Certificate renewal needed
-   - No → Continue
+    - Yes → Certificate renewal needed
+    - No → Continue
 
 6. **Is client certificate revoked?**
-   - Yes → Certificate reissue needed
-   - No → Continue
+    - Yes → Certificate reissue needed
+    - No → Continue
 
 7. **Does certificate Common Name match expected identity?**
-   - No → Wrong certificate or hostname mismatch
-   - Yes → Connection should succeed
+    - No → Wrong certificate or hostname mismatch
+    - Yes → Connection should succeed
 
 **Common issues and solutions:**
 
