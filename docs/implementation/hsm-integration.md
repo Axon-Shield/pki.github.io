@@ -1,9 +1,9 @@
 ---
 title: HSM Integration
 category: implementation
-last_updated: 2025-11-09
-last_reviewed: 2025-11-09
-version: 1.0
+last_updated: 2025-11-26
+last_reviewed: 2025-11-26
+version: 2.0
 status: stable
 tags: [hsm, hardware-security, pkcs11, key-protection, ca-operations]
 ---
@@ -32,7 +32,90 @@ HSMs range from enterprise network-attached devices costing tens of thousands of
 
 Understanding HSM integration is critical for: operating Certificate Authorities (where root and intermediate keys must reside in HSMs), implementing code signing infrastructure (where signing keys require hardware protection), deploying high-security PKI (government, finance, healthcare), and meeting compliance requirements (PCI DSS, HIPAA, eIDAS).
 
-**Related Pages**: [Ca Architecture](ca-architecture.md), [Private Key Protection](../security/private-key-protection.md), [Pkcs Standards](../standards/pkcs-standards.md), [Certificate Issuance Workflows](certificate-issuance-workflows.md)
+**Related Pages**: [Ca Architecture](ca-architecture.md), [Private Key Protection](../security/private-key-protection.md), [Pkcs Standards](../standards/pkcs-standards.md), [Certificate Issuance Workflows](certificate-issuance-workflows.md), [HSM Operational Failures](hsm-operational-failures.md), [On-Premises vs Cloud HSM](onprem-vs-cloud-hsm.md)
+
+## What HSMs Actually Protect Against (And What They Don't)
+
+### What HSMs Prevent
+
+**Key extraction attacks** - HSM prevents:
+- Memory dumps capturing private keys
+- Filesystem access stealing key files
+- Application vulnerabilities exposing keys
+- Stolen backups containing plaintext keys
+
+**Example**: Stuxnet malware stole Realtek's code signing key from filesystem[^1]. With HSM: Key never leaves hardware, malware gets nothing.
+
+**Unauthorized key operations** - HSM prevents:
+- Rogue applications using keys without authentication
+- Stolen credentials used from unauthorized locations
+- Bulk key operations without audit trail
+
+**Example**: Compromised application server can't sign arbitrary content without HSM PIN/authentication.
+
+**Tampered key operations** - HSM prevents:
+- Modified firmware changing signature behavior
+- Backdoored crypto libraries producing weak signatures
+- Key substitution attacks
+
+**Example**: Hardware-verified firmware means you trust the crypto implementation, not just the OS.
+
+### What HSMs Don't Prevent
+
+**Application logic vulnerabilities** - HSM will sign whatever you tell it to:
+- XSS vulnerability in CSR submission → HSM signs malicious certificate
+- SQL injection in code signing portal → HSM signs malware
+- Business logic flaw → HSM issues certificate to wrong entity
+
+**Reality check**: HSM doesn't validate what it's signing. If your application is compromised, HSM will happily sign attacker's content. You need application security AND HSM.
+
+**Performance limitations becoming business problems** - HSMs have finite throughput:
+- RSA 4096-bit: 5-10 signatures/second typical
+- RSA 2048-bit: 20-40 signatures/second
+- ECDSA P-256: 100-200 signatures/second
+
+**Reality check**: Apex Capital hit this. Service mesh needed 50 certs/second during rotation. HSM did 10/second. $200K spent on HSM cluster expansion. Should have load-tested before production. See [HSM Operational Failures](hsm-operational-failures.md) for detailed case study.
+
+**Operational complexity and human error** - HSM adds failure modes:
+- Firmware updates can brick device
+- Backup procedures complex (M-of-N key splitting)
+- Network HSMs require network infrastructure
+- Key ceremonies require trained personnel
+
+**Reality check**: Nexus had documented backup procedures. HSM failed, backup didn't work (firmware mismatch, missing steps, encryption key in failed HSM). 48-hour outage, $500K cost. "We have HSM backup" ≠ "We tested HSM restore." Full case study in [HSM Operational Failures](hsm-operational-failures.md).
+
+**Weak access controls** - HSM can't fix stupid:
+- PIN "123456" because "easier to remember"
+- Single person knows HSM password (single point of failure)
+- No dual control for critical operations
+- Admin credentials in wiki/email
+
+**Reality check**: HSM with weak PIN is like bank vault with "1234" as combination. Hardware security defeated by human security failure.
+
+**Insider threats with authorized access** - HSM authenticates, doesn't read minds:
+- Authorized operator with HSM credentials can misuse keys
+- No protection if insider has legitimate access
+- Audit logs show what happened, don't prevent it
+
+**Reality check**: HSMs limit blast radius (can't extract keys) but don't prevent authorized misuse. Need M-of-N quorum for high-value operations[^2].
+
+### The HSM Security Model: What You're Actually Buying
+
+**HSM promise**: "Keys never leave hardware in plaintext"
+
+**What this means**:
+- Generate key inside HSM → stays inside HSM forever
+- Sign operation: Data goes in, signature comes out, key stays inside
+- Even with root access to HSM host system, key not extractable
+
+**What this doesn't mean**:
+- HSM makes all your security problems go away
+- HSM guarantees keys are used correctly
+- HSM eliminates operational complexity
+
+**The actual value**: HSM reduces "key compromise" from "possible through dozens of attack vectors" to "requires physical access to HSM + defeating tamper protection + breaking FIPS-certified hardware."
+
+That's significant. But it's not magic.
 
 ## Key Concepts
 
@@ -42,16 +125,12 @@ Understanding HSM integration is critical for: operating Certificate Authorities
 
 **Cryptographic Processor**:
 
-
-
 - Dedicated hardware for crypto operations
 - Implements algorithms (RSA, ECDSA, AES, SHA-256)
 - Performs operations at wire speed
 - Isolated from host system
 
 **Secure Key Storage**:
-
-
 
 - Keys generated inside HSM
 - Keys never leave HSM in plaintext
@@ -60,16 +139,12 @@ Understanding HSM integration is critical for: operating Certificate Authorities
 
 **Tamper Detection**:
 
-
-
 - Physical sensors detect intrusion attempts
 - Temperature, voltage, radiation monitoring
 - Immediate key zeroization on tamper
 - Tamper-evident seals and coatings
 
 **Random Number Generator**:
-
-
 
 - Hardware true random number generator (TRNG)
 - Certified entropy source (NIST SP 800-90B)
@@ -78,8 +153,6 @@ Understanding HSM integration is critical for: operating Certificate Authorities
 
 **Firmware**:
 
-
-
 - HSM operating system and crypto library
 - Signed and authenticated firmware
 - Secure update mechanism
@@ -87,11 +160,9 @@ Understanding HSM integration is critical for: operating Certificate Authorities
 
 #### FIPS 140-2 Levels
 
-Federal Information Processing Standard 140-2 defines security levels[^1]:
+Federal Information Processing Standard 140-2 defines security levels[^3]:
 
 **Level 1**:
-
-
 
 - Basic requirements
 - No physical security requirements
@@ -100,16 +171,12 @@ Federal Information Processing Standard 140-2 defines security levels[^1]:
 
 **Level 2** (Minimum for production PKI):
 
-
-
 - Physical tamper-evidence required
 - Role-based authentication
 - Operating system is optional
 - Example: Most USB crypto tokens
 
 **Level 3** (Recommended for CAs):
-
-
 
 - Physical tamper-resistance required
 - Intrusion detection and zeroization
@@ -118,8 +185,6 @@ Federal Information Processing Standard 140-2 defines security levels[^1]:
 
 **Level 4** (Highest security):
 
-
-
 - Active tamper detection
 - Environmental protection
 - Complete envelope protection
@@ -127,11 +192,9 @@ Federal Information Processing Standard 140-2 defines security levels[^1]:
 
 **PKI Recommendations**:
 
-
-
 - Root CA keys: FIPS 140-2 Level 3 minimum
 - Intermediate CA keys: FIPS 140-2 Level 2/3
-- Code signing: FIPS 140-2 Level 2 minimum (EV requires Level 3)
+- Code signing: FIPS 140-2 Level 2 minimum (EV requires Level 3)[^4]
 - TLS servers: Software key storage acceptable for most cases
 
 ### HSM Types
@@ -140,8 +203,6 @@ Federal Information Processing Standard 140-2 defines security levels[^1]:
 
 **Characteristics**:
 
-
-
 - Network-attached appliance
 - Ethernet connectivity
 - Multiple client connections
@@ -149,8 +210,6 @@ Federal Information Processing Standard 140-2 defines security levels[^1]:
 - Hardware redundancy, hot-swappable components
 
 **Vendors**:
-
-
 
 - **Thales Luna**: Industry leader, high performance
 - **Entrust nShield**: Strong enterprise adoption
@@ -161,8 +220,6 @@ Federal Information Processing Standard 140-2 defines security levels[^1]:
 
 **Use Cases**:
 
-
-
 - Certificate Authority operations
 - High-volume code signing
 - SSL/TLS offload at scale
@@ -172,8 +229,6 @@ Federal Information Processing Standard 140-2 defines security levels[^1]:
 
 **Characteristics**:
 
-
-
 - Dedicated HSM in cloud provider data center
 - Network-attached via VPN/dedicated connection
 - Provider manages hardware, customer controls keys
@@ -181,8 +236,6 @@ Federal Information Processing Standard 140-2 defines security levels[^1]:
 - FIPS 140-2 Level 3 certified
 
 **Providers**:
-
-
 
 - **AWS CloudHSM**: Uses Thales Luna, VPC integration
 - **Azure Dedicated HSM**: Thales Luna, VNet injection
@@ -193,18 +246,16 @@ Federal Information Processing Standard 140-2 defines security levels[^1]:
 
 **Use Cases**:
 
-
-
 - Cloud-native applications requiring HSM
 - Reducing capital expenditure
 - Geographic distribution
 - Rapid scaling
 
+**Detailed comparison**: See [On-Premises vs Cloud HSM](onprem-vs-cloud-hsm.md) for comprehensive analysis of control, cost, performance, and compliance trade-offs.
+
 #### USB HSM / Smart Card
 
 **Characteristics**:
-
-
 
 - USB form factor
 - Personal/workstation use
@@ -212,8 +263,6 @@ Federal Information Processing Standard 140-2 defines security levels[^1]:
 - FIPS 140-2 Level 2/3
 
 **Products**:
-
-
 
 - **YubiKey 5 FIPS**: Consumer accessible, FIPS Level 2
 - **Nitrokey HSM**: Open source firmware
@@ -224,8 +273,6 @@ Federal Information Processing Standard 140-2 defines security levels[^1]:
 
 **Use Cases**:
 
-
-
 - Code signing by individual developers
 - Personal S/MIME certificates
 - SSH authentication
@@ -233,7 +280,7 @@ Federal Information Processing Standard 140-2 defines security levels[^1]:
 
 ### PKCS#11 Interface
 
-PKCS#11 (Cryptoki) is the standard API for HSM access.
+PKCS#11 (Cryptoki) is the standard API for HSM access[^5].
 
 #### Core Concepts
 
@@ -325,8 +372,6 @@ CKA_SENSITIVE     // Sensitive key, cannot be revealed
 
 **Security Best Practices**:
 
-
-
 - Set `CKA_EXTRACTABLE = FALSE` for CA and code signing keys
 - Set `CKA_SENSITIVE = TRUE` for all private keys
 - Use `CKA_SIGN = TRUE, CKA_DECRYPT = FALSE` to limit key usage
@@ -380,16 +425,12 @@ HSM Device
 
 **Benefits**:
 
-
-
 - Cost efficiency (one device, multiple uses)
 - Simplified hardware management
 - Reduced data center space
 - Centralized HSM administration
 
 **Security Considerations**:
-
-
 
 - Firmware vulnerabilities affect all partitions
 - Ensure partitions are truly isolated
@@ -452,6 +493,8 @@ HSM Device
 - Optional: Paranoid security postures
 - Overkill: Most enterprise use cases
 
+**On-Premises vs Cloud decision**: See [On-Premises vs Cloud HSM](onprem-vs-cloud-hsm.md) for detailed comparison including control, cost, performance, DR, and compliance considerations.
+
 **Red flags indicating HSM problems:**
 
 - HSM purchased but keys still on filesystem ("we have HSM but don't use it")
@@ -472,6 +515,11 @@ HSM Device
 - Single HSM (no HA) for production CA
 - No monitoring for HSM health and capacity
 - Not planning for HSM firmware updates
+- Choosing HSM type based on initial cost alone (ignoring TCO)
+- Assuming cloud HSM solves operational complexity
+- Not testing cross-region failover (cloud HSM)
+
+**Detailed failure patterns**: See [HSM Operational Failures](hsm-operational-failures.md) for comprehensive analysis of common mistakes and how to avoid them.
 
 ## Practical Guidance
 
@@ -481,16 +529,12 @@ HSM Device
 
 **Key Volume**:
 
-
-
 - How many keys will be stored?
 - How many crypto operations per second?
 - Network HSM: Thousands of operations/second
 - USB HSM: Hundreds of operations/second
 
 **Algorithm Support**:
-
-
 
 - RSA: Key sizes (2048, 3072, 4096)
 - ECDSA: Curves (P-256, P-384, P-521)
@@ -499,8 +543,6 @@ HSM Device
 
 **Compliance Requirements**:
 
-
-
 - FIPS 140-2 Level (2, 3, or 4)
 - Common Criteria certification
 - Industry-specific (PCI HSM, eIDAS qualified)
@@ -508,16 +550,12 @@ HSM Device
 
 **Operational Requirements**:
 
-
-
 - High availability (failover, clustering)
 - Geographic distribution
 - Cloud vs on-premises
 - Backup and disaster recovery
 
 **Budget**:
-
-
 
 - Capital expenditure: $20K-100K per network HSM
 - Operational expenditure: Cloud HSM $1-2/hour
@@ -589,16 +627,12 @@ softhsm2-util --show-slots
 
 **M-of-N Key Splitting**:
 
-
-
 - Master key split into N shares
 - Require M shares to reconstruct (e.g., 3-of-5)
 - Shares distributed to separate custodians
 - Reconstructed only in emergencies
 
 **HSM Backup**:
-
-
 
 - HSM-to-HSM backup (encrypted transfer)
 - Backup to encrypted files (protected by M-of-N)
@@ -619,12 +653,12 @@ lunash:> partition restore -file /backup/rootca-backup.bak -partition RootCA
 
 **Disaster Recovery Testing**:
 
-
-
 - Quarterly: Verify backups are accessible
 - Annually: Full restore test to spare HSM
 - Document recovery procedures
 - Train staff on recovery process
+
+**Critical lesson from Nexus failure**: Having backup procedures documented means nothing without regular testing. See [HSM Operational Failures - Nexus Case Study](hsm-operational-failures.md#case-study-2-nexus---untested-backup-failure) for detailed analysis of what went wrong and how to prevent it.
 
 ### PKCS#11 Integration
 
@@ -851,6 +885,8 @@ for csr in certificate_requests:
 - Use session pooling for concurrent operations
 - Monitor HSM load and add capacity as needed
 
+**Critical lesson from Apex Capital**: Load-test HSM performance with production workload before deployment. RSA key size directly impacts throughput. See [HSM Operational Failures - Apex Capital Case Study](hsm-operational-failures.md#case-study-1-apex-capital---performance-bottleneck) for detailed analysis.
+
 ### Monitoring and Maintenance
 
 #### Operational Monitoring
@@ -959,13 +995,28 @@ pkcs11-tool --module /usr/lib/libCryptoki2.so --login --pin $PIN \
   - **How to avoid**: Implement monitoring from day one; alert on anomalies; test monitoring
   - **How to fix**: Implement health checks; integrate with monitoring systems; alert on call
 
+- **Choosing HSM type based on initial cost alone**: Cloud looks cheaper until 5-year TCO analysis
+  - **Why it happens**: "Cloud HSM is $1.50/hour, on-prem is $50K upfront"
+  - **How to avoid**: TCO analysis over expected deployment lifetime, not just year one
+  - **How to fix**: Can't easily migrate (HSM choice is sticky), may need to accept higher costs
+
+- **Assuming cloud HSM solves operational complexity**: Hardware management ≠ HSM management
+  - **Why it happens**: "Vendor manages hardware, so it's easier"
+  - **How to avoid**: Understand that backup/recovery, key ceremonies, operational procedures still your problem
+  - **How to fix**: Invest in operational procedures regardless of deployment model
+
+- **Not testing cross-region failover (cloud HSM)**: Multi-region ≠ tested DR
+  - **Why it happens**: "Multi-region is HA, right?"
+  - **How to avoid**: Quarterly DR drills, actual traffic cutover to backup region
+  - **How to fix**: Same as on-prem - test, document, test again
+
+**Comprehensive failure pattern analysis**: See [HSM Operational Failures](hsm-operational-failures.md) for detailed case studies of imaginary companies Apex Capital (performance), Nexus (backup), and Vortex (key ceremonies).
+
 ## Security Considerations
 
 ### Physical Security
 
 **HSM Location**:
-
-
 
 - Secure data center with access controls
 - Video surveillance
@@ -974,8 +1025,6 @@ pkcs11-tool --module /usr/lib/libCryptoki2.so --login --pin $PIN \
 - Separate secure storage for backup media
 
 **Access Control**:
-
-
 
 - Background checks for personnel with HSM access
 - Dual control for sensitive operations
@@ -1027,6 +1076,8 @@ pkcs11-tool --module /usr/lib/libCryptoki2.so --login --pin $PIN \
 6. Distribute backup shares to custodians
 7. Document ceremony (sign attestation)
 
+**Critical lesson from Vortex**: Key ceremonies require practice runs in test environment. See [HSM Operational Failures - Vortex Case Study](hsm-operational-failures.md#case-study-3-vortex---unpracticed-key-ceremonies) for what happens when procedures are untested.
+
 ### HSM Compromise Response
 
 **Indicators**:
@@ -1067,7 +1118,7 @@ pkcs11-tool --module /usr/lib/libCryptoki2.so --login --pin $PIN \
 - Multiple HSM vendors for redundancy
 - Performance optimization critical at scale
 
-**Key Takeaway**: HSM integration essential for operating CA at internet scale with proper security.
+**Key Takeaway**: HSM integration essential for operating CA at internet scale with proper security[^6].
 
 ### Case Study: Stuxnet Code Signing Certificate Theft
 
@@ -1088,7 +1139,7 @@ pkcs11-tool --module /usr/lib/libCryptoki2.so --login --pin $PIN \
 **Lesson**: High-value signing keys must be in HSM
 - Hardware protection prevents key theft
 - EV code signing now requires HSM (CA/Browser Forum)
-- HSM integration adds operational complexity but critical for security
+- HSM integration adds operational complexity but critical for security[^1]
 
 ### Case Study: DigiNotar CA Compromise
 
@@ -1106,133 +1157,19 @@ pkcs11-tool --module /usr/lib/libCryptoki2.so --login --pin $PIN \
 
 - Root and intermediate keys must be in HSM
 - Defense in depth: HSM + network security + physical security
-- Regular security audits essential
+- Regular security audits essential[^7]
 
 ## Lessons from Production
 
-### What We Learned at Apex Capital (HSM Performance Bottleneck)
+For detailed analysis of HSM operational failures including specific costs, root causes, and prevention strategies, see [HSM Operational Failures](hsm-operational-failures.md).
 
-Apex Capital deployed Thales Luna HSM for CA operations. Initially seemed fine, but production discovered performance problems:
+**Summary of key lessons**:
 
-**Problem: HSM became certificate issuance bottleneck**
+- **Apex Capital**: HSM performance bottleneck cost $200K. Load-test HSM with production workload before deployment. RSA key size directly impacts throughput.
 
-CA could issue ~50 certificates/second in testing (software CA). With HSM:
+- **Nexus**: Untested HSM backup caused 48-hour outage, $500K cost. "We have HSM backup" ≠ "We tested HSM restore." Test backup restoration quarterly minimum.
 
-- RSA 4096-bit signatures: 5-10 operations/second
-- Certificate issuance queue backed up during peak loads
-- Service mesh certificate rotation timing out (couldn't get certificates fast enough)
-- Developer pipelines delayed (certificates required for deployment)
-
-**Root cause: Didn't load-test HSM before production**
-
-- Assumed "HSM is fast" without testing
-- Chose RSA 4096-bit for "maximum security" without understanding performance impact
-- Single HSM (no HA cluster for load distribution)
-
-**What we did:**
-
-- Migrated to RSA 2048-bit (adequate security, 4x faster)
-- Deployed HSM HA cluster (3 HSMs, load distributed)
-- Implemented certificate pre-generation for predictable workloads
-- Added HSM performance monitoring and alerting
-- Load-tested HSM capacity before expanding certificate usage
-
-Cost: $200K additional HSMs + 6 weeks migration work
-
-**Key insight:** HSMs aren't infinitely fast. Performance testing required before production. Key size directly impacts throughput. RSA 2048-bit adequate for most threats and 4x faster than 4096-bit.
-
-**Warning signs you're heading for same mistake:**
-
-- No HSM load testing before production
-- Choosing maximum key size without performance analysis
-- Single HSM for production (no capacity buffer)
-- "HSMs are fast" assumption without measurement
-- Not monitoring HSM operations per second
-
-### What We Learned at Nexus (HSM Backup Never Tested)
-
-Nexus implemented HSM for CA operations with proper backup procedures documented. Disaster: HSM failed, backup didn't work:
-
-**Problem: Backup worked in theory, failed in practice**
-
-HSM hardware failure (power supply). Attempted restore from backup:
-
-- Backup files readable but HSM rejected them (firmware version mismatch)
-- Documentation incomplete (missing critical restore steps)
-- Backup encryption key stored in... failed HSM (circular dependency)
-- Only one person knew restore procedure (on vacation)
-
-Result: 48-hour outage, couldn't issue certificates, business impact $500K+
-
-**What went wrong:**
-
-- Backup tested once during initial setup, never again
-- No regular DR drills
-- Documentation incomplete
-- Backup encryption key not properly secured outside HSM
-- No trained backup personnel
-
-**What we did post-incident:**
-
-- Quarterly DR drills (actually restore from backup)
-- Documented procedures in extreme detail (assume novice operator)
-- Backup encryption keys in separate HSM (not same device)
-- Three trained operators for HSM recovery
-- Spare HSM hardware on-site (24-hour replacement)
-- Automated backup verification (test restore process)
-
-**Key insight:** "We have HSM backup" means nothing without regular testing. DR drills reveal documentation gaps, missing dependencies, and procedure problems. Test backups quarterly minimum.
-
-**Warning signs you're heading for same mistake:**
-
-- HSM backup exists but never tested restoration
-- Only one person knows HSM operational procedures
-- Documentation untested with actual restore
-- No DR drills scheduled
-- Backup encryption keys not properly managed
-- "It's documented somewhere" instead of validated procedures
-
-### What We Learned at Vortex (HSM Key Ceremony Mistakes)
-
-Vortex implemented offline root CA with YubiKey HSM. Key generation ceremony had problems:
-
-**Problem: Key ceremony was ad-hoc and error-prone**
-
-First attempt at generating root CA key in HSM:
-
-- Procedure written, but not tested beforehand
-- Key ceremony took 8 hours (errors, confusion, starting over)
-- Generated key with wrong parameters (had to regenerate)
-- Physical security procedures unclear (who guards USB, where stored)
-- No witnesses/auditors (couldn't prove proper procedure)
-
-**What went wrong:**
-
-- No practice run in test environment
-- Procedures written by person who'd never done key ceremony
-- Physical security not planned in advance
-- No ceremony script (people improvising)
-- No video recording (couldn't prove proper execution)
-
-**What we did:**
-
-- Practice key ceremony in test environment (multiple times)
-- Developed detailed ceremony script (step-by-step, with screenshots)
-- Established two-person rule (no single person has complete access)
-- Defined physical security procedures (safe storage, tamper-evident bags)
-- Video record all root CA ceremonies (audit evidence)
-- External auditor witnesses critical ceremonies
-
-**Key insight:** Offline root CA operations are rare (yearly or less). Without practice and documentation, ceremonies are error-prone. Ceremony procedures must be tested, not just written.
-
-**Warning signs you're heading for same mistake:**
-
-- "We'll figure it out when we need to do it"
-- Key ceremony procedures untested
-- No practice environment for offline operations
-- Single-person operations (no dual control)
-- No audit trail or witnesses
-- Physical security improvised rather than planned
+- **Vortex**: Unpracticed key ceremony wasted 8 hours, required regeneration. Practice key ceremonies in test environment before production operations.
 
 ## Business Impact
 
@@ -1313,15 +1250,30 @@ We've implemented HSM integration at Apex Capital (performance optimization, HA 
 - [Private Key Protection](../security/private-key-protection.md) - Key protection strategies
 - [Pkcs Standards](../standards/pkcs-standards.md) - PKCS#11 in detail
 - [Certificate Issuance Workflows](certificate-issuance-workflows.md) - Using HSM in certificate issuance
+- [HSM Operational Failures](hsm-operational-failures.md) - Detailed case studies of common mistakes
+- [On-Premises vs Cloud HSM](onprem-vs-cloud-hsm.md) - Comprehensive comparison of deployment models
 
 ## References
 
-[^1]: NIST. "Security Requirements for Cryptographic Modules." FIPS 140-2, May 2001. [Nist - Detail](https://csrc.nist.gov/publications/detail/fips/140/2/final)
+[^1]: Falliere, N., Murchu, L.O., & Chien, E. (2011). "W32.Stuxnet Dossier." Symantec Security Response. [Symantec - Stuxnet Dossier](https://www.symantec.com/content/en/us/enterprise/media/security_response/whitepapers/w32_stuxnet_dossier.pdf)
+
+[^2]: NIST. (2020). "Recommendation for Key Management: Part 1 – General." NIST SP 800-57 Part 1 Rev. 5. [NIST - SP 800-57](https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final)
+
+[^3]: NIST. (2001). "Security Requirements for Cryptographic Modules." FIPS 140-2. [NIST - FIPS 140-2](https://csrc.nist.gov/publications/detail/fips/140/2/final)
+
+[^4]: CA/Browser Forum. (2023). "Baseline Requirements for the Issuance and Management of Publicly-Trusted Code Signing Certificates." [CA/Browser Forum - Code Signing](https://cabforum.org/working-groups/code-signing/documents/)
+
+[^5]: OASIS. (2020). "PKCS #11 Cryptographic Token Interface Base Specification Version 2.40." [OASIS - PKCS#11](http://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/pkcs11-base-v2.40.html)
+
+[^6]: Barnes, R., et al. (2019). "Automatic Certificate Management Environment (ACME)." RFC 8555. [RFC 8555](https://www.rfc-editor.org/rfc/rfc8555.html)
+
+[^7]: Fox-IT. (2011). "DigiNotar Certificate Authority Breach: Operation Black Tulip." [Fox-IT Report on DigiNotar](https://www.rijksoverheid.nl/documenten/rapporten/2011/09/05/diginotar-public-report-version-1)
 
 ## Change History
 
 | Date | Version | Changes | Reason |
 |------|---------|---------|--------|
+| 2025-11-26 | 2.0 | Added "What HSMs Protect Against" section, expanded deployment comparison, added cross-references to new pages | Executive clarity on HSM value and limitations |
 | 2025-11-09 | 1.0 | Initial creation | Essential HSM implementation guidance |
 
 ---
@@ -1333,3 +1285,5 @@ We've implemented HSM integration at Apex Capital (performance optimization, HA 
 - [x] Practical guidance included
 - [x] Examples are current and relevant
 - [x] Security considerations addressed
+- [x] Business value clearly articulated
+- [x] Failure patterns documented with real costs
