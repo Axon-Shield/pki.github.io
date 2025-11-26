@@ -658,7 +658,7 @@ lunash:> partition restore -file /backup/rootca-backup.bak -partition RootCA
 - Document recovery procedures
 - Train staff on recovery process
 
-**Critical lesson from Nexus failure**: Having backup procedures documented means nothing without regular testing. See [HSM Operational Failures - Nexus Case Study](hsm-operational-failures.md#case-study-2-nexus---untested-backup-failure) for detailed analysis of what went wrong and how to prevent it.
+**Critical lesson from Nexus failure**: Having backup procedures documented means nothing without regular testing. See [HSM Operational Failures - Nexus Case Study](hsm-operational-failures.md#case-study-2-nexus-untested-backup-failure) for detailed analysis of what went wrong and how to prevent it.
 
 ### PKCS#11 Integration
 
@@ -885,7 +885,7 @@ for csr in certificate_requests:
 - Use session pooling for concurrent operations
 - Monitor HSM load and add capacity as needed
 
-**Critical lesson from Apex Capital**: Load-test HSM performance with production workload before deployment. RSA key size directly impacts throughput. See [HSM Operational Failures - Apex Capital Case Study](hsm-operational-failures.md#case-study-1-apex-capital---performance-bottleneck) for detailed analysis.
+**Critical lesson from Apex Capital**: Load-test HSM performance with production workload before deployment. RSA key size directly impacts throughput. See [HSM Operational Failures - Apex Capital Case Study](hsm-operational-failures.md#case-study-1-apex-capital-performance-bottleneck) for detailed analysis.
 
 ### Monitoring and Maintenance
 
@@ -1076,7 +1076,7 @@ pkcs11-tool --module /usr/lib/libCryptoki2.so --login --pin $PIN \
 6. Distribute backup shares to custodians
 7. Document ceremony (sign attestation)
 
-**Critical lesson from Vortex**: Key ceremonies require practice runs in test environment. See [HSM Operational Failures - Vortex Case Study](hsm-operational-failures.md#case-study-3-vortex---unpracticed-key-ceremonies) for what happens when procedures are untested.
+**Critical lesson from Vortex**: Key ceremonies require practice runs in test environment. See [HSM Operational Failures - Vortex Case Study](hsm-operational-failures.md#case-study-3-vortex-unpracticed-key-ceremonies) for what happens when procedures are untested.
 
 ### HSM Compromise Response
 

@@ -316,7 +316,7 @@ On-prem HSMs are faster for single-location, high-throughput use cases. Cloud HS
 - Need < 1ms latency
 - Single datacenter deployment (don't need geographic distribution)
 
-See [HSM Operational Failures - Apex Capital case study](hsm-operational-failures.md#case-study-1-apex-capital---performance-bottleneck) for example of performance bottleneck causing $200K remediation.
+See [HSM Operational Failures - Apex Capital case study](hsm-operational-failures.md#case-study-1-apex-capital-performance-bottleneck) for example of performance bottleneck causing $200K remediation.
 
 ### Disaster Recovery Reality
 
@@ -472,7 +472,7 @@ Cloud HSMs handle hardware failures better (automatic replacement). But you stil
 
 Common mistake: Assuming cloud HSM means "vendor handles DR." Reality: Vendor handles hardware failures, you handle application-level DR.
 
-See [HSM Operational Failures - Nexus case study](hsm-operational-failures.md#case-study-2-nexus---untested-backup-failure) for detailed analysis of DR failure costing $500K.
+See [HSM Operational Failures - Nexus case study](hsm-operational-failures.md#case-study-2-nexus-untested-backup-failure) for detailed analysis of DR failure costing $500K.
 
 ### Compliance and Audit Considerations
 
@@ -727,9 +727,9 @@ Neither is "more compliant" - choose based on organizational maturity and audit 
 
 ### Common to Both
 
-- **Untested backup procedures**: See [Nexus case study](hsm-operational-failures.md#case-study-2-nexus---untested-backup-failure)
-- **Performance bottlenecks**: See [Apex Capital case study](hsm-operational-failures.md#case-study-1-apex-capital---performance-bottleneck)
-- **Unpracticed key ceremonies**: See [Vortex case study](hsm-operational-failures.md#case-study-3-vortex---unpracticed-key-ceremonies)
+- **Untested backup procedures**: See [Nexus case study](hsm-operational-failures.md#case-study-2-nexus-untested-backup-failure)
+- **Performance bottlenecks**: See [Apex Capital case study](hsm-operational-failures.md#case-study-1-apex-capital-performance-bottleneck)
+- **Unpracticed key ceremonies**: See [Vortex case study](hsm-operational-failures.md#case-study-3-vortex-unpracticed-key-ceremonies)
 
 ## When to Bring in Expertise
 
