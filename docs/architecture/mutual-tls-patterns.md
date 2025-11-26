@@ -444,64 +444,64 @@ We've implemented mTLS for a large service mesh, Deutsche Bank (integration with
 
 **RFC 8446 - TLS 1.3**
 - Rescorla, E. "The Transport Layer Security (TLS) Protocol Version 1.3." RFC 8446, August 2018.
-  - https://tools.ietf.org/html/rfc8446
+  - <https://tools.ietf.org/html/rfc8446>
 
 **RFC 5246 - TLS 1.2**
 - Dierks, T., Rescorla, E. "The Transport Layer Security (TLS) Protocol Version 1.2." RFC 5246, August 2008.
-  - https://tools.ietf.org/html/rfc5246
+  - <https://tools.ietf.org/html/rfc5246>
 
 **RFC 5280 - X.509 Certificates**
 - Cooper, D., et al. "Internet X.509 Public Key Infrastructure Certificate and CRL Profile." RFC 5280, May 2008.
-  - https://tools.ietf.org/html/rfc5280
+  - <https://tools.ietf.org/html/rfc5280>
 
 ### Implementation Guides
 
 **NIST SP 800-52 - Guidelines for TLS Implementations**
 - NIST. "Guidelines for the Selection, Configuration, and Use of TLS Implementations." Revision 2, August 2019.
-  - https://csrc.nist.gov/publications/detail/sp/800-52/rev-2/final
+  - <https://csrc.nist.gov/publications/detail/sp/800-52/rev-2/final>
 
 **Mozilla SSL Configuration Generator**
 - Mozilla. "SSL Configuration Generator."
-  - https://ssl-config.mozilla.org/
+  - <https://ssl-config.mozilla.org/>
 
 **OWASP TLS Cheat Sheet**
 - OWASP. "Transport Layer Protection Cheat Sheet."
-  - https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html
+  - <https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html>
 
 ### Database mTLS
 
 **PostgreSQL SSL Documentation**
 - PostgreSQL. "SSL Support."
-  - https://www.postgresql.org/docs/current/ssl-tcp.html
+  - <https://www.postgresql.org/docs/current/ssl-tcp.html>
 
 **MySQL SSL/TLS Documentation**
 - Oracle. "Using Encrypted Connections."
-  - https://dev.mysql.com/doc/refman/8.0/en/encrypted-connections.html
+  - <https://dev.mysql.com/doc/refman/8.0/en/encrypted-connections.html>
 
 **MongoDB TLS/SSL Configuration**
 - MongoDB. "TLS/SSL Configuration."
-  - https://docs.mongodb.com/manual/core/security-transport-encryption/
+  - <https://docs.mongodb.com/manual/core/security-transport-encryption/>
 
 ### API Security
 
 **NIST SP 800-204B - Attribute-based Access Control for Microservices**
 - NIST. "Attribute-based Access Control for Microservices-based Applications Using a Service Mesh." August 2021.
-  - https://csrc.nist.gov/publications/detail/sp/800-204b/final
+  - <https://csrc.nist.gov/publications/detail/sp/800-204b/final>
 
 **OAuth 2.0 Mutual-TLS Client Authentication**
 - Campbell, B., et al. "OAuth 2.0 Mutual-TLS Client Authentication and Certificate-Bound Access Tokens." RFC 8705, February 2020.
-  - https://tools.ietf.org/html/rfc8705
+  - <https://tools.ietf.org/html/rfc8705>
 
 ### Service Mesh mTLS
 
 **Istio Security Documentation**
-- https://istio.io/latest/docs/concepts/security/
+- <https://istio.io/latest/docs/concepts/security/>
 
 **Linkerd mTLS Documentation**
-- https://linkerd.io/2/features/automatic-mtls/
+- <https://linkerd.io/2/features/automatic-mtls/>
 
 **Consul Connect mTLS**
-- https://www.consul.io/docs/connect
+- <https://www.consul.io/docs/connect>
 
 ### Performance
 

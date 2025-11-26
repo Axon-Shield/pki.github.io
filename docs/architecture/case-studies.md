@@ -534,46 +534,46 @@ We've done this at Nexus (30,000 certificates, global financial services complex
 
 **"Financial Services PKI Best Practices" (BITS)**
 - Financial Services Roundtable. "Public Key Infrastructure (PKI) in Financial Services." 2019.
-- https://www.bitsinfo.org/
+- <https://www.bitsinfo.org/>
 
 **EBA Guidelines on ICT and Security Risk Management**
 - European Banking Authority. "Guidelines on ICT and security risk management." 2019.
-- https://www.eba.europa.eu/regulation-and-policy/internal-governance/guidelines-on-ict-and-security-risk-management
+- <https://www.eba.europa.eu/regulation-and-policy/internal-governance/guidelines-on-ict-and-security-risk-management>
 
 ### High Availability Architecture
 
 **"Site Reliability Engineering" (O'Reilly)**
 - Beyer, B., et al. "Site Reliability Engineering: How Google Runs Production Systems." O'Reilly, 2016.
-- https://sre.google/books/
+- <https://sre.google/books/>
 
 ### Compliance and Audit
 
 **PCI DSS Requirements**
 - PCI Security Standards Council. "Payment Card Industry Data Security Standard v4.0." 2022.
 - Certificate management requirements
-- https://www.pcisecuritystandards.org/document_library
+- <https://www.pcisecuritystandards.org/document_library>
 
 **NIST SP 800-53 - Security Controls**
 - NIST. "Security and Privacy Controls for Information Systems and Organizations." Revision 5, 2020.
 - IA-5: Authenticator Management
-- https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final
+- <https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final>
 
 ### Physical Access Control
 
 **FIPS 201 - PIV Standard**
 - NIST. "Personal Identity Verification (PIV) of Federal Employees and Contractors." FIPS 201-3, 2022.
 - PIV certificate requirements
-- https://csrc.nist.gov/publications/detail/fips/201/3/final
+- <https://csrc.nist.gov/publications/detail/fips/201/3/final>
 
 **NIST SP 800-79 - PIV Authentication**
 - NIST. "Guidelines for the Authorization of Personal Identity Verification Card Issuers." Revision 2, 2015.
-- https://csrc.nist.gov/publications/detail/sp/800-79/2/final
+- <https://csrc.nist.gov/publications/detail/sp/800-79/2/final>
 
 ### Multi-Cloud Architecture
 
 **"Cloud Native Infrastructure" (O'Reilly)**
 - Hightower, K., et al. "Cloud Native Infrastructure: Patterns for Scalable Infrastructure Management." O'Reilly, 2017.
-- https://www.oreilly.com/library/view/cloud-native-infrastructure/9781491984291/
+- <https://www.oreilly.com/library/view/cloud-native-infrastructure/9781491984291/>
 
 ---
 

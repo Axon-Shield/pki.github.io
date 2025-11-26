@@ -780,7 +780,7 @@ deny[msg] {
 
 **Error: "Certificate has been revoked"**
 
-- Check OCSP: `openssl ocsp -issuer issuer.crt -cert cert.crt -url http://ocsp.example.com`
+- Check OCSP: `openssl ocsp -issuer issuer.crt -cert cert.crt -url <http://ocsp.example.com`>
 - Verify CRL: Download and check CRL
 - Get new certificate
 
