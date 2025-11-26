@@ -872,101 +872,101 @@ DigiNotar's CA private keys were compromised, allowing attackers to issue rogue 
 
 ### Standards and Guidelines
 
-[^1]: NIST. "Recommendation for Key Management." NIST SP 800-57 Part 1 Rev. 5, May 2020. [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final)
+- NIST. "Recommendation for Key Management." NIST SP 800-57 Part 1 Rev. 5, May 2020. [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final)
 
-[^2]: NIST. "Security Requirements for Cryptographic Modules." FIPS 140-2, May 2001. [Nist - Detail](https://csrc.nist.gov/publications/detail/fips/140/2/final)
+- NIST. "Security Requirements for Cryptographic Modules." FIPS 140-2, May 2001. [Nist - Detail](https://csrc.nist.gov/publications/detail/fips/140/2/final)
 
-[^3]: NIST. "Security Requirements for Cryptographic Modules." FIPS 140-3, March 2019. [Nist - Detail](https://csrc.nist.gov/publications/detail/fips/140/3/final)
+- NIST. "Security Requirements for Cryptographic Modules." FIPS 140-3, March 2019. [Nist - Detail](https://csrc.nist.gov/publications/detail/fips/140/3/final)
 
-[^4]: NIST. "A Framework for Designing Cryptographic Key Management Systems." NIST SP 800-130, August 2013. [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-130/final)
+- NIST. "A Framework for Designing Cryptographic Key Management Systems." NIST SP 800-130, August 2013. [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-130/final)
 
-[^5]: NIST. "Recommendation for the Entropy Sources Used for Random Bit Generation." NIST SP 800-90B, January 2018. [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-90b/final)
+- NIST. "Recommendation for the Entropy Sources Used for Random Bit Generation." NIST SP 800-90B, January 2018. [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-90b/final)
 
 ### Cryptographic Specifications
 
-[^6]: Moriarty, K., et al. "PKCS #1: RSA Cryptography Specifications Version 2.2." RFC 8017, November 2016. [Ietf - Rfc8017](https://tools.ietf.org/html/rfc8017)
+- Moriarty, K., et al. "PKCS #1: RSA Cryptography Specifications Version 2.2." RFC 8017, November 2016. [Ietf - Rfc8017](https://tools.ietf.org/html/rfc8017)
 
-[^7]: NIST. "Digital Signature Standard (DSS)." FIPS 186-4, July 2013. [Nist - Detail](https://csrc.nist.gov/publications/detail/fips/186/4/final)
+- NIST. "Digital Signature Standard (DSS)." FIPS 186-4, July 2013. [Nist - Detail](https://csrc.nist.gov/publications/detail/fips/186/4/final)
 
-[^8]: NIST. "Recommendations for Discrete Logarithm-based Cryptography: Elliptic Curve Domain Parameters." NIST SP 800-186, February 2023. [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-186/final)
+- NIST. "Recommendations for Discrete Logarithm-based Cryptography: Elliptic Curve Domain Parameters." NIST SP 800-186, February 2023. [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-186/final)
 
 ### HSM and Hardware Security
 
-[^9]: Trusted Computing Group. "TPM 2.0 Library Specification." 2019. [Trustedcomputinggroup - Tpm Library Specification](https://trustedcomputinggroup.org/resource/tpm-library-specification/)
+- Trusted Computing Group. "TPM 2.0 Library Specification." 2019. [Trustedcomputinggroup - Tpm Library Specification](https://trustedcomputinggroup.org/resource/tpm-library-specification/)
 
-[^10]: OASIS. "PKCS #11 Cryptographic Token Interface Base Specification Version 2.40." 2015. [Oasis-open - Pkcs11 Base](http://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/)
+- OASIS. "PKCS #11 Cryptographic Token Interface Base Specification Version 2.40." 2015. [Oasis-open - Pkcs11 Base](http://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/)
 
-[^11]: OASIS. "Key Management Interoperability Protocol Specification Version 2.1." January 2020. [Oasis-open - Kmip Spec](http://docs.oasis-open.org/kmip/kmip-spec/v2.1/)
+- OASIS. "Key Management Interoperability Protocol Specification Version 2.1." January 2020. [Oasis-open - Kmip Spec](http://docs.oasis-open.org/kmip/kmip-spec/v2.1/)
 
 ### Password-Based Key Derivation
 
-[^12]: Percival, C., Josefsson, S. "The scrypt Password-Based Key Derivation Function." RFC 7914, August 2016. [Ietf - Rfc7914](https://tools.ietf.org/html/rfc7914)
+- Percival, C., Josefsson, S. "The scrypt Password-Based Key Derivation Function." RFC 7914, August 2016. [Ietf - Rfc7914](https://tools.ietf.org/html/rfc7914)
 
-[^13]: Biryukov, A., Dinu, D., Khovratovich, D. "Argon2 Memory-Hard Function for Password Hashing." RFC 9106, September 2021. [Ietf - Rfc9106](https://tools.ietf.org/html/rfc9106)
+- Biryukov, A., Dinu, D., Khovratovich, D. "Argon2 Memory-Hard Function for Password Hashing." RFC 9106, September 2021. [Ietf - Rfc9106](https://tools.ietf.org/html/rfc9106)
 
-[^14]: Kaliski, B. "PKCS #5: Password-Based Cryptography Specification Version 2.1." RFC 8018, January 2017. [Ietf - Rfc8018](https://tools.ietf.org/html/rfc8018)
+- Kaliski, B. "PKCS #5: Password-Based Cryptography Specification Version 2.1." RFC 8018, January 2017. [Ietf - Rfc8018](https://tools.ietf.org/html/rfc8018)
 
 ### Secret Sharing and Key Backup
 
-[^15]: Shamir, A. "How to Share a Secret." Communications of the ACM, Vol. 22, No. 11, pp. 612-613, November 1979. [Acm - 10.1145](https://dl.acm.org/doi/10.1145/359168.359176)
+- Shamir, A. "How to Share a Secret." Communications of the ACM, Vol. 22, No. 11, pp. 612-613, November 1979. [Acm - 10.1145](https://dl.acm.org/doi/10.1145/359168.359176)
 
-[^16]: Feldman, P. "A Practical Scheme for Non-interactive Verifiable Secret Sharing." FOCS 1987.
+- Feldman, P. "A Practical Scheme for Non-interactive Verifiable Secret Sharing." FOCS 1987.
 
-[^17]: Pedersen, T.P. "Non-Interactive and Information-Theoretic Secure Verifiable Secret Sharing." CRYPTO 1991.
+- Pedersen, T.P. "Non-Interactive and Information-Theoretic Secure Verifiable Secret Sharing." CRYPTO 1991.
 
 ### Secure Deletion
 
-[^18]: NIST. "Guidelines for Media Sanitization." NIST SP 800-88 Revision 1, December 2014. [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-88/rev-1/final)
+- NIST. "Guidelines for Media Sanitization." NIST SP 800-88 Revision 1, December 2014. [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-88/rev-1/final)
 
-[^19]: Gutmann, P. "Secure Deletion of Data from Magnetic and Solid-State Memory." USENIX Security Symposium, July 1996.
+- Gutmann, P. "Secure Deletion of Data from Magnetic and Solid-State Memory." USENIX Security Symposium, July 1996.
 
 ### Attack Research
 
-[^20]: Kocher, P., Jaffe, J., Jun, B. "Differential Power Analysis." CRYPTO 1999.
+- Kocher, P., Jaffe, J., Jun, B. "Differential Power Analysis." CRYPTO 1999.
 
-[^21]: Genkin, D., et al. "Get Your Hands Off My Laptop: Physical Side-Channel Key-Extraction Attacks on PCs." CHES 2014.
+- Genkin, D., et al. "Get Your Hands Off My Laptop: Physical Side-Channel Key-Extraction Attacks on PCs." CHES 2014.
 
-[^22]: Kocher, P., et al. "Spectre Attacks: Exploiting Speculative Execution." IEEE S&P 2019.
+- Kocher, P., et al. "Spectre Attacks: Exploiting Speculative Execution." IEEE S&P 2019.
 
-[^23]: Boneh, D., DeMillo, R.A., Lipton, R.J. "On the Importance of Checking Cryptographic Protocols for Faults." EUROCRYPT 1997.
+- Boneh, D., DeMillo, R.A., Lipton, R.J. "On the Importance of Checking Cryptographic Protocols for Faults." EUROCRYPT 1997.
 
 ### Industry Standards
 
-[^24]: CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates." Current version. [Cabforum - Baseline Requirements Documents](https://cabforum.org/baseline-requirements-documents/)
+- CA/Browser Forum. "Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates." Current version. [Cabforum - Baseline Requirements Documents](https://cabforum.org/baseline-requirements-documents/)
 
-[^25]: CPA Canada/AICPA. "WebTrust Principles and Criteria for Certification Authorities." Current version. [Cpacanada](https://www.cpacanada.ca/)
+- CPA Canada/AICPA. "WebTrust Principles and Criteria for Certification Authorities." Current version. [Cpacanada](https://www.cpacanada.ca/)
 
-[^26]: ETSI. "General Policy Requirements for Trust Service Providers." ETSI EN 319 401, V2.3.1, 2021. [Etsi - Etsi En](https://www.etsi.org/deliver/etsi_en/319400_319499/319401/)
+- ETSI. "General Policy Requirements for Trust Service Providers." ETSI EN 319 401, V2.3.1, 2021. [Etsi - Etsi En](https://www.etsi.org/deliver/etsi_en/319400_319499/319401/)
 
 ### Compliance and Legal
 
-[^27]: European Parliament. "Regulation (EU) No 910/2014 on electronic identification and trust services (eIDAS)." July 2014. [Europa - Txt](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910)
+- European Parliament. "Regulation (EU) No 910/2014 on electronic identification and trust services (eIDAS)." July 2014. [Europa - Txt](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910)
 
-[^28]: PCI Security Standards Council. "Payment Card Industry (PCI) Data Security Standard." Version 4.0, March 2022. [Pcisecuritystandards](https://www.pcisecuritystandards.org/)
+- PCI Security Standards Council. "Payment Card Industry (PCI) Data Security Standard." Version 4.0, March 2022. [Pcisecuritystandards](https://www.pcisecuritystandards.org/)
 
 ### Academic Research
 
-[^29]: Heninger, N., et al. "Mining Your Ps and Qs: Detection of Widespread Weak Keys in Network Devices." USENIX Security 2012.
+- Heninger, N., et al. "Mining Your Ps and Qs: Detection of Widespread Weak Keys in Network Devices." USENIX Security 2012.
 
-[^30]: Lenstra, A.K., Verheul, E.R. "Selecting Cryptographic Key Sizes." Journal of Cryptology, Vol. 14, pp. 255-293, 2001.
+- Lenstra, A.K., Verheul, E.R. "Selecting Cryptographic Key Sizes." Journal of Cryptology, Vol. 14, pp. 255-293, 2001.
 
-[^31]: Chen, L., et al. "Report on Post-Quantum Cryptography." NIST Internal Report 8105, April 2016. [Nist - Detail](https://csrc.nist.gov/publications/detail/nistir/8105/final)
+- Chen, L., et al. "Report on Post-Quantum Cryptography." NIST Internal Report 8105, April 2016. [Nist - Detail](https://csrc.nist.gov/publications/detail/nistir/8105/final)
 
 ### Historical Incidents
 
-[^32]: Fox-IT. "DigiNotar Certificate Authority breach - Operation Black Tulip." September 2011. [Rijksoverheid - Rapporten](https://www.rijksoverheid.nl/documenten/rapporten/2011/09/05/diginotar-public-report-version-1)
+- Fox-IT. "DigiNotar Certificate Authority breach - Operation Black Tulip." September 2011. [Rijksoverheid - Rapporten](https://www.rijksoverheid.nl/documenten/rapporten/2011/09/05/diginotar-public-report-version-1)
 
-[^33]: Comodo. "Comodo Fraud Incident Report." March 2011.
+- Comodo. "Comodo Fraud Incident Report." March 2011.
 
-[^34]: Durumeric, Z., et al. "The Matter of Heartbleed." ACM IMC 2014. [Acm - 10.1145](https://dl.acm.org/doi/10.1145/2663716.2663755)
+- Durumeric, Z., et al. "The Matter of Heartbleed." ACM IMC 2014. [Acm - 10.1145](https://dl.acm.org/doi/10.1145/2663716.2663755)
 
 ### Books and Comprehensive Guides
 
-[^35]: Schneier, B. "Applied Cryptography: Protocols, Algorithms, and Source Code in C." 2nd Edition, Wiley, 1996.
+- Schneier, B. "Applied Cryptography: Protocols, Algorithms, and Source Code in C." 2nd Edition, Wiley, 1996.
 
-[^36]: Anderson, R. "Security Engineering: A Guide to Building Dependable Distributed Systems." 3rd Edition, Wiley, 2020.
+- Anderson, R. "Security Engineering: A Guide to Building Dependable Distributed Systems." 3rd Edition, Wiley, 2020.
 
-[^37]: Ferguson, N., Schneier, B., Kohno, T. "Cryptography Engineering: Design Principles and Practical Applications." Wiley, 2010.
+- Ferguson, N., Schneier, B., Kohno, T. "Cryptography Engineering: Design Principles and Practical Applications." Wiley, 2010.
 
 ## Change History
 
