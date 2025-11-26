@@ -98,50 +98,50 @@ Certificate automation has evolved from operational improvement to business impe
 
 ## References
 
-[^1]: Ponemon Institute. (2019, February). *The impact of unsecured digital identities*. Keyfactor. https://info.keyfactor.com/the-impact-of-unsecured-digital-identities-ponemon-report
+[^1]: Ponemon Institute. (2019, February). *The impact of unsecured digital identities*. Keyfactor. <https://info.keyfactor.com/the-impact-of-unsecured-digital-identities-ponemon-report>
 
-[^2]: Keyfactor & Ponemon Institute. (2023, March 21). *2023 State of Machine Identity Management Report*. Keyfactor. https://www.keyfactor.com/state-of-machine-identity-management-2023/
+[^2]: Keyfactor & Ponemon Institute. (2023, March 21). *2023 State of Machine Identity Management Report*. Keyfactor. <https://www.keyfactor.com/state-of-machine-identity-management-2023/>
 
-[^3]: ActiveState. (2025, March 6). *The 2025 State of Vulnerability Management & Remediation Report*. https://www.activestate.com/resources/white-papers/the-2025-state-of-vulnerability-management-and-remediation-report/
+[^3]: ActiveState. (2025, March 6). *The 2025 State of Vulnerability Management & Remediation Report*. <https://www.activestate.com/resources/white-papers/the-2025-state-of-vulnerability-management-and-remediation-report/>
 
-[^4]: BetterCloud. (2022, November 16). *2023 State of SaaSOps* [Research report]. https://www.bettercloud.com/stateofsaasops22/
+[^4]: BetterCloud. (2022, November 16). *2023 State of SaaSOps* [Research report]. <https://www.bettercloud.com/stateofsaasops22/>
 
-[^5]: CA/Browser Forum. (2025, April 11). *Ballot SC-081v3: Introduce schedule of reducing validity and data reuse periods*. https://cabforum.org/2025/04/11/ballot-sc081v3-introduce-schedule-of-reducing-validity-and-data-reuse-periods/
+[^5]: CA/Browser Forum. (2025, April 11). *Ballot SC-081v3: Introduce schedule of reducing validity and data reuse periods*. <https://cabforum.org/2025/04/11/ballot-sc081v3-introduce-schedule-of-reducing-validity-and-data-reuse-periods/>
 
-[^6]: Ponemon Institute. (2022, March). *The state of certificate lifecycle management in global organizations*. AppViewX. https://www.appviewx.com/2022-ponemon-report-the-state-of-certificate-lifecycle-management-in-global-organizations/
+[^6]: Ponemon Institute. (2022, March). *The state of certificate lifecycle management in global organizations*. AppViewX. <https://www.appviewx.com/2022-ponemon-report-the-state-of-certificate-lifecycle-management-in-global-organizations/>
 
-[^7]: Ponemon Institute & Venafi. (2015). *2015 Cost of Failed Trust Report: When Trust Online Breaks, Businesses Lose Customers*. Venafi. https://venafi.com/news-center/press-release/new-ponemon-report-reveals-businesses-are-losing-customers-due-to/
+[^7]: Ponemon Institute & Venafi. (2015). *2015 Cost of Failed Trust Report: When Trust Online Breaks, Businesses Lose Customers*. Venafi. <https://venafi.com/news-center/press-release/new-ponemon-report-reveals-businesses-are-losing-customers-due-to/>
 
-[^8]: Lerner, A. (2014, July 16). The cost of downtime. *Gartner Blog*. https://blogs.gartner.com/andrew-lerner/2014/07/16/the-cost-of-downtime/
+[^8]: Lerner, A. (2014, July 16). The cost of downtime. *Gartner Blog*. <https://blogs.gartner.com/andrew-lerner/2014/07/16/the-cost-of-downtime/>
 
-[^9]: Ponemon Institute. (2016). *2016 cost of data center outages*. Ponemon Institute LLC. https://www.ponemon.org/research/ponemon-library/security/2016-cost-of-data-center-outages.html
+[^9]: Ponemon Institute. (2016). *2016 cost of data center outages*. Ponemon Institute LLC. <https://www.ponemon.org/research/ponemon-library/security/2016-cost-of-data-center-outages.html>
 
-[^10]: Lawrence, A., Bizo, D., Judge, P., O'Brien, J., Davis, J., Smolaks, M., Williams-George, J., Weinschenk, R., & Donnellan, D. (2024, July). *Uptime Institute Global Data Center Survey 2024* (Keynote Report 146M). Uptime Institute. https://uptimeinstitute.com/resources/research-and-reports/uptime-institute-global-data-center-survey-results-2024
+[^10]: Lawrence, A., Bizo, D., Judge, P., O'Brien, J., Davis, J., Smolaks, M., Williams-George, J., Weinschenk, R., & Donnellan, D. (2024, July). *Uptime Institute Global Data Center Survey 2024* (Keynote Report 146M). Uptime Institute. <https://uptimeinstitute.com/resources/research-and-reports/uptime-institute-global-data-center-survey-results-2024>
 
-[^11]: Lawrence, A., & Simon, L. (2023, March). *Annual outages analysis 2023: The causes and impacts of IT and data center outages* (Keynote Report 92M). Uptime Institute. https://uptimeinstitute.com/resources/research-and-reports/annual-outage-analysis-2023
+[^11]: Lawrence, A., & Simon, L. (2023, March). *Annual outages analysis 2023: The causes and impacts of IT and data center outages* (Keynote Report 92M). Uptime Institute. <https://uptimeinstitute.com/resources/research-and-reports/annual-outage-analysis-2023>
 
-[^12]: Lardinois, F. (2020, February 3). Microsoft Teams has been down this morning. *TechCrunch*. https://techcrunch.com/2020/02/03/microsoft-teams-has-been-down-this-morning/
+[^12]: Lardinois, F. (2020, February 3). Microsoft Teams has been down this morning. *TechCrunch*. <https://techcrunch.com/2020/02/03/microsoft-teams-has-been-down-this-morning/>
 
-[^13]: Redmond, T. (2020, February 10). Teams certificate outage causes Office 365 tenants concern. *Petri IT Knowledgebase*. https://petri.com/allabout-teams-outage-3feb/
+[^13]: Redmond, T. (2020, February 10). Teams certificate outage causes Office 365 tenants concern. *Petri IT Knowledgebase*. <https://petri.com/allabout-teams-outage-3feb/>
 
-[^14]: Infosecurity Magazine. (2019, May 22). LinkedIn admits a delay in renewing TLS cert. https://www.infosecurity-magazine.com/news/linkedin-admits-a-delay-in-tls-cert-1/
+[^14]: Infosecurity Magazine. (2019, May 22). LinkedIn admits a delay in renewing TLS cert. <https://www.infosecurity-magazine.com/news/linkedin-admits-a-delay-in-tls-cert-1/>
 
-[^15]: Computer Weekly. (2019, May 22). Lapse in LinkedIn security certificate update. https://www.computerweekly.com/news/252463885/Lapse-in-LinkedIn-security-certificate-update
+[^15]: Computer Weekly. (2019, May 22). Lapse in LinkedIn security certificate update. <https://www.computerweekly.com/news/252463885/Lapse-in-LinkedIn-security-certificate-update>
 
-[^16]: Sharwood, S. (2018, December 6). Why millions of Brits' mobile phones were knackered on Thursday: An expired Ericsson software certificate. *The Register*. https://www.theregister.com/2018/12/06/ericsson_o2_telefonica_uk_outage/
+[^16]: Sharwood, S. (2018, December 6). Why millions of Brits' mobile phones were knackered on Thursday: An expired Ericsson software certificate. *The Register*. <https://www.theregister.com/2018/12/06/ericsson_o2_telefonica_uk_outage/>
 
-[^17]: Computer Weekly. (2018, December 7). O2 outage highlights importance of software certificate audits. https://www.computerweekly.com/news/252454067/O2-outage-highlights-importance-of-software-certificate-audits
+[^17]: Computer Weekly. (2018, December 7). O2 outage highlights importance of software certificate audits. <https://www.computerweekly.com/news/252454067/O2-outage-highlights-importance-of-software-certificate-audits>
 
-[^18]: Forrester Consulting. (2024, August). *The Total Economic Impact™ of Sectigo Certificate Manager*. Commissioned by Sectigo. https://www.sectigo.com/forrester-tei-study
+[^18]: Forrester Consulting. (2024, August). *The Total Economic Impact™ of Sectigo Certificate Manager*. Commissioned by Sectigo. <https://www.sectigo.com/forrester-tei-study>
 
-[^19]: IBM Security. (2023). *Cost of a Data Breach Report 2023*. IBM. https://www.ibm.com/reports/data-breach
+[^19]: IBM Security. (2023). *Cost of a Data Breach Report 2023*. IBM. <https://www.ibm.com/reports/data-breach>
 
-[^20]: PCI Security Standards Council. (2022). *Payment Card Industry Data Security Standard (PCI DSS) v4.0*. https://www.pcisecuritystandards.org/
+[^20]: PCI Security Standards Council. (2022). *Payment Card Industry Data Security Standard (PCI DSS) v4.0*. <https://www.pcisecuritystandards.org/>
 
-[^21]: European Parliament and Council. (2016). *General Data Protection Regulation (GDPR)*. Official Journal of the European Union. https://gdpr-info.eu/
+[^21]: European Parliament and Council. (2016). *General Data Protection Regulation (GDPR)*. Official Journal of the European Union. <https://gdpr-info.eu/>
 
-[^22]: American Institute of Certified Public Accountants. (2017). *SOC 2® – SOC for Service Organizations: Trust Services Criteria*. AICPA. https://us.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report
+[^22]: American Institute of Certified Public Accountants. (2017). *SOC 2® – SOC for Service Organizations: Trust Services Criteria*. AICPA. <https://us.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report>
 
-[^23]: Cequence Security. (2022, October 4). *API protection report: Shadow APIs and API abuse explode* [Research report]. https://www.cequence.ai/news/more-than-30-of-all-malicious-attacks-target-shadow-apis/
+[^23]: Cequence Security. (2022, October 4). *API protection report: Shadow APIs and API abuse explode* [Research report]. <https://www.cequence.ai/news/more-than-30-of-all-malicious-attacks-target-shadow-apis/>
 
-[^24]: National Institute of Standards and Technology. (2024, August 13). *Post-quantum cryptography standards* [FIPS 203, 204, 205]. U.S. Department of Commerce. https://csrc.nist.gov/projects/post-quantum-cryptography
+[^24]: National Institute of Standards and Technology. (2024, August 13). *Post-quantum cryptography standards* [FIPS 203, 204, 205]. U.S. Department of Commerce. <https://csrc.nist.gov/projects/post-quantum-cryptography>
