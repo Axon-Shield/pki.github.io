@@ -34,6 +34,8 @@ These failures are expensive ($200K-$500K typical), cause business-impacting out
 
 ## The Three Most Common HSM Failures
 
+Let us demonstrate some common HSM failures using imaginary companies Apex Capital, Vortex, and Nexus.
+
 ### Pattern 1: Performance Bottleneck (Apex Capital)
 
 **What happened**: HSM became certificate issuance bottleneck, couldn't meet production load.
