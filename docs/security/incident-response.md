@@ -510,7 +510,7 @@ Remember: It's not if an incident will occur, but when. Your preparation today d
 
 **WebTrust Principles and Criteria**
 - CPA Canada/AICPA. "WebTrust Principles and Criteria for Certification Authorities." Current version.
-  - [Cpacanada - Audit And Assurance](https://www.cpacanada.ca/en/business-and-accounting-resources/audit-and-assurance/overview-of-webtrust-services)
+  - [CPA Canada - WebTrust Services](https://www.cpacanada.ca/business-and-accounting-resources/audit-and-assurance/overview-of-webtrust-services)
 - Incident response and disclosure requirements
 - Audit requirements for incident handling
 
@@ -524,7 +524,7 @@ Remember: It's not if an incident will occur, but when. Your preparation today d
 
 **DigiNotar Incident Report**
 - Fox-IT. "DigiNotar Certificate Authority breach - Operation Black Tulip." September 2011.
-  - [Rijksoverheid - Rapporten](https://www.rijksoverheid.nl/documenten/rapporten/2011/09/05/diginotar-public-report-version-1)
+  - [Fox-IT DigiNotar Report](https://roselabs.nl/files/audit_reports/Fox-IT_-_DigiNotar.pdf)
 - Comprehensive forensic analysis
 - Response timeline and lessons learned
 - Impact: Company bankruptcy

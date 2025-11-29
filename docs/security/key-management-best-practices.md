@@ -364,14 +364,14 @@ The investment in proper key management is not optional—it's the foundation of
 
 **WebTrust Principles and Criteria for Certification Authorities**
 - CPA Canada/AICPA. "WebTrust Principles and Criteria for Certification Authorities." Current version.
-  - [Cpacanada - Audit And Assurance](https://www.cpacanada.ca/en/business-and-accounting-resources/audit-and-assurance/overview-of-webtrust-services)
+  - [CPA Canada - WebTrust Services](https://www.cpacanada.ca/business-and-accounting-resources/audit-and-assurance/overview-of-webtrust-services)
 - CA operational audits
 - Key ceremony documentation requirements
 - Trustworthy system principles
 
 **CA Key Ceremony Best Practices**
 - Gutmann, P. "Key Ceremony Procedures." 2004.
-  - [Ac - Pubs](https://www.cs.auckland.ac.nz/~pgut001/pubs/key_ceremony.txt)
+  - [Wikipedia - Key Ceremony](https://en.wikipedia.org/wiki/Key_ceremony)
 - Practical key ceremony guidance
 - Common pitfalls and solutions
 

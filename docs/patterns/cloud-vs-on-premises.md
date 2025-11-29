@@ -751,7 +751,7 @@ Evaluate your specific requirements, run the cost calculations, assess your oper
 
 **AWS Private CA**
 - AWS. "AWS Certificate Manager Private Certificate Authority."
-  - [Amazon - Acm Pca](https://docs.aws.amazon.com/acm-pca/)
+  - [AWS Private CA](https://aws.amazon.com/private-ca/)
 - Managed private CA service
 - Pay-per-certificate pricing
 - API integration

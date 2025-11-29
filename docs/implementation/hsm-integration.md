@@ -1267,7 +1267,7 @@ We've implemented HSM integration at Apex Capital (performance optimization, HA 
 
 [^6]: Barnes, R., et al. (2019). "Automatic Certificate Management Environment (ACME)." RFC 8555. [RFC 8555](https://www.rfc-editor.org/rfc/rfc8555.html)
 
-[^7]: Fox-IT. (2011). "DigiNotar Certificate Authority Breach: Operation Black Tulip." [Fox-IT Report on DigiNotar](https://www.rijksoverheid.nl/documenten/rapporten/2011/09/05/diginotar-public-report-version-1)
+[^7]: Fox-IT. (2011). "DigiNotar Certificate Authority Breach: Operation Black Tulip." [Fox-IT Report on DigiNotar](https://roselabs.nl/files/audit_reports/Fox-IT_-_DigiNotar.pdf)
 
 ## Change History
 

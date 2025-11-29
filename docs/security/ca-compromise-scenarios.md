@@ -800,7 +800,7 @@ History shows that CA compromises happen—DigiNotar, Comodo, and others prove t
 
 **DigiNotar (2011)**
 - Fox-IT. "DigiNotar Certificate Authority breach - Operation Black Tulip." September 2011.
-  - [Rijksoverheid - Rapporten](https://www.rijksoverheid.nl/documenten/rapporten/2011/09/05/diginotar-public-report-version-1)
+  - [Fox-IT DigiNotar Report](https://roselabs.nl/files/audit_reports/Fox-IT_-_DigiNotar.pdf)
 - Comprehensive forensic analysis of the Dutch CA compromise that led to company bankruptcy
 - 531 fraudulent certificates issued, including for Google domains
 - Detection through Certificate Transparency and Google's certificate pinning
@@ -852,7 +852,7 @@ History shows that CA compromises happen—DigiNotar, Comodo, and others prove t
 
 **WebTrust Principles and Criteria**
 - CPA Canada/AICPA. "WebTrust Principles and Criteria for Certification Authorities." Current version.
-  - [Cpacanada - Audit And Assurance](https://www.cpacanada.ca/en/business-and-accounting-resources/audit-and-assurance/overview-of-webtrust-services)
+  - [CPA Canada - WebTrust Services](https://www.cpacanada.ca/business-and-accounting-resources/audit-and-assurance/overview-of-webtrust-services)
 - Audit framework for public CAs
 - Required for inclusion in browser root programs
 

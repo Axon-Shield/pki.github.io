@@ -753,7 +753,7 @@ Invest in compliance infrastructure—documentation, logging, monitoring, traini
 
 **WebTrust Principles and Criteria for Certification Authorities**
 - CPA Canada/AICPA. "WebTrust Principles and Criteria for Certification Authorities." Current version.
-  - [Cpacanada - Audit And Assurance](https://www.cpacanada.ca/en/business-and-accounting-resources/audit-and-assurance/overview-of-webtrust-services)
+  - [CPA Canada - WebTrust Services](https://www.cpacanada.ca/business-and-accounting-resources/audit-and-assurance/overview-of-webtrust-services)
 - Audit framework for public CAs
 - WebTrust for CAs, EV SSL, Code Signing
 - Required for major browser root programs

@@ -833,14 +833,14 @@ Design your hierarchy for the organization you'll become, not just the one you a
 
 **CA Key Generation Ceremony**
 - Gutmann, P. "Key Ceremony Procedures." 2004.
-  - [Ac - Pubs](https://www.cs.auckland.ac.nz/~pgut001/pubs/key_ceremony.txt)
+  - [Wikipedia - Key Ceremony](https://en.wikipedia.org/wiki/Key_ceremony)
 - Practical ceremony guidance
 - Multi-party control procedures
 - Documentation requirements
 
 **WebTrust Principles and Criteria for CAs**
 - CPA Canada/AICPA. "WebTrust Principles and Criteria for Certification Authorities." Current version.
-  - [Cpacanada - Audit And Assurance](https://www.cpacanada.ca/en/business-and-accounting-resources/audit-and-assurance/overview-of-webtrust-services)
+  - [CPA Canada - WebTrust Services](https://www.cpacanada.ca/business-and-accounting-resources/audit-and-assurance/overview-of-webtrust-services)
 - CA operational requirements
 - Root CA offline requirements
 - Key ceremony audit requirements
@@ -924,7 +924,7 @@ Design your hierarchy for the organization you'll become, not just the one you a
 
 **AWS Private CA Documentation**
 - AWS. "AWS Certificate Manager Private Certificate Authority."
-  - [Amazon - Acm Pca](https://docs.aws.amazon.com/acm-pca/)
+  - [AWS Private CA](https://aws.amazon.com/private-ca/)
 - Managed CA hierarchy
 - Subordinate CA configuration
 - Cross-account access

@@ -534,7 +534,7 @@ We've done this at Nexus (30,000 certificates, global financial services complex
 
 **"Financial Services PKI Best Practices" (BITS)**
 - Financial Services Roundtable. "Public Key Infrastructure (PKI) in Financial Services." 2019.
-- <https://www.bitsinfo.org/>
+- [BPI - Banking Policy Institute](https://bpi.com/)
 
 **EBA Guidelines on ICT and Security Risk Management**
 - European Banking Authority. "Guidelines on ICT and security risk management." 2019.

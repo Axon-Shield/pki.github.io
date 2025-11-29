@@ -1604,7 +1604,7 @@ Understanding these threat models enables building PKI infrastructure that is re
 
 **DigiNotar Certificate Authority Breach (2011)**
 - Fox-IT. "DigiNotar Certificate Authority breach - Operation Black Tulip." September 2011.
-  - [Rijksoverheid - Rapporten](https://www.rijksoverheid.nl/documenten/rapporten/2011/09/05/diginotar-public-report-version-1)
+  - [Fox-IT DigiNotar Report](https://roselabs.nl/files/audit_reports/Fox-IT_-_DigiNotar.pdf)
 - Nation-state compromise of Dutch CA
 - 531 fraudulent certificates issued
 - Company bankruptcy and trust store removal
