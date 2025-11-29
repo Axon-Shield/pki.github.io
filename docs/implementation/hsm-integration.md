@@ -1255,7 +1255,7 @@ We've implemented HSM integration at Apex Capital (performance optimization, HA 
 
 ## References
 
-[^1]: Falliere, N., Murchu, L.O., & Chien, E. (2011). "W32.Stuxnet Dossier." Symantec Security Response. [Symantec - Stuxnet Dossier](https://www.symantec.com/content/en/us/enterprise/media/security_response/whitepapers/w32_stuxnet_dossier.pdf)
+[^1]: Falliere, N., Murchu, L.O., & Chien, E. (2011). "W32.Stuxnet Dossier." Symantec Security Response. [Broadcom Security Response - Stuxnet Dossier](https://docs.broadcom.com/docs/security-response-w32-stuxnet-dossier-11-en)
 
 [^2]: NIST. (2020). "Recommendation for Key Management: Part 1 – General." NIST SP 800-57 Part 1 Rev. 5. [NIST - SP 800-57](https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final)
 
