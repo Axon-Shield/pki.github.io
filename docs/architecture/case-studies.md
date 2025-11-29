@@ -133,7 +133,7 @@ We initially set 90-day certificate lifespans across the board, thinking this wo
 
 **Value of getting this right:** Automation eliminated outage risk entirely while reducing operational overhead by 88%. More importantly, it unblocked cloud migration and microservices adoption - strategic initiatives worth tens of millions in infrastructure efficiency.
 
-**Executive summary:** See [ROI of Automation](index.md#the-business-case-in-three-numbers) for business case framework.
+**Executive summary:** See [ROI of Automation](../index.md#the-business-case-in-three-numbers) for business case framework.
 
 ---
 
@@ -246,7 +246,7 @@ We initially planned to consolidate all certificate issuance through a single ce
 
 **Value of getting this right:** Beyond preventing outages, automated certificate management with comprehensive audit trails transformed regulatory compliance from adversarial (proving you're secure) to collaborative (showing auditors real-time evidence). This reduced audit costs, accelerated regulatory approvals for new systems, and eliminated remediation mandates.
 
-**Executive summary:** See [Compliance and Audit](security/compliance-and-audit.md) for regulatory framework.
+**Executive summary:** See [Compliance and Audit](../security/compliance-and-audit.md) for regulatory framework.
 
 ---
 
@@ -452,7 +452,7 @@ The physical access problem was creating both operational burden and security ri
 
 The physical access integration delivered unexpected value: treating PIV certificates like any other certificate in the unified inventory meant physical security finally had the same visibility and automation as IT security. Compliance audits went from adversarial (proving no terminated employees had access) to trivial (showing automated revocation logs).
 
-**Executive summary:** See [Multi-Cloud PKI](implementation/multi-cloud-pki.md) for architectural patterns.
+**Executive summary:** See [Multi-Cloud PKI](../implementation/multi-cloud-pki.md) for architectural patterns.
 
 ---
 

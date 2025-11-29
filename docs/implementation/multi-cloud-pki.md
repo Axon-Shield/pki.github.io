@@ -1720,7 +1720,7 @@ We've implemented multi-cloud PKI at Apex Capital (AWS + Azure + on-premises), V
 - [Certificate Issuance Workflows](./certificate-issuance-workflows.md) - Workflow automation
 - [ACME Protocol Implementation](./acme-protocol-implementation.md) - ACME servers
 - [HSM Integration](./hsm-integration.md) - Hardware security modules
-- [Certificate Lifecycle Management](./certificate-lifecycle-management.md) - Lifecycle automation
+- [Certificate Lifecycle Management](../operations/certificate-lifecycle-management.md) - Lifecycle automation
 - [CA Architecture](./ca-architecture.md) - CA design patterns
 
 ### Tools and Projects

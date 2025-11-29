@@ -546,7 +546,7 @@ Allowing any certificate configuration in code without validation. Defeats benef
 
 **Value of getting this right:** Certificate-as-Code reduces operational overhead by 90%, eliminates manual certificate-related outages, and enables rapid deployment velocity. Git-based audit trails simplify compliance (SOC 2, PCI-DSS), reducing audit preparation from weeks to hours. Infrastructure automation scales without linear cost increases.
 
-**Executive summary:** See [ROI of Automation](index.md#the-business-case-in-three-numbers) for business case framework.
+**Executive summary:** See [ROI of Automation](../index.md#the-business-case-in-three-numbers) for business case framework.
 
 ---
 

@@ -1476,8 +1476,8 @@ ACME implementation for internal certificates:
 ### Related Pages
 
 - [Certificate Issuance Workflows](./certificate-issuance-workflows.md) - Complete workflow patterns
-- [ACME Protocol](./acme-protocol.md) - ACME standard deep dive  
-- [Certificate Lifecycle Management](./certificate-lifecycle-management.md) - Lifecycle automation
+- [ACME Protocol](../standards/acme-protocol.md) - ACME standard deep dive  
+- [Certificate Lifecycle Management](../operations/certificate-lifecycle-management.md) - Lifecycle automation
 - [CA Architecture](./ca-architecture.md) - CA design principles
 - [HSM Integration](./hsm-integration.md) - Hardware security for CA keys
 

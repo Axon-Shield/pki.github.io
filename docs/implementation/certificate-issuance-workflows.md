@@ -652,7 +652,7 @@ def store_certificate_in_secrets_manager(cert_pem, key_pem, secret_name):
 
 ### ACME (Automated Certificate Management Environment)
 
-The modern standard for automated issuance (see [ACME Protocol](./acme-protocol.md) for implementation details):
+The modern standard for automated issuance (see [ACME Protocol](../standards/acme-protocol.md) for implementation details):
 
 ```python
 from acme import client, messages
@@ -1500,8 +1500,8 @@ AWS Certificate Manager model:
 
 ### Related Pages
 
-- [ACME Protocol Implementation](./acme-protocol.md) - Building ACME servers
-- [Certificate Lifecycle Management](./certificate-lifecycle-management.md) - Complete lifecycle
+- [ACME Protocol Implementation](../standards/acme-protocol.md) - Building ACME servers
+- [Certificate Lifecycle Management](../operations/certificate-lifecycle-management.md) - Complete lifecycle
 - [CA Architecture](./ca-architecture.md) - CA design and operation
 - [HSM Integration](./hsm-integration.md) - Hardware security modules
 - [Multi-Cloud PKI](./multi-cloud-pki.md) - Cloud certificate management
