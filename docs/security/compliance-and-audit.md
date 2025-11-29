@@ -812,7 +812,7 @@ Invest in compliance infrastructure—documentation, logging, monitoring, traini
 
 **SOC 2 - Service Organization Control**
 - AICPA. "SOC 2 - SOC for Service Organizations: Trust Services Criteria." Current.
-  - [Aicpa - Frc](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/sorhome.html)
+  - [AICPA Audit & Assurance](https://www.aicpa-cima.com/topic/audit-assurance)
 - Security, Availability, Processing Integrity, Confidentiality, Privacy
 - Type I (point in time) vs Type II (period of time)
 - Common for cloud service providers
