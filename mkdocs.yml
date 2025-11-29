@@ -39,6 +39,9 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css
 
+extra_javascript:
+  - javascripts/parent-sync.js
+
 extra:
   announce: true
   social:
