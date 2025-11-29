@@ -2,218 +2,218 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://vault.axonshield.com/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/glossary/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/quick-start/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/technical-guide/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/architecture/case-studies/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/architecture/certificate-as-code/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/architecture/mutual-tls-patterns/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/architecture/service-mesh-certificates/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/architecture/zero-trust-architecture/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/business/cost_of_certificate_management/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/foundations/certificate-anatomy/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/foundations/cryptographic-primitives/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/foundations/public-private-key-pairs/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/foundations/trust-models/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/foundations/what-is-pki/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/implementation/acme-protocol-implementation/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/implementation/ca-architecture/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/implementation/certificate-issuance-workflows/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/implementation/hsm-integration/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/implementation/hsm-operational-failures/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/implementation/multi-cloud-pki/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/implementation/onprem-vs-cloud-hsm/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/operations/certificate-lifecycle-management/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/operations/certificate-rotation-strategies/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/operations/inventory-and-discovery/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/operations/monitoring-and-alerting/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/operations/renewal-automation/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/patterns/ca-hierarchies/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/patterns/cloud-vs-on-premises/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/patterns/high-availability-disaster-recovery/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/patterns/multi-tenancy-considerations/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/security/ca-compromise-scenarios/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/security/certificate-pinning/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/security/common-vulnerabilities/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/security/compliance-and-audit/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/security/incident-response/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/security/key-management-best-practices/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/security/private-key-protection/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/security/threat-models-and-attack-vectors/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/standards/acme-protocol/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/standards/ocsp-and-crl/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/standards/pkcs-standards/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/standards/tls-protocol/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/standards/x509-standard/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/strategy/success-metrics/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/troubleshooting/chain-validation-errors/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/troubleshooting/common-misconfigurations/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/troubleshooting/expired-certificate-outages/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/troubleshooting/performance-bottlenecks/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/vendors/digicert-certcentral/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/vendors/hashicorp-vault-pki/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/vendors/keyfactor-command/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/vendors/venafi-platform/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
     <url>
          <loc>https://vault.axonshield.com/vendors/vendor-comparison-matrix/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-11-29</lastmod>
     </url>
 </urlset>
