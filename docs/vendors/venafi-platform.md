@@ -892,8 +892,8 @@ Venafi's market dominance stems from solving the hardest certificate management 
     Python library for Venafi integration
 
 23. **VCert Go SDK**  
-    [Github - Vcert Go](https://github.com/Venafi/vcert-go)  
-    Go library for Venafi automation
+    [GitHub - VCert](https://github.com/Venafi/vcert)  
+    Go library and SDK for CyberArk Certificate Manager automation
 
 24. **Terraform Provider for Venafi**  
     [Terraform - Venafi](https://registry.terraform.io/providers/Venafi/venafi)  
