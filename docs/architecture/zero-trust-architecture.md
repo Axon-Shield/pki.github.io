@@ -1437,7 +1437,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 **Kong Gateway with mTLS**
 
 - Kong Documentation. "Mutual TLS Authentication."
-  - [Kong Gateway mTLS](https://docs.konghq.com/gateway/latest/production/networking/configure-mtls/)
+  - [Kong mTLS Auth Plugin](https://developer.konghq.com/plugins/mtls-auth/)
 - API gateway mTLS enforcement
 - Client certificate validation
 - Plugin ecosystem
