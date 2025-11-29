@@ -1331,9 +1331,9 @@ Start with quick wins using API-based discovery, expand systematically to cover 
     [Amazon - Latest](https://docs.aws.amazon.com/acm/latest/APIReference/)  
     API-based certificate discovery in AWS
 
-12. **Azure Key Vault Certificates REST API**  
-    [Microsoft - Keyvault](https://learn.microsoft.com/rest/api/keyvault/certificates)  
-    Certificate discovery via Azure APIs
+12. **Azure Key Vault Certificate Scenarios**  
+    [Microsoft - Key Vault Certificates](https://learn.microsoft.com/en-us/azure/key-vault/certificates/certificate-scenarios)  
+    Certificate management and discovery via Azure Key Vault
 
 13. **Google Cloud Certificate Authority Service**  
     [Google - Certificate Authority Service](https://cloud.google.com/certificate-authority-service/docs)  
