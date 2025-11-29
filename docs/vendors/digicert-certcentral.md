@@ -966,9 +966,9 @@ CertCentral's value proposition is simplicity: "Buy DigiCert certificates, get m
     [Digicert](https://support.digicert.com/)  
     Knowledge base and ticket system
 
-62. **DigiCert Community Forums**  
-    [Digicert](https://community.digicert.com/)  
-    User discussion and peer support
+62. **DigiCert Support Center**  
+    [Digicert Support](https://www.digicert.com/support/)  
+    Technical support and documentation resources
 
 63. **DigiCert Blog**  
     [Digicert - Blog](https://www.digicert.com/blog)  
@@ -979,5 +979,5 @@ CertCentral's value proposition is simplicity: "Buy DigiCert certificates, get m
     Open-source tools and integrations
 
 65. **SSL/TLS Best Practices**  
-    [Digicert - Best Practices](https://www.digicert.com/kb/best-practices)  
+    [DigiCert Knowledge Base](https://knowledge.digicert.com/)  
     Implementation guidance and security recommendations

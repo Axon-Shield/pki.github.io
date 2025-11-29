@@ -1224,9 +1224,9 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 **DoD Zero Trust Reference Architecture**
 
 - Department of Defense. "DoD Zero Trust Reference Architecture." February 2021.
-  - [Defense - Documents](https://dodcio.defense.gov/Portals/0/Documents/Library/DoD-ZTReferenceArchitecture.pdf)
+  - [DoD Zero Trust Strategy](https://media.defense.gov/2022/Sep/07/2003071834/-1/-1/0/CSI_EMBRACING_ZT_SECURITY_MODEL_UOO115131-21.PDF)
 - Defense-specific zero-trust requirements
-- Department of Defense implementation approach
+- Department of Defense implementation approach and security model
 
 **BeyondCorp - Google's Zero Trust Approach**
 
@@ -1437,7 +1437,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 **Kong Gateway with mTLS**
 
 - Kong Documentation. "Mutual TLS Authentication."
-  - [Konghq - Latest](https://docs.konghq.com/gateway/latest/plan-and-deploy/security/mutual-tls/)
+  - [Kong Gateway mTLS](https://docs.konghq.com/gateway/latest/production/networking/configure-mtls/)
 - API gateway mTLS enforcement
 - Client certificate validation
 - Plugin ecosystem
