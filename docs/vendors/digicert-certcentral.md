@@ -979,5 +979,5 @@ CertCentral's value proposition is simplicity: "Buy DigiCert certificates, get m
     Open-source tools and integrations
 
 65. **SSL/TLS Best Practices**  
-    [DigiCert Knowledge Base](https://knowledge.digicert.com/)  
+    [DigiCert TLS Best Practices Checklist](https://www.digicert.com/content/dam/digicert/pdfs/tls-certificate-management-best-practices-checklist-en.pdf)  
     Implementation guidance and security recommendations
