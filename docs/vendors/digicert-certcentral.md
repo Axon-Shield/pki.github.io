@@ -711,8 +711,8 @@ CertCentral's value proposition is simplicity: "Buy DigiCert certificates, get m
    REST API reference for automation
 
 4. **DigiCert ACME Directory**  
-   [Digicert - Acme](https://www.digicert.com/acme)  
-   ACME protocol support documentation
+   [DigiCert Third-party ACME Integration](https://docs.digicert.com/en/certcentral/certificate-tools/certificate-lifecycle-automation-guides/third-party-acme-integration.html)  
+   ACME protocol implementation and third-party client integration
 
 5. **DigiCert Trust Center**  
    [Digicert - Trust](https://www.digicert.com/trust)  
