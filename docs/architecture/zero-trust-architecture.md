@@ -1224,7 +1224,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 **DoD Zero Trust Reference Architecture**
 
 - Department of Defense. "DoD Zero Trust Reference Architecture." February 2021.
-  - [DoD Zero Trust Strategy](https://media.defense.gov/2022/Sep/07/2003071834/-1/-1/0/CSI_EMBRACING_ZT_SECURITY_MODEL_UOO115131-21.PDF)
+  - [DoD Zero Trust Strategy](https://media.defense.gov/2021/Feb/25/2002588479/-1/-1/0/CSI_EMBRACING_ZT_SECURITY_MODEL_UOO115131-21.pdf)
 - Defense-specific zero-trust requirements
 - Department of Defense implementation approach and security model
 
