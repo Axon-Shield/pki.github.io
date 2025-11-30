@@ -1,3 +1,8 @@
+// Disable GA if embedded in iframe
+if (window.self !== window.top) {
+  window['ga-disable-G-5G3T3K4DWB'] = true; // Replace with your GA measurement ID
+}
+
 // Sync navigation with parent window (for iframe embedding)
 if (window.parent !== window) {
     // Send current path on page load
