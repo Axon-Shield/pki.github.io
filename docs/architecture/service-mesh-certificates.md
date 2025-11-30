@@ -1126,7 +1126,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 **cert-manager with Linkerd**
 
 - cert-manager Documentation. "Securing Linkerd with cert-manager."
-  - [Cert-manager - Securing Linkerd With Cert Manager](https://cert-manager.io/docs/tutorials/securing-linkerd-with-cert-manager/)
+  - [Cert-manager - Securing Linkerd With Cert Manager](https://medium.com/better-programming/configuring-linkerd-mtls-with-cert-manager-using-terraform-2ee1c0aa6991)
 - Trust anchor management
 - Identity issuer rotation
 - Automation patterns
@@ -1170,7 +1170,7 @@ The key insight: in service mesh environments, certificates are infrastructure m
 **Linkerd Diagnostics**
 
 - Linkerd Documentation. "Debugging mTLS."
-  - [Linkerd - Debugging Mtls](https://linkerd.io/2/tasks/debugging-mtls/)
+  - [Linkerd - Debugging Mtls](https://linkerd.io/2-edge/tasks/validating-your-traffic/)
 - linkerd check
 - Tap and top commands
 - Certificate inspection

@@ -1450,115 +1450,111 @@ Start with quick wins using API-based discovery, expand systematically to cover 
     CT monitoring best practices
 
 39. **Google Certificate Transparency**  
-    [Google - Certificates](https://transparencyreport.google.com/https/certificates)  
-    CT log statistics and search
-
-40. **Sectigo CT Search**  
-    [Sectigo](https://ctsearch.sectigo.com/)  
-    Commercial CT log search tool
+   [Google - Certificates](https://transparencyreport.google.com/https/certificates)  
+   CT log statistics and search
 
 ### Database and Data Management
 
-41. **PostgreSQL - Certificate Inventory Schema Design**  
+40. **PostgreSQL - Certificate Inventory Schema Design**  
     [Postgresql - Datatype Datetime.Html](https://www.postgresql.org/docs/current/datatype-datetime.html)  
     Database design for certificate lifecycle tracking
 
-42. **MongoDB - Document Structure for Certificates**  
+41. **MongoDB - Document Structure for Certificates**  
     [Mongodb](https://www.mongodb.com/docs/)  
     NoSQL approaches to certificate inventory
 
-43. **Elasticsearch - Certificate Document Mapping**  
+42. **Elasticsearch - Certificate Document Mapping**  
     [Elastic - Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html)  
     Search and analytics for certificate inventory
 
-44. **TimescaleDB - Time-Series Certificate Data**  
+43. **TimescaleDB - Time-Series Certificate Data**  
     [Timescale Documentation](https://timescale.readthedocs.io/)  
     Time-series database for certificate history
 
-45. **Redis - Certificate Caching**  
+44. **Redis - Certificate Caching**  
     [Redis](https://redis.io/docs/)  
     High-performance caching for certificate metadata
 
 ### API Integrations and Automation
 
-46. **Python cryptography Library**  
+45. **Python cryptography Library**  
     [Cryptography - Latest](https://cryptography.io/en/latest/)  
     Certificate parsing and analysis in Python
 
-47. **OpenSSL Command-Line Tools**  
+46. **OpenSSL Command-Line Tools**  
     [Openssl - Man1](https://www.openssl.org/docs/man1.1.1/man1/)  
     Certificate inspection and extraction utilities
 
-48. **pyOpenSSL**  
+47. **pyOpenSSL**  
     [Pyopenssl](https://www.pyopenssl.org/)  
     Python wrapper for OpenSSL certificate operations
 
-49. **Go crypto/x509 Package**  
+48. **Go crypto/x509 Package**  
     [Go - X509](https://pkg.go.dev/crypto/x509)  
     Certificate parsing in Go
 
-50. **Java KeyStore (JKS) Tools**  
+49. **Java KeyStore (JKS) Tools**  
     [Oracle - Technotes](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html)  
     Java certificate store management
 
 ### Security and Compliance Frameworks
 
-51. **NIST SP 800-53 Rev. 5 - CM-8: System Component Inventory**  
+50. **NIST SP 800-53 Rev. 5 - CM-8: System Component Inventory**  
     [Nist - Detail](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final)  
     Federal standards for configuration management inventory
 
-52. **CIS Controls v8 - Control 1: Inventory and Control of Enterprise Assets**  
+51. **CIS Controls v8 - Control 1: Inventory and Control of Enterprise Assets**  
     [Cisecurity - Controls](https://www.cisecurity.org/controls/v8)  
     Security framework including certificate inventory
 
-53. **PCI DSS v4.0 - Requirement 2.4**  
+52. **PCI DSS v4.0 - Requirement 2.4**  
     [Pcisecuritystandards](https://www.pcisecuritystandards.org/)  
     Inventory requirements for payment card environments
 
-54. **SOC 2 Type 2 - Common Criteria CC6.1**  
+53. **SOC 2 Type 2 - Common Criteria CC6.1**  
     [Aicpa - Soc4So](https://www.aicpa.org/soc4so)  
     Logical and physical access controls including certificate inventory
 
-55. **HIPAA Security Rule - 164.308(a)(1)(ii)(A)**  
+54. **HIPAA Security Rule - 164.308(a)(1)(ii)(A)**  
     [Hhs - For Professionals](https://www.hhs.gov/hipaa/for-professionals/security/)  
     Risk analysis requiring asset inventory including certificates
 
 ### Research and Academic Papers
 
-56. **Durumeric, Z., et al. "The Matter of Heartbleed"** (2014)  
+55. **Durumeric, Z., et al. "The Matter of Heartbleed"** (2014)  
     IMC '14 - Internet-wide certificate vulnerability analysis
 
-57. **Holz, R., et al. "The SSL Landscape: A Thorough Analysis of the X.509 PKI Using Active and Passive Measurements"** (2011)  
+56. **Holz, R., et al. "The SSL Landscape: A Thorough Analysis of the X.509 PKI Using Active and Passive Measurements"** (2011)  
     IMC '11 - Comprehensive certificate ecosystem study
 
-58. **Amann, J., et al. "No Attack Necessary: The Surprising Dynamics of SSL Trust Relationships"** (2013)  
+57. **Amann, J., et al. "No Attack Necessary: The Surprising Dynamics of SSL Trust Relationships"** (2013)  
     ACSAC '13 - Certificate trust chain analysis
 
-59. **Kumar, D., et al. "Tracking Certificate Misissuance in the Wild"** (2018)  
+58. **Kumar, D., et al. "Tracking Certificate Misissuance in the Wild"** (2018)  
     IEEE S&P - Certificate transparency for discovery
 
-60. **Chung, T., et al. "Understanding the Role of Registrars in DNSSEC Deployment"** (2017)  
+59. **Chung, T., et al. "Understanding the Role of Registrars in DNSSEC Deployment"** (2017)  
     IMC '17 - DNS infrastructure certificate discovery
 
 ### Industry Reports and Statistics
 
-61. **Venafi Machine Identity Management Report**  
+60. **Venafi Machine Identity Management Report**  
     [Venafi - Resources](https://www.venafi.com/resources)  
     Annual statistics on certificate management challenges
 
-62. **Ponemon Institute: Cost of Failed Trust Report**  
+61. **Ponemon Institute: Cost of Failed Trust Report**  
     [Ponemon](https://www.ponemon.org/)  
     Business impact of certificate management failures
 
-63. **Gartner: Certificate Lifecycle Management Market Guide**  
+62. **Gartner: Certificate Lifecycle Management Market Guide**  
     [Gartner](https://www.gartner.com/)  
     Market analysis and best practices
 
-64. **Forrester: The State of Public Key Infrastructure**  
+63. **Forrester: The State of Public Key Infrastructure**  
     [Forrester](https://www.forrester.com/)  
     Enterprise PKI adoption and challenges
 
-65. **IDC: Digital Certificate Management Market Forecast**  
+64. **IDC: Digital Certificate Management Market Forecast**  
     [Idc](https://www.idc.com/)  
     Market size and growth projections
 

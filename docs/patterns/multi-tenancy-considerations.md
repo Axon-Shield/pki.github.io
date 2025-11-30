@@ -914,7 +914,7 @@ Test isolation boundaries regularly, enforce strict access controls, and maintai
 
 **"Multi-Tenancy Architecture" (Microsoft)**
 - Microsoft. "Multi-tenant SaaS patterns."
-  - [Microsoft - Azure](https://docs.microsoft.com/en-us/azure/architecture/guide/multitenant/)
+  - [Microsoft - Azure](https://learn.microsoft.com/en-us/azure/architecture/guide/multitenant/overview)
 - Isolation models and strategies
 - Resource governance
 - Tenant provisioning

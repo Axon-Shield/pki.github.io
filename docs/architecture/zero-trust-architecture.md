@@ -1521,7 +1521,7 @@ We've implemented zero-trust at Nexus (financial services with regulatory requir
 **FedRAMP and Zero Trust**
 
 - FedRAMP. "Emerging Technology Prioritization Framework."
-  - [Fedramp - Resources](https://www.fedramp.gov/assets/resources/documents/)
+  - [Fedramp - Resources](https://www.fedramp.gov/docs/)
 - Federal zero-trust adoption
 - Cloud service provider requirements
 - Authorization considerations

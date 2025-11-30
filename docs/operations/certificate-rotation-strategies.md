@@ -2145,7 +2145,7 @@ Remember: the best rotations are the ones no one notices because they happen aut
     Observability framework for certificate lifecycle events
 
 39. **Datadog TLS Certificate Monitoring**  
-    [Datadoghq - Types](https://docs.datadoghq.com/monitors/types/ssl/)  
+    [Datadoghq - Types](https://docs.datadoghq.com/synthetics/api_tests/ssl_tests/)  
     Commercial monitoring solution for certificate rotation
 
 40. **New Relic Synthetic Monitoring**  
@@ -2206,7 +2206,7 @@ Remember: the best rotations are the ones no one notices because they happen aut
     Cloud-specific certificate management best practices
 
 54. **Open Web Application Security Project (OWASP)**  
-    [Owasp - Transport Layer Protection Cheat Sheet](https://owasp.org/www-community/Transport_Layer_Protection_Cheat_Sheet)  
+    [Owasp - Transport Layer Protection Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html)  
     Security guidance for TLS certificate management
 
 55. **National Institute of Standards and Technology (NIST) - Cryptographic Module Validation Program**  
