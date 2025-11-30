@@ -1076,10 +1076,10 @@ The key insight: in service mesh environments, certificates are infrastructure m
 
 **SPIRE Integration with Istio**
 
-- SPIFFE. "Using SPIRE with Istio."
-  - [Spiffe - Microservices](https://spiffe.io/docs/latest/microservices/istio/)
-- Replace istiod CA with SPIRE
-- Workload attestation
+- Istio Documentation. "Istio Documentation."
+  - [Istio Documentation](https://istio.io/latest/docs/)
+- Service mesh certificate management
+- Security features and mTLS configuration
 - Federation across clusters
 
 **SPIRE Integration with Envoy**
@@ -1118,8 +1118,8 @@ The key insight: in service mesh environments, certificates are infrastructure m
 **cert-manager with Istio**
 
 - cert-manager Documentation. "Securing Istio Service Mesh."
-  - [Cert-manager - Istio Csr](https://cert-manager.io/docs/tutorials/istio-csr/)
-- istio-csr integration
+  - [cert-manager istio-csr GitHub](https://github.com/cert-manager/istio-csr)
+- istio-csr integration for using cert-manager with Istio
 - Custom CA with cert-manager
 - Automated certificate lifecycle
 
@@ -1178,9 +1178,9 @@ The key insight: in service mesh environments, certificates are infrastructure m
 **Consul Connect Troubleshooting**
 
 - HashiCorp. "Troubleshoot Consul Connect."
-  - [Consul - Troubleshooting](https://www.consul.io/docs/connect/troubleshooting)
-- Proxy logs
-- Intention debugging
+  - [HashiCorp Consul Troubleshoot Command](https://developer.hashicorp.com/consul/commands/troubleshoot)
+- Consul troubleshooting commands
+- Proxy and intention debugging
 - Certificate validation
 
 ### Standards and Protocols
