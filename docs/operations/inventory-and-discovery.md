@@ -1472,7 +1472,7 @@ Start with quick wins using API-based discovery, expand systematically to cover 
     Search and analytics for certificate inventory
 
 44. **TimescaleDB - Time-Series Certificate Data**  
-    [Timescale Documentation](https://docs.timescale.com/)  
+    [Timescale Documentation](https://timescale.readthedocs.io/)  
     Time-series database for certificate history
 
 45. **Redis - Certificate Caching**  

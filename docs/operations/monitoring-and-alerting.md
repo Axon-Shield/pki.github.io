@@ -1713,7 +1713,7 @@ The investment in comprehensive monitoring infrastructure pays immediate dividen
 ### Certificate-Specific Monitoring Tools
 
 11. **cert-checker - Certificate Expiry Monitoring**  
-    [Github - Cert Checker](https://github.com/timothybasanov/cert-checker)  
+    [Github - Cert Checker](https://github.com/mogensen/cert-checker)  
     Lightweight certificate expiration checker
 
 12. **x509-certificate-exporter - Prometheus Exporter**  
@@ -1937,7 +1937,7 @@ The investment in comprehensive monitoring infrastructure pays immediate dividen
     Metrics storage for certificate monitoring
 
 62. **TimescaleDB - PostgreSQL for Time-Series**  
-    [Timescale Documentation](https://docs.timescale.com/)  
+    [Timescale Documentation](https://timescale.readthedocs.io/)  
     Time-series extension for PostgreSQL
 
 63. **Graphite - Metrics Storage**  

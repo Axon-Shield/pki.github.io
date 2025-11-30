@@ -649,11 +649,11 @@ Keyfactor's sweet spot is organizations that have outgrown simple tools but find
 ### Integration and Automation
 
 6. **Keyfactor Universal Orchestrator**  
-   [Github - Orchestrator Core](https://github.com/Keyfactor/orchestrator-core)  
+   [Github - Orchestrator Core](https://github.com/workfloworchestrator/orchestrator-core)  
    Agent-based automation framework
 
 7. **cert-manager Keyfactor Issuer**  
-   [Github - Cert Manager External Issuer](https://github.com/Keyfactor/cert-manager-external-issuer)  
+   [Github - Cert Manager External Issuer](https://github.com/cert-manager/sample-external-issuer)  
    Kubernetes integration
 
 8. **Terraform Provider**  
