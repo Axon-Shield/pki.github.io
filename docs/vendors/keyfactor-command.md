@@ -635,7 +635,7 @@ Keyfactor's sweet spot is organizations that have outgrown simple tools but find
    API documentation and integration guides
 
 3. **Keyfactor Control (SaaS)**  
-   [Keyfactor - Keyfactor Control](https://www.keyfactor.com/products/keyfactor-control/)  
+   [Keyfactor Platform](https://www.keyfactor.com/)  
    Cloud-hosted certificate management platform
 
 4. **EJBCA Enterprise**  

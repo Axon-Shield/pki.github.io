@@ -989,10 +989,10 @@ The key insight: in service mesh environments, certificates are infrastructure m
 
 **Linkerd Certificate Management**
 
-- Linkerd Documentation. "Rotating your identity certificates."
-  - [Linkerd - Rotating Identity Certificates](https://linkerd.io/2/tasks/rotating-identity-certificates/)
-- Manual rotation procedure
-- Cert-manager integration
+- Linkerd Documentation. "Automatically Rotating Control Plane TLS Credentials."
+  - [Linkerd - Automatically Rotating Control Plane TLS](https://linkerd.io/2-edge/tasks/automatically-rotating-control-plane-tls-credentials/)
+- Automatic rotation with cert-manager
+- Trust anchor and identity issuer rotation
 - Best practices
 
 **Linkerd Policy**
