@@ -1713,8 +1713,8 @@ We've implemented multi-cloud PKI at Apex Capital (AWS + Azure + on-premises), V
 - NIST SP 800-57: Key Management Recommendations
 - Cloud Security Alliance: PKI in Cloud Environments
 - AWS ACM Documentation: [Amazon - Acm](https://docs.aws.amazon.com/acm/)
-- Azure Key Vault Certificates: [Microsoft - Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/)
-- GCP Certificate Manager: [Google - Certificate Manager](https://cloud.google.com/certificate-manager/docs)
+- Azure Key Vault Certificates: [Microsoft - Key Vault](https://learn.microsoft.com/en-us/azure/key-vault/certificates/)
+- GCP Certificate Manager: [Google - Certificate Manager](https://docs.cloud.google.com/certificate-manager/docs)
 
 ### Related Pages
 - [Certificate Issuance Workflows](./certificate-issuance-workflows.md) - Workflow automation
@@ -1725,10 +1725,10 @@ We've implemented multi-cloud PKI at Apex Capital (AWS + Azure + on-premises), V
 
 ### Tools and Projects
 - cert-manager: [Cert-manager](https://cert-manager.io/)
-- HashiCorp Vault: [Vaultproject](https://www.vaultproject.io/)
+- HashiCorp Vault: [Vaultproject](https://developer.hashicorp.com/vault)
 - Istio: [Istio](https://istio.io/)
 - SPIFFE/SPIRE: [Spiffe](https://spiffe.io/)
-- Terraform: [Terraform](https://www.terraform.io/)
+- Terraform: [Terraform](https://developer.hashicorp.com/terraform)
 
 ---
 

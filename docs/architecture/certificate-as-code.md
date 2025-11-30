@@ -586,7 +586,7 @@ We've implemented Certificate-as-Code at an internet company (15,000+ certificat
 
 **Terraform Documentation**
 - HashiCorp. "Terraform Documentation."
-  - <https://www.terraform.io/docs>
+  - <https://developer.hashicorp.com/terraform/docs>
 
 **Terraform AWS Provider - ACM**
 - HashiCorp. "AWS Provider: aws_acm_certificate."
@@ -671,7 +671,7 @@ We've implemented Certificate-as-Code at an internet company (15,000+ certificat
 
 **HashiCorp Vault Documentation**
 - HashiCorp. "Vault Documentation."
-  - <https://www.vaultproject.io/docs>
+  - <https://developer.hashicorp.com/vault/docs>
 
 **AWS Secrets Manager**
 - AWS. "AWS Secrets Manager Documentation."

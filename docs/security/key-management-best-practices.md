@@ -385,7 +385,7 @@ The investment in proper key management is not optional—it's the foundation of
 
 **HashiCorp Vault Documentation**
 - HashiCorp. "Vault Documentation - Secrets Management."
-  - [Vaultproject](https://www.vaultproject.io/docs)
+  - [Vaultproject](https://developer.hashicorp.com/vault/docs)
 - Modern secrets management patterns
 - API-driven key lifecycle
 - Open-source reference implementation
