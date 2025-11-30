@@ -1,0 +1,3 @@
+# Redirect from vault.axonshield.com to axonshield.com/vault with path preserved
+https://vault.axonshield.com/*  https://axonshield.com/vault/:splat  301!
+
