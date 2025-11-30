@@ -1,3 +1,3 @@
-# Redirect from vault.axonshield.com to axonshield.com/vault with path preserved
-https://vault.axonshield.com/*  https://axonshield.com/vault/:splat  301!
-
+# Cross-domain redirects (vault.axonshield.com -> axonshield.com/vault)
+# must be configured in Cloudflare Dashboard under Bulk Redirects
+# or using Cloudflare Page Rules/Redirect Rules
