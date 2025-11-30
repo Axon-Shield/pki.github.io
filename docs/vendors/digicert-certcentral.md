@@ -715,8 +715,8 @@ CertCentral's value proposition is simplicity: "Buy DigiCert certificates, get m
    ACME protocol implementation and third-party client integration
 
 5. **DigiCert Trust Center**  
-   [Digicert - Trust](https://www.digicert.com/trust)  
-   Security practices and trust information
+   [DigiCert - What is Digital Trust](https://www.digicert.com/faq/trust-and-pki/what-is-digital-trust)  
+   Security practices and digital trust information
 
 ### Certificate Authority Standards
 
@@ -725,7 +725,7 @@ CertCentral's value proposition is simplicity: "Buy DigiCert certificates, get m
    Industry standards DigiCert follows for certificate issuance
 
 7. **WebTrust for Certification Authorities**  
-   [Cpacanada - Webtrust](https://www.cpacanada.ca/webtrust)  
+   [CPA Canada - WebTrust Services](https://www.cpacanada.ca/business-and-accounting-resources/audit-and-assurance/Overview-of-WebTrust-services)  
    Audit standards for certificate authorities
 
 8. **ETSI EN 319 411 - EU Standards**  
@@ -743,7 +743,7 @@ CertCentral's value proposition is simplicity: "Buy DigiCert certificates, get m
 ### DigiCert Certificate Types
 
 11. **SSL/TLS Certificate Options**  
-    [Digicert - Ssl Certificates](https://www.digicert.com/ssl-certificates)  
+    [DigiCert TLS/SSL Certificates](https://www.digicert.com/tls-ssl/basic-tls-ssl-certificates)  
     DV, OV, EV certificate products
 
 12. **Code Signing Certificates**  
@@ -803,7 +803,7 @@ CertCentral's value proposition is simplicity: "Buy DigiCert certificates, get m
     Public logging of issued certificates
 
 25. **DigiCert CT Log Monitoring**  
-    [Digicert - Ct Log](https://www.digicert.com/ct-log)  
+    [DigiCert - What are CT Logs](https://www.digicert.com/faq/public-trust-and-certificates/what-are-ct-logs)  
     Certificate transparency services
 
 ### Pricing and Licensing
@@ -847,7 +847,7 @@ CertCentral's value proposition is simplicity: "Buy DigiCert certificates, get m
     Certificate compromise and revocation procedures
 
 35. **DigiCert Security Operations**  
-    [Digicert - Trust](https://www.digicert.com/trust)  
+    [DigiCert - What is Digital Trust](https://www.digicert.com/faq/trust-and-pki/what-is-digital-trust)  
     CA security practices and controls
 
 ### Migration and Deployment
