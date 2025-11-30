@@ -870,7 +870,7 @@ Vault PKI's revolutionary approach eliminates traditional PKI pain points but re
    Service mesh integration
 
 9. **Istio with Vault CA**  
-   [Istio - Tasks](https://istio.io/latest/docs/tasks/security/cert-management/custom-ca/)  
+   [Istio - Tasks](https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/)  
    Alternative service mesh integration
 
 10. **Terraform Vault Provider**  
@@ -932,7 +932,7 @@ Vault PKI's revolutionary approach eliminates traditional PKI pain points but re
     HA architecture and setup
 
 23. **Vault Backup and Restore**  
-    [Hashicorp - Tutorials](https://developer.hashicorp.com/vault/tutorials/operations/backup)  
+    [Hashicorp - Tutorials](https://developer.hashicorp.com/vault/docs/sysadmin/snapshots)  
     Disaster recovery procedures
 
 24. **Vault Monitoring**  

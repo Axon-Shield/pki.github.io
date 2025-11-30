@@ -665,7 +665,7 @@ Keyfactor's sweet spot is organizations that have outgrown simple tools but find
    Configuration management integration
 
 10. **PowerShell Module**  
-    [Github - Keyfactor Powershell](https://github.com/Keyfactor/keyfactor-powershell)  
+    [Github - Keyfactor Powershell](https://keyfactor.github.io/sdk-docs/examples/powershell_handlers.html)  
     Windows automation tools
 
 ### Technical Documentation
@@ -859,7 +859,7 @@ Keyfactor's sweet spot is organizations that have outgrown simple tools but find
     Knowledge base and tickets
 
 54. **Community Forums**  
-    [Keyfactor](https://community.keyfactor.com/)  
+    [Keyfactor](https://github.com/Keyfactor/keyfactorcommunity)  
     User discussions and Q&A
 
 55. **Professional Services**  

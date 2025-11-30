@@ -648,7 +648,7 @@ Remember: It's not if an incident will occur, but when. Your preparation today d
 
 **CISA Cyber Incident Response Playbooks**
 - CISA. "Federal Government Cybersecurity Incident and Vulnerability Response Playbooks." November 2021.
-  - [Cisa](https://www.cisa.gov/federal-government-cybersecurity-incident-and-vulnerability-response-playbooks)
+  - [Cisa](https://www.cisa.gov/sites/default/files/2024-08/Federal_Government_Cybersecurity_Incident_and_Vulnerability_Response_Playbooks_508C.pdf)
 - Incident-type specific playbooks
 - Federal government approach
 - Adaptable for private sector
