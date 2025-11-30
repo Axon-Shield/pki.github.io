@@ -989,7 +989,7 @@ Vault PKI's revolutionary approach eliminates traditional PKI pain points but re
 ### Architecture Patterns
 
 36. **Zero Trust with Vault**  
-    [Hashicorp - Zero Trust Security With Vault](https://www.hashicorp.com/resources/zero-trust-security-with-vault)  
+    [HashiCorp Zero Trust Security](https://www.hashicorp.com/en/solutions/zero-trust-security)  
     Architecture patterns and use cases
 
 37. **Service Mesh Certificate Management**  
@@ -1023,11 +1023,11 @@ Vault PKI's revolutionary approach eliminates traditional PKI pain points but re
     Multi-cloud PKI implementation
 
 44. **Adobe - Creative Cloud**  
-    [Hashicorp - Adobe](https://www.hashicorp.com/case-studies/adobe)  
+    [HashiCorp - Running Vault at Adobe](https://www.hashicorp.com/en/resources/running-vault-at-adobe-large-scale)  
     Microservices certificate automation
 
 45. **Citadel - Cryptocurrency Exchange**  
-    [Hashicorp - Citadel Security Policies](https://www.hashicorp.com/resources/citadel-security-policies)  
+    [HashiCorp - Citadel Scaling with Nomad and Consul](https://www.hashicorp.com/en/resources/citadel-scaling-hashicorp-nomad-consul)  
     High-security PKI requirements
 
 ### Community and Support
@@ -1045,7 +1045,7 @@ Vault PKI's revolutionary approach eliminates traditional PKI pain points but re
     Interactive tutorials
 
 49. **Vault Community Slack**  
-    [Slack](https://hashicorp-community.slack.com)  
+    [HashiCorp Community](https://www.hashicorp.com/en/community)  
     Real-time community support
 
 50. **HashiCorp Events and Training**  

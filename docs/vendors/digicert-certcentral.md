@@ -809,8 +809,8 @@ CertCentral's value proposition is simplicity: "Buy DigiCert certificates, get m
 ### Pricing and Licensing
 
 26. **DigiCert Pricing Calculator**  
-    [Digicert - Pricing](https://www.digicert.com/pricing)  
-    Certificate pricing tool
+    [DigiCert Certificates at CheapSSL Security](https://cheapsslsecurity.co.uk/sslbrands/digicert.html)  
+    Certificate pricing and options
 
 27. **Volume Discount Programs**  
     [Digicert](https://www.digicert.com/)  
