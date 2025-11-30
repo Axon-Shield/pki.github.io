@@ -884,8 +884,8 @@ Venafi's market dominance stems from solving the hardest certificate management 
 ### API and Developer Resources
 
 21. **Venafi Platform API Reference**  
-    [Venafi Documentation](https://docs.venafi.com/api/)  
-    REST API documentation for automation
+    [Venafi WebSDK API Documentation](https://docs.venafi.com/Docs/currentAPI/)  
+    REST API documentation for CyberArk Trust Protection Foundation
 
 22. **VCert Python SDK**  
     [Github - Vcert Python](https://github.com/Venafi/vcert-python)  
